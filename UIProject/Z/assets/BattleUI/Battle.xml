@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <controller name="state" pages="0,,1," selected="0">
+    <remark page="0" value="正常"/>
+    <remark page="1" value="放置单位"/>
+  </controller>
+  <displayList>
+    <image id="n9_f146" name="n9" src="f1463k" fileName="sprite_info_bar_2part.png" xy="681,30"/>
+    <text id="n10_f146" name="n10" xy="715,35" size="74,48" fontSize="35" color="#ffffff" text="数量"/>
+    <text id="n11_f146" name="enemy" xy="881,35" size="44,48" fontSize="35" color="#ffffff" text="10"/>
+    <text id="n12_f146" name="n12" xy="987,35" size="74,48" fontSize="35" color="#ffffff" text="生命"/>
+    <text id="n13_f146" name="hp" xy="1153,35" size="44,48" fontSize="35" color="#ffffff" text="10"/>
+    <component id="n15_f146" name="Builds" src="f1463m" fileName="E.xml" xy="0,0"/>
+  </displayList>
+</component>

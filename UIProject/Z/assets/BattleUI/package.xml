@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="vp312gab">
+  <resources>
+    <component id="f1460" name="Battle.xml" path="/" exported="true"/>
+    <image id="f1463i" name="sprite_base_hp.png" path="/"/>
+    <image id="f1463j" name="sprite_enemy.png" path="/"/>
+    <image id="f1463k" name="sprite_info_bar_2part.png" path="/"/>
+    <component id="f1463l" name="BuildSprite.xml" path="/" exported="true"/>
+    <component id="f1463m" name="E.xml" path="/"/>
+  </resources>
+  <publish name=""/>
+</packageDescription>

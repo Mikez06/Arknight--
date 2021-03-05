@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
+[System.Serializable]
 public class Unit
 {
     public Battle Battle;
@@ -16,12 +17,15 @@ public class Unit
     public Vector3 Position;
     public Vector2 Position2 => new Vector2(Position.x, Position.z);
 
-    public Vector2Int GridPos => new Vector2Int(Mathf.CeilToInt(Position.x), Mathf.CeilToInt(Position.z));
+    public Vector2Int GridPos => new Vector2Int(Mathf.RoundToInt(Position.x), Mathf.RoundToInt(Position.z));
 
-    public MapGrid NowGrid => Battle.Map.Grids[Mathf.CeilToInt(Position.x), Mathf.CeilToInt(Position.z)];
+    public Vector2 Direction = new Vector2(1, 0);
 
-    public UnitStateEnum State;
+    public MapGrid NowGrid => Battle.Map.Grids[Mathf.RoundToInt(Position.x), Mathf.RoundToInt(Position.z)];
+
+    public StateEnum State = StateEnum.Default;
     public float Hp;
+    public float MaxHp;
     public List<Skill> Skills = new List<Skill>();
     /// <summary>
     /// 攻速
@@ -45,25 +49,30 @@ public class Unit
     /// </summary>
     public CountDown Recover = new CountDown();
 
-    public string AnimationName;
-    public float AnimationSpeed;
+    public string AnimationName = "Default";
+    public float AnimationSpeed = 1;
 
     public virtual void Init()
     {
-        foreach (var skillId in Config.Skills)
-        {
-            var skillConfig = Database.Instance.Get<SkillConfig>(skillId);
-            var skill = typeof(Unit).Assembly.CreateInstance(nameof(Skills) + "." + skillConfig.Type) as Skill;
-            skill.Unit = this;
-            skill.Init();
-            Skills.Add(skill);
-        }
+        if (Config.Skills != null)
+            foreach (var skillId in Config.Skills)
+            {
+                var skillConfig = Database.Instance.Get<SkillConfig>(skillId);
+                var skill = typeof(Unit).Assembly.CreateInstance(nameof(Skills) + "." + skillConfig.Type) as Skill;
+                skill.Unit = this;
+                skill.Init();
+                Skills.Add(skill);
+            }
         CreateModel();
+        Refresh();
+        Hp = MaxHp;
     }
 
-    public void Refresh()
+    public virtual void Refresh()
     {
-
+        Speed = Config.Speed;
+        MaxHp = Config.Hp;
+        Agi = 1;
     }
 
     public void UpdateBuffs()
@@ -72,21 +81,7 @@ public class Unit
     }
     public virtual void UpdateAction()
     {
-        if (this.State == UnitStateEnum.Die)
-        {
-            UpdateDie();
-        }
-        else
-        {
-            UpdateSkills();
-            if (State == UnitStateEnum.move || State == UnitStateEnum.stand)
-            {
-                UpdateMove();
-            }
-        }
-        Recover.Update(SystemConfig.DeltaTime);
-
-        //TODO：Buff刷新动画状态
+        
     }
 
     protected void UpdateDie()
@@ -96,8 +91,15 @@ public class Unit
 
     public virtual void DoDie()
     {
-        SetStatus(UnitStateEnum.Die);
+        State = StateEnum.Die;
+        AnimationName = "Die";
         Dying.Set(UnitModel.SkeletonAnimation.skeleton.data.Animations.Find(x => x.Name == "Die").Duration);
+    }
+
+    public virtual void Finish()
+    {
+        Battle.Enemys.Remove(this);
+        GameObject.Destroy(UnitModel.gameObject);
     }
 
     protected void UpdateSkills()
@@ -111,7 +113,7 @@ public class Unit
         }
         if (Attacking.Update(SystemConfig.DeltaTime))
         {
-            SetStatus(UnitStateEnum.stand);
+            SetStatus(StateEnum.Idle);
         }
     }
 
@@ -120,12 +122,12 @@ public class Unit
 
     }
 
-    public void SetStatus(UnitStateEnum state)
+    public void SetStatus(StateEnum state)
     {
         this.State = state;
         AnimationName = state.ToString();
         AnimationSpeed = 1;
-        if (state != UnitStateEnum.attack && !Attacking.Finished())
+        if (state != StateEnum.Attack && !Attacking.Finished())
         {
             Attacking.Finish();
         }
@@ -134,14 +136,9 @@ public class Unit
     public void CreateModel()
     {
         ResourcesManager.Instance.LoadBundle(PathHelper.UnitPath + Config.Model);
-        GameObject go = ResourcesManager.Instance.GetAsset<GameObject>(PathHelper.UnitPath + Config.Model, Config.Model);
+        GameObject go = GameObject.Instantiate(ResourcesManager.Instance.GetAsset<GameObject>(PathHelper.UnitPath + Config.Model, Config.Model));
         UnitModel = go.GetComponent<UnitModel>();
         UnitModel.Unit = this;
         UnitModel.Init();
-    }
-
-    public void Destroy()
-    {
-        GameObject.Destroy(UnitModel.gameObject);
     }
 }

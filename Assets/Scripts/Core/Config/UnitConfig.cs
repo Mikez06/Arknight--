@@ -14,8 +14,12 @@ public class UnitConfig : IConfig
     public int Team;
     public float Hp;
     public int Damage;
+    public float Speed;
     public float Radius;
     public int[] Skills;
     public float Height;
     public bool CanStop;
+    public int Cost;
+    public int StopCount;
+    public UnitTypeEnum UnitType;
 }

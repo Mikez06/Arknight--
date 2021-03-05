@@ -30,9 +30,12 @@ public class TimeHelper : MonoBehaviour
 
     List<Timer> timers = new List<Timer>();
 
+    float fixedDeltaTime;
+    
     private void Awake()
     {
         instance = this;
+        fixedDeltaTime = Time.fixedDeltaTime;
     }
 
     private void Update()
@@ -42,6 +45,12 @@ public class TimeHelper : MonoBehaviour
             timers[0].tcs.TrySetResult(true);
             timers.RemoveAt(0);
         }
+    }
+
+    public void SetGameSpeed(float rate)
+    {
+        Time.timeScale = rate;
+        Time.fixedDeltaTime = fixedDeltaTime * Time.timeScale;
     }
 
     public Task WaitAsync(float time, CancellationToken cancellationToken)

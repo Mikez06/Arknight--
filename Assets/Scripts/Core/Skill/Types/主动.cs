@@ -73,8 +73,7 @@ namespace Skills
 
         public virtual void UpdateTarget()
         {
-            if (Target == null || !Selectable(Target))
-                Target = Battle.FindNearTarget(Unit.Position, Selectable);
+
         }
     }
 }

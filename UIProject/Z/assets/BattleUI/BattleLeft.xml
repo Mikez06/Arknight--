@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="683,1080">
+  <controller name="left" exported="true" pages="0,,1," selected="0"/>
+  <displayList>
+    <graph id="n25_kbte" name="n25" xy="0,0" size="683,1080" type="rect" lineSize="0" fillColor="#99000000"/>
+    <loader id="n51_kbte" name="standPic" xy="48,69" size="609,944" url="ui://vp312gabkbte3u" align="center">
+      <gearXY controller="left" pages="1" values="-148,69" default="48,69" tween="true"/>
+    </loader>
+    <graph id="n26_kbte" name="n26" xy="39,156" size="100,100" type="rect"/>
+    <text id="n27_kbte" name="name" xy="87,320" pivot="0.5,0.5" anchor="true" size="109,48" fontSize="35" color="#ffffff" align="center" text="阿米娅"/>
+    <text id="n28_kbte" name="n28" xy="34,341" size="37,42" fontSize="30" color="#ffffff" align="center" text="Lv"/>
+    <text id="n29_kbte" name="Lv" xy="51,365" size="62,66" fontSize="50" color="#ffffff" align="center" text="50"/>
+    <text id="n32_kbte" name="n32" xy="16,441" size="44,29" fontSize="20" color="#ffffff" align="center" text="攻击"/>
+    <text id="n33_kbte" name="n33" xy="16,468" size="44,29" fontSize="20" color="#ffffff" align="center" text="防御"/>
+    <text id="n34_kbte" name="n34" xy="16,493" size="44,29" fontSize="20" color="#ffffff" align="center" text="法抗"/>
+    <text id="n35_kbte" name="n35" xy="16,519" size="44,29" fontSize="20" color="#ffffff" align="center" text="阻挡"/>
+    <component id="n31_kbte" name="n31" src="kbte3t" fileName="Hp0.xml" xy="33,556">
+      <ProgressBar max="100"/>
+    </component>
+    <text id="n37_kbte" name="atk" xy="68,441" size="44,29" fontSize="20" color="#ffffff" align="center" autoSize="none" text="1000"/>
+    <text id="n38_kbte" name="def" xy="68,468" size="44,29" fontSize="20" color="#ffffff" align="center" autoSize="none" text="1000"/>
+    <text id="n39_kbte" name="magDef" xy="68,493" size="44,29" fontSize="20" color="#ffffff" align="center" autoSize="none" text="1000"/>
+    <text id="n40_kbte" name="block" xy="68,519" size="44,29" fontSize="20" color="#ffffff" align="center" autoSize="none" text="1000"/>
+    <graph id="n41_kbte" name="n41" xy="144,444" size="136,100" type="rect" lineSize="0" fillColor="#66000000"/>
+    <graph id="n42_kbte" name="n42" xy="295,444" size="338,100" type="rect" lineSize="0" fillColor="#66000000"/>
+    <text id="n43_kbte" name="n43" xy="160,505" size="104,35" fontSize="25" color="#ffffff" align="center" text="攻击范围"/>
+    <graph id="n44_kbte" name="n44" xy="198,468" size="30,30" type="rect"/>
+    <text id="n45_kbte" name="subSkill" xy="301,453" size="324,83" fontSize="25" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="技能可以治疗友方单位"/>
+    <graph id="n46_kbte" name="n46" xy="30,588" size="610,171" type="rect" lineSize="0" fillColor="#4c000000"/>
+    <text id="n47_kbte" name="n47" xy="147,600" size="104,35" fontSize="25" color="#ffffff" align="center" text="技能名字"/>
+    <graph id="n48_kbte" name="n48" xy="57,604" size="77,77" type="rect"/>
+    <text id="n49_kbte" name="n49" xy="145,646" size="211,35" fontSize="25" color="#ffffff" align="center" text="自动回复,自动触发"/>
+    <text id="n50_kbte" name="n50" xy="51,689" size="564,61" fontSize="20" color="#ffffff" ubb="true" autoSize="none" text="一大堆的技能描述,一大堆的技能描述一大堆的技能描述一大堆的技能描述[color=#33CCFF]一段变色文字[/color]一大堆的技能描述"/>
+  </displayList>
+</component>

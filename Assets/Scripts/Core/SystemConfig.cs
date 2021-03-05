@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 public class SystemConfig
 {
-    public static float DeltaTime = 1 / 60f;
+    public static float DeltaTime => UnityEngine.Time.fixedDeltaTime;
 }
 

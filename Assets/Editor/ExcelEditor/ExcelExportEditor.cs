@@ -62,29 +62,23 @@ public class ExcelExportEditor
         //eItems = Export("battle.xlsx", "item", "_Id");
         //eShops = Export("battle.xlsx", "shop", "_Id");
         eSkills = Export("battle.xlsx", "skill", "_Id");
-        eSkills = Export("battle.xlsx", "wave", "_Id");
+        eWaves = Export("battle.xlsx", "wave", "_Id");
 
-        var unitConfigs = Export<UnitConfig>("battle.xlsx", "unit");
-        var skillConfigs = Export<SkillConfig>("battle.xlsx", "skill");
-        var bulletConfigs = Export<BulletConfig>("battle.xlsx", "bullet");
-        var mapConfigs = Export<BulletConfig>("battle.xlsx", "map");
-        var waveConfigs = Export<WaveConfig>("battle.xlsx", "wave");
-
-        writeData("UnitConfig.txt", unitConfigs.ToArray());
-        writeData("SkillConfig.txt", skillConfigs.ToArray());
-        writeData("MapConfig.txt", mapConfigs.ToArray());
-        writeData("BulletConfig.txt", bulletConfigs.ToArray());
-        writeData("WaveConfig.txt", bulletConfigs.ToArray());
+        var unitConfigs = Export<UnitConfig>("battle.xlsx", "unit", "UnitConfig.txt");
+        var skillConfigs = Export<SkillConfig>("battle.xlsx", "skill", "SkillConfig.txt");
+        var bulletConfigs = Export<BulletConfig>("battle.xlsx", "bullet", "BulletConfig.txt");
+        var mapConfigs = Export<BulletConfig>("battle.xlsx", "map", "MapConfig.txt");
+        var waveConfigs = Export<WaveConfig>("battle.xlsx", "wave", "WaveConfig.txt");
 
         AssetDatabase.Refresh();
         Debug.Log("导出结束");
     }
 
-    public static void writeData(string fileName, object obj)
+    public static void writeData(string fileName, string obj)
     {
         FileStream txt = new FileStream(exportPath + fileName, FileMode.Create);
         StreamWriter sw = new StreamWriter(txt);
-        sw.Write(MongoHelper.ToJson(obj, new JsonWriterSettings() { OutputMode = JsonOutputMode.Strict }));
+        sw.Write(obj);
         sw.Close();
         txt.Close();
     }
@@ -117,7 +111,7 @@ public class ExcelExportEditor
         return result;
     }
 
-    static List<T> Export<T>(string fileName, string tableName)
+    static List<T> Export<T>(string fileName, string tableName,string writeName)
     {
         List<T> result = new List<T>();
         IExcelDataReader reader;
@@ -125,6 +119,8 @@ public class ExcelExportEditor
         reader = ExcelReaderFactory.CreateReader(file);
         foreach (System.Data.DataTable sheet in reader.AsDataSet().Tables)
         {
+            StringBuilder w = new StringBuilder();
+            w.Append("[");
             if (sheet.TableName != tableName) continue;
             int cellCount = sheet.Columns.Count;
             for (int i = 2; i < sheet.Rows.Count; i++)
@@ -162,6 +158,7 @@ public class ExcelExportEditor
                     sb.Append("}");
                     //Debug.Log(sb);
                     T t = MongoHelper.FromJson<T>(sb.ToString());
+                    w.Append($"{sb},");
                     //Debug.Log(MongoHelper.ToJson(t));
                     result.Add(t);
                 }
@@ -170,6 +167,10 @@ public class ExcelExportEditor
                     throw new Exception(fileName + " " + tableName + "," + Id + "\n" + e.ToString());
                 }
             }
+            if (w.Length > 1)
+                w.Remove(w.Length - 1, 1);
+            w.Append("]");
+            writeData(writeName, w.ToString());
         }
 
 

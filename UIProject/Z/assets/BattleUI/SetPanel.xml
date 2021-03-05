@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="565,565" hitTest="n37_kbte">
+  <controller name="coner" pages="4,,0,,1,,2,,3," selected="1"/>
+  <displayList>
+    <image id="n37_kbte" name="n37" src="kbte3v" fileName="多边形 1.png" xy="0,0" visible="false"/>
+    <image id="n27_kbte" name="n27" src="kbte3w" fileName="多边形.png" xy="0,0"/>
+    <image id="n28_kbte" name="n28" src="kbte3z" fileName="图层 1.png" xy="177,-52">
+      <gearDisplay controller="coner" pages="0"/>
+    </image>
+    <image id="n29_kbte" name="n29" src="kbte3z" fileName="图层 1.png" xy="613,180" rotation="90">
+      <gearDisplay controller="coner" pages="1"/>
+    </image>
+    <image id="n30_kbte" name="n30" src="kbte3z" fileName="图层 1.png" xy="387,611" rotation="180">
+      <gearDisplay controller="coner" pages="2"/>
+    </image>
+    <image id="n31_kbte" name="n31" src="kbte3z" fileName="图层 1.png" xy="-48,387" rotation="270">
+      <gearDisplay controller="coner" pages="3"/>
+    </image>
+    <graph id="n32_kbte" name="n32" xy="121,-46" size="136,129" rotation="45" type="rect" lineSize="0" fillColor="#b2ff3333">
+      <gearDisplay controller="coner" pages="4"/>
+    </graph>
+    <text id="n33_kbte" name="n33" xy="63,11" size="110,85" fontSize="30" color="#ffffff" align="center" autoSize="none" text="点击以取消">
+      <gearDisplay controller="coner" pages="4"/>
+    </text>
+    <graph id="n34_kbte" name="n34" xy="-76,35" size="229,68" type="rect" lineSize="0" fillColor="#99000000">
+      <gearDisplay controller="coner" pages="0,1,2,3"/>
+    </graph>
+    <text id="n35_kbte" name="n35" xy="-69,47" size="214,42" fontSize="30" color="#ffffff" align="center" text="拖回中心以取消">
+      <gearDisplay controller="coner" pages="0,1,2,3"/>
+    </text>
+    <graph id="n36_kbte" name="grip" xy="288,199" size="100,100" rotation="45" type="rect" lineSize="0" fillColor="#7fffff00"/>
+  </displayList>
+</component>

@@ -69,6 +69,8 @@ public class Map
                     result.Add(g.PreGrid);
                     g = g.PreGrid;
                 }
+                result.Reverse();
+                foreach (var grid in updateGrids) grid.PreGrid = null;
                 return result;
             }
         }

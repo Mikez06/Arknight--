@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080">
-  <controller name="state" pages="0,,1," selected="0">
+  <controller name="state" pages="0,,1,,8,,9," selected="2">
     <remark page="0" value="正常"/>
     <remark page="1" value="放置单位"/>
+    <remark page="2" value="放置单位_选择位置"/>
+    <remark page="3" value="放置单位_选择朝向"/>
+    <action type="change_page" fromPage="" toPage="0,1" objectId="n25_kbte" controller="left" targetPage="0"/>
+    <action type="change_page" fromPage="" toPage="8,9" objectId="n25_kbte" controller="left" targetPage="1"/>
   </controller>
   <displayList>
     <image id="n9_f146" name="n9" src="f1463k" fileName="sprite_info_bar_2part.png" xy="681,30"/>
@@ -10,6 +14,23 @@
     <text id="n11_f146" name="enemy" xy="881,35" size="44,48" fontSize="35" color="#ffffff" text="10"/>
     <text id="n12_f146" name="n12" xy="987,35" size="74,48" fontSize="35" color="#ffffff" text="生命"/>
     <text id="n13_f146" name="hp" xy="1153,35" size="44,48" fontSize="35" color="#ffffff" text="10"/>
-    <component id="n15_f146" name="Builds" src="f1463m" fileName="E.xml" xy="0,0"/>
+    <component id="n15_f146" name="Builds" src="f1463m" fileName="Container.xml" xy="0,0"/>
+    <graph id="n20_kbte" name="n20" xy="1588,822" size="311,41" type="rect" lineSize="0" fillColor="#99000000"/>
+    <text id="n21_kbte" name="n21" xy="1615,823" size="223,42" fontSize="30" color="#ffffff" text="剩余可放置角色:"/>
+    <text id="n22_kbte" name="number" xy="1848,824" size="21,42" fontSize="30" color="#ffffff" text="8"/>
+    <graph id="n23_kbte" name="n23" xy="1756,761" size="142,56" type="rect" lineSize="0" fillColor="#99000000"/>
+    <text id="n24_kbte" name="cost" xy="1846,757" pivot="0.5,0.5" size="50,54" fontSize="40" color="#ffffff" align="center" text="30"/>
+    <component id="n25_kbte" name="left" src="kbte3s" fileName="BattleLeft.xml" xy="-1,4">
+      <gearDisplay controller="state" pages="1,8,9"/>
+    </component>
+    <component id="n28_kbte" name="n28" src="kbte3x" fileName="灰罩.xml" xy="0,0">
+      <gearDisplay controller="state" pages="9"/>
+    </component>
+    <component id="n27_kbte" name="n27" src="kbte3y" fileName="SetPanel.xml" xy="679,229">
+      <gearDisplay controller="state" pages="9"/>
+    </component>
+    <component id="n30_kbte" name="costBar" src="kbte40" fileName="CostBar.xml" xy="1756,807">
+      <ProgressBar value="36" max="1"/>
+    </component>
   </displayList>
 </component>

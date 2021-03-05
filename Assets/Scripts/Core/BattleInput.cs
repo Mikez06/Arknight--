@@ -4,7 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class BattleConfig
+public class BattleInput
 {
     public string MapName;
+    public UnitInput[] UnitInputs;
+}
+
+public class UnitInput
+{
+    public int Id;
 }

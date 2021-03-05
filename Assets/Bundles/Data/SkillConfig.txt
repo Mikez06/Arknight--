@@ -1,1 +1,1 @@
-{ "_t" : "SkillConfig[], Assembly-CSharp", "_v" : [] }
+[{"_Id":"阿米娅攻击","Type":"普通技能","AttackPoints":[{"x":0,"y":0},{"x":1,"y":0}]}]

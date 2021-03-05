@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public enum UnitStateEnum
+public enum StateEnum
 {
-    move,
+    Move,
     Die,
-    attack,
-    stand,
-    stun
+    Attack,
+    Idle,
+    Default,
+    Start,
+    stun,
 }
 

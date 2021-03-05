@@ -6,7 +6,20 @@
     <image id="f1463j" name="sprite_enemy.png" path="/"/>
     <image id="f1463k" name="sprite_info_bar_2part.png" path="/"/>
     <component id="f1463l" name="BuildSprite.xml" path="/" exported="true"/>
-    <component id="f1463m" name="E.xml" path="/"/>
+    <component id="f1463m" name="Container.xml" path="/"/>
+    <image id="kbte3n" name="char_002_amiya_head.png" path="/"/>
+    <component id="kbte3o" name="Head.xml" path="/"/>
+    <component id="kbte3p" name="circleBar.xml" path="/"/>
+    <image id="kbte3r" name="n20.png" path="/"/>
+    <component id="kbte3s" name="BattleLeft.xml" path="/"/>
+    <component id="kbte3t" name="Hp0.xml" path="/"/>
+    <image id="kbte3u" name="char_002_amiya_1+.png" path="/"/>
+    <image id="kbte3v" name="多边形 1.png" path="/"/>
+    <image id="kbte3w" name="多边形.png" path="/"/>
+    <component id="kbte3x" name="灰罩.xml" path="/"/>
+    <component id="kbte3y" name="SetPanel.xml" path="/"/>
+    <image id="kbte3z" name="图层 1.png" path="/"/>
+    <component id="kbte40" name="CostBar.xml" path="/"/>
   </resources>
-  <publish name=""/>
+  <publish name="" genCode="true"/>
 </packageDescription>

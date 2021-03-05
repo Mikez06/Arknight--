@@ -1,1 +1,1 @@
-{ "_t" : "UnitConfig[], Assembly-CSharp", "_v" : [{ "Type" : "敌人", "Damage" : 1, "_Id" : "原石虫" }] }
+[{"_Id":"原石虫","Type":"敌人","Model":"smile","Damage":1,"Speed":1,"Radius":0.5},{"_Id":"狗","Type":"敌人","Model":"gopro","Damage":1,"Speed":2,"Radius":0.5},{"_Id":"阿米娅","Type":"干员","Model":"amiya","Cost":18,"Skills":["0"],"StopCount":1,"Radius":0.5}]

@@ -1,1 +1,1 @@
-{ "_t" : "BulletConfig[], Assembly-CSharp", "_v" : [] }
+[{"_Id":"1","Map":"TestMap1","UnitId":0,"Delay":1,"Path":[{"x":0,"y":3},{"x":8,"y":1},{"x":9,"y":1}],"PathWait":[0,1,0]},{"_Id":"1","Map":"TestMap","UnitId":1,"Delay":1,"Path":[{"x":0,"y":3},{"x":8,"y":1},{"x":1,"y":1}],"PathWait":[0,1,0]}]

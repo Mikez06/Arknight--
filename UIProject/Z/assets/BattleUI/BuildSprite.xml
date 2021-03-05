@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="148,185">
+  <controller name="typeControl" pages="0,,1,,2,,3,,4,,5,,6,,7," selected="0">
+    <remark page="0" value="先锋"/>
+    <remark page="1" value="近卫"/>
+    <remark page="2" value="狙击"/>
+    <remark page="3" value="重装"/>
+    <remark page="4" value="术士"/>
+    <remark page="5" value="妨碍"/>
+    <remark page="6" value="医疗"/>
+    <remark page="7" value="特种"/>
+  </controller>
+  <controller name="cooldown" pages="0,,1," selected="1"/>
+  <controller name="canUse" pages="0,,1," selected="1"/>
   <displayList>
+    <component id="n18_kbte" name="headIcon" src="kbte3o" fileName="Head.xml" xy="0,0"/>
+    <graph id="n20_kbte" name="n20" xy="0,0" size="148,185" type="rect" lineSize="0" fillColor="#63ff0000">
+      <gearDisplay controller="cooldown" pages="1"/>
+    </graph>
+    <graph id="n16_kbte" name="n16" xy="32,-15" size="90,46" type="rect" lineSize="0" fillColor="#7f000000"/>
+    <text id="n17_kbte" name="cost" xy="81,-10" size="34,36" fontSize="26" color="#ffffff" text="19"/>
+    <component id="n19_kbte" name="bar" src="kbte3p" fileName="circleBar.xml" xy="24,49">
+      <gearDisplay controller="cooldown" pages="1"/>
+      <ProgressBar value="28" max="100"/>
+    </component>
     <graph id="n14_f146" name="n14" xy="0,0" size="148,185" type="rect" lineSize="3" lineColor="#99ffffff" fillColor="#00ffffff"/>
+    <text id="n21_kbte" name="resetTime" xy="73,99" pivot="0.5,0.5" anchor="true" size="57,36" fontSize="26" color="#ffffff" align="center" text="36.5">
+      <gearDisplay controller="cooldown" pages="1"/>
+    </text>
+    <graph id="n22_kbte" name="n22" xy="0,0" size="148,185" type="rect" lineSize="0" fillColor="#63000000">
+      <gearDisplay controller="canUse" pages="1"/>
+    </graph>
   </displayList>
 </component>

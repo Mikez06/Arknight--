@@ -12,5 +12,5 @@ public class WaveConfig : IConfig
     public int UnitId;
     public float Delay;
     public Vector2Int[] Path;
-    public int[] PathWait;
+    public float[] PathWait;
 }

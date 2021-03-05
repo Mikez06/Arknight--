@@ -46,6 +46,7 @@ public class Database
         Add<SkillConfig>("SkillConfig");
         Add<BulletConfig>("BulletConfig");
         Add<MapConfig>("MapConfig");
+        Add<WaveConfig>("WaveConfig");
         ResourcesManager.Instance.UnloadBundle(PathHelper.DataPath);
         return this;
     }

@@ -10,7 +10,11 @@ public class SkillConfig : IConfig
     public string _Id { get; set; }
     public string Type;
     public AttackTargetEnum AttackTarget;
+    public AttackTargetOrderEnum AttackOrder;
     public Vector2Int[] AttackPoints;
     public float AttackRange;
     public float Cooldown;
+    public int TargetTeam;
+    public bool IfHeal;
+    public string ModelAnimation;
 }

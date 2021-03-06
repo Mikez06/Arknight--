@@ -29,5 +29,10 @@ public class Skill
     {
         return true;
     }
+
+    public virtual void FindTarget()
+    {
+
+    }
 }
 

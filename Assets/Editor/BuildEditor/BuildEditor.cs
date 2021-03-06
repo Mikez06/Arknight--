@@ -41,7 +41,7 @@ public class BuildEditor
 
         SetBundleAndAtlasWithoutShare("Assets/" + PathHelper.UnitPath, PathHelper.UnitPath);
 
-        //SetBundleAndAtlasWithoutShare("Assets/" + PathHelper.EffectPath, PathHelper.EffectPath);
+        SetBundleAndAtlasWithoutShare("Assets/Bundles/Other/", "Bundles/Other/");
         //SetBundleAndAtlasWithoutShare("Assets/" + PathHelper.TimelinePath, PathHelper.TimelinePath, true);
 
         SetFairyGUI();

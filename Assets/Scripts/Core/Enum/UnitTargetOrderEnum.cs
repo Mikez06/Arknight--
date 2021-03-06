@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public enum AttackTargetEnum
+public enum AttackTargetOrderEnum
 {
-    敌对,
-    自己,
-    阻挡,
+    血量,
+    离家近,
+    放置顺序,
 }
 

@@ -29,7 +29,7 @@ public class MapManager : MonoBehaviour
             if (t == this) continue;
             var grid = t.GetComponent<MapGrid>();
             if (grid == null) grid = t.gameObject.AddComponent<MapGrid>();
-            grid.Reset();
+            grid.AutoBuild();
             grid.X = (int)t.transform.position.x;
             grid.Y = (int)t.transform.position.z;
             var texName = t.GetComponent<Renderer>().sharedMaterial.mainTexture.name;

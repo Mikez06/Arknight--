@@ -11,7 +11,7 @@ namespace Units
     {
         public DirectionEnum Direction_E;
 
-        public Vector2Int[] AttackPoints;
+        public List<Vector2Int> AttackPoints = new List<Vector2Int>();
 
         public List<敌人> StopUnits = new List<敌人>();
 
@@ -19,16 +19,16 @@ namespace Units
 
         public CountDown Reseting = new CountDown();
 
-        public bool InMap = false;
+        /// <summary>
+        /// 干员是第几个进入场地的
+        /// </summary>
+        public int MapIndex = -1;
 
         public float ResetTime;
 
         public override void Init()
         {
             base.Init();
-            var baseAttackPoints = Skills[0].Config.AttackPoints;
-            AttackPoints = new Vector2Int[baseAttackPoints.Length];
-
         }
 
         public override void Refresh()
@@ -70,29 +70,40 @@ namespace Units
 
         public void ChangePos(int x,int y, DirectionEnum directionEnum)
         {
+            UnitModel.gameObject.SetActive(true);
             Position = Battle.Map.Grids[x, y].transform.position;
             Direction_E = directionEnum;
+            ResetAttackPoint();
+        }
+
+        public void ResetAttackPoint()
+        {
             var baseAttackPoints = Skills[0].Config.AttackPoints;
+            switch (Direction_E)
+            {
+                case DirectionEnum.Right:
+                    Direction = new Vector2(0, 0);
+                    break;
+                case DirectionEnum.Left:
+                    Direction = new Vector2(-1, 0);
+                    break;
+                case DirectionEnum.Up:
+                    Direction = new Vector2(0, 1);
+                    break;
+                case DirectionEnum.Down:
+                    Direction = new Vector2(0, -1);
+                    break;
+            }
+            AttackPoints.Clear();
             for (int i = 0; i < baseAttackPoints.Length; i++)
             {
-                switch (Direction_E)
+                AttackPoints.Add(PointWithDirection(baseAttackPoints[i]));
+            }
+            foreach (var point in AttackPoints.ToArray())
+            {
+                if (point.x < 0 || point.x >= Battle.Map.Grids.GetLength(0) || point.y < 0 || point.y >= Battle.Map.Grids.GetLength(1))
                 {
-                    case DirectionEnum.Right:
-                        Direction = new Vector2(0, 0);
-                        AttackPoints[i] = GridPos + baseAttackPoints[i];
-                        break;
-                    case DirectionEnum.Left:
-                        Direction = new Vector2(-1, 0);
-                        AttackPoints[i] = GridPos - baseAttackPoints[i];
-                        break;
-                    case DirectionEnum.Up:
-                        Direction = new Vector2(0, 1);
-                        AttackPoints[i] = GridPos + new Vector2Int(baseAttackPoints[i].y, -baseAttackPoints[i].x);
-                        break;
-                    case DirectionEnum.Down:
-                        Direction = new Vector2(0, -1);
-                        AttackPoints[i] = GridPos + new Vector2Int(-baseAttackPoints[i].y, baseAttackPoints[i].x);
-                        break;
+                    AttackPoints.Remove(point);
                 }
             }
         }
@@ -104,17 +115,34 @@ namespace Units
             State = StateEnum.Start;
             AnimationName = "Start";
             AnimationSpeed = 1;
-            InMap = true;
-            Battle.PlayerUnitsMap[GridPos.x, GridPos.y] = this;
+            MapIndex = Battle.NowUnitIndex;
+            Battle.NowUnitIndex++;
+            Battle.Map.Grids[GridPos.x, GridPos.y].Unit = this;
         }
 
         public void LeaveMap()
         {
             State = StateEnum.Default;
             Direction = new Vector2(1, 0);
-            InMap = false;
-            Battle.PlayerUnitsMap[GridPos.x, GridPos.y] = null;
+            MapIndex = -1;
+            Battle.Map.Grids[GridPos.x, GridPos.y].Unit = null;
             Reseting.Set(ResetTime);
+        }
+
+        public Vector2Int PointWithDirection(Vector2Int point)
+        {
+            switch (Direction_E)
+            {
+                case DirectionEnum.Right:
+                    return(GridPos + point);
+                case DirectionEnum.Left:
+                    return (GridPos - point);
+                case DirectionEnum.Up:
+                    return (GridPos + new Vector2Int(point.y, -point.x));
+                case DirectionEnum.Down:
+                    return (GridPos + new Vector2Int(-point.y, point.x));
+            }
+            return GridPos;
         }
 
         public int Cost()

@@ -14,6 +14,8 @@ namespace BattleUI
         public GTextField m_number;
         public GTextField m_cost;
         public UI_BattleLeft m_left;
+        public UI_HuiZhao m_DirectionBack;
+        public UI_SetPanel m_DirectionPanel;
         public GProgressBar m_costBar;
         public const string URL = "ui://vp312gabf1460";
 
@@ -33,6 +35,8 @@ namespace BattleUI
             m_number = (GTextField)GetChildAt(8);
             m_cost = (GTextField)GetChildAt(10);
             m_left = (UI_BattleLeft)GetChildAt(11);
+            m_DirectionBack = (UI_HuiZhao)GetChildAt(12);
+            m_DirectionPanel = (UI_SetPanel)GetChildAt(13);
             m_costBar = (GProgressBar)GetChildAt(14);
             Init();
         }

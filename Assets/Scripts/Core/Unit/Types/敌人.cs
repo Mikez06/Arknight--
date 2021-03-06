@@ -67,18 +67,11 @@ namespace Units
         /// </summary>
         public void CheckBlock()
         {
-            var radius = Config.Radius;
-            for (int i = Mathf.RoundToInt(Position.x - radius); i <= Mathf.RoundToInt(Position.x + radius); i++)
+            var blockUnit = Battle.FindFirst(Position2, Config.Radius, x => (x as Units.干员).CanStop(this), x => (x.Position2 - Position2).magnitude) as 干员;
+            if (blockUnit != null)
             {
-                for (int j = Mathf.RoundToInt(Position.z - radius); j <= Mathf.RoundToInt(Position.z + radius); j++)
-                {
-                    var blockUnit = Battle.FindPlayerUnits(new Vector2Int(i, j));
-                    if (blockUnit != null && blockUnit.CanStop(this))
-                    {
-                        StopUnit = blockUnit;
-                        blockUnit.StopUnits.Add(this);
-                    }
-                }
+                StopUnit = blockUnit;
+                blockUnit.StopUnits.Add(this);
             }
         }
 
@@ -92,7 +85,7 @@ namespace Units
                 return;
             }
             if (StopUnit != null) return;//有人阻挡，停止移动,理论上这一句不要
-            AnimationName = "Move_Loop";
+            AnimationName = Speed > 1 ? "Run_Loop" : "Move_Loop";
             AnimationSpeed = 1;
             if (TempPath == null)
             {
@@ -139,6 +132,14 @@ namespace Units
             {
                 StopUnit.StopUnits.Remove(this);
             }
+        }
+
+        public float distanceToFinal()
+        {
+            var point = WaveConfig.Path.Last();
+            var v = Battle.Map.Grids[point.x, point.y].transform.position - Position;
+            v.y = 0;
+            return v.magnitude;
         }
     }
 }

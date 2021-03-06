@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class Battle
 {
+    public static Battle Instance;
     public int Hp = 10;
     public int Hurt;
     public int Tick = -1;
@@ -26,11 +27,13 @@ public class Battle
 
     public bool Finish;
 
+    public int NowUnitIndex = 0;
+
     public HashSet<Unit>[,] UnitMap;//敌人快速检索缓存
-    public Units.干员[,] PlayerUnitsMap;//干员快速检索缓存
 
     public void Init(BattleInput battleConfig)
     {
+        Instance = this;
         if (battleConfig.UnitInputs != null)
             foreach (var unitInput in battleConfig.UnitInputs)
             {
@@ -41,7 +44,6 @@ public class Battle
         Map.Init();
         
         UnitMap = new HashSet<Unit>[Map.Grids.GetLength(0), Map.Grids.GetLength(1)];
-        PlayerUnitsMap = new Units.干员[Map.Grids.GetLength(0), Map.Grids.GetLength(1)];
         for (int i = 0; i < UnitMap.GetLength(0); i++)
             for (int j = 0; j < UnitMap.GetLength(1); j++)
             {
@@ -53,7 +55,7 @@ public class Battle
             if (wave.Map == battleConfig.MapName) Waves.Add(wave);
         }
         EnemyCount = Waves.Count;
-        PlayerUnits[0].ChangePos(5, 3, DirectionEnum.Down);
+        PlayerUnits[0].ChangePos(5, 3, DirectionEnum.Left);
         PlayerUnits[0].JoinMap();
     }
 
@@ -118,40 +120,86 @@ public class Battle
         return unit;
     }
 
-    public HashSet<Unit> FindEnemys(Vector2Int pos,Vector2Int[] points)
+    public HashSet<Unit> FindUnits(Vector2Int pos, Vector2Int[] points, int team, Func<Unit, bool> match)
     {
         var result = new HashSet<Unit>();
         foreach (var point in points)
         {
             var targetPoint = pos + point;
-            if (targetPoint.x>=0 && targetPoint.x<UnitMap.GetLength(0) && targetPoint.y>=0 && targetPoint.y < UnitMap.GetLength(1))
+            if (team == 0)
+            {
+                if (Map.Grids[targetPoint.x, targetPoint.y].Unit != null)
+                {
+                    if (match(Map.Grids[targetPoint.x, targetPoint.y].Unit))
+                        result.Add(Map.Grids[targetPoint.x, targetPoint.y].Unit);
+                }
+            }
+            else
             {
                 foreach (var unit in UnitMap[targetPoint.x, targetPoint.y])
                 {
-                    result.Add(unit);
+                    if (match(Map.Grids[targetPoint.x, targetPoint.y].Unit))
+                        result.Add(Map.Grids[targetPoint.x, targetPoint.y].Unit);
                 }
             }
         }
         return result;
     }
 
-    public HashSet<Unit> FindPlayerUnits(Vector2Int pos, Vector2Int[] points)
+    public Unit FindFirst(Vector2Int pos, Vector2Int[] points, int team, Func<Unit, bool> match,Func<Unit,float> sort)
     {
-        var result = new HashSet<Unit>();
+
+        HashSet<Unit> units = new HashSet<Unit>();
         foreach (var point in points)
         {
             var targetPoint = pos + point;
-            if (PlayerUnitsMap[targetPoint.x, targetPoint.y] != null)
+            if (team == 0)
             {
-                result.Add(PlayerUnitsMap[targetPoint.x, targetPoint.y]);
+                if (Map.Grids[targetPoint.x, targetPoint.y].Unit != null)
+                {
+                    if (match(Map.Grids[targetPoint.x, targetPoint.y].Unit))
+                        units.Add(Map.Grids[targetPoint.x, targetPoint.y].Unit);
+                }
+            }
+            else
+            {
+                foreach (var unit in UnitMap[targetPoint.x, targetPoint.y])
+                {
+                    if (match(Map.Grids[targetPoint.x, targetPoint.y].Unit))
+                        units.Add(Map.Grids[targetPoint.x, targetPoint.y].Unit);
+                }
+            }
+        }
+        Unit result = null;
+        float v = float.NegativeInfinity;
+        foreach (var unit in units)
+        {
+            if (result == null || sort(unit) > v)
+            {
+                result = unit;
+                v = sort(unit);
             }
         }
         return result;
     }
 
-    public Units.干员 FindPlayerUnits(Vector2Int pos)
+    /// <summary>
+    /// 只支持圆形查找玩家单位
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <param name="radius"></param>
+    /// <param name="match"></param>
+    /// <returns></returns>
+    public Unit FindFirst(Vector2 pos, float radius, Func<Unit, bool> match, Func<Unit, float> sort)
     {
-        return PlayerUnitsMap[pos.x, pos.y];
+        var units = PlayerUnits.Where(x => x.MapIndex >= 0).ToList();
+        units.Sort((x, y) => Math.Sign(sort(x) - sort(y)));
+        foreach (var unit in units)
+        {
+            if ((unit.Position2 - pos).magnitude < radius + unit.Config.Radius
+                && match(unit)) return unit;
+        }
+        return null;
     }
 
     void updateUnitMap()

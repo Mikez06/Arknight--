@@ -1,1 +1,1 @@
-[{"_Id":"阿米娅攻击","Type":"普通技能","AttackPoints":[{"x":0,"y":0},{"x":1,"y":0}]}]
+[{"_Id":"阿米娅攻击","Type":"主动","AttackTarget":0,"TargetTeam":1,"AttackPoints":[{"x":0,"y":0},{"x":1,"y":0}],"Cooldown":1,"ModelAnimation":"Attack"},{"_Id":"狗攻击","Type":"主动","AttackTarget":2,"TargetTeam":0,"Cooldown":2,"ModelAnimation":"Attack"}]

@@ -313,7 +313,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BuildMode: 0
-  g: {fileID: 0}
+  BuildUnit:
+    Id: 0
+    UnitModel: {fileID: 0}
+    Position: {x: 0, y: 0, z: 0}
+    Direction: {x: 1, y: 0}
+    State: 4
+    Hp: 0
+    MaxHp: 0
+    Agi: 0
+    Speed: 0
+    AnimationName: Default
+    AnimationSpeed: 1
 --- !u!1 &1481150097
 GameObject:
   m_ObjectHideFlags: 0

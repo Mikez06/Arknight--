@@ -18,17 +18,37 @@ public class MapGrid : MonoBehaviour
     /// </summary>
     public bool CanMove;
 
+    public Units.干员 Unit;
     /// <summary>
     /// 广搜临时数据
     /// </summary>
     public MapGrid PreGrid;
-    public void Reset()
+
+    public void AutoBuild()
     {
         X = 0;
         Y = 0;
         CanBuildUnit = true;
         FarAttackGrid = false;
         CanMove = true;
+    }
+
+    public bool CanSet(Unit unit)
+    {
+        if (this.Unit != null) return false;
+        if (CanBuildUnit)
+            if (FarAttackGrid)
+            {
+                return unit.Config.CanSetHigh;
+            }
+            else
+                return unit.Config.CanSetGround;
+        return false;
+    }
+
+    public void ChangeHighLight(bool bo)
+    {
+        GetComponent<Renderer>().material.color = bo ?new Color(0.458f,1,0.42f) : Color.white;
     }
 
     // Start is called before the first frame update

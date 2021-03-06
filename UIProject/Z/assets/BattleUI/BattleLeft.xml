@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="683,1080">
-  <controller name="left" exported="true" pages="0,,1," selected="0"/>
+  <controller name="left" exported="true" pages="0,,1," selected="1"/>
   <displayList>
     <graph id="n25_kbte" name="n25" xy="0,0" size="683,1080" type="rect" lineSize="0" fillColor="#99000000"/>
-    <loader id="n51_kbte" name="standPic" xy="48,69" size="609,944" url="ui://vp312gabkbte3u" align="center">
-      <gearXY controller="left" pages="1" values="-148,69" default="48,69" tween="true"/>
+    <loader id="n51_kbte" name="standPic" xy="-148,69" size="609,944" alpha="0.5" url="ui://vp312gabkbte3u" align="center">
+      <gearXY controller="left" pages="1" values="-148,69" default="48,69" tween="true" duration=".03"/>
+      <gearLook controller="left" pages="1" values="0.5,0,0,1" default="1,0,0,1" tween="true" duration=".03"/>
     </loader>
     <graph id="n26_kbte" name="n26" xy="39,156" size="100,100" type="rect"/>
     <text id="n27_kbte" name="name" xy="87,320" pivot="0.5,0.5" anchor="true" size="109,48" fontSize="35" color="#ffffff" align="center" text="阿米娅"/>

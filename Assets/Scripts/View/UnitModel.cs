@@ -23,7 +23,12 @@ public class UnitModel : MonoBehaviour
 
     protected virtual void updateState()
     {
-        if (Unit.State == StateEnum.Default) return;
+        if (Unit.State == StateEnum.Default)
+        {
+            if (Unit.Direction.x > 0) SkeletonAnimation.transform.localScale = new Vector3(1, 1, 1);
+            if (Unit.Direction.x < 0) SkeletonAnimation.transform.localScale = new Vector3(-1, 1, 1);
+            return;
+        }
         transform.position = Unit.Position;
         //默认转身需要0.2秒
         if (Unit.Direction.x > 0 && transform.localScale.x != 1)
@@ -64,12 +69,13 @@ public class UnitModel : MonoBehaviour
             SkeletonAnimation.state.AddAnimation(0, animationName + "_Begin", false, 0);
         }
         //SkeletonAnimation.state.AddAnimation(0, animationName, true, 0);
-        SkeletonAnimation.state.AddAnimation(0, animationName, animationName == "Move_Loop" || animationName == "Idle", 0);
+        SkeletonAnimation.state.AddAnimation(0, animationName, animationName == "Run_Loop" || animationName == "Move_Loop" || animationName == "Idle" || animationName == "Attack", 0);
     }
 
-    public float GetSkillDelay(string animationName,string lastState)
+    public float GetSkillDelay(string animationName,string lastState,out float fullDuration)
     {
         float result = 0;
+        fullDuration = 0;
         //如果有状态切换，那么去判断前摇和后摇动画
         if (animationName != lastState)
         {
@@ -83,6 +89,7 @@ public class UnitModel : MonoBehaviour
             if (_beginAnimation != null)
             {
                 result += _beginAnimation.duration;
+                fullDuration += _beginAnimation.duration;
             }
         }
         var animation = SkeletonAnimation.Skeleton.data.FindAnimation(animationName);
@@ -95,6 +102,7 @@ public class UnitModel : MonoBehaviour
                 break;
             }
         }
+        fullDuration += animation.duration;
         return result;
     }
 

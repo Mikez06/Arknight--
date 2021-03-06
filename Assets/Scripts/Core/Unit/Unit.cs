@@ -60,6 +60,7 @@ public class Unit
                 var skillConfig = Database.Instance.Get<SkillConfig>(skillId);
                 var skill = typeof(Unit).Assembly.CreateInstance(nameof(Skills) + "." + skillConfig.Type) as Skill;
                 skill.Unit = this;
+                skill.Id = skillId;
                 skill.Init();
                 Skills.Add(skill);
             }

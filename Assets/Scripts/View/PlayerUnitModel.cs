@@ -9,12 +9,13 @@ using UnityEngine;
 public class PlayerUnitModel : UnitModel
 {
     public SkeletonAnimation SkeletonAnimation2;
-    bool forward = true;
+    bool forward = false;
 
     public override void Init()
     {
         SkeletonAnimation2.AnimationName = "Default";
         SkeletonAnimation2.gameObject.SetActive(false);
+        gameObject.SetActive(false);
         base.Init();
     }
 

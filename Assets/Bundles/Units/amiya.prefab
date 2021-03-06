@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5614699589314289453}
   m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1903309651309568558}
@@ -234,6 +234,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd2f7342726e134388d0bd40b7a31f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Unit:
+    Id: 0
+    UnitModel: {fileID: 0}
+    Position: {x: 0, y: 0, z: 0}
+    Direction: {x: 1, y: 0}
+    State: 4
+    Hp: 0
+    MaxHp: 0
+    Agi: 0
+    Speed: 0
+    AnimationName: Default
+    AnimationSpeed: 1
   SkeletonAnimation: {fileID: 5931720281126835898}
   SkeletonAnimation2: {fileID: 2204295271365081979}
 --- !u!1 &7526393131408976576
@@ -263,7 +275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7526393131408976576}
   m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1903309651309568558}

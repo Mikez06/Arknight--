@@ -328,7 +328,7 @@ public class ResourcesManager : MonoBehaviour
     {
         assetBundleName = assetBundleName.ToLower();
         string[] dependencies = AssetBundleHelper.GetSortedDependencies(assetBundleName);
-        //Log.Debug($"-----------dep load {assetBundleName} dep: {dependencies.ToList().ListToString()}");
+        //Log.Debug($"-----------dep load {assetBundleName} dep: {dependencies.ToList()}");
         foreach (string dependency in dependencies)
         {
             if (string.IsNullOrEmpty(dependency))

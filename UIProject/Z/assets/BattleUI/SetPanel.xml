@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="565,565" hitTest="n37_kbte">
-  <controller name="coner" pages="4,,0,,1,,2,,3," selected="1"/>
+  <controller name="coner" pages="4,,0,,1,,2,,3," selected="3"/>
   <displayList>
     <image id="n37_kbte" name="n37" src="kbte3v" fileName="多边形 1.png" xy="0,0" visible="false"/>
     <image id="n27_kbte" name="n27" src="kbte3w" fileName="多边形.png" xy="0,0"/>
@@ -28,6 +28,6 @@
     <text id="n35_kbte" name="n35" xy="-69,47" size="214,42" fontSize="30" color="#ffffff" align="center" text="拖回中心以取消">
       <gearDisplay controller="coner" pages="0,1,2,3"/>
     </text>
-    <graph id="n36_kbte" name="grip" xy="288,199" size="100,100" rotation="45" type="rect" lineSize="0" fillColor="#7fffff00"/>
+    <graph id="n36_kbte" name="grip" xy="338,249" pivot="0.5,0.5" anchor="true" size="100,100" visible="false" rotation="45" type="rect" lineSize="0" fillColor="#7fffff00"/>
   </displayList>
 </component>

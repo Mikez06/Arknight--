@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080">
-  <controller name="state" pages="0,,1,,8,,9," selected="2">
+  <controller name="state" pages="0,,1,,8,,9," selected="3">
     <remark page="0" value="正常"/>
     <remark page="1" value="放置单位"/>
     <remark page="2" value="放置单位_选择位置"/>
@@ -23,10 +23,10 @@
     <component id="n25_kbte" name="left" src="kbte3s" fileName="BattleLeft.xml" xy="-1,4">
       <gearDisplay controller="state" pages="1,8,9"/>
     </component>
-    <component id="n28_kbte" name="n28" src="kbte3x" fileName="灰罩.xml" xy="0,0">
+    <component id="n28_kbte" name="DirectionBack" src="kbte3x" fileName="灰罩.xml" xy="0,0">
       <gearDisplay controller="state" pages="9"/>
     </component>
-    <component id="n27_kbte" name="n27" src="kbte3y" fileName="SetPanel.xml" xy="679,229">
+    <component id="n27_kbte" name="DirectionPanel" src="kbte3y" fileName="SetPanel.xml" xy="961,511" pivot="0.5,0.5" anchor="true">
       <gearDisplay controller="state" pages="9"/>
     </component>
     <component id="n30_kbte" name="costBar" src="kbte40" fileName="CostBar.xml" xy="1756,807">

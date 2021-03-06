@@ -19,6 +19,8 @@ public class UnitConfig : IConfig
     public int[] Skills;
     public float Height;
     public bool CanStop;
+    public bool CanSetHigh;
+    public bool CanSetGround;
     public int Cost;
     public int StopCount;
     public UnitTypeEnum UnitType;

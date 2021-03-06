@@ -2,6 +2,6 @@
 <component size="1920,1080" mask="n29_kbte" reversedMask="true">
   <displayList>
     <graph id="n28_kbte" name="n28" xy="0,0" size="1920,1080" type="rect" lineSize="0" fillColor="#4c000000"/>
-    <image id="n29_kbte" name="hole" src="kbte3v" fileName="多边形 1.png" xy="679,228"/>
+    <image id="n29_kbte" name="hole" src="kbte3v" fileName="多边形 1.png" xy="962,511" pivot="0.5,0.5" anchor="true"/>
   </displayList>
 </component>

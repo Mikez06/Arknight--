@@ -40,7 +40,7 @@ public class Init : MonoBehaviour
     {
         SceneManager.LoadScene(battleConfig.MapName);
         var battleUI = UIManager.Instance.ChangeView<BattleUI.UI_Battle>(BattleUI.UI_Battle.URL);
-        await TimeHelper.Instance.WaitAsync(0.001f);
+        await TimeHelper.Instance.WaitAsync(0.5f);
         Battle = new Battle();
         Battle.Init(battleConfig);
         battleUI.SetBattle(Battle);

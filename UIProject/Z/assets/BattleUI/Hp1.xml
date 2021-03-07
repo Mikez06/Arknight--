@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="114,8" extention="ProgressBar">
+  <displayList>
+    <graph id="n31_h4sa" name="n31" xy="0,0" size="114,8" type="rect" lineSize="0" fillColor="#7f000000"/>
+    <graph id="n35_h4sa" name="bar" xy="0,0" size="114,8" type="rect" lineSize="0" fillColor="#ff66ccff"/>
+  </displayList>
+  <ProgressBar titleType="valueAndmax"/>
+</component>

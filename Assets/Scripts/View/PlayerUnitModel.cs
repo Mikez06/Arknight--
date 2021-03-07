@@ -9,7 +9,7 @@ using UnityEngine;
 public class PlayerUnitModel : UnitModel
 {
     public SkeletonAnimation SkeletonAnimation2;
-    bool forward = false;
+    bool forward = true;
 
     public override void Init()
     {
@@ -22,7 +22,9 @@ public class PlayerUnitModel : UnitModel
     protected override void updateState()
     {
         var angle = Vector2.SignedAngle(Vector2.right, Unit.Direction);
+        if (angle < 0) angle += 360;
         bool backward = angle > 45 && angle < 135;//在这个角度下，显示干员背面
+        if (Unit.State == StateEnum.Die) backward = false;//死亡时，只有正面有死亡动画
         if (backward == forward) //需要变换正背面
         {
             forward = !forward;
@@ -33,6 +35,14 @@ public class PlayerUnitModel : UnitModel
             SkeletonAnimation.gameObject.SetActive(true);
         }
         base.updateState();
+    }
+
+    public override float GetAnimationDuration(string animationName)
+    {
+        var a = SkeletonAnimation.Skeleton.data.FindAnimation(animationName);
+        if (a==null)
+            a=SkeletonAnimation2.Skeleton.data.FindAnimation(animationName);
+        return a.duration;
     }
 }
 

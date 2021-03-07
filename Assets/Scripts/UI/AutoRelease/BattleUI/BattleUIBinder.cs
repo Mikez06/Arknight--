@@ -10,6 +10,8 @@ namespace BattleUI
         {
             UIObjectFactory.SetPackageItemExtension(UI_Battle.URL, typeof(UI_Battle));
             UIObjectFactory.SetPackageItemExtension(UI_BuildSprite.URL, typeof(UI_BuildSprite));
+            UIObjectFactory.SetPackageItemExtension(UI_BattleUnit.URL, typeof(UI_BattleUnit));
+            UIObjectFactory.SetPackageItemExtension(UI_SK0.URL, typeof(UI_SK0));
             UIObjectFactory.SetPackageItemExtension(UI_Head.URL, typeof(UI_Head));
             UIObjectFactory.SetPackageItemExtension(UI_BattleLeft.URL, typeof(UI_BattleLeft));
             UIObjectFactory.SetPackageItemExtension(UI_HuiZhao.URL, typeof(UI_HuiZhao));

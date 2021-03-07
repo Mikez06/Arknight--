@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="565,565" hitTest="n37_kbte">
-  <controller name="coner" pages="4,,0,,1,,2,,3," selected="3"/>
+<component size="565,565" pivot="0.5,0.5" opaque="false" hitTest="n37_kbte">
+  <controller name="coner" pages="4,,0,,1,,2,,3," selected="0"/>
   <displayList>
     <image id="n37_kbte" name="n37" src="kbte3v" fileName="多边形 1.png" xy="0,0" visible="false"/>
     <image id="n27_kbte" name="n27" src="kbte3w" fileName="多边形.png" xy="0,0"/>
@@ -16,18 +16,19 @@
     <image id="n31_kbte" name="n31" src="kbte3z" fileName="图层 1.png" xy="-48,387" rotation="270">
       <gearDisplay controller="coner" pages="3"/>
     </image>
-    <graph id="n32_kbte" name="n32" xy="121,-46" size="136,129" rotation="45" type="rect" lineSize="0" fillColor="#b2ff3333">
+    <graph id="n32_kbte" name="n32" xy="121,-46" size="136,129" rotation="45" touchable="false" type="rect" lineSize="0" fillColor="#b2ff3333">
       <gearDisplay controller="coner" pages="4"/>
     </graph>
     <text id="n33_kbte" name="n33" xy="63,11" size="110,85" fontSize="30" color="#ffffff" align="center" autoSize="none" text="点击以取消">
       <gearDisplay controller="coner" pages="4"/>
     </text>
-    <graph id="n34_kbte" name="n34" xy="-76,35" size="229,68" type="rect" lineSize="0" fillColor="#99000000">
+    <graph id="n34_kbte" name="n34" xy="-76,35" size="229,68" touchable="false" type="rect" lineSize="0" fillColor="#99000000">
       <gearDisplay controller="coner" pages="0,1,2,3"/>
     </graph>
     <text id="n35_kbte" name="n35" xy="-69,47" size="214,42" fontSize="30" color="#ffffff" align="center" text="拖回中心以取消">
       <gearDisplay controller="coner" pages="0,1,2,3"/>
     </text>
-    <graph id="n36_kbte" name="grip" xy="338,249" pivot="0.5,0.5" anchor="true" size="100,100" visible="false" rotation="45" type="rect" lineSize="0" fillColor="#7fffff00"/>
+    <graph id="n36_kbte" name="grip" xy="338,249" pivot="0.5,0.5" anchor="true" size="100,100" visible="false" rotation="45" touchable="false" type="rect" lineSize="0" fillColor="#7fffff00"/>
+    <component id="n40_h4sa" name="n40" src="f1463m" fileName="Container.xml" xy="280,7" size="390,390" rotation="45"/>
   </displayList>
 </component>

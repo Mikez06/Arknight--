@@ -10,37 +10,30 @@ public class UnitModel : MonoBehaviour
 {
     public Unit Unit;
     public SkeletonAnimation SkeletonAnimation;
+    string nowAnimation;
     public virtual void Init()
     {
         SkeletonAnimation.AnimationName = "Default";
+        nowAnimation = "Default";
+        SkeletonAnimation.SkeletonDataAsset.GetAnimationStateData().DefaultMix = 0.1f;
         updateState();
     }
 
-    public void Update()
+    public void LateUpdate()
     {
         updateState();
     }
 
     protected virtual void updateState()
     {
+        SkeletonAnimation.transform.localScale = new Vector3(Unit.ScaleX, 1, 1);
         if (Unit.State == StateEnum.Default)
         {
-            if (Unit.Direction.x > 0) SkeletonAnimation.transform.localScale = new Vector3(1, 1, 1);
-            if (Unit.Direction.x < 0) SkeletonAnimation.transform.localScale = new Vector3(-1, 1, 1);
             return;
         }
         transform.position = Unit.Position;
-        //默认转身需要0.2秒
-        if (Unit.Direction.x > 0 && transform.localScale.x != 1)
-        {
-            SkeletonAnimation.transform.localScale = new Vector3(Mathf.Clamp(SkeletonAnimation.transform.localScale.x + 5f * Time.deltaTime, -1, 1), 1, 1);
-        }
-        else if (Unit.Direction.x < 0 && transform.localScale.x != -1)
-        {
-            SkeletonAnimation.transform.localScale = new Vector3(Mathf.Clamp(SkeletonAnimation.transform.localScale.x - 5f * Time.deltaTime, -1, 1), 1, 1);
-        }
 
-        if (Unit.AnimationName != SkeletonAnimation.AnimationName)
+        if (nowAnimation!=Unit.AnimationName)
         {
             changeAnimation(Unit.AnimationName);
         }
@@ -53,23 +46,29 @@ public class UnitModel : MonoBehaviour
     void changeAnimation(string animationName)
     {
         SkeletonAnimation.state.ClearTrack(0);
+        SkeletonAnimation.state.AddEmptyAnimation(0, 0, 0);
         if (animationName == "Idle") //从其他状态返回Idle时，如果有退出动画，就播放
         {
-            var _endAnimation = SkeletonAnimation.Skeleton.data.FindAnimation(SkeletonAnimation.AnimationName + "_End");
+            var _endAnimation = SkeletonAnimation.Skeleton.data.FindAnimation(nowAnimation + "_End");
             if (_endAnimation != null)
             {
-                SkeletonAnimation.state.SetAnimation(0, SkeletonAnimation.AnimationName + "_End", false);
+                SkeletonAnimation.state.AddAnimation(0, nowAnimation + "_End", false, 0);
             }
         }
 
+        float delay = 0;
         //切入其他状态时，若有进入动画，播放
         var _beginAnimation = SkeletonAnimation.Skeleton.data.FindAnimation(animationName + "_Begin");
         if (_beginAnimation != null)
         {
+            Debug.Log(Unit.Config._Id + "Add" + animationName + "_Begin" + Time.time);
             SkeletonAnimation.state.AddAnimation(0, animationName + "_Begin", false, 0);
+            delay += _beginAnimation.duration;
         }
+        //Debug.Log(Unit.Config._Id + "Add" + animationName);
         //SkeletonAnimation.state.AddAnimation(0, animationName, true, 0);
-        SkeletonAnimation.state.AddAnimation(0, animationName, animationName == "Run_Loop" || animationName == "Move_Loop" || animationName == "Idle" || animationName == "Attack", 0);
+        SkeletonAnimation.state.AddAnimation(0, animationName, animationName == "Run_Loop" || animationName == "Move_Loop" || animationName == "Idle", delay);
+        nowAnimation = animationName;
     }
 
     public float GetSkillDelay(string animationName,string lastState,out float fullDuration)
@@ -79,7 +78,7 @@ public class UnitModel : MonoBehaviour
         //如果有状态切换，那么去判断前摇和后摇动画
         if (animationName != lastState)
         {
-            //观察发现，进入idle以外并不会播后摇动画
+            //进入idle以外并不会播后摇动画
             //var _endAnimation = SkeletonAnimation.Skeleton.data.FindAnimation(lastState + "_End");
             //if (_endAnimation != null)
             //{
@@ -88,8 +87,11 @@ public class UnitModel : MonoBehaviour
             var _beginAnimation = SkeletonAnimation.Skeleton.data.FindAnimation(animationName + "_Begin");
             if (_beginAnimation != null)
             {
-                result += _beginAnimation.duration;
-                fullDuration += _beginAnimation.duration;
+                float duration = _beginAnimation.duration - SkeletonAnimation.skeletonDataAsset.defaultMix;
+                if (duration < 0) duration = 0;
+                //Debug.Log("beginAnimation:" + _beginAnimation.duration);
+                result += duration;
+                fullDuration += duration;
             }
         }
         var animation = SkeletonAnimation.Skeleton.data.FindAnimation(animationName);
@@ -99,14 +101,16 @@ public class UnitModel : MonoBehaviour
             {
                 var attackEvent = eventTimeline.Events.FirstOrDefault(x => x.data.name == "OnAttack");
                 result += attackEvent.Time;
+                //Debug.Log("Onattack:" + attackEvent.Time);
                 break;
             }
         }
+        //Debug.Log("A:" + animation.duration);
         fullDuration += animation.duration;
         return result;
     }
 
-    public float GetAnimationDuration(string animationName)
+    public virtual float GetAnimationDuration(string animationName)
     {
         var result= SkeletonAnimation.Skeleton.data.FindAnimation(animationName).Duration;
         return result;

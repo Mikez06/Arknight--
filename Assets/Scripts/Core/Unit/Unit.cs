@@ -13,6 +13,7 @@ public class Unit
     public int Id;
 
     public UnitModel UnitModel;
+    public BattleUI.UI_BattleUnit uiUnit;
 
     public Vector3 Position;
     public Vector2 Position2 => new Vector2(Position.x, Position.z);
@@ -27,6 +28,7 @@ public class Unit
     public float Hp;
     public float MaxHp;
     public List<Skill> Skills = new List<Skill>();
+    public Skill MainSkill;
     /// <summary>
     /// 攻速
     /// </summary>
@@ -35,6 +37,17 @@ public class Unit
     /// 移速
     /// </summary>
     public float Speed;
+
+    public int Attack;
+
+    public int Defence;
+
+    public int MagicDefence;
+
+    public float Power;
+    public int MaxPower;
+    public int PowerCount;
+    public float PowerSpeed;
 
     /// <summary>
     /// 攻击动画
@@ -48,6 +61,13 @@ public class Unit
     /// 硬直
     /// </summary>
     public CountDown Recover = new CountDown();
+
+    /// <summary>
+    /// 转身动画
+    /// </summary>
+    public CountDown Turning = new CountDown();
+    public float ScaleX = -1;
+    public float TargetScaleX = -1;
 
     public string AnimationName = "Default";
     public float AnimationSpeed = 1;
@@ -64,6 +84,13 @@ public class Unit
                 skill.Init();
                 Skills.Add(skill);
             }
+        if (Config.MainSkill != null) MainSkill = Skills.FirstOrDefault(x => x.Id == Config.MainSkill.Value);
+        if (MainSkill != null)
+        {
+            Power = MainSkill.Config.StartPower;
+            MaxPower = MainSkill.Config.MaxPower;
+            PowerCount = MainSkill.Config.PowerCount;
+        }
         CreateModel();
         Refresh();
         Hp = MaxHp;
@@ -73,6 +100,10 @@ public class Unit
     {
         Speed = Config.Speed;
         MaxHp = Config.Hp;
+        Attack = Config.Attack;
+        Defence = Config.Defence;
+        MagicDefence = Config.Defence;
+        PowerSpeed = 1f;
         Agi = 1;
     }
 
@@ -87,20 +118,22 @@ public class Unit
 
     protected void UpdateDie()
     {
-
+        if (Dying.Update(SystemConfig.DeltaTime))
+        {
+            Finish();
+        }
     }
 
     public virtual void DoDie()
     {
         State = StateEnum.Die;
         AnimationName = "Die";
-        Dying.Set(UnitModel.SkeletonAnimation.skeleton.data.Animations.Find(x => x.Name == "Die").Duration);
+        AnimationSpeed = 1;
+        Dying.Set(UnitModel.GetAnimationDuration("Die"));
     }
 
     public virtual void Finish()
     {
-        Battle.Enemys.Remove(this);
-        GameObject.Destroy(UnitModel.gameObject);
     }
 
     protected void UpdateSkills()
@@ -110,17 +143,35 @@ public class Unit
             if (i >= Skills.Count) continue;
             var sk = Skills[i];
             if (sk != null)
+            {
                 sk.Update();
+            }
         }
         if (Attacking.Update(SystemConfig.DeltaTime))
         {
             SetStatus(StateEnum.Idle);
+            AnimationName = "Idle";
+            AnimationSpeed = 1;
         }
     }
 
     protected virtual void UpdateMove()
     {
 
+    }
+
+    public void RecoverPower(float count)
+    {
+        if (!(MainSkill as Skills.主动).Cooldown.Finished())
+            return;
+        Power += count;
+        if (Power > MaxPower * PowerCount)
+            Power = MaxPower * PowerCount;
+    }
+
+    public bool Alive()
+    {
+        return Hp > 0;
     }
 
     public void SetStatus(StateEnum state)
@@ -142,4 +193,35 @@ public class Unit
         UnitModel.Unit = this;
         UnitModel.Init();
     }
+
+    public void Damage(DamageInfo damageInfo)
+    {
+        int damage = (int)(damageInfo.Attack * damageInfo.DamageRate);
+        switch (damageInfo.DamageType)
+        {
+            case DamageTypeEnum.Normal:
+                damage -= Defence;
+                if (damage < 0) damage = 1;
+                break;
+            case DamageTypeEnum.Magic:
+                damage = damage * (100 - MagicDefence) / 100;
+                break;
+        }
+        damageInfo.FinalDamage = damage;
+        Hp -= damage;
+        if (Hp <= 0)
+        {
+            Hp = 0;
+            DoDie();
+        }
+    }
+}
+
+public class DamageInfo
+{
+    public object Source;
+    public int Attack;
+    public DamageTypeEnum DamageType;
+    public float DamageRate;
+    public int FinalDamage;
 }

@@ -8,11 +8,12 @@ using System.Linq;
 public class Test : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    async void Start()
     {
-        for (int i = 0; i < 36; i++)
+        System.Random r = new System.Random();
+        for (int i = 0; i < 10; i++)
         {
-            Debug.Log(Vector2.SignedAngle(Vector2.right, new Vector2(Mathf.Cos(i * 10 * Mathf.Deg2Rad), Mathf.Sin(i * 10 * Mathf.Deg2Rad))));
+            Debug.Log(r.Next(0, 2));
         }
     }
 

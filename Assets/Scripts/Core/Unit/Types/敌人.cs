@@ -35,8 +35,22 @@ namespace Units
         {
             base.Init();
             Position = Battle.Map.Grids[WaveConfig.Path[0].x, WaveConfig.Path[0].y].transform.position + new Vector3(0, Config.Height, 0);
+
+            TempPath = Battle.Map.FindPath(NowGrid, Battle.Map.Grids[WaveConfig.Path[NowPathPoint + 1].x, WaveConfig.Path[NowPathPoint + 1].y]);
+            ScaleX = TargetScaleX = (TempPath[1].X - TempPath[0].X) > 0 ? 1 : -1;
             State = StateEnum.Idle;
             AnimationName = "Idle";
+            BattleUI.UI_Battle.Instance.CreateUIUnit(this);
+        }
+
+        public override void Finish()
+        {
+            Debug.Log("Finish");
+            Hp = 0;
+            BattleUI.UI_Battle.Instance.ReturnUIUnit(this);
+            Battle.Enemys.Remove(this);
+            GameObject.Destroy(UnitModel.gameObject);
+            UnitModel = null;
         }
 
         public override void UpdateAction()
@@ -44,6 +58,12 @@ namespace Units
             if (State != StateEnum.Die)
             {
                 CheckBlock();
+            }
+
+            if (!Turning.Finished())
+            {
+                Turning.Update(SystemConfig.DeltaTime);
+                ScaleX = -TargetScaleX * ((Turning.value / SystemConfig.TurningTime) - 0.5f) * 2;
             }
 
             if (this.State == StateEnum.Die)
@@ -56,7 +76,7 @@ namespace Units
             }
             Recover.Update(SystemConfig.DeltaTime);
 
-            if (State == StateEnum.Move || State == StateEnum.Idle)
+            if (Turning.Finished() && (State == StateEnum.Move || State == StateEnum.Idle))
             {
                 UpdateMove();
             }
@@ -100,6 +120,13 @@ namespace Units
             Vector3 targetPoint = index == TempPath.Count - 1 ? TempPath[index].transform.position : TempPath[index + 1].transform.position;
             var delta = targetPoint - Position;
             if (delta != Vector3.zero) Direction = new Vector2(delta.x, delta.z);
+            var scaleX = delta.x > 0 ? 1 : -1;
+            if (scaleX != ScaleX)
+            {
+                TargetScaleX = scaleX;
+                Turning.Set(SystemConfig.TurningTime);
+                return;
+            }
             if ((targetPoint - Position).magnitude < Speed * SystemConfig.DeltaTime)
             {
                 Debug.Log("Arrive");
@@ -127,11 +154,11 @@ namespace Units
 
         public override void DoDie()
         {
-            base.DoDie();
             if (StopUnit != null)
             {
                 StopUnit.StopUnits.Remove(this);
             }
+            base.DoDie();
         }
 
         public float distanceToFinal()

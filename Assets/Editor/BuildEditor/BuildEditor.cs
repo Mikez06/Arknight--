@@ -40,6 +40,9 @@ public class BuildEditor
         //SetBundleAndAtlasWithoutShare("Assets/" + PathHelper.SpritePath + "/", PathHelper.SpritePath + "/", true);
 
         SetBundleAndAtlasWithoutShare("Assets/" + PathHelper.UnitPath, PathHelper.UnitPath);
+        SetBundleAndAtlasWithoutShare("Assets/" + PathHelper.BulletPath, PathHelper.BulletPath);
+        SetBundleAndAtlasWithoutShare("Assets/" + PathHelper.EffectPath, PathHelper.EffectPath);
+
 
         SetBundleAndAtlasWithoutShare("Assets/Bundles/Other/", "Bundles/Other/");
         //SetBundleAndAtlasWithoutShare("Assets/" + PathHelper.TimelinePath, PathHelper.TimelinePath, true);

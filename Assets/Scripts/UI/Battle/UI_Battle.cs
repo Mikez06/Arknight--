@@ -13,25 +13,19 @@ namespace BattleUI
         public static UI_Battle Instance;
         public Battle Battle;
 
-        GObjectPool HeadPool;
+        GObjectPool UIPool;
 
         Units.干员 selectedUnit;
         partial void Init()
         {
             Instance = this;
-            HeadPool = new GObjectPool(container.cachedTransform);
+            UIPool = new GObjectPool(container.cachedTransform);
             m_state.onChanged.Add(pageChange);
             m_DirectionPanel.draggable = true;
             m_DirectionPanel.onDragStart.Add(dragDirection);
             DragDropManager.inst.dragAgent.onDragMove.Add(dragDirectionMove);
             DragDropManager.inst.dragAgent.onDragEnd.Add(dragDirectionEnd);
-            m_DirectionBack.onClick.Add(() =>
-            {
-                selectedUnit.UnitModel.gameObject.SetActive(false);
-                selectedUnit = null;
-                m_state.selectedIndex = 0;
-                updateUnitsLayout();
-            });
+            m_DirectonCancal.onClick.Add(stopSetUnit);
         }
 
         protected override void OnUpdate()
@@ -51,20 +45,44 @@ namespace BattleUI
             updateUnitsLayout();
         }
 
+        public void CreateUIUnit(Unit unit)
+        {
+            var battleUnit = UIPool.GetObject(UI_BattleUnit.URL) as UI_BattleUnit;
+            battleUnit.SetUnit(unit);
+            m_Units.AddChild(battleUnit);
+        }
+
+        public void ReturnUIUnit(Unit unit)
+        {
+            unit.uiUnit.Unit = null;
+            m_Units.RemoveChild(unit.uiUnit);
+            UIPool.ReturnObject(unit.uiUnit);
+            unit.uiUnit = null;
+        }
+
+        void stopSetUnit()
+        {
+            selectedUnit.UnitModel.gameObject.SetActive(false);
+            selectedUnit = null;
+            m_state.selectedIndex = 0;
+            BattleCamera.Instance.HideUnitAttackArea();
+            updateUnitsLayout();
+        }
+
         void updateUnitsLayout()
         {
             for (int i = 0; i < m_Builds.numChildren; i++)
             {
                 var head = m_Builds.GetChildAt(i) as UI_BuildSprite;
                 head.Unit = null;
-                HeadPool.ReturnObject(head);
+                UIPool.ReturnObject(head);
             }
             m_Builds.RemoveChildren();
             var units = Battle.PlayerUnits.Where(x => x.MapIndex == -1).ToList();
             units.Sort((x, y) => x.Config.Cost - y.Config.Cost);
             foreach (var unit in units)
             {
-                var head = HeadPool.GetObject(UI_BuildSprite.URL) as UI_BuildSprite;
+                var head = UIPool.GetObject(UI_BuildSprite.URL) as UI_BuildSprite;
                 head.SetUnit(unit);
                 m_Builds.AddChild(head);
                 head.xy = new UnityEngine.Vector2(1750 - units.IndexOf(unit) * head.width, unit == selectedUnit ? 830 : 883);
@@ -91,9 +109,9 @@ namespace BattleUI
         void dragUnit(EventContext evt)
         {
             evt.PreventDefault();
-            if (m_state.selectedIndex != 1) return;
-            m_state.selectedIndex = 2;
             var unit = (evt.sender as UI_BuildSprite).Unit;
+            if (m_state.selectedIndex != 1 && unit != selectedUnit) return;
+            m_state.selectedIndex = 2;
             BattleCamera.Instance.StartBuild(unit);
         }
 
@@ -185,7 +203,9 @@ namespace BattleUI
                     mousePos.y = Screen.height - mousePos.y;
                     mousePos = mousePos.ScreenToUI();
                     m_DirectionPanel.position = mousePos;
+                    m_DirectionPanel.m_coner.selectedIndex = 0;
                     m_DirectionBack.m_hole.position = mousePos;
+                    m_DirectionPanel.m_grip.position = new Vector2(m_DirectionPanel.width / 2, m_DirectionPanel.height / 2);
                     break;
             }
         }

@@ -88,7 +88,7 @@ public class BattleCamera : MonoBehaviour
             TilePool.Despawn(go);
         }
         Tiles.Clear();
-        foreach (var tile in BuildUnit.AttackPoints)
+        foreach (var tile in BuildUnit.Skills[0].AttackPoints)
         {
             var tileAsset = ResourcesManager.Instance.GetAsset<GameObject>("Bundles/Other/HighLight", "HighLight").GetComponent<MapTile>();
             var go = TilePool.Spawn(tileAsset, Battle.Instance.Map.Grids[tile.x, tile.y].transform.position, null);
@@ -123,5 +123,9 @@ public class BattleCamera : MonoBehaviour
     public void EndBuild()
     {
         rotate = false;
+        foreach (var grid in Battle.Instance.Map.Grids)
+        {
+            grid.ChangeHighLight(false);
+        }
     }
 }

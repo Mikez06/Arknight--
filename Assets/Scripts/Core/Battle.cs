@@ -31,18 +31,25 @@ public class Battle
 
     public HashSet<Unit>[,] UnitMap;//敌人快速检索缓存
 
+    public HashSet<Bullet> Bullets = new HashSet<Bullet>();
+
+    public System.Random Random;
+
     public void Init(BattleInput battleConfig)
     {
         Instance = this;
+
+        Random = new System.Random(battleConfig.Seed);
+
+        //读取场景地图信息
+        Map.Init();
+
         if (battleConfig.UnitInputs != null)
             foreach (var unitInput in battleConfig.UnitInputs)
             {
                 CreatePlayerUnit(unitInput.Id);
             }
-
-        //读取场景地图信息
-        Map.Init();
-        
+     
         UnitMap = new HashSet<Unit>[Map.Grids.GetLength(0), Map.Grids.GetLength(1)];
         for (int i = 0; i < UnitMap.GetLength(0); i++)
             for (int j = 0; j < UnitMap.GetLength(1); j++)
@@ -54,9 +61,10 @@ public class Battle
         {
             if (wave.Map == battleConfig.MapName) Waves.Add(wave);
         }
+        Waves.Sort((x, y) => Math.Sign(x.Delay - y.Delay));
         EnemyCount = Waves.Count;
-        PlayerUnits[0].ChangePos(5, 3, DirectionEnum.Left);
-        PlayerUnits[0].JoinMap();
+        //PlayerUnits[0].ChangePos(5, 3, DirectionEnum.Right);
+        //PlayerUnits[0].JoinMap();
     }
 
     public void Update()
@@ -74,11 +82,17 @@ public class Battle
             Waves.RemoveAt(0);
             CreateEnemy(wave);
         }
-        foreach (var unit in Enemys.Union(PlayerUnits))
+
+        foreach (var bullet in Bullets.ToArray())
+        {
+            bullet.Update();
+        }
+
+        foreach (var unit in Enemys.Union(PlayerUnits).ToArray())
         {
             unit.UpdateBuffs();
         }
-        foreach (var unit in Enemys.Union(PlayerUnits))
+        foreach (var unit in Enemys.Union(PlayerUnits).ToArray())
         {
             unit.UpdateAction();
         }
@@ -120,12 +134,26 @@ public class Battle
         return unit;
     }
 
-    public HashSet<Unit> FindUnits(Vector2Int pos, Vector2Int[] points, int team, Func<Unit, bool> match)
+    public Bullet CreateBullet(int id, Vector3 startPos, Vector3 targetPos, Unit target, Skill skill)
+    {
+        var config = Database.Instance.Get<BulletConfig>(id);
+        var result = typeof(Battle).Assembly.CreateInstance(nameof(Bullets) + "." + config.Type) as Bullet;
+        result.Id = id;
+        result.Postion = startPos;
+        result.TargetPos = targetPos;
+        result.Target = target;
+        result.Skill = skill;
+        Bullets.Add(result);
+        result.Init();
+        return result;
+    }
+
+    public HashSet<Unit> FindUnits(List<Vector2Int> points, int team, Func<Unit, bool> match)
     {
         var result = new HashSet<Unit>();
         foreach (var point in points)
         {
-            var targetPoint = pos + point;
+            var targetPoint = point;
             if (team == 0)
             {
                 if (Map.Grids[targetPoint.x, targetPoint.y].Unit != null)
@@ -138,21 +166,20 @@ public class Battle
             {
                 foreach (var unit in UnitMap[targetPoint.x, targetPoint.y])
                 {
-                    if (match(Map.Grids[targetPoint.x, targetPoint.y].Unit))
-                        result.Add(Map.Grids[targetPoint.x, targetPoint.y].Unit);
+                    if (match(unit))
+                        result.Add(unit);
                 }
             }
         }
         return result;
     }
 
-    public Unit FindFirst(Vector2Int pos, Vector2Int[] points, int team, Func<Unit, bool> match,Func<Unit,float> sort)
+    public Unit FindFirst(List<Vector2Int> points, int team, Func<Unit, bool> match,Func<Unit,float> sort)
     {
 
         HashSet<Unit> units = new HashSet<Unit>();
-        foreach (var point in points)
+        foreach (var targetPoint in points)
         {
-            var targetPoint = pos + point;
             if (team == 0)
             {
                 if (Map.Grids[targetPoint.x, targetPoint.y].Unit != null)
@@ -165,8 +192,8 @@ public class Battle
             {
                 foreach (var unit in UnitMap[targetPoint.x, targetPoint.y])
                 {
-                    if (match(Map.Grids[targetPoint.x, targetPoint.y].Unit))
-                        units.Add(Map.Grids[targetPoint.x, targetPoint.y].Unit);
+                    if (match(unit))
+                        units.Add(unit);
                 }
             }
         }
@@ -210,9 +237,9 @@ public class Battle
         }
         foreach (var unit in Enemys)
         {
-            for (int i = Mathf.FloorToInt(unit.Position2.x - unit.Config.Radius); i < Mathf.CeilToInt(unit.Position2.x + unit.Config.Radius); i++)
+            for (int i = Mathf.RoundToInt(unit.Position2.x - unit.Config.Radius); i <= Mathf.RoundToInt(unit.Position2.x + unit.Config.Radius); i++)
             {
-                for (int j = Mathf.FloorToInt(unit.Position2.y - unit.Config.Radius); j < Mathf.CeilToInt(unit.Position2.y + unit.Config.Radius); j++)
+                for (int j = Mathf.RoundToInt(unit.Position2.y - unit.Config.Radius); j <= Mathf.RoundToInt(unit.Position2.y + unit.Config.Radius); j++)
                 {
                     if (i > 0 && i < UnitMap.GetLength(0) && j > 0 && j < UnitMap.GetLength(1))
                         UnitMap[i, j].Add(unit);

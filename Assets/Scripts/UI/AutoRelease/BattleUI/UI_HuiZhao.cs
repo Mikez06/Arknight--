@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace BattleUI
 {
-    public partial class UI_HuiZhao : GComponent
+    public partial class UI_HuiZhao : GButton
     {
         public GImage m_hole;
         public const string URL = "ui://vp312gabkbte3x";

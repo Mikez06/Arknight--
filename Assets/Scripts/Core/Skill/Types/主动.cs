@@ -134,6 +134,10 @@ namespace Skills
             Target = null;
         }
 
+        /// <summary>
+        /// 技能对一个单位实际生效的效果
+        /// </summary>
+        /// <param name="target"></param>
         public virtual void Effect(Unit target)
         {
 
@@ -151,19 +155,38 @@ namespace Skills
             }
         }
 
+        /// <summary>
+        /// 伤害判定阶段
+        /// </summary>
+        /// <param name="target"></param>
         public override void Hit(Unit target)
         {
             if (Unit.Skills[0]==this && Unit.MainSkill!=null&& Unit.MainSkill.Config.PowerType == MainSkillTypeEnum.主动)
             {
                 Unit.RecoverPower(1);
             }
-            target.Damage(new DamageInfo()
+            if (Config.AreaRange != null)
             {
-                Source = this,
-                Attack = Unit.Attack,
-                DamageRate = Config.DamageRate,
-                DamageType = Config.DamageType,
-            });
+                var targets = Battle.FindAll(target.Position2, Config.AreaRange.Value, Config.TargetTeam, Selectable);
+                foreach (var t in targets)
+                {
+                    t.Damage(new DamageInfo()
+                    {
+                        Source = this,
+                        Attack = Unit.Attack,
+                        DamageRate = t==target? Config.DamageRate:Config.AreaDamage,
+                        DamageType = Config.DamageType,
+                    });
+                }
+            }
+            else
+                target.Damage(new DamageInfo()
+                {
+                    Source = this,
+                    Attack = Unit.Attack,
+                    DamageRate = Config.DamageRate,
+                    DamageType = Config.DamageType,
+                });
         }
 
         /// <summary>
@@ -174,7 +197,7 @@ namespace Skills
         public virtual bool Selectable(Unit target)
         {
 
-            if (Config.AttackTarget == AttackTargetEnum.阻挡)
+            if (Config.AttackStop)
             {
                 if (Unit is Units.干员 u && !u.StopUnits.Contains(target)) return false;
                 if (Unit is Units.敌人 e && e.StopUnit != target) return false;
@@ -199,6 +222,9 @@ namespace Skills
                     return (target as Units.敌人).distanceToFinal();
                 case AttackTargetOrderEnum.放置顺序:
                     return (target as Units.干员).MapIndex;
+                case AttackTargetOrderEnum.飞行:
+                    //优先攻击飞行，次要攻击离家近的
+                    return (target as Units.敌人).distanceToFinal() - target.Config.Height == 0 ? 0 : -100;
             }
             return 0;
         }
@@ -217,7 +243,7 @@ namespace Skills
                 if (AttackPoints == null)
                 {
                     //靠半径寻找目标
-                    Target = Battle.FindFirst(Unit.Position2, Config.AttackRange, Selectable, targetOrder);
+                    Target = Battle.FindFirst(Unit.Position2, Config.AttackRange, Config.TargetTeam, Selectable, targetOrder);
                     if (Target != null) Debug.Log(Target.Config._Id);
                 }
                 else

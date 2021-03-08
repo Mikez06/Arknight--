@@ -29,6 +29,10 @@ public class SkillConfig : IConfig
     public int StartPower;
     public int MaxPower;
     public int PowerCount;
+    [BsonRepresentation(BsonType.Double, AllowTruncation = true)]
+    public float? AreaRange;
+    [BsonRepresentation(BsonType.Double, AllowTruncation = true)]
+    public float AreaDamage;
     public MainSkillTypeEnum PowerType;
     public MainSkillUseTypeEnum PowerUseType;
     public int HitCount;

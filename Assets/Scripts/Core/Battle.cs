@@ -81,6 +81,7 @@ public class Battle
             var wave = Waves[0];
             Waves.RemoveAt(0);
             CreateEnemy(wave);
+            Debug.Log("CreateEnemy:" + Tick + wave._Id);
         }
 
         foreach (var bullet in Bullets.ToArray())
@@ -211,22 +212,61 @@ public class Battle
     }
 
     /// <summary>
-    /// 只支持圆形查找玩家单位
+    /// 
     /// </summary>
     /// <param name="pos"></param>
     /// <param name="radius"></param>
     /// <param name="match"></param>
     /// <returns></returns>
-    public Unit FindFirst(Vector2 pos, float radius, Func<Unit, bool> match, Func<Unit, float> sort)
+    public Unit FindFirst(Vector2 pos, float radius,int team, Func<Unit, bool> match, Func<Unit, float> sort)
     {
-        var units = PlayerUnits.Where(x => x.MapIndex >= 0).ToList();
-        units.Sort((x, y) => Math.Sign(sort(x) - sort(y)));
-        foreach (var unit in units)
+        if (team == 1)
         {
-            if ((unit.Position2 - pos).magnitude < radius + unit.Config.Radius
-                && match(unit)) return unit;
+            var units = PlayerUnits.Where(x => x.MapIndex >= 0).ToList();
+            units.Sort((x, y) => Math.Sign(sort(x) - sort(y)));
+            foreach (var unit in units)
+            {
+                if ((unit.Position2 - pos).magnitude < radius + unit.Config.Radius
+                    && match(unit)) return unit;
+            }
+        }
+        else
+        {
+            var units = new List<Unit>(Enemys);//Sort((x, y) => Math.Sign(sort(x) - sort(y)));
+            if (sort != null)
+            {
+                units.Sort((x, y) => Math.Sign(sort(x) - sort(y)));
+            }
+            foreach (var unit in units)
+            {
+                if ((unit.Position2 - pos).magnitude < radius + unit.Config.Radius
+                    && match(unit)) return unit;
+            }
         }
         return null;
+    }
+
+    public HashSet<Unit> FindAll(Vector2 pos, float radius, int team, Func<Unit, bool> match)
+    {
+        HashSet<Unit> result = new HashSet<Unit>();
+        if (team == 1)
+        {
+            var units = PlayerUnits.Where(x => x.MapIndex >= 0).ToList();
+            foreach (var unit in units)
+            {
+                if ((unit.Position2 - pos).magnitude < radius + unit.Config.Radius
+                    && match(unit)) result.Add(unit);
+            }
+        }
+        else
+        {
+            foreach (var unit in Enemys)
+            {
+                if ((unit.Position2 - pos).magnitude < radius + unit.Config.Radius
+                    && match(unit)) result.Add(unit);
+            }
+        }
+        return result;
     }
 
     void updateUnitMap()

@@ -31,9 +31,17 @@ public class Init : MonoBehaviour
         });
     }
 
-    private void FixedUpdate()
+    public float startTime;
+    private void Update()
     {
-        Battle?.Update();
+        if (Battle != null)
+        {
+            int frame = Mathf.FloorToInt((Time.time - startTime - Battle.Tick * SystemConfig.DeltaTime) / SystemConfig.DeltaTime);
+            for (int i = 0; i < frame; i++)
+            {
+                Battle.Update();
+            }
+        }
     }
 
     async void StartBattle(BattleInput battleConfig)
@@ -44,6 +52,7 @@ public class Init : MonoBehaviour
         Battle = new Battle();
         Battle.Init(battleConfig);
         battleUI.SetBattle(Battle);
+        startTime = Time.time;
         //var path = Battle.Map.FindPath(Battle.Map.Grids[1, 3], Battle.Map.Grids[8, 1]);
         //foreach (var grid in path)
         //{

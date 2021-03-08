@@ -25,6 +25,11 @@
     <component id="h4sa43" name="SK0.xml" path="/"/>
     <component id="h4sa45" name="Hp2.xml" path="/"/>
     <image id="h4sa46" name="n37.png" path="/"/>
+    <component id="kbte47" name="SkillUsePanel.xml" path="/"/>
+    <component id="kbte48" name="MainSkillInfo.xml" path="/"/>
+    <image id="kbte49" name="bar.png" path="/"/>
+    <image id="kbte4a" name="btn_escape.png" path="/"/>
+    <component id="kbte4b" name="Leave.xml" path="/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

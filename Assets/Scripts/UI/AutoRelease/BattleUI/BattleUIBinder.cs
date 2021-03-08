@@ -16,6 +16,8 @@ namespace BattleUI
             UIObjectFactory.SetPackageItemExtension(UI_BattleLeft.URL, typeof(UI_BattleLeft));
             UIObjectFactory.SetPackageItemExtension(UI_HuiZhao.URL, typeof(UI_HuiZhao));
             UIObjectFactory.SetPackageItemExtension(UI_SetPanel.URL, typeof(UI_SetPanel));
+            UIObjectFactory.SetPackageItemExtension(UI_SkillUsePanel.URL, typeof(UI_SkillUsePanel));
+            UIObjectFactory.SetPackageItemExtension(UI_MainSkillInfo.URL, typeof(UI_MainSkillInfo));
         }
     }
 }

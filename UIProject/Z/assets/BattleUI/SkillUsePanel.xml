@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="565,565" pivot="0.5,0.5" anchor="true">
+  <displayList>
+    <component id="n1_kbte" name="mainSkillInfo" src="kbte48" fileName="MainSkillInfo.xml" xy="414,400"/>
+    <image id="n0_kbte" name="n0" src="kbte3w" fileName="多边形.png" xy="0,0"/>
+    <component id="n3_kbte" name="Leave" src="kbte4b" fileName="Leave.xml" xy="-91,-32"/>
+  </displayList>
+</component>

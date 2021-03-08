@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080">
-  <controller name="state" pages="0,,1,,8,,9," selected="3">
+  <controller name="state" pages="0,,1,,8,,9,,10," selected="4">
     <remark page="0" value="正常"/>
     <remark page="1" value="放置单位"/>
     <remark page="2" value="放置单位_选择位置"/>
     <remark page="3" value="放置单位_选择朝向"/>
+    <remark page="4" value="单位使用技能"/>
     <action type="change_page" fromPage="" toPage="0,1" objectId="n25_kbte" controller="left" targetPage="0"/>
     <action type="change_page" fromPage="" toPage="8,9" objectId="n25_kbte" controller="left" targetPage="1"/>
   </controller>
@@ -35,6 +36,9 @@
     </component>
     <component id="n30_kbte" name="costBar" src="kbte40" fileName="CostBar.xml" xy="1756,807">
       <ProgressBar value="36" max="1"/>
+    </component>
+    <component id="n40_kbte" name="SkillUsePanel" src="kbte47" fileName="SkillUsePanel.xml" xy="948,484">
+      <gearDisplay controller="state" pages="10"/>
     </component>
   </displayList>
 </component>

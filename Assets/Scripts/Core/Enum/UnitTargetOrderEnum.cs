@@ -9,5 +9,6 @@ public enum AttackTargetOrderEnum
     血量,
     离家近,
     放置顺序,
+    飞行,
 }
 

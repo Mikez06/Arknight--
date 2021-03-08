@@ -195,7 +195,7 @@ namespace BattleUI
                     BattleCamera.Instance.EndBuild();
                     break;
                 case 1:
-                    TimeHelper.Instance.SetGameSpeed(0.1f);
+                    TimeHelper.Instance.SetGameSpeed(0.2f);
                     m_left.SetUnit(selectedUnit);
                     break;
                 case 3:

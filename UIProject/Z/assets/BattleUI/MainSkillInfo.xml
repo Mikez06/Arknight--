@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="154,154">
+  <controller name="using" pages="0,,1," selected="0"/>
+  <displayList>
+    <image id="n3_kbte" name="n3" src="f1463i" fileName="sprite_base_hp.png" xy="0,0" size="154,154"/>
+    <image id="n2_kbte" name="bar" src="kbte49" fileName="bar.png" xy="0,0" alpha="0.5" color="#339900" fillMethod="vt" fillOrigin="1">
+      <gearColor controller="using" pages="0,1" values="#339900|#ffcc00"/>
+    </image>
+    <text id="n4_kbte" name="n4" xy="99,178" pivot="0.5,0.5" anchor="true" size="98,48" fontSize="35" align="center" text="26/26"/>
+  </displayList>
+</component>

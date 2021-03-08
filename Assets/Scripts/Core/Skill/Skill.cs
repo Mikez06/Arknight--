@@ -44,7 +44,7 @@ public class Skill
     public virtual void Update()
     {
         UpdateCooldown();
-        if (Unit.Recover.Finished())
+        if (Unit.Recover.Finished() && Unit.Turning.Finished())
         {
             if (Ready())
             {
@@ -60,6 +60,7 @@ public class Skill
                     FindTarget();
                     if (Target != null)
                     {
+                        Debug.Log(this.Config._Id + "findTarget" + Target.Config._Id);
                         var scaleX = (Target.Position - Unit.Position).x > 0 ? 1 : -1;
                         if (scaleX != Unit.ScaleX)
                         {

@@ -30,6 +30,7 @@
     <image id="kbte49" name="bar.png" path="/"/>
     <image id="kbte4a" name="btn_escape.png" path="/"/>
     <component id="kbte4b" name="Leave.xml" path="/"/>
+    <component id="l6f04c" name="SkillUsePanelBack.xml" path="/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

@@ -81,7 +81,6 @@ public class Battle
             var wave = Waves[0];
             Waves.RemoveAt(0);
             CreateEnemy(wave);
-            Debug.Log("CreateEnemy:" + Tick + wave._Id);
         }
 
         foreach (var bullet in Bullets.ToArray())

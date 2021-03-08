@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="565,565" pivot="0.5,0.5" anchor="true">
+<component size="565,565" pivot="0.5,0.5" anchor="true" opaque="false">
   <displayList>
-    <component id="n1_kbte" name="mainSkillInfo" src="kbte48" fileName="MainSkillInfo.xml" xy="414,400"/>
+    <component id="n4_l6f0" name="n4" src="l6f04c" fileName="1.xml" xy="0,0"/>
+    <component id="n1_kbte" name="mainSkillInfo" src="kbte48" fileName="MainSkillInfo.xml" xy="414,400">
+      <ProgressBar max="100"/>
+    </component>
     <image id="n0_kbte" name="n0" src="kbte3w" fileName="多边形.png" xy="0,0"/>
-    <component id="n3_kbte" name="Leave" src="kbte4b" fileName="Leave.xml" xy="-91,-32"/>
+    <component id="n3_kbte" name="Leave" src="kbte4b" fileName="Leave.xml" xy="-70,-24"/>
   </displayList>
 </component>

@@ -5,10 +5,10 @@ using FairyGUI.Utils;
 
 namespace BattleUI
 {
-    public partial class UI_MainSkillInfo : GComponent
+    public partial class UI_MainSkillInfo : GProgressBar
     {
         public Controller m_using;
-        public GImage m_bar;
+        public GTextField m_text;
         public const string URL = "ui://vp312gabkbte48";
 
         public static UI_MainSkillInfo CreateInstance()
@@ -21,7 +21,7 @@ namespace BattleUI
             base.ConstructFromXML(xml);
 
             m_using = GetControllerAt(0);
-            m_bar = (GImage)GetChildAt(1);
+            m_text = (GTextField)GetChildAt(2);
             Init();
         }
         partial void Init();

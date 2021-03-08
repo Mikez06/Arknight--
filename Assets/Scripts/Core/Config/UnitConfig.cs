@@ -39,6 +39,7 @@ public class UnitConfig : IConfig
     public bool CanSetHigh;
     public bool CanSetGround;
     public int Cost;
+    public int ResetTime;
     public int StopCount;
     public UnitTypeEnum UnitType;
 }

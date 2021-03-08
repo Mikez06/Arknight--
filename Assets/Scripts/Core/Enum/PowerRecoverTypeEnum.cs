@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public enum MainSkillTypeEnum
+public enum PowerRecoverTypeEnum
 {
     自动,
     主动,
     被动,
 }
 
-public enum MainSkillUseTypeEnum
+public enum SkillUseTypeEnum
 {
     自动,
     手动,
+    被动,
 }

@@ -8,6 +8,6 @@ public enum AttackTargetEnum
 {
     敌对,
     自己,
-    无,
+    阻挡,
 }
 

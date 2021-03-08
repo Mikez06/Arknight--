@@ -4,5 +4,5 @@
     <image id="n20_kbte" name="n0" src="kbte3r" fileName="n20.png" xy="0,0" alpha="0.6" fillMethod="radial360"/>
     <image id="n21_kbte" name="bar" src="kbte3r" fileName="n20.png" xy="0,0" fillMethod="radial360" fillAmount="35"/>
   </displayList>
-  <ProgressBar/>
+  <ProgressBar reverse="true"/>
 </component>

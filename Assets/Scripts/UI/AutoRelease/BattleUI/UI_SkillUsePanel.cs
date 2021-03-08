@@ -20,8 +20,8 @@ namespace BattleUI
         {
             base.ConstructFromXML(xml);
 
-            m_mainSkillInfo = (UI_MainSkillInfo)GetChildAt(0);
-            m_Leave = (GComponent)GetChildAt(2);
+            m_mainSkillInfo = (UI_MainSkillInfo)GetChildAt(1);
+            m_Leave = (GComponent)GetChildAt(3);
             Init();
         }
         partial void Init();

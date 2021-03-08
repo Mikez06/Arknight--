@@ -41,6 +41,7 @@ namespace Units
             State = StateEnum.Idle;
             AnimationName = "Idle";
             BattleUI.UI_Battle.Instance.CreateUIUnit(this);
+            PosOffset = ((float)Battle.Random.NextDouble() - 0.5f);
         }
 
         public override void Finish()
@@ -106,7 +107,7 @@ namespace Units
                 return;
             }
             if (StopUnit != null) return;//有人阻挡，停止移动,理论上这一句不要
-            AnimationName = Speed > 1 ? "Run_Loop" : "Move_Loop";
+            AnimationName = Speed >= 1 ? "Run_Loop" : "Move_Loop";
             AnimationSpeed = 1;
             if (TempPath == null)
             {
@@ -130,7 +131,7 @@ namespace Units
             }
             if ((targetPoint - Position).magnitude < Speed * SystemConfig.DeltaTime)
             {
-                Debug.Log("Arrive");
+                //Debug.Log("Arrive");
                 Position = targetPoint;
                 //抵达临时目标
                 NowPathPoint++;

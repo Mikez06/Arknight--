@@ -39,14 +39,22 @@ namespace BattleUI
             {
                 m_hp.max = Unit.MaxHp;
                 m_hp.value = Unit.Hp;
-                m_sk.value = Unit.Power - Unit.MaxPower * Mathf.FloorToInt(Unit.Power / Unit.MaxPower);
-                m_sk.max = Unit.MaxPower;
+                if (Unit.MainSkill.Opening.Finished())
+                {
+                    m_sk.value = Unit.Power - Unit.MaxPower * Mathf.FloorToInt(Unit.Power / Unit.MaxPower);
+                    m_sk.max = Unit.MaxPower;
+                }
+                else
+                {
+                    m_sk.value = Unit.MainSkill.Opening.value;
+                    m_sk.max = Unit.MainSkill.Config.OpenTime;
+                }
                 if (Unit.Power == Unit.MaxPower * Unit.PowerCount)
                 {
                     m_sk.value = m_sk.max;
                 }
 
-                if (!(Unit.MainSkill as Skills.主动).Cooldown.Finished())
+                if (!Unit.MainSkill.Opening.Finished())
                 {
                     m_sk.m_useControl.selectedIndex = 1;
                 }
@@ -55,7 +63,7 @@ namespace BattleUI
 
                 if (Unit.Power >= Unit.MaxPower)
                 {
-                    if (Unit.MainSkill.Config.PowerUseType == MainSkillUseTypeEnum.手动)
+                    if (Unit.MainSkill.Config.UseType == SkillUseTypeEnum.手动)
                     {
                         m_readyControl.selectedIndex = 1;
                     }

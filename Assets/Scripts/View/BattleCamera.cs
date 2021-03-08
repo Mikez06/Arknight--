@@ -23,15 +23,20 @@ public class BattleCamera : MonoBehaviour
         {
             if (_focusUnit != value)
             {
-                DOTween.To(() => transform.position,
+                _focusUnit = value;
+                var tween= DOTween.To(() => transform.position,
                     (x) => transform.position = x,
-                    _focusUnit == null ? _focusUnit.UnitModel.SkeletonAnimation.transform.position + new Vector3(0, 5, -5) : startPosition,
+                    _focusUnit == null ? startPosition : _focusUnit.UnitModel.SkeletonAnimation.transform.position + new Vector3(0, 5, -3),
                     0.1f);
+                tween.SetUpdate(true);
+                if (_focusUnit != null) 
+                    ShowUnitAttackArea();
+                else HideUnitAttackArea();
             }
         }
     }
 
-    Unit _focusUnit;
+    private Unit _focusUnit;
 
     public bool Rotate
     {
@@ -113,7 +118,8 @@ public class BattleCamera : MonoBehaviour
             TilePool.Despawn(go);
         }
         Tiles.Clear();
-        foreach (var tile in BuildUnit.Skills[0].AttackPoints)
+        var targetUnit = FocusUnit == null ? BuildUnit : FocusUnit;
+        foreach (var tile in targetUnit.Skills[0].AttackPoints)
         {
             var tileAsset = ResourcesManager.Instance.GetAsset<GameObject>("Bundles/Other/HighLight", "HighLight").GetComponent<MapTile>();
             var go = TilePool.Spawn(tileAsset, Battle.Instance.Map.Grids[tile.x, tile.y].transform.position, null);
@@ -130,21 +136,25 @@ public class BattleCamera : MonoBehaviour
         Tiles.Clear();
     }
 
-    public void StartBuild(Units.干员 unit)
+    public void StartBuild()
     {
         BuildMode = true;
-        BuildUnit = unit;//
-        unit.UnitModel.gameObject.SetActive(true);
+        BuildUnit.UnitModel.gameObject.SetActive(true);
+        ShowHighLight();
+    }
 
+    public void ShowHighLight()
+    {
         foreach (var grid in Battle.Instance.Map.Grids)
         {
-            if (grid.CanSet(unit))
+            if (grid.CanSet(BuildUnit))
             {
                 grid.ChangeHighLight(true);
             }
         }
     }
-    public void EndBuild()
+
+    public void HideHighLight()
     {
         foreach (var grid in Battle.Instance.Map.Grids)
         {
@@ -156,7 +166,7 @@ public class BattleCamera : MonoBehaviour
         FocusUnit = unit;
         if (unit != null)
         {
-            EndBuild();
+            HideHighLight();
         }
     }
 }

@@ -22,6 +22,11 @@ public class Unit
 
     public Vector2 Direction = new Vector2(1, 0);
 
+    /// <summary>
+    /// 在Z轴上加随机位移 让单位不会成为一条直线，更加自然
+    /// </summary>
+    public float PosOffset;
+
     public MapGrid NowGrid => Battle.Map.Grids[Mathf.RoundToInt(Position.x), Mathf.RoundToInt(Position.z)];
 
     public StateEnum State = StateEnum.Default;
@@ -162,7 +167,7 @@ public class Unit
 
     public void RecoverPower(float count)
     {
-        if (!(MainSkill as Skills.主动).Cooldown.Finished())
+        if (!MainSkill.Opening.Finished())
             return;
         Power += count;
         if (Power > MaxPower * PowerCount)

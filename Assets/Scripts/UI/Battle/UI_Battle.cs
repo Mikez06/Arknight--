@@ -27,6 +27,8 @@ namespace BattleUI
             DragDropManager.inst.dragAgent.onDragEnd.Add(dragDirectionEnd);
             m_DirectonCancal.onClick.Add(stopSetUnit);
             m_SkillUseBack.onClick.Add(StopChooseUnit);
+            m_SkillUsePanel.m_Leave.onClick.Add(leaveUnit);
+            m_SkillUsePanel.m_mainSkillInfo.onClick.Add(useMainSkill);
         }
 
         protected override void OnUpdate()
@@ -71,8 +73,10 @@ namespace BattleUI
         public void ChooseUnit(Unit unit)
         {
             TimeHelper.Instance.SetGameSpeed(0.2f);
+            selectedUnit = unit as Units.干员;
             m_state.selectedIndex = 4;
             m_left.SetUnit(unit as Units.干员);
+            Debug.Log(unit.Config.Name);
             BattleCamera.Instance.ShowUnitInfo(unit);
         }
 
@@ -137,7 +141,7 @@ namespace BattleUI
             if (!unit.CanBuild()) return;//不能造的时候拽不出来
             if (m_state.selectedIndex != 1 && unit != selectedUnit) return;//拽错了也不许出来
             m_state.selectedIndex = 2;
-            BattleCamera.Instance.StartBuild(unit);
+            BattleCamera.Instance.StartBuild();
         }
 
         Vector2 dragPos;
@@ -210,6 +214,24 @@ namespace BattleUI
             }
         }
 
+
+        void leaveUnit()
+        {
+            selectedUnit.LeaveMap();
+            m_state.selectedIndex = 0;
+        }
+
+
+        void useMainSkill()
+        {
+            var sk = selectedUnit.MainSkill as Skills.手动;
+            if (sk.CanOpen())
+            {
+                sk.DoOpen();
+                m_state.selectedIndex = 0;
+            }
+        }
+
         void pageChange()
         {
             switch (m_state.selectedIndex)
@@ -219,14 +241,15 @@ namespace BattleUI
                     BattleCamera.Instance.Rotate = false;
                     BattleCamera.Instance.ShowUnitInfo(null);
                     TimeHelper.Instance.SetGameSpeed(1);
-                    BattleCamera.Instance.EndBuild();
+                    BattleCamera.Instance.HideHighLight();
                     updateUnitsLayout();
                     break;
                 case 1:
                     TimeHelper.Instance.SetGameSpeed(0.2f);
                     m_left.SetUnit(selectedUnit);
                     BattleCamera.Instance.Rotate = true;
-                    //BattleCamera.Instance.StartBuild(selectedUnit);
+                    BattleCamera.Instance.BuildUnit = selectedUnit;
+                    BattleCamera.Instance.ShowHighLight();
                     updateUnitsLayout();
                     break;
                 case 3:
@@ -237,6 +260,9 @@ namespace BattleUI
                     m_DirectionPanel.m_coner.selectedIndex = 0;
                     m_DirectionBack.m_hole.position = mousePos;
                     m_DirectionPanel.m_grip.position = new Vector2(m_DirectionPanel.width / 2, m_DirectionPanel.height / 2);
+                    break;
+                case 4:
+                    m_SkillUsePanel.SetUnit(selectedUnit);
                     break;
             }
         }

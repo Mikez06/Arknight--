@@ -24,6 +24,8 @@ namespace Units
 
         public float ResetTime;
 
+        public int BuildTime;
+
         public int Cost;
 
         public override void Init()
@@ -35,6 +37,7 @@ namespace Units
         {
             base.Refresh();
             Cost = Config.Cost;
+            ResetTime = Config.ResetTime;
         }
 
         public override void UpdateAction()
@@ -64,7 +67,7 @@ namespace Units
                 ScaleX = -TargetScaleX * ((Turning.value / SystemConfig.TurningTime) - 0.5f) * 2;
             }
 
-            if (MainSkill!=null && MainSkill.Config.PowerType == MainSkillTypeEnum.自动)
+            if (MainSkill!=null && MainSkill.Config.PowerType == PowerRecoverTypeEnum.自动)
             {
                 RecoverPower(PowerSpeed * SystemConfig.DeltaTime);
             }
@@ -121,6 +124,7 @@ namespace Units
         public void JoinMap()
         {
             Debug.Log("StartStart" + Time.time);
+            Battle.Cost -= GetCost();
             Start.Set(UnitModel.GetAnimationDuration("Start"));
             //Debug.Log("start:" + Time.time + "," + Start.value);
             State = StateEnum.Start;
@@ -134,12 +138,14 @@ namespace Units
 
         public void LeaveMap()
         {
+            UnitModel.gameObject.SetActive(false);
+            BattleUI.UI_Battle.Instance.ReturnUIUnit(this);
             State = StateEnum.Default;
             Direction = new Vector2(1, 0);
             MapIndex = -1;
             Battle.Map.Grids[GridPos.x, GridPos.y].Unit = null;
             Reseting.Set(ResetTime);
-            ResetTime++;
+            BuildTime++;
             Battle.Cost += Cost / 2;
         }
 
@@ -166,7 +172,7 @@ namespace Units
 
         public int GetCost()
         {
-            return (int)(Cost * (ResetTime == 0 ? 1 : ResetTime == 1 ? 1.5f : 2));
+            return (int)(Cost * (BuildTime == 0 ? 1 : BuildTime == 1 ? 1.5f : 2));
         }
 
         public bool Useable()

@@ -24,6 +24,8 @@ namespace Units
 
         public float ResetTime;
 
+        public int Cost;
+
         public override void Init()
         {
             base.Init();
@@ -32,6 +34,7 @@ namespace Units
         public override void Refresh()
         {
             base.Refresh();
+            Cost = Config.Cost;
         }
 
         public override void UpdateAction()
@@ -110,6 +113,11 @@ namespace Units
             }
         }
 
+        public bool CanBuild()
+        {
+            return GetCost() <= Battle.Cost;
+        }
+
         public void JoinMap()
         {
             Debug.Log("StartStart" + Time.time);
@@ -131,6 +139,8 @@ namespace Units
             MapIndex = -1;
             Battle.Map.Grids[GridPos.x, GridPos.y].Unit = null;
             Reseting.Set(ResetTime);
+            ResetTime++;
+            Battle.Cost += Cost / 2;
         }
 
         public override void Finish()
@@ -154,14 +164,14 @@ namespace Units
             return GridPos;
         }
 
-        public int Cost()
+        public int GetCost()
         {
-            return (int)(Config.Cost * (ResetTime == 0 ? 1 : ResetTime == 1 ? 1.5f : 2));
+            return (int)(Cost * (ResetTime == 0 ? 1 : ResetTime == 1 ? 1.5f : 2));
         }
 
         public bool Useable()
         {
-            return Cost() <= Battle.Cost;
+            return GetCost() <= Battle.Cost;
         }
 
         public override void DoDie()

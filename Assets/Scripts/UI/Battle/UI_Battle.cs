@@ -26,6 +26,7 @@ namespace BattleUI
             DragDropManager.inst.dragAgent.onDragMove.Add(dragDirectionMove);
             DragDropManager.inst.dragAgent.onDragEnd.Add(dragDirectionEnd);
             m_DirectonCancal.onClick.Add(stopSetUnit);
+            m_SkillUseBack.onClick.Add(StopChooseUnit);
         }
 
         protected override void OnUpdate()
@@ -36,6 +37,13 @@ namespace BattleUI
                 m_hp.text = Battle.Hp.ToString();
                 m_cost.text = Battle.Cost.ToString();
                 m_costBar.value = 1 - Battle.CostCounting.value;
+
+                if (m_state.selectedIndex == 4)
+                {
+                    Vector2 pos = Camera.main.WorldToScreenPoint(BattleCamera.Instance.FocusUnit.UnitModel.SkeletonAnimation.transform.position);
+                    pos.y = Screen.height - pos.y;
+                    m_SkillUsePanel.position = pos.ScreenToUI();
+                }
             }
         }
 
@@ -58,6 +66,22 @@ namespace BattleUI
             m_Units.RemoveChild(unit.uiUnit);
             UIPool.ReturnObject(unit.uiUnit);
             unit.uiUnit = null;
+        }
+
+        public void ChooseUnit(Unit unit)
+        {
+            TimeHelper.Instance.SetGameSpeed(0.2f);
+            m_state.selectedIndex = 4;
+            m_left.SetUnit(unit as Units.干员);
+            BattleCamera.Instance.ShowUnitInfo(unit);
+        }
+
+        public void StopChooseUnit()
+        {
+            if (m_state.selectedIndex == 4)
+            {
+                m_state.selectedIndex = 0;
+            }
         }
 
         void stopSetUnit()
@@ -94,6 +118,7 @@ namespace BattleUI
 
         void clickUnit(Units.干员 unit)
         {
+            StopChooseUnit();//如果当前正在看干员详细状态，就退出来
             if (selectedUnit == unit)
             {
                 m_state.selectedIndex = 0;
@@ -103,14 +128,14 @@ namespace BattleUI
                 selectedUnit = unit;
                 m_state.selectedIndex = 1;
             }
-            updateUnitsLayout();
         }
 
         void dragUnit(EventContext evt)
         {
             evt.PreventDefault();
             var unit = (evt.sender as UI_BuildSprite).Unit;
-            if (m_state.selectedIndex != 1 && unit != selectedUnit) return;
+            if (!unit.CanBuild()) return;//不能造的时候拽不出来
+            if (m_state.selectedIndex != 1 && unit != selectedUnit) return;//拽错了也不许出来
             m_state.selectedIndex = 2;
             BattleCamera.Instance.StartBuild(unit);
         }
@@ -191,12 +216,18 @@ namespace BattleUI
             {
                 case 0:
                     selectedUnit = null;
+                    BattleCamera.Instance.Rotate = false;
+                    BattleCamera.Instance.ShowUnitInfo(null);
                     TimeHelper.Instance.SetGameSpeed(1);
                     BattleCamera.Instance.EndBuild();
+                    updateUnitsLayout();
                     break;
                 case 1:
                     TimeHelper.Instance.SetGameSpeed(0.2f);
                     m_left.SetUnit(selectedUnit);
+                    BattleCamera.Instance.Rotate = true;
+                    //BattleCamera.Instance.StartBuild(selectedUnit);
+                    updateUnitsLayout();
                     break;
                 case 3:
                     Vector2 mousePos = Camera.main.WorldToScreenPoint(selectedUnit.UnitModel.transform.position); //Stage.inst.touchPosition.ScreenToUI();

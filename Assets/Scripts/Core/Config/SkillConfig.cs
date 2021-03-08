@@ -11,6 +11,7 @@ public class SkillConfig : IConfig
 {
     public string _Id { get; set; }
     public string Type;
+    public string Name;
     public AttackTargetEnum AttackTarget;
     public bool AttackStop;
     public AttackTargetOrderEnum AttackOrder;
@@ -36,4 +37,5 @@ public class SkillConfig : IConfig
     public MainSkillTypeEnum PowerType;
     public MainSkillUseTypeEnum PowerUseType;
     public int HitCount;
+    public int[] Skills;
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="119,158" pivot="0.5,0.82" anchor="true">
-  <controller name="readyControl" pages="0,,1," selected="0"/>
+  <controller name="readyControl" pages="0,,1," selected="1"/>
   <controller name="skillCount" pages="0,,1," selected="1"/>
   <controller name="unitType" pages="0,,1," selected="0"/>
   <displayList>
@@ -12,16 +12,16 @@
       <gearDisplay controller="unitType" pages="0"/>
       <ProgressBar value="58" max="100"/>
     </component>
-    <graph id="n37_h4sa" name="n37" xy="59,-28" size="41,41" rotation="45" type="rect" lineSize="2" fillColor="#ffffff00">
+    <graph id="n37_h4sa" name="n37" xy="59,-60" size="41,41" rotation="45" type="rect" lineSize="2" fillColor="#ffffff00">
       <gearDisplay controller="readyControl" pages="1"/>
     </graph>
-    <text id="n38_h4sa" name="n38" xy="52,-18" size="14,42" fontSize="30" color="#ff0000" text="!">
+    <text id="n38_h4sa" name="n38" xy="52,-50" size="14,42" fontSize="30" color="#ff0000" text="!">
       <gearDisplay controller="readyControl" pages="1"/>
     </text>
-    <graph id="n39_h4sa" name="n39" xy="35,-22" size="45,45" type="eclipse" lineColor="#ffffcc00" fillColor="#ffffffcc">
+    <graph id="n39_h4sa" name="n39" xy="35,-56" size="45,45" type="eclipse" lineColor="#ffffcc00" fillColor="#ffffffcc">
       <gearDisplay controller="skillCount" pages="1"/>
     </graph>
-    <text id="n40_h4sa" name="skillCount" xy="47,-20" size="21,42" fontSize="30" color="#ff9900" text="2">
+    <text id="n40_h4sa" name="skillCount" xy="47,-54" size="21,42" fontSize="30" color="#ff9900" text="2">
       <gearDisplay controller="skillCount" pages="1"/>
     </text>
     <component id="n41_h4sa" name="eHp" src="h4sa45" fileName="Hp2.xml" xy="2,146">

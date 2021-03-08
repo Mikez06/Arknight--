@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class BattleCamera : MonoBehaviour
 {
@@ -10,9 +11,42 @@ public class BattleCamera : MonoBehaviour
     Pool<MapTile> TilePool = new Pool<MapTile>();
     HashSet<MapTile> Tiles = new HashSet<MapTile>();
 
-    bool rotate;
-    float rotateAmount;
+    Vector3 startPosition;
+    Vector3 startUp;
+    Quaternion startRotation;
 
+
+    public Unit FocusUnit
+    {
+        get => _focusUnit;
+        set
+        {
+            if (_focusUnit != value)
+            {
+                DOTween.To(() => transform.position,
+                    (x) => transform.position = x,
+                    _focusUnit == null ? _focusUnit.UnitModel.SkeletonAnimation.transform.position + new Vector3(0, 5, -5) : startPosition,
+                    0.1f);
+            }
+        }
+    }
+
+    Unit _focusUnit;
+
+    public bool Rotate
+    {
+        get => _rotate;
+        set
+        {
+            if (_rotate != value)
+            {
+                _rotate = value;
+                var tween= DOTween.To(() => _rotate ? 0f : 5f, (x) => transform.rotation = Quaternion.AngleAxis(x, startUp) * startRotation, _rotate ? 5f : 0f, 0.1f);
+                tween.SetUpdate(true);
+            }
+        }
+    }
+    bool _rotate;
     private void Awake()
     {
         Instance = this;
@@ -22,26 +56,15 @@ public class BattleCamera : MonoBehaviour
     void Start()
     {
         ResourcesManager.Instance.LoadBundle("Bundles/Other/HighLight");
+        startPosition = transform.position;
+        startUp = transform.up;
+        startRotation = transform.rotation;
         //ResourcesManager.Instance.LoadBundle("Bundles/Other/CanBuild");
     }
 
     // Update is called once per frame
     void Update()
     {
-        float rotateSpeed = 200;
-        if (rotate && rotateAmount<1)
-        {
-            float a = Mathf.Clamp(Time.deltaTime * rotateSpeed, 0, 1 - rotateAmount);
-            rotateAmount += a;
-            transform.Translate(Vector3.left * a);
-        }
-        if (!rotate && rotateAmount > 0)
-        {
-            float a = Mathf.Clamp(Time.deltaTime * rotateSpeed, 0, rotateAmount);
-            rotateAmount -= a;
-            transform.Translate(Vector3.right * a);
-        }
-
         if (BuildMode)
         {
             bool canBuild = false;
@@ -75,7 +98,9 @@ public class BattleCamera : MonoBehaviour
                 }
                 else
                 {
+                    BuildUnit.UnitModel.gameObject.SetActive(false);
                     BattleUI.UI_Battle.Instance.m_state.selectedIndex = 1;
+                    BuildUnit = null;
                 }
             }
         }
@@ -110,7 +135,6 @@ public class BattleCamera : MonoBehaviour
         BuildMode = true;
         BuildUnit = unit;//
         unit.UnitModel.gameObject.SetActive(true);
-        rotate = true;
 
         foreach (var grid in Battle.Instance.Map.Grids)
         {
@@ -122,10 +146,17 @@ public class BattleCamera : MonoBehaviour
     }
     public void EndBuild()
     {
-        rotate = false;
         foreach (var grid in Battle.Instance.Map.Grids)
         {
             grid.ChangeHighLight(false);
+        }
+    }
+    public void ShowUnitInfo(Unit unit)
+    {
+        FocusUnit = unit;
+        if (unit != null)
+        {
+            EndBuild();
         }
     }
 }

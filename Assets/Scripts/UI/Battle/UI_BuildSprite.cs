@@ -13,7 +13,7 @@ namespace BattleUI
         {
             this.Unit = unit;
             m_typeControl.selectedIndex = (int)unit.Config.UnitType;
-            m_cost.text = unit.Cost().ToString();
+            m_cost.text = unit.GetCost().ToString();
             m_bar.max = unit.ResetTime;
         }
 

@@ -11,7 +11,7 @@ public class Battle
     public int Hp = 10;
     public int Hurt;
     public int Tick = -1;
-    public float Cost;
+    public float Cost = 30;
 
     public Map Map = new Map();
 
@@ -220,7 +220,7 @@ public class Battle
     /// <returns></returns>
     public Unit FindFirst(Vector2 pos, float radius,int team, Func<Unit, bool> match, Func<Unit, float> sort)
     {
-        if (team == 1)
+        if (team == 0)
         {
             var units = PlayerUnits.Where(x => x.MapIndex >= 0).ToList();
             units.Sort((x, y) => Math.Sign(sort(x) - sort(y)));

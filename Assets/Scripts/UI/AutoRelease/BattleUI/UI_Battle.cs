@@ -19,6 +19,7 @@ namespace BattleUI
         public GComponent m_DirectonCancal;
         public UI_SetPanel m_DirectionPanel;
         public GProgressBar m_costBar;
+        public GComponent m_SkillUseBack;
         public UI_SkillUsePanel m_SkillUsePanel;
         public const string URL = "ui://vp312gabf1460";
 
@@ -43,7 +44,8 @@ namespace BattleUI
             m_DirectonCancal = (GComponent)GetChildAt(14);
             m_DirectionPanel = (UI_SetPanel)GetChildAt(15);
             m_costBar = (GProgressBar)GetChildAt(16);
-            m_SkillUsePanel = (UI_SkillUsePanel)GetChildAt(17);
+            m_SkillUseBack = (GComponent)GetChildAt(17);
+            m_SkillUsePanel = (UI_SkillUsePanel)GetChildAt(18);
             Init();
         }
         partial void Init();

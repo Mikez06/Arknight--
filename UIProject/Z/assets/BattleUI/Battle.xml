@@ -23,7 +23,7 @@
     <graph id="n23_kbte" name="n23" xy="1756,761" size="142,56" type="rect" lineSize="0" fillColor="#99000000"/>
     <text id="n24_kbte" name="cost" xy="1846,757" pivot="0.5,0.5" size="50,54" fontSize="40" color="#ffffff" align="center" text="30"/>
     <component id="n25_kbte" name="left" src="kbte3s" fileName="BattleLeft.xml" xy="-1,4">
-      <gearDisplay controller="state" pages="1,8,9"/>
+      <gearDisplay controller="state" pages="1,8,9,10"/>
     </component>
     <component id="n28_kbte" name="DirectionBack" src="kbte3x" fileName="灰罩.xml" xy="0,0">
       <gearDisplay controller="state" pages="9"/>
@@ -36,6 +36,9 @@
     </component>
     <component id="n30_kbte" name="costBar" src="kbte40" fileName="CostBar.xml" xy="1756,807">
       <ProgressBar value="36" max="1"/>
+    </component>
+    <component id="n41_kbte" name="SkillUseBack" src="f1463m" fileName="Container.xml" xy="0,0" size="1920,1080">
+      <gearDisplay controller="state" pages="10"/>
     </component>
     <component id="n40_kbte" name="SkillUsePanel" src="kbte47" fileName="SkillUsePanel.xml" xy="948,484">
       <gearDisplay controller="state" pages="10"/>

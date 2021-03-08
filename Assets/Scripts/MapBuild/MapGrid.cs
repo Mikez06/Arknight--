@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class MapGrid : MonoBehaviour
+public class MapGrid : MonoBehaviour, IPointerClickHandler
 {
     public int X, Y;
     /// <summary>
@@ -49,6 +50,12 @@ public class MapGrid : MonoBehaviour
     public void ChangeHighLight(bool bo)
     {
         GetComponent<Renderer>().material.color = bo ?new Color(0.458f,1,0.42f) : Color.white;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (Unit != null)
+            BattleUI.UI_Battle.Instance.ChooseUnit(Unit);
     }
 
     // Start is called before the first frame update

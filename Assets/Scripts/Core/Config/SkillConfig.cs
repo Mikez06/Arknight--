@@ -12,6 +12,7 @@ public class SkillConfig : IConfig
     public string _Id { get; set; }
     public string Type;
     public string Name;
+    public SkillReadyEnum ReadyType;
     public AttackTargetEnum AttackTarget;
     public AttackTargetOrderEnum AttackOrder;
     public Vector2Int[] AttackPoints;
@@ -39,4 +40,8 @@ public class SkillConfig : IConfig
     public SkillUseTypeEnum UseType;
     public int HitCount;
     public int[] Skills;
+    public int[] ExSkills;
+    public int[] Buffs;
+    public int[] BuffData;
+    public bool AttackFly;
 }

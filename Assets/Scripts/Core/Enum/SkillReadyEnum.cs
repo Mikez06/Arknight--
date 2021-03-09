@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UnityEngine;
 
-namespace Skills
-{
-    public class 主动 : Skill
+    public enum SkillReadyEnum
     {
-
+        None,
+        特技激活,
+        禁止主动,
     }
-}

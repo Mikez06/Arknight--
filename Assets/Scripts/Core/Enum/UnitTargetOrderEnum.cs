@@ -10,5 +10,6 @@ public enum AttackTargetOrderEnum
     离家近,
     放置顺序,
     飞行,
+    区域顺序,
 }
 

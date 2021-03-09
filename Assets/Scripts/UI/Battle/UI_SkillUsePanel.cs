@@ -19,7 +19,7 @@ namespace BattleUI
         {
             base.OnUpdate();
             if (Unit == null) return;
-            var s = Unit.MainSkill as Skills.主动;
+            var s = Unit.MainSkill;
             m_mainSkillInfo.visible = true;
             m_mainSkillInfo.m_using.selectedIndex = s.Opening.Finished() ? 0 : 1;
             if (!s.Opening.Finished())

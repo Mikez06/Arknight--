@@ -224,7 +224,7 @@ namespace BattleUI
 
         void useMainSkill()
         {
-            var sk = selectedUnit.MainSkill as Skills.手动;
+            var sk = selectedUnit.MainSkill;
             if (sk.CanOpen())
             {
                 sk.DoOpen();

@@ -30,6 +30,7 @@ public class Database
             Add<BulletConfig>("BulletConfig");
             Add<MapConfig>("MapConfig");
             Add<WaveConfig>("WaveConfig");
+            Add<BuffConfig>("BuffConfig");
             ResourcesManager.Instance.UnloadBundle(PathHelper.DataPath);
         }
         catch (Exception e)
@@ -46,6 +47,7 @@ public class Database
         Add<SkillConfig>("SkillConfig");
         Add<BulletConfig>("BulletConfig");
         Add<MapConfig>("MapConfig");
+        Add<BuffConfig>("BuffConfig");
         Add<WaveConfig>("WaveConfig");
         ResourcesManager.Instance.UnloadBundle(PathHelper.DataPath);
         return this;

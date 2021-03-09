@@ -55,7 +55,7 @@ public class ExcelExportEditor
     {
         eUnits = Export("battle.xlsx", "unit", "_Id");
         //eCards = Export("battle.xlsx", "card", "_Id");
-        //eBuffs = Export("battle.xlsx", "buff", "_Id");
+        eBuffs = Export("battle.xlsx", "buff", "_Id");
         eBullets = Export("battle.xlsx", "bullet", "_Id");
         //eTeam = Export("battle.xlsx", "team", "_Id");
         eMaps = Export("battle.xlsx", "map", "_Id");
@@ -67,8 +67,9 @@ public class ExcelExportEditor
         var unitConfigs = Export<UnitConfig>("battle.xlsx", "unit", "UnitConfig.txt");
         var skillConfigs = Export<SkillConfig>("battle.xlsx", "skill", "SkillConfig.txt");
         var bulletConfigs = Export<BulletConfig>("battle.xlsx", "bullet", "BulletConfig.txt");
-        var mapConfigs = Export<BulletConfig>("battle.xlsx", "map", "MapConfig.txt");
+        var mapConfigs = Export<MapConfig>("battle.xlsx", "map", "MapConfig.txt");
         var waveConfigs = Export<WaveConfig>("battle.xlsx", "wave", "WaveConfig.txt");
+        var buffConfigs = Export<BuffConfig>("battle.xlsx", "buff", "BuffConfig.txt");
 
         AssetDatabase.Refresh();
         Debug.Log("导出结束");

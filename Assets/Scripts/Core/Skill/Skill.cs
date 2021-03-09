@@ -85,7 +85,10 @@ public class Skill
                 FindTarget();
             }
             if (Target != null)
-                Cast();
+            {
+                Cast(Target);
+                Target = null;
+            }
         }
     }
 
@@ -102,7 +105,18 @@ public class Skill
     public virtual bool Ready()
     {
         if (Unit.State == StateEnum.Attack) return false;
-        //if (ifUsePower && Unit.Power < Unit.MaxPower) return false;
+
+        switch (Config.ReadyType)
+        {
+            case SkillReadyEnum.特技激活:
+                if (Unit.MainSkill.Opening.Finished()) return false;
+                break;
+            case SkillReadyEnum.禁止主动:
+                return false;
+            default:
+                break;
+        }
+
         if (Config.UseType == SkillUseTypeEnum.手动) //手动技能在阻回时可以使用
             return !Opening.Finished();
         //自动充能技在有充能时才能使用
@@ -130,6 +144,17 @@ public class Skill
     {
         Debug.Log("OpenSkill");
         Opening.Set(Config.OpenTime);
+        OnOpen();
+    }
+
+    protected virtual void OnOpen()
+    {
+
+    }
+
+    protected virtual void OnFinish()
+    {
+
     }
 
     #endregion
@@ -139,23 +164,37 @@ public class Skill
     {
         if (!Selectable(Target)) return;
         ResetCooldown();
-        var duration = Unit.UnitModel.GetSkillDelay(Config.ModelAnimation, Unit.AnimationName, out float fullDuration);//.SkeletonAnimation.skeleton.data.Animations.Find(x => x.Name == "Attack");
-        Casting.Set(duration);
-        Debug.Log(Unit.Config._Id+"的"+Config._Id + "AttackStart,pointDelay:" + duration + ",fullDuration" + fullDuration + ",Time:" + Time.time);
-        Unit.Recover.Set(duration);
-        Unit.Attacking.Set(fullDuration);
-        Unit.State = StateEnum.Attack;
-        Unit.AnimationName = Config.ModelAnimation;
-        Unit.AnimationSpeed = 1;
+        if (string.IsNullOrEmpty(Config.ModelAnimation))
+        {
+            Debug.Log(Unit.Config._Id + "没有抬手,直接使用");
+            Cast(Target);
+        }
+        else
+        {
+            var duration = Unit.UnitModel.GetSkillDelay(Config.ModelAnimation, Unit.AnimationName, out float fullDuration);//.SkeletonAnimation.skeleton.data.Animations.Find(x => x.Name == "Attack");
+            duration = duration / Unit.Agi * 100;
+            fullDuration = fullDuration / Unit.Agi * 100;
+            if (this == Unit.Skills[0])
+            {
+                duration = duration * (Config.Cooldown + Unit.AttackGap) / Config.Cooldown;
+                fullDuration = fullDuration * (Config.Cooldown + Unit.AttackGap) / Config.Cooldown;
+            }
+            Casting.Set(duration);
+            Debug.Log(Unit.Config._Id + "的" + Config._Id + "AttackStart,pointDelay:" + duration + ",fullDuration" + fullDuration + ",Time:" + Time.time);
+            Unit.Recover.Set(duration);
+            Unit.Attacking.Set(fullDuration);
+            Unit.State = StateEnum.Attack;
+            Unit.AnimationName = Config.ModelAnimation;
+            Unit.AnimationSpeed = 1;
+        }
     }
 
-    public virtual void Cast()
+    public virtual void Cast(Unit target)
     {
         HashSet<Unit> targets = null;
         if (Config.HitCount > 1)
         {
             var all = Battle.FindUnits(AttackPoints, Config.TargetTeam, Selectable).ToList();
-            //all.Remove(Target);//主目标一定可以选到
             targets = new HashSet<Unit>();
             for (int i = 0; i < Config.HitCount - 1; i++)
             {
@@ -164,17 +203,20 @@ public class Skill
                 all.Remove(t);
                 targets.Add(t);
             }
-            if (targets.Count == 0) targets.Add(Target);//主目标当保底
+            if (targets.Count == 0) targets.Add(target);//主目标当保底
         }
 
         if (targets != null)
         {
-            foreach (var target in targets) Effect(target);
+            foreach (var t in targets) Effect(t);
         }
         else
-            Effect(Target);
-
-        Target = null;
+            Effect(target);
+        if (Config.ExSkills != null)
+            foreach (var skillId in Config.ExSkills)
+            {
+                Unit.Skills.Find(x => x.Id == skillId).Cast(target);
+            }
     }
 
     /// <summary>
@@ -204,6 +246,11 @@ public class Skill
     /// <param name="target"></param>
     public virtual void Hit(Unit target)
     {
+        if (Config.Buffs != null)
+            foreach (var buffId in Config.Buffs)
+            {
+                target.AddBuff(buffId, this);
+            }
         if (Unit.Skills[0] == this && Unit.MainSkill != null && Unit.MainSkill.Config.PowerType == PowerRecoverTypeEnum.主动)
         {
             Unit.RecoverPower(1);
@@ -245,6 +292,7 @@ public class Skill
             if (Unit is Units.干员 u && !u.StopUnits.Contains(target)) return false;
             if (Unit is Units.敌人 e && e.StopUnit != target) return false;
         }
+        if (target.Config.Height > 0 && !Config.AttackFly) return false;
         //if (Config.AttackTarget == AttackTargetEnum.敌对)
         //{
         //    if (Unit is Units.干员 u && !AttackPoints.Any(x => x == target.GridPos)) return false;
@@ -268,35 +316,45 @@ public class Skill
             case AttackTargetOrderEnum.飞行:
                 //优先攻击飞行，次要攻击离家近的
                 return (target as Units.敌人).distanceToFinal() - target.Config.Height == 0 ? 0 : -100;
+            case AttackTargetOrderEnum.区域顺序:
+                int index = AttackPoints.IndexOf(target.GridPos);
+                return index == -1 ? float.MaxValue : index;
         }
         return 0;
     }
 
     public virtual void FindTarget()
     {
-        //没有目标或目标不合法
-        if (Config.AttackTarget == AttackTargetEnum.阻挡)//阻挡优先算
+        switch (Config.AttackTarget)
         {
-            if (Unit is Units.干员 u) Target = u.StopUnits.FirstOrDefault();
-            else if (Unit is Units.敌人 e) Target = e.StopUnit;
+            case AttackTargetEnum.阻挡:
+                if (Unit is Units.干员 u) Target = u.StopUnits.FirstOrDefault();
+                else if (Unit is Units.敌人 e) Target = e.StopUnit;
+                break;
+            case AttackTargetEnum.敌对:
+                if (AttackPoints == null)
+                {
+                    //靠半径寻找目标
+                    Target = Battle.FindFirst(Unit.Position2, Config.AttackRange, Config.TargetTeam, Selectable, targetOrder);
+                    if (Target != null)
+                        Debug.Log(Target.Config._Id);
+                }
+                else
+                {
+                    //找网格点
+                    Target = Battle.FindFirst(AttackPoints, Config.TargetTeam, Selectable, targetOrder);
+                }
+                break;
+            case AttackTargetEnum.自己:
+                Target = Unit;
+                break;
         }
-        if (Target != null) return;
-        if (AttackPoints == null)
-        {
-            //靠半径寻找目标
-            Target = Battle.FindFirst(Unit.Position2, Config.AttackRange, Config.TargetTeam, Selectable, targetOrder);
-            if (Target != null)
-                Debug.Log(Target.Config._Id);
-        }
-        else
-        {
-            //找网格点
-            Target = Battle.FindFirst(AttackPoints, Config.TargetTeam, Selectable, targetOrder);
-        }
+       
     }
 
     public void UpdateAttackPoints()
     {
+        if (AttackPoints == null) return;
         AttackPoints.Clear();
         foreach (var p in Config.AttackPoints)
         {

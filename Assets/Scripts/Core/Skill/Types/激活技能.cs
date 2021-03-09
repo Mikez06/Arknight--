@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Skills
 {
-    public class 激活技能 : 手动
+    public class 激活技能 : Skill
     {
 
     }

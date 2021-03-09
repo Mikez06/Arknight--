@@ -34,6 +34,9 @@ public class Unit
     public float MaxHp;
     public List<Skill> Skills = new List<Skill>();
     public Skill MainSkill;
+
+    public List<Buff> Buffs = new List<Buff>();
+
     /// <summary>
     /// 攻速
     /// </summary>
@@ -43,11 +46,13 @@ public class Unit
     /// </summary>
     public float Speed;
 
-    public int Attack;
+    public float AttackGap;
 
-    public int Defence;
+    public float Attack;
 
-    public int MagicDefence;
+    public float Defence;
+
+    public float MagicDefence;
 
     public float Power;
     public int MaxPower;
@@ -109,12 +114,20 @@ public class Unit
         Defence = Config.Defence;
         MagicDefence = Config.Defence;
         PowerSpeed = 1f;
-        Agi = 1;
+        Agi = 100;
+        foreach (var buff in Buffs)
+        {
+            buff.Apply();
+        }
     }
 
     public void UpdateBuffs()
     {
-
+        foreach (var buff in Buffs.Reverse<Buff>())
+        {
+            if (buff.Duration.Finished()) Buffs.Remove(buff);
+            else buff.Update();
+        }
     }
     public virtual void UpdateAction()
     {
@@ -165,6 +178,29 @@ public class Unit
 
     }
 
+    public Buff AddBuff(int buffId,Skill source)
+    {
+        var oldBuff = Buffs.FirstOrDefault(x => x.Id == buffId);
+        if (oldBuff != null)
+        {
+            oldBuff.Skill = source;
+            oldBuff.Reset();
+            return oldBuff;
+        }
+        else
+        {
+            var config = Database.Instance.Get<BuffConfig>(buffId);
+            var buff = typeof(Buff).Assembly.CreateInstance(nameof(Buffs) + "." + config.Type) as Buff;
+            buff.Id = buffId;
+            buff.Skill = source;
+            buff.Unit = this;
+            Buffs.Add(buff);
+            buff.Init();
+            Refresh();
+            return buff;
+        }
+    }
+
     public void RecoverPower(float count)
     {
         if (!MainSkill.Opening.Finished())
@@ -201,7 +237,7 @@ public class Unit
 
     public void Damage(DamageInfo damageInfo)
     {
-        int damage = (int)(damageInfo.Attack * damageInfo.DamageRate);
+        float damage = damageInfo.Attack * damageInfo.DamageRate;
         switch (damageInfo.DamageType)
         {
             case DamageTypeEnum.Normal:
@@ -225,8 +261,8 @@ public class Unit
 public class DamageInfo
 {
     public object Source;
-    public int Attack;
+    public float Attack;
     public DamageTypeEnum DamageType;
     public float DamageRate;
-    public int FinalDamage;
+    public float FinalDamage;
 }

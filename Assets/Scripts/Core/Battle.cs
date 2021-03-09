@@ -11,7 +11,7 @@ public class Battle
     public int Hp = 10;
     public int Hurt;
     public int Tick = -1;
-    public float Cost = 30;
+    public float Cost;
 
     public Map Map = new Map();
 
@@ -40,6 +40,8 @@ public class Battle
         Instance = this;
 
         Random = new System.Random(battleConfig.Seed);
+
+        Cost = battleConfig.StartCost;
 
         //读取场景地图信息
         Map.Init();

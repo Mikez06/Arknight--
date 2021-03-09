@@ -89,6 +89,7 @@ namespace Units
         public virtual void CheckBlock()
         {
             if (Config.Height > 0) return;//飞行单位无法被阻挡
+            if (StopUnit != null) return;
             var blockUnit = Battle.FindFirst(Position2, Config.Radius, 0, x => (x as Units.干员).CanStop(this), x => (x.Position2 - Position2).magnitude) as 干员;
             if (blockUnit != null)
             {

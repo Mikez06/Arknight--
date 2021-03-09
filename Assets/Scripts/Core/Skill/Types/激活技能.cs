@@ -8,6 +8,10 @@ namespace Skills
 {
     public class 激活技能 : Skill
     {
-
+        protected override void OnOpen()
+        {
+            base.OnOpen();
+            Start();
+        }
     }
 }

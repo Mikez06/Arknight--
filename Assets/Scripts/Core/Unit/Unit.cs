@@ -45,14 +45,18 @@ public class Unit
     /// 移速
     /// </summary>
     public float Speed;
+    public float SpeedRate;
 
     public float AttackGap;
 
     public float Attack;
+    public float AttackRate;
 
     public float Defence;
+    public float DefenceRate;
 
     public float MagicDefence;
+    public float MagicDefecneRate;
 
     public float Power;
     public int MaxPower;
@@ -115,17 +119,25 @@ public class Unit
         MagicDefence = Config.Defence;
         PowerSpeed = 1f;
         Agi = 100;
+        AttackGap = 0;
+        SpeedRate = 0;
         foreach (var buff in Buffs)
         {
             buff.Apply();
         }
+        Speed = Speed * (1 - SpeedRate);
+        if (Speed < 0) Speed = 0;
+        Attack = Attack * (1 + AttackRate);
+        Defence = Defence * (1 + DefenceRate);
+        MagicDefence = MagicDefecneRate + MagicDefecneRate;
+        if (MagicDefecneRate < 0) MagicDefecneRate = 0;
     }
 
     public void UpdateBuffs()
     {
         foreach (var buff in Buffs.Reverse<Buff>())
         {
-            if (buff.Duration.Finished()) Buffs.Remove(buff);
+            if (buff.Duration.Finished()) RemoveBuff(buff);
             else buff.Update();
         }
     }
@@ -201,6 +213,12 @@ public class Unit
         }
     }
 
+    public void RemoveBuff(Buff buff)
+    {
+        Buffs.Remove(buff);
+        Refresh();
+    }
+
     public void RecoverPower(float count)
     {
         if (!MainSkill.Opening.Finished())
@@ -233,6 +251,13 @@ public class Unit
         UnitModel = go.GetComponent<UnitModel>();
         UnitModel.Unit = this;
         UnitModel.Init();
+    }
+
+    public void Heal(float heal)
+    {
+        Hp += heal;
+        if (Hp > MaxHp)
+            Hp = MaxHp;
     }
 
     public void Damage(DamageInfo damageInfo)

@@ -42,6 +42,7 @@ public class SkillConfig : IConfig
     public int[] Skills;
     public int[] ExSkills;
     public int[] Buffs;
-    public int[] BuffData;
+    [BsonRepresentation(BsonType.Double, AllowTruncation = true)]
+    public float[] BuffData;
     public bool AttackFly;
 }

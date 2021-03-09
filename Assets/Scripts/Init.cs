@@ -24,10 +24,11 @@ public class Init : MonoBehaviour
             UnitInputs = new UnitInput[]
             {
                 new UnitInput(){ Id=2 },
-                new UnitInput(){ Id=2 },
-                new UnitInput(){ Id=2 },
-                new UnitInput(){ Id=2 },
-            }
+                new UnitInput(){ Id=3 },
+                new UnitInput(){ Id=3 },
+                new UnitInput(){ Id=4 },
+            },
+            StartCost=50,
         });
     }
 

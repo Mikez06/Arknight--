@@ -44,7 +44,7 @@ public class Skill
     public virtual void Update()
     {
         UpdateCooldown();
-        if (Unit.Recover.Finished() && Unit.Turning.Finished())
+        if ((Unit.Recover.Finished() && Unit.Turning.Finished()) || Config.UseType == SkillUseTypeEnum.被动) //被动技能，被晕了也能发
         {
             if (Ready())
             {
@@ -104,8 +104,6 @@ public class Skill
 
     public virtual bool Ready()
     {
-        if (Unit.State == StateEnum.Attack) return false;
-
         switch (Config.ReadyType)
         {
             case SkillReadyEnum.特技激活:
@@ -125,13 +123,13 @@ public class Skill
         return Cooldown.Finished();
     }
 
-    public virtual void ResetCooldown()
+    public virtual void ResetCooldown(float attackSpeed)
     {
         //自动充能技，除了走冷却外，还要走Power
         if (ifUsePower && Config.UseType == SkillUseTypeEnum.自动)
             Unit.Power -= Unit.MaxPower;
 
-        Cooldown.Set(Config.Cooldown);
+        Cooldown.Set(Config.Cooldown * attackSpeed);
     }
 
     #region 主动相关
@@ -163,29 +161,29 @@ public class Skill
     public virtual void Start()
     {
         if (!Selectable(Target)) return;
-        ResetCooldown();
         if (string.IsNullOrEmpty(Config.ModelAnimation))
         {
-            Debug.Log(Unit.Config._Id + "没有抬手,直接使用");
+            //Debug.Log(Unit.Config._Id + "的" + Config._Id + "没有抬手,直接使用");
             Cast(Target);
         }
         else
         {
             var duration = Unit.UnitModel.GetSkillDelay(Config.ModelAnimation, Unit.AnimationName, out float fullDuration);//.SkeletonAnimation.skeleton.data.Animations.Find(x => x.Name == "Attack");
-            duration = duration / Unit.Agi * 100;
-            fullDuration = fullDuration / Unit.Agi * 100;
+            float attackSpeed = 1 / Unit.Agi * 100;
             if (this == Unit.Skills[0])
             {
-                duration = duration * (Config.Cooldown + Unit.AttackGap) / Config.Cooldown;
-                fullDuration = fullDuration * (Config.Cooldown + Unit.AttackGap) / Config.Cooldown;
+                attackSpeed= attackSpeed* (Config.Cooldown + Unit.AttackGap) / Config.Cooldown;
             }
+            duration = duration * attackSpeed;
+            fullDuration = fullDuration * attackSpeed;
             Casting.Set(duration);
             Debug.Log(Unit.Config._Id + "的" + Config._Id + "AttackStart,pointDelay:" + duration + ",fullDuration" + fullDuration + ",Time:" + Time.time);
-            Unit.Recover.Set(duration);
+            Unit.Recover.Set(fullDuration);
             Unit.Attacking.Set(fullDuration);
             Unit.State = StateEnum.Attack;
             Unit.AnimationName = Config.ModelAnimation;
-            Unit.AnimationSpeed = 1;
+            Unit.AnimationSpeed = 1 / attackSpeed;
+            ResetCooldown(attackSpeed);
         }
     }
 
@@ -225,7 +223,6 @@ public class Skill
     /// <param name="target"></param>
     public virtual void Effect(Unit target)
     {
-
         if (Config.Bullet == null)
         {
             Hit(target);
@@ -255,28 +252,37 @@ public class Skill
         {
             Unit.RecoverPower(1);
         }
-        if (Config.AreaRange != null)
+        if (Config.DamageRate > 0)
         {
-            var targets = Battle.FindAll(target.Position2, Config.AreaRange.Value, Config.TargetTeam, Selectable);
-            foreach (var t in targets)
+            if (Config.AreaRange != null)
             {
-                t.Damage(new DamageInfo()
+                var targets = Battle.FindAll(target.Position2, Config.AreaRange.Value, Config.TargetTeam, Selectable);
+                foreach (var t in targets)
+                {
+                    t.Damage(new DamageInfo()
+                    {
+                        Source = this,
+                        Attack = Unit.Attack,
+                        DamageRate = t == target ? Config.DamageRate : Config.AreaDamage,
+                        DamageType = Config.DamageType,
+                    });
+                }
+            }
+            else if (Config.IfHeal)
+            {
+                target.Heal(Unit.Attack * Config.DamageRate);
+            }
+            else
+            {
+                target.Damage(new DamageInfo()
                 {
                     Source = this,
                     Attack = Unit.Attack,
-                    DamageRate = t == target ? Config.DamageRate : Config.AreaDamage,
+                    DamageRate = Config.DamageRate,
                     DamageType = Config.DamageType,
                 });
             }
         }
-        else
-            target.Damage(new DamageInfo()
-            {
-                Source = this,
-                Attack = Unit.Attack,
-                DamageRate = Config.DamageRate,
-                DamageType = Config.DamageType,
-            });
     }
     #endregion
     /// <summary>

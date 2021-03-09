@@ -46,7 +46,7 @@ public class UnitModel : MonoBehaviour
     void changeAnimation(string animationName)
     {
         SkeletonAnimation.state.ClearTrack(0);
-        SkeletonAnimation.state.AddEmptyAnimation(0, 0, 0);
+        //SkeletonAnimation.state.AddEmptyAnimation(0, 0, 0);
         if (animationName == "Idle") //从其他状态返回Idle时，如果有退出动画，就播放
         {
             var _endAnimation = SkeletonAnimation.Skeleton.data.FindAnimation(nowAnimation + "_End");

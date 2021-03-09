@@ -191,6 +191,7 @@ namespace Units
 
         public bool CanStop(Units.敌人 target)
         {
+            if (StopUnits.Contains(target)) return true;
             return StopUnits.Count < Config.StopCount;
         }
     }

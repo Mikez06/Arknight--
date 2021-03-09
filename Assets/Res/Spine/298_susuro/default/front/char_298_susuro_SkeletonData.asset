@@ -3,8 +3,9 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -13,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   atlasAssets:
   - {fileID: 11400000, guid: d8e6d7f2afb183148b7a2ad1c5f1460f, type: 2}
-  scale: 0.01
+  scale: 0.003
   skeletonJSON: {fileID: 4900000, guid: 7da6b0f58e4c88044b63b8fd30513c3e, type: 3}
   fromAnimation: []
   toAnimation: []

@@ -9,6 +9,7 @@ public class BattleInput
     public string MapName;
     public UnitInput[] UnitInputs;
     public int Seed;
+    public int StartCost;
 }
 
 public class UnitInput

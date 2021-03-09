@@ -1,1 +1,1 @@
-[{"_Id":"测试Buff","Type":"测试Buff"},{"_Id":"攻速提升","Type":"数值变化","LastTime":5,"Data":{"t":["Agi"]}}]
+[{"_Id":"测试Buff","Type":"测试Buff"},{"_Id":"攻速提升","Type":"数值变化","LastTime":5,"Data":{"t":["Agi"]}},{"_Id":"减速","Type":"数值变化","LastTime":0.3,"Data":{"t":["SpeedRate"]}},{"_Id":"攻击提升","Type":"数值变化","LastTime":5,"Data":{"t":["AttackRate"]}},{"_Id":"防御提升","Type":"数值变化","LastTime":0.01,"Data":{"t":["DefenceRate"]}}]

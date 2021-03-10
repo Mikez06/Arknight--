@@ -12,6 +12,9 @@ namespace MainUI
             UIObjectFactory.SetPackageItemExtension(UI_HalfUnit.URL, typeof(UI_HalfUnit));
             UIObjectFactory.SetPackageItemExtension(UI_MemberPage.URL, typeof(UI_MemberPage));
             UIObjectFactory.SetPackageItemExtension(UI_sortBtn.URL, typeof(UI_sortBtn));
+            UIObjectFactory.SetPackageItemExtension(UI_Team.URL, typeof(UI_Team));
+            UIObjectFactory.SetPackageItemExtension(UI_TeamSelect.URL, typeof(UI_TeamSelect));
+            UIObjectFactory.SetPackageItemExtension(UI_TeamUnit.URL, typeof(UI_TeamUnit));
         }
     }
 }

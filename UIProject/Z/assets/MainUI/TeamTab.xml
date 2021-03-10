@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="411,88" extention="Button">
+  <controller name="button" pages="2,up,3,down" selected="1"/>
+  <displayList>
+    <graph id="n14_r8hr" name="n14" xy="0,0" size="411,88" type="rect" lineSize="0" fillColor="#ff333333">
+      <gearColor controller="button" pages="3" values="#333333" default="#0099ff"/>
+    </graph>
+    <text id="n15_r8hr" name="title" xy="83,4" size="244,79" fontSize="60" color="#ffffff" text="第一编队"/>
+  </displayList>
+  <Button mode="Check"/>
+</component>

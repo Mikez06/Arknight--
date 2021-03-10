@@ -11,6 +11,7 @@ public class GameData
     private static GameData instance;
 
     public List<Card> Cards = new List<Card>();
+    public Team[] Teams = new Team[4];
     public string Name;
     public int MainPageUnitId;
 
@@ -27,6 +28,12 @@ public class GameData
                 };
                 Cards.Add(card);
             }
+        }
+        for (int i = 0; i < Instance.Teams.Length; i++)
+        {
+            Teams[i] = new Team();
+            Teams[i].Cards.Add(Cards[0]);
+            Teams[i].UnitSkill.Add(0);
         }
         MainPageUnitId = Cards[0].UnitId;
         Name = "玩家名字";

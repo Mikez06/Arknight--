@@ -12,12 +12,15 @@ public class Test : MonoBehaviour
     // Start is called before the first frame update
     async void Start()
     {
-        for (int i = 0; i < 10; i++)
+        List<string> a = new List<string>()
         {
-            var ps= EffectManager.Instance.GetEffect("击中1");
-            ps.PS.Play();
-            await TimeHelper.Instance.WaitAsync(1);
+           "za", "az","aa","nt","t",
+        };
+        foreach (var s in a.OrderBy(x=>x))
+        {
+            Debug.Log(s);
         }
+        Debug.Log(NPinyin.Pinyin.GetPinyin("阿米娅"));
     }
 
     // Update is called once per frame

@@ -8,8 +8,10 @@ namespace MainUI
 {
     partial class UI_HalfUnit
     {
+        public Card Card;
         public void SetCard(Card card)
         {
+            this.Card = card;
             m_typeControl.selectedIndex = (int)card.Config.Profession;
             m_halfPic.icon = "ui://UnitPic/" + card.Config.StandPic;
             m_stars.RemoveChildrenToPool();

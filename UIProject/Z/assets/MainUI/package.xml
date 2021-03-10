@@ -22,6 +22,16 @@
     <image id="kbtej" name="图层 1(1).png" path="/"/>
     <image id="kbtek" name="zone_map_8_up.png" path="/"/>
     <image id="kbtel" name="未标题-1(1).png" path="/"/>
+    <component id="r8hrm" name="Team.xml" path="/" exported="true"/>
+    <component id="r8hrn" name="TeamSelect.xml" path="/" exported="true"/>
+    <component id="r8hro" name="TeamUnit.xml" path="/"/>
+    <component id="r8hrp" name="TeamTab.xml" path="/"/>
+    <component id="r8hrq" name="QuickTeam.xml" path="/"/>
+    <image id="r8hrr" name="BW~}6W78FY{WC`V%HH1TD3I.png" path="/"/>
+    <component id="r8hrs" name="DeleteTeam.xml" path="/"/>
+    <component id="r8hrt" name="Right.xml" path="/"/>
+    <component id="r8hru" name="SelectBtn.xml" path="/"/>
+    <component id="r8hrv" name="SelectBtn(1).xml" path="/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

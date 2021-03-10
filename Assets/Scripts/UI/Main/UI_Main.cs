@@ -17,6 +17,10 @@ namespace MainUI
             {
                 UIManager.Instance.ChangeView<UI_MemberPage>(UI_MemberPage.URL);
             });
+            m_team.onClick.Add(() =>
+            {
+                UIManager.Instance.ChangeView<UI_Team>(UI_Team.URL);
+            });
         }
 
         public void Enter()

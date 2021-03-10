@@ -37,7 +37,7 @@ public class BuildEditor
 
         //SetBundleAndAtlasWithoutShare("Assets/" + PathHelper.MapPath, PathHelper.MapPath, true);
 
-        //SetBundleAndAtlasWithoutShare("Assets/" + PathHelper.SpritePath + "/", PathHelper.SpritePath + "/", true);
+        SetBundleAndAtlasWithoutShare("Assets/" + PathHelper.SpritePath + "/", PathHelper.SpritePath + "/", true);
 
         SetBundleAndAtlasWithoutShare("Assets/" + PathHelper.UnitPath, PathHelper.UnitPath);
         SetBundleAndAtlasWithoutShare("Assets/" + PathHelper.BulletPath, PathHelper.BulletPath);

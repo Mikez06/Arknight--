@@ -10,12 +10,13 @@ using DG.Tweening;
 public class Test : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    async void Start()
     {
         for (int i = 0; i < 10; i++)
         {
-            GetComponent<SkeletonAnimation>().state.AddAnimation(0, "Idle", false, 0);
-            GetComponent<SkeletonAnimation>().state.AddAnimation(0, "Attack", false, 0);
+            var ps= EffectManager.Instance.GetEffect("击中1");
+            ps.PS.Play();
+            await TimeHelper.Instance.WaitAsync(1);
         }
     }
 

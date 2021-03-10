@@ -44,42 +44,18 @@ public class Skill
     public virtual void Update()
     {
         UpdateCooldown();
-        if ((Unit.Recover.Finished() && Unit.Turning.Finished()) || Config.UseType == SkillUseTypeEnum.被动) //被动技能，被晕了也能发
+        if ((Unit.Recover.Finished()) || Config.UseType == SkillUseTypeEnum.被动) //被动技能，被晕了也能发
         {
             if (Ready())
             {
-                if (Target != null && Unit.Turning.Finished())//已有目标，说明在等待转身结束
-                {
-                    if (Target.Alive())
-                        Start();
-                    else
-                        Target = null;
-                }
-                if (Target == null) //没有目标 尝试找一个
-                {
-                    FindTarget();
-                    if (Target != null)
-                    {
-                        Debug.Log(this.Config._Id + "findTarget" + Target.Config._Id);
-                        var scaleX = (Target.Position - Unit.Position).x > 0 ? 1 : -1;
-                        if (scaleX != Unit.ScaleX)
-                        {
-                            Unit.TargetScaleX = scaleX;
-                            Unit.Turning.Set(SystemConfig.TurningTime);
-                        }
-                        else
-                        {
-                            Start();
-                        }
-                    }
-                }
+                Start();
             }
         }
 
 
         if (Casting.Update(SystemConfig.DeltaTime))
         {
-            if (!Selectable(Target))
+            if (!Selectable(Target))// 咏唱完目标已经不可选中了，尝试找到一个新目标
             {
                 Target = null;
                 FindTarget();
@@ -160,7 +136,23 @@ public class Skill
     #region 使用流程
     public virtual void Start()
     {
-        if (!Selectable(Target)) return;
+        if (Target == null)
+        {
+            FindTarget();
+        }
+        if (Target != null && Selectable(Target))
+        {
+            var scaleX = (Target.Position - Unit.Position).x > 0 ? 1 : -1;
+            if (scaleX != Unit.ScaleX)
+            {
+                Unit.TargetScaleX = scaleX;
+                Unit.Turning.Set(SystemConfig.TurningTime);
+            }
+        }
+        else
+        {
+            return;
+        }
         if (string.IsNullOrEmpty(Config.ModelAnimation))
         {
             //Debug.Log(Unit.Config._Id + "的" + Config._Id + "没有抬手,直接使用");
@@ -184,6 +176,14 @@ public class Skill
             Unit.AnimationName = Config.ModelAnimation;
             Unit.AnimationSpeed = 1 / attackSpeed;
             ResetCooldown(attackSpeed);
+        }
+
+        if (Config.StartEffect != null)
+        {
+            var ps = EffectManager.Instance.GetEffect(Config.StartEffect);
+            ps.transform.position = Unit.UnitModel.SkeletonAnimation.transform.position;
+            ps.transform.localScale = new Vector3(Unit.TargetScaleX, 1, 1);
+            ps.PS.Play();
         }
     }
 
@@ -243,6 +243,12 @@ public class Skill
     /// <param name="target"></param>
     public virtual void Hit(Unit target)
     {
+        if (Config.HitEffect != null)
+        {
+            var ps = EffectManager.Instance.GetEffect(Config.HitEffect);
+            ps.transform.position = target.UnitModel.SkeletonAnimation.transform.position;
+            ps.PS.Play();
+        }
         if (Config.Buffs != null)
             foreach (var buffId in Config.Buffs)
             {
@@ -259,6 +265,12 @@ public class Skill
                 var targets = Battle.FindAll(target.Position2, Config.AreaRange.Value, Config.TargetTeam, Selectable);
                 foreach (var t in targets)
                 {
+                    if (Config.EffectEffect != null)
+                    {
+                        var ps = EffectManager.Instance.GetEffect(Config.EffectEffect);
+                        ps.transform.position = target.UnitModel.SkeletonAnimation.transform.position;
+                        ps.PS.Play();
+                    }
                     t.Damage(new DamageInfo()
                     {
                         Source = this,
@@ -268,19 +280,28 @@ public class Skill
                     });
                 }
             }
-            else if (Config.IfHeal)
-            {
-                target.Heal(Unit.Attack * Config.DamageRate);
-            }
             else
             {
-                target.Damage(new DamageInfo()
+                if (Config.EffectEffect != null)
                 {
-                    Source = this,
-                    Attack = Unit.Attack,
-                    DamageRate = Config.DamageRate,
-                    DamageType = Config.DamageType,
-                });
+                    var ps = EffectManager.Instance.GetEffect(Config.EffectEffect);
+                    ps.transform.position = target.UnitModel.SkeletonAnimation.transform.position;
+                    ps.PS.Play();
+                }
+                if (Config.IfHeal)
+                {
+                    target.Heal(Unit.Attack * Config.DamageRate);
+                }
+                else
+                {
+                    target.Damage(new DamageInfo()
+                    {
+                        Source = this,
+                        Attack = Unit.Attack,
+                        DamageRate = Config.DamageRate,
+                        DamageType = Config.DamageType,
+                    });
+                }
             }
         }
     }

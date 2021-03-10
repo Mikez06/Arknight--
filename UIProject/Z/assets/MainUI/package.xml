@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="k4mja8t1">
+  <resources>
+    <component id="kbte0" name="Main.xml" path="/" exported="true"/>
+    <component id="kbte1" name="HalfUnit.xml" path="/"/>
+    <image id="kbte2" name="star_full.png" path="/"/>
+    <image id="kbte3" name="SUPPORT.png" path="/profession/" exported="true"/>
+    <image id="kbte4" name="TANK.png" path="/profession/" exported="true"/>
+    <image id="kbte5" name="WARRIOR.png" path="/profession/" exported="true"/>
+    <image id="kbte6" name="CASTER.png" path="/profession/" exported="true"/>
+    <image id="kbte7" name="MEDIC.png" path="/profession/" exported="true"/>
+    <image id="kbte8" name="PIONEER.png" path="/profession/" exported="true"/>
+    <image id="kbte9" name="SNIPER.png" path="/profession/" exported="true"/>
+    <image id="kbtea" name="SPECIAL.png" path="/profession/" exported="true"/>
+    <component id="kbteb" name="MemberPage.xml" path="/" exported="true"/>
+    <component id="kbtec" name="btn.xml" path="/"/>
+    <image id="kbtee" name="图层 3.png" path="/"/>
+    <image id="kbtef" name="未标题-1.png" path="/"/>
+    <image id="kbteg" name="图层 1.png" path="/"/>
+    <component id="kbteh" name="back.xml" path="/"/>
+    <component id="kbtei" name="sortBtn.xml" path="/"/>
+    <image id="kbtej" name="图层 1(1).png" path="/"/>
+    <image id="kbtek" name="zone_map_8_up.png" path="/"/>
+    <image id="kbtel" name="未标题-1(1).png" path="/"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

@@ -45,4 +45,7 @@ public class SkillConfig : IConfig
     [BsonRepresentation(BsonType.Double, AllowTruncation = true)]
     public float[] BuffData;
     public bool AttackFly;
+    public string StartEffect;
+    public string HitEffect;
+    public string EffectEffect;
 }

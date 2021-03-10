@@ -83,6 +83,7 @@ namespace BattleUI
             {
                 m_eHp.max = Unit.MaxHp;
                 m_eHp.value = Unit.Hp;
+                m_eHp.visible = m_eHp.value != m_eHp.max;
             }
         }
     }

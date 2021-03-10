@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="148,185">
-  <controller name="typeControl" pages="0,,1,,2,,3,,4,,5,,6,,7," selected="0">
+  <controller name="typeControl" pages="0,,1,,2,,3,,4,,5,,6,,7," selected="7">
     <remark page="0" value="先锋"/>
     <remark page="1" value="近卫"/>
     <remark page="2" value="狙击"/>
@@ -10,8 +10,8 @@
     <remark page="6" value="医疗"/>
     <remark page="7" value="特种"/>
   </controller>
-  <controller name="cooldown" pages="0,,1," selected="1"/>
-  <controller name="canUse" pages="0,,1," selected="1"/>
+  <controller name="cooldown" pages="0,,1," selected="0"/>
+  <controller name="canUse" pages="0,,1," selected="0"/>
   <displayList>
     <component id="n18_kbte" name="headIcon" src="kbte3o" fileName="Head.xml" xy="0,0"/>
     <graph id="n20_kbte" name="n20" xy="0,0" size="148,185" type="rect" lineSize="0" fillColor="#63ff0000">
@@ -30,5 +30,8 @@
     <graph id="n22_kbte" name="n22" xy="0,0" size="148,185" type="rect" lineSize="0" fillColor="#63000000">
       <gearDisplay controller="canUse" pages="1"/>
     </graph>
+    <loader id="n24_kbte" name="n24" xy="31,-15" size="50,50" url="ui://k4mja8t1kbtea" align="center" vAlign="middle" fill="scale">
+      <gearIcon controller="typeControl" pages="0,2,3,4,5,6,7" values="ui://k4mja8t1kbte8|ui://k4mja8t1kbte9|ui://k4mja8t1kbte4|ui://k4mja8t1kbte6|ui://k4mja8t1kbte3|ui://k4mja8t1kbte7|ui://k4mja8t1kbtea" default="ui://k4mja8t1kbte5"/>
+    </loader>
   </displayList>
 </component>

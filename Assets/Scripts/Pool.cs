@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Pool<T> where T : MonoBehaviour
+public class Pool<T> where T : Component
 {
     private readonly Dictionary<T, Stack<T>> _pool = new Dictionary<T, Stack<T>>();
     private readonly Dictionary<T, T> _live = new Dictionary<T, T>();
@@ -24,7 +24,7 @@ public class Pool<T> where T : MonoBehaviour
                 }
 
                 result.gameObject.SetActive(true);
-                result.enabled = true;
+                //result.transform.enabled = true;
             }
             else
             {

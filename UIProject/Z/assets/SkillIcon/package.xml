@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="k1fe9lyw">
+  <resources>
+    <image id="kbte7" name="箭矢·追猎.png" path="/" exported="true"/>
+    <image id="kbte8" name="强力击·γ型.png" path="/" exported="true"/>
+    <image id="kbte9" name="雪境生存法则.png" path="/" exported="true"/>
+    <image id="kbtea" name="焰淬匕首.png" path="/" exported="true"/>
+    <image id="kbteb" name="真银斩.png" path="/" exported="true"/>
+    <image id="kbtec" name="冲锋号令.png" path="/" exported="true"/>
+    <image id="kbted" name="箭矢·散逸.png" path="/" exported="true"/>
+  </resources>
+  <publish name=""/>
+</packageDescription>

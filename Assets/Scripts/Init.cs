@@ -18,18 +18,20 @@ public class Init : MonoBehaviour
     private async void Start()
     {
         await Database.Instance.InitAsync();
-        StartBattle(new BattleInput()
-        {
-            MapName = "TestMap",
-            UnitInputs = new UnitInput[]
-            {
-                new UnitInput(){ Id=2 },
-                new UnitInput(){ Id=3 },
-                new UnitInput(){ Id=3 },
-                new UnitInput(){ Id=4 },
-            },
-            StartCost=50,
-        });
+        GameData.Instance.TestInit();
+        var battleUI = UIManager.Instance.ChangeView<MainUI.UI_Main>(MainUI.UI_Main.URL);
+        //StartBattle(new BattleInput()
+        //{
+        //    MapName = "TestMap",
+        //    UnitInputs = new UnitInput[]
+        //    {
+        //        new UnitInput(){ Id=2 },
+        //        new UnitInput(){ Id=3 },
+        //        new UnitInput(){ Id=3 },
+        //        new UnitInput(){ Id=4 },
+        //    },
+        //    StartCost=50,
+        //});
     }
 
     public float startTime;

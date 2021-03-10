@@ -41,5 +41,8 @@ public class UnitConfig : IConfig
     public int Cost;
     public int ResetTime;
     public int StopCount;
-    public UnitTypeEnum UnitType;
+    public UnitTypeEnum Profession;
+    public string HeadIcon;
+    public string StandPic;
+    public int Rare;
 }

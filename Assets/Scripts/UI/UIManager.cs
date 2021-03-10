@@ -27,7 +27,12 @@ public class UIManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(this);
         BattleUI.BattleUIBinder.BindAll();
+        MainUI.MainUIBinder.BindAll();
         LoadPackge("BattleUI");
+        LoadPackge("MainUI");
+        LoadPackge("SkillIcon");
+        LoadPackge("UnitFace");
+        LoadPackge("UnitPic");
     }
 
     private void Start()

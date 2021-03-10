@@ -12,7 +12,7 @@ namespace BattleUI
         public void SetUnit(Units.干员 unit)
         {
             this.Unit = unit;
-            m_typeControl.selectedIndex = (int)unit.Config.UnitType;
+            m_typeControl.selectedIndex = (int)unit.Config.Profession;
             m_cost.text = unit.GetCost().ToString();
             m_bar.max = unit.ResetTime;
         }
@@ -25,6 +25,7 @@ namespace BattleUI
             m_bar.value = Unit.Reseting.value;
             m_resetTime.text = Unit.Reseting.value.ToString("F1");
             m_canUse.selectedIndex = Unit.Useable() ? 0 : 1;
+            m_headIcon.m_headIcon.icon = "ui://UnitFace/" + Unit.Config.HeadIcon;
         }
     }
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <displayList>
+    <image id="n9_kbte" name="n9" src="kbtek" fileName="zone_map_8_up.png" xy="0,-100" size="1920,1280" aspect="true">
+      <relation target="" sidePair="width-width,height-height,center-center,middle-middle"/>
+    </image>
+    <component id="n2_kbte" name="team" src="kbtec" fileName="btn.xml" xy="1423,539"/>
+    <component id="n3_kbte" name="member" src="kbtec" fileName="btn.xml" xy="1648,539">
+      <Button title="干员"/>
+    </component>
+    <loader id="n4_kbte" name="standPic" xy="-81,41" size="1024,1024" align="center"/>
+    <graph id="n8_kbte" name="n8" xy="0,484" size="185,65" type="rect" lineSize="0" fillColor="#7f000000"/>
+    <text id="n5_kbte" name="Name" xy="108,528" pivot="0.5,0.5" anchor="true" size="144,48" fontSize="35" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" text="玩家名字"/>
+  </displayList>
+</component>

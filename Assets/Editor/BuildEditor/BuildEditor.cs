@@ -10,22 +10,93 @@ using Object = UnityEngine.Object;
 	{
 		public List<string> ParentPaths = new List<string>();
 	}
-	
-	public enum BuildType
+
+public enum PlatformType
+{
+    None,
+    Android,
+    IOS,
+    PC,
+    MacOS,
+}
+public enum BuildType
 	{
 		Development,
 		Release,
 	}
 
-public class BuildEditor
+public class BuildEditor : EditorWindow
 {
     private readonly Dictionary<string, BundleInfo> dictionary = new Dictionary<string, BundleInfo>();
 
-    [MenuItem("Tools/重新标记")]
+    private PlatformType platformType;
+    private bool isBuildExe;
+    private bool isContainAB;
+    private bool buildAssetBundle;
+    private BuildType buildType;
+    private BuildOptions buildOptions = BuildOptions.AllowDebugging | BuildOptions.Development;
+    private BuildAssetBundleOptions buildAssetBundleOptions = BuildAssetBundleOptions.DeterministicAssetBundle;
+
+    private string UserName;
+    private string Password;
+
+    [MenuItem("Tools/打包工具")]
     public static void ShowWindow()
+    {
+        GetWindow(typeof(BuildEditor));
+    }
+    [MenuItem("Tools/重新标记")]
+    public static void SetPackingTag()
     {
         SetPackingTagAndAssetBundle();
     }
+
+    private void OnGUI()
+    {
+        this.platformType = (PlatformType)EditorGUILayout.EnumPopup(platformType);
+        this.isBuildExe = EditorGUILayout.Toggle("是否打包EXE: ", this.isBuildExe);
+        this.isContainAB = EditorGUILayout.Toggle("是否同将资源打进EXE: ", this.isContainAB);
+        buildAssetBundle = EditorGUILayout.Toggle("是否同打ab包: ", this.buildAssetBundle);
+        this.buildType = (BuildType)EditorGUILayout.EnumPopup("BuildType: ", this.buildType);
+
+        switch (buildType)
+        {
+            case BuildType.Development:
+                this.buildOptions = BuildOptions.Development | BuildOptions.AutoRunPlayer | BuildOptions.ConnectWithProfiler | BuildOptions.AllowDebugging;
+                break;
+            case BuildType.Release:
+                this.buildOptions = BuildOptions.None;
+                break;
+        }
+
+        this.buildAssetBundleOptions = (BuildAssetBundleOptions)EditorGUILayout.EnumFlagsField("BuildAssetBundleOptions(可多选): ", this.buildAssetBundleOptions);
+
+        if (GUILayout.Button("重新标记"))
+        {
+            SetPackingTagAndAssetBundle();
+        }
+
+        if (GUILayout.Button("开始打包"))
+        {
+            if (this.platformType == PlatformType.None)
+            {
+                Debug.LogError("请选择打包平台!");
+                return;
+            }
+
+            //try
+            //{
+            //    PlayerSettings.bundleVersion = CommandHelper.ExecuteCommand("svn", "info --show-item revision");
+            //}
+            //catch
+            //{
+            //    Debug.LogWarning("获取 svn 版本号失败");
+            //}
+            //Debug.Log($"Version:{  PlayerSettings.bundleVersion}");
+            BuildHelper.Build(this.platformType, AssetDatabase.GetAllAssetBundleNames().Select(x => new AssetBundleBuild() { assetBundleName = x, assetNames = AssetDatabase.GetAssetPathsFromAssetBundle(x) }).ToArray(), this.buildAssetBundleOptions, this.buildOptions, this.isBuildExe, this.isContainAB, buildAssetBundle);
+        }
+    }
+
     private static void SetPackingTagAndAssetBundle()
     {
         //ClearPackingTagAndAssetBundle();

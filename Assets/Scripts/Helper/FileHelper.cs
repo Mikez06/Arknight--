@@ -18,7 +18,12 @@ public static class FileHelper
             GetAllFiles(files, subDir);
         }
     }
-
+    public static void EnsureEmptyDirectory(string dir)
+    {
+        if (!Directory.Exists(dir))
+            Directory.CreateDirectory(dir);
+        CleanDirectory(dir);
+    }
     public static void CleanDirectory(string dir)
     {
         foreach (string subdir in Directory.GetDirectories(dir))

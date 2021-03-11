@@ -35,5 +35,5 @@
     <image id="kbte4e" name="闪耀效果.png" path="/FX/"/>
     <image id="kbte4f" name="Star.png" path="/IconMoney/"/>
   </resources>
-  <publish name="" genCode="true"/>
+  <publish name="" genCode="true" excluded="kbte3u,kbte3n"/>
 </packageDescription>

@@ -11,7 +11,7 @@ namespace MainUI
     partial class UI_TeamUnit
     {
         public Card Card;
-        public void SetCard(Card card)
+        public void SetCard(Card card,int skillIndex)
         {
             this.Card = card;
             if (card == null)
@@ -21,7 +21,7 @@ namespace MainUI
             else
             {
                 m_empty.selectedIndex = 0;
-                m_Unit.SetCard(card);
+                m_Unit.SetCard(card,skillIndex);
             }
         }
     }

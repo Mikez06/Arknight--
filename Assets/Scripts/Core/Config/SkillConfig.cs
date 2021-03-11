@@ -48,4 +48,6 @@ public class SkillConfig : IConfig
     public string StartEffect;
     public string HitEffect;
     public string EffectEffect;
+    public string Icon;
+    public string Desc;
 }

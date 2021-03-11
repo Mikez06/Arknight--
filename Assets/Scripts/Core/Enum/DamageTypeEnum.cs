@@ -8,5 +8,6 @@ public enum DamageTypeEnum
 {
     Normal,
     Magic,
+    Real,
 }
 

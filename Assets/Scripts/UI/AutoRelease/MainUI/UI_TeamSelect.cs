@@ -8,6 +8,7 @@ namespace MainUI
     public partial class UI_TeamSelect : GComponent
     {
         public Controller m_quick;
+        public UI_LeftUnitInfo m_leftUnit;
         public GButton m_back;
         public GList m_Cards;
         public UI_sortBtn m_level;
@@ -29,6 +30,7 @@ namespace MainUI
             base.ConstructFromXML(xml);
 
             m_quick = GetControllerAt(0);
+            m_leftUnit = (UI_LeftUnitInfo)GetChildAt(1);
             m_back = (GButton)GetChildAt(2);
             m_Cards = (GList)GetChildAt(3);
             m_level = (UI_sortBtn)GetChildAt(6);

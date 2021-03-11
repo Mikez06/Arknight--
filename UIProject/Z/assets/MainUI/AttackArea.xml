@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="30,30">
+  <controller name="type" pages="1,,0," selected="0">
+    <remark page="0" value="attack"/>
+    <remark page="1" value="stand"/>
+  </controller>
+  <displayList>
+    <graph id="n11_k6t7" name="n11" xy="0,0" size="30,30" type="rect" lineSize="0">
+      <gearDisplay controller="type" pages="0"/>
+    </graph>
+    <graph id="n12_k6t7" name="n12" xy="0,0" size="30,30" type="rect" lineSize="4" lineColor="#ffcccccc" fillColor="#00ffffff"/>
+  </displayList>
+</component>

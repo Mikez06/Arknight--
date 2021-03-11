@@ -76,6 +76,14 @@ namespace MainUI
                 UIManager.Instance.ChangeView<UI_Team>(UI_Team.URL);
             });
             m_Cards.onClickItem.Add(clickCard);
+            m_leftUnit.m_Skills.onClickItem.Add(x =>
+            {
+                int index = m_leftUnit.m_Skills.GetChildIndex((x.data as GObject));
+                int cardIndex = NowTeam.IndexOf(m_leftUnit.Card);
+                NowSkill[cardIndex] = index;
+                m_leftUnit.SetCard(m_leftUnit.Card, index);
+                Flush(false);
+            });
         }
 
         public void Enter()
@@ -92,6 +100,14 @@ namespace MainUI
             NowSkill.Clear();
             NowSkill.AddRange(baseTeam.UnitSkill);
             Flush(true);
+            if (team.Cards.Count > 0)
+            {
+                m_leftUnit.SetCard(team.Cards[0], team.UnitSkill[0]);
+            }
+            else
+            {
+                m_leftUnit.SetCard(null, 0);
+            }
         }
 
         public void ChangeUnit(Team team,Card card)
@@ -108,6 +124,14 @@ namespace MainUI
                 NowSkill.Add(baseTeam.UnitSkill[index]);
             }
             Flush(true);
+            if (card == null)
+            {
+                m_leftUnit.SetCard(null, 0);
+            }
+            else
+            {
+                m_leftUnit.SetCard(card, team.UnitSkill[team.Cards.IndexOf(card)]);
+            }
         }
 
         public void Flush(bool resort)
@@ -145,7 +169,8 @@ namespace MainUI
                 foreach (var card in cards)
                 {
                     var uiCard = m_Cards.AddItemFromPool() as UI_HalfUnit;
-                    uiCard.SetCard(card);
+                    int index = NowTeam.IndexOf(card);
+                    uiCard.SetCard(card, index >= 0 ? NowSkill[index] : card.UsingSkill);
                     if (m_quick.selectedIndex == 0)//单选模式下，选中卡片高亮
                     {
                         uiCard.m_seletd.selectedIndex = NowTeam.Contains(card) ? 1 : 0;
@@ -163,6 +188,8 @@ namespace MainUI
                 foreach (UI_HalfUnit uiCard in m_Cards.GetChildren())
                 {
                     var card = uiCard.Card;
+                    int index = NowTeam.IndexOf(card);
+                    uiCard.SetCard(card, index >= 0 ? NowSkill[index] : card.UsingSkill);
                     if (m_quick.selectedIndex == 0)//单选模式下，选中卡片高亮
                     {
                         uiCard.m_seletd.selectedIndex = NowTeam.Contains(card) ? 1 : 0;
@@ -180,6 +207,7 @@ namespace MainUI
         void clickCard(EventContext evt)
         {
             var card = (evt.data as UI_HalfUnit).Card;
+            m_leftUnit.SetCard(card, card.UsingSkill);
             if (m_quick.selectedIndex == 0)
             {
                 if (NowTeam.Contains(card))

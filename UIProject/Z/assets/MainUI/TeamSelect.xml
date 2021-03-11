@@ -5,7 +5,7 @@
     <image id="n1_r8hr" name="n100" src="kbtel" fileName="未标题-1(1).png" xy="0,0" size="1920,1080">
       <relation target="" sidePair="width-width,height-height"/>
     </image>
-    <graph id="n2_r8hr" name="n2" xy="0,0" size="603,1080" type="rect"/>
+    <component id="n2_r8hr" name="leftUnit" src="k6t713" fileName="LeftUnitInfo.xml" xy="0,0"/>
     <component id="n0_r8hr" name="back" src="kbteh" fileName="back.xml" xy="38,29"/>
     <list id="n3_r8hr" name="Cards" xy="628,80" size="1152,835" scale="1.1,1.1" layout="flow_vt" overflow="scroll" scroll="horizontal" scrollBarFlags="4" lineGap="15" colGap="2" defaultItem="ui://k4mja8t1kbte1" autoClearItems="true">
       <item/>

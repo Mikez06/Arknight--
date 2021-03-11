@@ -39,6 +39,9 @@
     <component id="kbte10" name="BattleInfo.xml" path="/"/>
     <component id="kbte11" name="Container.xml" path="/"/>
     <component id="kbte12" name="World1.xml" path="/Level/"/>
+    <component id="k6t713" name="LeftUnitInfo.xml" path="/"/>
+    <component id="k6t714" name="AttackArea.xml" path="/" exported="true"/>
+    <component id="k6t715" name="SkillInfo.xml" path="/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

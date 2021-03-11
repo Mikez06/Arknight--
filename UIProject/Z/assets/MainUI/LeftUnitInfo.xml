@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="603,1080">
+  <controller name="empty" pages="0,,1," selected="0"/>
+  <displayList>
+    <graph id="n2_r8hr" name="n2" xy="0,0" size="603,1080" type="rect"/>
+    <text id="n3_k6t7" name="name" xy="26,107" size="184,79" group="n40_k6t7" fontSize="60" text="阿米娅"/>
+    <text id="n4_k6t7" name="n4" xy="35,192" size="32,35" group="n40_k6t7" fontSize="25" text="Lv"/>
+    <text id="n5_k6t7" name="lv" xy="106,162" size="72,79" group="n40_k6t7" fontSize="60" text="90"/>
+    <graph id="n6_k6t7" name="n6" xy="267,148" size="5,268" group="n40_k6t7" type="rect" lineSize="0" fillColor="#ff999999"/>
+    <graph id="n8_k6t7" name="n8" xy="0,409" size="603,54" group="n40_k6t7" type="rect" lineSize="0" lineColor="#ff666666" fillColor="#ff666666"/>
+    <graph id="n9_k6t7" name="n9" xy="0,409" size="227,54" group="n40_k6t7" type="rect" lineSize="0" fillColor="#ffaaaaaa"/>
+    <graph id="n10_k6t7" name="n10" xy="21,256" size="221,138" group="n40_k6t7" type="rect" lineSize="0" fillColor="#ff999999"/>
+    <text id="n15_k6t7" name="n15" xy="89,257" size="84,29" group="n40_k6t7" fontSize="20" color="#ffffff" text="攻击范围"/>
+    <component id="n14_k6t7" name="attackArea" src="kbte11" fileName="Container.xml" xy="22,257" size="220,136" group="n40_k6t7"/>
+    <list id="n19_k6t7" name="Skills" xy="23,475" size="564,602" group="n40_k6t7" overflow="scroll" scrollBarFlags="160" defaultItem="ui://k4mja8t1k6t715" autoClearItems="true">
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <text id="n20_k6t7" name="n20" xy="43,413" size="74,48" group="n40_k6t7" fontSize="35" color="#ffffff" text="技能"/>
+    <text id="n21_k6t7" name="n21" xy="318,103" size="67,30" group="n40_k6t7" fontSize="21" text="再部署"/>
+    <text id="n22_k6t7" name="n22" xy="318,137" size="88,30" group="n40_k6t7" fontSize="21" text="部署费用"/>
+    <text id="n23_k6t7" name="n23" xy="318,174" size="67,30" group="n40_k6t7" fontSize="21" text="阻挡数"/>
+    <text id="n24_k6t7" name="n24" xy="318,213" size="88,30" group="n40_k6t7" fontSize="21" text="攻击速度"/>
+    <text id="n25_k6t7" name="n25" xy="318,248" size="88,30" group="n40_k6t7" fontSize="21" text="生命上限"/>
+    <text id="n26_k6t7" name="n26" xy="318,284" size="46,30" group="n40_k6t7" fontSize="21" text="攻击"/>
+    <text id="n27_k6t7" name="n27" xy="318,319" size="46,30" group="n40_k6t7" fontSize="21" text="防御"/>
+    <text id="n28_k6t7" name="n28" xy="318,359" size="88,30" group="n40_k6t7" fontSize="21" text="法术抗性"/>
+    <text id="n29_k6t7" name="reset" xy="532,103" pivot="1,0" anchor="true" size="40,30" group="n40_k6t7" fontSize="21" align="right" text="111"/>
+    <text id="n30_k6t7" name="cost" xy="532,137" pivot="1,0" anchor="true" size="40,30" group="n40_k6t7" fontSize="21" align="right" text="111"/>
+    <text id="n31_k6t7" name="stop" xy="532,172" pivot="1,0" anchor="true" size="40,30" group="n40_k6t7" fontSize="21" align="right" text="111"/>
+    <text id="n32_k6t7" name="agi" xy="532,209" pivot="1,0" anchor="true" size="40,30" group="n40_k6t7" fontSize="21" align="right" text="111"/>
+    <text id="n33_k6t7" name="hp" xy="532,247" pivot="1,0" anchor="true" size="40,30" group="n40_k6t7" fontSize="21" align="right" text="111"/>
+    <text id="n34_k6t7" name="attack" xy="532,282" pivot="1,0" anchor="true" size="40,30" group="n40_k6t7" fontSize="21" align="right" text="111"/>
+    <text id="n35_k6t7" name="def" xy="532,316" pivot="1,0" anchor="true" size="40,30" group="n40_k6t7" fontSize="21" align="right" text="111"/>
+    <text id="n36_k6t7" name="magdefence" xy="532,356" pivot="1,0" anchor="true" size="40,30" group="n40_k6t7" fontSize="21" align="right" autoSize="none" text="111"/>
+    <group id="n40_k6t7" name="n40" xy="0,103" size="603,974" advanced="true">
+      <gearDisplay controller="empty" pages="0"/>
+    </group>
+    <text id="n41_k6t7" name="n41" xy="45,200" size="490,142" fontSize="54" text="点击干员以查看详情&#xA;">
+      <gearDisplay controller="empty" pages="1"/>
+    </text>
+  </displayList>
+</component>

@@ -8,6 +8,9 @@ namespace MainUI
     {
         public static void BindAll()
         {
+            UIObjectFactory.SetPackageItemExtension(UI_LeftUnitInfo.URL, typeof(UI_LeftUnitInfo));
+            UIObjectFactory.SetPackageItemExtension(UI_AttackArea.URL, typeof(UI_AttackArea));
+            UIObjectFactory.SetPackageItemExtension(UI_SkillInfo.URL, typeof(UI_SkillInfo));
             UIObjectFactory.SetPackageItemExtension(UI_Main.URL, typeof(UI_Main));
             UIObjectFactory.SetPackageItemExtension(UI_HalfUnit.URL, typeof(UI_HalfUnit));
             UIObjectFactory.SetPackageItemExtension(UI_MemberPage.URL, typeof(UI_MemberPage));

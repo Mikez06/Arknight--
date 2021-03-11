@@ -107,11 +107,11 @@ namespace MainUI
             {
                 if (i < gameData.Teams[TeamIndex].Cards.Count)
                 {
-                    teamUnits[i].SetCard(gameData.Teams[TeamIndex].Cards[i]);
+                    teamUnits[i].SetCard(gameData.Teams[TeamIndex].Cards[i], gameData.Teams[TeamIndex].UnitSkill[i]);
                 }
                 else
                 {
-                    teamUnits[i].SetCard(null);
+                    teamUnits[i].SetCard(null, 0);
                 }
             }
         }

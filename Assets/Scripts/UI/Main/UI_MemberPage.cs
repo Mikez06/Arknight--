@@ -55,7 +55,7 @@ namespace MainUI
             foreach (var card in cards)
             {
                 var uiCard = m_Cards.AddItemFromPool() as UI_HalfUnit;
-                uiCard.SetCard(card);
+                uiCard.SetCard(card, card.UsingSkill);
             }
         }
 

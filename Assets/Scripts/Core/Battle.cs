@@ -46,11 +46,11 @@ public class Battle
         //读取场景地图信息
         Map.Init();
 
-        if (battleConfig.UnitInputs != null)
-            foreach (var unitInput in battleConfig.UnitInputs)
-            {
-                CreatePlayerUnit(unitInput.Id);
-            }
+        for (int i = 0; i < battleConfig.Team.Cards.Count; i++)
+        {
+            Card unitInput = battleConfig.Team.Cards[i];
+            CreatePlayerUnit(unitInput, battleConfig.Team.UnitSkill[i]);
+        }
      
         UnitMap = new HashSet<Unit>[Map.Grids.GetLength(0), Map.Grids.GetLength(1)];
         for (int i = 0; i < UnitMap.GetLength(0); i++)
@@ -106,6 +106,22 @@ public class Battle
                 unit.Finish();
             }
         }
+    }
+
+    public Units.干员 CreatePlayerUnit(Card card,int skill)
+    {
+        var config = Database.Instance.Get<UnitConfig>(card.UnitId);
+        var unit = typeof(Battle).Assembly.CreateInstance(nameof(Units) + "." + config.Type) as Units.干员;
+        unit.Id = card.UnitId;
+        unit.Card = card;
+        unit.MainSkillId = skill;
+        //unit.SetDirection(direction);
+        unit.Battle = this;
+        unit.Init();
+        //var grid = Map.Grids[x, y];
+        //unit.Position = grid.transform.position + new Vector3(0, config.Height, 0);
+        PlayerUnits.Add(unit);
+        return unit;
     }
 
     public Units.干员 CreatePlayerUnit(int id)

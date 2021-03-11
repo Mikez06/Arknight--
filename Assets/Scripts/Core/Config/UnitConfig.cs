@@ -24,7 +24,7 @@ public class UnitConfig : IConfig
     [BsonRepresentation(BsonType.Double, AllowTruncation = true)]
     public float Radius;
     public int[] Skills;
-    public int? MainSkill;
+    public int[] MainSkill;
     [BsonRepresentation(BsonType.Double, AllowTruncation = true)]
     public float Height;
     [BsonRepresentation(BsonType.Double, AllowTruncation = true)]

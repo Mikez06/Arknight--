@@ -32,6 +32,13 @@
     <component id="r8hrt" name="Right.xml" path="/"/>
     <component id="r8hru" name="SelectBtn.xml" path="/"/>
     <component id="r8hrv" name="SelectBtn(1).xml" path="/"/>
+    <component id="kbtew" name="Battle.xml" path="/" exported="true"/>
+    <component id="kbtex" name="SupportCard.xml" path="/"/>
+    <component id="kbtey" name="GoBattle.xml" path="/"/>
+    <component id="kbtez" name="ToopTip.xml" path="/" exported="true"/>
+    <component id="kbte10" name="BattleInfo.xml" path="/"/>
+    <component id="kbte11" name="Container.xml" path="/"/>
+    <component id="kbte12" name="World1.xml" path="/Level/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

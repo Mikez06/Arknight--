@@ -9,6 +9,9 @@ namespace Units
 {
     public class 干员 : Unit
     {
+        public Card Card;
+        public int MainSkillId;
+
         public DirectionEnum Direction_E;
 
         public List<敌人> StopUnits = new List<敌人>();
@@ -31,6 +34,24 @@ namespace Units
         public override void Init()
         {
             base.Init();
+            if (Config.MainSkill != null)
+            {
+                foreach (var skill in Skills.ToArray())
+                {
+                    if (Config.MainSkill.Contains(skill.Id) && skill.Id != MainSkillId)
+                    {
+                        Skills.Remove(skill);
+                    }
+                }
+                MainSkill = Skills.FirstOrDefault(x => x.Id == MainSkillId);
+            }
+
+            if (MainSkill != null)
+            {
+                Power = MainSkill.Config.StartPower;
+                MaxPower = MainSkill.Config.MaxPower;
+                PowerCount = MainSkill.Config.PowerCount;
+            }
         }
 
         public override void Refresh()
@@ -67,7 +88,7 @@ namespace Units
                 ScaleX = -TargetScaleX * ((Turning.value / SystemConfig.TurningTime) - 0.5f) * 2;
             }
 
-            if (MainSkill!=null && MainSkill.Config.PowerType == PowerRecoverTypeEnum.自动)
+            if (MainSkill != null && MainSkill.Config.PowerType == PowerRecoverTypeEnum.自动)
             {
                 RecoverPower(PowerSpeed * SystemConfig.DeltaTime);
             }

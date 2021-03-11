@@ -7,6 +7,7 @@ namespace MainUI
 {
     public partial class UI_Team : GComponent
     {
+        public Controller m_goBattle;
         public UI_TeamUnit m_u0;
         public UI_TeamUnit m_u1;
         public UI_TeamUnit m_u2;
@@ -28,6 +29,8 @@ namespace MainUI
         public GComponent m_delete;
         public GButton m_right;
         public GButton m_left;
+        public GComponent m_support;
+        public GComponent m_battle;
         public const string URL = "ui://k4mja8t1r8hrm";
 
         public static UI_Team CreateInstance()
@@ -39,6 +42,7 @@ namespace MainUI
         {
             base.ConstructFromXML(xml);
 
+            m_goBattle = GetControllerAt(0);
             m_u0 = (UI_TeamUnit)GetChildAt(1);
             m_u1 = (UI_TeamUnit)GetChildAt(2);
             m_u2 = (UI_TeamUnit)GetChildAt(3);
@@ -60,6 +64,8 @@ namespace MainUI
             m_delete = (GComponent)GetChildAt(19);
             m_right = (GButton)GetChildAt(20);
             m_left = (GButton)GetChildAt(21);
+            m_support = (GComponent)GetChildAt(22);
+            m_battle = (GComponent)GetChildAt(23);
             Init();
         }
         partial void Init();

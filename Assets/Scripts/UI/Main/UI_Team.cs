@@ -14,6 +14,11 @@ namespace MainUI
         protected UI_TeamUnit[] teamUnits = new UI_TeamUnit[12];
         protected GButton[] teamBtns = new GButton[4];
         public int TeamIndex;
+
+        public string backPage;
+        public string BattleLevel;
+
+
         partial void Init()
         {
             for (int i = 0; i < teamUnits.Length; i++)
@@ -33,7 +38,7 @@ namespace MainUI
             }
             m_back.onClick.Add(() =>
             {
-                UIManager.Instance.ChangeView<UI_Main>(UI_Main.URL);
+                UIManager.Instance.ChangeView<GComponent>(backPage);
             });
             m_quickTeam.onClick.Add(() =>
             {
@@ -57,6 +62,34 @@ namespace MainUI
                 gameData.Teams[TeamIndex].UnitSkill.Clear();
                 Flush();
             });
+            m_support.onClick.Add(() =>
+            {
+                TipManager.Instance.ShowTip("不支持友招");
+            });
+            m_battle.onClick.Add(() =>
+            {
+                BattleManager.Instance.StartBattle(new BattleInput()
+                {
+                    MapName = BattleLevel,
+                    Seed = 0,
+                    StartCost = 30,
+                    Team = gameData.Teams[TeamIndex],
+                });
+            });
+        }
+
+        public void IfGoBattle(bool bo)
+        {
+            if (bo)
+            {
+                m_goBattle.selectedIndex = 0;
+                backPage = UI_Battle.URL;
+            }
+            else
+            {
+                m_goBattle.selectedIndex = 1;
+                backPage = UI_Main.URL;
+            }
         }
 
         public void Enter()

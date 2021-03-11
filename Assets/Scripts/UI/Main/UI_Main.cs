@@ -19,7 +19,12 @@ namespace MainUI
             });
             m_team.onClick.Add(() =>
             {
-                UIManager.Instance.ChangeView<UI_Team>(UI_Team.URL);
+                var uiTeam = UIManager.Instance.ChangeView<UI_Team>(UI_Team.URL);
+                uiTeam.IfGoBattle(false);
+            });
+            m_battle.onClick.Add(() =>
+            {
+                UIManager.Instance.ChangeView<UI_Battle>(UI_Battle.URL);
             });
         }
 

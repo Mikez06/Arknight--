@@ -98,13 +98,6 @@ public class Unit
                 skill.Init();
                 Skills.Add(skill);
             }
-        if (Config.MainSkill != null) MainSkill = Skills.FirstOrDefault(x => x.Id == Config.MainSkill.Value);
-        if (MainSkill != null)
-        {
-            Power = MainSkill.Config.StartPower;
-            MaxPower = MainSkill.Config.MaxPower;
-            PowerCount = MainSkill.Config.PowerCount;
-        }
         CreateModel();
         Refresh();
         Hp = MaxHp;

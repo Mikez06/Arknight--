@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="180,400">
+  <displayList>
+    <graph id="n28_kbte" name="n28" xy="0,0" size="180,400" type="rect" lineSize="0" lineColor="#ffff0000" fillColor="#ffff0000"/>
+    <text id="n29_kbte" name="n29" xy="25,122" size="152,256" fontSize="67" color="#ffffff" leading="-9" autoSize="none" text="开始行动"/>
+  </displayList>
+</component>

@@ -7,12 +7,7 @@ using System.Threading.Tasks;
 public class BattleInput
 {
     public string MapName;
-    public UnitInput[] UnitInputs;
+    public Team Team;
     public int Seed;
     public int StartCost;
-}
-
-public class UnitInput
-{
-    public int Id;
 }

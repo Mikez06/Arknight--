@@ -46,7 +46,7 @@ namespace Units
 
         public override void Finish()
         {
-            Debug.Log("Finish");
+            //Debug.Log("Finish");
             Hp = 0;
             BattleUI.UI_Battle.Instance.ReturnUIUnit(this);
             Battle.Enemys.Remove(this);
@@ -140,6 +140,7 @@ namespace Units
                 {
                     //破门了
                     Battle.DoDamage(Config.Damage);
+                    Battle.EnemyCount--;
                     Finish();
                 }
                 else
@@ -161,6 +162,7 @@ namespace Units
             {
                 StopUnit.StopUnits.Remove(this);
             }
+            Battle.EnemyCount--;
             base.DoDie();
         }
 

@@ -12,15 +12,7 @@ public class Test : MonoBehaviour
     // Start is called before the first frame update
     async void Start()
     {
-        List<string> a = new List<string>()
-        {
-           "za", "az","aa","nt","t",
-        };
-        foreach (var s in a.OrderBy(x=>x))
-        {
-            Debug.Log(s);
-        }
-        Debug.Log(NPinyin.Pinyin.GetPinyin("阿米娅"));
+        GetComponent<ImageEffect_GaussianBlur>().AnimSetBlurSize(0, 0.5f, 1f);
     }
 
     // Update is called once per frame

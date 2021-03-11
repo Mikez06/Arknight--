@@ -31,6 +31,9 @@
     <image id="kbte4a" name="btn_escape.png" path="/"/>
     <component id="kbte4b" name="Leave.xml" path="/"/>
     <component id="l6f04c" name="SkillUsePanelBack.xml" path="/"/>
+    <component id="kbte4d" name="评价星星.xml" path="/"/>
+    <image id="kbte4e" name="闪耀效果.png" path="/FX/"/>
+    <image id="kbte4f" name="Star.png" path="/IconMoney/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

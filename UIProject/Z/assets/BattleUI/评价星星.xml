@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="200,200">
+  <displayList>
+    <image id="n487_jnlw" name="ShineEffect" src="kbte4e" fileName="_Image/FX/闪耀效果.png" xy="100,105" pivot="0.5,0.5" anchor="true" size="400,400" alpha="0" blend="add" color="#c98612"/>
+    <image id="n481_jnlw" name="Star" src="kbte4f" fileName="_Image/IconMoney/Star.png" xy="100,100" pivot="0.5,0.5" anchor="true" size="200,200" filter="color" filterData="0,0,0,0" color="#5d4d39"/>
+  </displayList>
+  <transition name="ShineIn" options="4">
+    <item time="0" type="Alpha" target="n487_jnlw" tween="true" startValue="0" endValue="0" duration="8"/>
+    <item time="0" type="Color" target="n481_jnlw" value="#5e4e3a"/>
+    <item time="0" type="ColorFilter" target="n481_jnlw" value="0,0,0,0"/>
+    <item time="0" type="Rotation" target="n481_jnlw" value="0"/>
+    <item time="0" type="Rotation" target="n487_jnlw" value="0"/>
+    <item time="0" type="Scale" target="n481_jnlw" value="1,1"/>
+    <item time="0" type="Scale" target="n487_jnlw" value="0.5,0.5"/>
+    <item time="2" type="Rotation" target="n481_jnlw" tween="true" startValue="0" endValue="-3" duration="2"/>
+    <item time="4" type="Rotation" target="n481_jnlw" tween="true" startValue="-3" endValue="4.1" duration="2"/>
+    <item time="6" type="Rotation" target="n481_jnlw" tween="true" startValue="4.1" endValue="0" duration="2"/>
+    <item time="8" type="Alpha" target="n487_jnlw" tween="true" startValue="0" endValue="1" duration="10"/>
+    <item time="12" type="Color" target="n481_jnlw" tween="true" startValue="#5e4e3a" endValue="#ffffff" duration="6" ease="Expo.Out"/>
+    <item time="12" type="ColorFilter" target="n481_jnlw" tween="true" startValue="0,0,0,0" endValue="0.56,0.7,0.88,0" duration="6" ease="Expo.Out"/>
+    <item time="12" type="Rotation" target="n487_jnlw" tween="true" startValue="0" endValue="40" duration="36" ease="Linear"/>
+    <item time="12" type="Scale" target="n481_jnlw" tween="true" startValue="1,1" endValue="1.3,1.3" duration="6" ease="Expo.Out"/>
+    <item time="12" type="Scale" target="n487_jnlw" tween="true" startValue="0.5,0.5" endValue="1,1" duration="6"/>
+    <item time="18" type="Alpha" target="n487_jnlw" tween="true" startValue="1" endValue="1" duration="18"/>
+    <item time="18" type="Color" target="n481_jnlw" tween="true" startValue="#ffffff" endValue="#ffffff" duration="18"/>
+    <item time="18" type="ColorFilter" target="n481_jnlw" tween="true" startValue="0.56,0.7,0.88,0" endValue="0,0,0,0" duration="6"/>
+    <item time="18" type="Scale" target="n481_jnlw" tween="true" startValue="1.3,1.3" endValue="1,1" duration="18" ease="Bounce.Out"/>
+    <item time="36" type="Alpha" target="n487_jnlw" tween="true" startValue="1" endValue="0" duration="12" ease="Linear"/>
+    <item time="48" type="Color" target="n481_jnlw" value="#ffffff"/>
+    <item time="48" type="ColorFilter" target="n481_jnlw" value="0,0,0,0"/>
+    <item time="48" type="Rotation" target="n481_jnlw" value="0"/>
+    <item time="48" type="Scale" target="n481_jnlw" value="1,1"/>
+    <item time="48" type="Scale" target="n487_jnlw" value="0.5,0.5"/>
+  </transition>
+  <transition name="ShineOut" options="4">
+    <item time="0" type="Color" target="n481_jnlw" value="#ffffff"/>
+    <item time="0" type="ColorFilter" target="n481_jnlw" tween="true" startValue="0,0,0,0" endValue="0.1,0.1,0.1,0" duration="6"/>
+    <item time="6" type="Color" target="n481_jnlw" tween="true" startValue="#ffffff" endValue="#5e4e3a" duration="30"/>
+    <item time="6" type="ColorFilter" target="n481_jnlw" tween="true" startValue="0.1,0.1,0.1,0" endValue="0,0,0,0" duration="6"/>
+    <item time="36" type="ColorFilter" target="n481_jnlw" value="0,0,0,0"/>
+  </transition>
+  <transition name="Reset" options="4">
+    <item time="0" type="Color" target="n481_jnlw" value="#5e4e3a"/>
+    <item time="0" type="ColorFilter" target="n481_jnlw" value="0,0,0,0"/>
+    <item time="1" type="ColorFilter" target="n481_jnlw" value="0,0,0,0"/>
+  </transition>
+</component>

@@ -49,7 +49,7 @@ public class UnitModel : MonoBehaviour
         //SkeletonAnimation.state.AddEmptyAnimation(0, 0, 0);
         if (animationName == "Idle") //从其他状态返回Idle时，如果有退出动画，就播放
         {
-            var _endAnimation = SkeletonAnimation.Skeleton.data.FindAnimation(nowAnimation + "_End");
+            var _endAnimation = SkeletonAnimation.Skeleton.Data.FindAnimation(nowAnimation + "_End");
             if (_endAnimation != null)
             {
                 SkeletonAnimation.state.AddAnimation(0, nowAnimation + "_End", false, 0);
@@ -58,12 +58,12 @@ public class UnitModel : MonoBehaviour
 
         float delay = 0;
         //切入其他状态时，若有进入动画，播放
-        var _beginAnimation = SkeletonAnimation.Skeleton.data.FindAnimation(animationName + "_Begin");
+        var _beginAnimation = SkeletonAnimation.Skeleton.Data.FindAnimation(animationName + "_Begin");
         if (_beginAnimation != null)
         {
             Debug.Log(Unit.Config._Id + "Add" + animationName + "_Begin" + Time.time);
             SkeletonAnimation.state.AddAnimation(0, animationName + "_Begin", false, 0);
-            delay += _beginAnimation.duration;
+            delay += _beginAnimation.Duration;
         }
         //Debug.Log(Unit.Config._Id + "Add" + animationName);
         //SkeletonAnimation.state.AddAnimation(0, animationName, true, 0);
@@ -84,35 +84,35 @@ public class UnitModel : MonoBehaviour
             //{
             //    result += _endAnimation.duration;
             //}
-            var _beginAnimation = SkeletonAnimation.Skeleton.data.FindAnimation(animationName + "_Begin");
+            var _beginAnimation = SkeletonAnimation.Skeleton.Data.FindAnimation(animationName + "_Begin");
             if (_beginAnimation != null)
             {
-                float duration = _beginAnimation.duration - SkeletonAnimation.skeletonDataAsset.defaultMix;
+                float duration = _beginAnimation.Duration - SkeletonAnimation.skeletonDataAsset.defaultMix;
                 if (duration < 0) duration = 0;
                 //Debug.Log("beginAnimation:" + _beginAnimation.duration);
                 result += duration;
                 fullDuration += duration;
             }
         }
-        var animation = SkeletonAnimation.Skeleton.data.FindAnimation(animationName);
-        foreach (var timeline in animation.timelines)
+        var animation = SkeletonAnimation.Skeleton.Data.FindAnimation(animationName);
+        foreach (var timeline in animation.Timelines)
         {
             if (timeline is Spine.EventTimeline eventTimeline)
             {
-                var attackEvent = eventTimeline.Events.FirstOrDefault(x => x.data.name == "OnAttack");
+                var attackEvent = eventTimeline.Events.FirstOrDefault(x => x.Data.Name == "OnAttack");
                 result += attackEvent.Time;
                 //Debug.Log("Onattack:" + attackEvent.Time);
                 break;
             }
         }
         //Debug.Log("A:" + animation.duration);
-        fullDuration += animation.duration;
+        fullDuration += animation.Duration;
         return result;
     }
 
     public virtual float GetAnimationDuration(string animationName)
     {
-        var result= SkeletonAnimation.Skeleton.data.FindAnimation(animationName).Duration;
+        var result= SkeletonAnimation.Skeleton.Data.FindAnimation(animationName).Duration;
         return result;
     }
 }

@@ -39,10 +39,10 @@ public class PlayerUnitModel : UnitModel
 
     public override float GetAnimationDuration(string animationName)
     {
-        var a = SkeletonAnimation.Skeleton.data.FindAnimation(animationName);
+        var a = SkeletonAnimation.Skeleton.Data.FindAnimation(animationName);
         if (a==null)
-            a=SkeletonAnimation2.Skeleton.data.FindAnimation(animationName);
-        return a.duration;
+            a=SkeletonAnimation2.Skeleton.Data.FindAnimation(animationName);
+        return a.Duration;
     }
 }
 

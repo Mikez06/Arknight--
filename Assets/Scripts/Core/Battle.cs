@@ -27,6 +27,8 @@ public class Battle
 
     public bool Finish;
 
+    public bool Win;
+
     public int NowUnitIndex = 0;
 
     public HashSet<Unit>[,] UnitMap;//敌人快速检索缓存
@@ -71,6 +73,8 @@ public class Battle
 
     public void Update()
     {
+        updateFinish();
+        if (Finish) return;
         Tick++;
         updateUnitMap();
         if (CostCounting.Update(SystemConfig.DeltaTime))
@@ -301,9 +305,26 @@ public class Battle
                     if (i > 0 && i < UnitMap.GetLength(0) && j > 0 && j < UnitMap.GetLength(1))
                         UnitMap[i, j].Add(unit);
                 }
-
             }
         }
+    }
+
+
+    void updateFinish()
+    {
+        if (Finish) return;
+        if (Hp <= 0)
+        {
+            Finish = true;
+            Win = false;
+        }
+        else if (EnemyCount == 0)
+        {
+            Finish = true;
+            Win = true;
+        }
+        if (Finish)
+            BattleUI.UI_Battle.Instance.BattleEnd();
     }
 
     public void DoDamage(int count)

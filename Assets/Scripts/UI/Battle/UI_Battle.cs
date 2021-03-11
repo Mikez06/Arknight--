@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace BattleUI
 {
-    partial class UI_Battle
+    partial class UI_Battle:IGameUIView
     {
         public static UI_Battle Instance;
         public Battle Battle;
@@ -29,6 +29,7 @@ namespace BattleUI
             m_SkillUseBack.onClick.Add(StopChooseUnit);
             m_SkillUsePanel.m_Leave.onClick.Add(leaveUnit);
             m_SkillUsePanel.m_mainSkillInfo.onClick.Add(useMainSkill);
+            m_endClick.onClick.Add(ExitBattle);
         }
 
         protected override void OnUpdate()
@@ -36,6 +37,7 @@ namespace BattleUI
             base.OnUpdate();
             if (Battle != null)
             {
+                m_enemy.text = Battle.EnemyCount.ToString();
                 m_hp.text = Battle.Hp.ToString();
                 m_cost.text = Battle.Cost.ToString();
                 m_costBar.value = 1 - Battle.CostCounting.value;
@@ -86,6 +88,42 @@ namespace BattleUI
             {
                 m_state.selectedIndex = 0;
             }
+        }
+
+        public void BattleEnd()
+        {
+            m_state.selectedIndex = 5;
+            BattleCamera.Instance.Blur = true;
+            var unit = Battle.PlayerUnits[UnityEngine.Random.Range(0, Battle.PlayerUnits.Count)];
+            string picName = unit.Config.StandPic;
+            ResourcesManager.Instance.LoadBundle(PathHelper.SpritePath + picName);
+            m_endPic.texture = new NTexture(ResourcesManager.Instance.GetAsset<Texture>(PathHelper.SpritePath + picName, picName));
+            if (Battle.Win)
+            {
+                m_win.selectedIndex = 0;
+                if (Battle.Hp >= 10)
+                {
+                    m_win3.Play();
+                }
+                else if (Battle.Hp >= 5)
+                {
+                    m_win2.Play();
+                }
+                else
+                {
+                    m_win1.Play();
+                }
+            }
+            else
+            {
+                m_win.selectedIndex = 1;
+            }
+        }
+
+        public void ExitBattle()
+        {
+            UIManager.Instance.ChangeView<MainUI.UI_Main>(MainUI.UI_Main.URL);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Default");
         }
 
         void stopSetUnit()
@@ -265,6 +303,11 @@ namespace BattleUI
                     m_SkillUsePanel.SetUnit(selectedUnit);
                     break;
             }
+        }
+
+        public void Enter()
+        {
+            m_state.SetSelectedIndex(0);
         }
     }
 

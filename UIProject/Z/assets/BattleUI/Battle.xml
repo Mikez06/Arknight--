@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080">
-  <controller name="state" pages="0,,1,,8,,9,,10,,11," selected="5">
+  <controller name="state" pages="0,,1,,8,,9,,10,,11," selected="0">
     <remark page="0" value="正常"/>
     <remark page="1" value="放置单位"/>
     <remark page="2" value="放置单位_选择位置"/>
@@ -9,7 +9,9 @@
     <remark page="5" value="结算"/>
     <action type="change_page" fromPage="" toPage="0,1" objectId="n25_kbte" controller="left" targetPage="0"/>
     <action type="change_page" fromPage="" toPage="8,9" objectId="n25_kbte" controller="left" targetPage="1"/>
+    <action type="play_transition" fromPage="" toPage="11" transition="t3"/>
   </controller>
+  <controller name="win" pages="0,,1," selected="0"/>
   <displayList>
     <image id="n9_f146" name="n9" src="f1463k" fileName="sprite_info_bar_2part.png" xy="681,30" group="n42_kbte"/>
     <text id="n10_f146" name="n10" xy="715,35" size="74,48" group="n42_kbte" fontSize="35" color="#ffffff" text="数量"/>
@@ -26,26 +28,57 @@
     <component id="n30_kbte" name="costBar" src="kbte40" fileName="CostBar.xml" xy="1756,807" group="n42_kbte">
       <ProgressBar value="36" max="1"/>
     </component>
-    <group id="n42_kbte" name="n42" xy="0,0" size="1899,866" advanced="true">
-      <gearDisplay controller="state" pages="0,1,8,9,10"/>
-    </group>
-    <component id="n25_kbte" name="left" src="kbte3s" fileName="BattleLeft.xml" xy="-1,4">
+    <component id="n25_kbte" name="left" src="kbte3s" fileName="BattleLeft.xml" xy="-1,4" group="n42_kbte">
       <gearDisplay controller="state" pages="1,8,9,10"/>
     </component>
-    <component id="n28_kbte" name="DirectionBack" src="kbte3x" fileName="灰罩.xml" xy="0,0">
+    <component id="n28_kbte" name="DirectionBack" src="kbte3x" fileName="灰罩.xml" xy="0,0" group="n42_kbte">
       <gearDisplay controller="state" pages="9"/>
     </component>
-    <component id="n37_h4sa" name="DirectonCancal" src="f1463m" fileName="Container.xml" xy="0,0" size="1920,1080">
+    <component id="n37_h4sa" name="DirectonCancal" src="f1463m" fileName="Container.xml" xy="0,0" size="1920,1080" group="n42_kbte">
       <gearDisplay controller="state" pages="9"/>
     </component>
-    <component id="n27_kbte" name="DirectionPanel" src="kbte3y" fileName="SetPanel.xml" xy="961,511" pivot="0.5,0.5" anchor="true">
+    <component id="n27_kbte" name="DirectionPanel" src="kbte3y" fileName="SetPanel.xml" xy="961,511" pivot="0.5,0.5" anchor="true" group="n42_kbte">
       <gearDisplay controller="state" pages="9"/>
     </component>
-    <component id="n41_kbte" name="SkillUseBack" src="f1463m" fileName="Container.xml" xy="0,0" size="1920,1080">
+    <component id="n41_kbte" name="SkillUseBack" src="f1463m" fileName="Container.xml" xy="0,0" size="1920,1080" group="n42_kbte">
       <gearDisplay controller="state" pages="10"/>
     </component>
-    <component id="n40_kbte" name="SkillUsePanel" src="kbte47" fileName="SkillUsePanel.xml" xy="948,484">
+    <component id="n40_kbte" name="SkillUsePanel" src="kbte47" fileName="SkillUsePanel.xml" xy="948,484" group="n42_kbte">
       <gearDisplay controller="state" pages="10"/>
     </component>
+    <group id="n42_kbte" name="n42" xy="-1,0" size="1921,1084" advanced="true">
+      <gearDisplay controller="state" pages="0,1,8,9,10"/>
+    </group>
+    <component id="n53_kbte" name="endClick" src="f1463m" fileName="Container.xml" xy="0,0" size="1920,1080" group="n52_kbte"/>
+    <loader id="n43_kbte" name="endPic" xy="-21,4" size="1025,1024" group="n52_kbte" touchable="false"/>
+    <graph id="n45_kbte" name="n45" xy="0,600" size="1920,480" group="n52_kbte" touchable="false" type="rect" lineSize="0" fillColor="#66000000"/>
+    <text id="n46_kbte" name="n46" xy="23,945" size="332,106" group="n52_kbte" fontSize="82" color="#ffffff" align="center" text="行动结束"/>
+    <component id="n47_kbte" name="n47" src="kbte4d" fileName="评价星星.xml" xy="383,751" pivot="0.5,0.5" anchor="true" group="n52_kbte" touchable="false"/>
+    <component id="n48_kbte" name="n48" src="kbte4d" fileName="评价星星.xml" xy="226,820" pivot="0.5,0.5" anchor="true" group="n52_kbte" rotation="-5" touchable="false"/>
+    <component id="n49_kbte" name="n49" src="kbte4d" fileName="评价星星.xml" xy="538,831" pivot="0.5,0.5" anchor="true" group="n52_kbte" rotation="5" touchable="false"/>
+    <graph id="n50_kbte" name="n50" xy="661,625" size="10,420" group="n52_kbte" touchable="false" type="rect" lineSize="0"/>
+    <text id="n51_kbte" name="n51" xy="904,783" size="304,129" group="n52_kbte" fontSize="100" color="#ffffff" align="center" text="胜利！">
+      <gearText controller="win" pages="1" values="失败QAQ" default="胜利！"/>
+    </text>
+    <group id="n52_kbte" name="n52" xy="-21,0" size="1941,1080" advanced="true">
+      <gearDisplay controller="state" pages="11"/>
+    </group>
   </displayList>
+  <transition name="win1">
+    <item time="0" type="Transition" target="n48_kbte" value="ShineIn"/>
+  </transition>
+  <transition name="win2">
+    <item time="0" type="Transition" target="n48_kbte" value="ShineIn"/>
+    <item time="9" type="Transition" target="n47_kbte" value="ShineIn"/>
+  </transition>
+  <transition name="win3">
+    <item time="0" type="Transition" target="n48_kbte" value="ShineIn"/>
+    <item time="9" type="Transition" target="n47_kbte" value="ShineIn"/>
+    <item time="18" type="Transition" target="n49_kbte" value="ShineIn"/>
+  </transition>
+  <transition name="reset">
+    <item time="0" type="Transition" target="n47_kbte" value="Reset"/>
+    <item time="0" type="Transition" target="n48_kbte" value="Reset"/>
+    <item time="0" type="Transition" target="n49_kbte" value="Reset"/>
+  </transition>
 </component>

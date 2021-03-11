@@ -15,6 +15,16 @@ public class BattleCamera : MonoBehaviour
     Vector3 startUp;
     Quaternion startRotation;
 
+    public bool Blur
+    {
+        get => blur;
+        set
+        {
+            blur = value;
+            GetComponent<ImageEffect_GaussianBlur>().enabled = blur;
+        }
+    }
+    private bool blur;
 
     public Unit FocusUnit
     {

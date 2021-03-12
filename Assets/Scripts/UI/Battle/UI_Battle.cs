@@ -92,6 +92,12 @@ namespace BattleUI
 
         public void BattleEnd()
         {
+            foreach (var uiUnit in m_Units.GetChildren())
+            {
+                UIPool.ReturnObject(uiUnit);
+            }
+            m_Units.RemoveChildren();
+
             m_state.selectedIndex = 5;
             BattleCamera.Instance.Blur = true;
             var unit = Battle.PlayerUnits[UnityEngine.Random.Range(0, Battle.PlayerUnits.Count)];

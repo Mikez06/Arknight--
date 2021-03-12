@@ -104,7 +104,7 @@ public class Unit
         MaxHp = Config.Hp;
         Attack = Config.Attack;
         Defence = Config.Defence;
-        MagicDefence = Config.Defence;
+        MagicDefence = Config.MagicDefence;
         PowerSpeed = 1f;
         Agi = 100;
         AttackGap = 0;
@@ -117,7 +117,7 @@ public class Unit
         if (Speed < 0) Speed = 0;
         Attack = Attack * (1 + AttackRate);
         Defence = Defence * (1 + DefenceRate);
-        MagicDefence = MagicDefecneRate + MagicDefecneRate;
+        MagicDefence = MagicDefence + MagicDefecneRate;
         if (MagicDefecneRate < 0) MagicDefecneRate = 0;
     }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="1920,1080">
-  <controller name="state" pages="0,,1,,8,,9,,10,,11," selected="0">
+<component size="1920,1080" opaque="false">
+  <controller name="state" pages="0,,1,,8,,9,,10,,11," selected="5">
     <remark page="0" value="正常"/>
     <remark page="1" value="放置单位"/>
     <remark page="2" value="放置单位_选择位置"/>

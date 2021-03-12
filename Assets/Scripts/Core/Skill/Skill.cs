@@ -155,8 +155,9 @@ public class Skill
         }
         if (string.IsNullOrEmpty(Config.ModelAnimation))
         {
-            //Debug.Log(Unit.Config._Id + "的" + Config._Id + "没有抬手,直接使用");
+            Debug.Log(Unit.Config._Id + "的" + Config._Id + "没有抬手,直接使用");
             Cast(Target);
+            ResetCooldown(1);
         }
         else
         {
@@ -330,7 +331,7 @@ public class Skill
         //    if (Unit is Units.干员 u && !AttackPoints.Any(x => x == target.GridPos)) return false;
         //    if (Unit is Units.敌人 e && (target.Position2 - Unit.Position2).magnitude < Config.AttackRange) return false;
         //}
-        if (Config.IfHeal && target.Hp == target.MaxHp) return false;
+        if (Config.IfHeal && target.Hp == target.MaxHp && Config.AttackTarget != AttackTargetEnum.自己) return false;
         if (!target.Alive()) return false;
         return true;
     }

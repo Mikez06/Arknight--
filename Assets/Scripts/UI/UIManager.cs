@@ -19,13 +19,9 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        Debug.Log("UIManagerInit");
         Instance = this;
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(gameObject);
         BattleUI.BattleUIBinder.BindAll();
         MainUI.MainUIBinder.BindAll();
         LoadPackge("BattleUI");
@@ -37,14 +33,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        try
-        {
-            //ChangeView<GComponent>(StartPackage, StartView);
-        }
-        catch (Exception e)
-        {
-            Debug.LogError(e);
-        }
+
     }
 
     public T GetView<T>(string url) where T : GComponent
@@ -86,12 +75,9 @@ public class UIManager : MonoBehaviour
 #if UNITY_EDITOR
         UIPackage.AddPackage(PackagePath + PackageName);
 #else
-        string p = Path.Combine(PathHelper.AppHotfixResPath, PathHelper.UIPath, PackageName.ToLower());
-            AssetBundle res = null;
-            string resPath = p + "res";
-            if (File.Exists(resPath))
-                res = AssetBundle.LoadFromFile(resPath);
-            var desc = AssetBundle.LoadFromFile(p + "desc");
+        //string p = Path.Combine(PathHelper.AppResPath, PathHelper.UIPath, PackageName.ToLower());
+        AssetBundle res = getBundle(PackageName + "res");
+        AssetBundle desc = getBundle(PackageName + "desc");
             if (res != null)
                 UIPackage.AddPackage(desc, res);
             else
@@ -99,5 +85,29 @@ public class UIManager : MonoBehaviour
                 UIPackage.AddPackage(desc);
             }
 #endif
+    }
+
+    AssetBundle getBundle(string name)
+    {
+        string p = Path.Combine(PathHelper.AppResPath, PathHelper.UIPath, name.ToLower());
+        if (File.Exists(p))
+        {
+            Debug.Log(p);
+            return AssetBundle.LoadFromFile(p);
+        }
+        else
+        {
+            p = Path.Combine(PathHelper.AppHotfixResPath, PathHelper.UIPath, name.ToLower());
+            Debug.Log(p);
+            if (File.Exists(p))
+            {
+                return AssetBundle.LoadFromFile(p);
+            }
+            else
+            {
+                throw new Exception("cant find" + name);
+                return null;
+            }
+        }
     }
 }

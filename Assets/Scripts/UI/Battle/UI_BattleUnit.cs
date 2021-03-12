@@ -6,6 +6,10 @@ namespace BattleUI
     partial class UI_BattleUnit
     {
         public Unit Unit;
+        partial void Init()
+        {
+            touchable = false;
+        }
         public void SetUnit(Unit unit)
         {
             this.Unit = unit;

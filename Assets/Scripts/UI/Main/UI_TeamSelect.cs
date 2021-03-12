@@ -55,9 +55,16 @@ namespace MainUI
                     int index = baseTeam.Cards.IndexOf(baseCard);
                     if (NowTeam.Count == 0)
                     {
-                        //移除
-                        baseTeam.Cards.RemoveAt(index);
-                        baseTeam.UnitSkill.RemoveAt(index);
+                        if (index != -1)
+                        {
+                            //移除
+                            baseTeam.Cards.RemoveAt(index);
+                            baseTeam.UnitSkill.RemoveAt(index);
+                        }
+                        else
+                        {
+
+                        }
                     }
                     else
                     {

@@ -16,6 +16,7 @@ public class Init : MonoBehaviour
     {
         await Database.Instance.InitAsync();
         GameData.Instance.TestInit();
+        Debug.Log(Database.Instance.Get<UnitConfig>(0)._Id);
         var battleUI = UIManager.Instance.ChangeView<MainUI.UI_Main>(MainUI.UI_Main.URL);
         //StartBattle(new BattleInput()
         //{

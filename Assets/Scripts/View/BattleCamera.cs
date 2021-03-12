@@ -77,6 +77,7 @@ public class BattleCamera : MonoBehaviour
         //ResourcesManager.Instance.LoadBundle("Bundles/Other/CanBuild");
     }
 
+    MapGrid lastGrid;
     // Update is called once per frame
     void Update()
     {
@@ -95,10 +96,15 @@ public class BattleCamera : MonoBehaviour
                     g.transform.position = grid.transform.position;
                     BuildUnit.ChangePos(grid.X, grid.Y, DirectionEnum.Left);
 
-                    ShowUnitAttackArea();
+                    if (grid != lastGrid)
+                    {
+                        lastGrid = grid;
+                        ShowUnitAttackArea();
+                    }
                 }
                 else
                 {
+                    grid = null;
                     HideUnitAttackArea();
                     g.transform.position = hit.point - new Vector3(0, 0.5f, 0);
                 }
@@ -123,6 +129,7 @@ public class BattleCamera : MonoBehaviour
 
     public void ShowUnitAttackArea()
     {
+        Debug.LogWarning("ShowAttackArea");
         foreach (var go in Tiles)
         {
             TilePool.Despawn(go);

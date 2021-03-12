@@ -91,12 +91,7 @@ public class Unit
         if (Config.Skills != null)
             foreach (var skillId in Config.Skills)
             {
-                var skillConfig = Database.Instance.Get<SkillConfig>(skillId);
-                var skill = typeof(Unit).Assembly.CreateInstance(nameof(Skills) + "." + skillConfig.Type) as Skill;
-                skill.Unit = this;
-                skill.Id = skillId;
-                skill.Init();
-                Skills.Add(skill);
+                LearnSkill(skillId);
             }
         CreateModel();
         Refresh();
@@ -181,6 +176,24 @@ public class Unit
     protected virtual void UpdateMove()
     {
 
+    }
+
+    public Skill LearnSkill(int skillId)
+    {
+        var s = Skills.Find(x => x.Id == skillId);
+        if (s != null) return s;
+        var skillConfig = Database.Instance.Get<SkillConfig>(skillId);
+        var skill = typeof(Unit).Assembly.CreateInstance(nameof(Skills) + "." + skillConfig.Type) as Skill;
+        skill.Unit = this;
+        skill.Id = skillId;
+        skill.Init();
+        Skills.Add(skill);
+        if (skillConfig.ExSkills != null)
+            foreach (var id in skillConfig.ExSkills)
+            {
+                LearnSkill(id);
+            }
+        return skill;
     }
 
     public Buff AddBuff(int buffId,Skill source)

@@ -13,6 +13,7 @@
     <image id="kbtel" name="mostma_head.png" path="/" exported="true"/>
     <image id="kbtem" name="sora_head.png" path="/" exported="true"/>
     <image id="kbten" name="susuro_head.png" path="/" exported="true"/>
+    <image id="kbteo" name="SilverAsh_head.png" path="/" exported="true"/>
   </resources>
   <publish name=""/>
 </packageDescription>

@@ -34,17 +34,7 @@ namespace Units
         public override void Init()
         {
             base.Init();
-            if (Config.MainSkill != null)
-            {
-                foreach (var skill in Skills.ToArray())
-                {
-                    if (Config.MainSkill.Contains(skill.Id) && skill.Id != MainSkillId)
-                    {
-                        Skills.Remove(skill);
-                    }
-                }
-                MainSkill = Skills.FirstOrDefault(x => x.Id == MainSkillId);
-            }
+            MainSkill = LearnSkill(Config.MainSkill[MainSkillId]);
 
             if (MainSkill != null)
             {
@@ -168,6 +158,11 @@ namespace Units
             Reseting.Set(ResetTime);
             BuildTime++;
             Battle.Cost += Cost / 2;
+            foreach (var unit in StopUnits)
+            {
+                unit.StopUnit = null;
+            }
+            StopUnits.Clear();
         }
 
         public override void Finish()
@@ -208,6 +203,7 @@ namespace Units
             {
                 unit.StopUnit = null;
             }
+            StopUnits.Clear();
         }
 
         public bool CanStop(Units.敌人 target)

@@ -210,6 +210,11 @@ public class Skill
         }
         else
             Effect(target);
+        CastExSkill(target);
+    }
+
+    protected virtual void CastExSkill(Unit target)
+    {
         if (Config.ExSkills != null)
             foreach (var skillId in Config.ExSkills)
             {

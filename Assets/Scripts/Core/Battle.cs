@@ -270,7 +270,7 @@ public class Battle
     public HashSet<Unit> FindAll(Vector2 pos, float radius, int team, Func<Unit, bool> match)
     {
         HashSet<Unit> result = new HashSet<Unit>();
-        if (team == 1)
+        if (team == 0)
         {
             var units = PlayerUnits.Where(x => x.MapIndex >= 0).ToList();
             foreach (var unit in units)

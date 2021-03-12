@@ -35,9 +35,12 @@ namespace MainUI
 
         public void Flush()
         {
-            string picName = Database.Instance.Get<UnitConfig>(gameData.MainPageUnitId).StandPic;
-            ResourcesManager.Instance.LoadBundle(PathHelper.SpritePath + picName);
-            m_standPic.texture = new NTexture(ResourcesManager.Instance.GetAsset<Texture>(PathHelper.SpritePath + picName, picName));
+            if (gameData.Teams[0].Cards.Count > 0)
+            {
+                string picName = Database.Instance.Get<UnitConfig>(gameData.Teams[0].Cards[0].UnitId).StandPic;
+                ResourcesManager.Instance.LoadBundle(PathHelper.SpritePath + picName);
+                m_standPic.texture = new NTexture(ResourcesManager.Instance.GetAsset<Texture>(PathHelper.SpritePath + picName, picName));
+            }
         }
     }
 }

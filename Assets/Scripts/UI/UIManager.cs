@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using FairyGUI;
 using System.IO;
+using UnityEngine.AddressableAssets;
 
 public class UIManager : MonoBehaviour
 {
@@ -72,18 +73,26 @@ public class UIManager : MonoBehaviour
         if (LoadedPackages.Contains(PackageName))
             return;
         LoadedPackages.Add(PackageName);
-#if UNITY_EDITOR
+#if !UNITY_EDITOR
         UIPackage.AddPackage(PackagePath + PackageName);
 #else
-        //string p = Path.Combine(PathHelper.AppResPath, PathHelper.UIPath, PackageName.ToLower());
-        AssetBundle res = getBundle(PackageName + "res");
-        AssetBundle desc = getBundle(PackageName + "desc");
-            if (res != null)
-                UIPackage.AddPackage(desc, res);
-            else
+        var operation = Addressables.LoadAssetAsync<TextAsset>(PathHelper.UIPath + PackageName + "_fui");
+        var bytes = operation.WaitForCompletion().bytes;
+        UIPackage.LoadResource load = (string name, string extension, System.Type type, out DestroyMethod destroyMethod) =>
+        {
+            destroyMethod = DestroyMethod.Unload;
+            try
             {
-                UIPackage.AddPackage(desc);
+                var op = Addressables.LoadAssetAsync<UnityEngine.Object>(PathHelper.UIPath + name);
+                op.WaitForCompletion();
+                return op.Result;
             }
+            catch (Exception e)
+            {
+                return null;
+            }
+        };
+        UIPackage.AddPackage(bytes, PackageName, load);
 #endif
     }
 

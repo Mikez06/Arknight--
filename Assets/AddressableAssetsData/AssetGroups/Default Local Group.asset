@@ -16,7 +16,207 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 302d6d5b31cff7c4f8a4567143b47d49
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 27b92c444571aec49a15d02e4b6ba0de
+    m_Address: Assets/Bundles/Data/BuffData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 784ec768899ceaf41b2d9454267f1a0f
+    m_Address: Assets/Bundles/Data/BulletData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4c7624087e40ecf4cae949194ed93894
+    m_Address: Assets/Bundles/Data/MapData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cd2aef6a3ff952342b48b1d36effe674
+    m_Address: Assets/Bundles/Data/SkillData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 48c8092719baead4b92506160a9511b3
+    m_Address: Assets/Bundles/Data/UnitData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b495b94c8e8cc56449f87b2b8430145e
+    m_Address: Assets/Bundles/Data/WaveData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f1f3f2161b68cef4eb5aabb2ea78d7ed
+    m_Address: Assets/Bundles/Units/12fce
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 023316d4168069f49b75ce5ccb72583d
+    m_Address: Assets/Bundles/Units/amiya
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3dee6c1b53039e04c83293d190c6ea2a
+    m_Address: Assets/Bundles/Units/aprl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: afb1fa6521906ec49b93aa32cf9fcd3c
+    m_Address: Assets/Bundles/Units/chen
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 73d3e7b31b5c0cc418428cc9819720ed
+    m_Address: Assets/Bundles/Units/gopro
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fc52b332377191c4bacc488c3a7059d5
+    m_Address: Assets/Bundles/Units/hsguma
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 58d6ecec948510146bf7b6f941f781ed
+    m_Address: Assets/Bundles/Units/huang
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6789ea645817bdc4484507af4312eccf
+    m_Address: Assets/Bundles/Units/jesica
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3737f58dbf397254c9fb08458f36bd1a
+    m_Address: Assets/Bundles/Units/kroos
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0d475cf0291926541ba07c9769f9fbeb
+    m_Address: Assets/Bundles/Units/mantic
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 18ba8a2b77fb6064d8e9002cd97a2c67
+    m_Address: Assets/Bundles/Units/mostma
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dc00273d1d913db408333ec279d56359
+    m_Address: Assets/Bundles/Units/nabr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d54c6880555b9e641aa59f2ed3e4cb83
+    m_Address: Assets/Bundles/Units/shield
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 825ae7eb39b890049b0c307eb0184cd6
+    m_Address: Assets/Bundles/Units/smile
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: def2b50981dd3074ab66bfd1c89a6f55
+    m_Address: Assets/Bundles/Units/sora
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0e18f91c7d061a544b19915931623caf
+    m_Address: Assets/Bundles/Units/susuro
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8b9ef0a84c7bef44786f88dfce8a617c
+    m_Address: Assets/Bundles/UI/BattleUI_atlas0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0b22f502e122dbb43b63c541d4644322
+    m_Address: Assets/Bundles/UI/BattleUI_fui
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c93966cea14bb2a48826e1bf990c601b
+    m_Address: Assets/Bundles/UI/MainUI_atlas0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c437a09018942ee4aa32288492a5c898
+    m_Address: Assets/Bundles/UI/MainUI_fui
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e37bdd11b2c054143b3678db549dfbdf
+    m_Address: Assets/Bundles/UI/SkillIcon_atlas0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 00545fd2c0797c74089f58791d5e8e42
+    m_Address: Assets/Bundles/UI/SkillIcon_fui
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1666affa7c7b2d145a606f0b8bf16e8d
+    m_Address: Assets/Bundles/UI/UnitFace_atlas0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 25119415e076cde4089899cd33c3cc74
+    m_Address: Assets/Bundles/UI/UnitFace_fui
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5aedbca052b402940b472bd5ec6f5d0c
+    m_Address: Assets/Bundles/UI/UnitPic_atlas0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 14001e8b550415447bced9ebf459c6bc
+    m_Address: Assets/Bundles/UI/UnitPic_fui
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7ecc3333049816c47ba390b6226e2d23
+    m_Address: Assets/Bundles/Bullet/testBullet
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3f1f82360f5568b42be664a6559710d4
+    m_Address: "Assets/Bundles/Bullet/\u84DD\u8272\u5B50\u5F39"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 51b8e44d8556d9e43a072f2cd03821b8
+    m_Address: "Assets/Bundles/Effect/\u51FB\u4E2D1"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 75817fb64010cba41940c970f0255d49
+    m_Address: "Assets/Bundles/Effect/\u51FB\u4E2D2"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4a783fa085cbf574f9ded34225389f3d
+    m_Address: "Assets/Bundles/Effect/\u84C4\u529B"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a5c18cd2e7f7f54448aa697d524ff21d
+    m_Address: Assets/Bundles/Other/CanBuild
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c2cccf093204c9e439fcf25f3c5f237e
+    m_Address: Assets/Bundles/Other/HighLight
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 77983c56d6803614cb7e85ef2b35230f
+    m_Address: Assets/Bundles/Image/StandPic/12fce
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2c6f73095909c814aba1289bbfe01f66
+    m_Address: Assets/Bundles/Image/StandPic/amiya
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0fdbb8d164e92bd4d97094be523df11d
+    m_Address: Assets/Bundles/Image/StandPic/aprl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e3f766729d9cf394ab531184829697f3
+    m_Address: Assets/Bundles/Image/StandPic/chen
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3bc4509d954fd96479c5f74c199fff2f
+    m_Address: Assets/Bundles/Image/StandPic/hsguma
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2feeb3249e431f34a8e92ceeece4aca1
+    m_Address: Assets/Bundles/Image/StandPic/huang
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b793d84a76e45d749ad489beb0cf17f4
+    m_Address: Assets/Bundles/Image/StandPic/jesica
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 310427ffeabd7774db50db2d5f312046
+    m_Address: Assets/Bundles/Image/StandPic/kroos
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2f815f5a06e52be4087b69a545db2cad
+    m_Address: Assets/Bundles/Image/StandPic/mostma
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 50421295860f66542833ee479ff3e9ce
+    m_Address: Assets/Bundles/Image/StandPic/sora
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bed983cbd0ef78844a3097859262f50e
+    m_Address: Assets/Bundles/Image/StandPic/susuro
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

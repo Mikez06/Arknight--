@@ -11,12 +11,12 @@ namespace Buffs
         public override void Apply()
         {
             base.Apply();
-            Log.Debug($"{Unit.Config._Id}加了buff：{Config._Id}");
+            Log.Debug($"{Unit.Config.Id}加了buff：{Config.Id}");
         }
 
         public override void Reset()
         {
-            Log.Debug($"{Unit.Config._Id}更新buff：{Config._Id}");
+            Log.Debug($"{Unit.Config.Id}更新buff：{Config.Id}");
             base.Reset();
         }
     }

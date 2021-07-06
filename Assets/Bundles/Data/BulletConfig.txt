@@ -1,1 +1,0 @@
-[{"_Id":"阿米娅子弹","Type":"子弹","Model":"蓝色子弹","Speed":10},{"_Id":"阿米娅强力击子弹","Type":"子弹","Model":"testBullet","Speed":10}]

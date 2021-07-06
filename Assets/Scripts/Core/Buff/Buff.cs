@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 public class Buff
 {
-    public BuffConfig Config => Database.Instance.Get<BuffConfig>(Id);
+    public BuffData Config => Database.Instance.Get<BuffData>(Id);
     public int Id;
 
     public Unit Unit;

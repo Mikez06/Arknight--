@@ -12,7 +12,7 @@ public class Skill
     public Unit Target;
     protected Battle Battle => Unit.Battle;
 
-    public SkillConfig Config => Database.Instance.Get<SkillConfig>(Id);
+    public SkillData Config => Database.Instance.Get<SkillData>(Id);
 
     public int Id;
 
@@ -155,7 +155,7 @@ public class Skill
         }
         if (string.IsNullOrEmpty(Config.ModelAnimation))
         {
-            Debug.Log(Unit.Config._Id + "的" + Config._Id + "没有抬手,直接使用");
+            Debug.Log(Unit.Config.Id + "的" + Config.Id + "没有抬手,直接使用");
             Cast(Target);
             ResetCooldown(1);
         }
@@ -170,7 +170,7 @@ public class Skill
             duration = duration * attackSpeed;
             fullDuration = fullDuration * attackSpeed;
             Casting.Set(duration);
-            Debug.Log(Unit.Config._Id + "的" + Config._Id + "AttackStart,pointDelay:" + duration + ",fullDuration" + fullDuration + ",Time:" + Time.time);
+            Debug.Log(Unit.Config.Id + "的" + Config.Id + "AttackStart,pointDelay:" + duration + ",fullDuration" + fullDuration + ",Time:" + Time.time);
             Unit.Recover.Set(fullDuration);
             Unit.Attacking.Set(fullDuration);
             Unit.State = StateEnum.Attack;
@@ -266,9 +266,9 @@ public class Skill
         }
         if (Config.DamageRate > 0)
         {
-            if (Config.AreaRange != null)
+            if (Config.AreaRange != 0)
             {
-                var targets = Battle.FindAll(target.Position2, Config.AreaRange.Value, Config.TargetTeam, Selectable);
+                var targets = Battle.FindAll(target.Position2, Config.AreaRange, Config.TargetTeam, Selectable);
                 foreach (var t in targets)
                 {
                     if (Config.EffectEffect != null)
@@ -370,7 +370,7 @@ public class Skill
                     //靠半径寻找目标
                     Target = Battle.FindFirst(Unit.Position2, Config.AttackRange, Config.TargetTeam, Selectable, targetOrder);
                     if (Target != null)
-                        Debug.Log(Target.Config._Id);
+                        Debug.Log(Target.Config.Id);
                 }
                 else
                 {

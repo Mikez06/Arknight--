@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Bullet
 {
-    public BulletConfig Config => Database.Instance.Get<BulletConfig>(Id);
+    public BulletData Config => Database.Instance.Get<BulletData>(Id);
     public int Id;
 
     public BulletModel BulletModel;
@@ -26,8 +26,7 @@ public class Bullet
 
     public virtual void CreateModel()
     {
-        ResourcesManager.Instance.LoadBundle(PathHelper.BulletPath + Config.Model);
-        BulletModel = GameObject.Instantiate(ResourcesManager.Instance.GetAsset<GameObject>(PathHelper.BulletPath + Config.Model, Config.Model)).GetComponent<BulletModel>();
+        BulletModel = ResHelper.Instantiate(PathHelper.BulletPath + Config.Model).GetComponent<BulletModel>();
         BulletModel.Init(this);
     }
 

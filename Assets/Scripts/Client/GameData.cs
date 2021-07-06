@@ -17,7 +17,7 @@ public class GameData
 
     public void TestInit()
     {
-        foreach (var unitConfig in Database.Instance.GetAll<UnitConfig>())
+        foreach (var unitConfig in Database.Instance.GetAll<UnitData>())
         {
             if (unitConfig.Type == "干员")
             {

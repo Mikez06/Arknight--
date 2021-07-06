@@ -32,7 +32,7 @@ namespace MainUI
                 m_reset.text = card.Config.ResetTime.ToString();
                 m_cost.text = card.Config.Cost.ToString();
                 m_stop.text = card.Config.StopCount.ToString();
-                var mainSkill = Database.Instance.Get<SkillConfig>(card.Config.Skills[0]);
+                var mainSkill = Database.Instance.Get<SkillData>(card.Config.Skills[0]);
                 m_agi.text = mainSkill.Cooldown.ToString();
                 m_hp.text = card.Config.Hp.ToString();
                 m_def.text = card.Config.Defence.ToString();

@@ -11,7 +11,7 @@ public class Map
     //public List<MapGrid> EndPoints = new List<MapGrid>();//终点好像也没什么卵用
     public MapGrid[,] Grids;
 
-    public MapConfig Config => Database.Instance.Get<MapConfig>(Id);
+    public MapData Config => Database.Instance.Get<MapData>(Id);
 
     public int Id;
 

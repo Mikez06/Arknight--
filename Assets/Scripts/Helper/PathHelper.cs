@@ -47,12 +47,12 @@ public static class PathHelper
         }
     }
 
-    public static string DataPath = "Bundles/Data";
-    public static string UIPath = "Bundles/UI/";
-    public static string SpritePath = "Bundles/Image/StandPic/";
-    public static string MapPath = "Bundles/Map/";
-    public static string UnitPath = "Bundles/Units/";
-    public static string BulletPath = "Bundles/Bullet/";
-    public static string EffectPath = "Bundles/Effect/";
+    public static string DataPath = "Assets/Bundles/Data/";
+    public static string UIPath = "Assets/Bundles/UI/";
+    public static string SpritePath = "Assets/Bundles/Image/StandPic/";
+    public static string OtherPath = "Assets/Bundles/Other/";
+    public static string UnitPath = "Assets/Bundles/Units/";
+    public static string BulletPath = "Assets/Bundles/Bullet/";
+    public static string EffectPath = "Assets/Bundles/Effect/";
     //public static string TimelinePath = "Bundles/Effect/Timeline/";
 }

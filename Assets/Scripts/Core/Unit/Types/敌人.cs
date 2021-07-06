@@ -22,7 +22,7 @@ namespace Units
     {
         public 干员 StopUnit;
 
-        public WaveConfig WaveConfig => Database.Instance.Get<WaveConfig>(WaveId);
+        public WaveData WaveConfig => Database.Instance.Get<WaveData>(WaveId);
         public int WaveId;
         /// <summary>
         /// 当前走到第几个目标点

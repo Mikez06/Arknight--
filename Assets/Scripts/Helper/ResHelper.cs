@@ -4,14 +4,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 //TODO 资源池
 public class ResHelper
 {
-    public static GameObject GetUnit(string unitName)
+    public static T GetAsset<T>(string path)
     {
-        ResourcesManager.Instance.LoadBundle(PathHelper.UnitPath + unitName);
-        return GameObject.Instantiate(ResourcesManager.Instance.GetAsset<GameObject>(PathHelper.UnitPath + unitName, unitName));
+        var op = Addressables.LoadAssetAsync<T>(path);
+        op.WaitForCompletion();
+        return op.Task.Result;
+    }
+
+    public static async Task<T> GetAssetAsync<T>(string path)
+    {
+        var op = Addressables.LoadAssetAsync<T>(path);
+        await op.Task;
+        return op.Task.Result;
+    }
+
+    public static GameObject Instantiate(string path)
+    {
+        var op = Addressables.InstantiateAsync(path);
+        op.WaitForCompletion();
+        return op.Task.Result;
+    }
+
+    public static async Task<GameObject> InstantiateAsyncImmediate(string path)
+    {
+        //TaskCompletionSource<GameObject> tcs = new TaskCompletionSource<GameObject>();
+        var op = Addressables.LoadAssetAsync<GameObject>(path);
+        var g = await op.Task;
+        var r = await Addressables.InstantiateAsync(path).Task;
+        //Addressables.InstantiateAsync(path).Completed += (x) =>
+        //{
+        //    tcs.SetResult(x.Result);
+        //};
+        //var g= await tcs.Task;
+        return r;
     }
 }
 

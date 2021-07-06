@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using System.IO;
+using UnityEngine.AddressableAssets;
 
 public class Database
 {
     public static Database Instance => instance == null ?
 #if UNITY_EDITOR
-            instance = new Database().Init()
+        instance = new Database().Init1()
 #else
             instance = new Database()
 #endif
@@ -19,52 +20,61 @@ public class Database
 
     Dictionary<Type, IConfig[]> dic = new Dictionary<Type, IConfig[]>();
 
-    public async Task InitAsync()
+    public void Clear()
+    {
+        dic.Clear();
+    }
+
+    public async Task Init()
     {
         try
         {
-            await ResourcesManager.Instance.LoadBundleAsync(PathHelper.DataPath);
             if (dic.Count > 0) return;
-            Add<UnitConfig>("UnitConfig");
-            Add<SkillConfig>("SkillConfig");
-            Add<BulletConfig>("BulletConfig");
-            Add<MapConfig>("MapConfig");
-            Add<WaveConfig>("WaveConfig");
-            Add<BuffConfig>("BuffConfig");
-            ResourcesManager.Instance.UnloadBundle(PathHelper.DataPath);
+            await Task.WhenAll(
+            AddAsync<UnitData>("UnitData"),
+            AddAsync<MapData>("MapData"),
+            AddAsync<SkillData>("SkillData"),
+            AddAsync<BuffData>("BuffData"),
+            AddAsync<BulletData>("BulletData"),
+            AddAsync<WaveData>("WaveData")
+            );
         }
         catch (Exception e)
         {
-            Debug.Log(e);
+            Debug.LogError(e);
         }
     }
 
-    public Database Init()
+    public Database Init1()
     {
-        if (dic.Count > 0) return this;
-        ResourcesManager.Instance.LoadBundle(PathHelper.DataPath);
-        Add<UnitConfig>("UnitConfig");
-        Add<SkillConfig>("SkillConfig");
-        Add<BulletConfig>("BulletConfig");
-        Add<MapConfig>("MapConfig");
-        Add<BuffConfig>("BuffConfig");
-        Add<WaveConfig>("WaveConfig");
-        ResourcesManager.Instance.UnloadBundle(PathHelper.DataPath);
+        try
+        {
+            if (dic.Count > 0) return this;
+            Add<UnitData>("UnitData");
+            Add<MapData>("MapData");
+            Add<SkillData>("SkillData");
+            Add<BuffData>("BuffData");
+            Add<BulletData>("BulletData");
+            Add<WaveData>("WaveData");
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+        }
         return this;
     }
-
 
     public T Get<T>(int id) where T : class, IConfig
     {
         dic.TryGetValue(typeof(T), out IConfig[] r);
-        if (r == null) throw new Exception();
+        if (r == null || id < 0 || id > r.Length) throw new Exception($"cant find {typeof(T).Name} ,id {id}");
         return r[id] as T;
     }
 
     public T Get<T>(string id) where T : class, IConfig
     {
         dic.TryGetValue(typeof(T), out IConfig[] r);
-        return r.FirstOrDefault(x => x._Id == id) as T;
+        return r.FirstOrDefault(x => x.Id == id) as T;
     }
 
     public T Get<T>(Func<T, bool> match) where T : class, IConfig
@@ -82,23 +92,59 @@ public class Database
     public int GetIndex<T>(T t) where T : class, IConfig
     {
         dic.TryGetValue(typeof(T), out IConfig[] r);
-        return Array.IndexOf(r, t);
+        var result = Array.IndexOf(r, t);
+        if (result == -1) throw new Exception($"cant find {typeof(T).Name} ,id {t.Id}");
+        return result;
     }
 
     public int GetIndex<T>(string id) where T : class, IConfig
     {
         dic.TryGetValue(typeof(T), out IConfig[] r);
-        return Array.FindIndex(r, x => x._Id == id);
+        var result = Array.FindIndex(r, x => x.Id == id);
+        if (result == -1) throw new Exception($"cant find {typeof(T).Name} ,id {id}");
+        return result;
     }
 
     private void Add<T>(string name) where T : IConfig
     {
-        var text = ResourcesManager.Instance.GetAsset<TextAsset>(PathHelper.DataPath, name).text;
-        T[] values = MongoHelper.FromJson<T[]>(text);
-        //foreach (var v in values)
-        //{
-        //    Debug.Log(MongoHelper.ToJson(v));
-        //}
-        dic.Add(typeof(T), values.Select(x => x as IConfig).ToArray());
+#if UNITY_EDITOR
+        var text = UnityEditor.AssetDatabase.LoadAssetAtPath<TextAsset>(PathHelper.DataPath + name + ".txt").text;
+        var arr = text.Split('\n');
+        IConfig[] values = new IConfig[arr.Length];
+        for (int i = 0; i < arr.Length; i++)
+        {
+            values[i] = JsonHelper.FromJson<T>(arr[i]);
+        }
+        dic.Add(typeof(T), values);
+#endif
+    }
+
+    private async Task AddAsync<T>(string name) where T : IConfig
+    {
+        var operation = Addressables.LoadAssetAsync<TextAsset>(PathHelper.DataPath + name);
+        //var text= operation.WaitForCompletion().text;
+        await operation.Task;
+        var text = operation.Result.text;
+        var arr = text.Split('\n');
+        IConfig[] values = new IConfig[arr.Length];
+        for (int i = 0; i < arr.Length; i++)
+        {
+            try
+            {
+                values[i] = JsonHelper.FromJson<T>(arr[i]);
+                if (values[i] is BuffData buffData && buffData.Id == "恢复")
+                {
+                    Debug.Log(111);
+                }
+                if (values[i] == null) throw new Exception();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(arr[i] + "\n" + e.ToString());
+            }
+        }
+        //Debug.Log(Time.time);
+        Addressables.ReleaseInstance(operation);
+        dic.Add(typeof(T), values);
     }
 }

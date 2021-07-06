@@ -7,70 +7,31 @@ using System.Text;
 using UnityEngine;
 using UnityEditor;
 using System.Linq;
-using MongoDB.Bson.IO;
 
 public class ExcelExportEditor
 {
     static string excelPath = "./Excel/";
     static string exportPath = "./Assets/Bundles/Data/";
+    static string scriptPath = "./Assets/Scripts/Config/";
 
-    static List<string> eUnits;
-    static List<string> eCards;
-    static List<string> eBuffs;
-    static List<string> eBullets;
-    static List<string> eTeam;
-    static List<string> eMaps;
-    static List<string> eItems;
-    static List<string> eShops;
-    static List<string> eSkills;
-    static List<string> eWaves;
+    static List<string> eUnit;
+    static List<string> eBuff;
+    static List<string> eSkill;
+    static List<string> eItem;
+    static List<string> eEquip;
+    static List<string> eJob;
 
-    static Dictionary<string, Func<string, string>> dic = new Dictionary<string, Func<string, string>>()
-        {
-            { "Unit",(x)=>n(x,eUnits) },
-            { "Unit[]",(x)=>nArray(x,eUnits) },
-             { "Card",(x)=>n(x,eCards) },
-            { "Card[]",(x)=>nArray(x,eCards) },
 
-             { "Bullet",(x)=>n(x,eBullets) },
-            { "Bullet[]",(x)=>nArray(x,eBullets) },
-            { "Buff",(x)=>n(x,eBuffs) },
-            { "Buff[]",(x)=>nArray(x,eBuffs) },
-            { "Team",(x)=>n(x,eTeam) },
-            { "Team[]",(x)=>nArray(x,eTeam) },
-            { "Map",(x)=>n(x,eMaps) },
-            { "Map[]",(x)=>nArray(x,eMaps) },
-            { "Item",(x)=>n(x,eItems) },
-            { "Item[]",(x)=>nArray(x,eItems) },
-            { "Shop",(x)=>n(x,eShops) },
-            { "Shop[]",(x)=>nArray(x,eShops) },
-            { "Skill",(x)=>n(x,eSkills) },
-            { "Skill[]",(x)=>nArray(x,eSkills) },
-            { "Wave",(x)=>n(x,eWaves) },
-            { "Wave[]",(x)=>nArray(x,eWaves) },
+    static Dictionary<string, List<string>> dic = new Dictionary<string, List<string>>()
+    {
+
     };
 
     [MenuItem("Tools/导出配置")]
-    private static void ExportAll()
+    public static void ExportAll()
     {
-        eUnits = Export("battle.xlsx", "unit", "_Id");
-        //eCards = Export("battle.xlsx", "card", "_Id");
-        eBuffs = Export("battle.xlsx", "buff", "_Id");
-        eBullets = Export("battle.xlsx", "bullet", "_Id");
-        //eTeam = Export("battle.xlsx", "team", "_Id");
-        eMaps = Export("battle.xlsx", "map", "_Id");
-        //eItems = Export("battle.xlsx", "item", "_Id");
-        //eShops = Export("battle.xlsx", "shop", "_Id");
-        eSkills = Export("battle.xlsx", "skill", "_Id");
-        eWaves = Export("battle.xlsx", "wave", "_Id");
-
-        var unitConfigs = Export<UnitConfig>("battle.xlsx", "unit", "UnitConfig.txt");
-        var skillConfigs = Export<SkillConfig>("battle.xlsx", "skill", "SkillConfig.txt");
-        var bulletConfigs = Export<BulletConfig>("battle.xlsx", "bullet", "BulletConfig.txt");
-        var mapConfigs = Export<MapConfig>("battle.xlsx", "map", "MapConfig.txt");
-        var waveConfigs = Export<WaveConfig>("battle.xlsx", "wave", "WaveConfig.txt");
-        var buffConfigs = Export<BuffConfig>("battle.xlsx", "buff", "BuffConfig.txt");
-
+        ExportClass();
+        ExportData();
         AssetDatabase.Refresh();
         Debug.Log("导出结束");
     }
@@ -84,103 +45,116 @@ public class ExcelExportEditor
         txt.Close();
     }
 
-    static List<string> Export(string fileName, string tableName, string fieldName)
+    static void ExportClass()
     {
-        List<string> result = new List<string>();
-        IExcelDataReader reader;
-        FileStream file = new FileStream(excelPath + fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-        reader = ExcelReaderFactory.CreateReader(file);
-        foreach (System.Data.DataTable sheet in reader.AsDataSet().Tables)
+        dic.Clear();
+        //读取所有表的Id，用于转换索引
+        foreach (var path in Directory.GetFiles(excelPath, "*.xlsx"))
         {
-            if (sheet.TableName != tableName) continue;
-            int cellCount = sheet.Columns.Count;
-
-            for (int j = 0; j < cellCount; j++)
+            if (path.Contains("$")) continue;
+            IExcelDataReader reader;
+            FileStream file = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            reader = ExcelReaderFactory.CreateReader(file);
+            foreach (System.Data.DataTable sheet in reader.AsDataSet().Tables)
             {
-                if (fieldName != GetCellString(sheet, 0, j)) continue;
-                for (int i = 2; i < sheet.Rows.Count; i++)
+                if (sheet.TableName.StartsWith("#")) continue;
+                List<string> Ids = new List<string>();
+                dic.Add(sheet.TableName, Ids);
+                for (int i = 3; i < sheet.Rows.Count; i++)
                 {
-                    string Id = GetCellString(sheet, i, 0);
-                    if (string.IsNullOrEmpty(Id) || Id.StartsWith("#"))
-                    {
-                        continue;
-                    }
-                    result.Add(GetCellString(sheet, i, j));
+                    var Id = GetCellString(sheet, i, 0);
+                    if (string.IsNullOrEmpty(Id) || Id.StartsWith("#")) continue;
+                    Ids.Add(Id);
                 }
             }
         }
-        return result;
+
+        foreach (var path in Directory.GetFiles(excelPath, "*.xlsx"))
+        {
+            if (path.Contains("$")) continue;
+            IExcelDataReader reader;
+            FileStream file = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            reader = ExcelReaderFactory.CreateReader(file);
+            foreach (System.Data.DataTable sheet in reader.AsDataSet().Tables)
+            {
+                if (sheet.TableName.StartsWith("#")) continue;
+                FileStream txt = new FileStream(scriptPath + sheet.TableName + ".cs", FileMode.Create);
+                StreamWriter sw = new StreamWriter(txt);
+                sw.Write($"public class {sheet.TableName} : IConfig \n");
+                sw.Write("{\n");
+                sw.Write("      public string Id { get ; set ; }\n");
+                for (int i = 0; i < sheet.Columns.Count; i++)
+                {
+                    var fieldInfo = GetCellString(sheet, 0, i);
+                    if (fieldInfo.StartsWith("#") || GetCellString(sheet, 1, i) == "Id") continue;
+                    string fieldType = GetCellString(sheet, 2, i);
+                    if (string.IsNullOrEmpty(fieldType)) continue;
+                    if (dic.ContainsKey(fieldType)) fieldType = "int?";
+                    if (dic.ContainsKey(fieldType.TrimEnd("[]".ToCharArray()))) fieldType = "int[]";
+                    sw.Write($"      public {fieldType} {GetCellString(sheet, 1, i)};\n");
+                }
+                sw.Write("}\n");
+                sw.Close();
+                txt.Close();
+            }
+        }
     }
 
-    static List<T> Export<T>(string fileName, string tableName,string writeName)
+    static void ExportData()
     {
-        List<T> result = new List<T>();
+        foreach (var path in Directory.GetFiles(excelPath, "*.xlsx"))
+        {
+            if (path.Contains("$")) continue;
+            Export(path);
+        }
+    }
+
+    static void Export(string fileName)
+    {
         IExcelDataReader reader;
-        FileStream file = new FileStream(excelPath + fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+        FileStream file = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
         reader = ExcelReaderFactory.CreateReader(file);
         foreach (System.Data.DataTable sheet in reader.AsDataSet().Tables)
         {
-            StringBuilder w = new StringBuilder();
-            w.Append("[");
-            if (sheet.TableName != tableName) continue;
+            if (sheet.TableName.StartsWith("#")) continue;
+            StringBuilder sb = new StringBuilder();
             int cellCount = sheet.Columns.Count;
-            for (int i = 2; i < sheet.Rows.Count; i++)
+            for (int i = 3; i < sheet.Rows.Count; i++)
             {
                 string Id = GetCellString(sheet, i, 0);
-                try
+                if (string.IsNullOrEmpty(Id) || Id.StartsWith("#"))
                 {
-                    if (string.IsNullOrEmpty(Id) || Id.StartsWith("#"))
+                    continue;
+                }
+                sb.Append("{");
+                for (int j = 0; j < cellCount; j++)
+                {
+                    string fieldName = GetCellString(sheet, 1, j);
+                    string fieldType = GetCellString(sheet, 2, j);
+                    if (string.IsNullOrEmpty(fieldName) || string.IsNullOrEmpty(fieldType))
                     {
                         continue;
                     }
-
-                    StringBuilder sb = new StringBuilder();
-                    sb.Append("{");
-                    for (int j = 0; j < cellCount; j++)
+                    string fieldValue = GetCellString(sheet, i, j);
+                    if (string.IsNullOrEmpty(fieldValue))
                     {
-                        string fieldName = GetCellString(sheet, 0, j);
-                        string fieldType = GetCellString(sheet, 1, j);
-                        if (string.IsNullOrEmpty(fieldName) || string.IsNullOrEmpty(fieldType))
-                        {
-                            continue;
-                        }
-                        string fieldValue = GetCellString(sheet, i, j);
-                        if (string.IsNullOrEmpty(fieldValue))
-                        {
-                            continue;
-                        }
-                        if (fieldName == "Id" || fieldName == "_id")
-                        {
-                            fieldName = "_id";
-                        }
-                        sb.Append($"\"{fieldName}\":{Convert(fieldType, fieldValue)},");
+                        continue;
                     }
-                    sb.Remove(sb.Length - 1, 1);
-                    sb.Append("}");
-                    //Debug.Log(sb);
-                    T t = MongoHelper.FromJson<T>(sb.ToString());
-                    w.Append($"{sb},");
-                    //Debug.Log(MongoHelper.ToJson(t));
-                    result.Add(t);
+                    sb.Append($"\"{fieldName}\":{Convert(fieldType, fieldValue)},");
                 }
-                catch (Exception e)
-                {
-                    throw new Exception(fileName + " " + tableName + "," + Id + "\n" + e.ToString());
-                }
+                sb.Remove(sb.Length - 1, 1);
+                sb.Append("}\n");
             }
-            if (w.Length > 1)
-                w.Remove(w.Length - 1, 1);
-            w.Append("]");
-            writeData(writeName, w.ToString());
+            if (sb.Length > 1) sb.Remove(sb.Length - 1, 1);
+
+            FileStream txt = new FileStream(exportPath + sheet.TableName + ".txt", FileMode.Create);
+            StreamWriter sw = new StreamWriter(txt);
+            sw.Write(sb.ToString());
+            sw.Close();
+            txt.Close();
         }
-
-
-        //reader.Close();
-        //reader.Dispose();
-        file.Close();
-        file.Dispose();
-        return result;
     }
+
     private static string GetCellString(System.Data.DataTable sheet, int i, int j)
     {
         try
@@ -193,26 +167,6 @@ public class ExcelExportEditor
         }
     }
     static StringBuilder sbCache = new StringBuilder();
-    static Func<string, List<string>, string> n = (x, l) =>
-    {
-        int index = l.IndexOf(x);
-        if (index == -1) throw new Exception($"{x} ");
-        return index.ToString();
-    };
-
-    static Func<string, List<string>, string> nArray = (x, l) =>
-    {
-        sbCache.Clear();
-        string[] sp = x.Split(',');
-        foreach (var s in sp)
-        {
-            int index = l.IndexOf(s);
-            if (index == -1) throw new Exception($"{x} {s} {MongoHelper.ToJson(l)}");
-            sbCache.Append($"\"{index}\",");
-        }
-        sbCache.Remove(sbCache.Length - 1, 1);
-        return $"[{sbCache.ToString()}]";
-    };
 
     private static string Convert(string type, string value)
     {
@@ -220,7 +174,7 @@ public class ExcelExportEditor
         {
             if (type.EndsWith("Enum[]"))
             {
-                Type t = typeof(Database).Assembly.GetType(type.Substring(0, type.Length - 2));
+                Type t = typeof(Init).Assembly.GetType(type.Substring(0, type.Length - 2));
                 sbCache.Clear();
                 string[] sp = value.Split(',');
                 foreach (string s in sp) sbCache.Append((int)Enum.Parse(t, s) + ",");
@@ -231,7 +185,7 @@ public class ExcelExportEditor
             {
                 try
                 {
-                    Type t = typeof(Database).Assembly.GetType(type);
+                    Type t = typeof(Init).Assembly.GetType(type);
                     return ((int)Enum.Parse(t, value)).ToString();
                 }
                 catch
@@ -239,11 +193,28 @@ public class ExcelExportEditor
                     return value;
                 }
             }
-            int index;
 
             if (dic.ContainsKey(type))
             {
-                return dic[type].Invoke(value);
+                int index = dic[type].IndexOf(value);
+                if (index == -1) throw new Exception(value);
+                return index.ToString();
+            }
+
+            if (dic.ContainsKey(type.TrimEnd("[]".ToCharArray())))
+            {
+                sbCache.Clear();
+                sbCache.Append("[");
+                string[] sp = value.Split(',');
+                foreach (var s in sp)
+                {
+                    int index = dic[type.TrimEnd("[]".ToCharArray())].IndexOf(s);
+                    if (index == -1) throw new Exception(value);
+                    sbCache.Append($"{index},");
+                }
+                if (sbCache.Length > 1) sbCache.Remove(sbCache.Length - 1, 1);
+                sbCache.Append("]");
+                return sbCache.ToString();
             }
 
             switch (type)
@@ -273,23 +244,26 @@ public class ExcelExportEditor
                     return value;
                 case "Data":
                     return $"{{{value}}}";
-                case "Vector2":
-                case "Vector2Int":
+                case "UnityEngine.Vector2":
+                case "UnityEngine.Vector2Int":
                     sp = value.Split(',');
-                    return $"{{\"x\":{sp[0] },\"y\":{sp[1]}}}";
-                case "Vector2Int[]":
-                case "Vector2[]":
+                    return $"{{\"x\":{sp[0]},\"y\":{sp[1]}}}";
+                case "UnityEngine.Vector2[]":
+                case "UnityEngine.Vector2Int[]":
                     sbCache.Clear();
-                    string[] s1 = value.Split('#');
-                    foreach (var s in s1)
+                    sp = value.Split('#');
+                    for (int i = 0; i < sp.Length; i++)
                     {
-                        sp = s.Split(',');
-                        sbCache.Append($"{{\"x\":{sp[0] },\"y\":{sp[1]}}},");
+                        var sp1 = sp[i].Split(',');
+                        sbCache.Append( $"{{\"x\":{sp1[0]},\"y\":{sp1[1]}}}");
+                        if (i != sp.Length - 1) sbCache.Append(",");
                     }
-                    sbCache.Remove(sbCache.Length - 1, 1);
-                    return $"[{sbCache.ToString()}]";
+                    return $"[{sbCache}]";
+                case "UnityEngine.Rect":
+                    sp = value.Split(',');
+                    return $"{{\"x\":{sp[0]},\"y\":{sp[1]},\"width\":{sp[2]},\"height\":{sp[3]}}}";
                 default:
-                    Debug.LogWarning($"unexcpeted type:{type}");
+                    //Debug.LogWarning($"unexcpeted type:{type}");
                     if (type.EndsWith("[]"))
                     {
                         return $"[{value}]";

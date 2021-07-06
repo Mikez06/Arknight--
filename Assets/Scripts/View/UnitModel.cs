@@ -61,7 +61,7 @@ public class UnitModel : MonoBehaviour
         var _beginAnimation = SkeletonAnimation.Skeleton.Data.FindAnimation(animationName + "_Begin");
         if (_beginAnimation != null)
         {
-            Debug.Log(Unit.Config._Id + "Add" + animationName + "_Begin" + Time.time);
+            Debug.Log(Unit.Config.Id + "Add" + animationName + "_Begin" + Time.time);
             SkeletonAnimation.state.AddAnimation(0, animationName + "_Begin", false, 0);
             delay += _beginAnimation.Duration;
         }

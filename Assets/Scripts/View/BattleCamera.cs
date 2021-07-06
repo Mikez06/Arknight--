@@ -70,7 +70,7 @@ public class BattleCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ResourcesManager.Instance.LoadBundle("Bundles/Other/HighLight");
+        //ResourcesManager.Instance.LoadBundle("Bundles/Other/HighLight");
         startPosition = transform.position;
         startUp = transform.up;
         startRotation = transform.rotation;
@@ -138,7 +138,7 @@ public class BattleCamera : MonoBehaviour
         var targetUnit = FocusUnit == null ? BuildUnit : FocusUnit;
         foreach (var tile in targetUnit.Skills[0].AttackPoints)
         {
-            var tileAsset = ResourcesManager.Instance.GetAsset<GameObject>("Bundles/Other/HighLight", "HighLight").GetComponent<MapTile>();
+            var tileAsset = ResHelper.Instantiate(PathHelper.OtherPath + "HighLight").GetComponent<MapTile>();
             var go = TilePool.Spawn(tileAsset, Battle.Instance.Map.Grids[tile.x, tile.y].transform.position, null);
             Tiles.Add(go);
         }

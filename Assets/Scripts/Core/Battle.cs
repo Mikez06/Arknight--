@@ -15,7 +15,7 @@ public class Battle
 
     public Map Map = new Map();
 
-    public List<WaveConfig> Waves = new List<WaveConfig>();
+    public List<WaveData> Waves = new List<WaveData>();
 
     public int EnemyCount;
 
@@ -61,7 +61,7 @@ public class Battle
                 UnitMap[i, j] = new HashSet<Unit>();
             }
 
-        foreach (var wave in Database.Instance.GetAll<WaveConfig>())
+        foreach (var wave in Database.Instance.GetAll<WaveData>())
         {
             if (wave.Map == battleConfig.MapName) Waves.Add(wave);
         }
@@ -114,7 +114,7 @@ public class Battle
 
     public Units.干员 CreatePlayerUnit(Card card,int skill)
     {
-        var config = Database.Instance.Get<UnitConfig>(card.UnitId);
+        var config = Database.Instance.Get<UnitData>(card.UnitId);
         var unit = typeof(Battle).Assembly.CreateInstance(nameof(Units) + "." + config.Type) as Units.干员;
         unit.Id = card.UnitId;
         unit.Card = card;
@@ -130,7 +130,7 @@ public class Battle
 
     public Units.干员 CreatePlayerUnit(int id)
     {
-        var config = Database.Instance.Get<UnitConfig>(id);
+        var config = Database.Instance.Get<UnitData>(id);
         var unit = typeof(Battle).Assembly.CreateInstance(nameof(Units) + "." + config.Type) as Units.干员;
         unit.Id = id;
         //unit.SetDirection(direction);
@@ -142,11 +142,11 @@ public class Battle
         return unit;
     }
 
-    public Units.敌人 CreateEnemy(WaveConfig waveConfig)
+    public Units.敌人 CreateEnemy(WaveData waveConfig)
     {
-        var config = Database.Instance.Get<UnitConfig>(waveConfig.UnitId);
+        var config = Database.Instance.Get<UnitData>(waveConfig.UnitId.Value);
         var unit = typeof(Battle).Assembly.CreateInstance(nameof(Units) + "." + config.Type) as Units.敌人;
-        unit.Id = waveConfig.UnitId;
+        unit.Id = waveConfig.UnitId.Value;
         unit.WaveId = Database.Instance.GetIndex(waveConfig);
         unit.Battle = this;
         unit.Init();
@@ -158,7 +158,7 @@ public class Battle
 
     public Bullet CreateBullet(int id, Vector3 startPos, Vector3 targetPos, Unit target, Skill skill)
     {
-        var config = Database.Instance.Get<BulletConfig>(id);
+        var config = Database.Instance.Get<BulletData>(id);
         var result = typeof(Battle).Assembly.CreateInstance(nameof(Bullets) + "." + config.Type) as Bullet;
         result.Id = id;
         result.Postion = startPos;

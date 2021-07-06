@@ -14,9 +14,10 @@ public class Init : MonoBehaviour
 
     private async void Start()
     {
-        await Database.Instance.InitAsync();
+        await UnityEngine.AddressableAssets.Addressables.InitializeAsync().Task;
+        await Database.Instance.Init();
         GameData.Instance.TestInit();
-        Debug.Log(Database.Instance.Get<UnitConfig>(0)._Id);
+        Debug.Log(Database.Instance.Get<UnitData>(0).Id);
         var battleUI = UIManager.Instance.ChangeView<MainUI.UI_Main>(MainUI.UI_Main.URL);
         //StartBattle(new BattleInput()
         //{

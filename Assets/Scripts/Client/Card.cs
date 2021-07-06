@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 public class Card
 {
-    public UnitConfig Config => Database.Instance.Get<UnitConfig>(UnitId);
+    public UnitData Config => Database.Instance.Get<UnitData>(UnitId);
     public int UnitId;
     public int Level;
 

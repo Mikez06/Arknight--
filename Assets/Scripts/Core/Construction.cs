@@ -9,6 +9,6 @@ public class Construction
     public int Cost;
     public int BuildTime;
     public int UnitId;
-    public UnitConfig UnitConfig => Database.Instance.Get<UnitConfig>(UnitId);
+    public UnitData UnitConfig => Database.Instance.Get<UnitData>(UnitId);
 
 }

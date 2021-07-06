@@ -9,7 +9,7 @@ using UnityEngine;
 public class Unit
 {
     public Battle Battle;
-    public UnitConfig Config => Database.Instance.Get<UnitConfig>(Id);
+    public UnitData Config => Database.Instance.Get<UnitData>(Id);
     public int Id;
 
     public UnitModel UnitModel;
@@ -182,7 +182,7 @@ public class Unit
     {
         var s = Skills.Find(x => x.Id == skillId);
         if (s != null) return s;
-        var skillConfig = Database.Instance.Get<SkillConfig>(skillId);
+        var skillConfig = Database.Instance.Get<SkillData>(skillId);
         var skill = typeof(Unit).Assembly.CreateInstance(nameof(Skills) + "." + skillConfig.Type) as Skill;
         skill.Unit = this;
         skill.Id = skillId;
@@ -207,7 +207,7 @@ public class Unit
         }
         else
         {
-            var config = Database.Instance.Get<BuffConfig>(buffId);
+            var config = Database.Instance.Get<BuffData>(buffId);
             var buff = typeof(Buff).Assembly.CreateInstance(nameof(Buffs) + "." + config.Type) as Buff;
             buff.Id = buffId;
             buff.Skill = source;
@@ -252,8 +252,7 @@ public class Unit
 
     public void CreateModel()
     {
-        ResourcesManager.Instance.LoadBundle(PathHelper.UnitPath + Config.Model);
-        GameObject go = GameObject.Instantiate(ResourcesManager.Instance.GetAsset<GameObject>(PathHelper.UnitPath + Config.Model, Config.Model));
+        GameObject go = ResHelper.Instantiate(PathHelper.UnitPath + Config.Model);
         UnitModel = go.GetComponent<UnitModel>();
         UnitModel.Unit = this;
         UnitModel.Init();

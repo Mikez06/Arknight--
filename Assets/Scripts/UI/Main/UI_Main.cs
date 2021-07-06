@@ -37,9 +37,8 @@ namespace MainUI
         {
             if (gameData.Teams[0].Cards.Count > 0)
             {
-                string picName = Database.Instance.Get<UnitConfig>(gameData.Teams[0].Cards[0].UnitId).StandPic;
-                ResourcesManager.Instance.LoadBundle(PathHelper.SpritePath + picName);
-                m_standPic.texture = new NTexture(ResourcesManager.Instance.GetAsset<Texture>(PathHelper.SpritePath + picName, picName));
+                string picName = Database.Instance.Get<UnitData>(gameData.Teams[0].Cards[0].UnitId).StandPic;
+                m_standPic.texture = new NTexture(ResHelper.GetAsset<Texture>(PathHelper.SpritePath + picName));
             }
         }
     }

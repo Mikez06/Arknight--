@@ -13,13 +13,14 @@ public class Test : MonoBehaviour
     // Start is called before the first frame update
     async void Start()
     {
-        await Addressables.InitializeAsync().Task;
-        var pic = ResHelper.GetAsset<Sprite>("Assets/Bundles/Image/StandPic/12fce");
-        GetComponent<SpriteRenderer>().sprite = pic;
-        await TimeHelper.Instance.WaitAsync(1f);
-        GetComponent<SpriteRenderer>().sprite = null;
-        Resources.UnloadAsset(pic.texture);
-        Debug.Log(pic.name);
+        Core.Dungeon dungeon = new Core.Dungeon();
+        dungeon.CreateDungeon(5, 10, 3);
+        foreach (var tile in dungeon.Tiles)
+        {
+            Debug.Log(tile.X + "," + tile.Y);
+            GameObject g = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            g.transform.position = new Vector3(tile.X, tile.Y);
+        }
         //ResHelper.Return(pic);
     }
 

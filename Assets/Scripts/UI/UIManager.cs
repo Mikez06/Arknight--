@@ -78,22 +78,23 @@ public class UIManager : MonoBehaviour
 #else
         var operation = Addressables.LoadAssetAsync<TextAsset>(PathHelper.UIPath + PackageName + "_fui");
         var bytes = operation.WaitForCompletion().bytes;
-        UIPackage.LoadResource load = (string name, string extension, System.Type type, out DestroyMethod destroyMethod) =>
-        {
-            destroyMethod = DestroyMethod.Unload;
-            try
-            {
-                var op = Addressables.LoadAssetAsync<UnityEngine.Object>(PathHelper.UIPath + name);
-                op.WaitForCompletion();
-                return op.Result;
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-        };
         UIPackage.AddPackage(bytes, PackageName, load);
 #endif
+    }
+
+    object load(string name, string extension, System.Type type, out DestroyMethod destroyMethod)
+    {
+        destroyMethod = DestroyMethod.Unload;
+        try
+        {
+            var op = Addressables.LoadAssetAsync<UnityEngine.Object>(PathHelper.UIPath + name);
+            op.WaitForCompletion();
+            return op.Result;
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
     }
 
     AssetBundle getBundle(string name)

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-
+using Pathfinding;
 public class Map
 {
     //public List<MapGrid> StartPoints = new List<MapGrid>();//起始点有什么卵用吗
@@ -26,7 +26,23 @@ public class Map
 
     }
 
+    StartEndModifier startEndModifier = new StartEndModifier()
+    {
+        exactStartPoint = StartEndModifier.Exactness.ClosestOnNode,
+        exactEndPoint = StartEndModifier.Exactness.ClosestOnNode,
+    };
+    public List<Vector3> FindPath(Vector3 start, Vector3 end)
+    {
+        var p = ABPath.Construct(start, end);
+        AstarPath.StartPath(p);
+        p.BlockUntilCalculated();
+        startEndModifier.Apply(p);
+        var result = new List<Vector3>(p.vectorPath);
+        return result;
+    }
+
     /// <summary>
+    /// 已弃用，请使用A*插件版
     /// 找到一条从起点到终点的最短路径
     /// TODO 箱子 阻碍物
     /// 目前使用广搜 或许改成A*更佳

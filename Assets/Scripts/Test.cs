@@ -7,21 +7,35 @@ using System.Linq;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 using UnityEngine.AddressableAssets;
+using Pathfinding;
 
 public class Test : MonoBehaviour
 {
+    public Transform t0, t1;
     // Start is called before the first frame update
     async void Start()
     {
-        Core.Dungeon dungeon = new Core.Dungeon();
-        dungeon.CreateDungeon(5, 10, 3);
-        foreach (var tile in dungeon.Tiles)
+        var seeker = gameObject.GetComponent<Seeker>();
+        var p = seeker.StartPath(t0.transform.position, t1.transform.position);
+        p.BlockUntilCalculated();
+        
+        foreach (var point in p.vectorPath)
         {
-            Debug.Log(tile.X + "," + tile.Y);
-            GameObject g = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            g.transform.position = new Vector3(tile.X, tile.Y);
+            Debug.Log(point);
         }
-        //ResHelper.Return(pic);
+        //var p = ABPath.Construct(t0.transform.position, t1.transform.position, null);
+        //StartEndModifier s = new StartEndModifier()
+        //{
+        //    exactStartPoint = StartEndModifier.Exactness.ClosestOnNode,
+        //    exactEndPoint = StartEndModifier.Exactness.ClosestOnNode,
+        //};
+        //AstarPath.StartPath(p);
+        //p.BlockUntilCalculated();
+        //s.Apply(p);
+        //foreach (var point in p.vectorPath)
+        //{
+        //    Debug.Log(point);
+        //}       
     }
 
     // Update is called once per frame

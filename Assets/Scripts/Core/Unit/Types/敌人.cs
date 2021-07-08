@@ -28,20 +28,28 @@ namespace Units
         /// 当前走到第几个目标点
         /// </summary>
         public int NowPathPoint;
+        protected Vector3 NextPoint => PathPoints[NowPathPoint + 1].Pos;
         public CountDown PathWaiting;
-        public List<MapGrid> TempPath;
+        public List<PathPoint> PathPoints;
+        public bool NeedResetPath;
+
+
+        public List<Vector3> TempPath;
+        public int TempIndex;
+        protected Vector3 TempTarget => TempPath[TempIndex + 1];
+
 
         public override void Init()
         {
             base.Init();
-            Position = Battle.Map.Grids[WaveConfig.Path[0].x, WaveConfig.Path[0].y].transform.position + new Vector3(0, Config.Height, 0);
+            PathPoints = PathManager.Instance.GetPath(WaveConfig.Path);
+            Position = PathPoints[0].Pos;
 
-            TempPath = Battle.Map.FindPath(NowGrid, Battle.Map.Grids[WaveConfig.Path[NowPathPoint + 1].x, WaveConfig.Path[NowPathPoint + 1].y]);
-            ScaleX = TargetScaleX = (TempPath[1].X - TempPath[0].X) > 0 ? 1 : -1;
+            findNewPath();
+            ScaleX = TargetScaleX = (PathPoints[NowPathPoint + 1].Pos.x - Position.x) > 0 ? 1 : -1;
             State = StateEnum.Idle;
             AnimationName = "Idle";
             BattleUI.UI_Battle.Instance.CreateUIUnit(this);
-            PosOffset = ((float)Battle.Random.NextDouble() - 0.5f);
         }
 
         public override void Finish()
@@ -110,18 +118,12 @@ namespace Units
             if (StopUnit != null) return;//有人阻挡，停止移动,理论上这一句不要
             AnimationName = Speed >= 1 ? "Run_Loop" : "Move_Loop";
             AnimationSpeed = 1;
-            if (TempPath == null)
+            if (TempPath == null || NeedResetPath)//无路径或因为外力走出了预定路线，重寻路
             {
-                TempPath = Battle.Map.FindPath(NowGrid, Battle.Map.Grids[WaveConfig.Path[NowPathPoint + 1].x, WaveConfig.Path[NowPathPoint + 1].y]);
+                findNewPath();
             }
-            int index = TempPath.IndexOf(NowGrid);
-            if (index < 0)//因为外力走出了预定路线，重寻路
-            {
-                TempPath = Battle.Map.FindPath(NowGrid, Battle.Map.Grids[WaveConfig.Path[NowPathPoint + 1].x, WaveConfig.Path[NowPathPoint + 1].y]);
-                index = 0;
-            }
-            Vector3 targetPoint = index == TempPath.Count - 1 ? TempPath[index].transform.position : TempPath[index + 1].transform.position;
-            var delta = targetPoint - Position;
+
+            var delta = TempTarget - Position;
             if (delta != Vector3.zero) Direction = new Vector2(delta.x, delta.z);
             var scaleX = delta.x > 0 ? 1 : -1;
             if (scaleX != ScaleX)
@@ -130,29 +132,33 @@ namespace Units
                 Turning.Set(SystemConfig.TurningTime);
                 return;
             }
-            if ((targetPoint - Position).magnitude < Speed * SystemConfig.DeltaTime)
+            if ((TempTarget - Position).magnitude < Speed * SystemConfig.DeltaTime)
             {
                 //Debug.Log("Arrive");
-                Position = targetPoint;
+                Position = TempTarget;
                 //抵达临时目标
-                NowPathPoint++;
-                if (NowPathPoint == WaveConfig.Path.Length - 1)
+                TempIndex++;
+                if (TempIndex == TempPath.Count - 1)
                 {
-                    //破门了
-                    Battle.DoDamage(Config.Damage);
-                    Battle.EnemyCount--;
-                    Finish();
-                }
-                else
-                {
-                    //往下个点走
-                    TempPath = null;
-                    PathWaiting = new CountDown(WaveConfig.PathWait[NowPathPoint]);
+                    NowPathPoint++;
+
+                    if (NowPathPoint == WaveConfig.Path.Length)
+                    {
+                        //破门了
+                        Battle.DoDamage(Config.Damage);
+                        Battle.EnemyCount--;
+                        Finish();
+                    }
+                    else
+                    {
+                        //往下个点走
+                        TempPath = null;
+                    }
                 }
             }
             else
             {
-                Position += (targetPoint - Position).normalized * Speed * SystemConfig.DeltaTime;
+                Position += (TempTarget - Position).normalized * Speed * SystemConfig.DeltaTime;
             }
         }
 
@@ -166,12 +172,28 @@ namespace Units
             base.DoDie();
         }
 
+        void findNewPath()
+        {
+            TempPath = Battle.Map.FindPath(Position, NextPoint);
+            var log = "";
+            foreach (var p in TempPath) log += p.ToString() + ",";
+            Debug.Log($"Path:{log}");
+            TempIndex = 0;
+        }
+
         public float distanceToFinal()
         {
-            var point = WaveConfig.Path.Last();
-            var v = Battle.Map.Grids[point.x, point.y].transform.position - Position;
-            v.y = 0;
-            return v.magnitude;
+            float result = 0;
+            for (int i = NowPathPoint + 1; i < PathPoints.Count-1; i++)
+            {
+                result += (PathPoints[i].Pos - PathPoints[i + 1].Pos).magnitude;
+            }
+            for (int i = TempIndex + 1; i < TempPath.Count - 1; i++)
+            {
+                result += (TempPath[i] - TempPath[i + 1]).magnitude;
+            }
+            result += (Position - TempTarget).magnitude;
+            return result;
         }
     }
 }

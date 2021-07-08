@@ -31,7 +31,7 @@ public class UnitModel : MonoBehaviour
         {
             return;
         }
-        transform.position = Unit.Position + new Vector3(0, 0, Unit.PosOffset);
+        transform.position = Unit.Position;
 
         if (nowAnimation!=Unit.AnimationName)
         {

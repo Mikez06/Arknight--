@@ -9,7 +9,7 @@ public class Skill
 {
     public Unit Unit;
 
-    public Unit Target;
+    public List<Unit> Targets = new List<Unit>();
     protected Battle Battle => Unit.Battle;
 
     public SkillData Config => Database.Instance.Get<SkillData>(Id);
@@ -27,7 +27,9 @@ public class Skill
     /// 技能抬手
     /// </summary>
     public CountDown Casting = new CountDown();
-
+    /// <summary>
+    /// 开启时间
+    /// </summary>
     public CountDown Opening = new CountDown();
 
     protected bool ifUsePower => this == Unit.MainSkill;
@@ -52,19 +54,9 @@ public class Skill
             }
         }
 
-
         if (Casting.Update(SystemConfig.DeltaTime))
         {
-            if (!Selectable(Target))// 咏唱完目标已经不可选中了，尝试找到一个新目标
-            {
-                Target = null;
-                FindTarget();
-            }
-            if (Target != null)
-            {
-                Cast(Target);
-                Target = null;
-            }
+            Cast();
         }
     }
 
@@ -134,15 +126,18 @@ public class Skill
     #endregion
 
     #region 使用流程
+    /// <summary>
+    /// 技能抬手
+    /// </summary>
     public virtual void Start()
     {
-        if (Target == null)
+        if (Targets.Count == 0)
         {
             FindTarget();
         }
-        if (Target != null && Selectable(Target))
+        if (Targets.Count > 0)
         {
-            var scaleX = (Target.Position - Unit.Position).x > 0 ? 1 : -1;
+            var scaleX = (Targets[0].Position - Unit.Position).x > 0 ? 1 : -1;
             if (scaleX != Unit.ScaleX)
             {
                 Unit.TargetScaleX = scaleX;
@@ -156,7 +151,7 @@ public class Skill
         if (string.IsNullOrEmpty(Config.ModelAnimation))
         {
             Debug.Log(Unit.Config.Id + "的" + Config.Id + "没有抬手,直接使用");
-            Cast(Target);
+            Cast();
             ResetCooldown(1);
         }
         else
@@ -188,38 +183,26 @@ public class Skill
         }
     }
 
-    public virtual void Cast(Unit target)
+    /// <summary>
+    /// 实际生效点
+    /// </summary>
+    public virtual void Cast()
     {
-        HashSet<Unit> targets = null;
-        if (Config.HitCount > 1)
-        {
-            var all = Battle.FindUnits(AttackPoints, Config.TargetTeam, Selectable).ToList();
-            targets = new HashSet<Unit>();
-            for (int i = 0; i < Config.HitCount - 1; i++)
-            {
-                if (all.Count == 0) break;
-                var t = all[Battle.Random.Next(0, all.Count)];
-                all.Remove(t);
-                targets.Add(t);
-            }
-            if (targets.Count == 0) targets.Add(target);//主目标当保底
-        }
+        if (Config.RegetTarget) FindTarget();//对于某些技能，无法攻击到已经离开攻击区域的单位
 
-        if (targets != null)
+        if (Targets.Count > 0)
         {
-            foreach (var t in targets) Effect(t);
+            foreach (var t in Targets) Effect(t);
         }
-        else
-            Effect(target);
-        CastExSkill(target);
+        CastExSkill();
     }
 
-    protected virtual void CastExSkill(Unit target)
+    protected virtual void CastExSkill()
     {
         if (Config.ExSkills != null)
             foreach (var skillId in Config.ExSkills)
             {
-                Unit.Skills.Find(x => x.Id == skillId).Cast(target);
+                Unit.Skills.Find(x => x.Id == skillId).Cast();
             }
     }
 
@@ -268,7 +251,7 @@ public class Skill
         {
             if (Config.AreaRange != 0)
             {
-                var targets = Battle.FindAll(target.Position2, Config.AreaRange, Config.TargetTeam, Selectable);
+                var targets = Battle.FindAll(target.Position2, Config.AreaRange, Config.TargetTeam);
                 foreach (var t in targets)
                 {
                     if (Config.EffectEffect != null)
@@ -319,12 +302,6 @@ public class Skill
     /// <returns></returns>
     public virtual bool Selectable(Unit target)
     {
-
-        if (Config.AttackTarget == AttackTargetEnum.阻挡)
-        {
-            if (Unit is Units.干员 u && !u.StopUnits.Contains(target)) return false;
-            if (Unit is Units.敌人 e && e.StopUnit != target) return false;
-        }
         if (target.Config.Height > 0 && !Config.AttackFly) return false;
         //if (Config.AttackTarget == AttackTargetEnum.敌对)
         //{
@@ -358,31 +335,30 @@ public class Skill
 
     public virtual void FindTarget()
     {
-        switch (Config.AttackTarget)
+        Targets.Clear();
+        if (AttackPoints == null)//根据攻击范围进行索敌
         {
-            case AttackTargetEnum.阻挡:
-                if (Unit is Units.干员 u) Target = u.StopUnits.FirstOrDefault();
-                else if (Unit is Units.敌人 e) Target = e.StopUnit;
-                break;
-            case AttackTargetEnum.敌对:
-                if (AttackPoints == null)
-                {
-                    //靠半径寻找目标
-                    Target = Battle.FindFirst(Unit.Position2, Config.AttackRange, Config.TargetTeam, Selectable, targetOrder);
-                    if (Target != null)
-                        Debug.Log(Target.Config.Id);
-                }
-                else
-                {
-                    //找网格点
-                    Target = Battle.FindFirst(AttackPoints, Config.TargetTeam, Selectable, targetOrder);
-                }
-                break;
-            case AttackTargetEnum.自己:
-                Target = Unit;
-                break;
+            Battle.FindAll(Unit.Position2, Config.AreaRange, Config.TargetTeam);
         }
-       
+        else
+        {
+            Battle.FindAll(AttackPoints, Config.TargetTeam);
+        }
+        if (Targets.Count > 0)
+        {
+            FilterTarget(Targets);
+            SortTarget(Targets);
+        }
+    }
+
+    protected virtual void FilterTarget(List<Unit> targets)
+    {
+
+    }
+
+    protected virtual void SortTarget(List<Unit> targets)
+    {
+
     }
 
     public void UpdateAttackPoints()

@@ -8,13 +8,16 @@ public class SkillData : IConfig
       public string Name;
       public AttackTargetEnum AttackTarget;
       public bool AttackStop;
+      public bool RegetTarget;
       public int TargetTeam;
       public bool AttackFly;
       public AttackTargetOrderEnum AttackOrder;
       public UnityEngine.Vector2Int[] AttackPoints;
       public DamageTypeEnum DamageType;
       public float DamageRate;
-      public int HitCount;
+      public int DamageCount;
+      public int BurstCount;
+      public float BurstDelay;
       public float AreaRange;
       public float AreaDamage;
       public int[] Skills;

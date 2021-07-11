@@ -58,6 +58,11 @@ public class Skill
         {
             Cast();
         }
+
+        if (!Casting.Finished()) //抬手期间，如果无有效目标，则取消抬手
+        {
+            //TODO
+        }
     }
 
     public virtual void UpdateCooldown()
@@ -195,6 +200,7 @@ public class Skill
             foreach (var t in Targets) Effect(t);
         }
         CastExSkill();
+        Targets.Clear();
     }
 
     protected virtual void CastExSkill()
@@ -313,25 +319,25 @@ public class Skill
         return true;
     }
 
-    protected virtual float targetOrder(Unit target)
-    {
-        switch (Config.AttackOrder)
-        {
-            case AttackTargetOrderEnum.血量:
-                return target.Hp / target.MaxHp;
-            case AttackTargetOrderEnum.离家近:
-                return (target as Units.敌人).distanceToFinal();
-            case AttackTargetOrderEnum.放置顺序:
-                return (target as Units.干员).MapIndex;
-            case AttackTargetOrderEnum.飞行:
-                //优先攻击飞行，次要攻击离家近的
-                return (target as Units.敌人).distanceToFinal() - target.Config.Height == 0 ? 0 : -100;
-            case AttackTargetOrderEnum.区域顺序:
-                int index = AttackPoints.IndexOf(target.GridPos);
-                return index == -1 ? float.MaxValue : index;
-        }
-        return 0;
-    }
+    //protected virtual float targetOrder(Unit target)
+    //{
+    //    switch (Config.AttackOrder)
+    //    {
+    //        case AttackTargetOrderEnum.血量:
+    //            return target.Hp / target.MaxHp;
+    //        case AttackTargetOrderEnum.离家近:
+    //            return (target as Units.敌人).distanceToFinal();
+    //        case AttackTargetOrderEnum.放置顺序:
+    //            return (target as Units.干员).MapIndex;
+    //        case AttackTargetOrderEnum.飞行:
+    //            //优先攻击飞行，次要攻击离家近的
+    //            return (target as Units.敌人).distanceToFinal() - target.Config.Height == 0 ? 0 : -100;
+    //        case AttackTargetOrderEnum.区域顺序:
+    //            int index = AttackPoints.IndexOf(target.GridPos);
+    //            return index == -1 ? float.MaxValue : index;
+    //    }
+    //    return 0;
+    //}
 
     public virtual void FindTarget()
     {
@@ -342,23 +348,24 @@ public class Skill
         }
         else
         {
-            Battle.FindAll(AttackPoints, Config.TargetTeam);
+            Targets.AddRange(Battle.FindAll(AttackPoints, Config.TargetTeam));
         }
         if (Targets.Count > 0)
         {
-            FilterTarget(Targets);
+            //首先计算出所有目标的仇恨优先级，然后再选出攻击个数的实际目标
             SortTarget(Targets);
+            FilterTarget(Targets);
         }
-    }
-
-    protected virtual void FilterTarget(List<Unit> targets)
-    {
-
     }
 
     protected virtual void SortTarget(List<Unit> targets)
     {
+        targets.OrderBy(x => (x as Units.敌人).distanceToFinal());
+    }
 
+    protected virtual void FilterTarget(List<Unit> targets)
+    {
+        Targets = targets.Take(Config.DamageCount).ToList();
     }
 
     public void UpdateAttackPoints()

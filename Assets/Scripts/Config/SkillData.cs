@@ -12,6 +12,7 @@ public class SkillData : IConfig
       public int TargetTeam;
       public bool AttackFly;
       public AttackTargetOrderEnum AttackOrder;
+      public AttackTargetOrder2Enum AttackOrder2;
       public UnityEngine.Vector2Int[] AttackPoints;
       public DamageTypeEnum DamageType;
       public float DamageRate;

@@ -149,7 +149,7 @@ namespace BattleUI
                 UIPool.ReturnObject(head);
             }
             m_Builds.RemoveChildren();
-            var units = Battle.PlayerUnits.Where(x => x.MapIndex == -1).ToList();
+            var units = Battle.PlayerUnits.Where(x => x.InputTime == -1).ToList();
             units.Sort((x, y) => x.Config.Cost - y.Config.Cost);
             foreach (var unit in units)
             {

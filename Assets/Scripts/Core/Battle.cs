@@ -29,8 +29,6 @@ public class Battle
 
     public bool Win;
 
-    public int NowUnitIndex = 0;
-
     public HashSet<Unit>[,] UnitMap;//敌人快速检索缓存
 
     public HashSet<Bullet> Bullets = new HashSet<Bullet>();
@@ -205,7 +203,7 @@ public class Battle
     {
         if (team == 0)
         {
-            var units = PlayerUnits.Where(x => x.MapIndex >= 0).ToList();
+            var units = PlayerUnits.Where(x => x.InputTime >= 0).ToList();
             units.Sort((x, y) => Math.Sign(sort(x) - sort(y)));
             foreach (var unit in units)
             {
@@ -234,7 +232,7 @@ public class Battle
         HashSet<Unit> result = new HashSet<Unit>();
         if (team == 0)
         {
-            var units = PlayerUnits.Where(x => x.MapIndex >= 0).ToList();
+            var units = PlayerUnits.Where(x => x.InputTime >= 0).ToList();
             foreach (var unit in units) //需要优化！
             {
                 if ((unit.Position2 - pos).magnitude < radius + unit.Config.Radius

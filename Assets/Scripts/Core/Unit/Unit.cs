@@ -58,6 +58,10 @@ public class Unit
     public int PowerCount;
     public float PowerSpeed;
 
+    public float Weight;
+
+    public bool IfHide;
+
     /// <summary>
     /// 攻击动画
     /// </summary>
@@ -100,6 +104,7 @@ public class Unit
         Attack = Config.Attack;
         Defence = Config.Defence;
         MagicDefence = Config.MagicDefence;
+        Weight = Config.Weight;
         PowerSpeed = 1f;
         Agi = 100;
         AttackGap = 0;
@@ -139,9 +144,7 @@ public class Unit
 
     public virtual void DoDie()
     {
-        State = StateEnum.Die;
-        AnimationName = "Die";
-        AnimationSpeed = 1;
+        SetStatus(StateEnum.Die);
         Dying.Set(UnitModel.GetAnimationDuration("Die"));
     }
 
@@ -163,8 +166,6 @@ public class Unit
         if (Attacking.Update(SystemConfig.DeltaTime))
         {
             SetStatus(StateEnum.Idle);
-            AnimationName = "Idle";
-            AnimationSpeed = 1;
         }
     }
 
@@ -280,6 +281,26 @@ public class Unit
             Hp = 0;
             DoDie();
         }
+    }
+
+    public virtual float Hatred()
+    {
+        return Config.Hatred * 1000;
+    }
+
+    public void BreakAllCast()
+    {
+        State = StateEnum.Idle;
+        AnimationName = "Idle";
+        foreach (var skill in Skills)
+        {
+            skill.BreakCast();
+        }
+    }
+
+    public virtual bool IfStoped()
+    {
+        return false;
     }
 }
 

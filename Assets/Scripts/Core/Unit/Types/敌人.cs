@@ -47,8 +47,7 @@ namespace Units
 
             findNewPath();
             ScaleX = TargetScaleX = (PathPoints[NowPathPoint + 1].Pos.x - Position.x) > 0 ? 1 : -1;
-            State = StateEnum.Idle;
-            AnimationName = "Idle";
+            SetStatus(StateEnum.Idle);
             BattleUI.UI_Battle.Instance.CreateUIUnit(this);
         }
 
@@ -110,8 +109,7 @@ namespace Units
         {
             if (PathWaiting != null && !PathWaiting.Finished())
             {
-                AnimationName = "Idle";
-                AnimationSpeed = 1;
+                SetStatus(StateEnum.Idle);
                 PathWaiting.Update(SystemConfig.DeltaTime);
                 return;
             }
@@ -194,6 +192,16 @@ namespace Units
             }
             result += (Position - TempTarget).magnitude;
             return result;
+        }
+
+        public override float Hatred()
+        {
+            return base.Hatred() - distanceToFinal();
+        }
+
+        public override bool IfStoped()
+        {
+            return StopUnit != null;
         }
     }
 }

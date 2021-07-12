@@ -21,12 +21,15 @@ namespace Units
         public CountDown Reseting = new CountDown();
 
         /// <summary>
-        /// 干员是第几个进入场地的
+        /// 干员是第几帧进入场地的
         /// </summary>
-        public int MapIndex = -1;
+        public int InputTime = -1;
 
         public float ResetTime;
 
+        /// <summary>
+        /// 建造次数
+        /// </summary>
         public int BuildTime;
 
         public int Cost;
@@ -62,9 +65,7 @@ namespace Units
                 if (Start.Update(SystemConfig.DeltaTime))
                 {
                     Debug.Log("StartEnd" + Time.time);
-                    State = StateEnum.Idle;
-                    AnimationName = "Idle";
-                    AnimationSpeed = 1;
+                    SetStatus(StateEnum.Idle);
                 }
                 return;
             }
@@ -138,11 +139,8 @@ namespace Units
             Battle.Cost -= GetCost();
             Start.Set(UnitModel.GetAnimationDuration("Start"));
             //Debug.Log("start:" + Time.time + "," + Start.value);
-            State = StateEnum.Start;
-            AnimationName = "Start";
-            AnimationSpeed = 1;
-            MapIndex = Battle.NowUnitIndex;
-            Battle.NowUnitIndex++;
+            SetStatus(StateEnum.Start);
+            InputTime = Battle.Tick;
             Battle.Map.Grids[GridPos.x, GridPos.y].Unit = this;
             BattleUI.UI_Battle.Instance.CreateUIUnit(this);
         }
@@ -153,7 +151,7 @@ namespace Units
             BattleUI.UI_Battle.Instance.ReturnUIUnit(this);
             State = StateEnum.Default;
             Direction = new Vector2(1, 0);
-            MapIndex = -1;
+            InputTime = -1;
             Battle.Map.Grids[GridPos.x, GridPos.y].Unit = null;
             Reseting.Set(ResetTime);
             BuildTime++;
@@ -210,6 +208,16 @@ namespace Units
         {
             if (StopUnits.Contains(target)) return true;
             return StopUnits.Count < Config.StopCount;
+        }
+
+        public override float Hatred()
+        {
+            return base.Hatred() + InputTime;
+        }
+
+        public override bool IfStoped()
+        {
+            return StopUnits.Count > 0;
         }
     }
 }

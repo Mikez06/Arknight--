@@ -6,9 +6,10 @@ public class SkillData : IConfig
       public SkillReadyEnum ReadyType;
       public SkillUseTypeEnum UseType;
       public string Name;
-      public AttackTargetEnum AttackTarget;
       public bool AttackStop;
       public bool RegetTarget;
+      public bool StopBreak;
+      public bool StopOtherSkill;
       public int TargetTeam;
       public bool AttackFly;
       public AttackTargetOrderEnum AttackOrder;

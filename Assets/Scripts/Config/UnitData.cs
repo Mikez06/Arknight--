@@ -8,8 +8,10 @@ public class UnitData : IConfig
       public int Attack;
       public int Defence;
       public int MagicDefence;
+      public int Weight;
       public int Cost;
       public int ResetTime;
+      public int Hatred;
       public float HitPointX;
       public float HitPointY;
       public float AttackPointX;
@@ -28,4 +30,5 @@ public class UnitData : IConfig
       public string HeadIcon;
       public string StandPic;
       public int Rare;
+      public string[] Tags;
 }

@@ -25,6 +25,13 @@ public class MapGrid : MonoBehaviour, IPointerClickHandler
     /// </summary>
     public MapGrid PreGrid;
 
+    Renderer Renderer;
+
+    private void Awake()
+    {
+        Renderer = GetComponentInChildren<Renderer>();
+    }
+
     public void AutoBuild()
     {
         X = 0;
@@ -49,7 +56,7 @@ public class MapGrid : MonoBehaviour, IPointerClickHandler
 
     public void ChangeHighLight(bool bo)
     {
-        GetComponent<Renderer>().material.color = bo ?new Color(0.458f,1,0.42f) : Color.white;
+        Renderer.material.color = bo ? new Color(0.458f, 1, 0.42f) : Color.white;
     }
 
     public void OnPointerClick(PointerEventData eventData)

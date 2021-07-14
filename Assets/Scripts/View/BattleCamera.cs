@@ -88,7 +88,7 @@ public class BattleCamera : MonoBehaviour
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
             {
                 var g = BuildUnit.UnitModel.gameObject;
-                var grid = hit.collider.GetComponent<MapGrid>();
+                var grid = hit.collider.GetComponentInParent<MapGrid>();
                 if (grid != null && grid.CanSet(BuildUnit))
                 {
                     //预览干员位置和攻击范围
@@ -138,7 +138,7 @@ public class BattleCamera : MonoBehaviour
         var targetUnit = FocusUnit == null ? BuildUnit : FocusUnit;
         foreach (var tile in targetUnit.Skills[0].AttackPoints)
         {
-            var tileAsset = ResHelper.Instantiate(PathHelper.OtherPath + "HighLight").GetComponent<MapTile>();
+            var tileAsset = ResHelper.GetAsset<GameObject>(PathHelper.OtherPath + "HighLight").GetComponent<MapTile>();
             var go = TilePool.Spawn(tileAsset, Battle.Instance.Map.Grids[tile.x, tile.y].transform.position, null);
             Tiles.Add(go);
         }

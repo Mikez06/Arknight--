@@ -150,6 +150,10 @@ public class Skill
     public void DoOpen()
     {
         Debug.Log("OpenSkill");
+        if (Config.StopOtherSkill)
+        {
+            Unit.BreakAllCast();
+        }
         Opening.Set(Config.OpenTime);
         OnOpen();
     }
@@ -191,10 +195,6 @@ public class Skill
             return;
         }
         //走到这里技能就真的用出来了
-        if (Config.StopOtherSkill)
-        {
-            Unit.BreakAllCast();
-        }
         if (string.IsNullOrEmpty(Config.ModelAnimation))
         {
             Debug.Log(Unit.Config.Id + "的" + Config.Id + "没有抬手,直接使用");
@@ -268,7 +268,7 @@ public class Skill
         }
         else
         {
-            foreach (var target in Targets)
+            foreach (var target in LastTargets)
             {
                 Effect(target);
             }
@@ -296,7 +296,7 @@ public class Skill
         {
             //创建一个子弹
             //TODO 改为从表里读取发射点 而不是现找模型
-            var startPoint = Unit.UnitModel.SkeletonAnimation.transform.position + new Vector3(Unit.Config.AttackPointX * (Unit.Direction.x > 0 ? 1 : -1), Unit.Config.AttackPointY, 0);
+            var startPoint = Unit.UnitModel.GetPoint(Config.ShootPoint);
             //Debug.Log(startPoint + "," + (target.UnitModel.SkeletonAnimation.transform.position + new Vector3(target.Config.HitPointX * (target.Direction.x > 0 ? 1 : -1), target.Config.HitPointY, 0)));
             Battle.CreateBullet(Config.Bullet.Value, startPoint, Vector3.zero, target, this);
         }

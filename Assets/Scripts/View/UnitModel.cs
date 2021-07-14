@@ -24,6 +24,14 @@ public class UnitModel : MonoBehaviour
         updateState();
     }
 
+    public Vector3 GetPoint(string name)
+    {
+        if (string.IsNullOrEmpty(name)) return transform.position;
+        var bone = SkeletonAnimation.skeletonDataAsset.GetSkeletonData(false).Bones.Find(x => x.Name == name);
+        Vector3 point = new Vector3(bone.X * transform.lossyScale.x, bone.Y * transform.lossyScale.y, 0);
+        return transform.position + point;
+    }
+
     protected virtual void updateState()
     {
         SkeletonAnimation.transform.localScale = new Vector3(Unit.ScaleX, 1, 1);

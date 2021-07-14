@@ -31,8 +31,9 @@ public class SkillData : IConfig
       public int PowerCount;
       public PowerRecoverTypeEnum PowerType;
       public bool IfHeal;
-      public int? Bullet;
       public string ModelAnimation;
+      public int? Bullet;
+      public string ShootPoint;
       public int[] Buffs;
       public float[] BuffData;
       public string StartEffect;

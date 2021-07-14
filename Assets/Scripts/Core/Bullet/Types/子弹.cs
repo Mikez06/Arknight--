@@ -12,7 +12,7 @@ namespace Bullets
         public override void Update()
         {
             if (Target.Alive())
-                TargetPos = Target.UnitModel.SkeletonAnimation.transform.position + new Vector3(Target.Config.HitPointX * (Target.Direction.x > 0 ? 1 : -1), Target.Config.HitPointY, 0);
+                TargetPos = Target.UnitModel.GetPoint(Target.Config.HitPointName);
             Vector3 delta = TargetPos - Postion;
             if (delta.magnitude < Config.Speed * SystemConfig.DeltaTime)
             {

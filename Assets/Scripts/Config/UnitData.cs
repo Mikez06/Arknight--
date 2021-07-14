@@ -12,10 +12,7 @@ public class UnitData : IConfig
       public int Cost;
       public int ResetTime;
       public int Hatred;
-      public float HitPointX;
-      public float HitPointY;
-      public float AttackPointX;
-      public float AttackPointY;
+      public string HitPointName;
       public int[] Skills;
       public int[] MainSkill;
       public float Height;

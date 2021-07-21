@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 public enum PowerRecoverTypeEnum
 {
     自动,
-    主动,
-    被动,
+    攻击,
+    受击,
 }
 
 public enum SkillUseTypeEnum

@@ -45,7 +45,9 @@ public class Skill
     /// </summary>
     public CountDown Opening = new CountDown();
 
-    protected bool ifUsePower => this == Unit.MainSkill;
+    public float Power;
+    public int MaxPower;
+    public int PowerCount;
 
     public virtual void Init()
     {
@@ -54,18 +56,20 @@ public class Skill
             AttackPoints = new List<Vector2Int>();
             UpdateAttackPoints();
         }
+
+        Power = Config.StartPower;
+        MaxPower = Config.MaxPower;
+        PowerCount = Config.PowerCount;
     }
 
     public virtual void Update()
     {
         UpdateCooldown();
-        if ((Unit.Recover.Finished()) || Config.UseType == SkillUseTypeEnum.被动) //被动技能，被晕了也能发
+        if (Ready())
         {
-            if (Ready())
-            {
-                Start();
-            }
+            Start();
         }
+        
 
         if (Casting.Update(SystemConfig.DeltaTime))
         {
@@ -106,28 +110,30 @@ public class Skill
         if (!Opening.Finished())
         {
             Opening.Update(SystemConfig.DeltaTime);
-            Unit.Power -= Config.MaxPower / Config.OpenTime * SystemConfig.DeltaTime;
+            Power -= Config.MaxPower / Config.OpenTime * SystemConfig.DeltaTime;
         }
         Cooldown.Update(SystemConfig.DeltaTime);
     }
 
     public virtual bool Ready()
     {
+        if (!Unit.Recover.Finished() && Config.UseType != SkillUseTypeEnum.被动) return false;
         switch (Config.ReadyType)
         {
             case SkillReadyEnum.特技激活:
-                if (Unit.MainSkill.Opening.Finished()) return false;
+                if (Opening.Finished()) return false;
                 break;
             case SkillReadyEnum.禁止主动:
                 return false;
             default:
                 break;
         }
+        if (Config.AttackMode == AttackModeEnum.跟随攻击 && !Unit.Attacking.Finished()) return false;
 
-        if (Config.UseType == SkillUseTypeEnum.手动) //手动技能在阻回时可以使用
+        if (Config.UseType == SkillUseTypeEnum.手动) //手动技能在技能开启时可以使用
             return !Opening.Finished();
         //自动充能技在有充能时才能使用
-        if (ifUsePower && Config.UseType == SkillUseTypeEnum.自动 && Unit.Power < Unit.MaxPower) return false;
+        if (Config.MaxPower > 0 && Config.UseType == SkillUseTypeEnum.自动 && Power < MaxPower) return false;
         //不管什么技能 都要遵循技能CD
         return Cooldown.Finished();
     }
@@ -135,16 +141,25 @@ public class Skill
     public virtual void ResetCooldown(float attackSpeed)
     {
         //自动充能技，除了走冷却外，还要走Power
-        if (ifUsePower && Config.UseType == SkillUseTypeEnum.自动)
-            Unit.Power -= Unit.MaxPower;
+        if (Config.MaxPower > 0)
+            Power -= MaxPower;
 
         Cooldown.Set(Config.Cooldown * attackSpeed);
+    }
+
+    public void RecoverPower(float count)
+    {
+        if (!Opening.Finished())
+            return;
+        Power += count;
+        if (Power > MaxPower * PowerCount)
+            Power = MaxPower * PowerCount;
     }
 
     #region 主动相关
     public bool CanOpen()
     {
-        return Opening.Finished() && Unit.Power >= Unit.MaxPower && Useable();
+        return Opening.Finished() && Power >= MaxPower && Useable();
     }
 
     public void DoOpen()
@@ -187,7 +202,6 @@ public class Skill
             if (scaleX != Unit.ScaleX)
             {
                 Unit.TargetScaleX = scaleX;
-                Unit.Turning.Set(SystemConfig.TurningTime);
             }
         }
         else
@@ -203,21 +217,21 @@ public class Skill
         }
         else
         {
-            var duration = Unit.UnitModel.GetSkillDelay(Config.ModelAnimation, Unit.AnimationName, out float fullDuration);//.SkeletonAnimation.skeleton.data.Animations.Find(x => x.Name == "Attack");
+            var duration = Unit.UnitModel.GetSkillDelay(Config.ModelAnimation, Unit.AnimationName, out float fullDuration, out float beginDuration);//.SkeletonAnimation.skeleton.data.Animations.Find(x => x.Name == "Attack");
             float attackSpeed = 1 / Unit.Agi * 100;
-            if (this == Unit.Skills[0])
+            var baseAttackGap = Math.Max(Config.Cooldown, fullDuration);//基础攻击间隔，至少等于攻击动作持续时间
+            if (Config.AttackMode == AttackModeEnum.跟随攻击)
             {
-                attackSpeed= attackSpeed* (Config.Cooldown + Unit.AttackGap) / Config.Cooldown;
+                attackSpeed = attackSpeed * (baseAttackGap + Unit.AttackGap) / baseAttackGap;
             }
             duration = duration * attackSpeed;
             fullDuration = fullDuration * attackSpeed;
             Casting.Set(duration);
-            Debug.Log(Unit.Config.Id + "的" + Config.Id + "AttackStart,pointDelay:" + duration + ",fullDuration" + fullDuration + ",Time:" + Time.time);
-            Unit.Recover.Set(fullDuration);
+            Debug.Log(Unit.Config.Id + "的" + Config.Id + "AttackStart,pointDelay:" + duration + ",fullDuration" + fullDuration + ",beginDuration" + beginDuration + ",Time:" + Time.time);
             Unit.Attacking.Set(fullDuration);
             Unit.State = StateEnum.Attack;
             Unit.AnimationName = Config.ModelAnimation;
-            Unit.AnimationSpeed = 1 / attackSpeed;
+            Unit.AnimationSpeed = 1 / attackSpeed * (beginDuration + fullDuration) / fullDuration;
             ResetCooldown(attackSpeed);
         }
 
@@ -319,7 +333,7 @@ public class Skill
             {
                 target.AddBuff(buffId, this);
             }
-        if (Unit.Skills[0] == this && Unit.MainSkill != null && Unit.MainSkill.Config.PowerType == PowerRecoverTypeEnum.主动)
+        if (Unit.Skills[0] == this && Unit.MainSkill != null && Unit.MainSkill.Config.PowerType == PowerRecoverTypeEnum.攻击)
         {
             Unit.RecoverPower(1);
         }

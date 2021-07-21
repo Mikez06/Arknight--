@@ -59,12 +59,12 @@ public static class DataHelper
         return defaultValue;
     }
 
-    public static List<object> GetArray(this Dictionary<string, object> self, string key)
+    public static object[] GetArray(this Dictionary<string, object> self, string key)
     {
         if (self == null) return null;
         if (self.TryGetValue(key, out object r))
         {
-            return r as List<object>;
+            return (r as Newtonsoft.Json.Linq.JArray).ToObject<string[]>();
         }
         return null;
     }

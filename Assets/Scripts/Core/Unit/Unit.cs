@@ -53,9 +53,6 @@ public class Unit
     public float MagicDefence;
     public float MagicDefecneRate;
 
-    public float Power;
-    public int MaxPower;
-    public int PowerCount;
     public float PowerSpeed;
 
     public float Weight;
@@ -75,10 +72,6 @@ public class Unit
     /// </summary>
     public CountDown Recover = new CountDown();
 
-    /// <summary>
-    /// 转身动画
-    /// </summary>
-    public CountDown Turning = new CountDown();
     public float ScaleX = -1;
     public float TargetScaleX = -1;
 
@@ -154,6 +147,7 @@ public class Unit
 
     protected void UpdateSkills()
     {
+        var bo = Attacking.Update(SystemConfig.DeltaTime);
         for (int i = Skills.Count - 1; i >= 0; i--)
         {
             if (i >= Skills.Count) continue;
@@ -163,7 +157,7 @@ public class Unit
                 sk.Update();
             }
         }
-        if (Attacking.Update(SystemConfig.DeltaTime))
+        if (bo && Attacking.Finished())
         {
             SetStatus(StateEnum.Idle);
         }
@@ -225,9 +219,10 @@ public class Unit
     {
         if (!MainSkill.Opening.Finished())
             return;
-        Power += count;
-        if (Power > MaxPower * PowerCount)
-            Power = MaxPower * PowerCount;
+        foreach (var skill in Skills)
+        {
+            skill.RecoverPower(count);
+        }
     }
 
     public bool Alive()

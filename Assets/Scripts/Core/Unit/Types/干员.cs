@@ -38,13 +38,6 @@ namespace Units
         {
             base.Init();
             MainSkill = LearnSkill(Config.MainSkill[MainSkillId]);
-
-            if (MainSkill != null)
-            {
-                Power = MainSkill.Config.StartPower;
-                MaxPower = MainSkill.Config.MaxPower;
-                PowerCount = MainSkill.Config.PowerCount;
-            }
         }
 
         public override void Refresh()
@@ -73,10 +66,15 @@ namespace Units
             {
                 return;
             }
-            if (!Turning.Finished())
+            if (ScaleX != TargetScaleX)
             {
-                Turning.Update(SystemConfig.DeltaTime);
-                ScaleX = -TargetScaleX * ((Turning.value / SystemConfig.TurningTime) - 0.5f) * 2;
+                var delta = Math.Sign(TargetScaleX - ScaleX) / SystemConfig.TurningTime * SystemConfig.DeltaTime;
+                if ((TargetScaleX - ScaleX) < delta)
+                {
+                    TargetScaleX = ScaleX;
+                }
+                else
+                    ScaleX += delta;
             }
 
             if (MainSkill != null && MainSkill.Config.PowerType == PowerRecoverTypeEnum.自动)

@@ -129,7 +129,7 @@ public class BattleCamera : MonoBehaviour
 
     public void ShowUnitAttackArea()
     {
-        Debug.LogWarning("ShowAttackArea");
+        //Debug.LogWarning("ShowAttackArea");
         foreach (var go in Tiles)
         {
             TilePool.Despawn(go);

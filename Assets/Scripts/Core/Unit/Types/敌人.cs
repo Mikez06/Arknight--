@@ -68,10 +68,15 @@ namespace Units
                 CheckBlock();
             }
 
-            if (!Turning.Finished())
+            if (ScaleX != TargetScaleX)
             {
-                Turning.Update(SystemConfig.DeltaTime);
-                ScaleX = -TargetScaleX * ((Turning.value / SystemConfig.TurningTime) - 0.5f) * 2;
+                var delta = Math.Sign(TargetScaleX - ScaleX) / SystemConfig.TurningTime * SystemConfig.DeltaTime;
+                if ((TargetScaleX - ScaleX) < delta)
+                {
+                    TargetScaleX = ScaleX;
+                }
+                else
+                    ScaleX += delta;
             }
 
             if (this.State == StateEnum.Die)
@@ -84,7 +89,9 @@ namespace Units
             }
             Recover.Update(SystemConfig.DeltaTime);
 
-            if (Turning.Finished() && (State == StateEnum.Move || State == StateEnum.Idle))
+            if (
+                //ScaleX==TargetScaleX &&
+                (State == StateEnum.Move || State == StateEnum.Idle))
             {
                 UpdateMove();
             }
@@ -97,11 +104,19 @@ namespace Units
         {
             if (Config.Height > 0) return;//飞行单位无法被阻挡
             if (StopUnit != null) return;
-            var blockUnit = Battle.FindFirst(Position2, Config.Radius, 0, x => (x as Units.干员).CanStop(this), x => (x.Position2 - Position2).magnitude) as 干员;
-            if (blockUnit != null)
+            var blockUnits = Battle.FindAll(Position2, Config.Radius, 0).Select(x=>x as Units.干员).Where(x => (x as Units.干员).CanStop(this)).ToList();
+            blockUnits.OrderBy(x => (x.Position2 - Position2).magnitude);
+            if (blockUnits.Count > 0)
             {
-                StopUnit = blockUnit;
-                blockUnit.StopUnits.Add(this);
+                var target = blockUnits[0];
+                StopUnit = target;
+                target.StopUnits.Add(this);
+                if (target.Position2 != Position2 && (target.Position2 - Position2).magnitude < target.Config.Radius + target.Config.Radius)
+                {
+                    var pos = target.Position2 + (Position2 - target.Position2).normalized * (target.Config.Radius + target.Config.Radius);
+                    Position = new Vector3(pos.x, Position.y, pos.y);
+                    //TODO 如果多名敌人被同一单位阻挡在统一位置，将其小幅散开
+                }
             }
         }
 
@@ -127,7 +142,6 @@ namespace Units
             if (scaleX != ScaleX)
             {
                 TargetScaleX = scaleX;
-                Turning.Set(SystemConfig.TurningTime);
                 return;
             }
             if ((TempTarget - Position).magnitude < Speed * SystemConfig.DeltaTime)

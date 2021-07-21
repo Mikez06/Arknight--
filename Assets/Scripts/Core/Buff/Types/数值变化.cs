@@ -13,8 +13,8 @@ namespace Buffs
         {
             base.Init();
             var datas = Config.Data.GetArray("t");
-            names = new string[datas.Count];
-            for (int i = 0; i < datas.Count; i++)
+            names = new string[datas.Length];
+            for (int i = 0; i < datas.Length; i++)
             {
                 names[i] = Convert.ToString(datas[i]);
             }

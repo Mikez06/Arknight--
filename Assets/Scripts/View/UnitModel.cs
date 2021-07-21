@@ -15,7 +15,7 @@ public class UnitModel : MonoBehaviour
     {
         SkeletonAnimation.AnimationName = "Default";
         nowAnimation = "Default";
-        SkeletonAnimation.SkeletonDataAsset.GetAnimationStateData().DefaultMix = 0.1f;
+        SkeletonAnimation.SkeletonDataAsset.GetAnimationStateData().DefaultMix = 0.0f;
         updateState();
     }
 
@@ -28,6 +28,11 @@ public class UnitModel : MonoBehaviour
     {
         if (string.IsNullOrEmpty(name)) return transform.position;
         var bone = SkeletonAnimation.skeletonDataAsset.GetSkeletonData(false).Bones.Find(x => x.Name == name);
+        if (bone == null)
+        {
+            Debug.Log($"{Unit.Config.Name} 无法找到骨骼 {name}");
+            return transform.position;
+        }
         Vector3 point = new Vector3(bone.X * transform.lossyScale.x, bone.Y * transform.lossyScale.y, 0);
         return transform.position + point;
     }
@@ -75,14 +80,15 @@ public class UnitModel : MonoBehaviour
         }
         //Debug.Log(Unit.Config._Id + "Add" + animationName);
         //SkeletonAnimation.state.AddAnimation(0, animationName, true, 0);
-        SkeletonAnimation.state.AddAnimation(0, animationName, animationName == "Run_Loop" || animationName == "Move_Loop" || animationName == "Idle", delay);
+        SkeletonAnimation.state.AddAnimation(0, animationName, true, delay);
         nowAnimation = animationName;
     }
 
-    public float GetSkillDelay(string animationName,string lastState,out float fullDuration)
+    public float GetSkillDelay(string animationName,string lastState,out float fullDuration,out float beginDuration)
     {
         float result = 0;
         fullDuration = 0;
+        beginDuration = 0;
         //如果有状态切换，那么去判断前摇和后摇动画
         if (animationName != lastState)
         {
@@ -95,11 +101,10 @@ public class UnitModel : MonoBehaviour
             var _beginAnimation = SkeletonAnimation.Skeleton.Data.FindAnimation(animationName + "_Begin");
             if (_beginAnimation != null)
             {
-                float duration = _beginAnimation.Duration - SkeletonAnimation.skeletonDataAsset.defaultMix;
+                float duration = _beginAnimation.Duration; //- SkeletonAnimation.skeletonDataAsset.defaultMix;
                 if (duration < 0) duration = 0;
                 //Debug.Log("beginAnimation:" + _beginAnimation.duration);
-                result += duration;
-                fullDuration += duration;
+                beginDuration = duration;
             }
         }
         var animation = SkeletonAnimation.Skeleton.Data.FindAnimation(animationName);

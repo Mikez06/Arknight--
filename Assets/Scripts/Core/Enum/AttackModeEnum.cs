@@ -4,10 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public enum AttackTargetEnum
+public enum AttackModeEnum
 {
-    敌对,
-    自己,
-    阻挡,
+    跟随攻击,
+    固定间隔,
 }
-

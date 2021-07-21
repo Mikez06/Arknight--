@@ -32,6 +32,7 @@ public class SkillData : IConfig
       public PowerRecoverTypeEnum PowerType;
       public bool IfHeal;
       public string ModelAnimation;
+      public AttackModeEnum AttackMode;
       public int? Bullet;
       public string ShootPoint;
       public int[] Buffs;

@@ -46,9 +46,9 @@ public class UnitModel : MonoBehaviour
         }
         transform.position = Unit.Position;
 
-        if (nowAnimation!=Unit.AnimationName)
+        if (nowAnimation!=Unit.GetAnimation())
         {
-            changeAnimation(Unit.AnimationName);
+            changeAnimation(Unit.GetAnimation());
         }
         if (Unit.AnimationSpeed != SkeletonAnimation.timeScale)
         {

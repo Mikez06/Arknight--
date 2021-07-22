@@ -192,47 +192,12 @@ public class Battle
         return result;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="pos"></param>
-    /// <param name="radius"></param>
-    /// <param name="match"></param>
-    /// <returns></returns>
-    public Unit FindFirst(Vector2 pos, float radius,int team, Func<Unit, bool> match, Func<Unit, float> sort)
-    {
-        if (team == 0)
-        {
-            var units = PlayerUnits.Where(x => x.InputTime >= 0).ToList();
-            units.Sort((x, y) => Math.Sign(sort(x) - sort(y)));
-            foreach (var unit in units)
-            {
-                if ((unit.Position2 - pos).magnitude < radius + unit.Config.Radius
-                    && match(unit)) return unit;
-            }
-        }
-        else
-        {
-            var units = new List<Unit>(Enemys);//Sort((x, y) => Math.Sign(sort(x) - sort(y)));
-            if (sort != null)
-            {
-                units.Sort((x, y) => Math.Sign(sort(x) - sort(y)));
-            }
-            foreach (var unit in units)
-            {
-                if ((unit.Position2 - pos).magnitude < radius + unit.Config.Radius
-                    && match(unit)) return unit;
-            }
-        }
-        return null;
-    }
-
     public HashSet<Unit> FindAll(Vector2 pos, float radius, int team)
     {
         HashSet<Unit> result = new HashSet<Unit>();
         if (team == 0)
         {
-            var units = PlayerUnits.Where(x => x.InputTime >= 0).ToList();
+            var units = PlayerUnits.Where(x => x.InputTime >= 0 && x.Alive()).ToList();
             foreach (var unit in units) //需要优化！
             {
                 if ((unit.Position2 - pos).magnitude < radius + unit.Config.Radius
@@ -243,8 +208,7 @@ public class Battle
         {
             foreach (var unit in Enemys) //需要优化！
             {
-                if ((unit.Position2 - pos).magnitude < radius + unit.Config.Radius
-                    ) result.Add(unit);
+                if ((unit.Position2 - pos).magnitude < radius + unit.Config.Radius && unit.Alive()) result.Add(unit);
             }
         }
         return result;

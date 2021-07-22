@@ -109,8 +109,8 @@ public class Skill
     {
         if (!Opening.Finished())
         {
-            Opening.Update(SystemConfig.DeltaTime);
-            Power -= Config.MaxPower / Config.OpenTime * SystemConfig.DeltaTime;
+            if (Opening.Update(SystemConfig.DeltaTime)) { Unit.OverWriteAnimation = null; }
+            Power -= MaxPower / Config.OpenTime * SystemConfig.DeltaTime;
         }
         Cooldown.Update(SystemConfig.DeltaTime);
     }
@@ -141,19 +141,22 @@ public class Skill
     public virtual void ResetCooldown(float attackSpeed)
     {
         //自动充能技，除了走冷却外，还要走Power
-        if (Config.MaxPower > 0)
-            Power -= MaxPower;
+        //if (Config.MaxPower > 0)
+        //    Power -= MaxPower;
 
         Cooldown.Set(Config.Cooldown * attackSpeed);
     }
 
     public void RecoverPower(float count)
     {
+        if (PowerCount == 0) return;
         if (!Opening.Finished())
             return;
         Power += count;
         if (Power > MaxPower * PowerCount)
+        {
             Power = MaxPower * PowerCount;
+        }
     }
 
     #region 主动相关
@@ -170,6 +173,7 @@ public class Skill
             Unit.BreakAllCast();
         }
         Opening.Set(Config.OpenTime);
+        Unit.OverWriteAnimation = Config.OverwriteAnimation;
         OnOpen();
     }
 
@@ -217,7 +221,7 @@ public class Skill
         }
         else
         {
-            var duration = Unit.UnitModel.GetSkillDelay(Config.ModelAnimation, Unit.AnimationName, out float fullDuration, out float beginDuration);//.SkeletonAnimation.skeleton.data.Animations.Find(x => x.Name == "Attack");
+            var duration = Unit.UnitModel.GetSkillDelay(Config.ModelAnimation, Unit.GetAnimation(), out float fullDuration, out float beginDuration);//.SkeletonAnimation.skeleton.data.Animations.Find(x => x.Name == "Attack");
             float attackSpeed = 1 / Unit.Agi * 100;
             var baseAttackGap = Math.Max(Config.Cooldown, fullDuration);//基础攻击间隔，至少等于攻击动作持续时间
             if (Config.AttackMode == AttackModeEnum.跟随攻击)
@@ -233,6 +237,10 @@ public class Skill
             Unit.AnimationName = Config.ModelAnimation;
             Unit.AnimationSpeed = 1 / attackSpeed * (beginDuration + fullDuration) / fullDuration;
             ResetCooldown(attackSpeed);
+            if (duration == 0)
+            {
+                Cast();
+            }
         }
 
         if (Config.StartEffect != null)
@@ -282,6 +290,11 @@ public class Skill
         }
         else
         {
+            if (Config.BurstFind) //当目标为随机时
+            {
+                LastTargets.Clear();
+                LastTargets.AddRange(GetAttackTarget());
+            }
             foreach (var target in LastTargets)
             {
                 Effect(target);
@@ -387,22 +400,30 @@ public class Skill
     #endregion
 
     public virtual void FindTarget()
-    {
+    {      
         Targets.Clear();
+        Targets.AddRange(GetAttackTarget());
+    }
+
+    List<Unit> tempTargets = new List<Unit>();
+    List<Unit> GetAttackTarget()
+    {
+        tempTargets.Clear();
         if (AttackPoints == null)//根据攻击范围进行索敌
         {
-            Battle.FindAll(Unit.Position2, Config.AreaRange, Config.TargetTeam);
+            tempTargets.AddRange(Battle.FindAll(Unit.Position2, Config.AreaRange, Config.TargetTeam));
         }
         else
         {
-            Targets.AddRange(Battle.FindAll(AttackPoints, Config.TargetTeam));
+            tempTargets.AddRange(Battle.FindAll(AttackPoints, Config.TargetTeam));
         }
-        if (Targets.Count > 0)
+        if (tempTargets.Count > 0)
         {
             //首先计算出所有目标的仇恨优先级，然后再选出攻击个数的实际目标
-            SortTarget(Targets);
-            FilterTarget(Targets);
+            SortTarget(tempTargets);
+            FilterTarget(tempTargets);
         }
+        return tempTargets;
     }
 
     protected virtual void SortTarget(List<Unit> targets)
@@ -421,6 +442,8 @@ public class Skill
                 break;
             case AttackTargetOrder2Enum.Tag:
                 //firstOrder = x => x.Config.Tags == null ? 0 : -x.Config.Tags.Count();
+                break;
+            default:
                 break;
         }
 
@@ -476,7 +499,11 @@ public class Skill
                 secondOrder = x => -x.Weight;
                 break;
             case AttackTargetOrderEnum.随机:
-                secondOrder = x => Battle.Random.Next(0, 1000);
+                secondOrder = x =>
+                {
+                    var a = Battle.Random.Next(0, 1000);
+                    Debug.Log(a); return a;
+                };
                 break;
             case AttackTargetOrderEnum.隐身优先:
                 secondOrder = x => x.IfHide ? 0 : 1;
@@ -497,12 +524,17 @@ public class Skill
                 throw new Exception();
                 break;
         }
-        targets.OrderBy(firstOrder).ThenBy(secondOrder).ThenBy(x => x.Hatred());
+        var l = targets.OrderBy(firstOrder).ThenBy(secondOrder).ThenBy(x => x.Hatred()).ToList();
+        targets.Clear();
+        targets.AddRange(l);
     }
 
     protected virtual void FilterTarget(List<Unit> targets)
     {
-        Targets = targets.Take(Config.DamageCount).ToList();
+        for (int i = targets.Count()-1; i >= Config.DamageCount; i--)
+        {
+            targets.RemoveAt(i);
+        }
     }
 
     public void UpdateAttackPoints()

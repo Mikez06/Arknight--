@@ -11,13 +11,18 @@ using Pathfinding;
 
 public class Test : MonoBehaviour
 {
-    public Transform t0, t1;
     // Start is called before the first frame update
     async void Start()
     {
-        var item = JsonHelper.FromJson<Dictionary<string,object>>("{\"t\":[\"abc\",\"gft\"]}");
-        var s= (item["t"] as Newtonsoft.Json.Linq.JArray).ToObject<string[]>();
-        foreach (var a in s)
+        List<Vector3Int> l = new List<Vector3Int>()
+        {
+            new Vector3Int(3,2,1),
+            new Vector3Int(1,2,3),
+            new Vector3Int(3,1,2),
+            new Vector3Int(2,2,2),
+        };
+        l = l.OrderBy(x => x.x).ThenBy(x => x.y).ToList();
+        foreach (var a in l)
         {
             Debug.Log(a);
         }

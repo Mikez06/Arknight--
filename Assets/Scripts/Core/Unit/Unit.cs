@@ -76,6 +76,7 @@ public class Unit
     public float TargetScaleX = -1;
 
     public string AnimationName = "Default";
+    public string OverWriteAnimation;
     public float AnimationSpeed = 1;
 
     public virtual void Init()
@@ -285,8 +286,7 @@ public class Unit
 
     public void BreakAllCast()
     {
-        State = StateEnum.Idle;
-        AnimationName = "Idle";
+        Attacking.Finish();
         foreach (var skill in Skills)
         {
             skill.BreakCast();
@@ -296,6 +296,11 @@ public class Unit
     public virtual bool IfStoped()
     {
         return false;
+    }
+
+    public string GetAnimation()
+    {
+        return string.IsNullOrEmpty(OverWriteAnimation) ? AnimationName : OverWriteAnimation;
     }
 }
 

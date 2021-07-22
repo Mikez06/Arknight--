@@ -39,6 +39,7 @@ public enum AttackTargetOrderEnum
 
 public enum AttackTargetOrder2Enum
 {
+    无,
     飞行,
     远程,
     Tag,

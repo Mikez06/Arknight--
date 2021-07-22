@@ -20,6 +20,7 @@ public class SkillData : IConfig
       public int DamageCount;
       public int BurstCount;
       public float BurstDelay;
+      public bool BurstFind;
       public float AreaRange;
       public float AreaDamage;
       public int[] Skills;
@@ -32,6 +33,7 @@ public class SkillData : IConfig
       public PowerRecoverTypeEnum PowerType;
       public bool IfHeal;
       public string ModelAnimation;
+      public string OverwriteAnimation;
       public AttackModeEnum AttackMode;
       public int? Bullet;
       public string ShootPoint;

@@ -176,16 +176,19 @@ public class Battle
             var targetPoint = point;
             if (team == 0)
             {
-                if (Map.Grids[targetPoint.x, targetPoint.y].Unit != null)
+                var target = Map.Grids[targetPoint.x, targetPoint.y].Unit;
+                if (target != null)
                 {
-                    result.Add(Map.Grids[targetPoint.x, targetPoint.y].Unit);
+                    if (target.Alive())
+                        result.Add(target);
                 }
             }
             else
             {
                 foreach (var unit in UnitMap[targetPoint.x, targetPoint.y])
                 {
-                    result.Add(unit);
+                    if (unit.Alive())
+                        result.Add(unit);
                 }
             }
         }

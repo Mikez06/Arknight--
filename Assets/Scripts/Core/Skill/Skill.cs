@@ -64,12 +64,25 @@ public class Skill
 
     public virtual void Update()
     {
+        if (Config.AutoUse && Power == MaxPower)
+        {
+            DoOpen();
+        }
         UpdateCooldown();
+        
+        if (!Casting.Finished()) //抬手期间，如果无有效目标，则取消抬手
+        {
+            if (!Config.RegetTarget && Targets.All(x => !CanUseTo(x)))
+            {
+                Log.Debug($"{Unit.Config.Name}的{Config.Name}全部目标不合法,强制打断抬手动作{Time.time}");
+                BreakCast();
+            }
+        }
+
         if (Ready())
         {
             Start();
         }
-        
 
         if (Casting.Update(SystemConfig.DeltaTime))
         {
@@ -81,14 +94,7 @@ public class Skill
             Burst();
         }
 
-        if (!Casting.Finished()) //抬手期间，如果无有效目标，则取消抬手
-        {
-            if (!Config.RegetTarget && Targets.All(x => !x.Alive()))
-            {
-                Unit.State = StateEnum.Idle;
-                BreakCast();
-            }
-        }
+
         if (Config.StopBreak)
         {
             if (Unit.IfStoped())
@@ -105,12 +111,18 @@ public class Skill
         return true;
     }
 
+    public bool CanUseTo(Unit target)
+    {
+        if (!target.Alive()) return false;
+        return true;
+    }
+
     public virtual void UpdateCooldown()
     {
         if (!Opening.Finished())
         {
             if (Opening.Update(SystemConfig.DeltaTime)) { Unit.OverWriteAnimation = null; }
-            Power -= MaxPower / Config.OpenTime * SystemConfig.DeltaTime;
+            //Power -= MaxPower / Config.OpenTime * SystemConfig.DeltaTime;
         }
         Cooldown.Update(SystemConfig.DeltaTime);
     }
@@ -125,6 +137,9 @@ public class Skill
                 break;
             case SkillReadyEnum.禁止主动:
                 return false;
+            case SkillReadyEnum.充能释放:
+                if (Power < MaxPower || !Opening.Finished()) return false;
+                break;
             default:
                 break;
         }
@@ -141,8 +156,8 @@ public class Skill
     public virtual void ResetCooldown(float attackSpeed)
     {
         //自动充能技，除了走冷却外，还要走Power
-        //if (Config.MaxPower > 0)
-        //    Power -= MaxPower;
+        if (Config.ReadyType == SkillReadyEnum.充能释放)
+            DoOpen();
 
         Cooldown.Set(Config.Cooldown * attackSpeed);
     }
@@ -172,6 +187,7 @@ public class Skill
         {
             Unit.BreakAllCast();
         }
+        Power -= MaxPower;
         Opening.Set(Config.OpenTime);
         Unit.OverWriteAnimation = Config.OverwriteAnimation;
         OnOpen();
@@ -315,6 +331,7 @@ public class Skill
     /// <param name="target"></param>
     public virtual void Effect(Unit target)
     {
+        if (!CanUseTo(target)) return;
         if (Config.Bullet == null)
         {
             Hit(target);
@@ -322,9 +339,8 @@ public class Skill
         else
         {
             //创建一个子弹
-            //TODO 改为从表里读取发射点 而不是现找模型
             var startPoint = Unit.UnitModel.GetPoint(Config.ShootPoint);
-            //Debug.Log(startPoint + "," + (target.UnitModel.SkeletonAnimation.transform.position + new Vector3(target.Config.HitPointX * (target.Direction.x > 0 ? 1 : -1), target.Config.HitPointY, 0)));
+            //Debug.Log($"攻击{target.Config.Name}:{target.Hp} 起点：{startPoint}");
             Battle.CreateBullet(Config.Bullet.Value, startPoint, Vector3.zero, target, this);
         }
     }
@@ -502,7 +518,7 @@ public class Skill
                 secondOrder = x =>
                 {
                     var a = Battle.Random.Next(0, 1000);
-                    Debug.Log(a); return a;
+                    return a;
                 };
                 break;
             case AttackTargetOrderEnum.隐身优先:
@@ -551,6 +567,8 @@ public class Skill
 
     public void BreakCast()
     {
+        Targets.Clear();
+        Unit.UnitModel?.BreakAnimation();
         Casting.Finish();
         Bursting.Finish();
         BurstCount = -1;

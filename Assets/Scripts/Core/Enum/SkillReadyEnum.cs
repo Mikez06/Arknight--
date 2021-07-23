@@ -8,5 +8,6 @@ using System.Threading.Tasks;
     {
         None,
         特技激活,
+        充能释放,
         禁止主动,
     }

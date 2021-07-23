@@ -59,6 +59,8 @@ public class Unit
 
     public bool IfHide;
 
+    public bool IfAlive = true;
+
     /// <summary>
     /// 攻击动画
     /// </summary>
@@ -138,6 +140,7 @@ public class Unit
 
     public virtual void DoDie()
     {
+        IfAlive = false;
         SetStatus(StateEnum.Die);
         Dying.Set(UnitModel.GetAnimationDuration("Die"));
     }
@@ -228,7 +231,7 @@ public class Unit
 
     public bool Alive()
     {
-        return Hp > 0;
+        return IfAlive;
     }
 
     public void SetStatus(StateEnum state)

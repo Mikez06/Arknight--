@@ -33,6 +33,8 @@ public class GameData
         {
             Teams[i] = new Team();
             Teams[i].Cards.Add(Cards[0]);
+            Teams[i].Cards.Add(Cards.Find(x=>x.Config.Id== "克洛丝"));
+            Teams[i].UnitSkill.Add(0);
             Teams[i].UnitSkill.Add(0);
         }
         MainPageUnitId = Cards[0].UnitId;

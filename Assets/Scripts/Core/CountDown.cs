@@ -26,6 +26,7 @@ public class CountDown
         }
         return false;
     }
+
     public void Set(float value)
     {
         this.value = value;

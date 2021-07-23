@@ -55,7 +55,7 @@ namespace BattleUI
                         m_sk.value = Unit.MainSkill.Opening.value;
                         m_sk.max = Unit.MainSkill.Config.OpenTime;
                     }
-                    if (Unit.MainSkill.Power == Unit.MainSkill.MaxPower * Unit.MainSkill.PowerCount)
+                    if (Unit.MainSkill.Power == Unit.MainSkill.MaxPower * Unit.MainSkill.PowerCount && Unit.MainSkill.Power != 0)
                     {
                         m_sk.value = m_sk.max;
                     }

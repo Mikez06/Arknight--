@@ -187,9 +187,9 @@ namespace Units
         void findNewPath()
         {
             TempPath = Battle.Map.FindPath(Position, NextPoint);
-            var log = "";
-            foreach (var p in TempPath) log += p.ToString() + ",";
-            Debug.Log($"Path:{log}");
+            //var log = "";
+            //foreach (var p in TempPath) log += p.ToString() + ",";
+            //Debug.Log($"Path:{log}");
             TempIndex = 0;
         }
 

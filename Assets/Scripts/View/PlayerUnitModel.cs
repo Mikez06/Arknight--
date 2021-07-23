@@ -44,5 +44,10 @@ public class PlayerUnitModel : UnitModel
             a=SkeletonAnimation2.Skeleton.Data.FindAnimation(animationName);
         return a.Duration;
     }
+
+    public override Vector3 GetPoint(string name)
+    {
+        return base.GetPoint((forward ? "F_" : "B_") + name);
+    }
 }
 

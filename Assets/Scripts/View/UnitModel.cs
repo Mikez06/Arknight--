@@ -15,7 +15,7 @@ public class UnitModel : MonoBehaviour
     {
         SkeletonAnimation.AnimationName = "Default";
         nowAnimation = "Default";
-        SkeletonAnimation.SkeletonDataAsset.GetAnimationStateData().DefaultMix = 0.0f;
+        SkeletonAnimation.SkeletonDataAsset.GetAnimationStateData().DefaultMix = 0.2f;
         updateState();
     }
 
@@ -24,17 +24,20 @@ public class UnitModel : MonoBehaviour
         updateState();
     }
 
-    public Vector3 GetPoint(string name)
+    public virtual Vector3 GetPoint(string name)
     {
         if (string.IsNullOrEmpty(name)) return transform.position;
-        var bone = SkeletonAnimation.skeletonDataAsset.GetSkeletonData(false).Bones.Find(x => x.Name == name);
+        var bone = SkeletonAnimation.Skeleton.FindBone(name);
+        //var bones = SkeletonAnimation.skeletonDataAsset.GetSkeletonData(false).Bones;
+        //var bone = SkeletonAnimation.skeletonDataAsset.GetSkeletonData(false).Bones.Find(x => x.Name == name);
         if (bone == null)
         {
             Debug.Log($"{Unit.Config.Name} 无法找到骨骼 {name}");
             return transform.position;
         }
-        Vector3 point = new Vector3(bone.X * transform.lossyScale.x, bone.Y * transform.lossyScale.y, 0);
-        return transform.position + point;
+        //Vector3 point = new Vector3(bone.GetWorldPosition * transform.lossyScale.x, bone.Y * transform.lossyScale.y, 0);
+        //Debug.Log($"bone {name} 的位置偏移 {point}");
+        return bone.GetWorldPosition(SkeletonAnimation.transform);
     }
 
     protected virtual void updateState()
@@ -58,7 +61,7 @@ public class UnitModel : MonoBehaviour
 
     void changeAnimation(string animationName)
     {
-        SkeletonAnimation.state.ClearTrack(0);
+        SkeletonAnimation.state.ClearTracks();
         //SkeletonAnimation.state.AddEmptyAnimation(0, 0, 0);
         if (animationName == "Idle") //从其他状态返回Idle时，如果有退出动画，就播放
         {
@@ -82,6 +85,11 @@ public class UnitModel : MonoBehaviour
         //SkeletonAnimation.state.AddAnimation(0, animationName, true, 0);
         SkeletonAnimation.state.AddAnimation(0, animationName, true, delay);
         nowAnimation = animationName;
+    }
+
+    public void BreakAnimation()
+    {
+        changeAnimation(Unit.GetAnimation());
     }
 
     public float GetSkillDelay(string animationName,string lastState,out float fullDuration,out float beginDuration)

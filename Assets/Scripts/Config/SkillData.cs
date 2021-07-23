@@ -5,6 +5,7 @@ public class SkillData : IConfig
       public string Desc;
       public SkillReadyEnum ReadyType;
       public SkillUseTypeEnum UseType;
+      public bool AutoUse;
       public string Name;
       public bool AttackStop;
       public bool RegetTarget;

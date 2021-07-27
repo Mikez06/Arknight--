@@ -203,7 +203,7 @@ public class Battle
             var units = PlayerUnits.Where(x => x.InputTime >= 0 && x.Alive()).ToList();
             foreach (var unit in units) //需要优化！
             {
-                if ((unit.Position2 - pos).magnitude < radius + unit.Config.Radius
+                if ((unit.Position2 - pos).magnitude <= radius + unit.Config.Radius
                     ) result.Add(unit);
             }
         }

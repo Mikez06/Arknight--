@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 public enum AttackTargetOrderEnum
 {
+    无,
+    自身阻挡优先,
     终点距离,
     血量升序,
     血量降序, 

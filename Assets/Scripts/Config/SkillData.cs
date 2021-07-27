@@ -16,6 +16,7 @@ public class SkillData : IConfig
       public AttackTargetOrderEnum AttackOrder;
       public AttackTargetOrder2Enum AttackOrder2;
       public UnityEngine.Vector2Int[] AttackPoints;
+      public float AttackRange;
       public DamageTypeEnum DamageType;
       public float DamageRate;
       public int DamageCount;
@@ -43,6 +44,5 @@ public class SkillData : IConfig
       public string StartEffect;
       public string HitEffect;
       public string EffectEffect;
-      public float AttackRange;
       public string Icon;
 }

@@ -151,7 +151,8 @@ public class Unit
 
     protected void UpdateSkills()
     {
-        var bo = Attacking.Update(SystemConfig.DeltaTime);
+        var inAttack = !Attacking.Finished();
+        Attacking.Update(SystemConfig.DeltaTime);
         for (int i = Skills.Count - 1; i >= 0; i--)
         {
             if (i >= Skills.Count) continue;
@@ -161,7 +162,7 @@ public class Unit
                 sk.Update();
             }
         }
-        if (bo && Attacking.Finished())
+        if (inAttack && Attacking.Finished())
         {
             SetStatus(StateEnum.Idle);
         }

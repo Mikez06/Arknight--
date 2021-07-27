@@ -55,6 +55,7 @@ namespace Units
         {
             //Debug.Log("Finish");
             Hp = 0;
+            if (!Config.WithoutCheckCount) Battle.EnemyCount--;
             BattleUI.UI_Battle.Instance.ReturnUIUnit(this);
             Battle.Enemys.Remove(this);
             GameObject.Destroy(UnitModel.gameObject);
@@ -63,10 +64,6 @@ namespace Units
 
         public override void UpdateAction()
         {
-            if (State != StateEnum.Die)
-            {
-                CheckBlock();
-            }
 
             if (ScaleX != TargetScaleX)
             {
@@ -95,6 +92,10 @@ namespace Units
             {
                 UpdateMove();
             }
+            if (State != StateEnum.Die)
+            {
+                CheckBlock();
+            }
         }
 
         /// <summary>
@@ -111,12 +112,12 @@ namespace Units
                 var target = blockUnits[0];
                 StopUnit = target;
                 target.StopUnits.Add(this);
-                if (target.Position2 != Position2 && (target.Position2 - Position2).magnitude < target.Config.Radius + target.Config.Radius)
-                {
-                    var pos = target.Position2 + (Position2 - target.Position2).normalized * (target.Config.Radius + target.Config.Radius);
-                    Position = new Vector3(pos.x, Position.y, pos.y);
+                //if (target.Position2 != Position2 && (target.Position2 - Position2).magnitude < target.Config.Radius + target.Config.Radius)
+                //{
+                //    var pos = target.Position2 + (Position2 - target.Position2).normalized * (target.Config.Radius + target.Config.Radius);
+                //    Position = new Vector3(pos.x, Position.y, pos.y);
                     //TODO 如果多名敌人被同一单位阻挡在统一位置，将其小幅散开
-                }
+                //}
             }
         }
 
@@ -158,7 +159,6 @@ namespace Units
                     {
                         //破门了
                         Battle.DoDamage(Config.Damage);
-                        Battle.EnemyCount--;
                         Finish();
                     }
                     else
@@ -180,7 +180,7 @@ namespace Units
             {
                 StopUnit.StopUnits.Remove(this);
             }
-            Battle.EnemyCount--;
+            //Battle.EnemyCount--;
             base.DoDie();
         }
 

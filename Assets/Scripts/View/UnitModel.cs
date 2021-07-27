@@ -15,7 +15,7 @@ public class UnitModel : MonoBehaviour
     {
         SkeletonAnimation.AnimationName = "Default";
         nowAnimation = "Default";
-        SkeletonAnimation.SkeletonDataAsset.GetAnimationStateData().DefaultMix = 0.2f;
+        SkeletonAnimation.SkeletonDataAsset.GetAnimationStateData().DefaultMix = 0f;
         updateState();
     }
 
@@ -74,12 +74,15 @@ public class UnitModel : MonoBehaviour
 
         float delay = 0;
         //切入其他状态时，若有进入动画，播放
-        var _beginAnimation = SkeletonAnimation.Skeleton.Data.FindAnimation(animationName + "_Begin");
-        if (_beginAnimation != null)
+        if (nowAnimation != animationName)
         {
-            Debug.Log(Unit.Config.Id + "Add" + animationName + "_Begin" + Time.time);
-            SkeletonAnimation.state.AddAnimation(0, animationName + "_Begin", false, 0);
-            delay += _beginAnimation.Duration;
+            var _beginAnimation = SkeletonAnimation.Skeleton.Data.FindAnimation(animationName + "_Begin");
+            if (_beginAnimation != null)
+            {
+                Debug.Log(Unit.Config.Id + "Add" + animationName + "_Begin" + Time.time);
+                SkeletonAnimation.state.AddAnimation(0, animationName + "_Begin", false, 0);
+                delay += _beginAnimation.Duration;
+            }
         }
         //Debug.Log(Unit.Config._Id + "Add" + animationName);
         //SkeletonAnimation.state.AddAnimation(0, animationName, true, 0);
@@ -89,7 +92,9 @@ public class UnitModel : MonoBehaviour
 
     public void BreakAnimation()
     {
-        changeAnimation(Unit.GetAnimation());
+        var next = Unit.GetAnimation();
+        Debug.Log($"break from {nowAnimation} to {next}");
+        changeAnimation(next);
     }
 
     public float GetSkillDelay(string animationName,string lastState,out float fullDuration,out float beginDuration)

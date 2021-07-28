@@ -309,7 +309,7 @@ public class Skill
             if (Config.BurstFind) //当目标为随机时
             {
                 LastTargets.Clear();
-                LastTargets.AddRange(GetAttackTarget());
+                LastTargets.AddRange(getAttackTarget());
             }
             foreach (var target in LastTargets)
             {
@@ -418,11 +418,11 @@ public class Skill
     public virtual void FindTarget()
     {      
         Targets.Clear();
-        Targets.AddRange(GetAttackTarget());
+        Targets.AddRange(getAttackTarget());
     }
 
     List<Unit> tempTargets = new List<Unit>();
-    List<Unit> GetAttackTarget()
+    protected List<Unit> getAttackTarget()
     {
         tempTargets.Clear();
         if (AttackPoints == null)//根据攻击范围进行索敌

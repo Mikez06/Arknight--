@@ -68,9 +68,9 @@ namespace Units
             if (ScaleX != TargetScaleX)
             {
                 var delta = Math.Sign(TargetScaleX - ScaleX) / SystemConfig.TurningTime * SystemConfig.DeltaTime;
-                if ((TargetScaleX - ScaleX) < delta)
+                if (Mathf.Abs(TargetScaleX - ScaleX) < Mathf.Abs(delta))
                 {
-                    TargetScaleX = ScaleX;
+                    ScaleX = TargetScaleX;
                 }
                 else
                     ScaleX += delta;

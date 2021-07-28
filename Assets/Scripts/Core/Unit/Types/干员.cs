@@ -68,9 +68,9 @@ namespace Units
             if (ScaleX != TargetScaleX)
             {
                 var delta = Math.Sign(TargetScaleX - ScaleX) / SystemConfig.TurningTime * SystemConfig.DeltaTime;
-                if ((TargetScaleX - ScaleX) < delta)
+                if (Mathf.Abs(TargetScaleX - ScaleX) < Mathf.Abs(delta))
                 {
-                    TargetScaleX = ScaleX;
+                    ScaleX = TargetScaleX;
                 }
                 else
                     ScaleX += delta;
@@ -228,7 +228,7 @@ namespace Units
                 {
                     u.StopUnit = this;
                     StopUnits.Add(u);
-                    var pos = u.Position2 + (u.Position2 - Position2).normalized * (u.Config.Radius + Config.Radius);
+                    var pos = Position2 + (u.Position2 - Position2).normalized * (u.Config.Radius + Config.Radius);
                     u.Position = new Vector3(pos.x, Position.y, pos.y);
                 }
             }

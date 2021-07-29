@@ -7,9 +7,14 @@ using UnityEngine;
 
 namespace Buffs
 {
-    public class 推动 : Buff
+    public class 推动 : Buff,IPushBuff
     {
         public int Power;
         public Vector2 Direction;
+
+        public Vector2 GetPushPower()
+        {
+            return Direction;
+        }
     }
 }

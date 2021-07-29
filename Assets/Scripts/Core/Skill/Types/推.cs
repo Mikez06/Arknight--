@@ -1,22 +1,30 @@
-﻿namespace Skills
+﻿using UnityEngine;
+
+namespace Skills
 {
     public class 推:Skill
     {
         protected override void addBuff(Unit target)
         {
             base.addBuff(target);
-            Buffs.推动 push = new Buffs.推动();
-            target.AddBuff(push);
+            int power = 0;
+            Vector2 direction;
             if ((Unit.Position2 - target.Position2).magnitude < 0.25f)
             {
-                //溅射型推力
-                push.Power = getPower(Config.PushPower-2, target.Weight);
-                push.Direction = target.Position2 - Unit.Position2;
+                power = getPower(Config.PushPower - 2, target.Weight);
+                direction = target.Position2 - Unit.Position2;
             }
             else
             {
-                push.Power= getPower(Config.PushPower, target.Weight);
-                push.Direction = Unit.Direction;
+                power = getPower(Config.PushPower, target.Weight);
+                direction = Unit.Direction;
+            }
+            if (power > 0)
+            {
+                Buffs.推动 push = new Buffs.推动();
+                push.Power = power;
+                push.Direction = direction;
+                target.AddPush(push);
             }
         }
 

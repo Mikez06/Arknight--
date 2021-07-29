@@ -73,10 +73,6 @@ public class Unit
     /// 硬直
     /// </summary>
     public CountDown Recover = new CountDown();  
-    /// <summary>
-    /// 失衡
-    /// </summary>
-    public CountDown Unbalance;
 
 
     public float ScaleX = -1;
@@ -230,7 +226,60 @@ public class Unit
         Buffs.Remove(buff);
         Refresh();
     }
+    #region 推拉相关
+    public List<IPushBuff> PushBuffs = new List<IPushBuff>();
 
+    /// <summary>
+    /// 失衡硬直
+    /// </summary>
+    public CountDown Unbalancing = new CountDown();
+
+    public bool Unbalance => unbalance || !Unbalancing.Finished();
+
+    protected bool unbalance;
+
+    public void UpdatePush()
+    {
+        foreach (Buff buff in PushBuffs.Reverse<IPushBuff>())
+        {
+            if (buff.Duration.Finished()) RemoveBuff(buff);
+            buff.Update();
+        }
+        if (!Unbalance) return;
+        Vector2 power = Vector2.zero;
+        foreach (var buff in PushBuffs.ToList())
+        {
+            var pushPower= buff.GetPushPower();
+            power += pushPower;
+        }
+        if (power.magnitude < 0.1f) //力太小，失衡状态结束
+        {
+            unbalance = false;
+        }
+        if (Unbalance)
+        {
+            var posChange = power * SystemConfig.DeltaTime;
+            Position += new Vector3(posChange.x, 0, posChange.y);
+        }
+    }
+
+    public void AddPush(IPushBuff buff)
+    {
+        if (PushBuffs.Count == 0)//进入失衡状态
+        {
+            unbalance = true;
+            BreakAllCast();
+            SetStatus(StateEnum.stun);
+            Unbalancing.Set(0.1f);
+        }
+        PushBuffs.Add(buff);
+    }
+
+    public void RemovePush(IPushBuff buff)
+    {
+        PushBuffs.Remove(buff);
+    }
+    #endregion
     public void RecoverPower(float count)
     {
         if (!MainSkill.Opening.Finished())

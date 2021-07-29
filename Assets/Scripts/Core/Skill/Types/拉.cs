@@ -8,21 +8,20 @@ namespace Skills
 {
     public class 拉 : Skill
     {
+
         protected override void addBuff(Unit target)
         {
             base.addBuff(target);
-            Buffs.拉动 push = new Buffs.拉动();
-            target.AddBuff(push);
-            if ((Unit.Position2 - target.Position2).magnitude < 0.25f)
+            float power = getPower(Config.PushPower, target.Weight);
+
+            if (power > 0)
             {
-                //溅射型推力
-                push.Power = getPower(Config.PushPower - 2, target.Weight);
+                Buffs.拉动 push = new Buffs.拉动();
                 push.source = Unit;
-            }
-            else
-            {
-                push.Power = getPower(Config.PushPower, target.Weight);
-                push.source = Unit;
+                if (Config.PushPower - target.Weight > -1) push.FullDuration = 1;
+                else push.FullDuration = 0.5f;
+                push.Init();
+                target.AddBuff(push);
             }
         }
         static int[] pow = new int[] { 0, 2, 10, 40, 42, 44, 46 };

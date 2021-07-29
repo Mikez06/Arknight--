@@ -167,7 +167,7 @@ namespace Units
             {
                 var target = Position + (TempTarget - Position).normalized * Speed * SystemConfig.DeltaTime;
                 CheckBlock(target);
-                if (StopUnit != null)
+                if (StopUnit == null)
                 {
                     Position = target;
                 }

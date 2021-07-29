@@ -33,6 +33,10 @@ public class Buff
     public virtual void Update()
     {
         Duration.Update(SystemConfig.DeltaTime);
+        if (Duration.Finished())
+        {
+            Unit.RemoveBuff(this);
+        }
     }
 
 }

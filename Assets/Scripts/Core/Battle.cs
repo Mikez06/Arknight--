@@ -94,6 +94,10 @@ public class Battle
 
         foreach (var unit in Enemys.Union(PlayerUnits).ToArray())
         {
+            unit.UpdatePush();
+        }
+        foreach (var unit in Enemys.Union(PlayerUnits).ToArray())
+        {
             unit.UpdateBuffs();
         }
         foreach (var unit in Enemys.Union(PlayerUnits).ToArray())

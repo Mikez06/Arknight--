@@ -168,12 +168,14 @@ namespace BattleUI
             StopChooseUnit();//如果当前正在看干员详细状态，就退出来
             if (selectedUnit == unit)
             {
+                selectedUnit = null;
                 m_state.selectedIndex = 0;
             }
             else
             {
                 selectedUnit = unit;
                 m_state.selectedIndex = 1;
+                inSelectUnit();
             }
         }
 
@@ -288,12 +290,7 @@ namespace BattleUI
                     updateUnitsLayout();
                     break;
                 case 1:
-                    TimeHelper.Instance.SetGameSpeed(0.2f);
-                    m_left.SetUnit(selectedUnit);
-                    BattleCamera.Instance.Rotate = true;
-                    BattleCamera.Instance.BuildUnit = selectedUnit;
-                    BattleCamera.Instance.ShowHighLight();
-                    updateUnitsLayout();
+                    inSelectUnit();
                     break;
                 case 3:
                     Vector2 mousePos = Camera.main.WorldToScreenPoint(selectedUnit.UnitModel.transform.position); //Stage.inst.touchPosition.ScreenToUI();
@@ -308,6 +305,16 @@ namespace BattleUI
                     m_SkillUsePanel.SetUnit(selectedUnit);
                     break;
             }
+        }
+
+        void inSelectUnit()
+        {
+            TimeHelper.Instance.SetGameSpeed(0.2f);
+            m_left.SetUnit(selectedUnit);
+            BattleCamera.Instance.Rotate = true;
+            BattleCamera.Instance.BuildUnit = selectedUnit;
+            BattleCamera.Instance.ShowHighLight();
+            updateUnitsLayout();
         }
 
         public void Enter()

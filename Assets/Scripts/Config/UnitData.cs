@@ -19,6 +19,7 @@ public class UnitData : IConfig
       public bool CanSetHigh;
       public bool CanSetGround;
       public int StopCount;
+      public bool WithoutCheckCount;
       public int Damage;
       public float Speed;
       public float Radius;

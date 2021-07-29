@@ -309,7 +309,7 @@ public class Skill
             if (Config.BurstFind) //当目标为随机时
             {
                 LastTargets.Clear();
-                LastTargets.AddRange(GetAttackTarget());
+                LastTargets.AddRange(getAttackTarget());
             }
             foreach (var target in LastTargets)
             {
@@ -418,16 +418,16 @@ public class Skill
     public virtual void FindTarget()
     {      
         Targets.Clear();
-        Targets.AddRange(GetAttackTarget());
+        Targets.AddRange(getAttackTarget());
     }
 
     List<Unit> tempTargets = new List<Unit>();
-    List<Unit> GetAttackTarget()
+    protected List<Unit> getAttackTarget()
     {
         tempTargets.Clear();
         if (AttackPoints == null)//根据攻击范围进行索敌
         {
-            tempTargets.AddRange(Battle.FindAll(Unit.Position2, Config.AreaRange, Config.TargetTeam));
+            tempTargets.AddRange(Battle.FindAll(Unit.Position2, Config.AttackRange, Config.TargetTeam));
         }
         else
         {
@@ -465,6 +465,24 @@ public class Skill
 
         switch (Config.AttackOrder)
         {
+            case AttackTargetOrderEnum.无:
+                break;
+            case AttackTargetOrderEnum.自身阻挡优先:
+                secondOrder = x =>
+                {
+                    if (Unit is Units.干员 u)
+                    {
+                        var index = u.StopUnits.IndexOf(x as Units.敌人);
+                        if (index < 0) index = int.MaxValue;
+                        return index;
+                    }
+                    else if (Unit is Units.敌人 u1)
+                    {
+                        return u1.StopUnit == x ? 0 : 1;
+                    }
+                    return 0;
+                };
+                break;
             case AttackTargetOrderEnum.终点距离:
                 secondOrder = x => (x as Units.敌人).distanceToFinal();
                 break;
@@ -568,6 +586,7 @@ public class Skill
     public void BreakCast()
     {
         Targets.Clear();
+        if (Config.AttackMode==AttackModeEnum.跟随攻击) Unit.Attacking.Finish();
         Unit.UnitModel?.BreakAnimation();
         Casting.Finish();
         Bursting.Finish();

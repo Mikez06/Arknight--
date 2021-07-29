@@ -57,7 +57,6 @@ namespace Units
             {
                 if (Start.Update(SystemConfig.DeltaTime))
                 {
-                    Debug.Log("StartEnd" + Time.time);
                     SetStatus(StateEnum.Idle);
                 }
                 return;
@@ -69,9 +68,9 @@ namespace Units
             if (ScaleX != TargetScaleX)
             {
                 var delta = Math.Sign(TargetScaleX - ScaleX) / SystemConfig.TurningTime * SystemConfig.DeltaTime;
-                if ((TargetScaleX - ScaleX) < delta)
+                if (Mathf.Abs(TargetScaleX - ScaleX) < Mathf.Abs(delta))
                 {
-                    TargetScaleX = ScaleX;
+                    ScaleX = TargetScaleX;
                 }
                 else
                     ScaleX += delta;
@@ -136,6 +135,7 @@ namespace Units
             Debug.Log("StartStart" + Time.time);
             Battle.Cost -= GetCost();
             Start.Set(UnitModel.GetAnimationDuration("Start"));
+            CheckBlock();
             //Debug.Log("start:" + Time.time + "," + Start.value);
             SetStatus(StateEnum.Start);
             InputTime = Battle.Tick;
@@ -204,6 +204,7 @@ namespace Units
 
         public bool CanStop(Units.敌人 target)
         {
+            if (target.StopUnit != null) return false;
             if (StopUnits.Contains(target)) return true;
             return StopUnits.Count < Config.StopCount;
         }
@@ -216,6 +217,21 @@ namespace Units
         public override bool IfStoped()
         {
             return StopUnits.Count > 0;
+        }
+
+        void CheckBlock()
+        {
+            var blockUnits = Battle.FindAll(Position2, Config.Radius, 1);
+            foreach (Units.敌人 u in blockUnits)
+            {
+                if (CanStop(u))
+                {
+                    u.StopUnit = this;
+                    StopUnits.Add(u);
+                    var pos = Position2 + (u.Position2 - Position2).normalized * (u.Config.Radius + Config.Radius);
+                    u.Position = new Vector3(pos.x, Position.y, pos.y);
+                }
+            }
         }
     }
 }

@@ -64,7 +64,6 @@ namespace Units
 
         public override void UpdateAction()
         {
-
             if (ScaleX != TargetScaleX)
             {
                 var delta = Math.Sign(TargetScaleX - ScaleX) / SystemConfig.TurningTime * SystemConfig.DeltaTime;
@@ -92,21 +91,17 @@ namespace Units
             {
                 UpdateMove();
             }
-            if (State != StateEnum.Die)
-            {
-                CheckBlock();
-            }
         }
 
         /// <summary>
         /// 判断是否有人在阻挡自己
         /// </summary>
-        public virtual void CheckBlock()
+        public virtual void CheckBlock(Vector2 pos)
         {
             if (Config.Height > 0) return;//飞行单位无法被阻挡
             if (StopUnit != null) return;
-            var blockUnits = Battle.FindAll(Position2, Config.Radius, 0).Select(x=>x as Units.干员).Where(x => (x as Units.干员).CanStop(this)).ToList();
-            blockUnits.OrderBy(x => (x.Position2 - Position2).magnitude);
+            var blockUnits = Battle.FindAll(pos, Config.Radius, 0).Select(x=>x as Units.干员).Where(x => (x as Units.干员).CanStop(this)).ToList();
+            blockUnits.OrderBy(x => (x.Position2 - pos).magnitude);
             if (blockUnits.Count > 0)
             {
                 var target = blockUnits[0];
@@ -170,7 +165,12 @@ namespace Units
             }
             else
             {
-                Position += (TempTarget - Position).normalized * Speed * SystemConfig.DeltaTime;
+                var target = Position + (TempTarget - Position).normalized * Speed * SystemConfig.DeltaTime;
+                CheckBlock(target);
+                if (StopUnit != null)
+                {
+                    Position = target;
+                }
             }
         }
 

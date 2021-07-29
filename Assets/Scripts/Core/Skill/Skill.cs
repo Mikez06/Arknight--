@@ -357,11 +357,7 @@ public class Skill
             ps.transform.position = target.UnitModel.SkeletonAnimation.transform.position;
             ps.PS.Play();
         }
-        if (Config.Buffs != null)
-            foreach (var buffId in Config.Buffs)
-            {
-                target.AddBuff(buffId, this);
-            }
+        addBuff(target);
         if (Unit.Skills[0] == this && Unit.MainSkill != null && Unit.MainSkill.Config.PowerType == PowerRecoverTypeEnum.攻击)
         {
             Unit.RecoverPower(1);
@@ -412,6 +408,15 @@ public class Skill
                 }
             }
         }
+    }
+
+    protected virtual void addBuff(Unit target)
+    {
+        if (Config.Buffs != null)
+            foreach (var buffId in Config.Buffs)
+            {
+                target.AddBuff(buffId, this);
+            }
     }
     #endregion
 

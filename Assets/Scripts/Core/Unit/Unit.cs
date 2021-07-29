@@ -55,7 +55,7 @@ public class Unit
 
     public float PowerSpeed;
 
-    public float Weight;
+    public int Weight;
 
     public bool IfHide;
 
@@ -72,7 +72,12 @@ public class Unit
     /// <summary>
     /// 硬直
     /// </summary>
-    public CountDown Recover = new CountDown();
+    public CountDown Recover = new CountDown();  
+    /// <summary>
+    /// 失衡
+    /// </summary>
+    public CountDown Unbalance;
+
 
     public float ScaleX = -1;
     public float TargetScaleX = -1;
@@ -212,6 +217,12 @@ public class Unit
             Refresh();
             return buff;
         }
+    }
+
+    public void AddBuff(Buff buff)
+    {
+        Buffs.Add(buff);
+        Refresh();
     }
 
     public void RemoveBuff(Buff buff)

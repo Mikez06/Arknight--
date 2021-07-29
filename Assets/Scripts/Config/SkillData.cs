@@ -25,6 +25,7 @@ public class SkillData : IConfig
       public bool BurstFind;
       public float AreaRange;
       public float AreaDamage;
+      public int PushPower;
       public int[] Skills;
       public int[] ExSkills;
       public float Cooldown;

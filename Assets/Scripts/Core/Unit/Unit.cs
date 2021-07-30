@@ -240,6 +240,7 @@ public class Unit
 
     public void UpdatePush()
     {
+        Unbalancing.Update(SystemConfig.DeltaTime);
         foreach (Buff buff in PushBuffs.Reverse<IPushBuff>())
         {
             buff.Update();
@@ -254,6 +255,10 @@ public class Unit
         if (power.magnitude < 0.1f) //力太小，失衡状态结束
         {
             unbalance = false;
+        }
+        else
+        {
+            Unbalancing.Set(0.1f);
         }
         if (Unbalance)
         {

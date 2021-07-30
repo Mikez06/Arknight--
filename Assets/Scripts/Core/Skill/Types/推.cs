@@ -9,7 +9,8 @@ namespace Skills
             base.addBuff(target);
             int power = 0;
             Vector2 direction;
-            if ((Unit.Position2 - target.Position2).magnitude < 0.25f)
+            var angle = Vector2.SignedAngle(target.Position2 - Unit.Position2, Unit.Direction);
+            if ((Unit.Position2 - target.Position2).magnitude < 0.25f || angle > 45f)
             {
                 power = getPower(Config.PushPower - 2, target.Weight);
                 direction = target.Position2 - Unit.Position2;
@@ -21,6 +22,7 @@ namespace Skills
             }
             if (power > 0)
             {
+                Debug.Log($"此次推力大小为{power}");
                 Buffs.推动 push = new Buffs.推动();
                 push.Power = power;
                 push.Direction = direction;

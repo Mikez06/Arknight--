@@ -12,6 +12,6 @@ public enum StateEnum
     Idle,
     Default,
     Start,
-    stun,
+    Stun,
 }
 

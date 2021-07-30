@@ -12,6 +12,11 @@ namespace Buffs
         public int Power;
         public Vector2 Direction;
 
+        public override void Update()
+        {
+            //base.Update();
+        }
+
         public Vector2 GetPushPower()
         {
             return Direction;

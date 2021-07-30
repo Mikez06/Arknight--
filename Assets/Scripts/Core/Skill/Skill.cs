@@ -138,11 +138,12 @@ public class Skill
             case SkillReadyEnum.禁止主动:
                 return false;
             case SkillReadyEnum.充能释放:
-                if (Power < MaxPower || !Opening.Finished()) return false;
+                if (Power < MaxPower) return false;
                 break;
             default:
                 break;
         }
+
         if (Config.AttackMode == AttackModeEnum.跟随攻击 && !Unit.Attacking.Finished()) return false;
 
         if (Config.UseType == SkillUseTypeEnum.手动) //手动技能在技能开启时可以使用
@@ -156,8 +157,8 @@ public class Skill
     public virtual void ResetCooldown(float attackSpeed)
     {
         //自动充能技，除了走冷却外，还要走Power
-        if (Config.ReadyType == SkillReadyEnum.充能释放)
-            DoOpen();
+        //if (Config.ReadyType == SkillReadyEnum.充能释放)
+        //    DoOpen();
 
         Cooldown.Set(Config.Cooldown * attackSpeed);
     }
@@ -177,6 +178,15 @@ public class Skill
     #region 主动相关
     public bool CanOpen()
     {
+        if (Config.ReadyType == SkillReadyEnum.充能释放 && Config.UseType == SkillUseTypeEnum.手动)
+        {
+            var target = getAttackTarget();
+            if (target.Count == 0)
+            {
+                Log.Debug($"技能{Config.Name} 无可选目标，使用失败");
+                return false;
+            }
+        }
         return Opening.Finished() && Power >= MaxPower && Useable();
     }
 
@@ -187,8 +197,15 @@ public class Skill
         {
             Unit.BreakAllCast();
         }
-        Power -= MaxPower;
-        Opening.Set(Config.OpenTime);
+        if (Config.ReadyType == SkillReadyEnum.特技激活)
+        {
+            Power -= MaxPower;
+            Opening.Set(Config.OpenTime);
+        }
+        if (Config.ReadyType == SkillReadyEnum.充能释放)
+        {
+            Start();
+        }
         Unit.OverWriteAnimation = Config.OverwriteAnimation;
         OnOpen();
     }
@@ -229,6 +246,13 @@ public class Skill
             return;
         }
         //走到这里技能就真的用出来了
+
+        if (Config.ReadyType == SkillReadyEnum.充能释放)
+        {
+            Power -= MaxPower;
+            Opening.Set(Config.OpenTime);
+        }
+
         if (string.IsNullOrEmpty(Config.ModelAnimation))
         {
             Debug.Log(Unit.Config.Id + "的" + Config.Id + "没有抬手,直接使用");
@@ -548,7 +572,7 @@ public class Skill
                 secondOrder = x => x.IfHide ? 0 : 1;
                 break;
             case AttackTargetOrderEnum.未眩晕优先:
-                secondOrder = x => x.State == StateEnum.stun ? 1 : 0;
+                secondOrder = x => x.State == StateEnum.Stun ? 1 : 0;
                 break;
             case AttackTargetOrderEnum.飞行优先:
                 secondOrder = x => -x.Config.Height;

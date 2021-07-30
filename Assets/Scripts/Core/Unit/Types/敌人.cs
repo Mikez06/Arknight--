@@ -124,6 +124,7 @@ namespace Units
                 PathWaiting.Update(SystemConfig.DeltaTime);
                 return;
             }
+            if (Unbalance) return;//失衡状态下不许主动移动
             if (StopUnit != null) return;//有人阻挡，停止移动,理论上这一句不要
             AnimationName = Speed >= 1 ? "Run_Loop" : "Move_Loop";
             AnimationSpeed = 1;

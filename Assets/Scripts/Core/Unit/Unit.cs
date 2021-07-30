@@ -122,8 +122,7 @@ public class Unit
     {
         foreach (var buff in Buffs.Reverse<Buff>())
         {
-            if (buff.Duration.Finished()) RemoveBuff(buff);
-            else buff.Update();
+            buff.Update();
         }
     }
     public virtual void UpdateAction()
@@ -218,6 +217,7 @@ public class Unit
     public void AddBuff(Buff buff)
     {
         Buffs.Add(buff);
+        buff.Unit = this;
         Refresh();
     }
 
@@ -242,7 +242,6 @@ public class Unit
     {
         foreach (Buff buff in PushBuffs.Reverse<IPushBuff>())
         {
-            if (buff.Duration.Finished()) RemoveBuff(buff);
             buff.Update();
         }
         if (!Unbalance) return;
@@ -265,11 +264,12 @@ public class Unit
 
     public void AddPush(IPushBuff buff)
     {
+        (buff as Buff).Unit = this;
         if (PushBuffs.Count == 0)//进入失衡状态
         {
             unbalance = true;
-            BreakAllCast();
-            SetStatus(StateEnum.stun);
+            BreakAllCast();            
+            //SetStatus(StateEnum.Stun);
             Unbalancing.Set(0.1f);
         }
         PushBuffs.Add(buff);

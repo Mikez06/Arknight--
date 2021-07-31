@@ -153,7 +153,14 @@ public class UnitModel : MonoBehaviour
 
     public void SetColor(Color color)
     {
+        mpb.SetColor("_Color", color);
+        Renderer.SetPropertyBlock(mpb);
+    }
 
+    public Color GetColor(Color color)
+    {
+        Renderer.GetPropertyBlock(mpb);
+        return mpb.GetColor("_Color");
     }
 }
 

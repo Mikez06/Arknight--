@@ -9,7 +9,7 @@ public class Map
 {
     //public List<MapGrid> StartPoints = new List<MapGrid>();//起始点有什么卵用吗
     //public List<MapGrid> EndPoints = new List<MapGrid>();//终点好像也没什么卵用
-    public MapGrid[,] Grids;
+    public Tile[,] Tiles;
 
     public MapData Config => Database.Instance.Get<MapData>(Id);
 
@@ -18,12 +18,37 @@ public class Map
     public void Init()
     {
         var grids = MapManager.Instance.GetComponentsInChildren<MapGrid>();
-        Grids = new MapGrid[grids.Max(x => x.X) + 1, grids.Max(x => x.Y) + 1];
+        Tiles = new Tile[grids.Max(x => x.X) + 1, grids.Max(x => x.Y) + 1];
         foreach (var grid in grids)
         {
-            Grids[grid.X, grid.Y] = grid;
+            Tiles[grid.X, grid.Y] = CreateTile(grid);
         }
 
+    }
+
+    Tile CreateTile(MapGrid mapGrid)
+    {
+        Tile tile;
+        switch (mapGrid.TileType)
+        {
+            case TileTypeEnum.普通:
+                tile = new Tiles.普通地板();
+                break;
+            case TileTypeEnum.火山:
+                tile = new Tiles.火山();
+                break;
+            case TileTypeEnum.灼烧:
+                tile = new Tiles.灼烧();
+                break;
+            case TileTypeEnum.陷坑:
+                tile = new Tiles.陷坑();
+                break;
+            default:
+                tile = new Tiles.普通地板();
+                break;
+        }
+        tile.Init(mapGrid);
+        return tile;
     }
 
     StartEndModifier startEndModifier = new StartEndModifier()
@@ -50,21 +75,21 @@ public class Map
     /// <param name="start"></param>
     /// <param name="end"></param>
     /// <returns></returns>
-    public List<MapGrid> FindPath(MapGrid start, MapGrid end)
+    public List<Tile> FindPath(Tile start, Tile end)
     {
-        Queue<MapGrid> searchGrids = new Queue<MapGrid>();
-        HashSet<MapGrid> updateGrids = new HashSet<MapGrid>();
+        Queue<Tile> searchGrids = new Queue<Tile>();
+        HashSet<Tile> updateGrids = new HashSet<Tile>();
         searchGrids.Enqueue(start);
         updateGrids.Add(start);
-        void tryAdd(MapGrid pre, int x,int y)
+        void tryAdd(Tile pre, int x,int y)
         {
-            if (x >= 0 && x < Grids.GetLength(0) && y >= 0 && y < Grids.GetLength(1))
+            if (x >= 0 && x < Tiles.GetLength(0) && y >= 0 && y < Tiles.GetLength(1))
             {
-                if (Grids[x, y].CanMove && !updateGrids.Contains(Grids[x,y]))
+                if (Tiles[x, y].CanMove && !updateGrids.Contains(Tiles[x,y]))
                 {
-                    Grids[x, y].PreGrid = pre;
-                    searchGrids.Enqueue(Grids[x, y]);
-                    updateGrids.Add(Grids[x, y]);
+                    Tiles[x, y].PreGrid = pre;
+                    searchGrids.Enqueue(Tiles[x, y]);
+                    updateGrids.Add(Tiles[x, y]);
                 }
             }
         }
@@ -77,7 +102,7 @@ public class Map
             tryAdd(nextGrid, nextGrid.X, nextGrid.Y - 1);
             if (updateGrids.Contains(end))
             {
-                List<MapGrid> result = new List<MapGrid>();
+                List<Tile> result = new List<Tile>();
                 var g = end;
                 result.Add(g);
                 while (g.PreGrid != null)

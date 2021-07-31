@@ -15,13 +15,25 @@ namespace Buffs
 
         public float FullDuration;
 
+        public float StartDistance;
+
         public override void Init()
         {
             Duration.Set(FullDuration);
+            StartDistance = (source.Position2 - Unit.Position2).magnitude;
         }
+
         public Vector2 GetPushPower()
         {
-            return (source.Position2 - Unit.Position2).normalized;
+            if (Unit.IfStoped()) return Vector2.zero;
+            float dis= (source.Position2 - Unit.Position2).magnitude;
+            if (dis < StartDistance)
+            {
+                dis = Mathf.Pow(dis / StartDistance, 4);
+            }
+            else
+                dis = 1;
+            return (source.Position2 - Unit.Position2).normalized * Power / 100f * dis;
         }
     }
 }

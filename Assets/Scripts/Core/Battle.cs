@@ -52,7 +52,7 @@ public class Battle
             CreatePlayerUnit(unitInput, battleConfig.Team.UnitSkill[i]);
         }
      
-        UnitMap = new HashSet<Unit>[Map.Grids.GetLength(0), Map.Grids.GetLength(1)];
+        UnitMap = new HashSet<Unit>[Map.Tiles.GetLength(0), Map.Tiles.GetLength(1)];
         for (int i = 0; i < UnitMap.GetLength(0); i++)
             for (int j = 0; j < UnitMap.GetLength(1); j++)
             {
@@ -180,7 +180,7 @@ public class Battle
             var targetPoint = point;
             if (team == 0)
             {
-                var target = Map.Grids[targetPoint.x, targetPoint.y].Unit;
+                var target = Map.Tiles[targetPoint.x, targetPoint.y].Unit;
                 if (target != null)
                 {
                     if (target.Alive())

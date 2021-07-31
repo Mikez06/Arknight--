@@ -22,7 +22,7 @@ public class Unit
 
     public Vector2 Direction = new Vector2(1, 0);
 
-    public MapGrid NowGrid => Battle.Map.Grids[Mathf.RoundToInt(Position.x), Mathf.RoundToInt(Position.z)];
+    public Tile NowGrid => Battle.Map.Tiles[Mathf.RoundToInt(Position.x), Mathf.RoundToInt(Position.z)];
 
     public StateEnum State = StateEnum.Default;
     public float Hp;

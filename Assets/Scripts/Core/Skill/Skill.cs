@@ -607,7 +607,7 @@ public class Skill
         foreach (var p in Config.AttackPoints)
         {
             var point = (Unit as Units.干员).PointWithDirection(p);
-            if (point.x < 0 || point.x >= Battle.Map.Grids.GetLength(0) || point.y < 0 || point.y >= Battle.Map.Grids.GetLength(1)) continue;
+            if (point.x < 0 || point.x >= Battle.Map.Tiles.GetLength(0) || point.y < 0 || point.y >= Battle.Map.Tiles.GetLength(1)) continue;
             AttackPoints.Add(point);
         }
     }

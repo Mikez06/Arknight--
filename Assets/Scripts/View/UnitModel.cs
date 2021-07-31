@@ -10,7 +10,16 @@ public class UnitModel : MonoBehaviour
 {
     public Unit Unit;
     public SkeletonAnimation SkeletonAnimation;
+    protected Renderer Renderer;
+    protected MaterialPropertyBlock mpb;
     string nowAnimation;
+    private void Awake()
+    {
+        mpb = new MaterialPropertyBlock();
+        Renderer = SkeletonAnimation.GetComponent<Renderer>();
+        Renderer.GetPropertyBlock(mpb);
+    }
+
     public virtual void Init()
     {
         SkeletonAnimation.AnimationName = "Default";
@@ -140,6 +149,11 @@ public class UnitModel : MonoBehaviour
     {
         var result= SkeletonAnimation.Skeleton.Data.FindAnimation(animationName).Duration;
         return result;
+    }
+
+    public void SetColor(Color color)
+    {
+
     }
 }
 

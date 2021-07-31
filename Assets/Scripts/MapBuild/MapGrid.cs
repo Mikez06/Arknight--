@@ -19,13 +19,11 @@ public class MapGrid : MonoBehaviour, IPointerClickHandler
     /// </summary>
     public bool CanMove;
 
-    public Units.干员 Unit;
-    /// <summary>
-    /// 广搜临时数据
-    /// </summary>
-    public MapGrid PreGrid;
+    public TileTypeEnum TileType;
 
     Renderer Renderer;
+    [HideInInspector]
+    public Tile Tile;
 
     private void Awake()
     {
@@ -41,19 +39,6 @@ public class MapGrid : MonoBehaviour, IPointerClickHandler
         CanMove = true;
     }
 
-    public bool CanSet(Unit unit)
-    {
-        if (this.Unit != null) return false;
-        if (CanBuildUnit)
-            if (FarAttackGrid)
-            {
-                return unit.Config.CanSetHigh;
-            }
-            else
-                return unit.Config.CanSetGround;
-        return false;
-    }
-
     public void ChangeHighLight(bool bo)
     {
         Renderer.material.color = bo ? new Color(0.458f, 1, 0.42f) : Color.white;
@@ -61,19 +46,7 @@ public class MapGrid : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (Unit != null && !FairyGUI.Stage.isTouchOnUI)
-            BattleUI.UI_Battle.Instance.ChooseUnit(Unit);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (Tile.Unit != null && !FairyGUI.Stage.isTouchOnUI)
+            BattleUI.UI_Battle.Instance.ChooseUnit(Tile.Unit);
     }
 }

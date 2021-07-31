@@ -95,7 +95,7 @@ namespace Units
         public void ChangePos(int x,int y, DirectionEnum directionEnum)
         {
             UnitModel.gameObject.SetActive(true);
-            Position = Battle.Map.Grids[x, y].transform.position;
+            Position = Battle.Map.Tiles[x, y].Pos;
             Direction_E = directionEnum;
             ResetAttackPoint();
         }
@@ -139,7 +139,7 @@ namespace Units
             //Debug.Log("start:" + Time.time + "," + Start.value);
             SetStatus(StateEnum.Start);
             InputTime = Battle.Tick;
-            Battle.Map.Grids[GridPos.x, GridPos.y].Unit = this;
+            Battle.Map.Tiles[GridPos.x, GridPos.y].Unit = this;
             BattleUI.UI_Battle.Instance.CreateUIUnit(this);
         }
 
@@ -150,7 +150,7 @@ namespace Units
             State = StateEnum.Default;
             Direction = new Vector2(1, 0);
             InputTime = -1;
-            Battle.Map.Grids[GridPos.x, GridPos.y].Unit = null;
+            Battle.Map.Tiles[GridPos.x, GridPos.y].Unit = null;
             Reseting.Set(ResetTime);
             BuildTime++;
             Battle.Cost += Cost / 2;

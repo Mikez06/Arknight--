@@ -10,7 +10,7 @@ namespace BattleUI
     {
         public void SetUnit(Units.干员 unit)
         {
-            m_name.text = unit.Config.Name;
+            m_name.text = unit.UnitData.Name;
         }
     }
 }

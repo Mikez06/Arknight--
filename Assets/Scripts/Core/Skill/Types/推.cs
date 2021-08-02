@@ -12,12 +12,12 @@ namespace Skills
             var angle = Vector2.SignedAngle(target.Position2 - Unit.Position2, Unit.Direction);
             if ((Unit.Position2 - target.Position2).magnitude < 0.25f || angle > 45f)
             {
-                power = getPower(Config.PushPower - 2, target.Weight);
+                power = getPower(SkillData.PushPower - 2, target.Weight);
                 direction = target.Position2 - Unit.Position2;
             }
             else
             {
-                power = getPower(Config.PushPower, target.Weight);
+                power = getPower(SkillData.PushPower, target.Weight);
                 direction = Unit.Direction;
             }
             if (power > 0)

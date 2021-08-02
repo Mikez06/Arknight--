@@ -12,13 +12,13 @@ namespace Skills
         protected override void addBuff(Unit target)
         {
             base.addBuff(target);
-            float power = getPower(Config.PushPower, target.Weight);
+            float power = getPower(SkillData.PushPower, target.Weight);
 
             if (power > 0)
             {
                 Buffs.拉动 push = new Buffs.拉动();
                 push.source = Unit;
-                if (Config.PushPower - target.Weight > -1) push.FullDuration = 1;
+                if (SkillData.PushPower - target.Weight > -1) push.FullDuration = 1;
                 else push.FullDuration = 0.5f;
                 push.Init();
                 target.AddBuff(push);

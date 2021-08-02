@@ -21,6 +21,8 @@ public class MapGrid : MonoBehaviour, IPointerClickHandler
 
     public TileTypeEnum TileType;
 
+    public int ConfigId;
+
     Renderer Renderer;
     [HideInInspector]
     public Tile Tile;

@@ -53,7 +53,7 @@ namespace BattleUI
                     else
                     {
                         m_sk.value = Unit.MainSkill.Opening.value;
-                        m_sk.max = Unit.MainSkill.Config.OpenTime;
+                        m_sk.max = Unit.MainSkill.SkillData.OpenTime;
                     }
                     if (Unit.MainSkill.Power == Unit.MainSkill.MaxPower * Unit.MainSkill.PowerCount && Unit.MainSkill.Power != 0)
                     {
@@ -69,7 +69,7 @@ namespace BattleUI
 
                     if (Unit.MainSkill.Power >= Unit.MainSkill.MaxPower)
                     {
-                        if (Unit.MainSkill.Config.UseType == SkillUseTypeEnum.手动)
+                        if (Unit.MainSkill.SkillData.UseType == SkillUseTypeEnum.手动)
                         {
                             m_readyControl.selectedIndex = 1;
                         }

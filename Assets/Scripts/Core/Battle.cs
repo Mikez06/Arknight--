@@ -44,7 +44,7 @@ public class Battle
         Cost = battleConfig.StartCost;
 
         //读取场景地图信息
-        Map.Init();
+        Map.Init(this);
 
         for (int i = 0; i < battleConfig.Team.Cards.Count; i++)
         {
@@ -85,6 +85,11 @@ public class Battle
             var wave = Waves[0];
             Waves.RemoveAt(0);
             CreateEnemy(wave);
+        }
+
+        foreach (var tile in Map.Tiles)
+        {
+            tile.Update();
         }
 
         foreach (var bullet in Bullets.ToArray())
@@ -172,6 +177,29 @@ public class Battle
         return result;
     }
 
+    public HashSet<Unit> FindAll(Vector2Int point,int team,bool aliveOnly=true)
+    {
+        var result = new HashSet<Unit>();
+        if (team == 0)
+        {
+            var target = Map.Tiles[point.x, point.y].Unit;
+            if (target != null)
+            {
+                if (!aliveOnly || target.Alive())
+                    result.Add(target);
+            }
+        }
+        else
+        {
+            foreach (var unit in UnitMap[point.x, point.y])
+            {
+                if (!aliveOnly || unit.Alive())
+                    result.Add(unit);
+            }
+        }
+        return result;
+    }
+
     public HashSet<Unit> FindAll(List<Vector2Int> points, int team)
     {
         var result = new HashSet<Unit>();
@@ -207,7 +235,7 @@ public class Battle
             var units = PlayerUnits.Where(x => x.InputTime >= 0 && x.Alive()).ToList();
             foreach (var unit in units) //需要优化！
             {
-                if ((unit.Position2 - pos).magnitude <= radius + unit.Config.Radius
+                if ((unit.Position2 - pos).magnitude <= radius + unit.UnitData.Radius
                     ) result.Add(unit);
             }
         }
@@ -215,7 +243,7 @@ public class Battle
         {
             foreach (var unit in Enemys) //需要优化！
             {
-                if ((unit.Position2 - pos).magnitude < radius + unit.Config.Radius && unit.Alive()) result.Add(unit);
+                if ((unit.Position2 - pos).magnitude < radius + unit.UnitData.Radius && unit.Alive()) result.Add(unit);
             }
         }
         return result;
@@ -229,9 +257,9 @@ public class Battle
         }
         foreach (var unit in Enemys)
         {
-            for (int i = Mathf.RoundToInt(unit.Position2.x - unit.Config.Radius); i <= Mathf.RoundToInt(unit.Position2.x + unit.Config.Radius); i++)
+            for (int i = Mathf.RoundToInt(unit.Position2.x - unit.UnitData.Radius); i <= Mathf.RoundToInt(unit.Position2.x + unit.UnitData.Radius); i++)
             {
-                for (int j = Mathf.RoundToInt(unit.Position2.y - unit.Config.Radius); j <= Mathf.RoundToInt(unit.Position2.y + unit.Config.Radius); j++)
+                for (int j = Mathf.RoundToInt(unit.Position2.y - unit.UnitData.Radius); j <= Mathf.RoundToInt(unit.Position2.y + unit.UnitData.Radius); j++)
                 {
                     if (i > 0 && i < UnitMap.GetLength(0) && j > 0 && j < UnitMap.GetLength(1))
                         UnitMap[i, j].Add(unit);

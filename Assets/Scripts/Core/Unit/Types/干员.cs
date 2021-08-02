@@ -37,14 +37,14 @@ namespace Units
         public override void Init()
         {
             base.Init();
-            MainSkill = LearnSkill(Config.MainSkill[MainSkillId]);
+            MainSkill = LearnSkill(UnitData.MainSkill[MainSkillId]);
         }
 
         public override void Refresh()
         {
             base.Refresh();
-            Cost = Config.Cost;
-            ResetTime = Config.ResetTime;
+            Cost = UnitData.Cost;
+            ResetTime = UnitData.ResetTime;
         }
 
         public override void UpdateAction()
@@ -76,7 +76,7 @@ namespace Units
                     ScaleX += delta;
             }
 
-            if (MainSkill != null && MainSkill.Config.PowerType == PowerRecoverTypeEnum.自动)
+            if (MainSkill != null && MainSkill.SkillData.PowerType == PowerRecoverTypeEnum.自动)
             {
                 RecoverPower(PowerSpeed * SystemConfig.DeltaTime);
             }
@@ -192,9 +192,9 @@ namespace Units
             return GetCost() <= Battle.Cost;
         }
 
-        public override void DoDie()
+        public override void DoDie(object source)
         {
-            base.DoDie();
+            base.DoDie(source);
             foreach (var unit in StopUnits)
             {
                 unit.StopUnit = null;
@@ -206,7 +206,7 @@ namespace Units
         {
             if (target.StopUnit != null) return false;
             if (StopUnits.Contains(target)) return true;
-            return StopUnits.Count < Config.StopCount;
+            return StopUnits.Count < UnitData.StopCount;
         }
 
         public override float Hatred()
@@ -221,14 +221,14 @@ namespace Units
 
         void CheckBlock()
         {
-            var blockUnits = Battle.FindAll(Position2, Config.Radius, 1);
+            var blockUnits = Battle.FindAll(Position2, UnitData.Radius, 1);
             foreach (Units.敌人 u in blockUnits)
             {
                 if (CanStop(u))
                 {
                     u.StopUnit = this;
                     StopUnits.Add(u);
-                    var pos = Position2 + (u.Position2 - Position2).normalized * (u.Config.Radius + Config.Radius);
+                    var pos = Position2 + (u.Position2 - Position2).normalized * (u.UnitData.Radius + UnitData.Radius);
                     u.Position = new Vector3(pos.x, Position.y, pos.y);
                 }
             }

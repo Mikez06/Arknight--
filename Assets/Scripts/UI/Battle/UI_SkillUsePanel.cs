@@ -26,7 +26,7 @@ namespace BattleUI
                 m_mainSkillInfo.m_using.selectedIndex = s.Opening.Finished() ? 0 : 1;
                 if (!s.Opening.Finished())
                 {
-                    m_mainSkillInfo.max = s.Config.OpenTime;
+                    m_mainSkillInfo.max = s.SkillData.OpenTime;
                     m_mainSkillInfo.value = s.Opening.value;
                 }
                 else

@@ -78,7 +78,7 @@ namespace BattleUI
             selectedUnit = unit as Units.干员;
             m_state.selectedIndex = 4;
             m_left.SetUnit(unit as Units.干员);
-            Debug.Log(unit.Config.Name);
+            Debug.Log(unit.UnitData.Name);
             BattleCamera.Instance.ShowUnitInfo(unit);
         }
 
@@ -101,7 +101,7 @@ namespace BattleUI
             m_state.selectedIndex = 5;
             BattleCamera.Instance.Blur = true;
             var unit = Battle.PlayerUnits[UnityEngine.Random.Range(0, Battle.PlayerUnits.Count)];
-            string picName = unit.Config.StandPic;
+            string picName = unit.UnitData.StandPic;
             m_endPic.texture = new NTexture(ResHelper.GetAsset<Texture>(PathHelper.SpritePath + picName));
             if (Battle.Win)
             {
@@ -150,7 +150,7 @@ namespace BattleUI
             }
             m_Builds.RemoveChildren();
             var units = Battle.PlayerUnits.Where(x => x.InputTime == -1).ToList();
-            units.Sort((x, y) => x.Config.Cost - y.Config.Cost);
+            units.Sort((x, y) => x.UnitData.Cost - y.UnitData.Cost);
             foreach (var unit in units)
             {
                 var head = UIPool.GetObject(UI_BuildSprite.URL) as UI_BuildSprite;

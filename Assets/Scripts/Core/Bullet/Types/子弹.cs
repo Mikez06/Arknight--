@@ -12,7 +12,7 @@ namespace Bullets
         public override void Update()
         {
             if (Target.Alive())
-                TargetPos = Target.UnitModel.GetPoint(Target.Config.HitPointName);
+                TargetPos = Target.UnitModel.GetPoint(Target.UnitData.HitPointName);
             Vector3 delta = TargetPos - Postion;
             if (delta.magnitude < Config.Speed * SystemConfig.DeltaTime)
             {

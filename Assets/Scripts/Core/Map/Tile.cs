@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class Tile
 {
+    public Battle Battle => Map.Battle;
+    public TileData TileData => Database.Instance.Get<TileData>(ConfigId);
+    public Map Map;
     public MapGrid MapGrid;
     public Vector3 Pos;
     public int X, Y;
@@ -31,8 +34,17 @@ public class Tile
 
     public TileTypeEnum TileType;
 
-    public virtual void Init(MapGrid mapGrid)
+    public int ConfigId;
+
+    public virtual void Update()
     {
+
+    }
+
+    public virtual void Init(Map map, MapGrid mapGrid)
+    {
+        this.Map = map;
+        this.ConfigId = MapGrid.ConfigId;
         this.MapGrid = mapGrid;
         mapGrid.Tile = this;
         this.Pos = mapGrid.transform.position;
@@ -50,10 +62,10 @@ public class Tile
         if (CanBuildUnit)
             if (FarAttackGrid)
             {
-                return unit.Config.CanSetHigh;
+                return unit.UnitData.CanSetHigh;
             }
             else
-                return unit.Config.CanSetGround;
+                return unit.UnitData.CanSetGround;
         return false;
     }
 }

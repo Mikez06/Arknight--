@@ -55,7 +55,7 @@ namespace Units
         {
             //Debug.Log("Finish");
             Hp = 0;
-            if (!Config.WithoutCheckCount) Battle.EnemyCount--;
+            if (!UnitData.WithoutCheckCount) Battle.EnemyCount--;
             BattleUI.UI_Battle.Instance.ReturnUIUnit(this);
             Battle.Enemys.Remove(this);
             GameObject.Destroy(UnitModel.gameObject);
@@ -98,9 +98,9 @@ namespace Units
         /// </summary>
         public virtual void CheckBlock(Vector2 pos)
         {
-            if (Config.Height > 0) return;//飞行单位无法被阻挡
+            if (UnitData.Height > 0) return;//飞行单位无法被阻挡
             if (StopUnit != null) return;
-            var blockUnits = Battle.FindAll(pos, Config.Radius, 0).Select(x=>x as Units.干员).Where(x => (x as Units.干员).CanStop(this)).ToList();
+            var blockUnits = Battle.FindAll(pos, UnitData.Radius, 0).Select(x=>x as Units.干员).Where(x => (x as Units.干员).CanStop(this)).ToList();
             blockUnits.OrderBy(x => (x.Position2 - pos).magnitude);
             if (blockUnits.Count > 0)
             {
@@ -154,7 +154,7 @@ namespace Units
                     if (NowPathPoint == WaveConfig.Path.Length)
                     {
                         //破门了
-                        Battle.DoDamage(Config.Damage);
+                        Battle.DoDamage(UnitData.Damage);
                         Finish();
                     }
                     else
@@ -175,14 +175,15 @@ namespace Units
             }
         }
 
-        public override void DoDie()
+        public override void DoDie(object source)
         {
             if (StopUnit != null)
             {
                 StopUnit.StopUnits.Remove(this);
             }
+            UnitModel?.SetColor(Color.black);
             //Battle.EnemyCount--;
-            base.DoDie();
+            base.DoDie(source);
         }
 
         void findNewPath()

@@ -7,6 +7,7 @@ using UnityEngine;
 using Pathfinding;
 public class Map
 {
+    public Battle Battle;
     //public List<MapGrid> StartPoints = new List<MapGrid>();//起始点有什么卵用吗
     //public List<MapGrid> EndPoints = new List<MapGrid>();//终点好像也没什么卵用
     public Tile[,] Tiles;
@@ -15,8 +16,9 @@ public class Map
 
     public int Id;
 
-    public void Init()
+    public void Init(Battle battle)
     {
+        this.Battle = battle;
         var grids = MapManager.Instance.GetComponentsInChildren<MapGrid>();
         Tiles = new Tile[grids.Max(x => x.X) + 1, grids.Max(x => x.Y) + 1];
         foreach (var grid in grids)
@@ -47,7 +49,7 @@ public class Map
                 tile = new Tiles.普通地板();
                 break;
         }
-        tile.Init(mapGrid);
+        tile.Init(this, mapGrid);
         return tile;
     }
 

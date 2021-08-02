@@ -41,7 +41,7 @@ public class UnitModel : MonoBehaviour
         //var bone = SkeletonAnimation.skeletonDataAsset.GetSkeletonData(false).Bones.Find(x => x.Name == name);
         if (bone == null)
         {
-            Debug.Log($"{Unit.Config.Name} 无法找到骨骼 {name}");
+            Debug.Log($"{Unit.UnitData.Name} 无法找到骨骼 {name}");
             return transform.position;
         }
         //Vector3 point = new Vector3(bone.GetWorldPosition * transform.lossyScale.x, bone.Y * transform.lossyScale.y, 0);
@@ -88,7 +88,7 @@ public class UnitModel : MonoBehaviour
             var _beginAnimation = SkeletonAnimation.Skeleton.Data.FindAnimation(animationName + "_Begin");
             if (_beginAnimation != null)
             {
-                Debug.Log(Unit.Config.Id + "Add" + animationName + "_Begin" + Time.time);
+                Debug.Log(Unit.UnitData.Id + "Add" + animationName + "_Begin" + Time.time);
                 SkeletonAnimation.state.AddAnimation(0, animationName + "_Begin", false, 0);
                 delay += _beginAnimation.Duration;
             }

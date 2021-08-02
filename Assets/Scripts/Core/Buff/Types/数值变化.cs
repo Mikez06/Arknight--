@@ -27,7 +27,7 @@ namespace Buffs
                 string fieldName = (string)names[i];
                 var field = Unit.GetType().GetField(fieldName);
                 float baseValue = (float)field.GetValue(Unit);
-                field.SetValue(Unit, baseValue + Skill.Config.BuffData[i]);
+                field.SetValue(Unit, baseValue + Skill.SkillData.BuffData[i]);
             }
         }
     }

@@ -9,7 +9,7 @@ using UnityEngine;
 public class Unit
 {
     public Battle Battle;
-    public UnitData Config => Database.Instance.Get<UnitData>(Id);
+    public UnitData UnitData => Database.Instance.Get<UnitData>(Id);
     public int Id;
 
     public UnitModel UnitModel;
@@ -84,8 +84,8 @@ public class Unit
 
     public virtual void Init()
     {
-        if (Config.Skills != null)
-            foreach (var skillId in Config.Skills)
+        if (UnitData.Skills != null)
+            foreach (var skillId in UnitData.Skills)
             {
                 LearnSkill(skillId);
             }
@@ -96,12 +96,12 @@ public class Unit
 
     public virtual void Refresh()
     {
-        Speed = Config.Speed;
-        MaxHp = Config.Hp;
-        Attack = Config.Attack;
-        Defence = Config.Defence;
-        MagicDefence = Config.MagicDefence;
-        Weight = Config.Weight;
+        Speed = UnitData.Speed;
+        MaxHp = UnitData.Hp;
+        Attack = UnitData.Attack;
+        Defence = UnitData.Defence;
+        MagicDefence = UnitData.MagicDefence;
+        Weight = UnitData.Weight;
         PowerSpeed = 1f;
         Agi = 100;
         AttackGap = 0;
@@ -138,7 +138,7 @@ public class Unit
         }
     }
 
-    public virtual void DoDie()
+    public virtual void DoDie(object source)
     {
         IfAlive = false;
         SetStatus(StateEnum.Die);
@@ -313,7 +313,7 @@ public class Unit
 
     public void CreateModel()
     {
-        GameObject go = ResHelper.Instantiate(PathHelper.UnitPath + Config.Model);
+        GameObject go = ResHelper.Instantiate(PathHelper.UnitPath + UnitData.Model);
         UnitModel = go.GetComponent<UnitModel>();
         UnitModel.Unit = this;
         UnitModel.Init();
@@ -344,13 +344,13 @@ public class Unit
         if (Hp <= 0)
         {
             Hp = 0;
-            DoDie();
+            DoDie(damageInfo);
         }
     }
 
     public virtual float Hatred()
     {
-        return Config.Hatred * 1000;
+        return UnitData.Hatred * 1000;
     }
 
     public void BreakAllCast()
@@ -378,6 +378,6 @@ public class DamageInfo
     public object Source;
     public float Attack;
     public DamageTypeEnum DamageType;
-    public float DamageRate;
+    public float DamageRate = 1;
     public float FinalDamage;
 }

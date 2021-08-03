@@ -46,4 +46,5 @@ public class SkillData : IConfig
       public string HitEffect;
       public string EffectEffect;
       public string Icon;
+      public bool AntiHide;
 }

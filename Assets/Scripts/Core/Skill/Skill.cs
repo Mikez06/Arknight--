@@ -144,6 +144,8 @@ public class Skill
                 break;
         }
 
+        if (SkillData.StopBreak && Unit.IfStoped()) return false;
+
         if (SkillData.AttackMode == AttackModeEnum.跟随攻击 && !Unit.Attacking.Finished()) return false;
 
         if (SkillData.UseType == SkillUseTypeEnum.手动) //手动技能在技能开启时可以使用
@@ -156,10 +158,7 @@ public class Skill
 
     public virtual void ResetCooldown(float attackSpeed)
     {
-        //自动充能技，除了走冷却外，还要走Power
-        //if (Config.ReadyType == SkillReadyEnum.充能释放)
-        //    DoOpen();
-
+        //TODO 读Unit的攻击间隔变化
         Cooldown.Set(SkillData.Cooldown * attackSpeed);
     }
 
@@ -255,18 +254,20 @@ public class Skill
 
         if (string.IsNullOrEmpty(SkillData.ModelAnimation))
         {
-            Debug.Log(Unit.UnitData.Id + "的" + SkillData.Id + "没有抬手,直接使用");
-            Cast();
+            Debug.Log(Unit.UnitData.Id + "的" + SkillData.Id + "没有动画,直接使用");
             ResetCooldown(1);
+            Cast();
         }
         else
         {
             var duration = Unit.UnitModel.GetSkillDelay(SkillData.ModelAnimation, Unit.GetAnimation(), out float fullDuration, out float beginDuration);//.SkeletonAnimation.skeleton.data.Animations.Find(x => x.Name == "Attack");
-            float attackSpeed = 1 / Unit.Agi * 100;
-            var baseAttackGap = Math.Max(SkillData.Cooldown, fullDuration);//基础攻击间隔，至少等于攻击动作持续时间
-            if (SkillData.AttackMode == AttackModeEnum.跟随攻击)
+            float attackSpeed = 1 / Unit.Agi * 100;//攻速影响冷却时间
+            ResetCooldown(attackSpeed);
+            //float aniSpeed = 1;//动画表现上的攻速
+            if (duration * attackSpeed > Cooldown.value)
             {
-                attackSpeed = attackSpeed * (baseAttackGap + Unit.AttackGap) / baseAttackGap;
+                //动画时间已经超出攻击间隔了，此时攻速被攻击间隔强制拉快，动画速度也会被强制拉快
+                attackSpeed = Cooldown.value / duration;
             }
             duration = duration * attackSpeed;
             fullDuration = fullDuration * attackSpeed;
@@ -276,7 +277,6 @@ public class Skill
             Unit.State = StateEnum.Attack;
             Unit.AnimationName = SkillData.ModelAnimation;
             Unit.AnimationSpeed = 1 / attackSpeed * (beginDuration + fullDuration) / fullDuration;
-            ResetCooldown(attackSpeed);
             if (duration == 0)
             {
                 Cast();
@@ -461,6 +461,10 @@ public class Skill
         else
         {
             tempTargets.AddRange(Battle.FindAll(AttackPoints, SkillData.TargetTeam));
+        }
+        if (!SkillData.AntiHide)//根据反隐情况进行第一次筛选
+        {
+            tempTargets.RemoveAll(x => x.IfHide);
         }
         if (tempTargets.Count > 0)
         {

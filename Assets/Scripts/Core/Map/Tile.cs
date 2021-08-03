@@ -43,10 +43,11 @@ public class Tile
 
     public virtual void Init(Map map, MapGrid mapGrid)
     {
-        this.Map = map;
-        this.ConfigId = MapGrid.ConfigId;
         this.MapGrid = mapGrid;
         mapGrid.Tile = this;
+        this.Map = map;
+        this.ConfigId = mapGrid.ConfigId;
+        this.MapGrid = mapGrid;
         this.Pos = mapGrid.transform.position;
         this.X = mapGrid.X;
         this.Y = mapGrid.Y;

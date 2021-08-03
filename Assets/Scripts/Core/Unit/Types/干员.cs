@@ -57,6 +57,7 @@ namespace Units
             {
                 if (Start.Update(SystemConfig.DeltaTime))
                 {
+                    hideBase = false;
                     SetStatus(StateEnum.Idle);
                 }
                 return;
@@ -133,6 +134,7 @@ namespace Units
         public void JoinMap()
         {
             Debug.Log("StartStart" + Time.time);
+            hideBase = true;
             Battle.Cost -= GetCost();
             Start.Set(UnitModel.GetAnimationDuration("Start"));
             CheckBlock();

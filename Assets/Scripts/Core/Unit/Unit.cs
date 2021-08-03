@@ -58,6 +58,7 @@ public class Unit
     public int Weight;
 
     public bool IfHide;
+    protected bool hideBase;
 
     public bool IfAlive = true;
 
@@ -120,10 +121,12 @@ public class Unit
 
     public void UpdateBuffs()
     {
+        IfHide = hideBase;
         foreach (var buff in Buffs.Reverse<Buff>())
         {
             buff.Update();
         }
+        if (IfStoped()) IfHide = false;
     }
     public virtual void UpdateAction()
     {
@@ -265,6 +268,15 @@ public class Unit
             var posChange = power * SystemConfig.DeltaTime;
             Position += new Vector3(posChange.x, 0, posChange.y);
         }
+        if (!Unbalance)
+        {
+            RecoverBalance();
+        }
+    }
+
+    protected virtual void RecoverBalance()
+    {
+
     }
 
     public void AddPush(IPushBuff buff)

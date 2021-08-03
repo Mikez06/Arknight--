@@ -219,5 +219,13 @@ namespace Units
         {
             return StopUnit != null;
         }
+
+        protected override void RecoverBalance()
+        {
+            base.RecoverBalance();
+            //因推拉等外力导致偏移路线时，需要结束等待并,重新寻路
+            PathWaiting.Finish();
+            findNewPath();
+        }
     }
 }

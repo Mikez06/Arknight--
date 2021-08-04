@@ -243,7 +243,7 @@ public class Battle
         {
             foreach (var unit in Enemys) //需要优化！
             {
-                if ((unit.Position2 - pos).magnitude < radius + unit.UnitData.Radius && unit.Alive()) result.Add(unit);
+                if ((unit.Position2 - pos).magnitude <= radius + unit.UnitData.Radius && unit.Alive()) result.Add(unit);
             }
         }
         return result;

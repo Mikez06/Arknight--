@@ -276,6 +276,7 @@ public class Skill
             Unit.Attacking.Set(fullDuration);
             Unit.State = StateEnum.Attack;
             Unit.AnimationName = SkillData.ModelAnimation;
+            Unit.UnitModel?.BreakAnimation();
             Unit.AnimationSpeed = 1 / attackSpeed * (beginDuration + fullDuration) / fullDuration;
             if (duration == 0)
             {

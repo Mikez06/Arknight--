@@ -15,7 +15,7 @@ namespace Buffs
         public override void Update()
         {
             Power -= 490 * SystemConfig.DeltaTime;
-            Debug.Log($"当前推力:{ GetPushPower()},{Time.time}");
+            //Debug.Log($"当前推力:{ GetPushPower()},{Time.time}");
             if (Power < 0) Unit.RemovePush(this);
             //base.Update();
         }

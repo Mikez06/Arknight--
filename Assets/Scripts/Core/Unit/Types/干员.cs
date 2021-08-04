@@ -49,6 +49,16 @@ namespace Units
 
         public override void UpdateAction()
         {
+            //不管怎么样 都要检测阻挡是否已经失效
+            foreach (var target in StopUnits.ToList())
+            {
+                if ((target.Position2 - Position2).magnitude > UnitData.Radius + target.UnitData.Radius + 敌人.StopExCheck || !CanStop(target))
+                {
+                    Debug.Log("移除阻挡");
+                    RemoveStop(target);
+                }
+            }
+
             //不在战场也能转放置CD
             Reseting.Update(SystemConfig.DeltaTime);
             if (State == StateEnum.Default) return;
@@ -90,7 +100,7 @@ namespace Units
             {
                 UpdateSkills();
             }
-            Recover.Update(SystemConfig.DeltaTime);
+            //Recover.Update(SystemConfig.DeltaTime);
         }
 
         public void ChangePos(int x,int y, DirectionEnum directionEnum)
@@ -218,8 +228,9 @@ namespace Units
 
         public bool CanStop(Units.敌人 target)
         {
-            if (target.StopUnit != null) return false;
+            if (IfStun) return false;
             if (StopUnits.Contains(target)) return true;
+            if (target.StopUnit != null) return false;
             return StopUnits.Count < UnitData.StopCount;
         }
 

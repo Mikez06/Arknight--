@@ -74,7 +74,7 @@ public class Skill
         {
             if (!SkillData.RegetTarget && Targets.All(x => !CanUseTo(x)))
             {
-                Log.Debug($"{Unit.UnitData.Name}的{SkillData.Name}全部目标不合法,强制打断抬手动作{Time.time}");
+                Log.Debug($"{Unit.UnitData.Id}的{SkillData.Name}全部目标不合法,强制打断抬手动作{Time.time}");
                 BreakCast();
             }
         }
@@ -129,7 +129,7 @@ public class Skill
 
     public virtual bool Ready()
     {
-        if (!Unit.Recover.Finished() && SkillData.UseType != SkillUseTypeEnum.被动) return false;
+        if (Unit.IfStun && SkillData.UseType != SkillUseTypeEnum.被动) return false;
         switch (SkillData.ReadyType)
         {
             case SkillReadyEnum.特技激活:

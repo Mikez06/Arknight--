@@ -73,8 +73,9 @@ public class Unit
     /// <summary>
     /// 硬直
     /// </summary>
-    public CountDown Recover = new CountDown();  
+    //public CountDown Recover = new CountDown();
 
+    public bool IfStun; 
 
     public float ScaleX = -1;
     public float TargetScaleX = -1;
@@ -122,9 +123,20 @@ public class Unit
     public void UpdateBuffs()
     {
         IfHide = hideBase;
+        bool lastIfStun = IfStun;
+        IfStun = false;
         foreach (var buff in Buffs.Reverse<Buff>())
         {
             buff.Update();
+        }
+        if (unbalance) IfStun = true;
+        if (IfStun)
+        {
+            SetStatus(StateEnum.Stun);
+        }
+        if (lastIfStun && !IfStun)
+        {
+            SetStatus(StateEnum.Idle);
         }
         if (IfStoped()) IfHide = false;
     }
@@ -243,6 +255,7 @@ public class Unit
 
     public void UpdatePush()
     {
+        if (!Alive()) return;
         Unbalancing.Update(SystemConfig.DeltaTime);
         foreach (Buff buff in PushBuffs.Reverse<IPushBuff>())
         {

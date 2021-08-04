@@ -20,7 +20,7 @@ namespace Units
          */
     public class 敌人 : Unit
     {
-        const float StopExCheck = 0.2f;
+        public const float StopExCheck = 0.2f, TempArriveDistance = 0.1f;
         public 干员 StopUnit;
 
         public WaveData WaveConfig => Database.Instance.Get<WaveData>(WaveId);
@@ -37,7 +37,7 @@ namespace Units
 
         public List<Vector3> TempPath;
         public int TempIndex;
-        protected Vector3 TempTarget => TempPath[TempIndex + 1];
+        protected Vector3 TempTarget => TempIndex >= TempPath.Count - 1 ? TempPath[TempPath.Count - 1] : TempPath[TempIndex + 1];
 
 
         public override void Init()
@@ -84,13 +84,8 @@ namespace Units
             {
                 UpdateSkills();
             }
-            Recover.Update(SystemConfig.DeltaTime);
+            //Recover.Update(SystemConfig.DeltaTime);
 
-            //不管怎么样 都要检测阻挡是否已经失效
-            if (StopUnit != null && ((StopUnit.Position2 - Position2).magnitude > UnitData.Radius + StopUnit.UnitData.Radius + StopExCheck || !StopUnit.CanStop(this)))
-            {
-                StopUnit.RemoveStop(this);
-            }
             if (
                 //ScaleX==TargetScaleX &&
                 (State == StateEnum.Move || State == StateEnum.Idle))
@@ -102,21 +97,43 @@ namespace Units
         /// <summary>
         /// 判断是否有人在阻挡自己
         /// </summary>
-        public virtual void CheckBlock(Vector2 pos)
+        public virtual void CheckBlock()
         {
             if (UnitData.Height > 0) return;//飞行单位无法被阻挡
             if (StopUnit != null) return;
-            //虽然不知道为啥，但是判断阻挡时和目标不是相切的
-            var blockUnits = Battle.FindAll(pos, UnitData.Radius + StopExCheck, 0).Select(x => x as Units.干员).Where(x => (x as Units.干员).CanStop(this)).ToList();
-            blockUnits.OrderBy(x => (x.Position2 - pos).magnitude);
+            //虽然不知道为啥，但是判断阻挡时和目标不是相切的,加上一个默认的缓冲值
+            var blockUnits = Battle.FindAll(Position2, UnitData.Radius + StopExCheck, 0).Select(x => x as Units.干员).Where(x => (x as Units.干员).CanStop(this)).ToList();
+            blockUnits.OrderBy(x => (x.Position2 - Position2).magnitude);
             if (blockUnits.Count > 0)
             {
                 blockUnits[0].AddStop(this);
             }
         }
 
+        public virtual void CheckArrive()
+        {
+            if ((TempTarget - Position).magnitude < TempArriveDistance)
+            {
+                TempIndex++;
+                if (TempIndex == TempPath.Count - 1) 
+                {
+                    NowPathPoint++;
+                    if (NowPathPoint != WaveConfig.Path.Length)//抵达临时目标点，如果该目标点不是终点,重新找去下一个点的路
+                    {
+                        TempPath = null;
+                    }
+                    else
+                    {
+                        NowPathPoint--;
+                    }
+                }
+            }
+        }
+
         protected override void UpdateMove()
         {
+            CheckBlock();
+            CheckArrive();
             if (PathWaiting != null && !PathWaiting.Finished())
             {
                 SetStatus(StateEnum.Idle);
@@ -124,7 +141,7 @@ namespace Units
                 return;
             }
             if (Unbalance) return;//失衡状态下不许主动移动
-            if (StopUnit != null) return;//有人阻挡，停止移动,理论上这一句不要
+            if (StopUnit != null) return;//有人阻挡，停止移动
             AnimationName = Speed >= 1 ? "Run_Loop" : "Move_Loop";
             AnimationSpeed = 1;
             if (TempPath == null || NeedResetPath)//无路径或因为外力走出了预定路线，重寻路
@@ -146,7 +163,7 @@ namespace Units
                 Position = TempTarget;
                 //抵达临时目标
                 TempIndex++;
-                if (TempIndex == TempPath.Count - 1)
+                if (TempIndex >= TempPath.Count - 1)
                 {
                     NowPathPoint++;
 
@@ -167,7 +184,6 @@ namespace Units
             {
                 var target = Position + (TempTarget - Position).normalized * Speed * SystemConfig.DeltaTime;
                 Position = target;
-                CheckBlock(new Vector2(target.x, target.z));
             }
         }
 

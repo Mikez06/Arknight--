@@ -235,7 +235,7 @@ public class Battle
             var units = PlayerUnits.Where(x => x.InputTime >= 0 && x.Alive()).ToList();
             foreach (var unit in units) //需要优化！
             {
-                if ((unit.Position2 - pos).magnitude <= radius + unit.UnitData.Radius
+                if ((unit.Position2 - pos).magnitude < radius + unit.UnitData.Radius
                     ) result.Add(unit);
             }
         }
@@ -243,7 +243,7 @@ public class Battle
         {
             foreach (var unit in Enemys) //需要优化！
             {
-                if ((unit.Position2 - pos).magnitude <= radius + unit.UnitData.Radius && unit.Alive()) result.Add(unit);
+                if ((unit.Position2 - pos).magnitude < radius + unit.UnitData.Radius && unit.Alive()) result.Add(unit);
             }
         }
         return result;

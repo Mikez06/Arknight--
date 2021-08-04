@@ -62,14 +62,24 @@ public class UnitModel : MonoBehaviour
         {
             changeAnimation(Unit.GetAnimation());
         }
-        if (Unit.AnimationSpeed != SkeletonAnimation.timeScale)
+        if (Unit.AnimationSpeed != SkeletonAnimation.timeScale && !nullAnimation)
         {
             SkeletonAnimation.timeScale = Unit.AnimationSpeed;
         }
     }
 
+    bool nullAnimation;
     void changeAnimation(string animationName)
     {
+        var next = SkeletonAnimation.Skeleton.Data.FindAnimation(animationName);
+        if (next == null) //如果模型上不存在目标动画 那么就把当前动作暂停住 一般用于怪物被击晕
+        {
+            nowAnimation = animationName;
+            SkeletonAnimation.timeScale = 0;
+            nullAnimation = true;
+            return;
+        }
+        nullAnimation = false;
         SkeletonAnimation.state.ClearTracks();
         //SkeletonAnimation.state.AddEmptyAnimation(0, 0, 0);
         if (animationName == "Idle") //从其他状态返回Idle时，如果有退出动画，就播放
@@ -95,7 +105,7 @@ public class UnitModel : MonoBehaviour
         }
         //Debug.Log(Unit.Config._Id + "Add" + animationName);
         //SkeletonAnimation.state.AddAnimation(0, animationName, true, 0);
-        SkeletonAnimation.state.AddAnimation(0, animationName, animationName=="Idle"||animationName.EndsWith("Loop"), delay);
+        SkeletonAnimation.state.AddAnimation(0, animationName, animationName == "Idle" || animationName.EndsWith("Loop"), delay);
         nowAnimation = animationName;
     }
 

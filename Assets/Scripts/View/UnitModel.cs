@@ -95,7 +95,7 @@ public class UnitModel : MonoBehaviour
         }
         //Debug.Log(Unit.Config._Id + "Add" + animationName);
         //SkeletonAnimation.state.AddAnimation(0, animationName, true, 0);
-        SkeletonAnimation.state.AddAnimation(0, animationName, true, delay);
+        SkeletonAnimation.state.AddAnimation(0, animationName, animationName=="Idle"||animationName.EndsWith("Loop"), delay);
         nowAnimation = animationName;
     }
 

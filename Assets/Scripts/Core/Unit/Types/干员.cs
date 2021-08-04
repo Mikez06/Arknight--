@@ -204,6 +204,18 @@ namespace Units
             StopUnits.Clear();
         }
 
+        public void AddStop(Units.敌人 target)
+        {
+            StopUnits.Add(target);
+            target.StopUnit = this;
+        }
+
+        public void RemoveStop(Units.敌人 target)
+        {
+            StopUnits.Remove(target);
+            target.StopUnit = null;
+        }
+
         public bool CanStop(Units.敌人 target)
         {
             if (target.StopUnit != null) return false;

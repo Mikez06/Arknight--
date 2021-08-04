@@ -20,6 +20,7 @@ namespace Units
          */
     public class 敌人 : Unit
     {
+        const float StopExCheck = 0.2f;
         public 干员 StopUnit;
 
         public WaveData WaveConfig => Database.Instance.Get<WaveData>(WaveId);
@@ -85,6 +86,11 @@ namespace Units
             }
             Recover.Update(SystemConfig.DeltaTime);
 
+            //不管怎么样 都要检测阻挡是否已经失效
+            if (StopUnit != null && ((StopUnit.Position2 - Position2).magnitude > UnitData.Radius + StopUnit.UnitData.Radius + StopExCheck || !StopUnit.CanStop(this)))
+            {
+                StopUnit.RemoveStop(this);
+            }
             if (
                 //ScaleX==TargetScaleX &&
                 (State == StateEnum.Move || State == StateEnum.Idle))
@@ -100,19 +106,12 @@ namespace Units
         {
             if (UnitData.Height > 0) return;//飞行单位无法被阻挡
             if (StopUnit != null) return;
-            var blockUnits = Battle.FindAll(pos, UnitData.Radius, 0).Select(x=>x as Units.干员).Where(x => (x as Units.干员).CanStop(this)).ToList();
+            //虽然不知道为啥，但是判断阻挡时和目标不是相切的
+            var blockUnits = Battle.FindAll(pos, UnitData.Radius + StopExCheck, 0).Select(x => x as Units.干员).Where(x => (x as Units.干员).CanStop(this)).ToList();
             blockUnits.OrderBy(x => (x.Position2 - pos).magnitude);
             if (blockUnits.Count > 0)
             {
-                var target = blockUnits[0];
-                StopUnit = target;
-                target.StopUnits.Add(this);
-                //if (target.Position2 != Position2 && (target.Position2 - Position2).magnitude < target.Config.Radius + target.Config.Radius)
-                //{
-                //    var pos = target.Position2 + (Position2 - target.Position2).normalized * (target.Config.Radius + target.Config.Radius);
-                //    Position = new Vector3(pos.x, Position.y, pos.y);
-                    //TODO 如果多名敌人被同一单位阻挡在统一位置，将其小幅散开
-                //}
+                blockUnits[0].AddStop(this);
             }
         }
 
@@ -167,11 +166,8 @@ namespace Units
             else
             {
                 var target = Position + (TempTarget - Position).normalized * Speed * SystemConfig.DeltaTime;
-                CheckBlock(target);
-                if (StopUnit == null)
-                {
-                    Position = target;
-                }
+                Position = target;
+                CheckBlock(new Vector2(target.x, target.z));
             }
         }
 
@@ -224,8 +220,7 @@ namespace Units
         {
             base.RecoverBalance();
             //因推拉等外力导致偏移路线时，需要结束等待并,重新寻路
-            PathWaiting.Finish();
-            findNewPath();
+            NeedResetPath = true;
         }
     }
 }

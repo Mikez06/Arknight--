@@ -35,7 +35,7 @@ public class EffectManager : MonoBehaviour
     {
         //ResourcesManager.Instance.LoadBundle(PathHelper.EffectPath + name);
         //var result = pool.Spawn(ResourcesManager.Instance.GetAsset<GameObject>(PathHelper.EffectPath + name, name).GetComponent<Effect>(), Vector3.zero, null);
-        var result = ResHelper.Instantiate(PathHelper.EffectPath + name).GetComponent<Effect>();
+        var result = pool.Spawn(ResHelper.GetAsset<GameObject>(PathHelper.EffectPath + name).GetComponent<Effect>(), Vector3.zero, Quaternion.identity);//.GetComponent<Effect>();
         return result;
     }
 

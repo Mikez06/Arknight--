@@ -23,7 +23,7 @@ public class BattleManager : MonoBehaviour
     }
     private static BattleManager instance;
 
-    Battle Battle;
+    public Battle Battle;
 
     public float startTime;
     private void Update()

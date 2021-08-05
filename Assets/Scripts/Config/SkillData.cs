@@ -5,14 +5,17 @@ public class SkillData : IConfig
       public string Desc;
       public SkillReadyEnum ReadyType;
       public SkillUseTypeEnum UseType;
+      public TriggerEnum Trigger;
       public bool AutoUse;
       public string Name;
       public bool AttackStop;
       public bool RegetTarget;
       public bool StopBreak;
       public bool StopOtherSkill;
+      public bool SelfOnly;
       public int TargetTeam;
       public bool AttackFly;
+      public UnitTypeEnum ProfessionLimit;
       public AttackTargetOrderEnum AttackOrder;
       public AttackTargetOrder2Enum AttackOrder2;
       public UnityEngine.Vector2Int[] AttackPoints;

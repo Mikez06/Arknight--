@@ -25,14 +25,19 @@ namespace Units
         /// </summary>
         public int InputTime = -1;
 
+        /// <summary>
+        /// 再部署时间
+        /// </summary>
         public float ResetTime;
+        public float ResetTimeBase, ResetTimeAdd, ResetTimeRate;
 
         /// <summary>
         /// 建造次数
         /// </summary>
         public int BuildTime;
 
-        public int Cost;
+        public float Cost;
+        public float CostBase, CostAdd;
 
         public override void Init()
         {
@@ -40,11 +45,20 @@ namespace Units
             MainSkill = LearnSkill(UnitData.MainSkill[MainSkillId]);
         }
 
+        protected override void baseAttributeInit()
+        {
+            base.baseAttributeInit();
+            CostBase = UnitData.Cost;
+            ResetTimeBase = UnitData.ResetTime;
+        }
+
         public override void Refresh()
         {
+            CostAdd = 0;
+            ResetTimeAdd = ResetTimeRate = 0;
             base.Refresh();
-            Cost = UnitData.Cost;
-            ResetTime = UnitData.ResetTime;
+            Cost = CostBase + CostAdd;
+            ResetTime = (ResetTimeBase + ResetTimeAdd) * (1 + ResetTimeRate);
         }
 
         public override void UpdateAction()

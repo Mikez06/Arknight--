@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 public enum UnitTypeEnum
 {
+    无,
     先锋,
     近卫,
     狙击,

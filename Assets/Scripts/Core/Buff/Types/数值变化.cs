@@ -26,6 +26,11 @@ namespace Buffs
             {
                 string fieldName = (string)names[i];
                 var field = Unit.GetType().GetField(fieldName);
+                if (field == null)
+                {
+                    Log.Debug($"{Unit.UnitData.Id} 没有 属性 {fieldName}");
+                    continue;
+                }
                 float baseValue = (float)field.GetValue(Unit);
                 field.SetValue(Unit, baseValue + Skill.SkillData.BuffData[i]);
             }

@@ -217,6 +217,14 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Image/StandPic/susuro
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: dab016339dac5bd40a88551db29427b1
+    m_Address: Assets/Bundles/Data/TileData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e1fbf6b97fee00a4e85fa0a456e64ea9
+    m_Address: Assets/Bundles/Units/svrash
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

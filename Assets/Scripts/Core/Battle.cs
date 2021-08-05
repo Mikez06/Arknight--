@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Battle
 {
-    public static Battle Instance;
+    public Stack<TriggerData> TriggerDatas = new Stack<TriggerData>();
     public int Hp = 10;
     public int Hurt;
     public int Tick = -1;
@@ -37,8 +37,6 @@ public class Battle
 
     public void Init(BattleInput battleConfig)
     {
-        Instance = this;
-
         Random = new System.Random(battleConfig.Seed);
 
         Cost = battleConfig.StartCost;
@@ -52,6 +50,16 @@ public class Battle
             CreatePlayerUnit(unitInput, battleConfig.Team.UnitSkill[i]);
         }
      
+        foreach (var unit in PlayerUnits)
+        {
+            TriggerDatas.Push(new TriggerData()
+            {
+                Target = unit,
+            });
+            Trigger(TriggerEnum.出场);
+            TriggerDatas.Pop();
+        }
+
         UnitMap = new HashSet<Unit>[Map.Tiles.GetLength(0), Map.Tiles.GetLength(1)];
         for (int i = 0; i < UnitMap.GetLength(0); i++)
             for (int j = 0; j < UnitMap.GetLength(1); j++)
@@ -65,8 +73,6 @@ public class Battle
         }
         Waves.Sort((x, y) => Math.Sign(x.Delay - y.Delay));
         EnemyCount = Waves.Count;
-        //PlayerUnits[0].ChangePos(5, 3, DirectionEnum.Right);
-        //PlayerUnits[0].JoinMap();
     }
 
     public void Update()
@@ -293,6 +299,18 @@ public class Battle
         if (Hp <= 0)
         {
             Finish = true;
+        }
+    }
+
+    public void Trigger(TriggerEnum triggerEnum)
+    {
+        foreach (var unit in PlayerUnits)
+        {
+            unit.Trigger(triggerEnum);
+        }
+        foreach (var enemy in Enemys)
+        {
+            enemy.Trigger(triggerEnum);
         }
     }
 }

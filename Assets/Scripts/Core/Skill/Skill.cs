@@ -97,7 +97,7 @@ public class Skill
 
         if (SkillData.StopBreak)
         {
-            if (Unit.IfStoped())
+            if (Unit.IfStoped() && Unit.AttackingSkill == this)
             {
                 BreakCast();
             }
@@ -113,7 +113,12 @@ public class Skill
 
     public bool CanUseTo(Unit target)
     {
+        if (SkillData.SelfOnly && target != Unit) return false;
+        if (SkillData.TargetTeam != target.Team) return false;
+        if (SkillData.ProfessionLimit != UnitTypeEnum.无 && SkillData.ProfessionLimit != target.UnitData.Profession) return false;
+        if (!SkillData.AttackFly && target.Height > 0) return false;
         if (!target.Alive()) return false;
+        if (SkillData.AntiHide && target.IfHide) return false;
         return true;
     }
 
@@ -124,7 +129,11 @@ public class Skill
             if (Opening.Update(SystemConfig.DeltaTime)) { Unit.OverWriteAnimation = null; }
             //Power -= MaxPower / Config.OpenTime * SystemConfig.DeltaTime;
         }
-        Cooldown.Update(SystemConfig.DeltaTime);
+        if (Cooldown.Update(SystemConfig.DeltaTime))
+        {
+            if (Unit.AttackingSkill == this)
+                Unit.AttackingSkill = null;
+        }
     }
 
     public virtual bool Ready()
@@ -146,7 +155,7 @@ public class Skill
 
         if (SkillData.StopBreak && Unit.IfStoped()) return false;
 
-        if (SkillData.AttackMode == AttackModeEnum.跟随攻击 && !Unit.Attacking.Finished()) return false;
+        if (SkillData.AttackMode == AttackModeEnum.跟随攻击 && Unit.AttackingSkill != null) return false;
 
         if (SkillData.UseType == SkillUseTypeEnum.手动) //手动技能在技能开启时可以使用
             return !Opening.Finished();
@@ -156,10 +165,26 @@ public class Skill
         return Cooldown.Finished();
     }
 
+    public virtual bool InAttackUsing()
+    {
+        if (SkillData.AttackPoints == null) return false;
+        if (SkillData.ReadyType == SkillReadyEnum.特技激活&&!Opening.Finished())
+        {
+            return true;
+        }
+        if (SkillData.ReadyType == SkillReadyEnum.None)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public virtual void ResetCooldown(float attackSpeed)
     {
         //TODO 读Unit的攻击间隔变化
-        Cooldown.Set(SkillData.Cooldown * attackSpeed);
+        var cooldown= SkillData.Cooldown* attackSpeed;
+        if (cooldown < 0.1f) cooldown = 0.1f;
+        Cooldown.Set(cooldown);
     }
 
     public void RecoverPower(float count)
@@ -276,6 +301,8 @@ public class Skill
             Unit.Attacking.Set(fullDuration);
             Unit.State = StateEnum.Attack;
             Unit.AnimationName = SkillData.ModelAnimation;
+            Unit.AttackingSkill = this;
+            //Debug.Log(SkillData.ModelAnimation);
             Unit.UnitModel?.BreakAnimation();
             Unit.AnimationSpeed = 1 / attackSpeed * (beginDuration + fullDuration) / fullDuration;
             if (duration == 0)
@@ -455,18 +482,23 @@ public class Skill
     protected List<Unit> getAttackTarget()
     {
         tempTargets.Clear();
-        if (AttackPoints == null)//根据攻击范围进行索敌
+        if (Battle.TriggerDatas.Count > 0)
         {
-            tempTargets.AddRange(Battle.FindAll(Unit.Position2, SkillData.AttackRange, SkillData.TargetTeam));
+            //正在事件当中，技能去取事件目标
+            tempTargets.Add(Battle.TriggerDatas.Peek().Target);
         }
         else
         {
-            tempTargets.AddRange(Battle.FindAll(AttackPoints, SkillData.TargetTeam));
+            if (AttackPoints == null)//根据攻击范围进行索敌
+            {
+                tempTargets.AddRange(Battle.FindAll(Unit.Position2, SkillData.AttackRange, SkillData.TargetTeam));
+            }
+            else
+            {
+                tempTargets.AddRange(Battle.FindAll(AttackPoints, SkillData.TargetTeam));
+            }
         }
-        if (!SkillData.AntiHide)//根据反隐情况进行第一次筛选
-        {
-            tempTargets.RemoveAll(x => x.IfHide);
-        }
+        tempTargets.RemoveAll(x => !CanUseTo(x));
         if (tempTargets.Count > 0)
         {
             //首先计算出所有目标的仇恨优先级，然后再选出攻击个数的实际目标
@@ -483,7 +515,7 @@ public class Skill
         switch (SkillData.AttackOrder2)
         {
             case AttackTargetOrder2Enum.飞行:
-                firstOrder = x => -x.UnitData.Height;
+                firstOrder = x => -x.Height;
                 break;
             case AttackTargetOrder2Enum.远程:
                 firstOrder = x => x.Skills.Count == 0 ? 0 : -x.Skills[0].SkillData.AttackRange;
@@ -580,7 +612,7 @@ public class Skill
                 secondOrder = x => x.State == StateEnum.Stun ? 1 : 0;
                 break;
             case AttackTargetOrderEnum.飞行优先:
-                secondOrder = x => -x.UnitData.Height;
+                secondOrder = x => -x.Height;
                 break;
             case AttackTargetOrderEnum.未阻挡优先:
                 secondOrder = x => (x as Units.敌人).StopUnit == null ? 0 : 1;
@@ -599,10 +631,11 @@ public class Skill
 
     protected virtual void FilterTarget(List<Unit> targets)
     {
-        for (int i = targets.Count()-1; i >= SkillData.DamageCount; i--)
-        {
-            targets.RemoveAt(i);
-        }
+        if (SkillData.DamageCount != 0)
+            for (int i = targets.Count() - 1; i >= SkillData.DamageCount; i--)
+            {
+                targets.RemoveAt(i);
+            }
     }
 
     public void UpdateAttackPoints()
@@ -620,7 +653,7 @@ public class Skill
     public void BreakCast()
     {
         Targets.Clear();
-        if (SkillData.AttackMode==AttackModeEnum.跟随攻击) Unit.Attacking.Finish();
+        if (Unit.AttackingSkill == this) Unit.AttackingSkill = null;
         Unit.UnitModel?.BreakAnimation();
         Casting.Finish();
         Bursting.Finish();

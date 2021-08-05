@@ -16,6 +16,9 @@ public class Unit
     public BattleUI.UI_BattleUnit uiUnit;
 
     public Vector3 Position;
+
+    public float Height;
+    
     public Vector2 Position2 => new Vector2(Position.x, Position.z);
 
     public Vector2Int GridPos => new Vector2Int(Mathf.RoundToInt(Position.x), Mathf.RoundToInt(Position.z));
@@ -26,36 +29,43 @@ public class Unit
 
     public StateEnum State = StateEnum.Default;
     public float Hp;
-    public float MaxHp;
+
     public List<Skill> Skills = new List<Skill>();
     public Skill MainSkill;
 
     public List<Buff> Buffs = new List<Buff>();
 
+    public float MaxHp;
+    public float HpBase, HpAdd, HpRate, HpAddFin, HpRateFin;
     /// <summary>
     /// 攻速
     /// </summary>
     public float Agi;
+    public float AgiBase, AgiAdd, AgiRate, AgiAddFin, AgiRateFin;
     /// <summary>
     /// 移速
     /// </summary>
     public float Speed;
-    public float SpeedRate;
+    public float SpeedBase, SpeedRate, SpeedAdd;
 
     public float AttackGap;
+    public float AttackGapBase, AttackGapAdd, AttackGapRate;
 
     public float Attack;
-    public float AttackRate;
+    public float AttackBase,AttackRate, AttackAdd, AttackRateFin, AttackAddFin;
 
     public float Defence;
-    public float DefenceRate;
+    public float DefenceBase, DefenceRate, DefenceAdd, DefenceRateFin, DefenceAddFin;
 
     public float MagicDefence;
-    public float MagicDefecneRate;
+    public float MagicDefenceBase, MagicDefenceRate, MagicDefenceAdd, MagicDefenceRateFin, MagicDefenceAddFin;
 
     public float PowerSpeed;
 
+    public float Team;
+
     public int Weight;
+    public int WeightBase, WeightAdd;
 
     public bool IfHide;
     protected bool hideBase;
@@ -66,6 +76,9 @@ public class Unit
     /// 攻击动画
     /// </summary>
     public CountDown Attacking = new CountDown();
+
+    public Skill AttackingSkill;
+
     /// <summary>
     /// 死亡动画
     /// </summary>
@@ -86,6 +99,7 @@ public class Unit
 
     public virtual void Init()
     {
+        baseAttributeInit();
         if (UnitData.Skills != null)
             foreach (var skillId in UnitData.Skills)
             {
@@ -96,28 +110,45 @@ public class Unit
         Hp = MaxHp;
     }
 
+    protected virtual void baseAttributeInit()
+    {
+        SpeedBase = UnitData.Speed;
+        HpBase = UnitData.Hp;
+        AttackBase = UnitData.Attack;
+        DefenceBase = UnitData.Defence;
+        MagicDefenceBase = UnitData.MagicDefence;
+        WeightBase = UnitData.Weight;
+        PowerSpeed = 1f;
+        AgiBase = 100;
+        AttackGapBase = 0;
+        Height = UnitData.Height;
+    }
+
     public virtual void Refresh()
     {
-        Speed = UnitData.Speed;
-        MaxHp = UnitData.Hp;
-        Attack = UnitData.Attack;
-        Defence = UnitData.Defence;
-        MagicDefence = UnitData.MagicDefence;
-        Weight = UnitData.Weight;
+        SpeedAdd = SpeedRate = 0;
+        HpAdd = HpRate = HpAddFin = HpRateFin = 0;
+        AttackAdd = AttackRate = AttackAddFin = AttackRateFin = 0;
+        MagicDefenceAdd = MagicDefenceRate = MagicDefenceAddFin = MagicDefenceRateFin = 0;
+        DefenceAdd = DefenceRate = DefenceAddFin = DefenceRateFin = 0;
+        AgiAdd = AgiRate = AgiAddFin = AgiRateFin = 0;
+        WeightAdd = 0;
         PowerSpeed = 1f;
-        Agi = 100;
-        AttackGap = 0;
-        SpeedRate = 0;
+        AttackGapAdd = AttackGapRate = 0;
         foreach (var buff in Buffs)
         {
             buff.Apply();
         }
-        Speed = Speed * (1 - SpeedRate);
+        Speed = (SpeedBase + SpeedAdd) * (1 + SpeedRate);
         if (Speed < 0) Speed = 0;
-        Attack = Attack * (1 + AttackRate);
-        Defence = Defence * (1 + DefenceRate);
-        MagicDefence = MagicDefence + MagicDefecneRate;
-        if (MagicDefecneRate < 0) MagicDefecneRate = 0;
+        MaxHp= ((HpBase + HpAdd) * (1 + HpRate) + HpAddFin) * (1 + HpRateFin);
+        Attack = ((AttackBase + AttackAdd) * (1 + AttackRate) + AttackAddFin) * (1 + AttackRateFin);
+        Defence = ((DefenceBase + DefenceAdd) * (1 + DefenceRate) + DefenceAddFin) * (1 + DefenceRateFin);
+        MagicDefence = ((MagicDefenceBase + MagicDefenceAdd) * (1 + MagicDefenceRate) + MagicDefenceAddFin) * (1 + MagicDefenceRateFin);
+        Agi= ((AgiBase + AgiAdd) * (1 + AgiRate) + AgiAddFin) * (1 + AgiRateFin);
+        if (MagicDefence < 0) MagicDefence = 0;
+        Weight = WeightBase + WeightAdd;
+        AttackGap = (AttackGapBase + AttackGapAdd) * (1 + AttackGapRate);
     }
 
     public void UpdateBuffs()
@@ -186,6 +217,17 @@ public class Unit
     protected virtual void UpdateMove()
     {
 
+    }
+
+    public void Trigger(TriggerEnum triggerEnum)
+    {
+        foreach (var skill in Skills)
+        {
+            if (skill.SkillData.Trigger == triggerEnum)
+            {
+                skill.Start();
+            }
+        }
     }
 
     public Skill LearnSkill(int skillId)
@@ -371,6 +413,18 @@ public class Unit
             Hp = 0;
             DoDie(damageInfo);
         }
+    }
+
+    public Skill GetNowAttackSkill()
+    {
+        for (int i = Skills.Count - 1; i >= 0; i--)
+        {
+            if (Skills[i].InAttackUsing())
+            {
+                return Skills[i];
+            }
+        }
+        throw new Exception($"{UnitData.Id}没有普攻技能");
     }
 
     public virtual float Hatred()

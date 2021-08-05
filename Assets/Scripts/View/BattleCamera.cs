@@ -136,10 +136,10 @@ public class BattleCamera : MonoBehaviour
         }
         Tiles.Clear();
         var targetUnit = FocusUnit == null ? BuildUnit : FocusUnit;
-        foreach (var tile in targetUnit.Skills[0].AttackPoints)
+        foreach (var tile in targetUnit.GetNowAttackSkill().AttackPoints)
         {
             var tileAsset = ResHelper.GetAsset<GameObject>(PathHelper.OtherPath + "HighLight").GetComponent<MapTile>();
-            var go = TilePool.Spawn(tileAsset, Battle.Instance.Map.Tiles[tile.x, tile.y].Pos, null);
+            var go = TilePool.Spawn(tileAsset, BattleManager.Instance.Battle.Map.Tiles[tile.x, tile.y].Pos, null);
             Tiles.Add(go);
         }
     }
@@ -162,7 +162,7 @@ public class BattleCamera : MonoBehaviour
 
     public void ShowHighLight()
     {
-        foreach (var grid in Battle.Instance.Map.Tiles)
+        foreach (var grid in BattleManager.Instance.Battle.Map.Tiles)
         {
             if (grid.CanSet(BuildUnit))
             {
@@ -173,7 +173,7 @@ public class BattleCamera : MonoBehaviour
 
     public void HideHighLight()
     {
-        foreach (var grid in Battle.Instance.Map.Tiles)
+        foreach (var grid in BattleManager.Instance.Battle.Map.Tiles)
         {
             grid.MapGrid.ChangeHighLight(false);
         }

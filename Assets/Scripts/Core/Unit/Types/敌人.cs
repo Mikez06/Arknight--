@@ -43,6 +43,7 @@ namespace Units
         public override void Init()
         {
             base.Init();
+            Team = 1;
             PathPoints = PathManager.Instance.GetPath(WaveConfig.Path);
             Position = PathPoints[0].Pos;
 

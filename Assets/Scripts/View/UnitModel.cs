@@ -35,13 +35,13 @@ public class UnitModel : MonoBehaviour
 
     public virtual Vector3 GetPoint(string name)
     {
-        if (string.IsNullOrEmpty(name)) return transform.position;
+        if (string.IsNullOrEmpty(name) || name == "F_" || name == "B_") return transform.position;
         var bone = SkeletonAnimation.Skeleton.FindBone(name);
         //var bones = SkeletonAnimation.skeletonDataAsset.GetSkeletonData(false).Bones;
         //var bone = SkeletonAnimation.skeletonDataAsset.GetSkeletonData(false).Bones.Find(x => x.Name == name);
         if (bone == null)
         {
-            Debug.Log($"{Unit.UnitData.Name} 无法找到骨骼 {name}");
+            Debug.LogWarning($"{Unit.UnitData.Name} 无法找到骨骼 {name}");
             return transform.position;
         }
         //Vector3 point = new Vector3(bone.GetWorldPosition * transform.lossyScale.x, bone.Y * transform.lossyScale.y, 0);

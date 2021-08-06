@@ -54,7 +54,7 @@ namespace BattleUI
         public void SetBattle(Battle battle)
         {
             this.Battle = battle;
-            updateUnitsLayout();
+            UpdateUnitsLayout();
         }
 
         public void CreateUIUnit(Unit unit)
@@ -137,10 +137,10 @@ namespace BattleUI
             selectedUnit = null;
             m_state.selectedIndex = 0;
             BattleCamera.Instance.HideUnitAttackArea();
-            updateUnitsLayout();
+            UpdateUnitsLayout();
         }
 
-        void updateUnitsLayout()
+        public void UpdateUnitsLayout()
         {
             for (int i = 0; i < m_Builds.numChildren; i++)
             {
@@ -184,7 +184,8 @@ namespace BattleUI
             evt.PreventDefault();
             var unit = (evt.sender as UI_BuildSprite).Unit;
             if (!unit.CanBuild()) return;//不能造的时候拽不出来
-            if (m_state.selectedIndex != 1 && unit != selectedUnit) return;//拽错了也不许出来
+            if (unit != selectedUnit) clickUnit(unit);
+            //if (m_state.selectedIndex != 1 && unit != selectedUnit) return;//拽错了也不许出来
             m_state.selectedIndex = 2;
             BattleCamera.Instance.StartBuild();
         }
@@ -254,7 +255,7 @@ namespace BattleUI
                 selectedUnit.JoinMap();
                 selectedUnit = null;
                 m_state.selectedIndex = 0;
-                updateUnitsLayout();
+                UpdateUnitsLayout();
                 BattleCamera.Instance.HideUnitAttackArea();
             }
         }
@@ -287,7 +288,7 @@ namespace BattleUI
                     BattleCamera.Instance.ShowUnitInfo(null);
                     TimeHelper.Instance.SetGameSpeed(1);
                     BattleCamera.Instance.HideHighLight();
-                    updateUnitsLayout();
+                    UpdateUnitsLayout();
                     break;
                 case 1:
                     inSelectUnit();
@@ -314,7 +315,7 @@ namespace BattleUI
             BattleCamera.Instance.Rotate = true;
             BattleCamera.Instance.BuildUnit = selectedUnit;
             BattleCamera.Instance.ShowHighLight();
-            updateUnitsLayout();
+            UpdateUnitsLayout();
         }
 
         public void Enter()

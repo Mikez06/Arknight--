@@ -43,7 +43,8 @@ public class MapGrid : MonoBehaviour, IPointerClickHandler
 
     public void ChangeHighLight(bool bo)
     {
-        Renderer.material.color = bo ? new Color(0.458f, 1, 0.42f) : Color.white;
+        if (Renderer != null)
+            Renderer.material.color = bo ? new Color(0.458f, 1, 0.42f) : Color.white;
     }
 
     public void OnPointerClick(PointerEventData eventData)

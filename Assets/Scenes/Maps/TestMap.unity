@@ -2944,8 +2944,8 @@ MonoBehaviour:
   Y: 3
   CanBuildUnit: 0
   FarAttackGrid: 0
-  CanMove: 1
-  TileType: 0
+  CanMove: 0
+  TileType: 1
   ConfigId: 0
 --- !u!1 &1833507583
 GameObject:
@@ -3895,7 +3895,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &3008285882508571693
 BoxCollider:
   m_ObjectHideFlags: 0

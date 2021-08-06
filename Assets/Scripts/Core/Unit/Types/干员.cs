@@ -173,6 +173,7 @@ namespace Units
         {
             UnitModel.gameObject.SetActive(false);
             BattleUI.UI_Battle.Instance.ReturnUIUnit(this);
+            BattleUI.UI_Battle.Instance.UpdateUnitsLayout();
             State = StateEnum.Default;
             Direction = new Vector2(1, 0);
             InputTime = -1;

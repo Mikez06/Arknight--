@@ -12,10 +12,18 @@ using System.IO;
 
 public class Test : MonoBehaviour
 {
+    public class A
+    {
+        public bool b; 
+    }
     // Start is called before the first frame update
     async void Start()
     {
-        StartCoroutine(Download());
+        Dictionary<string, object> dic = JsonHelper.FromJson<Dictionary<string, object>>("{\"a\":false}");
+        A a = new A();
+        a.GetType().GetField("b").SetValue(a, dic["a"]);
+        Debug.Log(a.b);
+        //StartCoroutine(Download());
 
         //UnityEngine.
         //Debug.Log((item["t"] as Newtonsoft.Json.Linq.JArray).GetEnumerator();

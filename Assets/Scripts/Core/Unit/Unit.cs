@@ -68,6 +68,7 @@ public class Unit
     public int WeightBase, WeightAdd;
 
     public bool IfHide;
+    public bool IfHideAnti;
     protected bool hideBase;
 
     public bool IfAlive = true;
@@ -153,7 +154,9 @@ public class Unit
 
     public void UpdateBuffs()
     {
+        if (!Alive()) return;
         IfHide = hideBase;
+        IfHideAnti = false;
         bool lastIfStun = IfStun;
         IfStun = false;
         foreach (var buff in Buffs.Reverse<Buff>())
@@ -169,7 +172,7 @@ public class Unit
         {
             SetStatus(StateEnum.Idle);
         }
-        if (IfStoped()) IfHide = false;
+        if (IfHideAnti || IfStoped()) IfHide = false;
     }
     public virtual void UpdateAction()
     {

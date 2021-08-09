@@ -55,6 +55,7 @@ namespace Units
 
         public override void Finish()
         {
+            base.Finish();
             Debug.Log($"{UnitData.Id}Finish");
             Hp = 0;
             if (!UnitData.WithoutCheckCount) Battle.EnemyCount--;

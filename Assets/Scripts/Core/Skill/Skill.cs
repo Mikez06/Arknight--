@@ -126,7 +126,11 @@ public class Skill
     {
         if (!Opening.Finished())
         {
-            if (Opening.Update(SystemConfig.DeltaTime)) { Unit.OverWriteAnimation = null; }
+            if (Opening.Update(SystemConfig.DeltaTime))
+            {
+                Unit.OverWriteAnimation = null;
+                OnOpenEnd();
+            }
             //Power -= MaxPower / Config.OpenTime * SystemConfig.DeltaTime;
         }
         if (Cooldown.Update(SystemConfig.DeltaTime))
@@ -183,7 +187,7 @@ public class Skill
     {
         //TODO 读Unit的攻击间隔变化
         var cooldown= SkillData.Cooldown* attackSpeed;
-        if (cooldown < 0.1f) cooldown = 0.1f;
+        //if (cooldown < 0.1f) cooldown = 0.1f;
         Cooldown.Set(cooldown);
     }
 
@@ -416,6 +420,7 @@ public class Skill
         }
         if (SkillData.DamageRate > 0)
         {
+            OnAttack(target);
             if (SkillData.AreaRange != 0)
             {
                 var targets = Battle.FindAll(target.Position2, SkillData.AreaRange, SkillData.TargetTeam);
@@ -434,6 +439,7 @@ public class Skill
                         DamageRate = t == target ? SkillData.DamageRate : SkillData.AreaDamage,
                         DamageType = SkillData.DamageType,
                     });
+                    OnBeAttack(target);
                 }
             }
             else
@@ -458,6 +464,7 @@ public class Skill
                         DamageType = SkillData.DamageType,
                     });
                 }
+                OnBeAttack(target);
             }
         }
     }
@@ -510,15 +517,22 @@ public class Skill
 
     protected virtual void SortTarget(List<Unit> targets)
     {
-        Func<Unit, float> firstOrder = x => 0, secondOrder = x => 0;
+        //Func<Unit, float> firstOrder = x => 0, secondOrder = x => 0;
+        var l = targets.OrderBy<Unit, float>(GetSortOrder1).ThenBy((x) => GetSortOrder2(x, targets)).ThenBy(x => x.Hatred()).ToList();
+        targets.Clear();
+        targets.AddRange(l);
+    }
 
+    protected virtual float GetSortOrder1(Unit unit)
+    {
+        float result = 0;
         switch (SkillData.AttackOrder2)
         {
             case AttackTargetOrder2Enum.飞行:
-                firstOrder = x => -x.Height;
+                result = -unit.Height;
                 break;
             case AttackTargetOrder2Enum.远程:
-                firstOrder = x => x.Skills.Count == 0 ? 0 : -x.Skills[0].SkillData.AttackRange;
+                result = unit.Skills.Count == 0 ? 0 : -unit.Skills[0].SkillData.AttackRange;
                 break;
             case AttackTargetOrder2Enum.Buff:
                 break;
@@ -528,94 +542,79 @@ public class Skill
             default:
                 break;
         }
+        return result;
+    }
 
+    protected virtual float GetSortOrder2(Unit x, List<Unit> targets)
+    {
+        float result = 0;
         switch (SkillData.AttackOrder)
         {
             case AttackTargetOrderEnum.无:
                 break;
-            case AttackTargetOrderEnum.自身阻挡优先:
-                secondOrder = x =>
-                {
-                    if (Unit is Units.干员 u)
-                    {
-                        var index = u.StopUnits.IndexOf(x as Units.敌人);
-                        if (index < 0) index = int.MaxValue;
-                        return index;
-                    }
-                    else if (Unit is Units.敌人 u1)
-                    {
-                        return u1.StopUnit == x ? 0 : 1;
-                    }
-                    return 0;
-                };
-                break;
             case AttackTargetOrderEnum.终点距离:
-                secondOrder = x => (x as Units.敌人).distanceToFinal();
+                result = (x as Units.敌人).distanceToFinal();
                 break;
             case AttackTargetOrderEnum.血量升序:
-                secondOrder = x => x.Hp;
+                result = x.Hp;
                 break;
             case AttackTargetOrderEnum.血量降序:
-                secondOrder = x => -x.Hp;
+                result = -x.Hp;
                 break;
             case AttackTargetOrderEnum.血量比例升序:
-                secondOrder = x => x.Hp / x.MaxHp;
+                result = x.Hp / x.MaxHp;
                 break;
             case AttackTargetOrderEnum.血量比例降序:
-                secondOrder = x => -x.Hp / x.MaxHp;
+                result = -x.Hp / x.MaxHp;
                 break;
             case AttackTargetOrderEnum.放置降序:
-                secondOrder = x => (x as Units.干员).InputTime;
+                result = (x as Units.干员).InputTime;
                 break;
             case AttackTargetOrderEnum.区域顺序:
-                secondOrder = x => Math.Abs(x.Position2.x - Unit.Position2.x) + Math.Abs(x.Position2.y - Unit.Position2.y);
+                result = Math.Abs(x.Position2.x - Unit.Position2.x) + Math.Abs(x.Position2.y - Unit.Position2.y);
                 break;
             case AttackTargetOrderEnum.防御降序:
-                secondOrder = x => -x.Defence;
+                result = -x.Defence;
                 break;
             case AttackTargetOrderEnum.防御升序:
-                secondOrder = x => x.Defence;
+                result = x.Defence;
                 break;
             case AttackTargetOrderEnum.攻击力升序:
-                secondOrder = x => x.Attack;
+                result = x.Attack;
                 break;
             case AttackTargetOrderEnum.攻击力降序:
-                secondOrder = x => -x.Attack;
+                result = -x.Attack;
                 break;
             case AttackTargetOrderEnum.自身距离升序:
-                secondOrder = x => -(x.Position - Unit.Position).magnitude;
+                result = -(x.Position - Unit.Position).magnitude;
                 break;
             case AttackTargetOrderEnum.自身距离降序:
-                secondOrder = x => (x.Position - Unit.Position).magnitude;
+                result = (x.Position - Unit.Position).magnitude;
                 break;
             case AttackTargetOrderEnum.血量未满随机:
                 targets.RemoveAll(x => x.Hp == x.MaxHp);
-                secondOrder = x => Battle.Random.Next(0, 1000);
+                result = Battle.Random.Next(0, 1000);
                 break;
             case AttackTargetOrderEnum.重量升序:
-                secondOrder = x => x.Weight;
+                result = x.Weight;
                 break;
             case AttackTargetOrderEnum.重量降序:
-                secondOrder = x => -x.Weight;
+                result = -x.Weight;
                 break;
             case AttackTargetOrderEnum.随机:
-                secondOrder = x =>
-                {
-                    var a = Battle.Random.Next(0, 1000);
-                    return a;
-                };
+                result = Battle.Random.Next(0, 1000);
                 break;
             case AttackTargetOrderEnum.隐身优先:
-                secondOrder = x => x.IfHide ? 0 : 1;
+                result = x.IfHide ? 0 : 1;
                 break;
             case AttackTargetOrderEnum.未眩晕优先:
-                secondOrder = x => x.State == StateEnum.Stun ? 1 : 0;
+                result = x.State == StateEnum.Stun ? 1 : 0;
                 break;
             case AttackTargetOrderEnum.飞行优先:
-                secondOrder = x => -x.Height;
+                result = -x.Height;
                 break;
             case AttackTargetOrderEnum.未阻挡优先:
-                secondOrder = x => (x as Units.敌人).StopUnit == null ? 0 : 1;
+                result = (x as Units.敌人).StopUnit == null ? 0 : 1;
                 break;
             case AttackTargetOrderEnum.沉睡优先:
                 throw new Exception();
@@ -624,9 +623,7 @@ public class Skill
                 throw new Exception();
                 break;
         }
-        var l = targets.OrderBy(firstOrder).ThenBy(secondOrder).ThenBy(x => x.Hatred()).ToList();
-        targets.Clear();
-        targets.AddRange(l);
+        return result;
     }
 
     protected virtual void FilterTarget(List<Unit> targets)
@@ -658,6 +655,33 @@ public class Skill
         Casting.Finish();
         Bursting.Finish();
         BurstCount = -1;
+    }
+
+    protected virtual void OnOpenEnd()
+    {
+
+    }
+
+    protected virtual void OnAttack(Unit target)
+    {
+        Battle.TriggerDatas.Push(new TriggerData()
+        {
+            Target = target,
+            Skill = this,
+        });
+        Unit.Trigger(TriggerEnum.攻击);
+        Battle.TriggerDatas.Pop();
+    }
+
+    protected virtual void OnBeAttack(Unit target)
+    {
+        Battle.TriggerDatas.Push(new TriggerData()
+        {
+            Target = target,
+            Skill = this,
+        });
+        target.Trigger(TriggerEnum.被击);
+        Battle.TriggerDatas.Pop();
     }
 }
 

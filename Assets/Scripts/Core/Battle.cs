@@ -90,7 +90,13 @@ public class Battle
         {
             var wave = Waves[0];
             Waves.RemoveAt(0);
-            CreateEnemy(wave);
+            var enemy = CreateEnemy(wave);
+            TriggerDatas.Push(new TriggerData()
+            {
+                Target = enemy,
+            });
+            Trigger(TriggerEnum.入场);
+            TriggerDatas.Pop();
         }
 
         foreach (var tile in Map.Tiles)
@@ -166,6 +172,12 @@ public class Battle
         //var grid = Map.Grids[waveConfig.Path, y];
         //unit.Position = grid.transform.position + new Vector3(0, config.Height, 0);
         Enemys.Add(unit);
+        TriggerDatas.Push(new TriggerData()
+        {
+            Target = unit,
+        });
+        Trigger(TriggerEnum.出场);
+        TriggerDatas.Pop();
         return unit;
     }
 

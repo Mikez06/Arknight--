@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 public enum AttackModeEnum
 {
+    无,
     跟随攻击,
     固定间隔,
 }

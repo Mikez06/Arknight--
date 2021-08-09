@@ -81,6 +81,12 @@ namespace Units
             {
                 if (Start.Update(SystemConfig.DeltaTime))
                 {
+                    Battle.TriggerDatas.Push(new TriggerData()
+                    {
+                        Target = this,
+                    });
+                    Trigger(TriggerEnum.入场);
+                    Battle.TriggerDatas.Pop();
                     hideBase = false;
                     SetStatus(StateEnum.Idle);
                 }
@@ -190,6 +196,7 @@ namespace Units
 
         public override void Finish()
         {
+            base.Finish();
             LeaveMap();
         }
 

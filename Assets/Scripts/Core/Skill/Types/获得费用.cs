@@ -11,7 +11,7 @@ namespace Skills
         public override void Hit(Unit target)
         {
             //base.Hit(target);
-            Battle.Cost += SkillData.DamageRate;
+            Battle.Cost += SkillData.CostCount;
         }
     }
 }

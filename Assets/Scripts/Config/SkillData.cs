@@ -2,12 +2,12 @@ public class SkillData : IConfig
 {
       public string Id { get ; set ; }
       public string Type;
+      public string Name;
       public string Desc;
       public SkillReadyEnum ReadyType;
       public SkillUseTypeEnum UseType;
       public TriggerEnum Trigger;
       public bool AutoUse;
-      public string Name;
       public bool AttackStop;
       public bool RegetTarget;
       public bool StopBreak;
@@ -29,6 +29,7 @@ public class SkillData : IConfig
       public float AreaRange;
       public float AreaDamage;
       public int PushPower;
+      public int CostCount;
       public int[] Skills;
       public int[] ExSkills;
       public float Cooldown;

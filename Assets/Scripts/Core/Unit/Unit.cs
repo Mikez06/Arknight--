@@ -192,10 +192,39 @@ public class Unit
         IfAlive = false;
         SetStatus(StateEnum.Die);
         Dying.Set(UnitModel.GetAnimationDuration("Die"));
+
+        //根据伤害来源，判断击杀事件
+        if (source is DamageInfo damageInfo)
+        {
+            if (damageInfo.Source is Skill skill)
+            {
+                Battle.TriggerDatas.Push(new TriggerData()
+                {
+                    Target = this,
+                    Skill = skill,
+                });
+                skill.Unit.Trigger(TriggerEnum.击杀);
+                Battle.TriggerDatas.Pop();
+            }
+        }
+
+        //死亡事件
+        Battle.TriggerDatas.Push(new TriggerData()
+        {
+            Target = this,
+        });
+        Trigger(TriggerEnum.死亡);
+        Battle.TriggerDatas.Pop();
     }
 
     public virtual void Finish()
     {
+        Battle.TriggerDatas.Push(new TriggerData()
+        {
+            Target = this,
+        });
+        Trigger(TriggerEnum.离场);
+        Battle.TriggerDatas.Pop();
     }
 
     protected void UpdateSkills()
@@ -226,6 +255,10 @@ public class Unit
     {
         foreach (var skill in Skills)
         {
+            if (triggerEnum == TriggerEnum.被击 && skill.SkillData.PowerType == PowerRecoverTypeEnum.受击)
+            {
+                skill.RecoverPower(1);
+            }
             if (skill.SkillData.Trigger == triggerEnum)
             {
                 skill.Start();

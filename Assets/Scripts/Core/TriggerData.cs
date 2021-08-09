@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 public class TriggerData
 {
     public Unit Target;
+
+    public Skill Skill;
+
     public void Clear()
     {
         Target = null;

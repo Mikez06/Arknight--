@@ -12,17 +12,21 @@ using System.IO;
 
 public class Test : MonoBehaviour
 {
+    public TextAsset TextAsset;
     public class A
     {
-        public bool b; 
+        public Dictionary<string,string[]> spCharGroups;
     }
+
     // Start is called before the first frame update
     async void Start()
     {
-        Dictionary<string, object> dic = JsonHelper.FromJson<Dictionary<string, object>>("{\"a\":false}");
-        A a = new A();
-        a.GetType().GetField("b").SetValue(a, dic["a"]);
-        Debug.Log(a.b);
+        A a = JsonHelper.FromJson<A>(TextAsset.text);
+        foreach (var kv in a.spCharGroups)
+        {
+            Debug.Log(kv.Key + ":" + kv.Value[0]);
+        }
+
         //StartCoroutine(Download());
 
         //UnityEngine.
@@ -42,10 +46,10 @@ public class Test : MonoBehaviour
         //}       
     }
 
-    IEnumerator Download()
+    IEnumerator Download(string name)
     {
 
-        UnityEngine.Networking.UnityWebRequest wr = UnityEngine.Networking.UnityWebRequest.Get("http://static.prts.wiki/spine/char/char_485_pallas/char_485_pallas/char_485_pallas.png");
+        UnityEngine.Networking.UnityWebRequest wr = UnityEngine.Networking.UnityWebRequest.Get("http://" + $"static.prts.wiki/spine/char/{name}/{name}/{name}.png");
         yield return wr.SendWebRequest();
         if (!string.IsNullOrEmpty( wr.error))
         {

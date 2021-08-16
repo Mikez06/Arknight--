@@ -36,9 +36,7 @@ namespace BattleUI
 
         public void Flush()
         {
-            Vector2 unitPos = Camera.main.WorldToScreenPoint(Unit.UnitModel.SkeletonAnimation.transform.position); //Stage.inst.touchPosition.ScreenToUI();
-            unitPos.y = Screen.height - unitPos.y;
-            xy = unitPos.ScreenToUI();
+            xy = Unit.UnitModel.SkeletonAnimation.transform.position.WorldToUI();
             if (Unit is Units.干员 u)
             {
                 m_hp.max = Unit.MaxHp;

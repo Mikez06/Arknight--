@@ -15,7 +15,7 @@ namespace Buffs
 
         public override void Apply()
         {
-            foreach (var data in Config.Data)
+            foreach (var data in BuffData.Data)
             {
                 Unit.GetType().GetField(data.Key).SetValue(Unit, data.Value);
             }

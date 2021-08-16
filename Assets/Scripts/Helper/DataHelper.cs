@@ -24,7 +24,7 @@ public static class DataHelper
         if (self == null) return defaultValue;
         if (self.TryGetValue(key, out object r))
         {
-            return (int)r;
+            return Convert.ToInt32(r);
         }
         return defaultValue;
     }
@@ -54,7 +54,7 @@ public static class DataHelper
         if (self == null) return defaultValue;
         if (self.TryGetValue(key, out object r))
         {
-            return (string)r;
+            return Convert.ToString(r);
         }
         return defaultValue;
     }

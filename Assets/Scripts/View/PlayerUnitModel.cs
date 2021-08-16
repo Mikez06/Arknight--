@@ -11,12 +11,12 @@ public class PlayerUnitModel : UnitModel
     public SkeletonAnimation SkeletonAnimation2;
     bool forward = true;
 
-    public override void Init()
+    public override void Init(Unit unit)
     {
         SkeletonAnimation2.AnimationName = "Default";
         SkeletonAnimation2.gameObject.SetActive(false);
         gameObject.SetActive(false);
-        base.Init();
+        base.Init(unit);
     }
 
     protected override void updateState()

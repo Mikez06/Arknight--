@@ -12,21 +12,10 @@ using System.IO;
 
 public class Test : MonoBehaviour
 {
-    public TextAsset TextAsset;
-    public class A
-    {
-        public Dictionary<string,string[]> spCharGroups;
-    }
 
     // Start is called before the first frame update
     async void Start()
     {
-        A a = JsonHelper.FromJson<A>(TextAsset.text);
-        foreach (var kv in a.spCharGroups)
-        {
-            Debug.Log(kv.Key + ":" + kv.Value[0]);
-        }
-
         //StartCoroutine(Download());
 
         //UnityEngine.

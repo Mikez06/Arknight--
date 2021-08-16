@@ -1,0 +1,2 @@
+{"Id":"暴击1","Type":"暴击","Data":{"Chance":0.1,"Rate":1.6}}
+{"Id":"多重攻击1","Type":"额外目标","Data":{"Chance":0.1,"Count":1}}

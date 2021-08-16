@@ -20,8 +20,9 @@ public class UnitModel : MonoBehaviour
         Renderer.GetPropertyBlock(mpb);
     }
 
-    public virtual void Init()
+    public virtual void Init(Unit unit)
     {
+        this.Unit = unit;
         SkeletonAnimation.AnimationName = "Default";
         nowAnimation = "Default";
         SkeletonAnimation.SkeletonDataAsset.GetAnimationStateData().DefaultMix = 0f;
@@ -171,6 +172,16 @@ public class UnitModel : MonoBehaviour
     {
         Renderer.GetPropertyBlock(mpb);
         return mpb.GetColor("_Color");
+    }
+
+    public void ShowCrit(float damage)
+    {
+        BattleUI.UI_Battle.Instance.ShowDamageText(damage, 0, transform.position.WorldToUI());
+    }
+
+    public void ShowHeal(float heal)
+    {
+        BattleUI.UI_Battle.Instance.ShowDamageText(heal, 1, transform.position.WorldToUI());
     }
 }
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="0,0">
+  <controller name="type" pages="0,,1," selected="0">
+    <remark page="0" value="crit"/>
+    <remark page="1" value="heal"/>
+  </controller>
+  <displayList>
+    <text id="n55_n3en" name="number" xy="0,0" pivot="0.5,0.5" anchor="true" size="96,48" fontSize="35" color="#ff0000" align="center" vAlign="middle" vars="true" text="{n=1123}!">
+      <gearColor controller="type" pages="0,1" values="#ff0000,#000000|#00ff00,#000000"/>
+      <gearText controller="type" pages="0,1" values="{n=1123}!|+{n=1123}"/>
+    </text>
+  </displayList>
+  <transition name="show">
+    <item time="0" type="XY" target="n55_n3en" tween="true" startValue="0,0" endValue="0,-100" duration="9"/>
+    <item time="18" type="Alpha" target="n55_n3en" tween="true" startValue="1" endValue="0" duration="3"/>
+  </transition>
+</component>

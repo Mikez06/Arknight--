@@ -25,7 +25,8 @@ namespace Skills
 
         protected override void SortTarget(List<Unit> targets)
         {
-            var l = targets.OrderBy(GetOrder).ThenBy(GetSortOrder1).ThenBy((x) => GetSortOrder2(x, targets)).ThenBy(x => x.Hatred()).ToList();
+            targets.RemoveAll(OrderFilter);
+            var l = targets.OrderBy(GetOrder).ThenBy(GetSortOrder1).ThenBy((x) => GetSortOrder2(x)).ThenBy(x => x.Hatred()).ToList();
             targets.Clear();
             targets.AddRange(l);
         }

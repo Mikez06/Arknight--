@@ -9,6 +9,8 @@ public class Skill
 {
     public Unit Unit;
 
+    protected Modify[] Modifies;
+
     public List<Unit> Targets = new List<Unit>();
     protected Battle Battle => Unit.Battle;
 
@@ -51,6 +53,19 @@ public class Skill
 
     public virtual void Init()
     {
+        if (SkillData.Modifys != null)
+        {
+            Modifies = new Modify[SkillData.Modifys.Length];
+            for (int i = 0; i < SkillData.Modifys.Length; i++)
+            {
+                Modifies[i] = ModifyManager.Instance.Get(SkillData.Modifys[i]);
+            }
+        }
+        else
+        {
+            Modifies = new Modify[0];
+        }
+
         if (SkillData.AttackPoints != null)
         {
             AttackPoints = new List<Vector2Int>();
@@ -432,13 +447,7 @@ public class Skill
                         ps.transform.position = target.UnitModel.SkeletonAnimation.transform.position;
                         ps.PS.Play();
                     }
-                    t.Damage(new DamageInfo()
-                    {
-                        Source = this,
-                        Attack = Unit.Attack,
-                        DamageRate = t == target ? SkillData.DamageRate : SkillData.AreaDamage,
-                        DamageType = SkillData.DamageType,
-                    });
+                    t.Damage(GetDamageInfo(t != target));
                     OnBeAttack(target);
                 }
             }
@@ -456,13 +465,7 @@ public class Skill
                 }
                 else
                 {
-                    target.Damage(new DamageInfo()
-                    {
-                        Source = this,
-                        Attack = Unit.Attack,
-                        DamageRate = SkillData.DamageRate,
-                        DamageType = SkillData.DamageType,
-                    });
+                    target.Damage(GetDamageInfo());
                 }
                 OnBeAttack(target);
             }
@@ -517,10 +520,24 @@ public class Skill
 
     protected virtual void SortTarget(List<Unit> targets)
     {
-        //Func<Unit, float> firstOrder = x => 0, secondOrder = x => 0;
-        var l = targets.OrderBy<Unit, float>(GetSortOrder1).ThenBy((x) => GetSortOrder2(x, targets)).ThenBy(x => x.Hatred()).ToList();
+        targets.RemoveAll(OrderFilter);
+        var l = targets.OrderBy(GetSortOrder1).ThenBy((x) => GetSortOrder2(x)).ThenBy(x => x.Hatred()).ToList();
         targets.Clear();
         targets.AddRange(l);
+    }
+
+    protected virtual bool OrderFilter(Unit unit)
+    {
+        switch (SkillData.AttackOrder)
+        {
+            case AttackTargetOrderEnum.血量升序:
+            case AttackTargetOrderEnum.血量未满随机:
+            case AttackTargetOrderEnum.血量比例升序:
+                return unit.Hp == unit.MaxHp;
+            default:
+                break;
+        }
+        return false;
     }
 
     protected virtual float GetSortOrder1(Unit unit)
@@ -545,7 +562,7 @@ public class Skill
         return result;
     }
 
-    protected virtual float GetSortOrder2(Unit x, List<Unit> targets)
+    protected virtual float GetSortOrder2(Unit x)
     {
         float result = 0;
         switch (SkillData.AttackOrder)
@@ -592,7 +609,6 @@ public class Skill
                 result = (x.Position - Unit.Position).magnitude;
                 break;
             case AttackTargetOrderEnum.血量未满随机:
-                targets.RemoveAll(x => x.Hp == x.MaxHp);
                 result = Battle.Random.Next(0, 1000);
                 break;
             case AttackTargetOrderEnum.重量升序:
@@ -629,10 +645,26 @@ public class Skill
     protected virtual void FilterTarget(List<Unit> targets)
     {
         if (SkillData.DamageCount != 0)
-            for (int i = targets.Count() - 1; i >= SkillData.DamageCount; i--)
+        {
+            int targetCount = GetTargetCount();
+            for (int i = targets.Count() - 1; i >= targetCount; i--)
             {
                 targets.RemoveAt(i);
             }
+        }
+    }
+
+    int GetTargetCount()
+    {
+        int result = SkillData.DamageCount;
+        foreach (var modify in Modifies)
+        {
+            if (modify is ITargetModify targetModify)
+            {
+                result = targetModify.Modify(result);
+            }
+        }
+        return result;
     }
 
     public void UpdateAttackPoints()
@@ -682,6 +714,25 @@ public class Skill
         });
         target.Trigger(TriggerEnum.被击);
         Battle.TriggerDatas.Pop();
+    }
+
+    protected DamageInfo GetDamageInfo(bool IfAOE=false)
+    {
+        var result= new DamageInfo()
+        {
+            Source = this,
+            Attack = Unit.Attack,
+            DamageRate = IfAOE ? SkillData.AreaDamage : SkillData.DamageRate,
+            DamageType = SkillData.DamageType,
+        };
+        foreach (var modify in Modifies)
+        {
+            if (modify is IDamageModify damageModify)
+            {
+                damageModify.Modify(result);
+            }
+        }
+        return result;
     }
 }
 

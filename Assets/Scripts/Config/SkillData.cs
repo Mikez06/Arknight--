@@ -44,6 +44,7 @@ public class SkillData : IConfig
       public AttackModeEnum AttackMode;
       public int? Bullet;
       public string ShootPoint;
+      public int[] Modifys;
       public int[] Buffs;
       public float[] BuffData;
       public string StartEffect;

@@ -34,6 +34,7 @@
     <component id="kbte4d" name="评价星星.xml" path="/"/>
     <image id="kbte4e" name="闪耀效果.png" path="/FX/"/>
     <image id="kbte4f" name="Star.png" path="/IconMoney/"/>
+    <component id="n3en4g" name="DamageInfo.xml" path="/" exported="true"/>
   </resources>
   <publish name="" genCode="true" excluded="kbte3u,kbte3n"/>
 </packageDescription>

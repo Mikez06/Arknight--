@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080" opaque="false">
-  <controller name="state" pages="0,,1,,8,,9,,10,,11," selected="5">
+  <controller name="state" pages="0,,1,,8,,9,,10,,11," selected="0">
     <remark page="0" value="正常"/>
     <remark page="1" value="放置单位"/>
     <remark page="2" value="放置单位_选择位置"/>
@@ -20,6 +20,7 @@
     <text id="n13_f146" name="hp" xy="1153,35" size="44,48" group="n42_kbte" fontSize="35" color="#ffffff" text="10"/>
     <component id="n35_h4sa" name="Units" src="f1463m" fileName="Container.xml" xy="0,0" group="n42_kbte"/>
     <component id="n15_f146" name="Builds" src="f1463m" fileName="Container.xml" xy="0,0" group="n42_kbte"/>
+    <component id="n54_n3en" name="DamageInfo" src="f1463m" fileName="Container.xml" xy="0,0" group="n42_kbte"/>
     <graph id="n20_kbte" name="n20" xy="1588,822" size="311,41" group="n42_kbte" type="rect" lineSize="0" fillColor="#99000000"/>
     <text id="n21_kbte" name="n21" xy="1615,823" size="223,42" group="n42_kbte" fontSize="30" color="#ffffff" text="剩余可放置角色:"/>
     <text id="n22_kbte" name="number" xy="1848,824" size="21,42" group="n42_kbte" fontSize="30" color="#ffffff" text="8"/>

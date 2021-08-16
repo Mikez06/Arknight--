@@ -12,7 +12,7 @@ namespace Buffs
         public override void Init()
         {
             base.Init();
-            var datas = Config.Data.GetArray("t");
+            var datas = BuffData.Data.GetArray("t");
             names = new string[datas.Length];
             for (int i = 0; i < datas.Length; i++)
             {

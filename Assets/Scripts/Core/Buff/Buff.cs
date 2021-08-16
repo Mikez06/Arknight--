@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 public class Buff
 {
-    public BuffData Config => Database.Instance.Get<BuffData>(Id);
+    public BuffData BuffData => Database.Instance.Get<BuffData>(Id);
     public int Id;
 
     public Unit Unit;
@@ -17,7 +17,7 @@ public class Buff
 
     public virtual void Init()
     {
-        Duration.Set(Config.LastTime);
+        Duration.Set(BuffData.LastTime);
     }
 
     public virtual void Apply()
@@ -27,7 +27,7 @@ public class Buff
 
     public virtual void Reset()
     {
-        Duration.Set(Config.LastTime);
+        Duration.Set(BuffData.LastTime);
     }
 
     public virtual void Update()

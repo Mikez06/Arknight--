@@ -36,7 +36,8 @@ public class Database
             AddAsync<SkillData>("SkillData"),
             AddAsync<BuffData>("BuffData"),
             AddAsync<BulletData>("BulletData"),
-            AddAsync<WaveData>("WaveData")
+            AddAsync<WaveData>("WaveData"),
+            AddAsync<ModifyData>("ModifyData")
             );
         }
         catch (Exception e)
@@ -56,6 +57,7 @@ public class Database
             Add<BuffData>("BuffData");
             Add<BulletData>("BulletData");
             Add<WaveData>("WaveData");
+            Add<ModifyData>("ModifyData");
         }
         catch (Exception e)
         {

@@ -418,13 +418,13 @@ public class Unit
     {
         GameObject go = ResHelper.Instantiate(PathHelper.UnitPath + UnitData.Model);
         UnitModel = go.GetComponent<UnitModel>();
-        UnitModel.Unit = this;
-        UnitModel.Init();
+        UnitModel.Init(this);
     }
 
     public void Heal(float heal)
     {
         Hp += heal;
+        UnitModel.ShowHeal(heal);
         if (Hp > MaxHp)
             Hp = MaxHp;
     }
@@ -432,23 +432,32 @@ public class Unit
     public void Damage(DamageInfo damageInfo)
     {
         float damage = damageInfo.Attack * damageInfo.DamageRate;
-        switch (damageInfo.DamageType)
-        {
-            case DamageTypeEnum.Normal:
-                damage -= Defence;
-                if (damage < 0) damage = 1;
-                break;
-            case DamageTypeEnum.Magic:
-                damage = damage * (100 - MagicDefence) / 100;
-                break;
-        }
+        damage = damageWithDefence(damage, damageInfo.DamageType);
         damageInfo.FinalDamage = damage;
+        float damageEx = damageInfo.Attack;
+        damageEx = damageWithDefence(damageEx, damageInfo.DamageType);
+        if (damage > damageEx * 1.5f) UnitModel.ShowCrit(damage);
         Hp -= damage;
         if (Hp <= 0)
         {
             Hp = 0;
             DoDie(damageInfo);
         }
+    }
+
+    float damageWithDefence(float baseDamage,DamageTypeEnum damageType)
+    {
+        switch (damageType)
+        {
+            case DamageTypeEnum.Normal:
+                baseDamage -= Defence;
+                if (baseDamage < 0) baseDamage = 1;
+                break;
+            case DamageTypeEnum.Magic:
+                baseDamage = baseDamage * (100 - MagicDefence) / 100;
+                break;
+        }
+        return baseDamage;
     }
 
     public Skill GetNowAttackSkill()
@@ -495,4 +504,6 @@ public class DamageInfo
     public DamageTypeEnum DamageType;
     public float DamageRate = 1;
     public float FinalDamage;
+    public List<int> BuffIds = new List<int>();
+    public List<Dictionary<string, object>> BuffDatas = new List<Dictionary<string, object>>();
 }

@@ -322,14 +322,20 @@ namespace BattleUI
         {
             m_state.SetSelectedIndex(0);
         }
-    }
 
-    public static class TouchHelper
-    {
-        public static Vector2 ScreenToUI(this Vector2 self)
+        public void ShowDamageText(float damage, int type,Vector2 pos)
         {
-            return new Vector2(self.x * GRoot.inst.width / Screen.width, self.y * GRoot.inst.height / Screen.height);
+            int showDamage = Mathf.RoundToInt(damage);
+            if (showDamage <= 0) return;
+            var damageInfo = UIPackage.CreateObjectFromURL(UI_DamageInfo.URL) as UI_DamageInfo;
+            damageInfo.m_number.SetVar("n", showDamage.ToString()).FlushVars();
+            damageInfo.m_type.selectedIndex = type;
+            m_DamageInfo.AddChild(damageInfo);
+            damageInfo.position = pos;
+            damageInfo.m_show.Play(() =>
+            {
+                damageInfo.Dispose();
+            });
         }
     }
-
 }

@@ -8,7 +8,6 @@ public class SkillData : IConfig
       public SkillUseTypeEnum UseType;
       public TriggerEnum Trigger;
       public bool AutoUse;
-      public bool AttackStop;
       public bool RegetTarget;
       public bool StopBreak;
       public bool StopOtherSkill;
@@ -47,6 +46,7 @@ public class SkillData : IConfig
       public int[] Modifys;
       public int[] Buffs;
       public float[] BuffData;
+      public float? BuffLastTime;
       public string StartEffect;
       public string HitEffect;
       public string EffectEffect;

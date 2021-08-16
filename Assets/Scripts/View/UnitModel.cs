@@ -174,12 +174,12 @@ public class UnitModel : MonoBehaviour
         return mpb.GetColor("_Color");
     }
 
-    public void ShowCrit(float damage)
+    public void ShowCrit(DamageInfo damage)
     {
         BattleUI.UI_Battle.Instance.ShowDamageText(damage, 0, transform.position.WorldToUI());
     }
 
-    public void ShowHeal(float heal)
+    public void ShowHeal(DamageInfo heal)
     {
         BattleUI.UI_Battle.Instance.ShowDamageText(heal, 1, transform.position.WorldToUI());
     }

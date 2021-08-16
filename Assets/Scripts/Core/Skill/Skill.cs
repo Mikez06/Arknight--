@@ -121,6 +121,7 @@ public class Skill
 
     public bool Useable()
     {
+        if (this == Unit.Skills[0] && !Unit.CanAttack) return false;
         if (SkillData.StopBreak && Unit.IfStoped()) return false;
         if (!Cooldown.Finished()) return false;
         return true;
@@ -128,6 +129,7 @@ public class Skill
 
     public bool CanUseTo(Unit target)
     {
+        if (target == null) return false;
         if (SkillData.SelfOnly && target != Unit) return false;
         if (SkillData.TargetTeam != target.Team) return false;
         if (SkillData.ProfessionLimit != UnitTypeEnum.无 && SkillData.ProfessionLimit != target.UnitData.Profession) return false;
@@ -250,12 +252,7 @@ public class Skill
             Start();
         }
         Unit.OverWriteAnimation = SkillData.OverwriteAnimation;
-        OnOpen();
-    }
-
-    protected virtual void OnOpen()
-    {
-
+        OnSkillOpen();
     }
 
     protected virtual void OnFinish()
@@ -447,7 +444,7 @@ public class Skill
                         ps.transform.position = target.UnitModel.SkeletonAnimation.transform.position;
                         ps.PS.Play();
                     }
-                    t.Damage(GetDamageInfo(t != target));
+                    t.Damage(GetDamageInfo(target, t != target));
                     OnBeAttack(target);
                 }
             }
@@ -461,11 +458,11 @@ public class Skill
                 }
                 if (SkillData.IfHeal)
                 {
-                    target.Heal(Unit.Attack * SkillData.DamageRate);
+                    target.Heal(new DamageInfo() { Attack = Unit.Attack * SkillData.DamageRate });
                 }
                 else
                 {
-                    target.Damage(GetDamageInfo());
+                    target.Damage(GetDamageInfo(target));
                 }
                 OnBeAttack(target);
             }
@@ -495,9 +492,11 @@ public class Skill
         if (Battle.TriggerDatas.Count > 0)
         {
             //正在事件当中，技能去取事件目标
-            tempTargets.Add(Battle.TriggerDatas.Peek().Target);
+            var t = Battle.TriggerDatas.Peek().Target;
+            if (t != null)
+                tempTargets.Add(t);
         }
-        else
+        if (tempTargets.Count == 0)
         {
             if (AttackPoints == null)//根据攻击范围进行索敌
             {
@@ -716,15 +715,32 @@ public class Skill
         Battle.TriggerDatas.Pop();
     }
 
-    protected DamageInfo GetDamageInfo(bool IfAOE=false)
+    protected virtual void OnSkillOpen()
     {
-        var result= new DamageInfo()
+        Battle.TriggerDatas.Push(new TriggerData()
+        {
+            Skill = this,
+        });
+        Unit.Trigger(TriggerEnum.释放技能);
+        Battle.TriggerDatas.Pop();
+    }
+
+    protected DamageInfo GetDamageInfo(Unit target, bool IfAOE = false)
+    {
+        var result = new DamageInfo()
         {
             Source = this,
             Attack = Unit.Attack,
             DamageRate = IfAOE ? SkillData.AreaDamage : SkillData.DamageRate,
             DamageType = SkillData.DamageType,
         };
+        foreach (var buff in target.Buffs)
+        {
+            if (buff is IDamageModify damageModify)
+            {
+                damageModify.Modify(result);
+            }
+        }
         foreach (var modify in Modifies)
         {
             if (modify is IDamageModify damageModify)

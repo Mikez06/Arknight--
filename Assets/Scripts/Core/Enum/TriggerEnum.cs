@@ -14,4 +14,5 @@ public enum TriggerEnum
     被击,
     击杀,
     死亡,
+    释放技能,
 }

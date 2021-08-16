@@ -27,7 +27,12 @@ public class Buff
 
     public virtual void Reset()
     {
-        Duration.Set(BuffData.LastTime);
+        float lastTime = BuffData.LastTime;
+        if (Skill.SkillData.BuffLastTime != null)
+        {
+            lastTime = Skill.SkillData.BuffLastTime.Value;
+        }
+        Duration.Set(lastTime);
     }
 
     public virtual void Update()

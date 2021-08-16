@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Skills
+namespace Buffs
 {
-    public class 激活技能 : Skill
+    public class 缴械 : Buff
     {
-        protected override void OnOpen()
+        public override void Apply()
         {
-            base.OnOpen();
-            Start();
+            base.Apply();
+            Unit.CanAttack = false;
         }
     }
 }

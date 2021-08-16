@@ -71,6 +71,8 @@ public class Unit
     public bool IfHideAnti;
     protected bool hideBase;
 
+    public bool CanAttack;
+
     public bool IfAlive = true;
 
     /// <summary>
@@ -136,6 +138,7 @@ public class Unit
         WeightAdd = 0;
         PowerSpeed = 1f;
         AttackGapAdd = AttackGapRate = 0;
+        CanAttack = true;
         foreach (var buff in Buffs)
         {
             buff.Apply();
@@ -421,9 +424,9 @@ public class Unit
         UnitModel.Init(this);
     }
 
-    public void Heal(float heal)
+    public void Heal(DamageInfo heal)
     {
-        Hp += heal;
+        Hp += heal.Attack;
         UnitModel.ShowHeal(heal);
         if (Hp > MaxHp)
             Hp = MaxHp;
@@ -436,12 +439,15 @@ public class Unit
         damageInfo.FinalDamage = damage;
         float damageEx = damageInfo.Attack;
         damageEx = damageWithDefence(damageEx, damageInfo.DamageType);
-        if (damage > damageEx * 1.5f) UnitModel.ShowCrit(damage);
-        Hp -= damage;
-        if (Hp <= 0)
+        if (damage > damageEx * 1.5f) UnitModel.ShowCrit(damageInfo);
+        if (!damageInfo.Avoid)
         {
-            Hp = 0;
-            DoDie(damageInfo);
+            Hp -= damage;
+            if (Hp <= 0)
+            {
+                Hp = 0;
+                DoDie(damageInfo);
+            }
         }
     }
 
@@ -495,15 +501,4 @@ public class Unit
     {
         return string.IsNullOrEmpty(OverWriteAnimation) ? AnimationName : OverWriteAnimation;
     }
-}
-
-public class DamageInfo
-{
-    public object Source;
-    public float Attack;
-    public DamageTypeEnum DamageType;
-    public float DamageRate = 1;
-    public float FinalDamage;
-    public List<int> BuffIds = new List<int>();
-    public List<Dictionary<string, object>> BuffDatas = new List<Dictionary<string, object>>();
 }

@@ -323,9 +323,9 @@ namespace BattleUI
             m_state.SetSelectedIndex(0);
         }
 
-        public void ShowDamageText(float damage, int type,Vector2 pos)
+        public void ShowDamageText(DamageInfo damage, int type,Vector2 pos)
         {
-            int showDamage = Mathf.RoundToInt(damage);
+            int showDamage = Mathf.RoundToInt(damage.FinalDamage);
             if (showDamage <= 0) return;
             var damageInfo = UIPackage.CreateObjectFromURL(UI_DamageInfo.URL) as UI_DamageInfo;
             damageInfo.m_number.SetVar("n", showDamage.ToString()).FlushVars();

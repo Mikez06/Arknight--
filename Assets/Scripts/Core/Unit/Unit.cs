@@ -278,7 +278,19 @@ public class Unit
         skill.Unit = this;
         skill.Id = skillId;
         skill.Init();
-        Skills.Add(skill);
+        if (Skills.Count > 0 && skillId < Skills.Last().Id)
+        {
+            for (int i = 0; i < Skills.Count; i++)
+            {
+                if (Skills[i].Id > skillId)
+                {
+                    Skills.Insert(i, skill);
+                    break;
+                }
+            }
+        }
+        else
+            Skills.Add(skill);
         if (skillConfig.ExSkills != null)
             foreach (var id in skillConfig.ExSkills)
             {
@@ -289,10 +301,11 @@ public class Unit
 
     public Buff AddBuff(int buffId,Skill source)
     {
-        var oldBuff = Buffs.FirstOrDefault(x => x.Id == buffId);
+        //权且加上来源判断，因为现在很多buff共用一个id会产生冲突。
+        //如果需要处理buff冲突的情况，再修改这里
+        var oldBuff = Buffs.FirstOrDefault(x => x.Id == buffId && x.Skill == source);
         if (oldBuff != null)
         {
-            oldBuff.Skill = source;
             oldBuff.Reset();
             return oldBuff;
         }

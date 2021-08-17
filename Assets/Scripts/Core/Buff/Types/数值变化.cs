@@ -33,6 +33,7 @@ namespace Buffs
                 }
                 float baseValue = (float)field.GetValue(Unit);
                 field.SetValue(Unit, baseValue + Skill.SkillData.BuffData[i]);
+                UnityEngine.Debug.Log($"{Unit.UnitData.Id}的{names[i]}变成{field.GetValue(Unit)}");
             }
         }
     }

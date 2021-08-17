@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="190,410">
-  <controller name="typeControl" pages="0,,1,,2,,3,,4,,5,,6,,7," selected="0"/>
-  <controller name="seletd" pages="0,,1," selected="1"/>
+  <controller name="typeControl" pages="8,,0,,1,,2,,3,,4,,5,,6,,7," selected="0"/>
+  <controller name="seletd" pages="0,,1," selected="0"/>
   <displayList>
     <loader id="n0_kbte" name="halfPic" xy="5,5" size="180,360" fill="scale"/>
     <image id="n16_kbte" name="n16" src="kbtef" fileName="未标题-1.png" xy="5,5" size="180,400"/>
@@ -17,7 +17,7 @@
       <item/>
     </list>
     <text id="n5_kbte" name="n5" xy="2,311" size="40,19" fontSize="12" text=""/>
-    <loader id="n6_kbte" name="n6" xy="3,3" size="50,50" url="ui://k4mja8t1kbte8" align="center" vAlign="middle" fill="scale">
+    <loader id="n6_kbte" name="n6" xy="3,3" size="50,50" url="ui://k4mja8t1kbte5" align="center" vAlign="middle" fill="scale">
       <gearIcon controller="typeControl" pages="0,2,3,4,5,6,7" values="ui://k4mja8t1kbte8|ui://k4mja8t1kbte9|ui://k4mja8t1kbte4|ui://k4mja8t1kbte6|ui://k4mja8t1kbte3|ui://k4mja8t1kbte7|ui://k4mja8t1kbtea" default="ui://k4mja8t1kbte5"/>
     </loader>
     <text id="n8_kbte" name="lv" xy="49,365" pivot="0.5,0.5" anchor="true" size="62,66" fontSize="50" color="#ffffff" align="center" text="70"/>

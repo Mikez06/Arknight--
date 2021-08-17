@@ -121,7 +121,11 @@ public class Skill
 
     public bool Useable()
     {
-        if (this == Unit.Skills[0] && !Unit.CanAttack) return false;
+        if (this == Unit.Skills[0] && !Unit.CanAttack)
+        {
+            //Debug.Log($"{Unit.UnitData.Id} 因为缴械无法使用{SkillData.Id}");
+            return false;
+        }
         if (SkillData.StopBreak && Unit.IfStoped()) return false;
         if (!Cooldown.Finished()) return false;
         return true;
@@ -653,7 +657,7 @@ public class Skill
         }
     }
 
-    int GetTargetCount()
+    protected virtual int GetTargetCount()
     {
         int result = SkillData.DamageCount;
         foreach (var modify in Modifies)

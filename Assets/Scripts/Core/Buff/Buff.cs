@@ -17,7 +17,7 @@ public class Buff
 
     public virtual void Init()
     {
-        Duration.Set(BuffData.LastTime);
+        updateLastTime();
     }
 
     public virtual void Apply()
@@ -26,6 +26,11 @@ public class Buff
     }
 
     public virtual void Reset()
+    {
+        updateLastTime();
+    }
+
+    protected virtual void updateLastTime()
     {
         float lastTime = BuffData.LastTime;
         if (Skill.SkillData.BuffLastTime != null)

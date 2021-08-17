@@ -11,11 +11,15 @@ namespace BattleUI
         public GLoader m_standPic;
         public GTextField m_name;
         public GTextField m_Lv;
+        public GProgressBar m_Hp;
         public GTextField m_atk;
         public GTextField m_def;
         public GTextField m_magDef;
         public GTextField m_block;
         public GTextField m_subSkill;
+        public GTextField m_SkillName;
+        public GTextField m_UseType;
+        public GTextField m_SkillDesc;
         public const string URL = "ui://vp312gabkbte3s";
 
         public static UI_BattleLeft CreateInstance()
@@ -31,11 +35,15 @@ namespace BattleUI
             m_standPic = (GLoader)GetChildAt(1);
             m_name = (GTextField)GetChildAt(3);
             m_Lv = (GTextField)GetChildAt(5);
+            m_Hp = (GProgressBar)GetChildAt(10);
             m_atk = (GTextField)GetChildAt(11);
             m_def = (GTextField)GetChildAt(12);
             m_magDef = (GTextField)GetChildAt(13);
             m_block = (GTextField)GetChildAt(14);
             m_subSkill = (GTextField)GetChildAt(19);
+            m_SkillName = (GTextField)GetChildAt(21);
+            m_UseType = (GTextField)GetChildAt(23);
+            m_SkillDesc = (GTextField)GetChildAt(24);
             Init();
         }
         partial void Init();

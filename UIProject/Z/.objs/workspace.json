@@ -5,9 +5,14 @@
   "auxline1": true,
   "canvasColor": 10066329,
   "auxline2": true,
-  "doc.activeDoc": "ui://k4mja8t1k6t713",
+  "doc.activeDoc": "ui://vp312gabf1460",
   "libview.twoColumn": false,
-  "libview.expandedNodes": [],
+  "libview.expandedNodes": [
+    "vp312gab",
+    "/",
+    "k4mja8t1",
+    "/"
+  ],
   "doc.openedDocs": [
     "ui://vp312gabf1460",
     "ui://k4mja8t1kbte0",
@@ -17,7 +22,6 @@
     "ui://k4mja8t1r8hrm",
     "ui://k4mja8t1r8hrp",
     "ui://k4mja8t1r8hrn",
-    "ui://k4mja8t1k6t713",
     "ui://k4mja8t1k6t714",
     "ui://k4mja8t1kbte1",
     "ui://k4mja8t1r8hrv"

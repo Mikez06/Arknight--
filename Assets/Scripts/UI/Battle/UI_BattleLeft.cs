@@ -11,6 +11,12 @@ namespace BattleUI
         public void SetUnit(Units.干员 unit)
         {
             m_name.text = unit.UnitData.Name;
+            m_atk.text = unit.Attack.ToString();
+            m_def.text = unit.Defence.ToString();
+            m_magDef.text = unit.MagicDefence.ToString();
+            m_block.text = unit.StopCount.ToString();
+            m_Hp.max = unit.MaxHp;
+            m_Hp.value = unit.Hp;
         }
     }
 }

@@ -35,6 +35,7 @@ namespace Units
         /// 建造次数
         /// </summary>
         public int BuildTime;
+        public int StopCount;
 
         public float Cost;
         public float CostBase, CostAdd;
@@ -56,6 +57,7 @@ namespace Units
         {
             CostAdd = 0;
             ResetTimeAdd = ResetTimeRate = 0;
+            StopCount = UnitData.StopCount;
             base.Refresh();
             Cost = CostBase + CostAdd;
             ResetTime = (ResetTimeBase + ResetTimeAdd) * (1 + ResetTimeRate);
@@ -253,7 +255,7 @@ namespace Units
             if (IfStun) return false;
             if (StopUnits.Contains(target)) return true;
             if (target.StopUnit != null) return false;
-            return StopUnits.Count < UnitData.StopCount;
+            return StopUnits.Count < StopCount;
         }
 
         public override float Hatred()

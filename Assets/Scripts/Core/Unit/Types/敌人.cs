@@ -144,7 +144,7 @@ namespace Units
             }
             if (Unbalance) return;//失衡状态下不许主动移动
             if (StopUnit != null) return;//有人阻挡，停止移动
-            AnimationName = Speed >= 1 ? "Run_Loop" : "Move_Loop";
+            AnimationName = new string[] { Speed >= 1 ? "Run_Loop" : "Move_Loop" };
             AnimationSpeed = 1;
             if (TempPath == null || NeedResetPath)//无路径或因为外力走出了预定路线，重寻路
             {

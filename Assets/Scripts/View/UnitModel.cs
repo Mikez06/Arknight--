@@ -8,11 +8,12 @@ using Spine.Unity;
 
 public class UnitModel : MonoBehaviour
 {
+    public static string[] Default = new string[] { "Default" };
     public Unit Unit;
     public SkeletonAnimation SkeletonAnimation;
     protected Renderer Renderer;
     protected MaterialPropertyBlock mpb;
-    string nowAnimation;
+    string[] nowAnimations;
     private void Awake()
     {
         mpb = new MaterialPropertyBlock();
@@ -24,7 +25,7 @@ public class UnitModel : MonoBehaviour
     {
         this.Unit = unit;
         SkeletonAnimation.AnimationName = "Default";
-        nowAnimation = "Default";
+        nowAnimations = Default;
         SkeletonAnimation.SkeletonDataAsset.GetAnimationStateData().DefaultMix = 0f;
         updateState();
     }
@@ -59,7 +60,7 @@ public class UnitModel : MonoBehaviour
         }
         transform.position = Unit.Position;
 
-        if (nowAnimation!=Unit.GetAnimation())
+        if (nowAnimations!=Unit.GetAnimation())
         {
             changeAnimation(Unit.GetAnimation());
         }
@@ -70,68 +71,52 @@ public class UnitModel : MonoBehaviour
     }
 
     bool nullAnimation;
-    void changeAnimation(string animationName)
+
+    void changeAnimation(string[] animations)
     {
-        var next = SkeletonAnimation.Skeleton.Data.FindAnimation(animationName);
-        if (next == null) //如果模型上不存在目标动画 那么就把当前动作暂停住 一般用于怪物被击晕
+        if (animations == null||animations.Length==0)//如果模型上不存在目标动画 那么就把当前动作暂停住 一般用于怪物被击晕
         {
-            nowAnimation = animationName;
+            nowAnimations = animations;
             SkeletonAnimation.timeScale = 0;
-            nullAnimation = true;
             return;
         }
-        nullAnimation = false;
         SkeletonAnimation.state.ClearTracks();
-        //SkeletonAnimation.state.AddEmptyAnimation(0, 0, 0);
-        if (animationName == "Idle") //从其他状态返回Idle时，如果有退出动画，就播放
+        if (animations[0].Contains("Idle"))//从其他状态返回Idle时，如果有退出动画，就播放
         {
-            var _endAnimation = SkeletonAnimation.Skeleton.Data.FindAnimation(nowAnimation + "_End");
-            if (_endAnimation != null)
+            if (nowAnimations.Length >= 3)
             {
-                SkeletonAnimation.state.AddAnimation(0, nowAnimation + "_End", false, 0);
+                SkeletonAnimation.state.AddAnimation(0, nowAnimations[2], false, 0);
             }
         }
-
         float delay = 0;
         //切入其他状态时，若有进入动画，播放
-        if (nowAnimation != animationName)
+        if (nowAnimations != animations && animations.Length>1)
         {
-            var _beginAnimation = SkeletonAnimation.Skeleton.Data.FindAnimation(animationName + "_Begin");
-            if (_beginAnimation != null)
-            {
-                Debug.Log(Unit.UnitData.Id + "Add" + animationName + "_Begin" + Time.time);
-                SkeletonAnimation.state.AddAnimation(0, animationName + "_Begin", false, 0);
-                delay += _beginAnimation.Duration;
-            }
+            var _beginAnimation = SkeletonAnimation.Skeleton.Data.FindAnimation(animations[0]);
+            SkeletonAnimation.state.AddAnimation(0, animations[0], false, 0);
+            delay += _beginAnimation.Duration;
         }
-        //Debug.Log(Unit.Config._Id + "Add" + animationName);
-        //SkeletonAnimation.state.AddAnimation(0, animationName, true, 0);
-        SkeletonAnimation.state.AddAnimation(0, animationName, animationName == "Idle" || animationName.EndsWith("Loop"), delay);
-        nowAnimation = animationName;
+        var nextAnimation = animations.Length > 1 ? animations[1] : animations[0];
+        SkeletonAnimation.state.AddAnimation(0, nextAnimation, nextAnimation == "Idle" || nextAnimation.EndsWith("Loop"), delay);
+        nowAnimations = animations;
     }
 
     public void BreakAnimation()
     {
         var next = Unit.GetAnimation();
-        Debug.Log($"break from {nowAnimation} to {next}");
+        //Debug.Log($"break from {} to {next}");
         changeAnimation(next);
     }
 
-    public float GetSkillDelay(string animationName,string lastState,out float fullDuration,out float beginDuration)
+    public float GetSkillDelay(string[] animationName,string[] lastState,out float fullDuration,out float beginDuration)
     {
         float result = 0;
         fullDuration = 0;
         beginDuration = 0;
         //如果有状态切换，那么去判断前摇和后摇动画
-        if (animationName != lastState)
+        if (animationName != lastState && animationName.Length>1)
         {
-            //进入idle以外并不会播后摇动画
-            //var _endAnimation = SkeletonAnimation.Skeleton.data.FindAnimation(lastState + "_End");
-            //if (_endAnimation != null)
-            //{
-            //    result += _endAnimation.duration;
-            //}
-            var _beginAnimation = SkeletonAnimation.Skeleton.Data.FindAnimation(animationName + "_Begin");
+            var _beginAnimation = SkeletonAnimation.Skeleton.Data.FindAnimation(animationName[0]);
             if (_beginAnimation != null)
             {
                 float duration = _beginAnimation.Duration; //- SkeletonAnimation.skeletonDataAsset.defaultMix;
@@ -140,7 +125,8 @@ public class UnitModel : MonoBehaviour
                 beginDuration = duration;
             }
         }
-        var animation = SkeletonAnimation.Skeleton.Data.FindAnimation(animationName);
+        var nextAnimation = animationName.Length > 1 ? animationName[1] : animationName[0];
+        var animation = SkeletonAnimation.Skeleton.Data.FindAnimation(nextAnimation);
         foreach (var timeline in animation.Timelines)
         {
             if (timeline is Spine.EventTimeline eventTimeline)

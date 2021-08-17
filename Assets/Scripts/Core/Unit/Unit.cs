@@ -96,8 +96,8 @@ public class Unit
     public float ScaleX = -1;
     public float TargetScaleX = -1;
 
-    public string AnimationName = "Default";
-    public string OverWriteAnimation;
+    public string[] AnimationName = UnitModel.Default;
+    public string[] OverWriteAnimation;
     public float AnimationSpeed = 1;
 
     public virtual void Init()
@@ -422,7 +422,7 @@ public class Unit
     public void SetStatus(StateEnum state)
     {
         this.State = state;
-        AnimationName = state.ToString();
+        AnimationName = new string[] { state.ToString() };
         AnimationSpeed = 1;
         if (state != StateEnum.Attack && !Attacking.Finished())
         {
@@ -510,8 +510,8 @@ public class Unit
         return false;
     }
 
-    public string GetAnimation()
+    public string[] GetAnimation()
     {
-        return string.IsNullOrEmpty(OverWriteAnimation) ? AnimationName : OverWriteAnimation;
+        return OverWriteAnimation == null ? AnimationName : OverWriteAnimation;
     }
 }

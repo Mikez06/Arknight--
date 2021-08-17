@@ -297,7 +297,7 @@ public class Skill
             Opening.Set(SkillData.OpenTime);
         }
 
-        if (string.IsNullOrEmpty(SkillData.ModelAnimation))
+        if (SkillData.ModelAnimation == null)
         {
             Debug.Log(Unit.UnitData.Id + "的" + SkillData.Id + "没有动画,直接使用");
             ResetCooldown(1);

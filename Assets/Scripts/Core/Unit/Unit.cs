@@ -10,6 +10,7 @@ public class Unit
 {
     public static string[] DefaultAnimation = new string[] { "Default" };
     public static string[] StartAnimation = new string[] { "Start" };
+    public static string[] DieAnimation = new string[] { "Die" };
     public Battle Battle;
     public UnitData UnitData => Database.Instance.Get<UnitData>(Id);
     public int Id;
@@ -444,6 +445,8 @@ public class Unit
             AnimationName = UnitData.MoveAnimation;
         else if (state == StateEnum.Start)
             AnimationName = Unit.StartAnimation;
+        else if (state == StateEnum.Die)
+            AnimationName = Unit.DieAnimation;
         AnimationSpeed = 1;
         if (state != StateEnum.Attack && !Attacking.Finished())
         {

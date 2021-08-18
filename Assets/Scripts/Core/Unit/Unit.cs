@@ -265,6 +265,34 @@ public class Unit
 
     }
 
+    public void UpdateCollision()
+    {
+        var tile = Battle.Map.Tiles[GridPos.x, GridPos.y];
+        if (!tile.CanMove)
+        {
+            float x = Position2.x - GridPos.x;
+            float y = Position2.y - GridPos.y;
+            bool b1 = y - x > 0;
+            bool b2 = x + y < 1;
+            if (b1 && b2)
+            {
+                Position.x = Mathf.RoundToInt(Position.x) - 0.5f;
+            }
+            if (b1 && !b2)
+            {
+                Position.z = Mathf.RoundToInt(Position.z) + 0.5f;
+            }
+            if (!b1 && b2)
+            {
+                Position.z = Mathf.RoundToInt(Position.z) - 0.5f;
+            }
+            if (!b1 && !b2)
+            {
+                Position.x = Mathf.RoundToInt(Position.x) + 0.5f;
+            }
+        }
+    }
+
     public void Trigger(TriggerEnum triggerEnum)
     {
         foreach (var skill in Skills)
@@ -463,6 +491,7 @@ public class Unit
 
     public void Heal(DamageInfo heal)
     {
+        heal.FinalDamage = heal.Attack;
         Hp += heal.Attack;
         UnitModel.ShowHeal(heal);
         if (Hp > MaxHp)

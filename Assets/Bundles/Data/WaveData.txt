@@ -1,4 +1,5 @@
 {"Map":"TestMap1","UnitId":0,"Delay":1,"Path":"P0"}
+{"Map":"TestMap","UnitId":2,"Delay":0,"Path":"P0"}
 {"Map":"TestMap","UnitId":1,"Delay":1,"Path":"P0"}
 {"Map":"TestMap","UnitId":1,"Delay":2,"Path":"P0"}
 {"Map":"TestMap","UnitId":1,"Delay":3,"Path":"P0"}

@@ -99,12 +99,13 @@ MonoBehaviour:
     WeightAdd: 0
     IfHide: 0
     IfHideAnti: 0
+    CanAttack: 0
     IfAlive: 1
     IfStun: 0
     ScaleX: -1
     TargetScaleX: -1
-    AnimationName: Default
-    OverWriteAnimation: 
+    AnimationName: []
+    OverWriteAnimation: []
     AnimationSpeed: 1
   SkeletonAnimation: {fileID: 1957653108723304914}
   SkeletonAnimation2: {fileID: 7024476074962480572}

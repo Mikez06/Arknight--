@@ -212,7 +212,7 @@ public class Skill
         Cooldown.Set(cooldown);
     }
 
-    public void RecoverPower(float count)
+    public void RecoverPower(float count, bool withTip = false)
     {
         if (PowerCount == 0) return;
         if (!Opening.Finished())
@@ -306,7 +306,7 @@ public class Skill
         else
         {
             var duration = Unit.UnitModel.GetSkillDelay(SkillData.ModelAnimation, Unit.GetAnimation(), out float fullDuration, out float beginDuration);//.SkeletonAnimation.skeleton.data.Animations.Find(x => x.Name == "Attack");
-            float attackSpeed = 1 / Unit.Agi * 100;//攻速影响冷却时间
+            float attackSpeed = 1f / Unit.Agi * 100;//攻速影响冷却时间
             ResetCooldown(attackSpeed);
             //float aniSpeed = 1;//动画表现上的攻速
             if (fullDuration * attackSpeed != Cooldown.value)
@@ -527,7 +527,7 @@ public class Skill
     protected virtual void SortTarget(List<Unit> targets)
     {
         targets.RemoveAll(OrderFilter);
-        var l = targets.OrderBy(GetSortOrder1).ThenBy((x) => GetSortOrder2(x)).ThenBy(x => x.Hatred()).ToList();
+        var l = targets.OrderBy(GetSortOrder1).ThenBy(GetSortOrder2).ThenBy(x => x.Hatred()).ToList();
         targets.Clear();
         targets.AddRange(l);
     }
@@ -556,6 +556,7 @@ public class Skill
                 break;
             case AttackTargetOrder2Enum.远程:
                 result = unit.Skills.Count == 0 ? 0 : -unit.Skills[0].SkillData.AttackRange;
+                Debug.Log($"{unit.UnitData.Id} , {result}");
                 break;
             case AttackTargetOrder2Enum.Buff:
                 break;
@@ -591,7 +592,7 @@ public class Skill
                 result = -x.Hp / x.MaxHp;
                 break;
             case AttackTargetOrderEnum.放置降序:
-                result = (x as Units.干员).InputTime;
+                result = -(x as Units.干员).InputTime;
                 break;
             case AttackTargetOrderEnum.区域顺序:
                 result = Math.Abs(x.Position2.x - Unit.Position2.x) + Math.Abs(x.Position2.y - Unit.Position2.y);

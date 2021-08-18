@@ -32,7 +32,7 @@ public class GameData
         for (int i = 0; i < Instance.Teams.Length; i++)
         {
             Teams[i] = new Team();
-            Teams[i].Cards.Add(Cards[0]);
+            Teams[i].Cards.Add(Cards.Find(x => x.Config.Id == "斑点"));
             Teams[i].Cards.Add(Cards.Find(x=>x.Config.Id== "克洛丝"));
             Teams[i].UnitSkill.Add(0);
             Teams[i].UnitSkill.Add(0);

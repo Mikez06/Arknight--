@@ -172,7 +172,7 @@ MonoBehaviour:
   Y: 4
   CanBuildUnit: 1
   FarAttackGrid: 1
-  CanMove: 1
+  CanMove: 0
   TileType: 0
   ConfigId: 0
 --- !u!1 &275767882
@@ -376,7 +376,7 @@ MonoBehaviour:
   Y: 4
   CanBuildUnit: 1
   FarAttackGrid: 1
-  CanMove: 1
+  CanMove: 0
   TileType: 0
   ConfigId: 0
 --- !u!1 &473386836
@@ -427,7 +427,7 @@ MonoBehaviour:
   Y: 0
   CanBuildUnit: 1
   FarAttackGrid: 1
-  CanMove: 1
+  CanMove: 0
   TileType: 0
   ConfigId: 0
 --- !u!1 &474721433
@@ -478,7 +478,7 @@ MonoBehaviour:
   Y: 0
   CanBuildUnit: 1
   FarAttackGrid: 1
-  CanMove: 1
+  CanMove: 0
   TileType: 0
   ConfigId: 0
 --- !u!1 &486117373
@@ -580,7 +580,7 @@ MonoBehaviour:
   Y: 0
   CanBuildUnit: 1
   FarAttackGrid: 1
-  CanMove: 1
+  CanMove: 0
   TileType: 0
   ConfigId: 0
 --- !u!1 &509682293
@@ -819,7 +819,7 @@ MonoBehaviour:
   Y: 0
   CanBuildUnit: 1
   FarAttackGrid: 1
-  CanMove: 1
+  CanMove: 0
   TileType: 0
   ConfigId: 0
 --- !u!1 &580477616
@@ -921,7 +921,7 @@ MonoBehaviour:
   Y: 4
   CanBuildUnit: 1
   FarAttackGrid: 1
-  CanMove: 1
+  CanMove: 0
   TileType: 0
   ConfigId: 0
 --- !u!1 &653421500
@@ -1002,7 +1002,7 @@ MonoBehaviour:
   Y: 0
   CanBuildUnit: 1
   FarAttackGrid: 1
-  CanMove: 1
+  CanMove: 0
   TileType: 0
   ConfigId: 0
 --- !u!1 &738745707
@@ -1359,7 +1359,7 @@ MonoBehaviour:
   Y: 0
   CanBuildUnit: 1
   FarAttackGrid: 1
-  CanMove: 1
+  CanMove: 0
   TileType: 0
   ConfigId: 0
 --- !u!1 &926997427
@@ -1491,7 +1491,7 @@ MonoBehaviour:
   Y: 4
   CanBuildUnit: 1
   FarAttackGrid: 1
-  CanMove: 1
+  CanMove: 0
   TileType: 0
   ConfigId: 0
 --- !u!1 &1132201340
@@ -1542,7 +1542,7 @@ MonoBehaviour:
   Y: 0
   CanBuildUnit: 1
   FarAttackGrid: 1
-  CanMove: 1
+  CanMove: 0
   TileType: 0
   ConfigId: 0
 --- !u!1 &1206165219
@@ -1623,7 +1623,7 @@ MonoBehaviour:
   Y: 4
   CanBuildUnit: 1
   FarAttackGrid: 1
-  CanMove: 1
+  CanMove: 0
   TileType: 0
   ConfigId: 0
 --- !u!1 &1266514366
@@ -1821,7 +1821,7 @@ MonoBehaviour:
   Y: 4
   CanBuildUnit: 1
   FarAttackGrid: 1
-  CanMove: 1
+  CanMove: 0
   TileType: 0
   ConfigId: 0
 --- !u!1 &1310149009
@@ -2093,7 +2093,7 @@ MonoBehaviour:
   Y: 4
   CanBuildUnit: 1
   FarAttackGrid: 1
-  CanMove: 1
+  CanMove: 0
   TileType: 0
   ConfigId: 0
 --- !u!1 &1404829643
@@ -2195,7 +2195,7 @@ MonoBehaviour:
   Y: 4
   CanBuildUnit: 1
   FarAttackGrid: 1
-  CanMove: 1
+  CanMove: 0
   TileType: 0
   ConfigId: 0
 --- !u!1 &1468666808
@@ -2536,7 +2536,7 @@ MonoBehaviour:
   Y: 0
   CanBuildUnit: 1
   FarAttackGrid: 1
-  CanMove: 1
+  CanMove: 0
   TileType: 0
   ConfigId: 0
 --- !u!1 &1627384340
@@ -2689,7 +2689,7 @@ MonoBehaviour:
   Y: 0
   CanBuildUnit: 1
   FarAttackGrid: 1
-  CanMove: 1
+  CanMove: 0
   TileType: 0
   ConfigId: 0
 --- !u!1 &1670621394
@@ -2842,7 +2842,7 @@ MonoBehaviour:
   Y: 4
   CanBuildUnit: 1
   FarAttackGrid: 1
-  CanMove: 1
+  CanMove: 0
   TileType: 0
   ConfigId: 0
 --- !u!1 &1795917499
@@ -2893,7 +2893,7 @@ MonoBehaviour:
   Y: 0
   CanBuildUnit: 1
   FarAttackGrid: 1
-  CanMove: 1
+  CanMove: 0
   TileType: 0
   ConfigId: 0
 --- !u!1 &1808697052
@@ -3235,7 +3235,7 @@ MonoBehaviour:
   Y: 4
   CanBuildUnit: 1
   FarAttackGrid: 1
-  CanMove: 1
+  CanMove: 0
   TileType: 0
   ConfigId: 0
 --- !u!1 &2072750266

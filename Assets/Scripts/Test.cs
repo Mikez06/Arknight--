@@ -16,6 +16,7 @@ public class Test : MonoBehaviour
     // Start is called before the first frame update
     async void Start()
     {
+       
         //StartCoroutine(Download());
 
         //UnityEngine.
@@ -34,6 +35,8 @@ public class Test : MonoBehaviour
         //    Debug.Log(point);
         //}       
     }
+
+    
 
     IEnumerator Download(string name)
     {
@@ -61,9 +64,39 @@ public class Test : MonoBehaviour
         }
     }
 
+    Vector2 tile;
     // Update is called once per frame
     void Update()
     {
 
+        tile = Input.mousePosition;
+        tile = new Vector2(tile.x / Screen.width, tile.y / Screen.height);
+        float x = tile.x;
+        float y = tile.y;
+        bool b1 = y - x > 0;
+        bool b2 = x + y < 1;
+        if (b1 && b2)
+        {
+            tile.x = Mathf.FloorToInt(x);
+        }
+        if (b1 && !b2)
+        {
+            tile.y = Mathf.CeilToInt(y);
+        }
+        if (!b1 && b2)
+        {
+            tile.y = Mathf.FloorToInt(y);
+        }
+        if (!b1 && !b2)
+        {
+            tile.x = Mathf.CeilToInt(x);
+        }
+        Debug.Log(tile);
+    }
+
+    private void OnGUI()
+    {
+        GUI.Label(new Rect(0,0,150,150), tile.ToString());
+        GUI.Label(new Rect(0, 200, 150, 150), Input.mousePosition.ToString());
     }
 }

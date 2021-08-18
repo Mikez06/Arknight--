@@ -104,6 +104,11 @@ public class Battle
             tile.Update();
         }
 
+        foreach (var unit in Enemys)
+        {
+            unit.UpdateCollision();
+        }
+
         foreach (var bullet in Bullets.ToArray())
         {
             bullet.Update();

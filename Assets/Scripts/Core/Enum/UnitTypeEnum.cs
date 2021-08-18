@@ -12,7 +12,7 @@ public enum UnitTypeEnum
     狙击,
     重装,
     术士,
-    妨碍,
+    辅助,
     医疗,
     特种,
 }

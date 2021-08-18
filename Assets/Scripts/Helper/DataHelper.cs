@@ -68,5 +68,18 @@ public static class DataHelper
         }
         return null;
     }
+
+    public static bool StringsEqual(this string[] self,string[] target)
+    {
+        if (self == target) return true;
+        if (self == null && target == null) return true;
+        if (self == null || target == null) return false;
+        if (self.Length != target.Length) return false;
+        for(int i = 0; i < self.Length; i++)
+        {
+            if (self[i] != target[i]) return false;
+        }
+        return true;
+    }
 }
 

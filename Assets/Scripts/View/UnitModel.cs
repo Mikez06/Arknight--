@@ -8,7 +8,6 @@ using Spine.Unity;
 
 public class UnitModel : MonoBehaviour
 {
-    public static string[] Default = new string[] { "Default" };
     public Unit Unit;
     public SkeletonAnimation SkeletonAnimation;
     protected Renderer Renderer;
@@ -25,7 +24,7 @@ public class UnitModel : MonoBehaviour
     {
         this.Unit = unit;
         SkeletonAnimation.AnimationName = "Default";
-        nowAnimations = Default;
+        nowAnimations = Unit.DefaultAnimation;
         SkeletonAnimation.SkeletonDataAsset.GetAnimationStateData().DefaultMix = 0f;
         updateState();
     }
@@ -74,7 +73,7 @@ public class UnitModel : MonoBehaviour
 
     void changeAnimation(string[] animations)
     {
-        if (animations == null||animations.Length==0)//如果模型上不存在目标动画 那么就把当前动作暂停住 一般用于怪物被击晕
+        if (animations == null || animations.Length == 0)//如果模型上不存在目标动画 那么就把当前动作暂停住 一般用于怪物被击晕
         {
             nowAnimations = animations;
             SkeletonAnimation.timeScale = 0;
@@ -85,19 +84,23 @@ public class UnitModel : MonoBehaviour
         {
             if (nowAnimations.Length >= 3)
             {
+                Debug.Log($"{Unit.UnitData.Id}播放切出动画{nowAnimations[2]} ,至{animations[0]}");
                 SkeletonAnimation.state.AddAnimation(0, nowAnimations[2], false, 0);
             }
         }
         float delay = 0;
         //切入其他状态时，若有进入动画，播放
-        if (nowAnimations != animations && animations.Length>1)
+        if (!nowAnimations.StringsEqual(animations) && animations.Length>1)
         {
+            Debug.Log($"{Unit.UnitData.Id}播放切入动画{animations[0]}");
             var _beginAnimation = SkeletonAnimation.Skeleton.Data.FindAnimation(animations[0]);
             SkeletonAnimation.state.AddAnimation(0, animations[0], false, 0);
             delay += _beginAnimation.Duration;
         }
         var nextAnimation = animations.Length > 1 ? animations[1] : animations[0];
-        SkeletonAnimation.state.AddAnimation(0, nextAnimation, nextAnimation == "Idle" || nextAnimation.EndsWith("Loop"), delay);
+        Debug.Log(nextAnimation);
+        //SkeletonAnimation.state.AddAnimation(0, nextAnimation, nextAnimation == "Move"|| nextAnimation == "Idle" || nextAnimation.EndsWith("Loop"), delay);
+        SkeletonAnimation.state.AddAnimation(0, nextAnimation, true, delay);
         nowAnimations = animations;
     }
 
@@ -114,7 +117,7 @@ public class UnitModel : MonoBehaviour
         fullDuration = 0;
         beginDuration = 0;
         //如果有状态切换，那么去判断前摇和后摇动画
-        if (animationName != lastState && animationName.Length>1)
+        if (!animationName.StringsEqual(lastState) && animationName.Length>1)
         {
             var _beginAnimation = SkeletonAnimation.Skeleton.Data.FindAnimation(animationName[0]);
             if (_beginAnimation != null)

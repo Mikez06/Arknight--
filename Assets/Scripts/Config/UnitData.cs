@@ -29,4 +29,7 @@ public class UnitData : IConfig
       public string StandPic;
       public int Rare;
       public string[] Tags;
+      public string[] IdleAnimation;
+      public string[] MoveAnimation;
+      public int MaxAnimationScale;
 }

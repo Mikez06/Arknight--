@@ -83,7 +83,6 @@ public class Skill
         {
             DoOpen();
         }
-        UpdateCooldown();
         
         if (!Casting.Finished()) //抬手期间，如果无有效目标，则取消抬手
         {
@@ -309,15 +308,15 @@ public class Skill
             float attackSpeed = 1 / Unit.Agi * 100;//攻速影响冷却时间
             ResetCooldown(attackSpeed);
             //float aniSpeed = 1;//动画表现上的攻速
-            if (duration * attackSpeed > Cooldown.value)
+            if (fullDuration * attackSpeed != Cooldown.value)
             {
                 //动画时间已经超出攻击间隔了，此时攻速被攻击间隔强制拉快，动画速度也会被强制拉快
-                attackSpeed = Cooldown.value / duration;
+                //动画时间低于攻击间隔时，动画也会被拉长
+                attackSpeed = Cooldown.value / fullDuration;
+                attackSpeed = Mathf.Clamp(attackSpeed, 0.1f, Unit.UnitData.MaxAnimationScale);
             }
             duration = duration * attackSpeed;
             fullDuration = fullDuration * attackSpeed;
-            Casting.Set(duration);
-            Debug.Log(Unit.UnitData.Id + "的" + SkillData.Id + "AttackStart,pointDelay:" + duration + ",fullDuration" + fullDuration + ",beginDuration" + beginDuration + ",Time:" + Time.time);
             Unit.Attacking.Set(fullDuration);
             Unit.State = StateEnum.Attack;
             Unit.AnimationName = SkillData.ModelAnimation;
@@ -325,6 +324,9 @@ public class Skill
             //Debug.Log(SkillData.ModelAnimation);
             Unit.UnitModel?.BreakAnimation();
             Unit.AnimationSpeed = 1 / attackSpeed * (beginDuration + fullDuration) / fullDuration;
+            duration = (duration + beginDuration) * fullDuration / (beginDuration + fullDuration);
+            Casting.Set(duration);
+            Debug.Log(Unit.UnitData.Id + "的" + SkillData.Id + "AttackStart,pointDelay:" + duration + ",fullDuration" + fullDuration + ",beginDuration" + beginDuration + ",Time:" + Time.time);
             if (duration == 0)
             {
                 Cast();

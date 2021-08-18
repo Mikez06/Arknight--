@@ -8,6 +8,8 @@ using UnityEngine;
 [System.Serializable]
 public class Unit
 {
+    public static string[] DefaultAnimation = new string[] { "Default" };
+    public static string[] StartAnimation = new string[] { "Start" };
     public Battle Battle;
     public UnitData UnitData => Database.Instance.Get<UnitData>(Id);
     public int Id;
@@ -96,7 +98,7 @@ public class Unit
     public float ScaleX = -1;
     public float TargetScaleX = -1;
 
-    public string[] AnimationName = UnitModel.Default;
+    public string[] AnimationName = Unit.DefaultAnimation;
     public string[] OverWriteAnimation;
     public float AnimationSpeed = 1;
 
@@ -234,6 +236,14 @@ public class Unit
     {
         var inAttack = !Attacking.Finished();
         Attacking.Update(SystemConfig.DeltaTime);
+        if (inAttack && Attacking.Finished())
+        {
+            Debug.Log("Ready to attack");
+        }
+        foreach (var skill in Skills)
+        {
+            skill.UpdateCooldown();
+        }
         for (int i = Skills.Count - 1; i >= 0; i--)
         {
             if (i >= Skills.Count) continue;
@@ -421,8 +431,19 @@ public class Unit
 
     public void SetStatus(StateEnum state)
     {
+        if (State != state)
+        {
+            Debug.Log($"{UnitData.Id}从 {State} 变为 {state}");
+        }
         this.State = state;
-        AnimationName = new string[] { state.ToString() };
+        if (state == StateEnum.Default)
+            AnimationName = Unit.DefaultAnimation;
+        else if (state == StateEnum.Idle)
+            AnimationName = UnitData.IdleAnimation;
+        else if (state == StateEnum.Move)
+            AnimationName = UnitData.MoveAnimation;
+        else if (state == StateEnum.Start)
+            AnimationName = Unit.StartAnimation;
         AnimationSpeed = 1;
         if (state != StateEnum.Attack && !Attacking.Finished())
         {

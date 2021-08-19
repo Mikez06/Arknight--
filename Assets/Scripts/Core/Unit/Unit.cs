@@ -209,6 +209,7 @@ public class Unit
                     Target = this,
                     Skill = skill,
                 });
+                Debug.Log($"{skill.Unit.UnitData.Id} 击杀了 {UnitData.Id}");
                 skill.Unit.Trigger(TriggerEnum.击杀);
                 Battle.TriggerDatas.Pop();
             }
@@ -491,7 +492,7 @@ public class Unit
 
     public void Heal(DamageInfo heal)
     {
-        heal.FinalDamage = heal.Attack;
+        heal.FinalDamage = heal.Attack * heal.DamageRate;
         Hp += heal.Attack;
         UnitModel.ShowHeal(heal);
         if (Hp > MaxHp)

@@ -465,7 +465,7 @@ public class Skill
                 }
                 if (SkillData.IfHeal)
                 {
-                    target.Heal(new DamageInfo() { Attack = Unit.Attack * SkillData.DamageRate });
+                    target.Heal(GetDamageInfo(target));
                 }
                 else
                 {
@@ -738,7 +738,7 @@ public class Skill
         var result = new DamageInfo()
         {
             Source = this,
-            Attack = Unit.Attack,
+            Attack = SkillData.BaseOnMaxHp ? target.MaxHp : Unit.Attack,
             DamageRate = IfAOE ? SkillData.AreaDamage : SkillData.DamageRate,
             DamageType = SkillData.DamageType,
         };

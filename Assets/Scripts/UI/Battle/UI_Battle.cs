@@ -187,6 +187,7 @@ namespace BattleUI
             if (unit != selectedUnit) clickUnit(unit);
             //if (m_state.selectedIndex != 1 && unit != selectedUnit) return;//拽错了也不许出来
             m_state.selectedIndex = 2;
+            BattleCamera.Instance.BuildUnit = selectedUnit;
             BattleCamera.Instance.StartBuild();
         }
 
@@ -263,7 +264,7 @@ namespace BattleUI
 
         void leaveUnit()
         {
-            selectedUnit.LeaveMap();
+            selectedUnit.LeaveMap(true);
             m_state.selectedIndex = 0;
         }
 

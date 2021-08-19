@@ -20,7 +20,9 @@ public class SkillData : IConfig
       public UnityEngine.Vector2Int[] AttackPoints;
       public float AttackRange;
       public DamageTypeEnum DamageType;
+      public bool IfHeal;
       public float DamageRate;
+      public bool BaseOnMaxHp;
       public int DamageCount;
       public int BurstCount;
       public float BurstDelay;
@@ -37,7 +39,6 @@ public class SkillData : IConfig
       public int MaxPower;
       public int PowerCount;
       public PowerRecoverTypeEnum PowerType;
-      public bool IfHeal;
       public string[] ModelAnimation;
       public string[] OverwriteAnimation;
       public AttackModeEnum AttackMode;

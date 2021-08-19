@@ -168,6 +168,7 @@ namespace Units
             Debug.Log("StartStart" + Time.time);
             hideBase = true;
             Battle.Cost -= GetCost();
+            Hp = MaxHp;
             Start.Set(UnitModel.GetAnimationDuration("Start"));
             CheckBlock();
             //Debug.Log("start:" + Time.time + "," + Start.value);
@@ -177,7 +178,7 @@ namespace Units
             BattleUI.UI_Battle.Instance.CreateUIUnit(this);
         }
 
-        public void LeaveMap()
+        public void LeaveMap(bool recoverPower = false)
         {
             UnitModel.gameObject.SetActive(false);
             BattleUI.UI_Battle.Instance.ReturnUIUnit(this);
@@ -188,7 +189,8 @@ namespace Units
             Battle.Map.Tiles[GridPos.x, GridPos.y].Unit = null;
             Reseting.Set(ResetTime);
             BuildTime++;
-            Battle.Cost += Cost / 2;
+            if (recoverPower)
+                Battle.Cost += Mathf.FloorToInt(UnitData.Cost * UnitData.LeaveReturn);
             foreach (var unit in StopUnits)
             {
                 unit.StopUnit = null;

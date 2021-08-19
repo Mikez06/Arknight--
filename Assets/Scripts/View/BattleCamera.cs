@@ -81,7 +81,7 @@ public class BattleCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (BuildMode)
+        if (BuildMode && BuildUnit != null)
         {
             bool canBuild = false;
             RaycastHit hit;
@@ -167,6 +167,10 @@ public class BattleCamera : MonoBehaviour
             if (grid.CanSet(BuildUnit))
             {
                 grid.MapGrid.ChangeHighLight(true);
+            }
+            else
+            {
+                grid.MapGrid.ChangeHighLight(false);
             }
         }
     }

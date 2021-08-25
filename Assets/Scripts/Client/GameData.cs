@@ -24,7 +24,8 @@ public class GameData
                 Card card = new Card()
                 {
                     UnitId = Database.Instance.GetIndex(unitConfig),
-                    Level = UnityEngine.Random.Range(1, 51),                    
+                    Level = unitConfig.Level,
+                    Upgrade = unitConfig.Upgrade,
                 };
                 Cards.Add(card);
             }

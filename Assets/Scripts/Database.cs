@@ -69,7 +69,11 @@ public class Database
     public T Get<T>(int id) where T : class, IConfig
     {
         dic.TryGetValue(typeof(T), out IConfig[] r);
-        if (r == null || id < 0 || id > r.Length) throw new Exception($"cant find {typeof(T).Name} ,id {id}");
+        if (r == null || id < 0 || id >= r.Length)
+        {
+            Debug.LogWarning($"cant find {typeof(T).Name} ,id {id}");
+            return null;
+        }
         return r[id] as T;
     }
 

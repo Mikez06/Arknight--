@@ -207,13 +207,17 @@ public class Skill
     public virtual void ResetCooldown(float attackSpeed)
     {
         //TODO 读Unit的攻击间隔变化
-        var cooldown= SkillData.Cooldown* attackSpeed;
+        var cooldown = (SkillData.Cooldown == 0 && SkillData.AttackMode == AttackModeEnum.跟随攻击 ? Unit.AttackGap : SkillData.Cooldown) * attackSpeed;
         //if (cooldown < 0.1f) cooldown = 0.1f;
         Cooldown.Set(cooldown);
     }
 
     public void RecoverPower(float count, bool withTip = false)
     {
+        if (withTip)
+        {
+            Unit.UnitModel.ShowPower(count);
+        }
         if (PowerCount == 0) return;
         if (!Opening.Finished())
             return;

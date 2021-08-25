@@ -172,5 +172,13 @@ public class UnitModel : MonoBehaviour
     {
         BattleUI.UI_Battle.Instance.ShowDamageText(heal, 1, transform.position.WorldToUI());
     }
+    public void ShowMiss()
+    {
+        BattleUI.UI_Battle.Instance.ShowDamageText("", 2, transform.position.WorldToUI());
+    }
+    public void ShowPower(float count)
+    {
+        BattleUI.UI_Battle.Instance.ShowDamageText(count.ToString("F0"), 3, transform.position.WorldToUI());
+    }
 }
 

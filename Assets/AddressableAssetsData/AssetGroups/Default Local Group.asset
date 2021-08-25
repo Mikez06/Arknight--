@@ -65,22 +65,6 @@ MonoBehaviour:
     m_Address: Assets/Bundles/UI/SkillIcon_fui
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 1666affa7c7b2d145a606f0b8bf16e8d
-    m_Address: Assets/Bundles/UI/UnitFace_atlas0
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 25119415e076cde4089899cd33c3cc74
-    m_Address: Assets/Bundles/UI/UnitFace_fui
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 5aedbca052b402940b472bd5ec6f5d0c
-    m_Address: Assets/Bundles/UI/UnitPic_atlas0
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 14001e8b550415447bced9ebf459c6bc
-    m_Address: Assets/Bundles/UI/UnitPic_fui
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 7ecc3333049816c47ba390b6226e2d23
     m_Address: Assets/Bundles/Bullet/testBullet
     m_ReadOnly: 0
@@ -107,50 +91,6 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: c2cccf093204c9e439fcf25f3c5f237e
     m_Address: Assets/Bundles/Other/HighLight
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 77983c56d6803614cb7e85ef2b35230f
-    m_Address: Assets/Bundles/Image/StandPic/12fce
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 2c6f73095909c814aba1289bbfe01f66
-    m_Address: Assets/Bundles/Image/StandPic/amiya
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 0fdbb8d164e92bd4d97094be523df11d
-    m_Address: Assets/Bundles/Image/StandPic/aprl
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: e3f766729d9cf394ab531184829697f3
-    m_Address: Assets/Bundles/Image/StandPic/chen
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 3bc4509d954fd96479c5f74c199fff2f
-    m_Address: Assets/Bundles/Image/StandPic/hsguma
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 2feeb3249e431f34a8e92ceeece4aca1
-    m_Address: Assets/Bundles/Image/StandPic/huang
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: b793d84a76e45d749ad489beb0cf17f4
-    m_Address: Assets/Bundles/Image/StandPic/jesica
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 310427ffeabd7774db50db2d5f312046
-    m_Address: Assets/Bundles/Image/StandPic/kroos
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 2f815f5a06e52be4087b69a545db2cad
-    m_Address: Assets/Bundles/Image/StandPic/mostma
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 50421295860f66542833ee479ff3e9ce
-    m_Address: Assets/Bundles/Image/StandPic/sora
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: bed983cbd0ef78844a3097859262f50e
-    m_Address: Assets/Bundles/Image/StandPic/susuro
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: dab016339dac5bd40a88551db29427b1
@@ -283,6 +223,42 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: 69a3400ff54eada47bcd2ecf7257ce7d
     m_Address: Assets/Bundles/Units/enemy_1007_slime_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3a54c38b4678dc74a8ee3a359da22d3d
+    m_Address: Assets/Bundles/Data/ModifyData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d62ee9068778b864087bfff2636088f2
+    m_Address: Assets/Bundles/Units/char_209_ardign
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8acca39ac5424d84fa53b792e3a7b513
+    m_Address: Assets/Bundles/UI/Res_atlas0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1d0e8fd42e7b3754d868b3cb43670499
+    m_Address: Assets/Bundles/UI/Res_atlas0_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2673761c5218e154584c7e38dc4a1f98
+    m_Address: Assets/Bundles/UI/Res_atlas1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 616c9cbb6979b244b9fc4ac03d761be6
+    m_Address: Assets/Bundles/UI/Res_atlas1_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fa03d744f2425b746bc9e62b344313ae
+    m_Address: Assets/Bundles/UI/Res_fui
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1155ff340820f9a47a4bc02f5e502f2a
+    m_Address: Assets/Bundles/UI/Res_atlas0_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 48444a475e93fe54c8eb048d2c7183ed
+    m_Address: Assets/Bundles/UI/Res_atlas0_3
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

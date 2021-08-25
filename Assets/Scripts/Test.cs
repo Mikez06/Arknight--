@@ -9,15 +9,18 @@ using DG.Tweening;
 using UnityEngine.AddressableAssets;
 using Pathfinding;
 using System.IO;
+using System.Text;
+using System;
+using System.Text.RegularExpressions;
 
 public class Test : MonoBehaviour
 {
-
+    public string s;
     // Start is called before the first frame update
-    async void Start()
+    void Start()
     {
-       
-        //StartCoroutine(Download());
+        //Debug.Log(UnityEngine.Networking.UnityWebRequest.EscapeURL(s).ToUpper());
+        StartCoroutine(Download());
 
         //UnityEngine.
         //Debug.Log((item["t"] as Newtonsoft.Json.Linq.JArray).GetEnumerator();
@@ -35,68 +38,50 @@ public class Test : MonoBehaviour
         //    Debug.Log(point);
         //}       
     }
-
-    
-
-    IEnumerator Download(string name)
+    IEnumerator Download()
     {
-
-        UnityEngine.Networking.UnityWebRequest wr = UnityEngine.Networking.UnityWebRequest.Get("http://" + $"static.prts.wiki/spine/char/{name}/{name}/{name}.png");
+        UnityEngine.Networking.UnityWebRequest wr = UnityEngine.Networking.UnityWebRequest.Get(s);
         yield return wr.SendWebRequest();
-        if (!string.IsNullOrEmpty( wr.error))
+        if (!string.IsNullOrEmpty(wr.error))
         {
             Debug.Log("Download Error:" + wr.error);
         }
         else
         {
-            FileStream txt = new FileStream("E:/1.txt", FileMode.Create);
-            StreamWriter sw = new StreamWriter(txt);
-            try
+            var s = (wr.downloadHandler.text);
+            Debug.Log(s);
+            string a = "<tr><td></td><td style='white-space: nowrap;'>";
+            int startIndex = s.IndexOf(a);
+            Debug.Log(startIndex);
+            int index1 = s.IndexOf('\"', startIndex + a.Length);
+            int index2 = s.IndexOf('\"', index1 + 1);
+            Debug.Log(index1 + "," + index2);
+            var next = s.Substring(index1 + 1, index2 - index1 - 1);
+            var nextUrl = $"http://prts.wiki" + next;
+            Debug.Log(nextUrl);
+            wr = UnityEngine.Networking.UnityWebRequest.Get(nextUrl);
+            yield return wr.SendWebRequest();
+            if (!string.IsNullOrEmpty(wr.error))
             {
-                sw.BaseStream.Write(wr.downloadHandler.data, 0, wr.downloadHandler.data.Length);
+                Debug.Log("Download Error:" + wr.error);
             }
-            catch (System.Exception e)
+            else
             {
-                Debug.LogError(e);
+                string path = "E://1.png";
+                FileStream txt = new FileStream(path, FileMode.Create);
+                StreamWriter sw = new StreamWriter(txt);
+                //Debug.Log(txt.Name);
+                try
+                {
+                    sw.BaseStream.Write(wr.downloadHandler.data, 0, wr.downloadHandler.data.Length);
+                }
+                catch (System.Exception e)
+                {
+                    Debug.LogError(e);
+                }
+                sw.Close();
+                txt.Close();
             }
-            sw.Close();
-            txt.Close();
         }
-    }
-
-    Vector2 tile;
-    // Update is called once per frame
-    void Update()
-    {
-
-        tile = Input.mousePosition;
-        tile = new Vector2(tile.x / Screen.width, tile.y / Screen.height);
-        float x = tile.x;
-        float y = tile.y;
-        bool b1 = y - x > 0;
-        bool b2 = x + y < 1;
-        if (b1 && b2)
-        {
-            tile.x = Mathf.FloorToInt(x);
-        }
-        if (b1 && !b2)
-        {
-            tile.y = Mathf.CeilToInt(y);
-        }
-        if (!b1 && b2)
-        {
-            tile.y = Mathf.FloorToInt(y);
-        }
-        if (!b1 && !b2)
-        {
-            tile.x = Mathf.CeilToInt(x);
-        }
-        Debug.Log(tile);
-    }
-
-    private void OnGUI()
-    {
-        GUI.Label(new Rect(0,0,150,150), tile.ToString());
-        GUI.Label(new Rect(0, 200, 150, 150), Input.mousePosition.ToString());
     }
 }

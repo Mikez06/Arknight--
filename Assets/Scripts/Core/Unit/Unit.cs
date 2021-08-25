@@ -119,10 +119,10 @@ public class Unit
     protected virtual void baseAttributeInit()
     {
         SpeedBase = UnitData.Speed;
-        HpBase = UnitData.Hp;
-        AttackBase = UnitData.Attack;
-        DefenceBase = UnitData.Defence;
-        MagicDefenceBase = UnitData.MagicDefence;
+        HpBase = UnitData.Hp + UnitData.HpEx;
+        AttackBase = UnitData.Attack + UnitData.AttackEx;
+        DefenceBase = UnitData.Defence + UnitData.DefenceEx;
+        MagicDefenceBase = UnitData.MagicDefence + UnitData.MagicDefenceEx;
         WeightBase = UnitData.Weight;
         PowerSpeed = 1f;
         AgiBase = 100;
@@ -502,10 +502,10 @@ public class Unit
     public void Damage(DamageInfo damageInfo)
     {
         float damage = damageInfo.Attack * damageInfo.DamageRate;
-        damage = damageWithDefence(damage, damageInfo.DamageType);
+        damage = damageWithDefence(damage, damageInfo.DamageType,damageInfo.DefIgnore);
         damageInfo.FinalDamage = damage;
         float damageEx = damageInfo.Attack;
-        damageEx = damageWithDefence(damageEx, damageInfo.DamageType);
+        damageEx = damageWithDefence(damageEx, damageInfo.DamageType, 0);
         if (damage > damageEx * 1.5f) UnitModel.ShowCrit(damageInfo);
         if (!damageInfo.Avoid)
         {
@@ -518,16 +518,18 @@ public class Unit
         }
     }
 
-    float damageWithDefence(float baseDamage,DamageTypeEnum damageType)
+    float damageWithDefence(float baseDamage,DamageTypeEnum damageType,float defIgnore)
     {
         switch (damageType)
         {
             case DamageTypeEnum.Normal:
-                baseDamage -= Defence;
+                var defence = Mathf.Max(0, Defence - defIgnore);
+                baseDamage -= defence;
                 if (baseDamage < 0) baseDamage = 1;
                 break;
             case DamageTypeEnum.Magic:
-                baseDamage = baseDamage * (100 - MagicDefence) / 100;
+                var magDefence = Mathf.Max(0, MagicDefence - defIgnore);
+                baseDamage = baseDamage * (100 - magDefence) / 100;
                 break;
         }
         return baseDamage;

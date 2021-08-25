@@ -18,7 +18,7 @@ namespace Modifys
 
         public void Modify(DamageInfo damageInfo)
         {
-            if (Battle.Random.NextDouble() < Chance)
+            if (Chance >= 1 || Battle.Random.NextDouble() < Chance)
             {
                 damageInfo.DamageRate *= Rate;
             }

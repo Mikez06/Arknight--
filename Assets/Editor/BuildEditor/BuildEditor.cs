@@ -46,33 +46,31 @@ public class BuildEditor
 
         SetAssetMark(PathHelper.EffectPath, null);
         SetAssetMark(PathHelper.OtherPath, null);
-        SetAssetMark(PathHelper.SpritePath, null);
-
-        //SetAssetMark(PathHelper.ModelPath, "Default");
-
-        //SetAssetMark(PathHelper.EffectPath, "Default");
+        SetStandPic();
+        Debug.Log("重新标记完成!");
     }
-    private static void SetFairyGUI()
-    {
-        string end = "_fui.bytes";
-        List<string> paths = EditorResHelper.GetAllResourcePath(PathHelper.UIPath, true);
-        foreach (var path in paths)
-        {
-            if (path.EndsWith(end))
-            {
-                string start = path.Substring(0, path.Length - end.Length);
-                //Debug.Log(start);
-                foreach (var path0 in paths)
-                {
-                    if (path0.StartsWith(start))
-                    {
-                        string path1 = path0.Replace('\\', '/');
-                        UnityEngine.Object go = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path1);
 
-                        SetBundle(path1, Path.Combine(PathHelper.UIPath, Path.GetFileNameWithoutExtension(start) + (path0 == path ? "desc" : "res")));
-                    }
+    static void SetStandPic()
+    {
+        List<string> paths = EditorResHelper.GetAllResourcePath(PathHelper.SpritePath, true);
+        //var group = groupName == null ? setting.DefaultGroup : setting.FindGroup(groupName);
+        var group = setting.FindGroup("StandPic");
+        var unitDatas = Database.Instance.GetAll<UnitData>().Select(x => x.StandPic).ToList();
+        foreach (string path in paths)
+        {
+            string path1 = path.Replace('\\', '/');
+            var guid = AssetDatabase.AssetPathToGUID(path1);
+            if (unitDatas.Contains(Path.GetFileNameWithoutExtension(path1)))
+            {
+                var refence = setting.CreateAssetReference(guid);
+                var entry = setting.CreateOrMoveEntry(guid, group);
+                if (entry.address.LastIndexOf(".") != -1)
+                {
+                    entry.SetAddress(entry.address.Substring(0, entry.address.LastIndexOf(".")));
                 }
             }
+            else
+                setting.RemoveAssetEntry(guid);
         }
     }
 

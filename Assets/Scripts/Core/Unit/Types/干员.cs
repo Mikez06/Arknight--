@@ -49,8 +49,8 @@ namespace Units
         protected override void baseAttributeInit()
         {
             base.baseAttributeInit();
-            CostBase = UnitData.Cost;
-            ResetTimeBase = UnitData.ResetTime;
+            CostBase = UnitData.Cost + UnitData.CostEx;
+            ResetTimeBase = UnitData.ResetTime + UnitData.ResetTimeEx;
         }
 
         public override void Refresh()

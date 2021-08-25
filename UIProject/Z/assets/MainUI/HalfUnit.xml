@@ -3,7 +3,7 @@
   <controller name="typeControl" pages="8,,0,,1,,2,,3,,4,,5,,6,,7," selected="0"/>
   <controller name="seletd" pages="0,,1," selected="0"/>
   <displayList>
-    <loader id="n0_kbte" name="halfPic" xy="5,5" size="180,360" fill="scale"/>
+    <loader id="n0_kbte" name="halfPic" xy="5,9" size="180,371" url="ui://kera0i3huizypa" vAlign="bottom" fill="scaleMatchWidth"/>
     <image id="n16_kbte" name="n16" src="kbtef" fileName="未标题-1.png" xy="5,5" size="180,400"/>
     <image id="n15_kbte" name="n15" src="kbtee" fileName="图层 3.png" xy="5,212" size="180,153" color="#ffff00"/>
     <graph id="n7_kbte" name="n7" xy="4,5" size="50,50" type="rect" lineSize="0" fillColor="#99000000"/>

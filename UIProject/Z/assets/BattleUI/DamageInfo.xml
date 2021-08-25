@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="0,0">
-  <controller name="type" pages="0,,1,,2," selected="2">
+  <controller name="type" pages="0,,1,,2,,3," selected="3">
     <remark page="0" value="crit"/>
     <remark page="1" value="heal"/>
     <remark page="2" value="miss"/>
+    <remark page="3" value="Power"/>
   </controller>
   <displayList>
-    <text id="n55_n3en" name="number" xy="0,0" pivot="0.5,0.5" anchor="true" size="89,48" fontSize="35" color="#ff9900" align="center" vAlign="middle" vars="true" text="Miss!">
-      <gearColor controller="type" pages="0,1,2" values="#ff0000,#000000|#00ff00,#000000|#ff9900,#000000"/>
-      <gearText controller="type" pages="0,1,2" values="{n=1123}!|+{n=1123}|Miss!"/>
+    <text id="n55_n3en" name="number" xy="0,0" pivot="0.5,0.5" anchor="true" size="104,48" fontSize="35" color="#66cc99" align="center" vAlign="middle" vars="true" text="+{n=1123}">
+      <gearColor controller="type" pages="0,1,2,3" values="#ff0000,#000000|#00ff00,#000000|#ff9900,#000000|#66cc99,#000000"/>
+      <gearText controller="type" pages="0,1,2,3" values="{n=1123}!|+{n=1123}|Miss!|+{n=1123}"/>
     </text>
   </displayList>
   <transition name="show">

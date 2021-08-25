@@ -25,7 +25,7 @@ namespace BattleUI
             m_bar.value = Unit.Reseting.value;
             m_resetTime.text = Unit.Reseting.value.ToString("F1");
             m_canUse.selectedIndex = Unit.Useable() ? 0 : 1;
-            m_headIcon.m_headIcon.icon = "ui://UnitFace/" + Unit.UnitData.HeadIcon;
+            m_headIcon.m_headIcon.icon = "ui://Res/" + Unit.UnitData.HeadIcon;
         }
     }
 }

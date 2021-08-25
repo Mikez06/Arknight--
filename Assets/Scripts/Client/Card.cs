@@ -8,6 +8,7 @@ public class Card
 {
     public UnitData Config => Database.Instance.Get<UnitData>(UnitId);
     public int UnitId;
+    public int Upgrade;
     public int Level;
 
     public int UsingSkill;

@@ -328,8 +328,13 @@ namespace BattleUI
         {
             int showDamage = Mathf.RoundToInt(Mathf.Abs(damage.FinalDamage));
             if (showDamage == 0) return;
+            ShowDamageText(showDamage.ToString(), type, pos);
+        }
+
+        public void ShowDamageText(string text,int type,Vector2 pos)
+        {
             var damageInfo = UIPackage.CreateObjectFromURL(UI_DamageInfo.URL) as UI_DamageInfo;
-            damageInfo.m_number.SetVar("n", showDamage.ToString()).FlushVars();
+            damageInfo.m_number.SetVar("n", text).FlushVars();
             damageInfo.m_type.selectedIndex = type;
             m_DamageInfo.AddChild(damageInfo);
             damageInfo.position = pos;

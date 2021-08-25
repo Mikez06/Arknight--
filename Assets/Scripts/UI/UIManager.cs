@@ -28,8 +28,9 @@ public class UIManager : MonoBehaviour
         LoadPackge("BattleUI");
         LoadPackge("MainUI");
         LoadPackge("SkillIcon");
-        LoadPackge("UnitFace");
-        LoadPackge("UnitPic");
+        LoadPackge("Res");
+        //LoadPackge("UnitFace");
+        //LoadPackge("UnitPic");
     }
 
     private void Start()

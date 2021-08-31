@@ -58,12 +58,21 @@ public class Map
         exactStartPoint = StartEndModifier.Exactness.ClosestOnNode,
         exactEndPoint = StartEndModifier.Exactness.ClosestOnNode,
     };
-    public List<Vector3> FindPath(Vector3 start, Vector3 end)
+    RaycastModifier raycastModifier = new RaycastModifier()
+    {
+        useGraphRaycasting = true,
+        useRaycasting = false,
+    };
+    public List<Vector3> FindPath(Vector3 start, Vector3 end,bool raycastModify)
     {
         var p = ABPath.Construct(start, end);
         AstarPath.StartPath(p);
         p.BlockUntilCalculated();
+
         startEndModifier.Apply(p);
+
+        if (raycastModifier) raycastModifier.Apply(p);
+
         var result = new List<Vector3>(p.vectorPath);
         return result;
     }

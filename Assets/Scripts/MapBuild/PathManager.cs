@@ -20,10 +20,14 @@ public class PathManager : MonoBehaviour
             int index = 0;
             foreach (Transform tr in onePath.transform)
             {
+                var point = tr.GetComponent<BuildPathPoint>().PathPoint;
+                if (point == null) continue;
                 l.Add(new PathPoint()
                 {
                     Pos = tr.position,
-                    Delay = onePath.Delays.Length < index ? onePath.Delays[index] : 0,
+                    Delay = point.Delay,
+                    DirectMove=point.DirectMove,
+                    HideMove=point.DirectMove,
                 });
                 index++;
             }
@@ -36,6 +40,7 @@ public class PathManager : MonoBehaviour
     }
 }
 
+[System.Serializable]
 public class PathPoint
 {
     public Vector3 Pos;

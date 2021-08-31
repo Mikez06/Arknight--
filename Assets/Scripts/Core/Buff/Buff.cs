@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+[System.Serializable]
 public class Buff
 {
     public BuffData BuffData => Database.Instance.Get<BuffData>(Id);
     public int Id;
 
+    [System.NonSerialized]
     public Unit Unit;
     public Skill Skill;
     protected Battle Battle => Skill.Unit.Battle;

@@ -202,7 +202,7 @@ namespace Units
 
         void findNewPath()
         {
-            TempPath = Battle.Map.FindPath(Position, NextPoint);
+            TempPath = Battle.Map.FindPath(Position, NextPoint, PathPoints[NowPathPoint].DirectMove);
             for (int i = 0; i < TempPath.Count; i++)
             {
                 if (i != 0 && i != TempPath.Count - 1)

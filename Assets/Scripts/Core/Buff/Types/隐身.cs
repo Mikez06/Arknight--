@@ -11,6 +11,7 @@ namespace Buffs
         public override void Update()
         {
             base.Update();
+            //Log.Debug($"{Unit.UnitData.Id}隐身了");
             Unit.IfHide = true;
         }
     }

@@ -138,7 +138,7 @@ public class Skill
         if (SkillData.ProfessionLimit != UnitTypeEnum.无 && SkillData.ProfessionLimit != target.UnitData.Profession) return false;
         if (!SkillData.AttackFly && target.Height > 0) return false;
         if (!target.Alive()) return false;
-        if (SkillData.AntiHide && target.IfHide) return false;
+        if (!SkillData.AntiHide && target.IfHide) return false;
         return true;
     }
 
@@ -208,7 +208,7 @@ public class Skill
     {
         //TODO 读Unit的攻击间隔变化
         var cooldown = (SkillData.Cooldown == 0 && SkillData.AttackMode == AttackModeEnum.跟随攻击 ? Unit.AttackGap : SkillData.Cooldown) * attackSpeed;
-        Debug.Log(SkillData.Id + "cooldown:" + cooldown);
+        //Debug.Log(SkillData.Id + "cooldown:" + cooldown);
         //if (cooldown < 0.1f) cooldown = 0.1f;
         Cooldown.Set(cooldown);
     }

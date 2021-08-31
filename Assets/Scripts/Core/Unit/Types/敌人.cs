@@ -104,7 +104,7 @@ namespace Units
             if (UnitData.Height > 0) return;//飞行单位无法被阻挡
             if (StopUnit != null) return;
             //虽然不知道为啥，但是判断阻挡时和目标不是相切的,加上一个默认的缓冲值
-            var blockUnits = Battle.FindAll(Position2, UnitData.Radius + StopExCheck, 0).Select(x => x as Units.干员).Where(x => (x as Units.干员).CanStop(this)).ToList();
+            var blockUnits = Battle.FindAll(Position2, UnitData.Radius + StopExCheck, 1).Select(x => x as Units.干员).Where(x => (x as Units.干员).CanStop(this)).ToList();
             blockUnits.OrderBy(x => (x.Position2 - Position2).magnitude);
             if (blockUnits.Count > 0)
             {

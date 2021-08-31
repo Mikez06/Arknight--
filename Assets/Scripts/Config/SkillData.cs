@@ -49,9 +49,9 @@ public class SkillData : IConfig
       public float[] BuffData;
       public float? BuffLastTime;
       public System.Collections.Generic.Dictionary<string,object> Data;
-      public string StartEffect;
-      public string HitEffect;
-      public string EffectEffect;
+      public int? StartEffect;
+      public int? HitEffect;
+      public int? EffectEffect;
       public string Icon;
       public bool AntiHide;
 }

@@ -65,7 +65,7 @@ public class Unit
 
     public float PowerSpeed;
 
-    public float Team;
+    public int Team;
 
     public int Weight;
     public int WeightBase, WeightAdd;

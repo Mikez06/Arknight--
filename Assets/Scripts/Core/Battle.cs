@@ -203,7 +203,7 @@ public class Battle
     public HashSet<Unit> FindAll(Vector2Int point,int team,bool aliveOnly=true)
     {
         var result = new HashSet<Unit>();
-        if (team == 0)
+        if (team % 2 == 1)
         {
             var target = Map.Tiles[point.x, point.y].Unit;
             if (target != null)
@@ -212,7 +212,7 @@ public class Battle
                     result.Add(target);
             }
         }
-        else
+        else if ((team >> 1) % 2 == 1)
         {
             foreach (var unit in UnitMap[point.x, point.y])
             {
@@ -229,7 +229,7 @@ public class Battle
         foreach (var point in points)
         {
             var targetPoint = point;
-            if (team == 0)
+            if (team  % 2 == 1)
             {
                 var target = Map.Tiles[targetPoint.x, targetPoint.y].Unit;
                 if (target != null)
@@ -238,7 +238,7 @@ public class Battle
                         result.Add(target);
                 }
             }
-            else
+            else if ((team >> 1) % 2 == 1)
             {
                 foreach (var unit in UnitMap[targetPoint.x, targetPoint.y])
                 {
@@ -253,7 +253,7 @@ public class Battle
     public HashSet<Unit> FindAll(Vector2 pos, float radius, int team)
     {
         HashSet<Unit> result = new HashSet<Unit>();
-        if (team == 0)
+        if (team%2 == 1)
         {
             var units = PlayerUnits.Where(x => x.InputTime >= 0 && x.Alive()).ToList();
             foreach (var unit in units) //需要优化！
@@ -262,7 +262,7 @@ public class Battle
                     ) result.Add(unit);
             }
         }
-        else
+        else if ((team >> 1) % 2 == 1)
         {
             foreach (var unit in Enemys) //需要优化！
             {

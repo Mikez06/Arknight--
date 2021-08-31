@@ -134,7 +134,7 @@ public class Skill
     {
         if (target == null) return false;
         if (SkillData.SelfOnly && target != Unit) return false;
-        if (SkillData.TargetTeam != target.Team) return false;
+        if ((SkillData.TargetTeam >> target.Team) % 2 == 0) return false;
         if (SkillData.ProfessionLimit != UnitTypeEnum.无 && SkillData.ProfessionLimit != target.UnitData.Profession) return false;
         if (!SkillData.AttackFly && target.Height > 0) return false;
         if (!target.Alive()) return false;
@@ -341,8 +341,8 @@ public class Skill
 
         if (SkillData.StartEffect != null)
         {
-            var ps = EffectManager.Instance.GetEffect(SkillData.StartEffect);
-            ps.transform.position = Unit.UnitModel.SkeletonAnimation.transform.position;
+            var ps = EffectManager.Instance.GetEffect(SkillData.StartEffect.Value);
+            ps.transform.position = Unit.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.StartEffect.Value).BindPoint);
             ps.transform.localScale = new Vector3(Unit.TargetScaleX, 1, 1);
             ps.PS.Play();
         }
@@ -433,8 +433,8 @@ public class Skill
     {
         if (SkillData.HitEffect != null)
         {
-            var ps = EffectManager.Instance.GetEffect(SkillData.HitEffect);
-            ps.transform.position = target.UnitModel.SkeletonAnimation.transform.position;
+            var ps = EffectManager.Instance.GetEffect(SkillData.HitEffect.Value);
+            ps.transform.position = target.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.HitEffect.Value).BindPoint);
             ps.PS.Play();
         }
         addBuff(target);
@@ -452,8 +452,8 @@ public class Skill
                 {
                     if (SkillData.EffectEffect != null)
                     {
-                        var ps = EffectManager.Instance.GetEffect(SkillData.EffectEffect);
-                        ps.transform.position = target.UnitModel.SkeletonAnimation.transform.position;
+                        var ps = EffectManager.Instance.GetEffect(SkillData.EffectEffect.Value);
+                        ps.transform.position = target.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.EffectEffect.Value).BindPoint);
                         ps.PS.Play();
                     }
                     t.Damage(GetDamageInfo(target, t != target));
@@ -464,8 +464,8 @@ public class Skill
             {
                 if (SkillData.EffectEffect != null)
                 {
-                    var ps = EffectManager.Instance.GetEffect(SkillData.EffectEffect);
-                    ps.transform.position = target.UnitModel.SkeletonAnimation.transform.position;
+                    var ps = EffectManager.Instance.GetEffect(SkillData.EffectEffect.Value);
+                    ps.transform.position = target.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.EffectEffect.Value).BindPoint);
                     ps.PS.Play();
                 }
                 if (SkillData.IfHeal)
@@ -519,14 +519,19 @@ public class Skill
                 tempTargets.AddRange(Battle.FindAll(AttackPoints, SkillData.TargetTeam));
             }
         }
-        tempTargets.RemoveAll(x => !CanUseTo(x));
-        if (tempTargets.Count > 0)
+        orderTargets(tempTargets);
+        return tempTargets;
+    }
+
+    protected void orderTargets(List<Unit> targets)
+    {
+        targets.RemoveAll(x => !CanUseTo(x));
+        if (targets.Count > 0)
         {
             //首先计算出所有目标的仇恨优先级，然后再选出攻击个数的实际目标
-            SortTarget(tempTargets);
-            FilterTarget(tempTargets);
+            SortTarget(targets);
+            FilterTarget(targets);
         }
-        return tempTargets;
     }
 
     protected virtual void SortTarget(List<Unit> targets)
@@ -658,11 +663,13 @@ public class Skill
     {
         if (SkillData.DamageCount != 0)
         {
+            Debug.Log($"{SkillData.Id} ,{targets.Count}");
             int targetCount = GetTargetCount();
             for (int i = targets.Count() - 1; i >= targetCount; i--)
             {
                 targets.RemoveAt(i);
             }
+            Debug.Log($"{SkillData.Id} :{targets.Count}");
         }
     }
 

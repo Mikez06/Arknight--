@@ -21,6 +21,7 @@ namespace Skills
                 if (u1.StopUnit != null)
                     Targets.Add(u1.StopUnit);
             }
+            orderTargets(Targets);
         }
 
         protected override void SortTarget(List<Unit> targets)

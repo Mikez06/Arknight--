@@ -261,6 +261,10 @@ MonoBehaviour:
     m_Address: Assets/Bundles/UI/Res_atlas0_3
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: f67ea17d8fde380439781023bfc51b50
+    m_Address: Assets/Bundles/Data/EffectData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

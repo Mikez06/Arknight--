@@ -31,11 +31,11 @@ public class EffectManager : MonoBehaviour
         
     }
 
-    public Effect GetEffect(string name)
+    public Effect GetEffect(int id)
     {
         //ResourcesManager.Instance.LoadBundle(PathHelper.EffectPath + name);
         //var result = pool.Spawn(ResourcesManager.Instance.GetAsset<GameObject>(PathHelper.EffectPath + name, name).GetComponent<Effect>(), Vector3.zero, null);
-        var result = pool.Spawn(ResHelper.GetAsset<GameObject>(PathHelper.EffectPath + name).GetComponent<Effect>(), Vector3.zero, Quaternion.identity);//.GetComponent<Effect>();
+        var result = pool.Spawn(ResHelper.GetAsset<GameObject>(PathHelper.EffectPath + Database.Instance.Get<EffectData>(id).Prefab).GetComponent<Effect>(), Vector3.zero, Quaternion.identity);//.GetComponent<Effect>();
         return result;
     }
 

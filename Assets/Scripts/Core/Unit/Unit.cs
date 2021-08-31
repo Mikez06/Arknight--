@@ -126,7 +126,7 @@ public class Unit
         WeightBase = UnitData.Weight;
         PowerSpeed = 1f;
         AgiBase = 100;
-        AttackGapBase = 0;
+        AttackGapBase = UnitData.AttackGap;
         Height = UnitData.Height;
     }
 
@@ -146,7 +146,7 @@ public class Unit
         {
             buff.Apply();
         }
-        Speed = (SpeedBase + SpeedAdd) * (1 + SpeedRate);
+        Speed = (SpeedBase + SpeedAdd) * (1 + SpeedRate) / 2;
         if (Speed < 0) Speed = 0;
         MaxHp= ((HpBase + HpAdd) * (1 + HpRate) + HpAddFin) * (1 + HpRateFin);
         Attack = ((AttackBase + AttackAdd) * (1 + AttackRate) + AttackAddFin) * (1 + AttackRateFin);
@@ -518,21 +518,21 @@ public class Unit
         }
     }
 
-    float damageWithDefence(float baseDamage,DamageTypeEnum damageType,float defIgnore)
+    float damageWithDefence(float damage,DamageTypeEnum damageType,float defIgnore)
     {
         switch (damageType)
         {
             case DamageTypeEnum.Normal:
                 var defence = Mathf.Max(0, Defence - defIgnore);
-                baseDamage -= defence;
-                if (baseDamage < 0) baseDamage = 1;
+                damage = Mathf.Max(damage * 0.05f, damage - defence);//抛光系数0.05
+                if (damage < 0) damage = 1;
                 break;
             case DamageTypeEnum.Magic:
                 var magDefence = Mathf.Max(0, MagicDefence - defIgnore);
-                baseDamage = baseDamage * (100 - magDefence) / 100;
+                damage = Mathf.Max(damage * 0.05f, damage * (100 - magDefence) / 100);
                 break;
         }
-        return baseDamage;
+        return damage;
     }
 
     public Skill GetNowAttackSkill()

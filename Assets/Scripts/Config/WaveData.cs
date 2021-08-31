@@ -5,4 +5,6 @@ public class WaveData : IConfig
       public int? UnitId;
       public float Delay;
       public string Path;
+      public float OffsetX;
+      public float OffetsetY;
 }

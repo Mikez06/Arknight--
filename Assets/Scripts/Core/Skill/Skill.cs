@@ -208,6 +208,7 @@ public class Skill
     {
         //TODO 读Unit的攻击间隔变化
         var cooldown = (SkillData.Cooldown == 0 && SkillData.AttackMode == AttackModeEnum.跟随攻击 ? Unit.AttackGap : SkillData.Cooldown) * attackSpeed;
+        Debug.Log(SkillData.Id + "cooldown:" + cooldown);
         //if (cooldown < 0.1f) cooldown = 0.1f;
         Cooldown.Set(cooldown);
     }

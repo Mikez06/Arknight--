@@ -17,10 +17,13 @@ public class Test : MonoBehaviour
 {
     public string s;
     // Start is called before the first frame update
-    void Start()
+    async void Start()
     {
+        await Addressables.InitializeAsync().Task;
+        var a = await Addressables.LoadAssetAsync<UnityEngine.Object>(PathHelper.SpritePath + "spot").Task;
+        Debug.Log(a.GetType());
         //Debug.Log(UnityEngine.Networking.UnityWebRequest.EscapeURL(s).ToUpper());
-        StartCoroutine(Download());
+        //StartCoroutine(Download());
 
         //UnityEngine.
         //Debug.Log((item["t"] as Newtonsoft.Json.Linq.JArray).GetEnumerator();

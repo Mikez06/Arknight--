@@ -83,9 +83,9 @@ MonoBehaviour:
     m_ClassName: 
   m_ActivePlayerDataBuilderIndex: 3
   m_DataBuilders:
+  - {fileID: 11400000, guid: d640d9250b4779a48be2fc657f745564, type: 2}
   - {fileID: 11400000, guid: 688f198fcb2c2994cb48b8b0d453531c, type: 2}
   - {fileID: 11400000, guid: e34d8a5cf3ad0a548936e95abe710b46, type: 2}
-  - {fileID: 11400000, guid: d640d9250b4779a48be2fc657f745564, type: 2}
   - {fileID: 11400000, guid: 09e7fc4aa78da0541b2e52f354c65adc, type: 2}
   m_ActiveProfileId: 6e51cc554d9b0e943b2b5a7f14a33018
   m_HostingServicesManager:

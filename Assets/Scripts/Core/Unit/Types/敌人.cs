@@ -23,13 +23,13 @@ namespace Units
         public const float StopExCheck = 0.2f, TempArriveDistance = 0.1f;
         public 干员 StopUnit;
 
-        public WaveData WaveConfig => Database.Instance.Get<WaveData>(WaveId);
+        public WaveData WaveData => Database.Instance.Get<WaveData>(WaveId);
         public int WaveId;
         /// <summary>
         /// 当前走到第几个目标点
         /// </summary>
         public int NowPathPoint;
-        protected Vector3 NextPoint => PathPoints[NowPathPoint + 1].Pos;
+        protected Vector3 NextPoint => GetPoint(NowPathPoint + 1);
         public CountDown PathWaiting;
         public List<PathPoint> PathPoints;
         public bool NeedResetPath;
@@ -44,11 +44,11 @@ namespace Units
         {
             base.Init();
             Team = 1;
-            PathPoints = PathManager.Instance.GetPath(WaveConfig.Path);
-            Position = PathPoints[0].Pos;
+            PathPoints = PathManager.Instance.GetPath(WaveData.Path);
+            Position = GetPoint(0);
 
             findNewPath();
-            ScaleX = TargetScaleX = (PathPoints[NowPathPoint + 1].Pos.x - Position.x) > 0 ? 1 : -1;
+            ScaleX = TargetScaleX = (GetPoint(NowPathPoint + 1).x - Position.x) > 0 ? 1 : -1;
             SetStatus(StateEnum.Idle);
             BattleUI.UI_Battle.Instance.CreateUIUnit(this);
         }
@@ -120,7 +120,7 @@ namespace Units
                 if (TempIndex == TempPath.Count - 1) 
                 {
                     NowPathPoint++;
-                    if (NowPathPoint != WaveConfig.Path.Length)//抵达临时目标点，如果该目标点不是终点,重新找去下一个点的路
+                    if (NowPathPoint != WaveData.Path.Length)//抵达临时目标点，如果该目标点不是终点,重新找去下一个点的路
                     {
                         TempPath = null;
                     }
@@ -169,7 +169,7 @@ namespace Units
                 {
                     NowPathPoint++;
 
-                    if (NowPathPoint == WaveConfig.Path.Length)
+                    if (NowPathPoint == WaveData.Path.Length)
                     {
                         //破门了
                         Battle.DoDamage(UnitData.Damage);
@@ -203,10 +203,22 @@ namespace Units
         void findNewPath()
         {
             TempPath = Battle.Map.FindPath(Position, NextPoint);
+            for (int i = 0; i < TempPath.Count; i++)
+            {
+                if (i != 0 && i != TempPath.Count - 1)
+                {
+                    TempPath[i] += new Vector3(WaveData.OffsetX, 0, WaveData.OffetsetY);
+                }
+            }
             //var log = "";
             //foreach (var p in TempPath) log += p.ToString() + ",";
             //Debug.Log($"Path:{log}");
             TempIndex = 0;
+        }
+
+        Vector3 GetPoint(int index)
+        {
+            return PathPoints[index].Pos + new Vector3(WaveData.OffsetX, 0, WaveData.OffetsetY);
         }
 
         public float distanceToFinal()
@@ -214,7 +226,7 @@ namespace Units
             float result = 0;
             for (int i = NowPathPoint + 1; i < PathPoints.Count-1; i++)
             {
-                result += (PathPoints[i].Pos - PathPoints[i + 1].Pos).magnitude;
+                result += (GetPoint(i) - GetPoint(i + 1)).magnitude;
             }
             for (int i = TempIndex + 1; i < TempPath.Count - 1; i++)
             {

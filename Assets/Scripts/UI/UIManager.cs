@@ -74,13 +74,9 @@ public class UIManager : MonoBehaviour
         if (LoadedPackages.Contains(PackageName))
             return;
         LoadedPackages.Add(PackageName);
-#if !UNITY_EDITOR
-        UIPackage.AddPackage(PackagePath + PackageName);
-#else
         var operation = Addressables.LoadAssetAsync<TextAsset>(PathHelper.UIPath + PackageName + "_fui");
         var bytes = operation.WaitForCompletion().bytes;
         UIPackage.AddPackage(bytes, PackageName, load);
-#endif
     }
 
     object load(string name, string extension, System.Type type, out DestroyMethod destroyMethod)

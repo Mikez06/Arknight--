@@ -40,4 +40,6 @@ public class PathPoint
 {
     public Vector3 Pos;
     public float Delay;
+    public bool DirectMove;
+    public bool HideMove;
 }

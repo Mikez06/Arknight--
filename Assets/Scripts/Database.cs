@@ -10,7 +10,7 @@ using UnityEngine.AddressableAssets;
 public class Database
 {
     public static Database Instance => instance == null ?
-#if UNITY_EDITOR
+#if !UNITY_EDITOR
         instance = new Database().Init1()
 #else
             instance = new Database()
@@ -131,6 +131,7 @@ public class Database
         //var text= operation.WaitForCompletion().text;
         await operation.Task;
         var text = operation.Result.text;
+        if (string.IsNullOrEmpty(text)) return;
         var arr = text.Split('\n');
         IConfig[] values = new IConfig[arr.Length];
         for (int i = 0; i < arr.Length; i++)
@@ -138,11 +139,7 @@ public class Database
             try
             {
                 values[i] = JsonHelper.FromJson<T>(arr[i]);
-                if (values[i] is BuffData buffData && buffData.Id == "恢复")
-                {
-                    Debug.Log(111);
-                }
-                if (values[i] == null) throw new Exception();
+                if (values[i] == null) Debug.LogError($"{name}\n {arr[i]}");
             }
             catch (Exception e)
             {

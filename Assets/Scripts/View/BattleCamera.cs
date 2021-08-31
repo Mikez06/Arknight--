@@ -104,7 +104,7 @@ public class BattleCamera : MonoBehaviour
                 }
                 else
                 {
-                    grid = null;
+                    lastGrid = null;
                     HideUnitAttackArea();
                     g.transform.position = hit.point - new Vector3(0, 0.5f, 0);
                 }

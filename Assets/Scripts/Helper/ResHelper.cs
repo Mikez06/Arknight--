@@ -13,9 +13,16 @@ public class ResHelper
     {
         var op = Addressables.LoadAssetAsync<T>(path);
         op.WaitForCompletion();
-        var result= op.Task.Result;
-        Addressables.ReleaseInstance(op);
-        return result;
+        if (op.IsDone)
+        {
+            var result = op.Result;
+            //Addressables.Release(op);
+            return result;
+        }
+        else
+        {
+            throw new Exception();
+        }
     }
 
     public static async Task<T> GetAssetAsync<T>(string path)
@@ -29,7 +36,7 @@ public class ResHelper
     {
         var op = Addressables.InstantiateAsync(path);
         op.WaitForCompletion();
-        return op.Task.Result;
+        return op.Result;
     }
 
     public static async Task<GameObject> InstantiateAsyncImmediate(string path)

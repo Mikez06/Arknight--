@@ -304,7 +304,7 @@ public class Skill
 
         if (SkillData.ModelAnimation == null)
         {
-            Debug.Log(Unit.UnitData.Id + "的" + SkillData.Id + "没有动画,直接使用");
+            //Debug.Log(Unit.UnitData.Id + "的" + SkillData.Id + "没有动画,直接使用");
             ResetCooldown(1);
             Cast();
         }

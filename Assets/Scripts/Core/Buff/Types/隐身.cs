@@ -22,12 +22,16 @@ namespace Buffs
             base.Update();
             if (Unit.IfStoped())
             {
+                LastingEffect?.gameObject.SetActive(false);
                 rehide.Set(rehideTime);
             }
             rehide.Update(SystemConfig.DeltaTime);
             //Log.Debug($"{Unit.UnitData.Id}隐身了");
             if (rehide.Finished())
+            {
+                LastingEffect?.gameObject.SetActive(true);
                 Unit.IfHide = true;
+            }
         }
     }
 }

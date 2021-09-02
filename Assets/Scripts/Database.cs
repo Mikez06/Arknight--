@@ -10,7 +10,7 @@ using UnityEngine.AddressableAssets;
 public class Database
 {
     public static Database Instance => instance == null ?
-#if !UNITY_EDITOR
+#if UNITY_EDITOR
         instance = new Database().Init1()
 #else
             instance = new Database()

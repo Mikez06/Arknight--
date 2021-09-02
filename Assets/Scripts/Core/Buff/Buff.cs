@@ -17,9 +17,17 @@ public class Buff
 
     public CountDown Duration = new CountDown();
 
+    public Effect LastingEffect;
+
     public virtual void Init()
     {
         updateLastTime();
+        if (BuffData.LastingEffect.HasValue)
+        {
+            LastingEffect = EffectManager.Instance.GetEffect(BuffData.LastingEffect.Value);
+            LastingEffect.transform.SetParent(Unit.UnitModel.transform);
+            LastingEffect.transform.position = Unit.UnitModel.GetPoint(Database.Instance.Get<EffectData>(BuffData.LastingEffect.Value).BindPoint);
+        }
     }
 
     public virtual void Apply()
@@ -47,8 +55,16 @@ public class Buff
         Duration.Update(SystemConfig.DeltaTime);
         if (Duration.Finished())
         {
-            Unit.RemoveBuff(this);
+            Finish();
         }
     }
 
+    public void Finish()
+    {
+        Unit.RemoveBuff(this);
+        if (LastingEffect != null)
+        {
+            EffectManager.Instance.ReturnEffect(LastingEffect);
+        }
+    }
 }

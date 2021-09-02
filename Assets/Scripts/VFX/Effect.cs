@@ -15,7 +15,7 @@ public class Effect : MonoBehaviour
     void Update()
     {
 
-        if (PS.isStopped)
+        if (PS != null && PS.isStopped)
         {
             EffectManager.Instance.ReturnEffect(this);
         }

@@ -8,3 +8,5 @@
 {"Id":"隐身","Type":"隐身","LastingEffect":3,"Data":{"HideTime":1}}
 {"Id":"缴械","Type":"缴械"}
 {"Id":"斑点闪避","Type":"闪避","LastTime":3,"Data":{"Chance":0.3,"AvoidType":"Normal"}}
+{"Id":"寒冷","Upgrade":11}
+{"Id":"冰冻"}

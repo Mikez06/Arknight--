@@ -38,6 +38,11 @@ public class Buff
     public virtual void Reset()
     {
         updateLastTime();
+        if (BuffData.Upgrade != null)
+        {
+            Unit.RemoveBuff(this);
+            Unit.AddBuff(BuffData.Upgrade.Value, this.Skill);
+        }
     }
 
     protected virtual void updateLastTime()

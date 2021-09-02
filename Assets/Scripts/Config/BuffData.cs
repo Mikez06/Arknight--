@@ -5,5 +5,6 @@ public class BuffData : IConfig
       public string Name;
       public int? LastingEffect;
       public float LastTime;
+      public int? Upgrade;
       public System.Collections.Generic.Dictionary<string,object> Data;
 }

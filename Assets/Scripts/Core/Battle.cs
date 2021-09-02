@@ -235,7 +235,7 @@ public class Battle
                     result.Add(target);
             }
         }
-        else if ((team >> 1) % 2 == 1)
+        if ((team >> 1) % 2 == 1)
         {
             foreach (var unit in UnitMap[point.x, point.y])
             {
@@ -261,7 +261,7 @@ public class Battle
                         result.Add(target);
                 }
             }
-            else if ((team >> 1) % 2 == 1)
+            if ((team >> 1) % 2 == 1)
             {
                 foreach (var unit in UnitMap[targetPoint.x, targetPoint.y])
                 {

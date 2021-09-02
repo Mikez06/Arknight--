@@ -341,9 +341,11 @@ public class Unit
 
     public Buff AddBuff(int buffId,Skill source)
     {
+        var config = Database.Instance.Get<BuffData>(buffId);
         //权且加上来源判断，因为现在很多buff共用一个id会产生冲突。
         //如果需要处理buff冲突的情况，再修改这里
-        var oldBuff = Buffs.FirstOrDefault(x => x.Id == buffId && x.Skill == source);
+        //判断是否存在buff的升级版
+        var oldBuff = Buffs.FirstOrDefault(x => (x.Id == buffId || config.Upgrade == x.Id) && x.Skill == source);
         if (oldBuff != null)
         {
             oldBuff.Reset();
@@ -351,7 +353,6 @@ public class Unit
         }
         else
         {
-            var config = Database.Instance.Get<BuffData>(buffId);
             var buff = typeof(Buff).Assembly.CreateInstance(nameof(Buffs) + "." + config.Type) as Buff;
             buff.Id = buffId;
             buff.Skill = source;

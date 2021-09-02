@@ -23,6 +23,10 @@ public class Battle
 
     public List<Unit> Enemys = new List<Unit>();
 
+    public List<Unit> SceneUnits = new List<Unit>();
+
+    public List<Unit> AllUnits = new List<Unit>();
+
     public CountDown CostCounting = new CountDown(1);
 
     public bool Finish;
@@ -114,15 +118,15 @@ public class Battle
             bullet.Update();
         }
 
-        foreach (var unit in Enemys.Union(PlayerUnits).ToArray())
+        foreach (var unit in AllUnits.ToArray())
         {
             unit.UpdatePush();
         }
-        foreach (var unit in Enemys.Union(PlayerUnits).ToArray())
+        foreach (var unit in AllUnits.ToArray())
         {
             unit.UpdateBuffs();
         }
-        foreach (var unit in Enemys.Union(PlayerUnits).ToArray())
+        foreach (var unit in AllUnits.ToArray())
         {
             unit.UpdateAction();
         }
@@ -131,9 +135,25 @@ public class Battle
             if (unit.State==StateEnum.Die&& unit.Dying.Finished())
             {
                 Enemys.Remove(unit);
+                AllUnits.Remove(unit);
                 unit.Finish();
             }
         }
+    }
+
+
+    public Unit CreateSceneUnit(string id,Vector3 pos)
+    {
+        var unitData = Database.Instance.Get<UnitData>(id);
+        if (unitData ==null) return null;
+        var unit = typeof(Battle).Assembly.CreateInstance(nameof(Units) + "." + unitData.Type) as Unit;
+        unit.Id = Database.Instance.GetIndex(unitData);
+        unit.Battle = this;
+        unit.Position = pos;
+        unit.Init();
+        SceneUnits.Add(unit);
+        AllUnits.Add(unit);
+        return unit;
     }
 
     public Units.干员 CreatePlayerUnit(Card card,int skill)
@@ -149,6 +169,7 @@ public class Battle
         //var grid = Map.Grids[x, y];
         //unit.Position = grid.transform.position + new Vector3(0, config.Height, 0);
         PlayerUnits.Add(unit);
+        AllUnits.Add(unit);
         return unit;
     }
 
@@ -163,6 +184,7 @@ public class Battle
         //var grid = Map.Grids[x, y];
         //unit.Position = grid.transform.position + new Vector3(0, config.Height, 0);
         PlayerUnits.Add(unit);
+        AllUnits.Add(unit);
         return unit;
     }
 
@@ -177,6 +199,7 @@ public class Battle
         //var grid = Map.Grids[waveConfig.Path, y];
         //unit.Position = grid.transform.position + new Vector3(0, config.Height, 0);
         Enemys.Add(unit);
+        AllUnits.Add(unit);
         TriggerDatas.Push(new TriggerData()
         {
             Target = unit,

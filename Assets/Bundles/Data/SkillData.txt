@@ -84,3 +84,4 @@
 {"Id":"虫子攻击","Type":"近战","TargetTeam":1,"AttackOrder":0,"AttackRange":0,"DamageType":0,"DamageRate":1,"DamageCount":1,"Cooldown":1,"ModelAnimation":["Attack"],"AttackMode":1}
 {"Id":"狗攻击","Type":"近战","TargetTeam":1,"AttackOrder":0,"AttackRange":0,"DamageType":0,"DamageRate":1,"DamageCount":1,"Cooldown":1,"ModelAnimation":["Attack"],"AttackMode":1}
 {"Id":"敌人隐身","Type":"普通技能","UseType":2,"Trigger":1,"SelfOnly":1,"TargetTeam":2,"DamageCount":1,"Buffs":[7],"BuffLastTime":99999}
+{"Id":"陷坑秒杀","Type":"掉落","UseType":0,"TargetTeam":2,"AttackPoints":[{"x":0,"y":0}],"Data":{"DropSpeed":1},"AntiHide":1}

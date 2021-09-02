@@ -570,4 +570,9 @@ public class Unit
     {
         return OverWriteAnimation == null ? AnimationName : OverWriteAnimation;
     }
+
+    public virtual Vector2Int PointWithDirection(Vector2Int v2)
+    {
+        return GridPos + v2;
+    }
 }

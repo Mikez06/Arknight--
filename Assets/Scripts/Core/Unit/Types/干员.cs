@@ -204,7 +204,7 @@ namespace Units
             LeaveMap();
         }
 
-        public Vector2Int PointWithDirection(Vector2Int point)
+        public override Vector2Int PointWithDirection(Vector2Int point)
         {
             switch (Direction_E)
             {

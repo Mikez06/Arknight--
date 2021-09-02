@@ -21,7 +21,6 @@ namespace Tiles
                     target.DoDie(this);
                 }
                 target.Position.y -= DropSpeed * SystemConfig.DeltaTime;
-                Log.Debug(target.Position.y);
             }
         }
     }

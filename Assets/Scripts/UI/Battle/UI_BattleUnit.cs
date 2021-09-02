@@ -36,7 +36,7 @@ namespace BattleUI
 
         public void Flush()
         {
-            xy = Unit.UnitModel.SkeletonAnimation.transform.position.WorldToUI();
+            xy = Unit.UnitModel.GetModelPositon().WorldToUI();
             if (Unit is Units.干员 u)
             {
                 m_hp.max = Unit.MaxHp;

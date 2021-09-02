@@ -8,11 +8,26 @@ namespace Buffs
 {
     public class 隐身 : Buff
     {
+        CountDown rehide = new CountDown();
+        float rehideTime;
+
+        public override void Init()
+        {
+            base.Init();
+            rehideTime = this.BuffData.Data.GetFloat("HideTime");
+        }
+
         public override void Update()
         {
             base.Update();
+            if (Unit.IfStoped())
+            {
+                rehide.Set(rehideTime);
+            }
+            rehide.Update(SystemConfig.DeltaTime);
             //Log.Debug($"{Unit.UnitData.Id}隐身了");
-            Unit.IfHide = true;
+            if (rehide.Finished())
+                Unit.IfHide = true;
         }
     }
 }

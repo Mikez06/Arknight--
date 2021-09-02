@@ -19,9 +19,11 @@ public class MapGrid : MonoBehaviour, IPointerClickHandler
     /// </summary>
     public bool CanMove;
 
-    public TileTypeEnum TileType;
+    public string MapUnitId;
 
-    public int ConfigId;
+    //public TileTypeEnum TileType;
+
+    //public int ConfigId;
 
     Renderer Renderer;
     [HideInInspector]

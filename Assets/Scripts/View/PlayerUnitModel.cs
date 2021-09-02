@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Spine.Unity;
 using UnityEngine;
 
-public class PlayerUnitModel : UnitModel
+public class PlayerUnitModel : SpineModel
 {
     public SkeletonAnimation SkeletonAnimation2;
     bool forward = true;

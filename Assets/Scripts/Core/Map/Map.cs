@@ -25,30 +25,37 @@ public class Map
         {
             Tiles[grid.X, grid.Y] = CreateTile(grid);
         }
-
+        foreach (var grid in grids)
+        {
+            if (!string.IsNullOrEmpty(grid.MapUnitId))
+            {
+                var unit = battle.CreateSceneUnit(grid.MapUnitId, grid.transform.position);
+                //unit.Position = grid.transform.position;
+            }
+        }
     }
 
     Tile CreateTile(MapGrid mapGrid)
     {
-        Tile tile;
-        switch (mapGrid.TileType)
-        {
-            case TileTypeEnum.普通:
-                tile = new Tiles.普通地板();
-                break;
-            case TileTypeEnum.火山:
-                tile = new Tiles.火山();
-                break;
-            case TileTypeEnum.灼烧:
-                tile = new Tiles.灼烧();
-                break;
-            case TileTypeEnum.陷坑:
-                tile = new Tiles.陷坑();
-                break;
-            default:
-                tile = new Tiles.普通地板();
-                break;
-        }
+        Tile tile = new Tile();
+        //switch (mapGrid.TileType)
+        //{
+        //    case TileTypeEnum.普通:
+        //        tile = new Tiles.普通地板();
+        //        break;
+        //    case TileTypeEnum.火山:
+        //        tile = new Tiles.火山();
+        //        break;
+        //    case TileTypeEnum.灼烧:
+        //        tile = new Tiles.灼烧();
+        //        break;
+        //    case TileTypeEnum.陷坑:
+        //        tile = new Tiles.陷坑();
+        //        break;
+        //    default:
+        //        tile = new Tiles.普通地板();
+        //        break;
+        //}
         tile.Init(this, mapGrid);
         return tile;
     }

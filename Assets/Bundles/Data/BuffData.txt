@@ -5,6 +5,6 @@
 {"Id":"生命提升","Type":"数值变化","Data":{"t":["HpRate"]}}
 {"Id":"防御提升","Type":"数值变化","LastTime":0.01,"Data":{"t":["DefenceRate"]}}
 {"Id":"部署费用提升","Type":"数值变化","LastTime":9999,"Data":{"t":["CostAdd"]}}
-{"Id":"隐身","Type":"隐身"}
+{"Id":"隐身","Type":"隐身","Data":{"HideTime":1}}
 {"Id":"缴械","Type":"缴械"}
 {"Id":"斑点闪避","Type":"闪避","LastTime":3,"Data":{"Chance":0.3,"AvoidType":"Normal"}}

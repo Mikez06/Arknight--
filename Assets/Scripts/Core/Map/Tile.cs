@@ -46,7 +46,6 @@ public class Tile
         this.MapGrid = mapGrid;
         mapGrid.Tile = this;
         this.Map = map;
-        this.ConfigId = mapGrid.ConfigId;
         this.MapGrid = mapGrid;
         this.Pos = mapGrid.transform.position;
         this.X = mapGrid.X;
@@ -54,7 +53,6 @@ public class Tile
         this.CanBuildUnit = mapGrid.CanBuildUnit;
         this.FarAttackGrid = mapGrid.FarAttackGrid;
         this.CanMove = mapGrid.CanMove;
-        this.TileType = mapGrid.TileType;
     }
 
     public bool CanSet(Unit unit)

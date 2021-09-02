@@ -44,7 +44,7 @@ namespace BattleUI
 
                 if (m_state.selectedIndex == 4)
                 {
-                    Vector2 pos = Camera.main.WorldToScreenPoint(BattleCamera.Instance.FocusUnit.UnitModel.SkeletonAnimation.transform.position);
+                    Vector2 pos = Camera.main.WorldToScreenPoint(BattleCamera.Instance.FocusUnit.UnitModel.GetModelPositon());
                     pos.y = Screen.height - pos.y;
                     m_SkillUsePanel.position = pos.ScreenToUI();
                 }

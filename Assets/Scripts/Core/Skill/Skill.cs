@@ -290,7 +290,7 @@ public class Skill
                 Unit.TargetScaleX = scaleX;
             }
         }
-        else
+        else if (!SkillData.NoTargetAlsoUse)
         {
             return;
         }

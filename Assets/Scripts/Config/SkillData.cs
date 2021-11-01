@@ -8,6 +8,7 @@ public class SkillData : IConfig
       public SkillUseTypeEnum UseType;
       public TriggerEnum Trigger;
       public bool AutoUse;
+      public bool NoTargetAlsoUse;
       public bool RegetTarget;
       public bool StopBreak;
       public bool StopOtherSkill;

@@ -8,7 +8,6 @@ using Spine.Unity;
 
 public class SpineModel : UnitModel
 {
-    public Unit Unit;
     public SkeletonAnimation SkeletonAnimation;
     protected Renderer Renderer;
     protected MaterialPropertyBlock mpb;

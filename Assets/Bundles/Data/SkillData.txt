@@ -85,3 +85,6 @@
 {"Id":"狗攻击","Type":"近战","TargetTeam":1,"AttackOrder":0,"AttackRange":0,"DamageType":0,"DamageRate":1,"DamageCount":1,"Cooldown":1,"ModelAnimation":["Attack"],"AttackMode":1}
 {"Id":"敌人隐身","Type":"普通技能","UseType":2,"Trigger":1,"SelfOnly":1,"TargetTeam":2,"DamageCount":1,"Buffs":[7],"BuffLastTime":99999}
 {"Id":"陷坑秒杀","Type":"掉落","UseType":0,"TargetTeam":2,"AttackPoints":[{"x":0,"y":0}],"Data":{"DropSpeed":1},"AntiHide":1}
+{"Id":"装置普通攻击","Type":"普通技能","ReadyType":3,"SelfOnly":1,"TargetTeam":3,"AttackOrder":0,"AttackPoints":[{"x":0,"y":0},{"x":0,"y":1},{"x":0,"y":-1},{"x":1,"y":0},{"x":1,"y":1},{"x":1,"y":-1},{"x":-1,"y":0},{"x":-1,"y":1},{"x":-1,"y":-1}]}
+{"Id":"装置范围攻击","Type":"普通技能","ReadyType":2,"AutoUse":1,"NoTargetAlsoUse":1,"RegetTarget":1,"TargetTeam":3,"AttackOrder":0,"AttackPoints":[{"x":0,"y":0},{"x":0,"y":1},{"x":0,"y":-1},{"x":1,"y":0},{"x":1,"y":1},{"x":1,"y":-1},{"x":-1,"y":0},{"x":-1,"y":1},{"x":-1,"y":-1}],"DamageType":2,"DamageRate":1,"DamageCount":99,"Cooldown":1,"OpenTime":0.2,"StartPower":0,"MaxPower":2,"PowerCount":1,"PowerType":0,"ModelAnimation":["Attack"],"AntiHide":1}
+{"Id":"冰冻装置攻击"}

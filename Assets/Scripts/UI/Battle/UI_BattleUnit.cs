@@ -14,14 +14,7 @@ namespace BattleUI
         {
             this.Unit = unit;
             unit.uiUnit = this;
-            if (unit is Units.干员)
-            {
-                m_unitType.selectedIndex = 0;
-            }
-            else
-            {
-                m_unitType.selectedIndex = 1;
-            }
+            m_unitType.selectedIndex = unit.UnitData.HpBarType;
             Flush();
         }
 
@@ -37,7 +30,7 @@ namespace BattleUI
         public void Flush()
         {
             xy = Unit.UnitModel.GetModelPositon().WorldToUI();
-            if (Unit is Units.干员 u)
+            if (m_unitType.selectedIndex == 0 || m_unitType.selectedIndex == 2)
             {
                 m_hp.max = Unit.MaxHp;
                 m_hp.value = Unit.Hp;

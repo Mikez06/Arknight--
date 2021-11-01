@@ -24,6 +24,7 @@ public class UnitData : IConfig
       public string HitPointName;
       public int[] Skills;
       public int[] MainSkill;
+      public int HpBarType;
       public float Height;
       public bool CanSetHigh;
       public bool CanSetGround;

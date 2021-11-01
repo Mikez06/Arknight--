@@ -29,7 +29,7 @@ namespace Buffs
             //Log.Debug($"{Unit.UnitData.Id}隐身了");
             if (rehide.Finished())
             {
-                LastingEffect?.gameObject.SetActive(true);
+                LastingEffect?.gameObject?.SetActive(true);
                 Unit.IfHide = true;
             }
         }

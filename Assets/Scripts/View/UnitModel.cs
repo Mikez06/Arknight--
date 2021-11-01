@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class UnitModel:MonoBehaviour
 {
+    public Unit Unit;
     public virtual void Init(Unit unit)
     {
 

@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="119,158" pivot="0.5,0.82" anchor="true">
-  <controller name="readyControl" pages="0,,1," selected="1"/>
-  <controller name="skillCount" pages="0,,1," selected="1"/>
-  <controller name="unitType" pages="0,,1," selected="0"/>
+  <controller name="readyControl" pages="0,,1," selected="0"/>
+  <controller name="skillCount" pages="0,,1," selected="0"/>
+  <controller name="unitType" pages="0,,1,,2,,3," selected="0">
+    <remark page="0" value="干员"/>
+    <remark page="1" value="敌人"/>
+    <remark page="2" value="装置"/>
+    <remark page="3" value="隐藏装置"/>
+  </controller>
   <displayList>
     <component id="n31_h4sa" name="hp" src="h4sa42" fileName="Hp1.xml" xy="2,142">
       <gearDisplay controller="unitType" pages="0"/>
       <ProgressBar value="49" max="100"/>
     </component>
     <component id="n36_h4sa" name="sk" src="h4sa43" fileName="SK0.xml" xy="2,150">
-      <gearDisplay controller="unitType" pages="0"/>
+      <gearDisplay controller="unitType" pages="0,2"/>
       <ProgressBar value="58" max="100"/>
     </component>
     <graph id="n37_h4sa" name="n37" xy="59,-60" size="41,41" rotation="45" type="rect" lineSize="2" fillColor="#ffffff00">

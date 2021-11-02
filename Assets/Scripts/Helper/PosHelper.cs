@@ -19,5 +19,13 @@ public static class PosHelper
         pos.y = Screen.height - pos.y;
         return ScreenToUI(pos);
     }
+    public static Vector2 ToV2(this Vector3 self)
+    {
+        return new Vector2(self.x, self.z);
+    }
+    public static Vector3 ToV3(this Vector2 self)
+    {
+        return new Vector3(self.x, 0, self.y);
+    }
 }
 

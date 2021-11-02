@@ -142,7 +142,7 @@ public class Battle
     }
 
 
-    public Unit CreateSceneUnit(string id,Vector3 pos)
+    public Unit CreateSceneUnit(string id,Vector3 pos,Vector2 direction)
     {
         var unitData = Database.Instance.Get<UnitData>(id);
         if (unitData ==null) return null;
@@ -150,6 +150,7 @@ public class Battle
         unit.Id = Database.Instance.GetIndex(unitData);
         unit.Battle = this;
         unit.Position = pos;
+        unit.Direction = direction;
         unit.Init();
         SceneUnits.Add(unit);
         AllUnits.Add(unit);
@@ -226,6 +227,7 @@ public class Battle
     public HashSet<Unit> FindAll(Vector2Int point,int team,bool aliveOnly=true)
     {
         var result = new HashSet<Unit>();
+        if (Map.Tiles.GetLength(0) <= point.x || Map.Tiles.GetLength(1) <= point.y || point.x < 0 || point.y < 0) return result;
         if (team % 2 == 1)
         {
             var target = Map.Tiles[point.x, point.y].Unit;

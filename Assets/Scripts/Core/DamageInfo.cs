@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 public class DamageInfo
 {
+    public Unit Target;
     public object Source;
     public float Attack;
     public DamageTypeEnum DamageType;

@@ -29,7 +29,7 @@ public class Map
         {
             if (!string.IsNullOrEmpty(grid.MapUnitId))
             {
-                var unit = battle.CreateSceneUnit(grid.MapUnitId, grid.transform.position);
+                var unit = battle.CreateSceneUnit(grid.MapUnitId, grid.transform.position, grid.transform.forward.ToV2());
                 //unit.Position = grid.transform.position;
             }
         }

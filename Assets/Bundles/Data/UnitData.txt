@@ -24,3 +24,4 @@
 {"Id":"陷坑","Type":"中立单位","Model":"测试陷坑","Skills":[86],"HpBarType":3}
 {"Id":"冲击装置","Type":"中立单位","Model":"测试冲击装置","Hp":100,"Attack":200,"Skills":[87],"MainSkill":[88],"HpBarType":2,"IdleAnimation":["Idle"],"MaxAnimationScale":1}
 {"Id":"冰冻冲击装置","Type":"中立单位","Model":"测试冲击装置","Hp":100,"Attack":200,"Skills":[87],"MainSkill":[89],"HpBarType":2,"IdleAnimation":["Idle"],"MaxAnimationScale":1}
+{"Id":"弩箭装置","Type":"中立单位","Model":"测试冲击装置","Hp":100,"Attack":200,"Skills":[87],"MainSkill":[90],"HpBarType":2,"IdleAnimation":["Idle"],"MaxAnimationScale":1}

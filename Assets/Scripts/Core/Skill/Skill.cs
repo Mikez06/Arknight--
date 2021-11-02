@@ -750,6 +750,7 @@ public class Skill
     {
         var result = new DamageInfo()
         {
+            Target = target,
             Source = this,
             Attack = SkillData.BaseOnMaxHp ? target.MaxHp : Unit.Attack,
             DamageRate = IfAOE ? SkillData.AreaDamage : SkillData.DamageRate,

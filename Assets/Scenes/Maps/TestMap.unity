@@ -3340,7 +3340,7 @@ MonoBehaviour:
   CanBuildUnit: 0
   FarAttackGrid: 0
   CanMove: 0
-  MapUnitId: "\u51B2\u51FB\u88C5\u7F6E"
+  MapUnitId: "\u51B0\u51BB\u51B2\u51FB\u88C5\u7F6E"
 --- !u!1 &2105284105
 GameObject:
   m_ObjectHideFlags: 0

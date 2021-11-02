@@ -40,7 +40,8 @@ public class Buff
         updateLastTime();
         if (BuffData.Upgrade != null)
         {
-            Unit.RemoveBuff(this);
+            Finish();
+            //Unit.RemoveBuff(this);
             Unit.AddBuff(BuffData.Upgrade.Value, this.Skill);
         }
     }
@@ -64,7 +65,7 @@ public class Buff
         }
     }
 
-    public void Finish()
+    public virtual void Finish()
     {
         Unit.RemoveBuff(this);
         if (LastingEffect != null)

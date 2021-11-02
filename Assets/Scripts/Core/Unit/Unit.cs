@@ -11,6 +11,7 @@ public class Unit
     public static string[] DefaultAnimation = new string[] { "Default" };
     public static string[] StartAnimation = new string[] { "Start" };
     public static string[] DieAnimation = new string[] { "Die" };
+    public static string[] StunAnimation = new string[] { "Stun" };
     public Battle Battle;
     public UnitData UnitData => Database.Instance.Get<UnitData>(Id);
     public int Id;
@@ -75,6 +76,7 @@ public class Unit
     protected bool hideBase;
 
     public bool CanAttack;
+    public bool CanStopOther;
 
     public bool IfAlive = true;
 
@@ -94,13 +96,14 @@ public class Unit
     /// </summary>
     //public CountDown Recover = new CountDown();
 
-    public bool IfStun; 
+    public bool IfStun;
 
     public float ScaleX = -1;
     public float TargetScaleX = -1;
 
     public string[] AnimationName = Unit.DefaultAnimation;
     public string[] OverWriteAnimation;
+    public bool CanChangeAnimation = true;
     public float AnimationSpeed = 1;
 
     public virtual void Init()
@@ -163,6 +166,7 @@ public class Unit
         if (!Alive()) return;
         IfHide = hideBase;
         IfHideAnti = false;
+        CanStopOther = true;
         bool lastIfStun = IfStun;
         IfStun = false;
         foreach (var buff in Buffs.Reverse<Buff>())
@@ -170,10 +174,6 @@ public class Unit
             buff.Update();
         }
         if (unbalance) IfStun = true;
-        if (IfStun)
-        {
-            SetStatus(StateEnum.Stun);
-        }
         if (lastIfStun && !IfStun)
         {
             SetStatus(StateEnum.Idle);
@@ -196,6 +196,7 @@ public class Unit
     public virtual void DoDie(object source)
     {
         IfAlive = false;
+        CanChangeAnimation = true;
         SetStatus(StateEnum.Die);
         Dying.Set(UnitModel.GetAnimationDuration("Die"));
 
@@ -467,17 +468,24 @@ public class Unit
             Debug.Log($"{UnitData.Id}从 {State} 变为 {state}");
         }
         this.State = state;
-        if (state == StateEnum.Default)
-            AnimationName = Unit.DefaultAnimation;
-        else if (state == StateEnum.Idle)
-            AnimationName = UnitData.IdleAnimation;
-        else if (state == StateEnum.Move)
-            AnimationName = UnitData.MoveAnimation;
-        else if (state == StateEnum.Start)
-            AnimationName = Unit.StartAnimation;
-        else if (state == StateEnum.Die)
-            AnimationName = Unit.DieAnimation;
-        AnimationSpeed = 1;
+        if (CanChangeAnimation)
+        {
+            if (state == StateEnum.Default)
+                AnimationName = Unit.DefaultAnimation;
+            else if (state == StateEnum.Idle)
+                AnimationName = UnitData.IdleAnimation;
+            else if (state == StateEnum.Move)
+                AnimationName = UnitData.MoveAnimation;
+            else if (state == StateEnum.Start)
+                AnimationName = Unit.StartAnimation;
+            else if (state == StateEnum.Die)
+                AnimationName = Unit.DieAnimation;
+            else if (state == StateEnum.Stun)
+            {
+                AnimationName = Unit.StunAnimation;
+            }
+            AnimationSpeed = 1;
+        }
         if (state != StateEnum.Attack && !Attacking.Finished())
         {
             Attacking.Finish();

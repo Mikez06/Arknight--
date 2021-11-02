@@ -277,6 +277,18 @@ MonoBehaviour:
     m_Address: "Assets/Bundles/Units/\u6D4B\u8BD5\u51B2\u51FB\u88C5\u7F6E"
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 19820ff38a73bc04ab69671cd3943e34
+    m_Address: "Assets/Bundles/Effect/\u5BD2\u51B7"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 69f81e05419bb0b4b94d8b13571a8ce6
+    m_Address: "Assets/Bundles/Effect/\u51BB\u7ED3"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 62cfeba3c730d5e408a2529f68f92451
+    m_Address: "Assets/Bundles/Effect/\u7729\u6655"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

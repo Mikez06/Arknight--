@@ -114,45 +114,53 @@ public class ExcelExportEditor
         IExcelDataReader reader;
         FileStream file = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
         reader = ExcelReaderFactory.CreateReader(file);
-        foreach (System.Data.DataTable sheet in reader.AsDataSet().Tables)
+        try
         {
-            if (sheet.TableName.StartsWith("#")) continue;
-            StringBuilder sb = new StringBuilder();
-            int cellCount = sheet.Columns.Count;
-            for (int i = 3; i < sheet.Rows.Count; i++)
+            foreach (System.Data.DataTable sheet in reader.AsDataSet().Tables)
             {
-                string Id = GetCellString(sheet, i, 0);
-                if (string.IsNullOrEmpty(Id) || Id.StartsWith("#"))
+                if (sheet.TableName.StartsWith("#")) continue;
+                StringBuilder sb = new StringBuilder();
+                int cellCount = sheet.Columns.Count;
+                for (int i = 3; i < sheet.Rows.Count; i++)
                 {
-                    continue;
-                }
-                sb.Append("{");
-                for (int j = 0; j < cellCount; j++)
-                {
-                    string fieldName = GetCellString(sheet, 1, j);
-                    string fieldType = GetCellString(sheet, 2, j);
-                    if (string.IsNullOrEmpty(fieldName) || string.IsNullOrEmpty(fieldType))
+                    string Id = GetCellString(sheet, i, 0);
+                    if (string.IsNullOrEmpty(Id) || Id.StartsWith("#"))
                     {
                         continue;
                     }
-                    string fieldValue = GetCellString(sheet, i, j);
-                    if (string.IsNullOrEmpty(fieldValue))
+                    sb.Append("{");
+                    for (int j = 0; j < cellCount; j++)
                     {
-                        continue;
+                        string fieldName = GetCellString(sheet, 1, j);
+                        string fieldType = GetCellString(sheet, 2, j);
+                        if (string.IsNullOrEmpty(fieldName) || string.IsNullOrEmpty(fieldType))
+                        {
+                            continue;
+                        }
+                        string fieldValue = GetCellString(sheet, i, j);
+                        if (string.IsNullOrEmpty(fieldValue))
+                        {
+                            continue;
+                        }
+                        sb.Append($"\"{fieldName}\":{Convert(fieldType, fieldValue)},");
                     }
-                    sb.Append($"\"{fieldName}\":{Convert(fieldType, fieldValue)},");
+                    sb.Remove(sb.Length - 1, 1);
+                    sb.Append("}\n");
                 }
-                sb.Remove(sb.Length - 1, 1);
-                sb.Append("}\n");
-            }
-            if (sb.Length > 1) sb.Remove(sb.Length - 1, 1);
+                if (sb.Length > 1) sb.Remove(sb.Length - 1, 1);
 
-            FileStream txt = new FileStream(exportPath + sheet.TableName + ".txt", FileMode.Create);
-            StreamWriter sw = new StreamWriter(txt);
-            sw.Write(sb.ToString());
-            sw.Close();
-            txt.Close();
+                FileStream txt = new FileStream(exportPath + sheet.TableName + ".txt", FileMode.Create);
+                StreamWriter sw = new StreamWriter(txt);
+                sw.Write(sb.ToString());
+                sw.Close();
+                txt.Close();
+            }
         }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+        }
+        file.Close();
     }
 
     private static string GetCellString(System.Data.DataTable sheet, int i, int j)

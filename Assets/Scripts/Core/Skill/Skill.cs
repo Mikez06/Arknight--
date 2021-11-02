@@ -162,7 +162,8 @@ public class Skill
 
     public virtual bool Ready()
     {
-        if (Unit.IfStun && SkillData.UseType != SkillUseTypeEnum.被动) return false;
+        if (Unit.IfStun && SkillData.UseType != SkillUseTypeEnum.被动) 
+            return false;
         if (SkillData.UseType == SkillUseTypeEnum.被动) return false;
         switch (SkillData.ReadyType)
         {

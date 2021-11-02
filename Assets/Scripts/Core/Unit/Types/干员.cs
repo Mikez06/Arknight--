@@ -254,7 +254,7 @@ namespace Units
 
         public bool CanStop(Units.敌人 target)
         {
-            if (IfStun) return false;
+            if (!CanStopOther) return false;
             if (StopUnits.Contains(target)) return true;
             if (target.StopUnit != null) return false;
             return StopUnits.Count < StopCount;

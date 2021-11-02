@@ -9,7 +9,28 @@ using System.Threading.Tasks;
  叠加二层时，效果为眩晕单位，同时阻止单位动画
  
  */
-public class 冻结 : Buff
+namespace Buffs
 {
+    public class 冻结 : Buff
+    {
+        public override void Init()
+        {
+            base.Init();
+            Unit.AnimationSpeed = 0;
+            Unit.CanChangeAnimation = false;
+        }
 
+        public override void Update()
+        {
+            base.Update();
+            Unit.IfStun = true;
+        }
+
+        public override void Finish()
+        {
+            base.Finish();
+            Unit.CanChangeAnimation = true;
+            Unit.AnimationSpeed = 1;
+        }
+    }
 }

@@ -7,12 +7,14 @@ using UnityEngine;
 
 public class Bullet
 {
-    public BulletData Config => Database.Instance.Get<BulletData>(Id);
+    public BulletData BulletData => Database.Instance.Get<BulletData>(Id);
     public int Id;
 
     public BulletModel BulletModel;
 
+    public Vector3 StartPosition;
     public Vector3 Postion;
+    public Vector3 Direction;
 
     protected Battle Battle => Skill.Unit.Battle;
     public Skill Skill;
@@ -21,12 +23,13 @@ public class Bullet
 
     public virtual void Init()
     {
+        StartPosition = Postion;
         CreateModel();
     }
 
     public virtual void CreateModel()
     {
-        BulletModel = ResHelper.Instantiate(PathHelper.BulletPath + Config.Model).GetComponent<BulletModel>();
+        BulletModel = ResHelper.Instantiate(PathHelper.BulletPath + BulletData.Model).GetComponent<BulletModel>();
         BulletModel.Init(this);
     }
 

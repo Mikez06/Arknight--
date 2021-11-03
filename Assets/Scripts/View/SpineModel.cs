@@ -138,7 +138,9 @@ public class SpineModel : UnitModel
             if (timeline is Spine.EventTimeline eventTimeline)
             {
                 var attackEvent = eventTimeline.Events.FirstOrDefault(x => x.Data.Name == "OnAttack");
-                result += attackEvent.Time;
+                //if (attackEvent == null) attackEvent = eventTimeline.Events.FirstOrDefault();
+                if (attackEvent != null)
+                    result += attackEvent.Time;
                 //Debug.Log("Onattack:" + attackEvent.Time);
                 break;
             }
@@ -165,5 +167,7 @@ public class SpineModel : UnitModel
         Renderer.GetPropertyBlock(mpb);
         return mpb.GetColor("_Color");
     }
+
+
 }
 

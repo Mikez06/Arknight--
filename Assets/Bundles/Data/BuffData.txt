@@ -7,7 +7,11 @@
 {"Id":"部署费用提升","Type":"数值变化","LastTime":9999,"Data":{"t":["CostAdd"]}}
 {"Id":"隐身","Type":"隐身","LastingEffect":3,"Data":{"HideTime":1}}
 {"Id":"缴械","Type":"缴械"}
-{"Id":"眩晕","Type":"眩晕"}
-{"Id":"寒冷","Type":"数值变化","LastingEffect":4,"Upgrade":11,"Data":{"t":["AgiAdd"]}}
+{"Id":"眩晕","Type":"眩晕","Data":{"ChangeAnimation":1}}
+{"Id":"眩晕2","Type":"眩晕"}
+{"Id":"无敌","Type":"无敌"}
+{"Id":"寒冷","Type":"数值变化","LastingEffect":4,"Upgrade":13,"Data":{"t":["AgiAdd"]}}
 {"Id":"冻结","Type":"冻结","LastingEffect":5}
+{"Id":"未复活标记","Type":"普通Buff","Upgrade":15}
+{"Id":"已复活标记","Type":"普通Buff"}
 {"Id":"斑点闪避","Type":"闪避","LastTime":3,"Data":{"Chance":0.3,"AvoidType":"Normal"}}

@@ -24,5 +24,10 @@ namespace Buffs
         {
             return Direction.normalized * Power / 100;
         }
+        public override void Finish()
+        {
+            Unit.PushBuffs.Remove(this);
+            base.Finish();
+        }
     }
 }

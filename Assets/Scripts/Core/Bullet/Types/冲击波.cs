@@ -9,16 +9,21 @@ namespace Bullets
 {
     public class 冲击波 : Bullet
     {
+        public override void Init()
+        {
+            base.Init();
+            Direction = TargetPos - this.Postion;
+        }
         public override void Update()
         {
             Vector3 delta = TargetPos - Postion;
-            if (delta.magnitude < Config.Speed * SystemConfig.DeltaTime)
+            if (delta.magnitude < BulletData.Speed * SystemConfig.DeltaTime)
             {
                 Finish();
             }
             else
             {
-                Postion += delta.normalized * Config.Speed * SystemConfig.DeltaTime;
+                Postion += delta.normalized * BulletData.Speed * SystemConfig.DeltaTime;
             }
             var target = Battle.FindAll(new Vector2Int(Mathf.RoundToInt(Postion.x), Mathf.RoundToInt(Postion.z)), 1);
             if (target.Count > 0)

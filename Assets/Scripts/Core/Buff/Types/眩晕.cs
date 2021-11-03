@@ -8,12 +8,20 @@ namespace Buffs
 {
     public class 眩晕 : Buff
     {
+        bool ifChangeAnimation;
+
+        public override void Init()
+        {
+            base.Init();
+            ifChangeAnimation = BuffData.Data.GetBool("ChangeAnimation");
+        }
+
         public override void Update()
         {
             base.Update();
             Unit.IfStun = true;
             Unit.CanStopOther = false;
-            changeAnimation();
+            if (ifChangeAnimation) changeAnimation();
         }
 
         protected virtual void changeAnimation()

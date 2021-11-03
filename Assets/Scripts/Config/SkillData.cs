@@ -7,6 +7,8 @@ public class SkillData : IConfig
       public SkillReadyEnum ReadyType;
       public SkillUseTypeEnum UseType;
       public TriggerEnum Trigger;
+      public int MaxUseCount;
+      public int[] EnableBuff;
       public bool AutoUse;
       public bool NoTargetAlsoUse;
       public bool RegetTarget;
@@ -35,6 +37,7 @@ public class SkillData : IConfig
       public int[] Skills;
       public int[] ExSkills;
       public float Cooldown;
+      public float InitialCooldown;
       public float OpenTime;
       public int StartPower;
       public int MaxPower;

@@ -50,6 +50,7 @@ public class Skill
     public float Power;
     public int MaxPower;
     public int PowerCount;
+    public int UseCount;
 
     public virtual void Init()
     {
@@ -75,6 +76,8 @@ public class Skill
         Power = SkillData.StartPower;
         MaxPower = SkillData.MaxPower;
         PowerCount = SkillData.PowerCount;
+
+        Cooldown.Set(SkillData.InitialCooldown);
     }
 
     public virtual void Update()
@@ -133,6 +136,7 @@ public class Skill
     public bool CanUseTo(Unit target)
     {
         if (target == null) return false;
+        if (!target.IfSelectable) return false;
         if (SkillData.SelfOnly && target != Unit) return false;
         if ((SkillData.TargetTeam >> target.Team) % 2 == 0) return false;
         if (SkillData.ProfessionLimit != UnitTypeEnum.无 && SkillData.ProfessionLimit != target.UnitData.Profession) return false;
@@ -178,6 +182,9 @@ public class Skill
             default:
                 break;
         }
+
+        if (SkillData.EnableBuff != null && !SkillData.EnableBuff.All(x => Unit.Buffs.Any(y => y.Id == x))) 
+            return false;
 
         if (SkillData.StopBreak && Unit.IfStoped()) return false;
 
@@ -285,18 +292,24 @@ public class Skill
         }
         if (Targets.Count > 0)
         {
-            var scaleX = (Targets[0].Position - Unit.Position).x > 0 ? 1 : -1;
-            if (scaleX != Unit.ScaleX)
+            if (Targets.Count == 1 && Targets[0] != Unit)
             {
-                Unit.TargetScaleX = scaleX;
+                var scaleX = (Targets[0].Position - Unit.Position).x > 0 ? 1 : -1;
+                if (scaleX != Unit.ScaleX)
+                {
+                    Unit.TargetScaleX = scaleX;
+                }
             }
         }
         else if (!SkillData.NoTargetAlsoUse)
         {
             return;
         }
-        //走到这里技能就真的用出来了
+        if (SkillData.MaxUseCount != 0 && UseCount >= SkillData.MaxUseCount) return;//使用次数不在ready里判断，因为被动技能不会走ready的逻辑
 
+        //走到这里技能就真的用出来了
+        UseCount++;
+        //Debug.Log(Unit.UnitData.Id + "的" + SkillData.Id + "使用次数:" + UseCount);
         if (SkillData.ReadyType == SkillReadyEnum.充能释放)
         {
             Power -= MaxPower;
@@ -373,7 +386,7 @@ public class Skill
         if (SkillData.ExSkills != null)
             foreach (var skillId in SkillData.ExSkills)
             {
-                Unit.Skills.Find(x => x.Id == skillId).Cast();
+                Unit.Skills.Find(x => x.Id == skillId).Start();
             }
     }
 
@@ -495,7 +508,10 @@ public class Skill
     public virtual void FindTarget()
     {      
         Targets.Clear();
-        Targets.AddRange(getAttackTarget());
+        if (SkillData.SelfOnly)
+            Targets.Add(Unit);
+        else
+            Targets.AddRange(getAttackTarget());
     }
 
     List<Unit> tempTargets = new List<Unit>();

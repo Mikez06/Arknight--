@@ -53,6 +53,7 @@ MonoBehaviour:
     Direction: {x: 1, y: 0}
     State: 4
     Hp: 0
+    Buffs: []
     MaxHp: 0
     HpBase: 0
     HpAdd: 0
@@ -99,12 +100,14 @@ MonoBehaviour:
     IfHide: 0
     IfHideAnti: 0
     CanAttack: 0
+    CanStopOther: 0
     IfAlive: 1
     IfStun: 0
     ScaleX: -1
     TargetScaleX: -1
     AnimationName: []
     OverWriteAnimation: []
+    CanChangeAnimation: 1
     AnimationSpeed: 1
   SkeletonAnimation: {fileID: 4168282511461554504}
 --- !u!1 &6308839005524918107

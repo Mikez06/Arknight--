@@ -35,5 +35,10 @@ namespace Buffs
                 dis = 1;
             return (source.Position2 - Unit.Position2).normalized * Power / 100f * dis;
         }
+        public override void Finish()
+        {
+            Unit.PushBuffs.Remove(this);
+            base.Finish();
+        }
     }
 }

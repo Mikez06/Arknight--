@@ -80,6 +80,8 @@ public class Unit
 
     public bool IfAlive = true;
 
+    public bool IfSelectable = true;//能否被技能指定为目标
+
     /// <summary>
     /// 攻击动画
     /// </summary>
@@ -166,6 +168,7 @@ public class Unit
         if (!Alive()) return;
         IfHide = hideBase;
         IfHideAnti = false;
+        IfSelectable = true;
         CanStopOther = true;
         bool lastIfStun = IfStun;
         IfStun = false;
@@ -227,12 +230,24 @@ public class Unit
 
     public virtual void Finish()
     {
+        Battle.AllUnits.Remove(this);
         Battle.TriggerDatas.Push(new TriggerData()
         {
             Target = this,
         });
         Trigger(TriggerEnum.离场);
         Battle.TriggerDatas.Pop();
+
+        foreach (var buff in Buffs.ToArray())
+        {
+            buff.Finish();
+        }
+        Buffs.Clear();
+        foreach (var buff in PushBuffs.ToArray())
+        {
+            (buff as Buff).Finish();
+        }
+        PushBuffs.Clear();
     }
 
     protected void UpdateSkills()
@@ -241,6 +256,7 @@ public class Unit
         Attacking.Update(SystemConfig.DeltaTime);
         if (inAttack && Attacking.Finished())
         {
+            AttackingSkill = null;
             Debug.Log("Ready to attack");
         }
         foreach (var skill in Skills)
@@ -346,7 +362,7 @@ public class Unit
         //权且加上来源判断，因为现在很多buff共用一个id会产生冲突。
         //如果需要处理buff冲突的情况，再修改这里
         //判断是否存在buff的升级版
-        var oldBuff = Buffs.FirstOrDefault(x => (x.Id == buffId || config.Upgrade == x.Id) && x.Skill == source);
+        var oldBuff = Buffs.FirstOrDefault(x => (x.Id == buffId || config.Upgrade == x.Id)); //&& x.Skill == source);
         if (oldBuff != null)
         {
             oldBuff.Reset();
@@ -519,6 +535,17 @@ public class Unit
         if (!damageInfo.Avoid)
         {
             Hp -= damage;
+            if (Hp <= 0)
+            {
+                Battle.TriggerDatas.Push(new TriggerData()
+                {
+                    Target = this,
+                });
+                Trigger(TriggerEnum.致命);
+
+                Battle.TriggerDatas.Pop();
+            }
+            //致命事件过后，如果血量依旧低于0，则判定单位死亡
             if (Hp <= 0)
             {
                 Hp = 0;

@@ -19,9 +19,23 @@ public class Test : MonoBehaviour
     // Start is called before the first frame update
     async void Start()
     {
-        await Addressables.InitializeAsync().Task;
-        var a = await Addressables.LoadAssetAsync<UnityEngine.Object>(PathHelper.SpritePath + "spot").Task;
-        Debug.Log(a.GetType());
+        var animation = GetComponent<SkeletonAnimation>().Skeleton.Data.FindAnimation("Skill_2");
+        foreach (var timeline in animation.Timelines)
+        {
+            if (timeline is Spine.EventTimeline eventTimeline)
+            {
+                foreach (var e in eventTimeline.Events)
+                {
+                    Debug.Log(e.Data.Name + "," + e.Time);
+                }
+                //var attackEvent = eventTimeline.Events.FirstOrDefault(x => x.Data.Name == "OnAttack");
+                //Debug.Log("Onattack:" + attackEvent.Time);
+                break;
+            }
+        }
+        //await Addressables.InitializeAsync().Task;
+        //var a = await Addressables.LoadAssetAsync<UnityEngine.Object>(PathHelper.SpritePath + "spot").Task;
+        //Debug.Log(a.GetType());
         //Debug.Log(UnityEngine.Networking.UnityWebRequest.EscapeURL(s).ToUpper());
         //StartCoroutine(Download());
 
@@ -40,6 +54,10 @@ public class Test : MonoBehaviour
         //{
         //    Debug.Log(point);
         //}       
+    }
+    private void OnGUI()
+    {
+        GUI.Label(new Rect(0, 0, 150, 100), Time.time.ToString());
     }
     IEnumerator Download()
     {

@@ -9,21 +9,63 @@ namespace Bullets
 {
     public class 子弹 : Bullet
     {
-        public override void Update()
+        float moveHeight;//0:直线 1:抛物线
+        float tickTime;
+        public override void Init()
         {
+            base.Init(); 
             if (Target.Alive())
                 TargetPos = Target.UnitModel.GetPoint(Target.UnitData.HitPointName);
-            Vector3 delta = TargetPos - Postion;
-            if (delta.magnitude < Config.Speed * SystemConfig.DeltaTime)
+            moveHeight = BulletData.Data.GetFloat("MoveHeight");
+            Debug.Log("高度:" + moveHeight);
+            if (moveHeight == 0) Direction = TargetPos - this.Postion;
+        }
+        public override void Update()
+        {
+            tickTime += SystemConfig.DeltaTime;
+            if (Target.Alive())
+                TargetPos = Target.UnitModel.GetPoint(Target.UnitData.HitPointName);
+            if (moveHeight == 0)
+            {
+                Postion = posBy(tickTime);
+            }
+            else
+            {
+                Postion = posBy(tickTime);
+                Direction = posBy(tickTime + SystemConfig.DeltaTime) - posBy(tickTime);
+            }
+            //Vector3 delta = TargetPos - Postion;
+            //if (delta.magnitude < BulletData.Speed * SystemConfig.DeltaTime)
+            //{
+            //    Finish();
+            //    if (Target.Alive())
+            //        Skill.Hit(Target);
+            //}
+            //else
+            //{
+            //    if (moveHeight == 0)
+            //        Postion += delta.normalized * BulletData.Speed * SystemConfig.DeltaTime;
+            //    //Direction = TargetPos - this.Postion;
+            //}
+        }
+
+        Vector3 posBy(float time)
+        {
+            Vector3 Postion;
+            float totalTime = (TargetPos - StartPosition).magnitude / BulletData.Speed;
+            if (time > totalTime)
             {
                 Finish();
                 if (Target.Alive())
                     Skill.Hit(Target);
             }
-            else
+            Postion = StartPosition + (TargetPos - StartPosition) * (time / totalTime);
+            if (moveHeight > 0)
             {
-                Postion += delta.normalized * Config.Speed * SystemConfig.DeltaTime;
+                float t = time / totalTime;
+                Postion.y += (-5 * t * t + 5 * t) * moveHeight;
             }
+            return Postion;
         }
     }
 }

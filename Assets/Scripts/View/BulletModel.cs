@@ -21,6 +21,7 @@ public class BulletModel : MonoBehaviour
     void Update()
     {
         transform.position = Bullet.Postion;
-        transform.rotation = Quaternion.LookRotation(Bullet.TargetPos - transform.position, Vector3.right);
+        //transform.eulerAngles = Bullet.Direction;
+        transform.rotation = Quaternion.LookRotation(Bullet.Direction, Vector3.right);
     }
 }

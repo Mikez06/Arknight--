@@ -143,7 +143,14 @@ namespace Units
                 return;
             }
             if (Unbalance) return;//失衡状态下不许主动移动
-            if (StopUnit != null) return;//有人阻挡，停止移动
+            if (StopUnit != null)
+            {
+                if (AnimationName == UnitData.MoveAnimation)
+                {
+                    SetStatus(StateEnum.Idle);
+                }
+                return;//有人阻挡，停止移动
+            }
             AnimationName = UnitData.MoveAnimation;
             AnimationSpeed = 1;
             if (TempPath == null || NeedResetPath)//无路径或因为外力走出了预定路线，重寻路

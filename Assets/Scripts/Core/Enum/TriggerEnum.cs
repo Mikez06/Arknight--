@@ -12,6 +12,7 @@ public enum TriggerEnum
     离场,
     攻击,
     被击,
+    致命,
     击杀,
     死亡,
     释放技能,

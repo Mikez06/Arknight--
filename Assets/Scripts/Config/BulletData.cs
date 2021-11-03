@@ -4,4 +4,5 @@ public class BulletData : IConfig
       public string Type;
       public string Model;
       public float Speed;
+      public System.Collections.Generic.Dictionary<string,object> Data;
 }

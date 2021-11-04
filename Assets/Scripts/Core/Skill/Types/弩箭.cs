@@ -59,7 +59,7 @@ namespace Skills
                 }
                 duration = duration * attackSpeed;
                 fullDuration = fullDuration * attackSpeed;
-                Unit.Attacking.Set(fullDuration);
+                Unit.AttackingAction.Set(fullDuration);
                 Unit.State = StateEnum.Attack;
                 Unit.AnimationName = SkillData.ModelAnimation;
                 Unit.AttackingSkill = this;

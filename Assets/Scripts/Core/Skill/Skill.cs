@@ -48,7 +48,7 @@ public class Skill
     public CountDown Opening = new CountDown();
 
     public float Power;
-    public int MaxPower;
+    public float MaxPower;
     public int PowerCount;
     public int UseCount;
 
@@ -82,6 +82,11 @@ public class Skill
 
     public virtual void Update()
     {
+        if (SkillData.PowerType == PowerRecoverTypeEnum.自动)
+        {
+            RecoverPower(Unit.PowerSpeed * SystemConfig.DeltaTime);
+        }
+
         if (SkillData.AutoUse && Power == MaxPower)
         {
             DoOpen();
@@ -337,7 +342,7 @@ public class Skill
             }
             duration = duration * attackSpeed;
             fullDuration = fullDuration * attackSpeed;
-            Unit.Attacking.Set(fullDuration);
+            Unit.AttackingAction.Set(fullDuration);
             Unit.State = StateEnum.Attack;
             Unit.AnimationName = SkillData.ModelAnimation;
             Unit.AttackingSkill = this;

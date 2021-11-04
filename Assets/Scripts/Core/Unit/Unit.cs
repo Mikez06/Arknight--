@@ -85,7 +85,7 @@ public class Unit
     /// <summary>
     /// 攻击动画
     /// </summary>
-    public CountDown Attacking = new CountDown();
+    public CountDown AttackingAction = new CountDown();
 
     public Skill AttackingSkill;
 
@@ -252,11 +252,10 @@ public class Unit
 
     protected void UpdateSkills()
     {
-        var inAttack = !Attacking.Finished();
-        Attacking.Update(SystemConfig.DeltaTime);
-        if (inAttack && Attacking.Finished())
+        var inAttack = !AttackingAction.Finished();
+        AttackingAction.Update(SystemConfig.DeltaTime);
+        if (inAttack && AttackingAction.Finished())
         {
-            AttackingSkill = null;
             Debug.Log("Ready to attack");
         }
         foreach (var skill in Skills)
@@ -272,7 +271,7 @@ public class Unit
                 sk.Update();
             }
         }
-        if (inAttack && Attacking.Finished())
+        if (inAttack && AttackingAction.Finished())
         {
             SetStatus(StateEnum.Idle);
         }
@@ -464,7 +463,7 @@ public class Unit
     #endregion
     public void RecoverPower(float count)
     {
-        if (!MainSkill.Opening.Finished())
+        if (MainSkill != null && !MainSkill.Opening.Finished())
             return;
         foreach (var skill in Skills)
         {
@@ -502,9 +501,9 @@ public class Unit
             }
             AnimationSpeed = 1;
         }
-        if (state != StateEnum.Attack && !Attacking.Finished())
+        if (state != StateEnum.Attack && !AttackingAction.Finished())
         {
-            Attacking.Finish();
+            AttackingAction.Finish();
         }
     }
 
@@ -590,7 +589,7 @@ public class Unit
 
     public void BreakAllCast()
     {
-        Attacking.Finish();
+        AttackingAction.Finish();
         foreach (var skill in Skills)
         {
             skill.BreakCast();

@@ -109,11 +109,6 @@ namespace Units
                     ScaleX += delta;
             }
 
-            if (MainSkill != null && MainSkill.SkillData.PowerType == PowerRecoverTypeEnum.自动)
-            {
-                RecoverPower(PowerSpeed * SystemConfig.DeltaTime);
-            }
-
             if (this.State == StateEnum.Die)
             {
                 UpdateDie();

@@ -39,8 +39,8 @@ public class SkillData : IConfig
       public float Cooldown;
       public float InitialCooldown;
       public float OpenTime;
-      public int StartPower;
-      public int MaxPower;
+      public float StartPower;
+      public float MaxPower;
       public int PowerCount;
       public PowerRecoverTypeEnum PowerType;
       public string[] ModelAnimation;

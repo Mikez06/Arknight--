@@ -8,7 +8,6 @@ using UnityEngine;
 public class Tile
 {
     public Battle Battle => Map.Battle;
-    public TileData TileData => Database.Instance.Get<TileData>(ConfigId);
     public Map Map;
     public MapGrid MapGrid;
     public Vector3 Pos;
@@ -33,8 +32,6 @@ public class Tile
     public Tile PreGrid;
 
     public TileTypeEnum TileType;
-
-    public int ConfigId;
 
     public virtual void Update()
     {

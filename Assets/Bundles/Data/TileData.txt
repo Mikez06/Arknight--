@@ -1,3 +1,0 @@
-{"Id":"普通地面"}
-{"Id":"灼烧地板","Data":{"BurnDamage":10,"BurnTimeMin":3,"BurnTimeMax":5}}
-{"Id":"火山地板","Data":{"BurnDamage":10,"BurnTimeMin":3,"BurnTimeMax":5}}

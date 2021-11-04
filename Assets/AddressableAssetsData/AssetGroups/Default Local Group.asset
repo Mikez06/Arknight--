@@ -297,6 +297,22 @@ MonoBehaviour:
     m_Address: "Assets/Bundles/Effect/\u5730\u677F\u635F\u574F"
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: cedccc4d87b775f428923bc392ae36f7
+    m_Address: Assets/Bundles/Units/enemy_1067_snslime_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3c9123ec54f983047b00472976eda398
+    m_Address: Assets/Bundles/Units/enemy_1068_snmage_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9c42fdbf3ef2c3941a1c7794a856f4cc
+    m_Address: Assets/Bundles/Units/enemy_1065_snwolf_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 02a3f8824dc4462488b719024aae43ce
+    m_Address: "Assets/Bundles/Effect/\u51B0\u672F\u58EB\u5C31\u7EEA"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

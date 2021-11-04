@@ -175,7 +175,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &275767882
 GameObject:
@@ -228,7 +228,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &279655570
 GameObject:
@@ -281,7 +281,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &428954712
 GameObject:
@@ -334,7 +334,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &466950852
 GameObject:
@@ -387,7 +387,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &473386836
 GameObject:
@@ -440,7 +440,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &474721433
 GameObject:
@@ -493,7 +493,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &486117373
 GameObject:
@@ -546,7 +546,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &502977454
 GameObject:
@@ -599,7 +599,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &509682293
 GameObject:
@@ -738,7 +738,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &527870494
 GameObject:
@@ -791,7 +791,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &542561350
 GameObject:
@@ -844,7 +844,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &553809497
 GameObject:
@@ -945,7 +945,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &596447679
 GameObject:
@@ -998,7 +998,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &653421500
 GameObject:
@@ -1099,7 +1099,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &738745707
 GameObject:
@@ -1152,7 +1152,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &743597980
 GameObject:
@@ -1205,7 +1205,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &745274396
 GameObject:
@@ -1258,7 +1258,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &771494174
 GameObject:
@@ -1311,7 +1311,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &831684965
 GameObject:
@@ -1364,7 +1364,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &876470788
 GameObject:
@@ -1417,7 +1417,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &895569599
 GameObject:
@@ -1470,7 +1470,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &926997427
 GameObject:
@@ -1571,7 +1571,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1111169302
 GameObject:
@@ -1624,7 +1624,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1132201340
 GameObject:
@@ -1677,7 +1677,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1206165219
 GameObject:
@@ -1778,7 +1778,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1266514366
 GameObject:
@@ -1831,7 +1831,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1272540675
 GameObject:
@@ -1980,7 +1980,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: "\u5F29\u7BAD\u88C5\u7F6E"
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1310149009
 GameObject:
@@ -2203,7 +2203,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1393637375
 GameObject:
@@ -2256,7 +2256,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1404829643
 GameObject:
@@ -2309,7 +2309,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1412683680
 GameObject:
@@ -2362,7 +2362,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1468666808
 GameObject:
@@ -2415,7 +2415,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1470270411
 GameObject:
@@ -2512,7 +2512,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1481150097
 GameObject:
@@ -2658,7 +2658,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1626292412
 GameObject:
@@ -2711,7 +2711,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1627384340
 GameObject:
@@ -2764,7 +2764,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1648366868
 GameObject:
@@ -2817,7 +2817,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1667532572
 GameObject:
@@ -2870,7 +2870,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1670621394
 GameObject:
@@ -2923,7 +2923,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1723438316
 GameObject:
@@ -2976,7 +2976,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1781913971
 GameObject:
@@ -3029,7 +3029,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1795917499
 GameObject:
@@ -3082,7 +3082,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1808697052
 GameObject:
@@ -3135,7 +3135,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: "\u9677\u5751"
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1833507583
 GameObject:
@@ -3224,7 +3224,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &1994848994
 GameObject:
@@ -3277,7 +3277,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &2000835274
 GameObject:
@@ -3330,7 +3330,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &2009890515
 GameObject:
@@ -3383,7 +3383,7 @@ MonoBehaviour:
   CanMove: 1
   MapUnitId: 
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &2053703525
 GameObject:
@@ -3436,7 +3436,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: "\u5F29\u7BAD\u88C5\u7F6E"
   Alive: 0
-  Tags: []
+  Tag: 
   ActiveTime: 0
 --- !u!1 &2072750266
 GameObject:
@@ -3489,7 +3489,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: "\u51B0\u51BB\u51B2\u51FB\u88C5\u7F6E"
   Alive: 0
-  Tags: []
+  Tag: 11
   ActiveTime: 10
 --- !u!1 &2105284105
 GameObject:

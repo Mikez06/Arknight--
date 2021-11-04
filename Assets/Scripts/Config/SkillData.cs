@@ -14,9 +14,10 @@ public class SkillData : IConfig
       public bool RegetTarget;
       public bool StopBreak;
       public bool StopOtherSkill;
-      public bool SelfOnly;
       public int TargetTeam;
       public bool AttackFly;
+      public bool UseEventTarget;
+      public bool SelfOnly;
       public UnitTypeEnum ProfessionLimit;
       public AttackTargetOrderEnum AttackOrder;
       public AttackTargetOrder2Enum AttackOrder2;
@@ -37,7 +38,6 @@ public class SkillData : IConfig
       public int[] Skills;
       public int[] ExSkills;
       public float Cooldown;
-      public float InitialCooldown;
       public float OpenTime;
       public float StartPower;
       public float MaxPower;
@@ -53,6 +53,7 @@ public class SkillData : IConfig
       public float[] BuffData;
       public float? BuffLastTime;
       public System.Collections.Generic.Dictionary<string,object> Data;
+      public int? ReadyEffect;
       public int? StartEffect;
       public int? HitEffect;
       public int? EffectEffect;

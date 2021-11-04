@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-[System.Serializable]
 public class Unit
 {
     public static string[] DefaultAnimation = new string[] { "Default" };

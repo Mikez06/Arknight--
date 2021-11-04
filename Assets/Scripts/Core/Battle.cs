@@ -12,7 +12,7 @@ public class Battle
     public int Hurt;
     public int Tick = -1;
     public int WaveTick;
-    public string WaveTag;
+    public string WaveTag = "";
     public float Cost;
 
     public Map Map = new Map();

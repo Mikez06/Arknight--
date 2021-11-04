@@ -52,6 +52,8 @@ public class Skill
     public int PowerCount;
     public int UseCount;
 
+    Effect ReadyEffect;
+
     public virtual void Init()
     {
         if (SkillData.Modifys != null)
@@ -76,8 +78,6 @@ public class Skill
         Power = SkillData.StartPower;
         MaxPower = SkillData.MaxPower;
         PowerCount = SkillData.PowerCount;
-
-        Cooldown.Set(SkillData.InitialCooldown);
     }
 
     public virtual void Update()
@@ -85,6 +85,21 @@ public class Skill
         if (SkillData.PowerType == PowerRecoverTypeEnum.自动)
         {
             RecoverPower(Unit.PowerSpeed * SystemConfig.DeltaTime);
+        }
+
+        if (SkillData.ReadyEffect != null)
+        {
+            if (ReadyEffect == null && Power >= MaxPower)
+            {
+                ReadyEffect = EffectManager.Instance.GetEffect(SkillData.ReadyEffect.Value);
+                ReadyEffect.transform.SetParent(Unit.UnitModel.transform);
+                ReadyEffect.transform.position = Unit.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.ReadyEffect.Value).BindPoint);
+            }
+            else if (ReadyEffect != null && Power < MaxPower)
+            {
+                EffectManager.Instance.ReturnEffect(ReadyEffect);
+                ReadyEffect = null;
+            }
         }
 
         if (SkillData.AutoUse && Power == MaxPower)
@@ -457,9 +472,15 @@ public class Skill
             ps.Play();
         }
         addBuff(target);
-        if (Unit.Skills[0] == this && Unit.MainSkill != null && Unit.MainSkill.SkillData.PowerType == PowerRecoverTypeEnum.攻击)
+        if (Unit.Skills[0] == this)
         {
-            Unit.RecoverPower(1);
+            foreach (var skill in Unit.Skills)
+            {
+                if (skill.SkillData.PowerType == PowerRecoverTypeEnum.攻击)
+                {
+                    skill.RecoverPower(1);
+                }
+            }
         }
         if (SkillData.DamageRate > 0)
         {
@@ -523,14 +544,14 @@ public class Skill
     protected List<Unit> getAttackTarget()
     {
         tempTargets.Clear();
-        if (Battle.TriggerDatas.Count > 0)
+        if (SkillData.UseEventTarget)
         {
             //正在事件当中，技能去取事件目标
             var t = Battle.TriggerDatas.Peek().Target;
             if (t != null)
                 tempTargets.Add(t);
         }
-        if (tempTargets.Count == 0)
+        else //if (tempTargets.Count == 0)
         {
             if (AttackPoints == null)//根据攻击范围进行索敌
             {

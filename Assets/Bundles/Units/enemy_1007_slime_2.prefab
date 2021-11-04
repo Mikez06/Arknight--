@@ -102,6 +102,7 @@ MonoBehaviour:
     CanAttack: 0
     CanStopOther: 0
     IfAlive: 1
+    IfSelectable: 1
     IfStun: 0
     ScaleX: -1
     TargetScaleX: -1

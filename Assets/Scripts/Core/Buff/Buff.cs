@@ -71,6 +71,7 @@ public class Buff
         if (LastingEffect != null)
         {
             EffectManager.Instance.ReturnEffect(LastingEffect);
+            LastingEffect = null;
         }
     }
 }

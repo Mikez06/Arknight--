@@ -19,7 +19,7 @@ public class Test : MonoBehaviour
     // Start is called before the first frame update
     async void Start()
     {
-        var animation = GetComponent<SkeletonAnimation>().Skeleton.Data.FindAnimation("Skill_2");
+        var animation = GetComponent<SkeletonAnimation>().Skeleton.Data.FindAnimation("Skill_1");
         foreach (var timeline in animation.Timelines)
         {
             if (timeline is Spine.EventTimeline eventTimeline)

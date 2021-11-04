@@ -79,7 +79,7 @@ namespace Units
             Reseting.Update(SystemConfig.DeltaTime);
             if (State == StateEnum.Default) return;
 
-            if (!Start.Finished())
+            if (!Start.Finished() && State != StateEnum.Die)
             {
                 if (Start.Update(SystemConfig.DeltaTime))
                 {

@@ -93,10 +93,6 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Other/HighLight
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: dab016339dac5bd40a88551db29427b1
-    m_Address: Assets/Bundles/Data/TileData
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 6f8432cb4ee95524296fedccdb628eda
     m_Address: Assets/Bundles/Units/char_002_amiya
     m_ReadOnly: 0
@@ -295,6 +291,10 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: d03baba370d1cb54991c1aac11f07728
     m_Address: Assets/Bundles/Units/enemy_1510_frstar2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d79645b63c410d44ead0b00c91a585b0
+    m_Address: "Assets/Bundles/Effect/\u5730\u677F\u635F\u574F"
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

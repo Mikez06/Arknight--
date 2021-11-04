@@ -363,7 +363,7 @@ public class Skill
             var ps = EffectManager.Instance.GetEffect(SkillData.StartEffect.Value);
             ps.transform.position = Unit.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.StartEffect.Value).BindPoint);
             ps.transform.localScale = new Vector3(Unit.TargetScaleX, 1, 1);
-            ps.PS.Play();
+            ps.Play();
         }
     }
 
@@ -454,7 +454,7 @@ public class Skill
         {
             var ps = EffectManager.Instance.GetEffect(SkillData.HitEffect.Value);
             ps.transform.position = target.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.HitEffect.Value).BindPoint);
-            ps.PS.Play();
+            ps.Play();
         }
         addBuff(target);
         if (Unit.Skills[0] == this && Unit.MainSkill != null && Unit.MainSkill.SkillData.PowerType == PowerRecoverTypeEnum.攻击)
@@ -473,7 +473,7 @@ public class Skill
                     {
                         var ps = EffectManager.Instance.GetEffect(SkillData.EffectEffect.Value);
                         ps.transform.position = target.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.EffectEffect.Value).BindPoint);
-                        ps.PS.Play();
+                        ps.Play();
                     }
                     t.Damage(GetDamageInfo(target, t != target));
                     OnBeAttack(target);
@@ -485,7 +485,7 @@ public class Skill
                 {
                     var ps = EffectManager.Instance.GetEffect(SkillData.EffectEffect.Value);
                     ps.transform.position = target.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.EffectEffect.Value).BindPoint);
-                    ps.PS.Play();
+                    ps.Play();
                 }
                 if (SkillData.IfHeal)
                 {

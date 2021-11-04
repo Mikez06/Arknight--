@@ -174,6 +174,9 @@ MonoBehaviour:
   FarAttackGrid: 1
   CanMove: 0
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &275767882
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,6 +227,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &279655570
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,6 +280,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &428954712
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,6 +333,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &466950852
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,6 +386,9 @@ MonoBehaviour:
   FarAttackGrid: 1
   CanMove: 0
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &473386836
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +439,9 @@ MonoBehaviour:
   FarAttackGrid: 1
   CanMove: 0
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &474721433
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +492,9 @@ MonoBehaviour:
   FarAttackGrid: 1
   CanMove: 0
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &486117373
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +545,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &502977454
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +598,9 @@ MonoBehaviour:
   FarAttackGrid: 1
   CanMove: 0
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &509682293
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,6 +737,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &527870494
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,6 +790,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &542561350
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,6 +843,9 @@ MonoBehaviour:
   FarAttackGrid: 1
   CanMove: 0
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &553809497
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,6 +944,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &596447679
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,6 +997,9 @@ MonoBehaviour:
   FarAttackGrid: 1
   CanMove: 0
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &653421500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,6 +1098,9 @@ MonoBehaviour:
   FarAttackGrid: 1
   CanMove: 0
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &738745707
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,6 +1151,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &743597980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,6 +1204,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &745274396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,6 +1257,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &771494174
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,6 +1310,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &831684965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,6 +1363,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &876470788
 GameObject:
   m_ObjectHideFlags: 0
@@ -1356,6 +1416,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &895569599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1406,6 +1469,9 @@ MonoBehaviour:
   FarAttackGrid: 1
   CanMove: 0
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &926997427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1504,6 +1570,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1111169302
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,6 +1623,9 @@ MonoBehaviour:
   FarAttackGrid: 1
   CanMove: 0
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1132201340
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,6 +1676,9 @@ MonoBehaviour:
   FarAttackGrid: 1
   CanMove: 0
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1206165219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1702,6 +1777,9 @@ MonoBehaviour:
   FarAttackGrid: 1
   CanMove: 0
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1266514366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,6 +1830,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1272540675
 GameObject:
   m_ObjectHideFlags: 0
@@ -1898,6 +1979,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 0
   MapUnitId: "\u5F29\u7BAD\u88C5\u7F6E"
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1310149009
 GameObject:
   m_ObjectHideFlags: 0
@@ -2118,6 +2202,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1393637375
 GameObject:
   m_ObjectHideFlags: 0
@@ -2168,6 +2255,9 @@ MonoBehaviour:
   FarAttackGrid: 1
   CanMove: 0
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1404829643
 GameObject:
   m_ObjectHideFlags: 0
@@ -2218,6 +2308,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1412683680
 GameObject:
   m_ObjectHideFlags: 0
@@ -2268,6 +2361,9 @@ MonoBehaviour:
   FarAttackGrid: 1
   CanMove: 0
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1468666808
 GameObject:
   m_ObjectHideFlags: 0
@@ -2318,6 +2414,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1470270411
 GameObject:
   m_ObjectHideFlags: 0
@@ -2412,6 +2511,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1481150097
 GameObject:
   m_ObjectHideFlags: 0
@@ -2555,6 +2657,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1626292412
 GameObject:
   m_ObjectHideFlags: 0
@@ -2605,6 +2710,9 @@ MonoBehaviour:
   FarAttackGrid: 1
   CanMove: 0
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1627384340
 GameObject:
   m_ObjectHideFlags: 0
@@ -2655,6 +2763,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1648366868
 GameObject:
   m_ObjectHideFlags: 0
@@ -2705,6 +2816,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1667532572
 GameObject:
   m_ObjectHideFlags: 0
@@ -2755,6 +2869,9 @@ MonoBehaviour:
   FarAttackGrid: 1
   CanMove: 0
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1670621394
 GameObject:
   m_ObjectHideFlags: 0
@@ -2805,6 +2922,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1723438316
 GameObject:
   m_ObjectHideFlags: 0
@@ -2855,6 +2975,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1781913971
 GameObject:
   m_ObjectHideFlags: 0
@@ -2905,6 +3028,9 @@ MonoBehaviour:
   FarAttackGrid: 1
   CanMove: 0
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1795917499
 GameObject:
   m_ObjectHideFlags: 0
@@ -2955,6 +3081,9 @@ MonoBehaviour:
   FarAttackGrid: 1
   CanMove: 0
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1808697052
 GameObject:
   m_ObjectHideFlags: 0
@@ -3005,6 +3134,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: "\u9677\u5751"
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1833507583
 GameObject:
   m_ObjectHideFlags: 0
@@ -3091,6 +3223,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &1994848994
 GameObject:
   m_ObjectHideFlags: 0
@@ -3141,6 +3276,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &2000835274
 GameObject:
   m_ObjectHideFlags: 0
@@ -3191,6 +3329,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &2009890515
 GameObject:
   m_ObjectHideFlags: 0
@@ -3241,6 +3382,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 1
   MapUnitId: 
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &2053703525
 GameObject:
   m_ObjectHideFlags: 0
@@ -3291,6 +3435,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 0
   MapUnitId: "\u5F29\u7BAD\u88C5\u7F6E"
+  Alive: 0
+  Tags: []
+  ActiveTime: 0
 --- !u!1 &2072750266
 GameObject:
   m_ObjectHideFlags: 0
@@ -3341,6 +3488,9 @@ MonoBehaviour:
   FarAttackGrid: 0
   CanMove: 0
   MapUnitId: "\u51B0\u51BB\u51B2\u51FB\u88C5\u7F6E"
+  Alive: 0
+  Tags: []
+  ActiveTime: 10
 --- !u!1 &2105284105
 GameObject:
   m_ObjectHideFlags: 0

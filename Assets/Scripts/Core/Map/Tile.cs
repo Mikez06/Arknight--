@@ -33,6 +33,9 @@ public class Tile
 
     public TileTypeEnum TileType;
 
+    public string Tag;
+    public float ActiveTime;
+
     public virtual void Update()
     {
 
@@ -50,6 +53,7 @@ public class Tile
         this.CanBuildUnit = mapGrid.CanBuildUnit;
         this.FarAttackGrid = mapGrid.FarAttackGrid;
         this.CanMove = mapGrid.CanMove;
+        this.Tag = mapGrid.Tag;
     }
 
     public bool CanSet(Unit unit)

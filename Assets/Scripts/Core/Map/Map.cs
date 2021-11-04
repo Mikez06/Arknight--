@@ -29,33 +29,22 @@ public class Map
         {
             if (!string.IsNullOrEmpty(grid.MapUnitId))
             {
-                var unit = battle.CreateSceneUnit(grid.MapUnitId, grid.transform.position, grid.transform.forward.ToV2());
-                //unit.Position = grid.transform.position;
+                battle.SceneUnits.Add(new MapUnitInfo()
+                {
+                    Time = grid.ActiveTime,
+                    Id = grid.MapUnitId,
+                    Tag = grid.Tag,
+                    Pos = grid.transform.position,
+                    Direction = grid.transform.forward.ToV2(),
+                });
             }
         }
+        battle.SortSceneUnit();
     }
 
     Tile CreateTile(MapGrid mapGrid)
     {
         Tile tile = new Tile();
-        //switch (mapGrid.TileType)
-        //{
-        //    case TileTypeEnum.普通:
-        //        tile = new Tiles.普通地板();
-        //        break;
-        //    case TileTypeEnum.火山:
-        //        tile = new Tiles.火山();
-        //        break;
-        //    case TileTypeEnum.灼烧:
-        //        tile = new Tiles.灼烧();
-        //        break;
-        //    case TileTypeEnum.陷坑:
-        //        tile = new Tiles.陷坑();
-        //        break;
-        //    default:
-        //        tile = new Tiles.普通地板();
-        //        break;
-        //}
         tile.Init(this, mapGrid);
         return tile;
     }

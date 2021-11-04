@@ -20,4 +20,9 @@ public class Effect : MonoBehaviour
             EffectManager.Instance.ReturnEffect(this);
         }
     }
+
+    public void Play()
+    {
+        if (PS != null) PS.Play();
+    }
 }

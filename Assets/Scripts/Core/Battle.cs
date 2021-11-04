@@ -11,19 +11,21 @@ public class Battle
     public int Hp = 10;
     public int Hurt;
     public int Tick = -1;
+    public int WaveTick;
+    public string WaveTag;
     public float Cost;
 
     public Map Map = new Map();
 
     public List<WaveData> Waves = new List<WaveData>();
 
+    public List<MapUnitInfo> SceneUnits = new List<MapUnitInfo>();
+
     public int EnemyCount;
 
     public List<Units.干员> PlayerUnits = new List<Units.干员>();
 
     public List<Unit> Enemys = new List<Unit>();
-
-    public List<Unit> SceneUnits = new List<Unit>();
 
     public List<Unit> AllUnits = new List<Unit>();
 
@@ -84,6 +86,8 @@ public class Battle
         updateFinish();
         if (Finish) return;
         Tick++;
+        WaveTick++;
+        checkSceneUnit();
         updateUnitMap();
         if (CostCounting.Update(SystemConfig.DeltaTime))
         {
@@ -141,6 +145,26 @@ public class Battle
         }
     }
 
+    void checkSceneUnit()
+    {
+        while (SceneUnits.Count > 0 && SceneUnits[0].Time <= WaveTick * SystemConfig.DeltaTime && SceneUnits[0].Tag == WaveTag)
+        {
+            CreateSceneUnit(SceneUnits[0].Id, SceneUnits[0].Pos, SceneUnits[0].Direction);
+            SceneUnits.RemoveAt(0);
+        }
+    }
+
+    public void SortSceneUnit()
+    {
+        SceneUnits = SceneUnits.OrderBy(x => x.Tag == WaveTag ? 0 : 1).ThenBy(x => x.Time).ToList();
+    }
+
+    public void ChangeWaveTag(string tag)
+    {
+        WaveTag = tag;
+        WaveTick = 0;
+        SortSceneUnit();
+    }
 
     public Unit CreateSceneUnit(string id,Vector3 pos,Vector2 direction)
     {
@@ -152,7 +176,6 @@ public class Battle
         unit.Position = pos;
         unit.Direction = direction;
         unit.Init();
-        SceneUnits.Add(unit);
         AllUnits.Add(unit);
         return unit;
     }

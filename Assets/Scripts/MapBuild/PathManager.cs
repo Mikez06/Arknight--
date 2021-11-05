@@ -27,7 +27,7 @@ public class PathManager : MonoBehaviour
                     Pos = tr.position,
                     Delay = point.Delay,
                     DirectMove=point.DirectMove,
-                    HideMove=point.DirectMove,
+                    HideMove=point.HideMove,
                 });
                 index++;
             }

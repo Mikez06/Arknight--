@@ -150,7 +150,7 @@ namespace BattleUI
             }
             m_Builds.RemoveChildren();
             var units = Battle.PlayerUnits.Where(x => x.InputTime == -1).ToList();
-            units.Sort((x, y) => x.UnitData.Cost - y.UnitData.Cost);
+            units.Sort((x, y) => y.UnitData.Cost - x.UnitData.Cost);
             foreach (var unit in units)
             {
                 var head = UIPool.GetObject(UI_BuildSprite.URL) as UI_BuildSprite;

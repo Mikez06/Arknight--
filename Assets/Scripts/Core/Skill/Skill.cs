@@ -192,7 +192,14 @@ public class Skill
         switch (SkillData.ReadyType)
         {
             case SkillReadyEnum.特技激活:
-                if (Opening.Finished()) return false;
+                if (Unit.MainSkill == null)
+                {
+                    if (Opening.Finished()) return false;
+                }
+                else
+                {
+                    if (Unit.MainSkill.Opening.Finished()) return false;
+                }
                 break;
             case SkillReadyEnum.禁止主动:
                 return false;
@@ -534,10 +541,7 @@ public class Skill
     public virtual void FindTarget()
     {      
         Targets.Clear();
-        if (SkillData.SelfOnly)
-            Targets.Add(Unit);
-        else
-            Targets.AddRange(getAttackTarget());
+        Targets.AddRange(getAttackTarget());
     }
 
     List<Unit> tempTargets = new List<Unit>();
@@ -548,7 +552,7 @@ public class Skill
         {
             //正在事件当中，技能去取事件目标
             var t = Battle.TriggerDatas.Peek().Target;
-            if (t != null)
+            if (t != null && CanUseTo(t))
                 tempTargets.Add(t);
         }
         else //if (tempTargets.Count == 0)

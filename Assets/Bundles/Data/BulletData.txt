@@ -1,4 +1,4 @@
 {"Id":"阿米娅子弹","Type":"子弹","Model":"蓝色子弹","Speed":10}
-{"Id":"抛物线子弹","Type":"子弹","Model":"蓝色子弹","Speed":3,"Data":{"MoveHeight":2}}
+{"Id":"抛物线子弹","Type":"子弹","Model":"testBullet","Speed":3,"Data":{"MoveHeight":2}}
 {"Id":"阿米娅强力击子弹","Type":"子弹","Model":"testBullet","Speed":10}
 {"Id":"弩箭","Type":"冲击波","Model":"蓝色子弹","Speed":10}

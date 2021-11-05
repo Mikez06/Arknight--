@@ -1980,7 +1980,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: "\u5F29\u7BAD\u88C5\u7F6E"
   Alive: 0
-  Tag: 
+  Tag: 1
   ActiveTime: 0
 --- !u!1 &1310149009
 GameObject:
@@ -3484,7 +3484,7 @@ MonoBehaviour:
   CanMove: 0
   MapUnitId: "\u5F29\u7BAD\u88C5\u7F6E"
   Alive: 0
-  Tag: 
+  Tag: 1
   ActiveTime: 0
 --- !u!1 &2072750266
 GameObject:

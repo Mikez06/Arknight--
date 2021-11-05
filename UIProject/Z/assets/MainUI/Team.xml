@@ -7,62 +7,89 @@
     </image>
     <component id="n0_r8hr" name="u0" src="r8hro" fileName="TeamUnit.xml" xy="227,133">
       <gearXY controller="goBattle" default="227,133"/>
+      <relation target="" sidePair="left-left%"/>
     </component>
     <component id="n7_r8hr" name="u1" src="r8hro" fileName="TeamUnit.xml" xy="227,566">
       <gearXY controller="goBattle" default="227,566"/>
+      <relation target="" sidePair="left-left%"/>
     </component>
     <component id="n1_r8hr" name="u2" src="r8hro" fileName="TeamUnit.xml" xy="442,133">
       <gearXY controller="goBattle" pages="0" values="442,133" default="469,133"/>
+      <relation target="" sidePair="left-left%"/>
     </component>
     <component id="n8_r8hr" name="u3" src="r8hro" fileName="TeamUnit.xml" xy="442,566">
       <gearXY controller="goBattle" pages="0" values="442,566" default="469,566"/>
+      <relation target="" sidePair="left-left%"/>
     </component>
     <component id="n2_r8hr" name="u4" src="r8hro" fileName="TeamUnit.xml" xy="656,133">
       <gearXY controller="goBattle" pages="0" values="656,133" default="711,133"/>
+      <relation target="" sidePair="left-left%"/>
     </component>
     <component id="n9_r8hr" name="u5" src="r8hro" fileName="TeamUnit.xml" xy="656,566">
       <gearXY controller="goBattle" pages="0" values="656,566" default="711,566"/>
+      <relation target="" sidePair="left-left%"/>
     </component>
     <component id="n3_r8hr" name="u6" src="r8hro" fileName="TeamUnit.xml" xy="867,133">
       <gearXY controller="goBattle" pages="0" values="867,133" default="953,133"/>
+      <relation target="" sidePair="left-left%"/>
     </component>
     <component id="n10_r8hr" name="u7" src="r8hro" fileName="TeamUnit.xml" xy="867,566">
       <gearXY controller="goBattle" pages="0" values="867,566" default="953,566"/>
+      <relation target="" sidePair="left-left%"/>
     </component>
     <component id="n4_r8hr" name="u8" src="r8hro" fileName="TeamUnit.xml" xy="1078,133">
       <gearXY controller="goBattle" pages="0" values="1078,133" default="1195,133"/>
+      <relation target="" sidePair="left-left%"/>
     </component>
     <component id="n11_r8hr" name="u9" src="r8hro" fileName="TeamUnit.xml" xy="1078,566">
       <gearXY controller="goBattle" pages="0" values="1078,566" default="1195,566"/>
+      <relation target="" sidePair="left-left%"/>
     </component>
     <component id="n5_r8hr" name="u10" src="r8hro" fileName="TeamUnit.xml" xy="1284,133">
       <gearXY controller="goBattle" pages="0" values="1284,133" default="1437,133"/>
+      <relation target="" sidePair="left-left%"/>
     </component>
     <component id="n12_r8hr" name="u11" src="r8hro" fileName="TeamUnit.xml" xy="1284,566">
       <gearXY controller="goBattle" pages="0" values="1284,566" default="1437,566"/>
+      <relation target="" sidePair="left-left%"/>
     </component>
     <component id="n13_r8hr" name="back" src="kbteh" fileName="back.xml" xy="38,29"/>
-    <component id="n14_r8hr" name="team0" src="r8hrp" fileName="TeamTab.xml" xy="120,992" touchable="false"/>
+    <component id="n14_r8hr" name="team0" src="r8hrp" fileName="TeamTab.xml" xy="120,992" touchable="false">
+      <relation target="" sidePair="left-left%"/>
+    </component>
     <component id="n19_r8hr" name="team1" src="r8hrp" fileName="TeamTab.xml" xy="534,992" touchable="false">
+      <relation target="" sidePair="left-left%"/>
       <Button title="第二编队"/>
     </component>
     <component id="n20_r8hr" name="team2" src="r8hrp" fileName="TeamTab.xml" xy="948,992" touchable="false">
+      <relation target="" sidePair="left-left%"/>
       <Button title="第三编队"/>
     </component>
     <component id="n21_r8hr" name="team3" src="r8hrp" fileName="TeamTab.xml" xy="1362,992" touchable="false">
+      <relation target="" sidePair="left-left%"/>
       <Button title="第四编队"/>
     </component>
-    <component id="n22_r8hr" name="quickTeam" src="r8hrq" fileName="QuickTeam.xml" xy="1396,27"/>
-    <component id="n23_r8hr" name="delete" src="r8hrs" fileName="DeleteTeam.xml" xy="1752,23"/>
-    <component id="n24_r8hr" name="right" src="r8hrt" fileName="Right.xml" xy="1670,375"/>
-    <component id="n25_r8hr" name="left" src="r8hrt" fileName="Right.xml" xy="2,375" pivot="0.5,0.5" scale="-1,1"/>
+    <component id="n22_r8hr" name="quickTeam" src="r8hrq" fileName="QuickTeam.xml" xy="1396,27">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n23_r8hr" name="delete" src="r8hrs" fileName="DeleteTeam.xml" xy="1752,23">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n24_r8hr" name="right" src="r8hrt" fileName="Right.xml" xy="1670,375">
+      <relation target="" sidePair="left-left%"/>
+    </component>
+    <component id="n25_r8hr" name="left" src="r8hrt" fileName="Right.xml" xy="2,375" pivot="0.5,0.5" scale="-1,1">
+      <relation target="" sidePair="left-left%"/>
+    </component>
     <component id="n26_kbte" name="support" src="kbtex" fileName="SupportCard.xml" xy="1488,133">
       <gearDisplay controller="goBattle" pages="0"/>
       <gearXY controller="goBattle" pages="0" values="1488,133" default="1437,133"/>
+      <relation target="" sidePair="left-left%"/>
     </component>
     <component id="n27_kbte" name="battle" src="kbtey" fileName="GoBattle.xml" xy="1488,566">
       <gearDisplay controller="goBattle" pages="0"/>
       <gearXY controller="goBattle" pages="0" values="1488,566" default="1437,566"/>
+      <relation target="" sidePair="left-left%"/>
     </component>
   </displayList>
 </component>

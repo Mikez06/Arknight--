@@ -21,6 +21,7 @@ public class UnitData : IConfig
       public float AttackGap;
       public int Hatred;
       public int Weight;
+      public float Speed;
       public string HitPointName;
       public int[] Skills;
       public int[] MainSkill;
@@ -32,7 +33,6 @@ public class UnitData : IConfig
       public float LeaveReturn;
       public bool WithoutCheckCount;
       public int Damage;
-      public float Speed;
       public float Radius;
       public bool CanStop;
       public UnitTypeEnum Profession;

@@ -8,11 +8,10 @@ namespace Skills
 {
     public class 获得费用 : Skill
     {
-
-        public override void Start()
+        public override void Effect(Unit target)
         {
             Battle.Cost += SkillData.CostCount;
-            base.Start();
+            base.Effect(target);
         }
     }
 }

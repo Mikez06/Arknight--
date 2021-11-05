@@ -2,7 +2,7 @@
 <component size="1920,1080">
   <displayList>
     <component id="n0_kbte" name="n0" src="kbte10" fileName="BattleInfo.xml" xy="407,551" customData="TestMap"/>
-    <component id="n1_kbte" name="n1" src="kbte10" fileName="BattleInfo.xml" xy="1000,438" customData="TestMap">
+    <component id="n1_kbte" name="n1" src="kbte10" fileName="BattleInfo.xml" xy="1000,438" customData="TestMap1">
       <Label title="1-2"/>
     </component>
   </displayList>

@@ -229,7 +229,6 @@ public class Unit
 
     public virtual void Finish()
     {
-        Battle.AllUnits.Remove(this);
         Battle.TriggerDatas.Push(new TriggerData()
         {
             Target = this,

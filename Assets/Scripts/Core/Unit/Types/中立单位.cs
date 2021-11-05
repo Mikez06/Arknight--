@@ -38,6 +38,7 @@ namespace Units
         public override void Finish()
         {
             base.Finish();
+            Battle.AllUnits.Remove(this);
             BattleUI.UI_Battle.Instance.ReturnUIUnit(this);
         }
     }

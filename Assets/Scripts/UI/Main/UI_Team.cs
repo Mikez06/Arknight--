@@ -72,7 +72,6 @@ namespace MainUI
                 {
                     MapName = BattleLevel,
                     Seed = 0,
-                    StartCost = 50,
                     Team = gameData.Teams[TeamIndex],
                 });
             });

@@ -47,8 +47,10 @@ public class MapManager : MonoBehaviour
             var grid = t.GetComponent<MapGrid>();
             if (grid == null) grid = t.gameObject.AddComponent<MapGrid>();
             grid.AutoBuild();
-            grid.X = (int)t.transform.position.x;
-            grid.Y = (int)t.transform.position.z;
+            grid.X = Mathf.RoundToInt( t.transform.position.x);
+            grid.Y = Mathf.RoundToInt(t.transform.position.z);
+            t.name = "Grid:" + grid.X + "," + grid.Y + "," + grid.MapUnitId;
+            t.position = new Vector3(grid.X, t.transform.position.y, grid.Y);
             var texName = t1.GetComponent<Renderer>().sharedMaterial.mainTexture.name;
             //根据贴图名自动匹配
             switch (texName)

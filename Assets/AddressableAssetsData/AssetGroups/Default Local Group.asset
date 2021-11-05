@@ -313,6 +313,18 @@ MonoBehaviour:
     m_Address: "Assets/Bundles/Effect/\u51B0\u672F\u58EB\u5C31\u7EEA"
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 7c724c3cc070e9e4996bb41028f4a6bc
+    m_Address: Assets/Bundles/Units/enemy_1024_mortar_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a563bdc2403984d4d90d6e0b64a89d12
+    m_Address: Assets/Bundles/Units/enemy_1066_snbow_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4d26abaa592dc58449207d9526799ded
+    m_Address: Assets/Bundles/Units/enemy_1069_icebrk_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

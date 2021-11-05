@@ -3,3 +3,4 @@
 {"Id":"破冰1","Type":"对buff伤害","Buff":13,"Data":{"DamageRate":1.5}}
 {"Id":"破冰2","Type":"对buff伤害","Buff":13,"Data":{"DamageRate":2}}
 {"Id":"破冰3","Type":"对buff伤害","Buff":13,"Data":{"DamageRate":2.5}}
+{"Id":"破冰4","Type":"对buff伤害","Buff":13,"Data":{"DamageRate":3}}

@@ -17,6 +17,8 @@ public class Battle
 
     public Map Map = new Map();
 
+    public MapData MapData;
+
     public List<WaveData> Waves = new List<WaveData>();
 
     public List<MapUnitInfo> SceneUnits = new List<MapUnitInfo>();
@@ -43,9 +45,10 @@ public class Battle
 
     public void Init(BattleInput battleConfig)
     {
+        MapData = Database.Instance.Get<MapData>(battleConfig.MapName);
         Random = new System.Random(battleConfig.Seed);
 
-        Cost = battleConfig.StartCost;
+        Cost = MapData.InitCost;
 
         //读取场景地图信息
         Map.Init(this);

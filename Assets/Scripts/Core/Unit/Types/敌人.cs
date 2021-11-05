@@ -30,7 +30,7 @@ namespace Units
         /// </summary>
         public int NowPathPoint;
         protected Vector3 NextPoint => GetPoint(NowPathPoint + 1);
-        public CountDown PathWaiting;
+        public CountDown PathWaiting = new CountDown();
         public List<PathPoint> PathPoints;
         public bool NeedResetPath;
 
@@ -60,6 +60,7 @@ namespace Units
             Hp = 0;
             if (!UnitData.WithoutCheckCount) Battle.EnemyCount--;
             BattleUI.UI_Battle.Instance.ReturnUIUnit(this);
+            Battle.AllUnits.Remove(this);
             Battle.Enemys.Remove(this);
             GameObject.Destroy(UnitModel.gameObject);
             UnitModel = null;
@@ -120,8 +121,9 @@ namespace Units
                 if (TempIndex == TempPath.Count - 1) 
                 {
                     NowPathPoint++;
-                    if (NowPathPoint != WaveData.Path.Length)//抵达临时目标点，如果该目标点不是终点,重新找去下一个点的路
+                    if (NowPathPoint != PathPoints.Count-1)//抵达临时目标点，如果该目标点不是终点,重新找去下一个点的路
                     {
+                        PathWaiting.Set(PathPoints[NowPathPoint].Delay);
                         TempPath = null;
                     }
                     else
@@ -135,13 +137,13 @@ namespace Units
         protected override void UpdateMove()
         {
             CheckBlock();
-            CheckArrive();
-            if (PathWaiting != null && !PathWaiting.Finished())
+            if (!PathWaiting.Finished())
             {
-                SetStatus(StateEnum.Idle);
+                if (AnimationName == UnitData.MoveAnimation) SetStatus(StateEnum.Idle);
                 PathWaiting.Update(SystemConfig.DeltaTime);
                 return;
             }
+            CheckArrive();
             if (Unbalance) return;//失衡状态下不许主动移动
             if (StopUnit != null)
             {
@@ -160,7 +162,10 @@ namespace Units
 
             var delta = TempTarget - Position;
             if (delta != Vector3.zero) Direction = new Vector2(delta.x, delta.z);
-            var scaleX = delta.x > 0 ? 1 : -1;
+            float scaleX;
+            if (delta.x > 0) scaleX = 1;
+            else if (delta.x <0) scaleX = -1;
+            else scaleX= TargetScaleX;
             if (scaleX != ScaleX)
             {
                 TargetScaleX = scaleX;
@@ -176,7 +181,7 @@ namespace Units
                 {
                     NowPathPoint++;
 
-                    if (NowPathPoint == WaveData.Path.Length)
+                    if (NowPathPoint == PathPoints.Count - 1)
                     {
                         //破门了
                         Battle.DoDamage(UnitData.Damage);
@@ -184,6 +189,7 @@ namespace Units
                     }
                     else
                     {
+                        PathWaiting.Set(PathPoints[NowPathPoint].Delay);
                         //往下个点走
                         TempPath = null;
                     }

@@ -1,1 +1,2 @@
-{"Id":"TestMap"}
+{"Id":"TestMap","InitCost":20}
+{"Id":"TestMap1","InitCost":20}

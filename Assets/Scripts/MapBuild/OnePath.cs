@@ -35,6 +35,7 @@ public class OnePath : MonoBehaviour
         {
             var buildPoint = tr.GetComponent<BuildPathPoint>();
             if (buildPoint == null) buildPoint = tr.gameObject.AddComponent<BuildPathPoint>();
+            buildPoint.PathPoint.Pos = tr.transform.position;
             Path.Add(buildPoint.PathPoint);
         }
 

@@ -9,5 +9,4 @@ public class BattleInput
     public string MapName;
     public Team Team;
     public int Seed;
-    public int StartCost;
 }

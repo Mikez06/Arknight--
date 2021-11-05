@@ -156,7 +156,7 @@ namespace BattleUI
                 var head = UIPool.GetObject(UI_BuildSprite.URL) as UI_BuildSprite;
                 head.SetUnit(unit);
                 m_Builds.AddChild(head);
-                head.xy = new UnityEngine.Vector2(1750 - units.IndexOf(unit) * head.width, unit == selectedUnit ? 830 : 883);
+                head.xy = new UnityEngine.Vector2(width * 0.9f - units.IndexOf(unit) * head.width, unit == selectedUnit ? height - 50f : height);
                 head.onClick.Set(() => clickUnit(unit));
                 head.draggable = true;
                 head.onDragStart.Set(dragUnit);

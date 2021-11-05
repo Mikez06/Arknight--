@@ -604,6 +604,15 @@ public class Skill
         float result = 0;
         switch (SkillData.AttackOrder2)
         {
+            case AttackTargetOrder2Enum.近身:
+                if (unit is Units.干员 u)
+                {
+                    if (u.StopUnits.Contains(unit))
+                    {
+                        result += 1;
+                    }
+                }
+                break;
             case AttackTargetOrder2Enum.飞行:
                 result = -unit.Height;
                 break;

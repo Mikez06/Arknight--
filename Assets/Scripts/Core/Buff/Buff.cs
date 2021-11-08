@@ -44,6 +44,10 @@ public class Buff
             //Unit.RemoveBuff(this);
             Unit.AddBuff(BuffData.Upgrade.Value, this.Skill);
         }
+        if (BuffData.IfSwitch)
+        {
+            Finish();
+        }
     }
 
     protected virtual void updateLastTime()

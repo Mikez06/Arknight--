@@ -241,7 +241,7 @@ public class Battle
         var config = Database.Instance.Get<BulletData>(id);
         var result = typeof(Battle).Assembly.CreateInstance(nameof(Bullets) + "." + config.Type) as Bullet;
         result.Id = id;
-        result.Postion = startPos;
+        result.Position = startPos;
         result.TargetPos = targetPos;
         result.Target = target;
         result.Skill = skill;

@@ -75,9 +75,16 @@ public class Skill
             UpdateAttackPoints();
         }
 
-        Power = SkillData.StartPower;
         MaxPower = SkillData.MaxPower;
         PowerCount = SkillData.PowerCount;
+        Reset();
+    }
+
+    public virtual void Reset()
+    {
+        Power = SkillData.StartPower;
+        BreakCast();
+        Cooldown.Finish();
     }
 
     public virtual void Update()
@@ -212,6 +219,8 @@ public class Skill
 
         if (SkillData.EnableBuff != null && !SkillData.EnableBuff.All(x => Unit.Buffs.Any(y => y.Id == x))) 
             return false;
+        if (SkillData.DisableBuff != null && SkillData.DisableBuff.Any(x => Unit.Buffs.Any(y => y.Id == x)))
+            return false;
 
         if (SkillData.StopBreak && Unit.IfStoped()) return false;
 
@@ -227,6 +236,10 @@ public class Skill
 
     public virtual bool InAttackUsing()
     {
+        if (SkillData.EnableBuff != null && !SkillData.EnableBuff.All(x => Unit.Buffs.Any(y => y.Id == x)))
+            return false;
+        if (SkillData.DisableBuff != null && SkillData.DisableBuff.Any(x => Unit.Buffs.Any(y => y.Id == x)))
+            return false;
         if (SkillData.AttackPoints == null) return false;
         if (SkillData.ReadyType == SkillReadyEnum.特技激活&&!Opening.Finished())
         {
@@ -319,7 +332,7 @@ public class Skill
         }
         if (Targets.Count > 0)
         {
-            if (Targets.Count == 1 && Targets[0] != Unit)
+            if (Targets.Count == 1 && Targets[0] != Unit && SkillData.ModelAnimation != null)//默认不填动作的技能不需要转身
             {
                 var scaleX = (Targets[0].Position - Unit.Position).x > 0 ? 1 : -1;
                 if (scaleX != Unit.ScaleX)
@@ -478,8 +491,7 @@ public class Skill
             ps.transform.position = target.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.HitEffect.Value).BindPoint);
             ps.Play();
         }
-        addBuff(target);
-        if (Unit.Skills[0] == this)
+        if (SkillData.UseType == SkillUseTypeEnum.自动 && SkillData.MaxPower == 0 && SkillData.ModelAnimation != null)//三个条件判断技能是否为普攻，判断条件存疑
         {
             foreach (var skill in Unit.Skills)
             {
@@ -526,6 +538,7 @@ public class Skill
                 OnBeAttack(target);
             }
         }
+        addBuff(target);
     }
 
     protected virtual void addBuff(Unit target)
@@ -557,13 +570,14 @@ public class Skill
         }
         else //if (tempTargets.Count == 0)
         {
-            if (AttackPoints == null)//根据攻击范围进行索敌
+            if (AttackPoints == null&&!SkillData.AttackAreaWithMain)//根据攻击范围进行索敌
             {
                 tempTargets.AddRange(Battle.FindAll(Unit.Position2, SkillData.AttackRange, SkillData.TargetTeam));
             }
             else
             {
-                tempTargets.AddRange(Battle.FindAll(AttackPoints, SkillData.TargetTeam));
+                var attackPoints = SkillData.AttackAreaWithMain ?Unit.GetNowAttackSkill().AttackPoints : AttackPoints;
+                tempTargets.AddRange(Battle.FindAll(attackPoints, SkillData.TargetTeam));
             }
         }
         orderTargets(tempTargets);

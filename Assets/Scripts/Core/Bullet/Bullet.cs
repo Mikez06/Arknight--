@@ -13,7 +13,7 @@ public class Bullet
     public BulletModel BulletModel;
 
     public Vector3 StartPosition;
-    public Vector3 Postion;
+    public Vector3 Position;
     public Vector3 Direction;
 
     protected Battle Battle => Skill.Unit.Battle;
@@ -23,7 +23,7 @@ public class Bullet
 
     public virtual void Init()
     {
-        StartPosition = Postion;
+        StartPosition = Position;
         CreateModel();
     }
 

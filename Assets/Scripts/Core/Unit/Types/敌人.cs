@@ -68,6 +68,7 @@ namespace Units
 
         public override void UpdateAction()
         {
+            base.UpdateAction();
             if (ScaleX != TargetScaleX)
             {
                 var delta = Math.Sign(TargetScaleX - ScaleX) / SystemConfig.TurningTime * SystemConfig.DeltaTime;

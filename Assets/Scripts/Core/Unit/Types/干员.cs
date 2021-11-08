@@ -65,6 +65,7 @@ namespace Units
 
         public override void UpdateAction()
         {
+            base.UpdateAction();
             //不管怎么样 都要检测阻挡是否已经失效
             foreach (var target in StopUnits.ToList())
             {
@@ -191,12 +192,16 @@ namespace Units
             }
             StopUnits.Clear();
             BattleUI.UI_Battle.Instance.UpdateUnitsLayout();
+            foreach (var skill in Skills)
+            {
+                skill.Reset();
+            }
         }
 
         public override void Finish()
         {
-            base.Finish();
             LeaveMap();
+            base.Finish();
         }
 
         public override Vector2Int PointWithDirection(Vector2Int point)

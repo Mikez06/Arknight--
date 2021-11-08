@@ -18,7 +18,7 @@ namespace Bullets
                 TargetPos = Target.UnitModel.GetPoint(Target.UnitData.HitPointName);
             moveHeight = BulletData.Data.GetFloat("MoveHeight");
             Debug.Log("高度:" + moveHeight);
-            if (moveHeight == 0) Direction = TargetPos - this.Postion;
+            if (moveHeight == 0) Direction = TargetPos - this.Position;
         }
         public override void Update()
         {
@@ -27,11 +27,11 @@ namespace Bullets
                 TargetPos = Target.UnitModel.GetPoint(Target.UnitData.HitPointName);
             if (moveHeight == 0)
             {
-                Postion = posBy(tickTime);
+                Position = posBy(tickTime);
             }
             else
             {
-                Postion = posBy(tickTime);
+                Position = posBy(tickTime);
                 Direction = posBy(tickTime + SystemConfig.DeltaTime) - posBy(tickTime);
             }
             //Vector3 delta = TargetPos - Postion;

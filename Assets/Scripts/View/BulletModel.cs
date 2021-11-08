@@ -8,7 +8,7 @@ public class BulletModel : MonoBehaviour
     public void Init(Bullet bullet)
     {
         this.Bullet = bullet;
-        transform.position = bullet.Postion;
+        transform.position = bullet.Position;
     }
 
     // Use this for initialization
@@ -20,7 +20,7 @@ public class BulletModel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Bullet.Postion;
+        transform.position = Bullet.Position;
         //transform.eulerAngles = Bullet.Direction;
         transform.rotation = Quaternion.LookRotation(Bullet.Direction, Vector3.right);
     }

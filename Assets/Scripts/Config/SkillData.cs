@@ -9,6 +9,7 @@ public class SkillData : IConfig
       public TriggerEnum Trigger;
       public int MaxUseCount;
       public int[] EnableBuff;
+      public int[] DisableBuff;
       public bool AutoUse;
       public bool NoTargetAlsoUse;
       public bool RegetTarget;
@@ -23,6 +24,7 @@ public class SkillData : IConfig
       public AttackTargetOrder2Enum AttackOrder2;
       public UnityEngine.Vector2Int[] AttackPoints;
       public float AttackRange;
+      public bool AttackAreaWithMain;
       public DamageTypeEnum DamageType;
       public bool IfHeal;
       public float DamageRate;

@@ -65,6 +65,9 @@ public class Unit
 
     public float PowerSpeed;
 
+    public float HpRecover;
+    public float HpRecoverBase;
+
     public int Team;
 
     public int Weight;
@@ -142,6 +145,7 @@ public class Unit
         MagicDefenceAdd = MagicDefenceRate = MagicDefenceAddFin = MagicDefenceRateFin = 0;
         DefenceAdd = DefenceRate = DefenceAddFin = DefenceRateFin = 0;
         AgiAdd = AgiRate = AgiAddFin = AgiRateFin = 0;
+        HpRecoverBase = 0;
         WeightAdd = 0;
         PowerSpeed = 1f;
         AttackGapAdd = AttackGapRate = 0;
@@ -156,7 +160,8 @@ public class Unit
         Attack = ((AttackBase + AttackAdd) * (1 + AttackRate) + AttackAddFin) * (1 + AttackRateFin);
         Defence = ((DefenceBase + DefenceAdd) * (1 + DefenceRate) + DefenceAddFin) * (1 + DefenceRateFin);
         MagicDefence = ((MagicDefenceBase + MagicDefenceAdd) * (1 + MagicDefenceRate) + MagicDefenceAddFin) * (1 + MagicDefenceRateFin);
-        Agi= ((AgiBase + AgiAdd) * (1 + AgiRate) + AgiAddFin) * (1 + AgiRateFin);
+        HpRecover = HpRecoverBase;
+        Agi = ((AgiBase + AgiAdd) * (1 + AgiRate) + AgiAddFin) * (1 + AgiRateFin);
         if (MagicDefence < 0) MagicDefence = 0;
         Weight = WeightBase + WeightAdd;
         AttackGap = (AttackGapBase + AttackGapAdd) * (1 + AttackGapRate);
@@ -184,7 +189,9 @@ public class Unit
     }
     public virtual void UpdateAction()
     {
-        
+        //HP自动回复
+        Hp += HpRecover * MaxHp * SystemConfig.DeltaTime;
+        if (Hp > MaxHp) Hp = MaxHp;
     }
 
     protected void UpdateDie()
@@ -592,6 +599,7 @@ public class Unit
         {
             skill.BreakCast();
         }
+        SetStatus(StateEnum.Idle);
     }
 
     public virtual bool IfStoped()

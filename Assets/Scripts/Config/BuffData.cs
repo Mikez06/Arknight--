@@ -7,5 +7,6 @@ public class BuffData : IConfig
       public int? LastingEffect;
       public float LastTime;
       public int? Upgrade;
+      public bool DeadRemain;
       public System.Collections.Generic.Dictionary<string,object> Data;
 }

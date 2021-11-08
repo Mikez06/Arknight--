@@ -43,6 +43,7 @@ namespace Skills
         public override void Cast()
         {
             var targetHp = SkillData.Data.GetFloat("LockHp") * Unit.MaxHp;
+            if (targetHp <= 0) targetHp = 1;
             if (targetHp > Unit.Hp)
                 Unit.Hp = targetHp;
             healCount = SkillData.Data.GetFloat("HealCount") * Unit.MaxHp;

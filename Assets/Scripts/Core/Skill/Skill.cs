@@ -163,6 +163,7 @@ public class Skill
     public bool CanUseTo(Unit target)
     {
         if (target == null) return false;
+        if (SkillData.IfHeal && !target.CanBeHeal) return false;
         if (!target.IfSelectable) return false;
         if (SkillData.SelfOnly && target != Unit) return false;
         if ((SkillData.TargetTeam >> target.Team) % 2 == 0) return false;
@@ -193,7 +194,7 @@ public class Skill
 
     public virtual bool Ready()
     {
-        if (Unit.IfStun && SkillData.UseType != SkillUseTypeEnum.被动) 
+        if (Unit.IfStun)
             return false;
         if (SkillData.UseType == SkillUseTypeEnum.被动) return false;
         switch (SkillData.ReadyType)
@@ -241,7 +242,11 @@ public class Skill
         if (SkillData.DisableBuff != null && SkillData.DisableBuff.Any(x => Unit.Buffs.Any(y => y.Id == x)))
             return false;
         if (SkillData.AttackPoints == null) return false;
-        if (SkillData.ReadyType == SkillReadyEnum.特技激活&&!Opening.Finished())
+
+        if (SkillData.ReadyType == SkillReadyEnum.特技激活 &&
+            ((SkillData.MaxPower > 0 && !Opening.Finished())
+            || (SkillData.MaxPower == 0 && !Unit.MainSkill.Opening.Finished())
+            ))
         {
             return true;
         }
@@ -280,12 +285,11 @@ public class Skill
     #region 主动相关
     public bool CanOpen()
     {
-        if (SkillData.ReadyType == SkillReadyEnum.充能释放 && SkillData.UseType == SkillUseTypeEnum.手动)
+        if (SkillData.ReadyType == SkillReadyEnum.充能释放 && SkillData.UseType == SkillUseTypeEnum.手动 && !SkillData.NoTargetAlsoUse)
         {
             var target = getAttackTarget();
             if (target.Count == 0)
             {
-                Log.Debug($"技能{SkillData.Name} 无可选目标，使用失败");
                 return false;
             }
         }
@@ -733,13 +737,11 @@ public class Skill
     {
         if (SkillData.DamageCount != 0)
         {
-            Debug.Log($"{SkillData.Id} ,{targets.Count}");
             int targetCount = GetTargetCount();
             for (int i = targets.Count() - 1; i >= targetCount; i--)
             {
                 targets.RemoveAt(i);
             }
-            Debug.Log($"{SkillData.Id} :{targets.Count}");
         }
     }
 
@@ -820,6 +822,7 @@ public class Skill
         var result = new DamageInfo()
         {
             Target = target,
+            AllCount = tempTargets.Count,
             Source = this,
             Attack = SkillData.BaseOnMaxHp ? target.MaxHp : Unit.Attack,
             DamageRate = IfAOE ? SkillData.AreaDamage : SkillData.DamageRate,

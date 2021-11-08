@@ -83,6 +83,7 @@ public class Unit
     public bool IfAlive = true;
 
     public bool IfSelectable = true;//能否被技能指定为目标
+    public bool CanBeHeal = false;
 
     /// <summary>
     /// 攻击动画
@@ -107,6 +108,7 @@ public class Unit
 
     public string[] AnimationName = Unit.DefaultAnimation;
     public string[] OverWriteAnimation;
+    public string[] OverWriteIdle;
     public bool CanChangeAnimation = true;
     public float AnimationSpeed = 1;
 
@@ -139,6 +141,7 @@ public class Unit
 
     public virtual void Refresh()
     {
+        float hpDown = MaxHp - Hp;
         SpeedAdd = SpeedRate = 0;
         HpAdd = HpRate = HpAddFin = HpRateFin = 0;
         AttackAdd = AttackRate = AttackAddFin = AttackRateFin = 0;
@@ -150,13 +153,15 @@ public class Unit
         PowerSpeed = 1f;
         AttackGapAdd = AttackGapRate = 0;
         CanAttack = true;
+        CanBeHeal = true;
         foreach (var buff in Buffs)
         {
             buff.Apply();
         }
         Speed = (SpeedBase + SpeedAdd) * (1 + SpeedRate) / 2;
         if (Speed < 0) Speed = 0;
-        MaxHp= ((HpBase + HpAdd) * (1 + HpRate) + HpAddFin) * (1 + HpRateFin);
+        MaxHp = ((HpBase + HpAdd) * (1 + HpRate) + HpAddFin) * (1 + HpRateFin);
+        Hp = MaxHp - hpDown;
         Attack = ((AttackBase + AttackAdd) * (1 + AttackRate) + AttackAddFin) * (1 + AttackRateFin);
         Defence = ((DefenceBase + DefenceAdd) * (1 + DefenceRate) + DefenceAddFin) * (1 + DefenceRateFin);
         MagicDefence = ((MagicDefenceBase + MagicDefenceAdd) * (1 + MagicDefenceRate) + MagicDefenceAddFin) * (1 + MagicDefenceRateFin);
@@ -245,9 +250,9 @@ public class Unit
 
         foreach (var buff in Buffs.ToArray())
         {
-            buff.Finish();
+            if (!buff.BuffData.DeadRemain)
+                buff.Finish();
         }
-        Buffs.Clear();
         foreach (var buff in PushBuffs.ToArray())
         {
             (buff as Buff).Finish();
@@ -352,6 +357,11 @@ public class Unit
         }
         else
             Skills.Add(skill);
+        if (skillConfig.Skills != null)
+            foreach (var id in skillConfig.Skills)
+            {
+                LearnSkill(id);
+            }
         if (skillConfig.ExSkills != null)
             foreach (var id in skillConfig.ExSkills)
             {
@@ -493,7 +503,7 @@ public class Unit
             if (state == StateEnum.Default)
                 AnimationName = Unit.DefaultAnimation;
             else if (state == StateEnum.Idle)
-                AnimationName = UnitData.IdleAnimation;
+                AnimationName = OverWriteIdle == null ? UnitData.IdleAnimation : OverWriteIdle;
             else if (state == StateEnum.Move)
                 AnimationName = UnitData.MoveAnimation;
             else if (state == StateEnum.Start)
@@ -531,10 +541,10 @@ public class Unit
     public void Damage(DamageInfo damageInfo)
     {
         float damage = damageInfo.Attack * damageInfo.DamageRate;
-        damage = damageWithDefence(damage, damageInfo.DamageType,damageInfo.DefIgnore);
+        damage = damageWithDefence(damage, damageInfo.DamageType,damageInfo.DefIgnore, damageInfo.DefIgnore);
         damageInfo.FinalDamage = damage;
         float damageEx = damageInfo.Attack;
-        damageEx = damageWithDefence(damageEx, damageInfo.DamageType, 0);
+        damageEx = damageWithDefence(damageEx, damageInfo.DamageType, 0, 0);
         if (damage > damageEx * 1.5f) UnitModel.ShowCrit(damageInfo);
         if (!damageInfo.Avoid)
         {
@@ -558,17 +568,17 @@ public class Unit
         }
     }
 
-    float damageWithDefence(float damage,DamageTypeEnum damageType,float defIgnore)
+    float damageWithDefence(float damage,DamageTypeEnum damageType,float defIgnore, float defIgnoreRate)
     {
         switch (damageType)
         {
             case DamageTypeEnum.Normal:
-                var defence = Mathf.Max(0, Defence - defIgnore);
+                var defence = Mathf.Max(0, Defence * (1 - defIgnoreRate) - defIgnore);
                 damage = Mathf.Max(damage * 0.05f, damage - defence);//抛光系数0.05
                 if (damage < 0) damage = 1;
                 break;
             case DamageTypeEnum.Magic:
-                var magDefence = Mathf.Max(0, MagicDefence - defIgnore);
+                var magDefence = Mathf.Max(0, MagicDefence * (1 - defIgnoreRate) - defIgnore);
                 damage = Mathf.Max(damage * 0.05f, damage * (100 - magDefence) / 100);
                 break;
         }

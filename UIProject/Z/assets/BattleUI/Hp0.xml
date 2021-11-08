@@ -3,6 +3,7 @@
   <displayList>
     <graph id="n31_kbte" name="n31" xy="0,0" size="605,10" type="rect" lineSize="0" fillColor="#ff000000"/>
     <graph id="n32_kbte" name="bar" xy="0,0" size="605,10" type="rect" lineSize="0" fillColor="#ff0066ff"/>
+    <text id="n33_r58k" name="title" xy="302,5" pivot="0.5,0.5" anchor="true" size="124,48" fontSize="35" color="#ffffff" align="center" strokeColor="#000000" text="123123"/>
   </displayList>
-  <ProgressBar/>
+  <ProgressBar titleType="valueAndmax"/>
 </component>

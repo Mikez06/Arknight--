@@ -325,6 +325,10 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Units/enemy_1069_icebrk_2
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: f126c7b8bc4386d4f99c4d9cb6f5a68f
+    m_Address: "Assets/Bundles/Bullet/\u5EF6\u8FDF\u5B50\u5F39"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

@@ -18,10 +18,10 @@
     <component id="n31_kbte" name="Hp" src="kbte3t" fileName="Hp0.xml" xy="33,556">
       <ProgressBar max="100"/>
     </component>
-    <text id="n37_kbte" name="atk" xy="68,441" size="44,29" fontSize="20" color="#ffffff" align="center" autoSize="none" text="1000"/>
-    <text id="n38_kbte" name="def" xy="68,468" size="44,29" fontSize="20" color="#ffffff" align="center" autoSize="none" text="1000"/>
-    <text id="n39_kbte" name="magDef" xy="68,493" size="44,29" fontSize="20" color="#ffffff" align="center" autoSize="none" text="1000"/>
-    <text id="n40_kbte" name="block" xy="68,519" size="44,29" fontSize="20" color="#ffffff" align="center" autoSize="none" text="1000"/>
+    <text id="n37_kbte" name="atk" xy="68,441" size="48,29" fontSize="20" color="#ffffff" align="center" text="1000"/>
+    <text id="n38_kbte" name="def" xy="68,468" size="48,29" fontSize="20" color="#ffffff" align="center" text="1000"/>
+    <text id="n39_kbte" name="magDef" xy="68,493" size="48,29" fontSize="20" color="#ffffff" align="center" text="1000"/>
+    <text id="n40_kbte" name="block" xy="68,519" size="48,29" fontSize="20" color="#ffffff" align="center" text="1000"/>
     <graph id="n41_kbte" name="n41" xy="144,444" size="136,100" type="rect" lineSize="0" fillColor="#66000000"/>
     <graph id="n42_kbte" name="n42" xy="295,444" size="338,100" type="rect" lineSize="0" fillColor="#66000000"/>
     <text id="n43_kbte" name="n43" xy="160,505" size="104,35" fontSize="25" color="#ffffff" align="center" text="攻击范围"/>

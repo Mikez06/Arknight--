@@ -6,23 +6,21 @@ using System.Threading.Tasks;
 
 namespace Modifys
 {
-    public class 穿甲 : Modify, IDamageModify
+    public class 对个数伤害 : Modify, IDamageModify
     {
-        public float Chance,Value,Rate;
+        public int Count;
+        public float Rate;
         public override void Init()
         {
             base.Init();
-            Chance = ModifyData.Data.GetFloat("Chance");
-            Value = ModifyData.Data.GetFloat("Value");
+            Count = ModifyData.Data.GetInt("Count");
             Rate = ModifyData.Data.GetFloat("Rate");
         }
-
         public void Modify(DamageInfo damageInfo)
         {
-            if (Chance >= 1 || Battle.Random.NextDouble() < Chance)
+            if (damageInfo.AllCount == Count)
             {
-                damageInfo.DefIgnore += Value;
-                damageInfo.DefIgnoreRate += Rate;
+                damageInfo.DamageRate *= Rate;
             }
         }
     }

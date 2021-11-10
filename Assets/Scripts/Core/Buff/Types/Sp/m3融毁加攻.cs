@@ -10,6 +10,12 @@ namespace Buffs
     {
         public CountDown c = new CountDown();
 
+        public override void Init()
+        {
+            base.Init();
+            Unit.BreakAllCast();
+        }
+
         public override void Update()
         {
             if (c.Finished()) c.Set(1);

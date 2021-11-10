@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="565,565" pivot="0.5,0.5" opaque="false" hitTest="n37_kbte">
+  <controller name="coner" pages="4,,0,,1,,2,,3," selected="4"/>
+  <displayList>
+    <image id="n37_kbte" name="n37" src="t5h94n" fileName="SetPanel/Border1.png" xy="33,33" size="499,499" visible="false"/>
+    <image id="n32_kbte" name="n32" src="t5h94k" fileName="SetPanel/Cancel.png" xy="-54,-76">
+      <gearDisplay controller="coner" pages="4"/>
+    </image>
+    <image id="n27_kbte" name="n27" src="t5h94i" fileName="SetPanel/Border.png" xy="33,33"/>
+    <image id="n28_kbte" name="n28" src="t5h94h" fileName="SetPanel/Arrow4.png" xy="130,-71">
+      <gearDisplay controller="coner" pages="0"/>
+    </image>
+    <image id="n29_kbte" name="n29" src="t5h94h" fileName="SetPanel/Arrow4.png" xy="634,130" rotation="90">
+      <gearDisplay controller="coner" pages="1"/>
+    </image>
+    <image id="n30_kbte" name="n30" src="t5h94h" fileName="SetPanel/Arrow4.png" xy="435,634" rotation="180">
+      <gearDisplay controller="coner" pages="2"/>
+    </image>
+    <image id="n31_kbte" name="n31" src="t5h94h" fileName="SetPanel/Arrow4.png" xy="-67,435" rotation="270">
+      <gearDisplay controller="coner" pages="3"/>
+    </image>
+    <component id="n36_kbte" name="grip" src="t5h94l" fileName="SetPanel/grip.xml" xy="338,249" pivot="0.5,0.5" anchor="true" visible="false"/>
+    <component id="n40_h4sa" name="n40" src="f1463m" fileName="Container.xml" xy="283,36" size="348,348" rotation="45"/>
+    <image id="n41_t5h9" name="n41" src="t5h94p" fileName="SetPanel/Notice.png" xy="-128,26">
+      <gearDisplay controller="coner" pages="0,1,2,3"/>
+    </image>
+  </displayList>
+</component>

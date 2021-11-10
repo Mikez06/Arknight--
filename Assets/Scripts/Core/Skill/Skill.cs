@@ -584,7 +584,7 @@ public class Skill
             foreach (var buffId in SkillData.BuffRemoves)
             {
                 var buff = target.Buffs.Find(x => x.Id == buffId);
-                buff.Finish();
+                if (buff != null) buff.Finish();
             }
     }
     #endregion

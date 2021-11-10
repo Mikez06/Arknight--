@@ -15,4 +15,9 @@ public class MapTile : MonoBehaviour
     {
         
     }
+    public void IfHeal(bool bo)
+    {
+        transform.GetChild(0).gameObject.SetActive(!bo);
+        transform.GetChild(1).gameObject.SetActive(bo);
+    }
 }

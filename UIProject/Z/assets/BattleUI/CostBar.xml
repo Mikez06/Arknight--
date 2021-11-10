@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="142,9" extention="ProgressBar">
   <displayList>
-    <graph id="n30_kbte" name="bar" xy="0,0" size="142,9" type="rect"/>
+    <graph id="n31_t5h9" name="back" xy="0,0" size="142,9" type="rect" lineSize="0" fillColor="#ff999999">
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
+    <graph id="n30_kbte" name="bar" xy="0,0" size="142,9" type="rect" lineSize="0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
   </displayList>
   <ProgressBar/>
 </component>

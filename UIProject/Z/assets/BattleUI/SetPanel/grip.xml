@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="255,258" extention="Button">
+  <displayList>
+    <graph id="n1_t5h9" name="n1" xy="130,41" size="130,130" visible="false" rotation="45" type="rect"/>
+    <image id="n0_t5h9" name="n0" src="t5h94j" fileName="SetPanel/Cursor.png" xy="0,0"/>
+  </displayList>
+  <Button downEffect="dark" downEffectValue=".8"/>
+</component>

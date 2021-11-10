@@ -8,7 +8,7 @@ namespace BattleUI
     public partial class UI_SetPanel : GComponent
     {
         public Controller m_coner;
-        public GGraph m_grip;
+        public GButton m_grip;
         public const string URL = "ui://vp312gabkbte3y";
 
         public static UI_SetPanel CreateInstance()
@@ -21,7 +21,7 @@ namespace BattleUI
             base.ConstructFromXML(xml);
 
             m_coner = GetControllerAt(0);
-            m_grip = (GGraph)GetChildAt(10);
+            m_grip = (GButton)GetChildAt(7);
             Init();
         }
         partial void Init();

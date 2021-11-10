@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080" pivot="0.5,0.5" extention="Button" mask="n29_kbte" reversedMask="true">
   <displayList>
-    <graph id="n28_kbte" name="n28" xy="0,0" size="1920,1080" type="rect" lineSize="0" fillColor="#4c000000"/>
-    <image id="n29_kbte" name="hole" src="kbte3v" fileName="多边形 1.png" xy="962,511" pivot="0.5,0.5" anchor="true"/>
+    <graph id="n28_kbte" name="n28" xy="0,0" pivot="0.5,0.5" size="1920,1080" scale="10,10" type="rect" lineSize="0" fillColor="#4c000000"/>
+    <image id="n29_kbte" name="hole" src="t5h94n" fileName="SetPanel/Border1.png" xy="959,539" pivot="0.5,0.5" anchor="true"/>
   </displayList>
   <Button downEffect="scale" downEffectValue=".8"/>
 </component>

@@ -15,21 +15,28 @@ namespace BattleUI
 
         GObjectPool UIPool;
 
-        Units.干员 selectedUnit;
+        public Units.干员 selectedUnit;
+
+        GameObject worldUI;
+        UI_DragPanel dragPanel;
+        
         partial void Init()
         {
             Instance = this;
             UIPool = new GObjectPool(container.cachedTransform);
             m_state.onChanged.Add(pageChange);
-            m_DirectionPanel.draggable = true;
-            m_DirectionPanel.onDragStart.Add(dragDirection);
-            DragDropManager.inst.dragAgent.onDragMove.Add(dragDirectionMove);
-            DragDropManager.inst.dragAgent.onDragEnd.Add(dragDirectionEnd);
-            m_DirectonCancal.onClick.Add(stopSetUnit);
             m_SkillUseBack.onClick.Add(StopChooseUnit);
             m_SkillUsePanel.m_Leave.onClick.Add(leaveUnit);
             m_SkillUsePanel.m_mainSkillInfo.onClick.Add(useMainSkill);
             m_endClick.onClick.Add(ExitBattle);
+
+            worldUI = ResHelper.Instantiate("Assets/Bundles/Other/UIPanel");
+            GameObject.DontDestroyOnLoad(worldUI);
+            dragPanel = worldUI.GetComponent<UIPanel>().ui as UI_DragPanel;
+            dragPanel.visible = false;
+            dragPanel.displayObject.cachedTransform.localPosition = new Vector3(-dragPanel.size.x / 2, dragPanel.size.y / 2, -50);
+            dragPanel.Parent = this;
+            //m_DirectionPanel
         }
 
         protected override void OnUpdate()
@@ -132,15 +139,6 @@ namespace BattleUI
             UnityEngine.SceneManagement.SceneManager.LoadScene("Default");
         }
 
-        void stopSetUnit()
-        {
-            selectedUnit.UnitModel.gameObject.SetActive(false);
-            selectedUnit = null;
-            m_state.selectedIndex = 0;
-            BattleCamera.Instance.HideUnitAttackArea();
-            UpdateUnitsLayout();
-        }
-
         public void UpdateUnitsLayout()
         {
             for (int i = 0; i < m_Builds.numChildren; i++)
@@ -201,75 +199,7 @@ namespace BattleUI
             BattleCamera.Instance.StartBuild();
         }
 
-        Vector2 dragPos;
-        void dragDirection(EventContext evt)
-        {
-            evt.PreventDefault();
-            dragPos = Stage.inst.touchPosition.ScreenToUI();
-            BattleCamera.Instance.HideUnitAttackArea();
-            DragDropManager.inst.StartDrag(evt.sender as GObject, null, null, (int)evt.data);
-        }
 
-        void dragDirectionMove()
-        {
-            var delta = Stage.inst.touchPosition.ScreenToUI() - dragPos;
-            if (delta.magnitude < 100)
-            {
-                //拽的不够远
-                m_DirectionPanel.m_coner.selectedIndex = 0;
-                BattleCamera.Instance.HideUnitAttackArea();
-            }
-            else
-            {
-                float angle = Vector2.SignedAngle(Vector2.right,delta);
-                if (angle < 0) angle += 360;
-                if (angle>=45 && angle < 135)
-                {
-                    selectedUnit.Direction_E = DirectionEnum.Up;
-                    selectedUnit.ResetAttackPoint();
-                    m_DirectionPanel.m_coner.selectedIndex = 3;
-                }
-                else if (angle >= 135 && angle < 225)
-                {
-                    selectedUnit.Direction_E = DirectionEnum.Left;
-                    m_DirectionPanel.m_coner.selectedIndex = 4;
-                    selectedUnit.ResetAttackPoint();
-                }
-                else if (angle >= 225 && angle < 315)
-                {
-                    selectedUnit.Direction_E = DirectionEnum.Down;
-                    m_DirectionPanel.m_coner.selectedIndex = 1;
-                    selectedUnit.ResetAttackPoint();
-                }
-                else
-                {
-                    m_DirectionPanel.m_coner.selectedIndex = 2;
-                    selectedUnit.Direction_E = DirectionEnum.Right;
-                    selectedUnit.ResetAttackPoint();
-                }
-                BattleCamera.Instance.ShowUnitAttackArea();
-            }
-            m_DirectionPanel.m_grip.visible = true;
-            m_DirectionPanel.m_grip.position = delta + new Vector2(m_DirectionPanel.width / 2, m_DirectionPanel.height / 2);
-        }
-
-        void dragDirectionEnd()
-        {
-            var delta = Stage.inst.touchPosition.ScreenToUI() - dragPos;
-            if (delta.magnitude < 100)
-            {
-                //复位
-                m_DirectionPanel.m_grip.position = new Vector2(m_DirectionPanel.width / 2, m_DirectionPanel.height / 2);
-            }
-            else
-            {
-                selectedUnit.JoinMap();
-                selectedUnit = null;
-                m_state.selectedIndex = 0;
-                UpdateUnitsLayout();
-                BattleCamera.Instance.HideUnitAttackArea();
-            }
-        }
 
 
         void leaveUnit()
@@ -291,6 +221,7 @@ namespace BattleUI
 
         void pageChange()
         {
+            if (m_state.selectedIndex != 3) dragPanel.visible = false;
             switch (m_state.selectedIndex)
             {
                 case 0:
@@ -305,13 +236,15 @@ namespace BattleUI
                     inSelectUnit();
                     break;
                 case 3:
-                    Vector2 mousePos = Camera.main.WorldToScreenPoint(selectedUnit.UnitModel.transform.position); //Stage.inst.touchPosition.ScreenToUI();
-                    mousePos.y = Screen.height - mousePos.y;
-                    mousePos = mousePos.ScreenToUI();
-                    m_DirectionPanel.position = mousePos;
-                    m_DirectionPanel.m_coner.selectedIndex = 0;
-                    m_DirectionBack.m_hole.position = mousePos;
-                    m_DirectionPanel.m_grip.position = new Vector2(m_DirectionPanel.width / 2, m_DirectionPanel.height / 2);
+                    dragPanel.visible = true;
+                    worldUI.transform.position = selectedUnit.UnitModel.transform.position;
+                    //Vector2 mousePos = Camera.main.WorldToScreenPoint(selectedUnit.UnitModel.transform.position); //Stage.inst.touchPosition.ScreenToUI();
+                    //mousePos.y = Screen.height - mousePos.y;
+                    //mousePos = mousePos.ScreenToUI();
+                    //dragPanel.m_DirectionPanel.position = mousePos;
+                    dragPanel.m_DirectionPanel.m_coner.selectedIndex = 0;
+                    //dragPanel.m_DirectionBack.m_hole.position = mousePos;
+                    dragPanel.m_DirectionPanel.m_grip.position = new Vector2(dragPanel.m_DirectionPanel.width / 2, dragPanel.m_DirectionPanel.height / 2);
                     break;
                 case 4:
                     m_SkillUsePanel.SetUnit(selectedUnit);

@@ -102,8 +102,9 @@ public class SpineModel : UnitModel
             delay += _beginAnimation.Duration;
         }
         var nextAnimation = animations.Length > 1 ? animations[1] : animations[0];
+        var loop = animations[0] == "Start" ? false : true;
         //SkeletonAnimation.state.AddAnimation(0, nextAnimation, nextAnimation == "Move"|| nextAnimation == "Idle" || nextAnimation.EndsWith("Loop"), delay);
-        SkeletonAnimation.state.AddAnimation(0, nextAnimation, true, delay);
+        SkeletonAnimation.state.AddAnimation(0, nextAnimation, loop, delay);
         nowAnimations = animations;
     }
 

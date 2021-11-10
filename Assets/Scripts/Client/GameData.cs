@@ -17,18 +17,16 @@ public class GameData
 
     public void TestInit()
     {
-        foreach (var unitConfig in Database.Instance.GetAll<UnitData>())
+        foreach (var unitConfig in Database.Instance.GetAll<CardData>())
         {
-            if (unitConfig.Type == "干员")
+            var unitdata = Database.Instance.Get<UnitData>(unitConfig.Id);
+            Card card = new Card()
             {
-                Card card = new Card()
-                {
-                    UnitId = Database.Instance.GetIndex(unitConfig),
-                    Level = unitConfig.Level,
-                    Upgrade = unitConfig.Upgrade,
-                };
-                Cards.Add(card);
-            }
+                UnitId = Database.Instance.GetIndex(unitdata),
+                Level = unitdata.Level,
+                Upgrade = unitdata.Upgrade,
+            };
+            Cards.Add(card);
         }
         for (int i = 0; i < Instance.Teams.Length; i++)
         {

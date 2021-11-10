@@ -18,7 +18,7 @@ public class SkillData : IConfig
       public int TargetTeam;
       public bool AttackFly;
       public bool UseEventTarget;
-      public bool SelfOnly;
+      public SkillTargetFilterEnum TargetFilter;
       public UnitTypeEnum ProfessionLimit;
       public AttackTargetOrderEnum AttackOrder;
       public AttackTargetOrder2Enum AttackOrder2;
@@ -28,7 +28,7 @@ public class SkillData : IConfig
       public DamageTypeEnum DamageType;
       public bool IfHeal;
       public float DamageRate;
-      public bool BaseOnMaxHp;
+      public int DamageBase;
       public int DamageCount;
       public int BurstCount;
       public float BurstDelay;
@@ -51,6 +51,7 @@ public class SkillData : IConfig
       public int? Bullet;
       public string ShootPoint;
       public int[] Modifys;
+      public int[] BuffRemoves;
       public int[] Buffs;
       public float[] BuffData;
       public float? BuffLastTime;

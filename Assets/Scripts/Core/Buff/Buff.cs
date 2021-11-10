@@ -28,6 +28,7 @@ public class Buff
             LastingEffect.transform.SetParent(Unit.UnitModel.transform);
             LastingEffect.transform.position = Unit.UnitModel.GetPoint(Database.Instance.Get<EffectData>(BuffData.LastingEffect.Value).BindPoint);
         }
+        Log.Debug($"{Unit.UnitData.Id} 新获得了buff {BuffData.Id}");
     }
 
     public virtual void Apply()
@@ -77,5 +78,6 @@ public class Buff
             EffectManager.Instance.ReturnEffect(LastingEffect);
             LastingEffect = null;
         }
+        Log.Debug($"{Unit.UnitData.Id} 失去了buff {BuffData.Id}");
     }
 }

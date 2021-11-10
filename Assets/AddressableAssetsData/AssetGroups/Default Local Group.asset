@@ -329,6 +329,18 @@ MonoBehaviour:
     m_Address: "Assets/Bundles/Bullet/\u5EF6\u8FDF\u5B50\u5F39"
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: ddec226660211314a878089aea428638
+    m_Address: Assets/Bundles/Units/char_350_surtr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 413f7d3069c989e4dad29fba54436072
+    m_Address: Assets/Bundles/Units/char_003_kalts
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 644bd438562fdbf4d9c6f629518291e7
+    m_Address: Assets/Bundles/Units/token_10002_kalts_mon3tr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

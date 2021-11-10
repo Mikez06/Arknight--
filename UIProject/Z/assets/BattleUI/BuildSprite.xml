@@ -33,5 +33,6 @@
     <loader id="n24_kbte" name="n24" xy="31,-15" size="50,50" url="ui://k4mja8t1kbte5" align="center" vAlign="middle" fill="scale">
       <gearIcon controller="typeControl" pages="0,2,3,4,5,6,7" values="ui://k4mja8t1kbte8|ui://k4mja8t1kbte9|ui://k4mja8t1kbte4|ui://k4mja8t1kbte6|ui://k4mja8t1kbte3|ui://k4mja8t1kbte7|ui://k4mja8t1kbtea" default="ui://k4mja8t1kbte5"/>
     </loader>
+    <text id="n26_t5h9" name="count" xy="113,147" pivot="1,0" size="33,36" fontSize="26" color="#ffffff" align="right" vars="true" text="x{n=1}"/>
   </displayList>
 </component>

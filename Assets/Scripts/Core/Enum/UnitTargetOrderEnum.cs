@@ -46,4 +46,5 @@ public enum AttackTargetOrder2Enum
     远程,
     Tag,
     Buff,
+    召唤物,
 }

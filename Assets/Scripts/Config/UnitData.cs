@@ -16,9 +16,12 @@ public class UnitData : IConfig
       public int MagicDefenceEx;
       public int Cost;
       public int CostEx;
+      public float CostAdd;
       public int ResetTime;
       public int ResetTimeEx;
       public float AttackGap;
+      public int BuildCountCost;
+      public bool NotReturn;
       public int Hatred;
       public int Weight;
       public float Speed;
@@ -43,5 +46,6 @@ public class UnitData : IConfig
       public string[] Tags;
       public string[] IdleAnimation;
       public string[] MoveAnimation;
+      public string[] StunAnimation;
       public int MaxAnimationScale;
 }

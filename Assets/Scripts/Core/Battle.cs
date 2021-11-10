@@ -43,12 +43,15 @@ public class Battle
 
     public System.Random Random;
 
+    public int BuildCount;
+
     public void Init(BattleInput battleConfig)
     {
         MapData = Database.Instance.Get<MapData>(battleConfig.MapName);
         Random = new System.Random(battleConfig.Seed);
 
         Cost = MapData.InitCost;
+        BuildCount = MapData.MaxBuildCount;
 
         //读取场景地图信息
         Map.Init(this);
@@ -372,7 +375,7 @@ public class Battle
 
     public void Trigger(TriggerEnum triggerEnum)
     {
-        foreach (var unit in PlayerUnits)
+        foreach (var unit in PlayerUnits.ToArray())
         {
             unit.Trigger(triggerEnum);
         }

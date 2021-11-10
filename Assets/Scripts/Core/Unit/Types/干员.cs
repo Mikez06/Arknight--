@@ -10,7 +10,7 @@ namespace Units
     public class 干员 : Unit
     {
         public Card Card;
-        public int MainSkillId;
+        public int MainSkillId = -1;
 
         public DirectionEnum Direction_E;
 
@@ -21,7 +21,7 @@ namespace Units
         public CountDown Reseting = new CountDown();
 
         /// <summary>
-        /// 干员是第几帧进入场地的
+        /// 干员是第几帧进入场地的,-1表示未放置
         /// </summary>
         public int InputTime = -1;
 
@@ -40,10 +40,14 @@ namespace Units
         public float Cost;
         public float CostBase, CostAdd;
 
+        public 干员 Parent;
+        public List<干员> Children = new List<干员>();
+
         public override void Init()
         {
             base.Init();
-            MainSkill = LearnSkill(UnitData.MainSkill[MainSkillId]);
+            if (MainSkillId >= 0)
+                MainSkill = LearnSkill(UnitData.MainSkill[MainSkillId]);
         }
 
         protected override void baseAttributeInit()
@@ -88,7 +92,7 @@ namespace Units
                     {
                         Target = this,
                     });
-                    Trigger(TriggerEnum.入场);
+                    Trigger(TriggerEnum.落地);
                     Battle.TriggerDatas.Pop();
                     hideBase = false;
                     SetStatus(StateEnum.Idle);
@@ -164,6 +168,7 @@ namespace Units
             Debug.Log("StartStart" + Time.time);
             hideBase = true;
             Battle.Cost -= GetCost();
+            Battle.BuildCount -= UnitData.BuildCountCost;
             Hp = MaxHp;
             Start.Set(UnitModel.GetAnimationDuration("Start"));
             CheckBlock();
@@ -172,6 +177,12 @@ namespace Units
             InputTime = Battle.Tick;
             Battle.Map.Tiles[GridPos.x, GridPos.y].Unit = this;
             BattleUI.UI_Battle.Instance.CreateUIUnit(this);
+            Battle.TriggerDatas.Push(new TriggerData()
+            {
+                Target = this,
+            });
+            Battle.Trigger(TriggerEnum.入场);
+            Battle.TriggerDatas.Pop();
         }
 
         public void LeaveMap(bool recoverPower = false)
@@ -186,11 +197,19 @@ namespace Units
             BuildTime++;
             if (recoverPower)
                 Battle.Cost += Mathf.FloorToInt(UnitData.Cost * UnitData.LeaveReturn);
+            Battle.BuildCount += UnitData.BuildCountCost;
             foreach (var unit in StopUnits)
             {
                 unit.StopUnit = null;
             }
             StopUnits.Clear();
+            if (UnitData.NotReturn)//消耗品
+            {
+                Battle.PlayerUnits.Remove(this);
+                Battle.AllUnits.Remove(this);
+                if (Parent != null) Parent.Children.Remove(this);
+            }
+
             BattleUI.UI_Battle.Instance.UpdateUnitsLayout();
             foreach (var skill in Skills)
             {
@@ -222,17 +241,24 @@ namespace Units
 
         public int GetCost()
         {
-            return (int)(Cost * (BuildTime == 0 ? 1 : BuildTime == 1 ? 1.5f : 2));
+            return (int)(Cost * (BuildTime == 0 ? 1 : BuildTime == 1 ? 1 + CostAdd : 1 + CostAdd * 2));
         }
 
         public bool Useable()
         {
-            return GetCost() <= Battle.Cost;
+            return GetCost() <= Battle.Cost && Battle.BuildCount >= UnitData.BuildCountCost;
         }
 
         public override void DoDie(object source)
         {
             base.DoDie(source);
+
+            foreach (var unit in Children)
+            {
+                (unit as 干员).DoDie(null);
+            }
+            Children.Clear();
+
             foreach (var unit in StopUnits)
             {
                 unit.StopUnit = null;
@@ -268,6 +294,15 @@ namespace Units
         public override bool IfStoped()
         {
             return StopUnits.Count > 0;
+        }
+
+        public void GainChild(int id)
+        {
+            var unit= Battle.CreatePlayerUnit(id);
+            Children.Add(unit);
+            unit.Parent = this;
+            unit.UnitModel?.gameObject.SetActive(false);
+            BattleUI.UI_Battle.Instance.UpdateUnitsLayout();
         }
 
         void CheckBlock()

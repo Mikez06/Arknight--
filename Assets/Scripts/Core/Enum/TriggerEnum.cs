@@ -9,6 +9,7 @@ public enum TriggerEnum
     无,
     出场,
     入场,
+    落地,
     离场,
     攻击,
     被击,
@@ -16,4 +17,5 @@ public enum TriggerEnum
     击杀,
     死亡,
     释放技能,
+    技能结束,
 }

@@ -406,6 +406,7 @@
     <image id="uizy160" name="half_yuki.png" path="/半身立绘/" exported="true"/>
     <image id="uizy161" name="half_zebra.png" path="/半身立绘/" exported="true"/>
     <image id="uizy162" name="half_zumama.png" path="/半身立绘/" exported="true"/>
+    <image id="t5h9163" name="头像_召唤物_Mon3tr.png" path="/头像/" exported="true"/>
   </resources>
   <publish name=""/>
 </packageDescription>

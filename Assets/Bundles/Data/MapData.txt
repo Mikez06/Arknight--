@@ -1,2 +1,2 @@
-{"Id":"TestMap","InitCost":100}
-{"Id":"TestMap1","InitCost":20}
+{"Id":"TestMap","InitCost":100,"MaxBuildCount":8}
+{"Id":"TestMap1","InitCost":20,"MaxBuildCount":8}

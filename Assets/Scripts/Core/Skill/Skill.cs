@@ -157,6 +157,11 @@ public class Skill
         }
         if (SkillData.StopBreak && Unit.IfStoped()) return false;
         if (!Cooldown.Finished()) return false;
+
+        if (SkillData.EnableBuff != null && !SkillData.EnableBuff.All(x => Unit.Buffs.Any(y => y.Id == x)))
+            return false;
+        if (SkillData.DisableBuff != null && SkillData.DisableBuff.Any(x => Unit.Buffs.Any(y => y.Id == x)))
+            return false;
         return true;
     }
 
@@ -165,7 +170,18 @@ public class Skill
         if (target == null) return false;
         if (SkillData.IfHeal && !target.CanBeHeal) return false;
         if (!target.IfSelectable) return false;
-        if (SkillData.SelfOnly && target != Unit) return false;
+        switch (SkillData.TargetFilter)
+        {
+            case SkillTargetFilterEnum.仅自己:
+                if (target != Unit) return false;
+                break;
+            case SkillTargetFilterEnum.召唤物:
+                if (target != Unit && !(Unit as Units.干员).Children.Contains(target)) return false;
+                break;
+            case SkillTargetFilterEnum.仅召唤:
+                if (!(Unit as Units.干员).Children.Contains(target)) return false;
+                break;
+        }
         if ((SkillData.TargetTeam >> target.Team) % 2 == 0) return false;
         if (SkillData.ProfessionLimit != UnitTypeEnum.无 && SkillData.ProfessionLimit != target.UnitData.Profession) return false;
         if (!SkillData.AttackFly && target.Height > 0) return false;
@@ -180,7 +196,13 @@ public class Skill
         {
             if (Opening.Update(SystemConfig.DeltaTime))
             {
-                Unit.OverWriteAnimation = null;
+                Battle.TriggerDatas.Push(new TriggerData()
+                {
+                    Target = Unit,
+                    Skill = this,
+                });
+                Unit.Trigger(TriggerEnum.技能结束);
+                Battle.TriggerDatas.Pop();
                 OnOpenEnd();
             }
             //Power -= MaxPower / Config.OpenTime * SystemConfig.DeltaTime;
@@ -237,6 +259,7 @@ public class Skill
 
     public virtual bool InAttackUsing()
     {
+        if (SkillData.UseType == SkillUseTypeEnum.被动) return false;
         if (SkillData.EnableBuff != null && !SkillData.EnableBuff.All(x => Unit.Buffs.Any(y => y.Id == x)))
             return false;
         if (SkillData.DisableBuff != null && SkillData.DisableBuff.Any(x => Unit.Buffs.Any(y => y.Id == x)))
@@ -543,6 +566,7 @@ public class Skill
             }
         }
         addBuff(target);
+        removeBuff(target);
     }
 
     protected virtual void addBuff(Unit target)
@@ -551,6 +575,16 @@ public class Skill
             foreach (var buffId in SkillData.Buffs)
             {
                 target.AddBuff(buffId, this);
+            }
+    }
+
+    protected virtual void removeBuff(Unit target)
+    {
+        if (SkillData.BuffRemoves != null)
+            foreach (var buffId in SkillData.BuffRemoves)
+            {
+                var buff = target.Buffs.Find(x => x.Id == buffId);
+                buff.Finish();
             }
     }
     #endregion
@@ -646,6 +680,9 @@ public class Skill
                 break;
             case AttackTargetOrder2Enum.Tag:
                 //firstOrder = x => x.Config.Tags == null ? 0 : -x.Config.Tags.Count();
+                break;
+            case AttackTargetOrder2Enum.召唤物:
+                result = ((Unit as Units.干员).Children.Contains(unit) || unit == Unit) ? 0 : 1;
                 break;
             default:
                 break;
@@ -782,7 +819,7 @@ public class Skill
 
     protected virtual void OnOpenEnd()
     {
-
+        Unit.OverWriteAnimation = null;
     }
 
     protected virtual void OnAttack(Unit target)
@@ -824,10 +861,22 @@ public class Skill
             Target = target,
             AllCount = tempTargets.Count,
             Source = this,
-            Attack = SkillData.BaseOnMaxHp ? target.MaxHp : Unit.Attack,
             DamageRate = IfAOE ? SkillData.AreaDamage : SkillData.DamageRate,
             DamageType = SkillData.DamageType,
         };
+        switch (SkillData.DamageBase)
+        {
+            case 0:
+                result.Attack = Unit.Attack;
+                break;
+            case 1:
+                result.Attack = target.MaxHp;
+                break;
+            case 2:
+                result.Attack = result.DamageRate;
+                result.DamageRate = 1;
+                break;
+        }
         foreach (var buff in target.Buffs)
         {
             if (buff is IDamageModify damageModify)

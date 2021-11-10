@@ -10,7 +10,6 @@ public class Unit
     public static string[] DefaultAnimation = new string[] { "Default" };
     public static string[] StartAnimation = new string[] { "Start" };
     public static string[] DieAnimation = new string[] { "Die" };
-    public static string[] StunAnimation = new string[] { "Stun" };
     public Battle Battle;
     public UnitData UnitData => Database.Instance.Get<UnitData>(Id);
     public int Id;
@@ -62,6 +61,8 @@ public class Unit
 
     public float MagicDefence;
     public float MagicDefenceBase, MagicDefenceRate, MagicDefenceAdd, MagicDefenceRateFin, MagicDefenceAddFin;
+
+    public float Block, MagBlock;
 
     public float PowerSpeed;
 
@@ -152,6 +153,7 @@ public class Unit
         WeightAdd = 0;
         PowerSpeed = 1f;
         AttackGapAdd = AttackGapRate = 0;
+        Block = MagBlock = 0;
         CanAttack = true;
         CanBeHeal = true;
         foreach (var buff in Buffs)
@@ -225,7 +227,12 @@ public class Unit
                     Skill = skill,
                 });
                 Debug.Log($"{skill.Unit.UnitData.Id} 击杀了 {UnitData.Id}");
-                skill.Unit.Trigger(TriggerEnum.击杀);
+                if (skill.Unit is Units.干员 u && u.Parent != null)//召唤物杀人，算主子击杀
+                {
+                    u.Parent.Trigger(TriggerEnum.击杀);
+                }
+                else
+                    skill.Unit.Trigger(TriggerEnum.击杀);
                 Battle.TriggerDatas.Pop();
             }
         }
@@ -510,11 +517,18 @@ public class Unit
                 AnimationName = Unit.StartAnimation;
             else if (state == StateEnum.Die)
                 AnimationName = Unit.DieAnimation;
-            else if (state == StateEnum.Stun)
-            {
-                AnimationName = Unit.StunAnimation;
-            }
             AnimationSpeed = 1;
+            if (state == StateEnum.Stun)
+            {
+                if (UnitData.StunAnimation != null)
+                    AnimationName = UnitData.StunAnimation;
+                else
+                {
+                    //没有眩晕动画的场合，暂停模型动画
+                    AnimationSpeed = 0;
+                }
+
+            }
         }
         if (state != StateEnum.Attack && !AttackingAction.Finished())
         {
@@ -546,6 +560,8 @@ public class Unit
         float damageEx = damageInfo.Attack;
         damageEx = damageWithDefence(damageEx, damageInfo.DamageType, 0, 0);
         if (damage > damageEx * 1.5f) UnitModel.ShowCrit(damageInfo);
+        if (damageInfo.DamageType == DamageTypeEnum.Normal && Block > 0 && Battle.Random.NextDouble() < Block) damageInfo.Avoid = true;
+        if (damageInfo.DamageType == DamageTypeEnum.Magic && MagBlock > 0 && Battle.Random.NextDouble() < MagBlock) damageInfo.Avoid = true;
         if (!damageInfo.Avoid)
         {
             Hp -= damage;

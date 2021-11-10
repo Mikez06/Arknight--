@@ -41,6 +41,7 @@ namespace BattleUI
                 m_hp.text = Battle.Hp.ToString();
                 m_cost.text = Battle.Cost.ToString();
                 m_costBar.value = 1 - Battle.CostCounting.value;
+                m_number.text = Battle.BuildCount.ToString();
 
                 if (m_state.selectedIndex == 4)
                 {
@@ -149,17 +150,26 @@ namespace BattleUI
                 UIPool.ReturnObject(head);
             }
             m_Builds.RemoveChildren();
-            var units = Battle.PlayerUnits.Where(x => x.InputTime == -1).ToList();
-            units.Sort((x, y) => y.UnitData.Cost - x.UnitData.Cost);
-            foreach (var unit in units)
+            var units = Battle.PlayerUnits.Where(x => x.InputTime == -1).GroupBy(x => x.Id).ToList();
+            units.Sort((x, y) => y.FirstOrDefault().UnitData.Cost - x.FirstOrDefault().UnitData.Cost);
+            foreach (var group in units)
             {
                 var head = UIPool.GetObject(UI_BuildSprite.URL) as UI_BuildSprite;
-                head.SetUnit(unit);
+                head.SetUnit(group.FirstOrDefault());
                 m_Builds.AddChild(head);
-                head.xy = new UnityEngine.Vector2(width * 0.9f - units.IndexOf(unit) * head.width, unit == selectedUnit ? height - 50f : height);
-                head.onClick.Set(() => clickUnit(unit));
+                head.xy = new UnityEngine.Vector2(width * 0.9f - units.IndexOf(group) * head.width, group.FirstOrDefault() == selectedUnit ? height - 50f : height);
+                head.onClick.Set(() => clickUnit(group.FirstOrDefault()));
                 head.draggable = true;
                 head.onDragStart.Set(dragUnit);
+                if (group.FirstOrDefault().UnitData.NotReturn)
+                {
+                    head.m_count.visible = true;
+                    head.m_count.SetVar("n", group.Count().ToString()).FlushVars();
+                }
+                else
+                {
+                    head.m_count.visible = false;
+                }
             }
         }
 

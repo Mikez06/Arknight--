@@ -89,8 +89,12 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Image/StandPic/wyvern
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 3bc4509d954fd96479c5f74c199fff2f
-    m_Address: Assets/Bundles/Image/StandPic/hsguma
+  - m_GUID: d1dbf5e7e2f40604a9ac96ec6c2e346d
+    m_Address: Assets/Bundles/Image/StandPic/surtr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 195e2ef1224ac1f41a86dcce6a0a80bb
+    m_Address: Assets/Bundles/Image/StandPic/kalts
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

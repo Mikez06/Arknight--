@@ -14,6 +14,7 @@ namespace BattleUI
         public GTextField m_cost;
         public GProgressBar m_bar;
         public GTextField m_resetTime;
+        public GTextField m_count;
         public const string URL = "ui://vp312gabf1463l";
 
         public static UI_BuildSprite CreateInstance()
@@ -32,6 +33,7 @@ namespace BattleUI
             m_cost = (GTextField)GetChildAt(3);
             m_bar = (GProgressBar)GetChildAt(4);
             m_resetTime = (GTextField)GetChildAt(6);
+            m_count = (GTextField)GetChildAt(9);
             Init();
         }
         partial void Init();

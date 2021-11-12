@@ -54,5 +54,6 @@ public static class PathHelper
     public static string UnitPath = "Assets/Bundles/Units/";
     public static string BulletPath = "Assets/Bundles/Bullet/";
     public static string EffectPath = "Assets/Bundles/Effect/";
+    public static string DungeonGridPath = "Assets/Bundles/DungeonTile/";
     //public static string TimelinePath = "Bundles/Effect/Timeline/";
 }

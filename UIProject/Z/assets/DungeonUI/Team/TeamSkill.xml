@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="70,70">
+  <controller name="select" pages="1,,0," selected="0">
+    <remark page="0" value="选中"/>
+  </controller>
+  <displayList>
+    <loader id="n3_t5h9" name="n3" xy="0,0" size="70,70" url="ui://k1fe9lywkbtec" fill="scale">
+      <gearColor controller="select" pages="0" values="#999999" default="#ffffff"/>
+    </loader>
+  </displayList>
+</component>

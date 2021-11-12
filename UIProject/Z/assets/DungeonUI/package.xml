@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="hgasjns6">
+  <resources>
+    <component id="t5h90" name="DungeonStart.xml" path="/" exported="true"/>
+    <component id="t5h91" name="StartGame.xml" path="/"/>
+    <component id="t5h92" name="StartUnit.xml" path="/"/>
+    <component id="t5h93" name="InitUnit.xml" path="/"/>
+    <component id="t5h94" name="Map.xml" path="/" exported="true"/>
+    <component id="t5h95" name="btn.xml" path="/"/>
+    <component id="t5h96" name="DungeonTeam.xml" path="/Team/" exported="true"/>
+    <component id="t5h97" name="TeamSkill.xml" path="/Team/"/>
+    <component id="t5h98" name="TeamUnit.xml" path="/Team/"/>
+    <component id="t5h99" name="back.xml" path="/"/>
+    <image id="t5h9a" name="图层 1.png" path="/"/>
+    <component id="t5h9b" name="TeamSelect.xml" path="/Team/" exported="true"/>
+    <component id="t5h9q" name="LeftUnitInfo.xml" path="/Team/Folder/"/>
+    <component id="t5h9r" name="Container.xml" path="/Team/Folder/"/>
+    <component id="t5h9s" name="SkillInfo.xml" path="/Team/Folder/"/>
+    <component id="t5h9t" name="SelectBtn.xml" path="/Team/"/>
+    <component id="t5h9u" name="SelectBtn(1).xml" path="/Team/"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

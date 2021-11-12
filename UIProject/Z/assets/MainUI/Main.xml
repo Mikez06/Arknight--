@@ -11,8 +11,11 @@
     <loader id="n4_kbte" name="standPic" xy="-81,41" size="1024,1024" align="center"/>
     <graph id="n8_kbte" name="n8" xy="0,484" size="185,65" type="rect" lineSize="0" fillColor="#7f000000"/>
     <text id="n5_kbte" name="Name" xy="108,528" pivot="0.5,0.5" anchor="true" size="144,48" fontSize="35" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" text="玩家名字"/>
-    <component id="n11_kbte" name="battle" src="kbtec" fileName="btn.xml" xy="1541,393">
+    <component id="n11_kbte" name="battle" src="kbtec" fileName="btn.xml" xy="1419,393">
       <Button title="战斗"/>
+    </component>
+    <component id="n12_hc1b" name="rogue" src="kbtec" fileName="btn.xml" xy="1646,393">
+      <Button title="肉鸽"/>
     </component>
   </displayList>
 </component>

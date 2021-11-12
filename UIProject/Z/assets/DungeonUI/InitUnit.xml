@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <displayList>
+    <graph id="n9_t5h9" name="back" xy="0,0" size="1920,1080" type="rect" lineSize="0" fillColor="#b2000000"/>
+    <graph id="n7_t5h9" name="n7" xy="226,134" size="1468,811" type="rect"/>
+    <list id="n5_t5h9" name="Units" xy="250,238" size="1430,671" layout="flow_hz" overflow="scroll" lineGap="5" colGap="5" defaultItem="ui://hgasjns6t5h92">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <text id="n8_t5h9" name="n8" xy="782,146" size="356,59" fontSize="44" text="选择你的初始干员"/>
+  </displayList>
+</component>

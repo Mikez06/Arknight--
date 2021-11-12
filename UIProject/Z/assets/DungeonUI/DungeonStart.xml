@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <controller name="choose" pages="0,,1," selected="1"/>
+  <displayList>
+    <graph id="n4_t5h9" name="n4" xy="0,0" size="1920,1080" type="rect" lineSize="0" fillColor="#ff999999"/>
+    <component id="n0_t5h9" name="Start" src="t5h91" fileName="StartGame.xml" xy="1618,946"/>
+    <component id="n2_t5h9" name="StartUnit" src="t5h92" fileName="StartUnit.xml" xy="52,836"/>
+    <text id="n3_t5h9" name="n3" xy="780,119" size="214,59" fontSize="44" text="rouge模式"/>
+    <component id="n7_t5h9" name="ChooseWindow" src="t5h93" fileName="InitUnit.xml" xy="0,0">
+      <gearDisplay controller="choose" pages="1"/>
+    </component>
+    <text id="n8_hc1b" name="n8" xy="11,1023" size="284,48" fontSize="35" text="选择你的初始干员"/>
+  </displayList>
+</component>

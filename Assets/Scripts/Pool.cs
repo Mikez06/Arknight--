@@ -6,7 +6,7 @@ public class Pool<T> where T : Component
     private readonly Dictionary<T, Stack<T>> _pool = new Dictionary<T, Stack<T>>();
     private readonly Dictionary<T, T> _live = new Dictionary<T, T>();
 
-    public T Spawn(T original, Vector3 position, Quaternion? rotation)
+    public T Spawn(T original, Vector3 position, Quaternion? rotation = null)
     {
         T result;
         if (_pool.TryGetValue(original, out var pool))

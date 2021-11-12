@@ -48,8 +48,8 @@ public class SpineImportEditor
                 root = AssetDatabase.LoadAssetAtPath<GameObject>(unitAnimationPrefab_AssetPath + name + ".prefab");
             }
             SkeletonAnimation sa;
-            if (!enemy && front) sa = root.transform.GetChild(2).GetComponent<SkeletonAnimation>();
-            else sa = root.transform.GetChild(1).GetComponent<SkeletonAnimation>();
+            if (enemy || front) sa = root.transform.GetChild(1).GetComponent<SkeletonAnimation>();
+            else sa = root.transform.GetChild(2).GetComponent<SkeletonAnimation>();
             sa.skeletonDataAsset = dataAsset;
             sa.Initialize(true);
         }

@@ -31,6 +31,7 @@ public class Database
         {
             if (dic.Count > 0) return;
             await Task.WhenAll(
+            AddAsync<MapTileData>("MapTileData"),
             AddAsync<CardData>("CardData"),
             AddAsync<UnitData>("UnitData"),
             AddAsync<MapData>("MapData"),
@@ -53,6 +54,7 @@ public class Database
         try
         {
             if (dic.Count > 0) return this;
+            Add<MapTileData>("MapTileData");
             Add<CardData>("CardData");
             Add<UnitData>("UnitData");
             Add<MapData>("MapData");

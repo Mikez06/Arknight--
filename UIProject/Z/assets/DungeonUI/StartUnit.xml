@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="180,180" extention="Label">
+  <controller name="selected" pages="0,,1," selected="0"/>
+  <displayList>
+    <loader id="n2_t5h9" name="icon" xy="0,0" size="180,180" url="ui://kera0i3huizyuy"/>
+    <graph id="n3_t5h9" name="n3" xy="0,0" size="180,180" type="rect" lineSize="3" lineColor="#ffffcc00" fillColor="#00ffffff">
+      <gearDisplay controller="selected" pages="0"/>
+    </graph>
+    <graph id="n4_t5h9" name="n4" xy="0,0" size="180,180" type="rect" lineSize="3" lineColor="#ffff0000" fillColor="#00ffffff">
+      <gearDisplay controller="selected" pages="1"/>
+    </graph>
+  </displayList>
+</component>

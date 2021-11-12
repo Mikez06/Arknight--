@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Maps/TestMap1.unity
     guid: 88ec5e6c4bb889c49ad7a010d35c7830
+  - enabled: 1
+    path: Assets/Scenes/Dungeon.unity
+    guid: 2f119fddf1807b84ab6270ab7b0d28b6
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 01b69b029fce913439e90fc96a601366,
       type: 2}

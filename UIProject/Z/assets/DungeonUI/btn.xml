@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="217,75" extention="Button">
+  <displayList>
+    <graph id="n4_t5h9" name="n4" xy="0,0" size="217,75" type="rect"/>
+    <text id="n5_t5h9" name="title" xy="108,37" pivot="0.5,0.5" anchor="true" size="156,52" fontSize="38" align="center" text="队伍信息"/>
+  </displayList>
+  <Button downEffect="dark" downEffectValue=".8"/>
+</component>

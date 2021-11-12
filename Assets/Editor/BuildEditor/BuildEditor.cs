@@ -46,6 +46,7 @@ public class BuildEditor
 
         SetAssetMark(PathHelper.EffectPath, null);
         SetAssetMark(PathHelper.OtherPath, null);
+        SetAssetMark(PathHelper.DungeonGridPath, null);
         SetStandPic();
         Debug.Log("重新标记完成!");
     }

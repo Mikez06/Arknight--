@@ -25,10 +25,12 @@ public class UIManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         BattleUI.BattleUIBinder.BindAll();
         MainUI.MainUIBinder.BindAll();
+        DungeonUI.DungeonUIBinder.BindAll();
         LoadPackge("BattleUI");
         LoadPackge("MainUI");
         LoadPackge("SkillIcon");
         LoadPackge("Res");
+        LoadPackge("DungeonUI");
         //LoadPackge("UnitFace");
         //LoadPackge("UnitPic");
     }

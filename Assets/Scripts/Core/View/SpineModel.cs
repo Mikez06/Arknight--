@@ -30,7 +30,8 @@ public class SpineModel : UnitModel
 
     public void LateUpdate()
     {
-        updateState();
+        if (Unit != null)
+            updateState();
     }
 
     public override Vector3 GetModelPositon()

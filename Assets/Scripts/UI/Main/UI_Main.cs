@@ -26,6 +26,11 @@ namespace MainUI
             {
                 UIManager.Instance.ChangeView<UI_Battle>(UI_Battle.URL);
             });
+            m_rogue.onClick.Add(() =>
+            {
+                DungeonManager.Instance.PrepareDungeon();
+                UIManager.Instance.ChangeView<DungeonUI.UI_DungeonStart>(DungeonUI.UI_DungeonStart.URL);
+            });
         }
 
         public void Enter()

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <controller name="quick" pages="0,,1," selected="0"/>
+  <displayList>
+    <component id="n14_t5h9" name="leftUnit" src="t5h9q" fileName="Team/Folder/LeftUnitInfo.xml" xy="0,0"/>
+    <list id="n16_t5h9" name="units" xy="637,27" size="1243,967" layout="flow_vt" overflow="scroll" scroll="horizontal" lineGap="10" colGap="18" defaultItem="ui://hgasjns6t5h98">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <component id="n17_t5h9" name="cancel" src="t5h9t" fileName="Team/SelectBtn.xml" xy="1483,1011">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n18_t5h9" name="ok" src="t5h9u" fileName="Team/SelectBtn(1).xml" xy="1691,1011">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n19_t5h9" name="back" src="t5h9u" fileName="Team/SelectBtn(1).xml" xy="661,1011">
+      <relation target="" sidePair="right-right"/>
+      <Button title="返回"/>
+    </component>
+  </displayList>
+</component>

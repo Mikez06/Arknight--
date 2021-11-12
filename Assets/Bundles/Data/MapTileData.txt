@@ -1,0 +1,6 @@
+{"Type":0,"Model":"Road"}
+{"Type":1,"Model":"Road"}
+{"Type":2,"Model":"Tower"}
+{"Type":3,"Model":"Road"}
+{"Type":4,"Model":"Road"}
+{"Type":5,"Model":"Road"}

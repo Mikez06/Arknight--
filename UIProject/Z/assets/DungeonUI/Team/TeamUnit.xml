@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="525,228">
+  <controller name="State" pages="0,,1,,2," selected="0">
+    <remark page="1" value="空"/>
+    <remark page="2" value="禁用"/>
+  </controller>
+  <displayList>
+    <graph id="n1_t5h9" name="n1" xy="0,0" size="525,228" type="rect" fillColor="#ff33ccff" corner="20"/>
+    <loader id="n0_t5h9" name="Head" xy="21,25" size="180,180" group="n7_t5h9" url="ui://kera0i3huizyuy"/>
+    <text id="n2_t5h9" name="Name" xy="308,169" pivot="0.5,0.5" anchor="true" size="194,52" group="n7_t5h9" fontSize="38" align="center" text="干员名字子"/>
+    <list id="n4_t5h9" name="Skills" xy="215,39" size="276,76" group="n7_t5h9" layout="row" colGap="30" defaultItem="ui://hgasjns6t5h97">
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <text id="n5_t5h9" name="level" xy="412,171" size="54,29" group="n7_t5h9" fontSize="20" align="center" vars="true" text="Lv.{l=10}"/>
+    <text id="n6_t5h9" name="exp" xy="412,137" size="75,29" group="n7_t5h9" fontSize="20" align="center" vars="true" text="exp:{n=1}/{m=2}"/>
+    <group id="n7_t5h9" name="n7" xy="21,25" size="470,180" advanced="true">
+      <gearDisplay controller="State" pages="0"/>
+    </group>
+    <text id="n8_t5h9" name="n8" xy="92,82" size="340,64" fontSize="48" text="点击加入新队员">
+      <gearDisplay controller="State" pages="1"/>
+    </text>
+    <text id="n9_t5h9" name="n9" xy="92,82" size="340,64" fontSize="48" text="可出战人数不足">
+      <gearDisplay controller="State" pages="2"/>
+    </text>
+  </displayList>
+</component>

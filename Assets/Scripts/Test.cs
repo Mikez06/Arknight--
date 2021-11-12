@@ -19,20 +19,26 @@ public class Test : MonoBehaviour
     // Start is called before the first frame update
     async void Start()
     {
-        var animation = GetComponent<SkeletonAnimation>().Skeleton.Data.FindAnimation(s);
-        foreach (var timeline in animation.Timelines)
+        var tween = DOTween.To(() => -30f, x =>
         {
-            if (timeline is Spine.EventTimeline eventTimeline)
-            {
-                foreach (var e in eventTimeline.Events)
-                {
-                    Debug.Log(e.Data.Name + "," + e.Time);
-                }
-                //var attackEvent = eventTimeline.Events.FirstOrDefault(x => x.Data.Name == "OnAttack");
-                //Debug.Log("Onattack:" + attackEvent.Time);
-                break;
-            }
-        }
+            var v3 = transform.eulerAngles;
+            v3.z = x; transform.eulerAngles = v3;
+        }, 30f, 1).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+        tween.fullPosition = 1.5f;
+        //var animation = GetComponent<SkeletonAnimation>().Skeleton.Data.FindAnimation(s);
+        //foreach (var timeline in animation.Timelines)
+        //{
+        //    if (timeline is Spine.EventTimeline eventTimeline)
+        //    {
+        //        foreach (var e in eventTimeline.Events)
+        //        {
+        //            Debug.Log(e.Data.Name + "," + e.Time);
+        //        }
+        //        //var attackEvent = eventTimeline.Events.FirstOrDefault(x => x.Data.Name == "OnAttack");
+        //        //Debug.Log("Onattack:" + attackEvent.Time);
+        //        break;
+        //    }
+        //}
         //await Addressables.InitializeAsync().Task;
         //var a = await Addressables.LoadAssetAsync<UnityEngine.Object>(PathHelper.SpritePath + "spot").Task;
         //Debug.Log(a.GetType());

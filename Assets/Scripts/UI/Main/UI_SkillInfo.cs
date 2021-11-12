@@ -15,7 +15,7 @@ namespace MainUI
             SkillData skillConfig = Database.Instance.Get<SkillData>(skillId);
             m_name.text = skillConfig.Name;
             m_desc.text = skillConfig.Desc;
-            m_icon.icon = "ui://SkillIcon/" + skillConfig.Icon;
+            m_icon.icon = skillConfig.Icon.ToSkillIcon();
         }
     }
 }

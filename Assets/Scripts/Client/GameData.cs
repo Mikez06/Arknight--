@@ -19,7 +19,7 @@ public class GameData
     {
         foreach (var unitConfig in Database.Instance.GetAll<CardData>())
         {
-            var unitdata = Database.Instance.Get<UnitData>(unitConfig.Id);
+            var unitdata = Database.Instance.Get<UnitData>(unitConfig.units.Last());
             Card card = new Card()
             {
                 UnitId = Database.Instance.GetIndex(unitdata),

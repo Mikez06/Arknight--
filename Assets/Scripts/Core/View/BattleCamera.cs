@@ -56,7 +56,7 @@ public class BattleCamera : MonoBehaviour
             if (_rotate != value)
             {
                 _rotate = value;
-                var tween= DOTween.To(() => _rotate ? 0f : 5f, (x) => transform.rotation = Quaternion.AngleAxis(x, startUp) * startRotation, _rotate ? 5f : 0f, 0.1f);
+                var tween= DOTween.To(() => _rotate ? 0f : -5f, (x) => transform.rotation = Quaternion.AngleAxis(x, startUp) * startRotation, _rotate ? -5f : 0f, 0.1f);
                 tween.SetUpdate(true);
             }
         }
@@ -116,6 +116,7 @@ public class BattleCamera : MonoBehaviour
                 if (canBuild)
                 {
                     BattleUI.UI_Battle.Instance.m_state.selectedIndex = 3;
+                    //FocusUnit = BuildUnit
                 }
                 else
                 {

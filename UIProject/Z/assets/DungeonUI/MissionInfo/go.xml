@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="217,75" extention="Button">
+  <controller name="button" pages="2,up,3,down,4,disabled,5,selectedDisabled" selected="3"/>
+  <displayList>
+    <graph id="n4_t5h9" name="n4" xy="0,0" size="217,75" type="rect" fillColor="#ff999999">
+      <gearColor controller="button" pages="3,4,5" values="#cccccc|#999999|#999999" default="#ffffff"/>
+    </graph>
+    <text id="n5_t5h9" name="title" xy="108,37" pivot="0.5,0.5" anchor="true" size="80,52" fontSize="38" align="center" text="前进"/>
+  </displayList>
+  <Button/>
+</component>

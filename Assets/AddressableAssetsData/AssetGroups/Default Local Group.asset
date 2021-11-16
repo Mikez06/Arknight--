@@ -377,6 +377,26 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Data/MapTileData
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: a5909713f2f682342a30c02948dee073
+    m_Address: Assets/Bundles/DungeonTile/Battle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cfac6415f1ff64946939db2d8016524a
+    m_Address: Assets/Bundles/DungeonTile/Event
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 021c9e0616b3d914fb913d85d1fc68ec
+    m_Address: Assets/Bundles/DungeonTile/Heal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 516ae3538c09903489db7fdae4b80080
+    m_Address: Assets/Bundles/DungeonTile/Shop
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c1aba8809ea2a834e91c99e8949ae4ea
+    m_Address: Assets/Bundles/DungeonTile/Reward
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

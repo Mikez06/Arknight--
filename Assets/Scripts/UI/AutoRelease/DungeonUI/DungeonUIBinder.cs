@@ -8,6 +8,7 @@ namespace DungeonUI
     {
         public static void BindAll()
         {
+            UIObjectFactory.SetPackageItemExtension(UI_MissionInfo.URL, typeof(UI_MissionInfo));
             UIObjectFactory.SetPackageItemExtension(UI_DungeonStart.URL, typeof(UI_DungeonStart));
             UIObjectFactory.SetPackageItemExtension(UI_StartUnit.URL, typeof(UI_StartUnit));
             UIObjectFactory.SetPackageItemExtension(UI_InitUnit.URL, typeof(UI_InitUnit));

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace BattleUI
 {
@@ -17,6 +18,7 @@ namespace BattleUI
             m_block.text = unit.StopCount.ToString();
             m_Hp.max = unit.MaxHp;
             m_Hp.value = unit.Hp;
+            m_standPic.texture = new FairyGUI.NTexture(ResHelper.GetAsset<Texture>(PathHelper.SpritePath + unit.UnitData.StandPic));
         }
     }
 }

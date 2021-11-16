@@ -7,7 +7,10 @@ namespace DungeonUI
 {
     public partial class UI_Map : GComponent
     {
+        public Controller m_showInfo;
         public GButton m_Team;
+        public GComponent m_unselect;
+        public UI_MissionInfo m_MissionInfo;
         public const string URL = "ui://hgasjns6t5h94";
 
         public static UI_Map CreateInstance()
@@ -19,7 +22,10 @@ namespace DungeonUI
         {
             base.ConstructFromXML(xml);
 
+            m_showInfo = GetControllerAt(0);
             m_Team = (GButton)GetChildAt(0);
+            m_unselect = (GComponent)GetChildAt(1);
+            m_MissionInfo = (UI_MissionInfo)GetChildAt(2);
             Init();
         }
         partial void Init();

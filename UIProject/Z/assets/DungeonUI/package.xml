@@ -18,6 +18,8 @@
     <component id="t5h9s" name="SkillInfo.xml" path="/Team/Folder/"/>
     <component id="t5h9t" name="SelectBtn.xml" path="/Team/"/>
     <component id="t5h9u" name="SelectBtn(1).xml" path="/Team/"/>
+    <component id="gbwmv" name="MissionInfo.xml" path="/MissionInfo/"/>
+    <component id="gbwmw" name="go.xml" path="/MissionInfo/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

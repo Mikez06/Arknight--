@@ -29,6 +29,10 @@ namespace BattleUI
             m_SkillUsePanel.m_Leave.onClick.Add(leaveUnit);
             m_SkillUsePanel.m_mainSkillInfo.onClick.Add(useMainSkill);
             m_endClick.onClick.Add(ExitBattle);
+            m_Setting.onClick.Add(TryGiveup);
+            m_CancelGiveUp.onClick.Add(cancelGiveup);
+            m_GiveUpBack.onClick.Add(cancelGiveup);
+            m_GiveUp.onClick.Add(doGiveUp);
 
             worldUI = ResHelper.Instantiate("Assets/Bundles/Other/UIPanel");
             GameObject.DontDestroyOnLoad(worldUI);
@@ -135,8 +139,7 @@ namespace BattleUI
 
         public void ExitBattle()
         {
-            UIManager.Instance.ChangeView<MainUI.UI_Main>(MainUI.UI_Main.URL);
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Default");
+            BattleManager.Instance.FinishBattle();
         }
 
         public void UpdateUnitsLayout()
@@ -260,6 +263,32 @@ namespace BattleUI
             BattleCamera.Instance.BuildUnit = selectedUnit;
             BattleCamera.Instance.ShowHighLight();
             UpdateUnitsLayout();
+        }
+
+        void TryGiveup()
+        {
+            m_state.selectedIndex = 6;
+            TimeHelper.Instance.SetGameSpeed(0f);
+            BattleCamera.Instance.BuildMode = false;
+            if (selectedUnit != null)
+            {
+                selectedUnit.UnitModel.gameObject.SetActive(false);
+                BattleCamera.Instance.BuildUnit = null;
+                BattleCamera.Instance.HideUnitAttackArea();
+            }
+            BattleCamera.Instance.FocusUnit = null;
+        }
+
+        void cancelGiveup()
+        {
+            m_state.selectedIndex = 0;
+        }
+
+        void doGiveUp()
+        {
+            BattleManager.Instance.Battle.GiveUp();
+            TimeHelper.Instance.SetGameSpeed(1f);
+            //BattleManager.Instance.FinishBattle();
         }
 
         public void Enter()

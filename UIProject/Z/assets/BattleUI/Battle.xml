@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080" opaque="false">
-  <controller name="state" pages="0,,1,,8,,9,,10,,11," selected="0">
+  <controller name="state" pages="0,,1,,8,,9,,10,,11,,12," selected="6">
     <remark page="0" value="正常"/>
     <remark page="1" value="放置单位"/>
     <remark page="2" value="放置单位_选择位置"/>
     <remark page="3" value="放置单位_选择朝向"/>
     <remark page="4" value="单位使用技能"/>
     <remark page="5" value="结算"/>
+    <remark page="6" value="设置"/>
     <action type="change_page" fromPage="" toPage="0,1" objectId="n25_kbte" controller="left" targetPage="0"/>
     <action type="change_page" fromPage="" toPage="8,9" objectId="n25_kbte" controller="left" targetPage="1"/>
     <action type="play_transition" fromPage="" toPage="11" transition="t3"/>
@@ -28,6 +29,7 @@
     <component id="n40_kbte" name="SkillUsePanel" src="kbte47" fileName="SkillUsePanel.xml" xy="948,484" group="n42_kbte">
       <gearDisplay controller="state" pages="10"/>
     </component>
+    <component id="n61_gbwm" name="Setting" src="gbwm4w" fileName="Setting.xml" xy="25,19" group="n42_kbte"/>
     <image id="n59_t5h9" name="n59" src="t5h94t" fileName="部署费用.png" xy="1602,747" group="n55_tku9"/>
     <text id="n22_kbte" name="number" xy="1852,825" size="21,42" group="n55_tku9" fontSize="30" color="#ffffff" text="8"/>
     <text id="n24_kbte" name="cost" xy="1849,783" pivot="0.5,0.5" anchor="true" size="50,54" group="n55_tku9" fontSize="40" color="#ffffff" align="center" text="30"/>
@@ -37,8 +39,8 @@
     <group id="n55_tku9" name="youxia" xy="1602,747" size="307,123" group="n42_kbte" advanced="true">
       <relation target="" sidePair="right-right"/>
     </group>
-    <group id="n42_kbte" name="n42" xy="-1,0" size="1921,1084" advanced="true">
-      <gearDisplay controller="state" pages="0,1,8,9,10"/>
+    <group id="n42_kbte" name="normalGroup" xy="-1,0" size="1921,1084" advanced="true">
+      <gearDisplay controller="state" pages="0,1,8,9,10,12"/>
     </group>
     <component id="n53_kbte" name="endClick" src="f1463m" fileName="Container.xml" xy="0,0" size="1920,1080" group="n52_kbte"/>
     <loader id="n43_kbte" name="endPic" xy="-21,4" size="1025,1024" group="n52_kbte" touchable="false"/>
@@ -51,8 +53,16 @@
     <text id="n51_kbte" name="n51" xy="904,783" size="304,129" group="n52_kbte" fontSize="100" color="#ffffff" align="center" text="胜利！">
       <gearText controller="win" pages="1" values="失败QAQ" default="胜利！"/>
     </text>
-    <group id="n52_kbte" name="n52" xy="-21,0" size="1941,1080" advanced="true">
+    <group id="n52_kbte" name="endGroup" xy="-21,0" size="1941,1080" advanced="true">
       <gearDisplay controller="state" pages="11"/>
+    </group>
+    <graph id="n64_gbwm" name="GiveUpBack" xy="0,0" size="1920,1080" group="n70_gbwm" type="rect" lineSize="0" fillColor="#b2000000"/>
+    <graph id="n63_gbwm" name="n63" xy="0,292" size="1920,495" group="n70_gbwm" type="rect"/>
+    <text id="n65_gbwm" name="n65" xy="762,318" size="396,65" group="n70_gbwm" fontSize="49" text="是否放弃本局游戏"/>
+    <component id="n66_gbwm" name="CancelGiveUp" src="gbwm4y" fileName="CancelGiveUp.xml" xy="0,712" group="n70_gbwm"/>
+    <component id="n67_gbwm" name="GiveUp" src="gbwm4x" fileName="GiveUP.xml" xy="960,712" group="n70_gbwm"/>
+    <group id="n70_gbwm" name="giveupGroup" xy="0,0" size="1920,1080" advanced="true">
+      <gearDisplay controller="state" pages="12"/>
     </group>
   </displayList>
   <transition name="win1">

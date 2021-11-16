@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="960,75">
+  <displayList>
+    <graph id="n67_gbwm" name="n67" xy="0,0" size="960,75" type="rect" lineSize="0" fillColor="#ffff6666"/>
+    <text id="n68_gbwm" name="n68" xy="435,4" size="102,65" fontSize="49" text="放弃"/>
+  </displayList>
+</component>

@@ -363,6 +363,13 @@ public class Battle
             BattleUI.UI_Battle.Instance.BattleEnd();
     }
 
+    public void GiveUp()
+    {
+        Finish = true;
+        Win = false;
+        BattleUI.UI_Battle.Instance.BattleEnd();
+    }
+
     public void DoDamage(int count)
     {
         Hp -= count;

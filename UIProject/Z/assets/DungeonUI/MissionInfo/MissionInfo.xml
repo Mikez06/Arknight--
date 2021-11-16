@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="496,1080">
+  <controller name="type" pages="0,,1," selected="0">
+    <remark page="0" value="战斗"/>
+    <remark page="1" value="灯塔"/>
+  </controller>
+  <displayList>
+    <graph id="n5_gbwm" name="n5" xy="0,0" size="496,1080" type="rect" lineSize="0" fillColor="#b2000000"/>
+    <text id="n6_gbwm" name="Name" xy="248,132" pivot="0.5,0.5" anchor="true" size="204,66" group="n10_gbwm" fontSize="50" color="#ffffff" align="center" text="关卡名字"/>
+    <component id="n9_gbwm" name="go" src="gbwmw" fileName="MissionInfo/go.xml" xy="136,922" group="n10_gbwm"/>
+    <group id="n10_gbwm" name="n10" xy="136,99" size="217,897" advanced="true">
+      <gearDisplay controller="type" pages="0"/>
+    </group>
+    <text id="n11_gbwm" name="n11" xy="190,67" size="115,66" group="n14_gbwm" fontSize="50" color="#ffffff" align="center" text="灯 塔"/>
+    <text id="n12_gbwm" name="n12" xy="43,168" size="409,730" group="n14_gbwm" fontSize="29" color="#ffffff" align="center" autoSize="none" text="可以支付3希望点来激活灯塔，获得灯塔周围8格信息"/>
+    <component id="n13_gbwm" name="useTower" src="gbwmw" fileName="MissionInfo/go.xml" xy="139,953" group="n14_gbwm">
+      <Button title="激活"/>
+    </component>
+    <group id="n14_gbwm" name="n14" xy="43,67" size="409,961" advanced="true">
+      <gearDisplay controller="type" pages="1"/>
+    </group>
+  </displayList>
+</component>

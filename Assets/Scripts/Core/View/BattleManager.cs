@@ -37,20 +37,35 @@ public class BattleManager : MonoBehaviour
             }
         }
     }
-    public async void StartBattle(BattleInput battleConfig)
+
+    TaskCompletionSource<bool> battleTcs;
+
+    public async Task StartBattle(BattleInput battleConfig)
     {
-        SceneManager.LoadScene(battleConfig.MapName);
+        battleTcs = new TaskCompletionSource<bool>();
+        var sceneName = Database.Instance.Get<MapData>(battleConfig.MapName).Scene;
+        var scene = await SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
         var battleUI = UIManager.Instance.ChangeView<BattleUI.UI_Battle>(BattleUI.UI_Battle.URL);
         await TimeHelper.Instance.WaitAsync(0.5f);
         Battle = new Battle();
         Battle.Init(battleConfig);
         battleUI.SetBattle(Battle);
         startTime = Time.time;
+        await battleTcs.Task;
+        Debug.Log("ExitBattleScene");
+        //Battle = null;
+        await SceneManager.UnloadSceneAsync(sceneName, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
         //var path = Battle.Map.FindPath(Battle.Map.Grids[1, 3], Battle.Map.Grids[8, 1]);
         //foreach (var grid in path)
         //{
         //    Debug.Log(grid.X + "," + grid.Y);
         //}
+    }
+
+    public void FinishBattle()
+    {
+        battleTcs?.TrySetResult(true);
     }
 }
 

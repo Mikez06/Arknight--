@@ -84,6 +84,7 @@ namespace BattleUI
             {
                 Parent.selectedUnit.JoinMap();
                 Parent.selectedUnit = null;
+                //BattleCamera.Instance.FocusUnit = null;
                 Parent.m_state.selectedIndex = 0;
                 Parent.UpdateUnitsLayout();
                 BattleCamera.Instance.HideUnitAttackArea();

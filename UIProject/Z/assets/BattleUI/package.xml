@@ -6,7 +6,7 @@
     <image id="f1463j" name="sprite_enemy.png" path="/"/>
     <image id="f1463k" name="sprite_info_bar_2part.png" path="/"/>
     <component id="f1463l" name="BuildSprite.xml" path="/" exported="true"/>
-    <component id="f1463m" name="Container.xml" path="/"/>
+    <component id="f1463m" name="Container.xml" path="/" exported="true"/>
     <image id="kbte3n" name="char_002_amiya_head.png" path="/"/>
     <component id="kbte3o" name="Head.xml" path="/"/>
     <component id="kbte3p" name="circleBar.xml" path="/"/>
@@ -45,6 +45,10 @@
     <image id="t5h94p" name="Notice.png" path="/SetPanel/" scale9grid="0,0,-497,-695"/>
     <image id="t5h94r" name="任务目标_一般.png" path="/"/>
     <image id="t5h94t" name="部署费用.png" path="/"/>
+    <image id="gbwm4v" name="设置齿轮(1).png" path="/"/>
+    <component id="gbwm4w" name="Setting.xml" path="/"/>
+    <component id="gbwm4x" name="GiveUP.xml" path="/"/>
+    <component id="gbwm4y" name="CancelGiveUp.xml" path="/"/>
   </resources>
   <publish name="" genCode="true" excluded="kbte3u,kbte3n"/>
 </packageDescription>

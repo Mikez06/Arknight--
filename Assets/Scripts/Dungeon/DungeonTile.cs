@@ -10,15 +10,18 @@ public class DungeonTile
 {
     public DungeonTileController TileController;
 
-    public DungeonTileTypeEnum Type;
+    public DungeonTileTypeEnum TileType;
 
-    public MapTileData TileData => Database.Instance.Get<MapTileData>((int)Type);
+    public MapTileData TileData => Database.Instance.Get<MapTileData>((int)TileType);
 
     public int X, Y;
 
     public bool InSight;
 
     public Vector3 WorldPos => new Vector3(X, 0, Y);
+
+    public MapData MapData => Database.Instance.Get<MapData>(MapId);
+    public string MapId;
 
     public int Distance(DungeonTile target)
     {

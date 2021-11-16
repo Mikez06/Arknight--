@@ -15,10 +15,10 @@ namespace MainUI
         protected GButton[] teamBtns = new GButton[4];
         public int TeamIndex;
 
-        public string backPage;
-        public string BattleLevel;
+        //public string backPage;
+        //public string BattleLevel;
 
-
+        TaskCompletionSource<int> tcs;
         partial void Init()
         {
             for (int i = 0; i < teamUnits.Length; i++)
@@ -38,7 +38,8 @@ namespace MainUI
             }
             m_back.onClick.Add(() =>
             {
-                UIManager.Instance.ChangeView<GComponent>(backPage);
+                tcs?.TrySetResult(-1);
+                //UIManager.Instance.ChangeView<GComponent>(backPage);
             });
             m_quickTeam.onClick.Add(() =>
             {
@@ -66,15 +67,7 @@ namespace MainUI
             {
                 TipManager.Instance.ShowTip("不支持友招");
             });
-            m_battle.onClick.Add(() =>
-            {
-                BattleManager.Instance.StartBattle(new BattleInput()
-                {
-                    MapName = BattleLevel,
-                    Seed = 0,
-                    Team = gameData.Teams[TeamIndex],
-                });
-            });
+            m_battle.onClick.Add(() => tcs.TrySetResult(TeamIndex));
         }
 
         public void IfGoBattle(bool bo)
@@ -82,12 +75,10 @@ namespace MainUI
             if (bo)
             {
                 m_goBattle.selectedIndex = 0;
-                backPage = UI_Battle.URL;
             }
             else
             {
                 m_goBattle.selectedIndex = 1;
-                backPage = UI_Main.URL;
             }
         }
 
@@ -113,6 +104,13 @@ namespace MainUI
                     teamUnits[i].SetCard(null, 0);
                 }
             }
+        }
+
+        public Task<int> ChooseTeam()
+        {
+            tcs = new TaskCompletionSource<int>();
+            return tcs.Task;
+            //return TeamIndex;
         }
     }
 }

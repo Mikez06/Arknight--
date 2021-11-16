@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="1920,1080">
+<component size="1920,1080" opaque="false">
+  <controller name="showInfo" pages="0,,1,,2," selected="2"/>
   <displayList>
     <component id="n4_t5h9" name="Team" src="t5h95" fileName="btn.xml" xy="33,979"/>
+    <component id="n6_gbwm" name="unselect" src="f1463m" fileName="Container.xml" pkg="vp312gab" xy="0,0" size="1920,1080">
+      <gearDisplay controller="showInfo" pages="1,2"/>
+    </component>
+    <component id="n5_gbwm" name="MissionInfo" src="gbwmv" fileName="MissionInfo/MissionInfo.xml" xy="1920,0">
+      <gearXY controller="showInfo" pages="0,2" values="1920,0,1,0|1920,0,1,0" default="1424,0,0.742,0" tween="true" positionsInPercent="true"/>
+      <relation target="" sidePair="right-right%"/>
+    </component>
   </displayList>
 </component>

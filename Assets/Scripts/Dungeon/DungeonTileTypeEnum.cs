@@ -13,4 +13,6 @@ public enum DungeonTileTypeEnum
     Support,
     Event,
     Heal,
+    Reward,
+    Shop,
 }

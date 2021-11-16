@@ -21,11 +21,26 @@ namespace MainUI
             }
         }
 
-        void goTeamPage(EventContext evt)
+        async void goTeamPage(EventContext evt)
         {
             var uiTeam = UIManager.Instance.ChangeView<UI_Team>(UI_Team.URL);
+            var battleLevel = (evt.sender as GObject).data as string;
             uiTeam.IfGoBattle(true);
-            uiTeam.BattleLevel = (evt.sender as GObject).data as string;
+            var teamIndex = await uiTeam.ChooseTeam();
+            if (teamIndex < 0)
+            {
+                UIManager.Instance.ChangeView<GComponent>(URL);
+            }
+            else
+            {               
+                await BattleManager.Instance.StartBattle(new BattleInput()
+                {
+                    MapName = battleLevel,
+                    Seed = 0,
+                    Team = GameData.Instance.Teams[teamIndex],
+                });
+                UIManager.Instance.ChangeView<GComponent>(URL);
+            }
         }
     }
 }

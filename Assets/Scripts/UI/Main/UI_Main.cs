@@ -17,10 +17,12 @@ namespace MainUI
             {
                 UIManager.Instance.ChangeView<UI_MemberPage>(UI_MemberPage.URL);
             });
-            m_team.onClick.Add(() =>
+            m_team.onClick.Add(async () =>
             {
                 var uiTeam = UIManager.Instance.ChangeView<UI_Team>(UI_Team.URL);
                 uiTeam.IfGoBattle(false);
+                await uiTeam.ChooseTeam();
+                UIManager.Instance.ChangeView<GComponent>(URL);
             });
             m_battle.onClick.Add(() =>
             {

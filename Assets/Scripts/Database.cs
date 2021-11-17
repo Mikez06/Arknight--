@@ -40,7 +40,9 @@ public class Database
             AddAsync<BulletData>("BulletData"),
             AddAsync<WaveData>("WaveData"),
             AddAsync<ModifyData>("ModifyData"),
-            AddAsync<EffectData>("EffectData")
+            AddAsync<EffectData>("EffectData"),
+            AddAsync<RelicData>("RelicData"),
+            AddAsync<ContractData>("ContractData")
             );
         }
         catch (Exception e)
@@ -64,6 +66,8 @@ public class Database
             Add<WaveData>("WaveData");
             Add<ModifyData>("ModifyData");
             Add<EffectData>("EffectData");
+            Add<RelicData>("RelicData");
+            Add<ContractData>("ContractData");
         }
         catch (Exception e)
         {

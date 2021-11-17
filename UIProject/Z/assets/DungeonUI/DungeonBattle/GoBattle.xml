@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="281,90">
+  <displayList>
+    <graph id="n19_gbwm" name="n19" xy="0,0" size="281,90" type="rect"/>
+    <text id="n20_gbwm" name="n20" xy="90,13" size="100,64" fontSize="48" text="出战"/>
+  </displayList>
+</component>

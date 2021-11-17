@@ -8,6 +8,7 @@ namespace DungeonUI
     public partial class UI_TeamUnit : GComponent
     {
         public Controller m_State;
+        public Controller m_select;
         public GLoader m_Head;
         public GTextField m_Name;
         public GList m_Skills;
@@ -25,6 +26,7 @@ namespace DungeonUI
             base.ConstructFromXML(xml);
 
             m_State = GetControllerAt(0);
+            m_select = GetControllerAt(1);
             m_Head = (GLoader)GetChildAt(1);
             m_Name = (GTextField)GetChildAt(2);
             m_Skills = (GList)GetChildAt(3);

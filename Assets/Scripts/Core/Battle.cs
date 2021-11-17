@@ -56,10 +56,20 @@ public class Battle
         //读取场景地图信息
         Map.Init(this);
 
-        for (int i = 0; i < battleConfig.Team.Cards.Count; i++)
+        if (battleConfig.Team != null)
         {
-            Card unitInput = battleConfig.Team.Cards[i];
-            CreatePlayerUnit(unitInput, battleConfig.Team.UnitSkill[i]);
+            for (int i = 0; i < battleConfig.Team.Cards.Count; i++)
+            {
+                Card unitInput = battleConfig.Team.Cards[i];
+                CreatePlayerUnit(unitInput, battleConfig.Team.UnitSkill[i]);
+            }
+        }
+        else
+        {
+            foreach (var card in battleConfig.Dungeon.Cards)
+            {
+                CreatePlayerUnit(card, card.UsingSkill);
+            }
         }
      
         foreach (var unit in PlayerUnits)
@@ -186,7 +196,7 @@ public class Battle
         return unit;
     }
 
-    public Units.干员 CreatePlayerUnit(Card card,int skill)
+    public Units.干员 CreatePlayerUnit(ICard card,int skill)
     {
         var config = Database.Instance.Get<UnitData>(card.UnitId);
         var unit = typeof(Battle).Assembly.CreateInstance(nameof(Units) + "." + config.Type) as Units.干员;

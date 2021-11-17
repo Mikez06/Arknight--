@@ -9,7 +9,7 @@ namespace Units
 {
     public class 干员 : Unit
     {
-        public Card Card;
+        public ICard Card;
         public int MainSkillId = -1;
 
         public DirectionEnum Direction_E;

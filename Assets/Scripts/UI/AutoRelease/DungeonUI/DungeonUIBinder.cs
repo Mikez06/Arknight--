@@ -9,11 +9,12 @@ namespace DungeonUI
         public static void BindAll()
         {
             UIObjectFactory.SetPackageItemExtension(UI_MissionInfo.URL, typeof(UI_MissionInfo));
+            UIObjectFactory.SetPackageItemExtension(UI_Battle.URL, typeof(UI_Battle));
+            UIObjectFactory.SetPackageItemExtension(UI_BattleContract.URL, typeof(UI_BattleContract));
             UIObjectFactory.SetPackageItemExtension(UI_DungeonStart.URL, typeof(UI_DungeonStart));
             UIObjectFactory.SetPackageItemExtension(UI_StartUnit.URL, typeof(UI_StartUnit));
             UIObjectFactory.SetPackageItemExtension(UI_InitUnit.URL, typeof(UI_InitUnit));
             UIObjectFactory.SetPackageItemExtension(UI_Map.URL, typeof(UI_Map));
-            UIObjectFactory.SetPackageItemExtension(UI_DungeonTeam.URL, typeof(UI_DungeonTeam));
             UIObjectFactory.SetPackageItemExtension(UI_TeamSkill.URL, typeof(UI_TeamSkill));
             UIObjectFactory.SetPackageItemExtension(UI_TeamUnit.URL, typeof(UI_TeamUnit));
             UIObjectFactory.SetPackageItemExtension(UI_TeamSelect.URL, typeof(UI_TeamSelect));

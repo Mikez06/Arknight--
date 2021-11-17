@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <displayList>
+    <graph id="n31_gbwm" name="n31" xy="0,0" size="1920,1080" type="rect" lineSize="0" fillColor="#ffcccccc"/>
+    <graph id="n0_gbwm" name="n0" xy="0,0" size="360,1080" type="rect" lineSize="0" fillColor="#ffcccccc"/>
+    <text id="n1_gbwm" name="MapName" xy="116,270" size="128,43" fontSize="31" text="未知访客"/>
+    <list id="n4_gbwm" name="Contracts" xy="48,522" size="258,520" overflow="scroll" scrollBarFlags="128" lineGap="12" defaultItem="ui://hgasjns6gbwmy">
+      <item/>
+      <item/>
+    </list>
+    <graph id="n5_gbwm" name="n5" xy="16,411" size="333,2" type="rect" lineSize="0" fillColor="#ff333333"/>
+    <text id="n6_gbwm" name="n6" xy="116,433" size="128,43" fontSize="31" text="可选合约"/>
+    <component id="n7_gbwm" name="u0" src="t5h98" fileName="Team/TeamUnit.xml" xy="415,40"/>
+    <component id="n8_gbwm" name="u1" src="t5h98" fileName="Team/TeamUnit.xml" xy="415,235"/>
+    <component id="n9_gbwm" name="u2" src="t5h98" fileName="Team/TeamUnit.xml" xy="415,436"/>
+    <component id="n10_gbwm" name="u3" src="t5h98" fileName="Team/TeamUnit.xml" xy="415,644"/>
+    <component id="n21_gbwm" name="u4" src="t5h98" fileName="Team/TeamUnit.xml" xy="874,105"/>
+    <component id="n22_gbwm" name="u5" src="t5h98" fileName="Team/TeamUnit.xml" xy="874,300"/>
+    <component id="n23_gbwm" name="u6" src="t5h98" fileName="Team/TeamUnit.xml" xy="874,501"/>
+    <component id="n24_gbwm" name="u7" src="t5h98" fileName="Team/TeamUnit.xml" xy="874,709"/>
+    <component id="n25_gbwm" name="u8" src="t5h98" fileName="Team/TeamUnit.xml" xy="1342,42"/>
+    <component id="n26_gbwm" name="u9" src="t5h98" fileName="Team/TeamUnit.xml" xy="1342,237"/>
+    <component id="n27_gbwm" name="u10" src="t5h98" fileName="Team/TeamUnit.xml" xy="1342,438"/>
+    <component id="n28_gbwm" name="u11" src="t5h98" fileName="Team/TeamUnit.xml" xy="1342,646"/>
+    <component id="n19_gbwm" name="DoBattle" src="gbwm10" fileName="DungeonBattle/GoBattle.xml" xy="1542,961"/>
+    <list id="n30_gbwm" name="Relics" xy="404,970" size="993,77" layout="row" overflow="scroll" colGap="12" defaultItem="ui://hgasjns6gbwmz" autoClearItems="true">
+      <item/>
+      <item/>
+    </list>
+    <graph id="n32_gbwm" name="n32" xy="363,0" size="2,1080" type="rect"/>
+  </displayList>
+</component>

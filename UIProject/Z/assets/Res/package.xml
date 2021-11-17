@@ -407,6 +407,25 @@
     <image id="uizy161" name="half_zebra.png" path="/半身立绘/" exported="true"/>
     <image id="uizy162" name="half_zumama.png" path="/半身立绘/" exported="true"/>
     <image id="t5h9163" name="头像_召唤物_Mon3tr.png" path="/头像/" exported="true"/>
+    <folder id="/合约图标/" name="合约图标" path="/" atlas="2"/>
+    <image id="gbwm16o" name="反机动.png" path="/合约图标/" exported="true"/>
+    <image id="gbwm16p" name="反机动II.png" path="/合约图标/" exported="true"/>
+    <image id="gbwm16q" name="反集群.png" path="/合约图标/" exported="true"/>
+    <image id="gbwm16r" name="反狙击I.png" path="/合约图标/" exported="true"/>
+    <image id="gbwm16s" name="反狙击II.png" path="/合约图标/" exported="true"/>
+    <image id="gbwm16t" name="反装甲I.png" path="/合约图标/" exported="true"/>
+    <image id="gbwm16u" name="目标：摧毁弓弩I.png" path="/合约图标/" exported="true"/>
+    <image id="gbwm16v" name="目标：摧毁弓弩II.png" path="/合约图标/" exported="true"/>
+    <image id="gbwm16w" name="目标：摧毁弓弩III.png" path="/合约图标/" exported="true"/>
+    <image id="gbwm16x" name="目标：抹消机型I.png" path="/合约图标/" exported="true"/>
+    <image id="gbwm16y" name="目标：抹消机型II.png" path="/合约图标/" exported="true"/>
+    <image id="gbwm16z" name="目标：抹消机型III.png" path="/合约图标/" exported="true"/>
+    <image id="gbwm170" name="源石环境：刺激I.png" path="/合约图标/" exported="true"/>
+    <image id="gbwm171" name="源石环境：刺激II.png" path="/合约图标/" exported="true"/>
+    <image id="gbwm172" name="源石环境：刺激III.png" path="/合约图标/" exported="true"/>
+    <image id="gbwm173" name="源石环境：活性I.png" path="/合约图标/" exported="true"/>
+    <image id="gbwm174" name="源石环境：活性II.png" path="/合约图标/" exported="true"/>
+    <image id="gbwm175" name="源石环境：活性III.png" path="/合约图标/" exported="true"/>
   </resources>
   <publish name=""/>
 </packageDescription>

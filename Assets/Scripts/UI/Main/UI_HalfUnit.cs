@@ -12,16 +12,16 @@ namespace MainUI
         public void SetCard(Card card,int skillIndex)
         {
             this.Card = card;
-            m_typeControl.selectedIndex = (int)card.Config.Profession;
-            m_halfPic.icon = "ui://Res/" + card.Config.HalfIcon;
-            m_skillIcon.icon = Database.Instance.Get<SkillData>(card.Config.MainSkill[skillIndex]).Icon.ToSkillIcon();
+            m_typeControl.selectedIndex = (int)card.UnitData.Profession;
+            m_halfPic.icon = "ui://Res/" + card.UnitData.HalfIcon;
+            m_skillIcon.icon = Database.Instance.Get<SkillData>(card.UnitData.MainSkill[skillIndex]).Icon.ToSkillIcon();
             m_stars.RemoveChildrenToPool();
-            for (int i = 0; i < card.Config.Rare; i++)
+            for (int i = 0; i < card.UnitData.Rare; i++)
             {
                 m_stars.AddItemFromPool();
             }
             m_lv.text = card.Level.ToString();
-            m_name.text = card.Config.Name.ToString();
+            m_name.text = card.UnitData.Name.ToString();
         }
     }
 }

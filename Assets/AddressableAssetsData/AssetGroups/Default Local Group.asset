@@ -349,10 +349,6 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Units/token_10002_kalts_mon3tr
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 4e645d4d4bf02d24b89c0013928a190e
-    m_Address: Assets/Bundles/UI/DungeonUI_atlas0
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 23a2b5a327e472f44b8146983dc3072e
     m_Address: Assets/Bundles/UI/DungeonUI_fui
     m_ReadOnly: 0
@@ -395,6 +391,18 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: c1aba8809ea2a834e91c99e8949ae4ea
     m_Address: Assets/Bundles/DungeonTile/Reward
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d7e350a5a3ba934429ca200ac9b4c764
+    m_Address: Assets/Bundles/Data/RelicData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9d4634e5c0329554eabb9d46d06e97d9
+    m_Address: Assets/Bundles/Data/ContractData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ef1e3cb3a18e5734eb1a3e198fac44a2
+    m_Address: Assets/Bundles/UI/Res_atlas2
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

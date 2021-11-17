@@ -14,4 +14,8 @@ public static class IconHelper
     {
         return "ui://SkillIcon/" + icon;
     }
+    public static string ToContractIcon(this string icon)
+    {
+        return "ui://Res/" + icon;
+    }
 }

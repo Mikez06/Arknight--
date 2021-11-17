@@ -80,6 +80,8 @@ public class DungeonTileController : MonoBehaviour,IPointerClickHandler
             tcs.SetResult(true);
         });
         await tcs.Task;
+        Destroy(SkeletonAnimation.gameObject);
+        SkeletonAnimation = null;
     }
 }
 

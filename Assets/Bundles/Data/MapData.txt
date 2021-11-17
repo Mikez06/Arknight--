@@ -1,8 +1,8 @@
-{"Id":"TestMap","Scene":"TestMap","InitCost":100,"MaxBuildCount":8,"MapModel":"enemy_1000_gopro"}
-{"Id":"TestMap1","Scene":"TestMap1","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1510_frstar2"}
-{"Id":"TestMap2","Scene":"TestMap1","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1065_snwolf_2"}
-{"Id":"TestMap3","Scene":"TestMap1","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1067_snslime_2"}
-{"Id":"TestMap4","Scene":"TestMap1","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1068_snmage_2"}
-{"Id":"TestMap5","Scene":"TestMap1","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1066_snbow_2"}
-{"Id":"TestMap6","Scene":"TestMap1","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1069_icebrk_2"}
-{"Id":"TestMap7","Scene":"TestMap1","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1024_mortar_2"}
+{"Id":"TestMap","MapName":"场景名字1","Scene":"TestMap","InitCost":100,"MaxBuildCount":8,"MapModel":"enemy_1000_gopro","Contracts":[0,1,2]}
+{"Id":"TestMap1","MapName":"场景名字2","Scene":"TestMap1","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1510_frstar2","Contracts":[0,1,3]}
+{"Id":"TestMap2","MapName":"场景名字3","Scene":"TestMap1","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1065_snwolf_2","Contracts":[0,1,4]}
+{"Id":"TestMap3","MapName":"场景名字4","Scene":"TestMap1","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1067_snslime_2","Contracts":[0,1,2]}
+{"Id":"TestMap4","MapName":"场景名字5","Scene":"TestMap1","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1068_snmage_2","Contracts":[0,1,3]}
+{"Id":"TestMap5","MapName":"场景名字6","Scene":"TestMap1","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1066_snbow_2","Contracts":[0,1,2]}
+{"Id":"TestMap6","MapName":"场景名字7","Scene":"TestMap1","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1069_icebrk_2","Contracts":[0,1,3]}
+{"Id":"TestMap7","MapName":"场景名字8","Scene":"TestMap1","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1024_mortar_2","Contracts":[0,1,4]}

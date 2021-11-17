@@ -27,16 +27,16 @@ namespace MainUI
             else
             {
                 m_empty.selectedIndex = 0;
-                m_name.text = card.Config.Name;
+                m_name.text = card.UnitData.Name;
                 m_lv.text = card.Level.ToString();
-                m_reset.text = card.Config.ResetTime.ToString();
-                m_cost.text = card.Config.Cost.ToString();
-                m_stop.text = card.Config.StopCount.ToString();
-                var mainSkill = Database.Instance.Get<SkillData>(card.Config.Skills[0]);
+                m_reset.text = card.UnitData.ResetTime.ToString();
+                m_cost.text = card.UnitData.Cost.ToString();
+                m_stop.text = card.UnitData.StopCount.ToString();
+                var mainSkill = Database.Instance.Get<SkillData>(card.UnitData.Skills[0]);
                 m_agi.text = mainSkill.Cooldown.ToString();
-                m_hp.text = card.Config.Hp.ToString();
-                m_def.text = card.Config.Defence.ToString();
-                m_magdefence.text = card.Config.MagicDefence.ToString();
+                m_hp.text = card.UnitData.Hp.ToString();
+                m_def.text = card.UnitData.Defence.ToString();
+                m_magdefence.text = card.UnitData.MagicDefence.ToString();
 
                 foreach (var item in m_attackArea.GetChildren())
                 {
@@ -54,9 +54,9 @@ namespace MainUI
 
                 m_Skills.RemoveChildrenToPool();
 
-                for (int i = 0; i < card.Config.MainSkill.Length; i++)
+                for (int i = 0; i < card.UnitData.MainSkill.Length; i++)
                 {
-                    int skill = card.Config.MainSkill[i];
+                    int skill = card.UnitData.MainSkill[i];
                     var uiSkill = m_Skills.AddItemFromPool() as UI_SkillInfo;
                     uiSkill.SetSkill(skill);
                     uiSkill.m_seleted.selectedIndex = i == skillIndex ? 1 : 0;

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="256,74" bgColorEnabled="true">
+  <controller name="button" pages="2,up,3,down" selected="0"/>
+  <displayList>
+    <graph id="n2_gbwm" name="n2" xy="74,18" size="182,46" type="rect" lineSize="0" fillColor="#ff999999">
+      <gearColor controller="button" pages="2,3" values="#999999|#999999"/>
+    </graph>
+    <loader id="n3_gbwm" name="icon" xy="0,0" size="74,74" url="ui://kera0i3hgbwm16o">
+      <gearColor controller="button" pages="3" values="#999999" default="#ffffff"/>
+    </loader>
+    <text id="n5_gbwm" name="TagName" xy="77,25" size="173,35" fontSize="25" align="center" vAlign="middle" autoSize="shrink" text="最后防线"/>
+    <graph id="n6_gbwm" name="n6" xy="84,41" size="154,2" type="rect" lineSize="0" fillColor="#ff000000">
+      <gearDisplay controller="button" pages="3"/>
+    </graph>
+  </displayList>
+</component>

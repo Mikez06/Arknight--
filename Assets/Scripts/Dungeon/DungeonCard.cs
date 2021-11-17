@@ -4,11 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class DungeonCard
+public class DungeonCard : ICard
 {
     public CardData CardData => Database.Instance.Get<CardData>(CardId);
-    public UnitData UnitData => Database.Instance.Get<UnitData>(CardData.units[Upgrade]);
+    public UnitData UnitData => Database.Instance.Get<UnitData>(CardData.units[UpgradeUp]);
+
+    public int UnitId => CardData.units[UpgradeUp];
+
+    public int Upgrade => UnitData.Upgrade;
+
+    public int Level => UnitData.Level;
+
     public int CardId;
-    public int Upgrade;
+    public int UpgradeUp;
     public int Exp;
+    public int UsingSkill;
+
+    public int GetUpgradeExp()
+    {
+        return 5;
+    }
+
 }

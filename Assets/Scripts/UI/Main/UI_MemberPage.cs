@@ -42,20 +42,20 @@ namespace MainUI
             if (Up)
             {
                 if (Sort == 0) cards = GameData.Instance.Cards.OrderBy(x => x.Level).ThenBy(x => x.UnitId).ToList();
-                else if (Sort == 1) cards = GameData.Instance.Cards.OrderBy(x => x.Config.Rare).ThenBy(x => x.Level).ThenBy(x => x.UnitId).ToList();
-                else cards = GameData.Instance.Cards.OrderBy(x => NPinyin.Pinyin.GetPinyin(x.Config.Name)).ToList();
+                else if (Sort == 1) cards = GameData.Instance.Cards.OrderBy(x => x.UnitData.Rare).ThenBy(x => x.Level).ThenBy(x => x.UnitId).ToList();
+                else cards = GameData.Instance.Cards.OrderBy(x => NPinyin.Pinyin.GetPinyin(x.UnitData.Name)).ToList();
             }
             else
             {
                 if (Sort == 0) cards = GameData.Instance.Cards.OrderByDescending(x => x.Level).ThenBy(x => x.UnitId).ToList();
-                else if (Sort == 1) cards = GameData.Instance.Cards.OrderByDescending(x => x.Config.Rare).ThenBy(x => x.Level).ThenBy(x => x.UnitId).ToList();
-                else cards = GameData.Instance.Cards.OrderByDescending(x => NPinyin.Pinyin.GetPinyin(x.Config.Name)).ToList();
+                else if (Sort == 1) cards = GameData.Instance.Cards.OrderByDescending(x => x.UnitData.Rare).ThenBy(x => x.Level).ThenBy(x => x.UnitId).ToList();
+                else cards = GameData.Instance.Cards.OrderByDescending(x => NPinyin.Pinyin.GetPinyin(x.UnitData.Name)).ToList();
             }
             
             foreach (var card in cards)
             {
                 var uiCard = m_Cards.AddItemFromPool() as UI_HalfUnit;
-                uiCard.SetCard(card, card.UsingSkill);
+                uiCard.SetCard(card, card.DefaultUsingSkill);
             }
         }
 

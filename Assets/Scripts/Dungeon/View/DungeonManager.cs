@@ -15,7 +15,8 @@ public class DungeonManager : Singleton<DungeonManager>
     {
         if (Dungeon != null) return;
         Dungeon = new Dungeon();
-        Dungeon.StartCard = new DungeonCard();
+        var card = Dungeon.AddUnit(0);
+        Dungeon.StartCard = card;
     }
 
     public async Task StartDungeon()
@@ -47,10 +48,26 @@ public class DungeonManager : Singleton<DungeonManager>
         {
             tile.TileController.SetDark(!tile.InSight);
         }
+        await TimeHelper.Instance.WaitAsync(0.3f);
         if (ifBattle)
         {
+            //进入战斗流程
+            var dungeonBattle = UIManager.Instance.ChangeView<DungeonUI.UI_Battle>(DungeonUI.UI_Battle.URL);
+            var contract = await dungeonBattle.BuildTeam(Dungeon.NowTile.MapId);
+
+            DungeonRoot.Instance.gameObject.SetActive(false);
+            await BattleManager.Instance.StartBattle(new BattleInput()
+            {
+                Contracts = new List<int>(contract),
+                Dungeon = Dungeon,
+                MapName = Dungeon.NowTile.MapId,
+            });
+            DungeonRoot.Instance.gameObject.SetActive(true);
+            UIManager.Instance.ChangeView<DungeonUI.UI_Map>(DungeonUI.UI_Map.URL);
+
+            //战斗结束
             await DungeonUnit.ShowAttack();
-            await TimeHelper.Instance.WaitAsync(0.5f);
+            await TimeHelper.Instance.WaitAsync(0.2f);
             await dungeonTile.TileController.ShowDie();
             await DungeonUnit.MoveTo(dungeonTile.WorldPos);
         }

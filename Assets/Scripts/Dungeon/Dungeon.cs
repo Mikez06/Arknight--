@@ -10,6 +10,10 @@ public class Dungeon
     public DungeonCard StartCard;
     public DungeonTile[,] Tiles;
     public List<DungeonCard> Cards = new List<DungeonCard>();
+    public List<DungeonRelic> Relics = new List<DungeonRelic>();
+    public List<DungeonCard> AllCards = new List<DungeonCard>();
+
+    public int MaxCardCount = 5;
 
     public DungeonTile NowTile;
     public int Sight = 2;
@@ -36,6 +40,20 @@ public class Dungeon
         updateSight();
     }
 
+    public DungeonCard AddUnit(int cardId)
+    {
+        var card = new DungeonCard()
+        {
+            CardId=cardId,
+        };
+        AllCards.Add(card);
+        if (Cards.Count< MaxCardCount)
+        {
+            Cards.Add(card);
+        }
+        return card;
+    }
+
     public bool CanMove(DungeonTile dungeonTile)
     {
         return (((dungeonTile.X == NowTile.X && dungeonTile.Y == NowTile.Y + 1) || (dungeonTile.X == NowTile.X + 1 && dungeonTile.Y == NowTile.Y)) && dungeonTile.TileType != DungeonTileTypeEnum.Tower);
@@ -52,7 +70,14 @@ public class Dungeon
 
     public async Task TriggerNowTile()
     {
-
+        if (NowTile.TileType == DungeonTileTypeEnum.Battle)
+        {
+            await BattleManager.Instance.StartBattle(new BattleInput()
+            {
+                Dungeon = this,
+                MapName = NowTile.MapId,
+            });
+        }
     }
 
     void updateSight()

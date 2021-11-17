@@ -155,14 +155,14 @@ namespace MainUI
                 if (Up)
                 {
                     if (Sort == 0) cards = GameData.Instance.Cards.OrderBy(x => NowTeam.IndexOf(x) < 0 ? 1 : 0).ThenBy(x => x.Level).ThenBy(x => x.UnitId).ToList();
-                    else if (Sort == 1) cards = GameData.Instance.Cards.OrderBy(x => NowTeam.IndexOf(x) < 0 ? 1 : 0).ThenBy(x => x.Config.Rare).ThenBy(x => x.Level).ThenBy(x => x.UnitId).ToList();
-                    else cards = GameData.Instance.Cards.OrderBy(x => NowTeam.IndexOf(x) < 0 ? 1 : 0).ThenBy(x => NPinyin.Pinyin.GetPinyin(x.Config.Name)).ToList();
+                    else if (Sort == 1) cards = GameData.Instance.Cards.OrderBy(x => NowTeam.IndexOf(x) < 0 ? 1 : 0).ThenBy(x => x.UnitData.Rare).ThenBy(x => x.Level).ThenBy(x => x.UnitId).ToList();
+                    else cards = GameData.Instance.Cards.OrderBy(x => NowTeam.IndexOf(x) < 0 ? 1 : 0).ThenBy(x => NPinyin.Pinyin.GetPinyin(x.UnitData.Name)).ToList();
                 }
                 else
                 {
                     if (Sort == 0) cards = GameData.Instance.Cards.OrderBy(x => NowTeam.IndexOf(x) < 0 ? 1 : 0).ThenByDescending(x => x.Level).ThenBy(x => x.UnitId).ToList();
-                    else if (Sort == 1) cards = GameData.Instance.Cards.OrderBy(x => NowTeam.IndexOf(x) < 0 ? 1 : 0).ThenByDescending(x => x.Config.Rare).ThenBy(x => x.Level).ThenBy(x => x.UnitId).ToList();
-                    else cards = GameData.Instance.Cards.OrderBy(x => NowTeam.IndexOf(x) < 0 ? 1 : 0).ThenByDescending(x => NPinyin.Pinyin.GetPinyin(x.Config.Name)).ToList();
+                    else if (Sort == 1) cards = GameData.Instance.Cards.OrderBy(x => NowTeam.IndexOf(x) < 0 ? 1 : 0).ThenByDescending(x => x.UnitData.Rare).ThenBy(x => x.Level).ThenBy(x => x.UnitId).ToList();
+                    else cards = GameData.Instance.Cards.OrderBy(x => NowTeam.IndexOf(x) < 0 ? 1 : 0).ThenByDescending(x => NPinyin.Pinyin.GetPinyin(x.UnitData.Name)).ToList();
                 }
 
                 if (m_quick.selectedIndex == 0)//单选模式下 剔除已在队里的卡
@@ -177,7 +177,7 @@ namespace MainUI
                 {
                     var uiCard = m_Cards.AddItemFromPool() as UI_HalfUnit;
                     int index = NowTeam.IndexOf(card);
-                    uiCard.SetCard(card, index >= 0 ? NowSkill[index] : card.UsingSkill);
+                    uiCard.SetCard(card, index >= 0 ? NowSkill[index] : card.DefaultUsingSkill);
                     if (m_quick.selectedIndex == 0)//单选模式下，选中卡片高亮
                     {
                         uiCard.m_seletd.selectedIndex = NowTeam.Contains(card) ? 1 : 0;
@@ -196,7 +196,7 @@ namespace MainUI
                 {
                     var card = uiCard.Card;
                     int index = NowTeam.IndexOf(card);
-                    uiCard.SetCard(card, index >= 0 ? NowSkill[index] : card.UsingSkill);
+                    uiCard.SetCard(card, index >= 0 ? NowSkill[index] : card.DefaultUsingSkill);
                     if (m_quick.selectedIndex == 0)//单选模式下，选中卡片高亮
                     {
                         uiCard.m_seletd.selectedIndex = NowTeam.Contains(card) ? 1 : 0;
@@ -214,7 +214,7 @@ namespace MainUI
         void clickCard(EventContext evt)
         {
             var card = (evt.data as UI_HalfUnit).Card;
-            m_leftUnit.SetCard(card, card.UsingSkill);
+            m_leftUnit.SetCard(card, card.DefaultUsingSkill);
             if (m_quick.selectedIndex == 0)
             {
                 if (NowTeam.Contains(card))

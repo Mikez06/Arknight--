@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="444,172">
+  <controller name="select" pages="0,,1," selected="0"/>
+  <controller name="upgrade" pages="0,,1,,2," selected="0"/>
+  <controller name="ifUpgrade" pages="0,,1," selected="0"/>
+  <controller name="temp" pages="0,,1," selected="0"/>
+  <displayList>
+    <graph id="n1_t5h9" name="n1" xy="0,0" size="444,172" type="rect" fillColor="#ff33ccff" corner="20"/>
+    <loader id="n0_t5h9" name="Head" xy="21,9" size="130,130" group="n7_t5h9" url="ui://kera0i3huizyuy" fill="scale"/>
+    <text id="n2_t5h9" name="Name" xy="231,156" pivot="0.5,0.5" anchor="true" size="104,29" group="n7_t5h9" fontSize="20" align="center" text="干员名字子"/>
+    <text id="n5_t5h9" name="level" xy="73,143" size="54,29" group="n7_t5h9" fontSize="20" align="center" vars="true" text="Lv.{l=10}"/>
+    <loader id="n11_gbwm" name="n11" xy="6,139" size="53,35" group="n7_t5h9" url="ui://kera0i3hgbwm1a7" align="center" vAlign="middle" fill="scaleNoBorder">
+      <gearIcon controller="upgrade" pages="0,2" values="ui://kera0i3hgbwm1a7|ui://kera0i3hgbwm1a9" default="ui://kera0i3hgbwm1a8"/>
+    </loader>
+    <text id="n12_gbwm" name="n12" xy="253,26" size="74,48" group="n7_t5h9" fontSize="35" text="招募">
+      <gearText controller="ifUpgrade" pages="1" values="进阶" default="招募"/>
+    </text>
+    <text id="n13_gbwm" name="Cost" xy="290,102" pivot="0.5,0.5" anchor="true" size="24,48" group="n7_t5h9" fontSize="35" text="0"/>
+    <graph id="n15_gbwm" name="n15" xy="356,5" size="84,27" group="n7_t5h9" type="rect" lineSize="0" fillColor="#ff999999">
+      <gearDisplay controller="temp" pages="1"/>
+    </graph>
+    <text id="n14_gbwm" name="n14" xy="367,7" size="64,23" group="n7_t5h9" fontSize="15" text="临时招募">
+      <gearDisplay controller="temp" pages="1"/>
+    </text>
+    <group id="n7_t5h9" name="n7" xy="6,5" size="434,169" advanced="true"/>
+    <graph id="n10_gbwm" name="n10" xy="0,0" size="444,172" type="rect" lineSize="6" lineColor="#ffffff00" fillColor="#00ffffff" corner="20">
+      <gearDisplay controller="select" pages="1"/>
+    </graph>
+  </displayList>
+</component>

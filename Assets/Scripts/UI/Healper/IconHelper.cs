@@ -18,4 +18,9 @@ public static class IconHelper
     {
         return "ui://Res/" + icon;
     }
+
+    public static string ToRelicIcon(this string icon)
+    {
+        return "ui://Res/" + icon;
+    }
 }

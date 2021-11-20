@@ -9,6 +9,7 @@ namespace DungeonUI
     {
         public Controller m_State;
         public Controller m_select;
+        public Controller m_upgrade;
         public GLoader m_Head;
         public GTextField m_Name;
         public GList m_Skills;
@@ -27,6 +28,7 @@ namespace DungeonUI
 
             m_State = GetControllerAt(0);
             m_select = GetControllerAt(1);
+            m_upgrade = GetControllerAt(2);
             m_Head = (GLoader)GetChildAt(1);
             m_Name = (GTextField)GetChildAt(2);
             m_Skills = (GList)GetChildAt(3);

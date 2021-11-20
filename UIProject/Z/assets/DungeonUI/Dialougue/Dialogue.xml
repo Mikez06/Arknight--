@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <controller name="chooseReward" pages="0,,1," selected="0"/>
+  <displayList>
+    <component id="n8_gbwm" name="cArea" src="f1463m" fileName="Container.xml" pkg="vp312gab" xy="0,0" size="1920,1080"/>
+    <loader id="n0_gbwm" name="background" xy="0,0" size="1920,1080" touchable="false" url="ui://hgasjns6gbwm12" align="center" vAlign="middle" fill="scaleNoBorder"/>
+    <graph id="n1_gbwm" name="n1" xy="0,847" size="1920,233" group="n5_gbwm" touchable="false" type="rect" lineSize="0" fillColor="#99000000"/>
+    <graph id="n2_gbwm" name="n2" xy="215,787" size="197,47" group="n5_gbwm" touchable="false" type="rect" lineSize="0" fillColor="#66666666"/>
+    <text id="n3_gbwm" name="EventTitle" xy="233,791" size="62,40" group="n5_gbwm" fontSize="29" color="#ffffff" text="扎营"/>
+    <text id="n4_gbwm" name="DialogueText" xy="249,868" size="1409,212" group="n5_gbwm" fontSize="32" color="#ffffff" autoSize="none" autoClearText="true" text="长途跋涉使队伍精疲力竭，你不得不选择停下脚步，扎营休憩，望着远方大地上的风景，想起那些还等着你们胜利消息的伙伴，这一切似乎都是值得的。"/>
+    <list id="n7_gbwm" name="Chooices" xy="-104,1096" size="2128,785" group="n5_gbwm" visible="false" layout="row" colGap="111" defaultItem="ui://hgasjns6gbwm13" align="center" autoClearItems="true">
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <group id="n5_gbwm" name="n5" xy="-104,787" size="2128,1094" advanced="true"/>
+    <list id="n10_gbwm" name="Rewards" xy="-158,337" size="2237,430" layout="row" colGap="111" defaultItem="ui://hgasjns6gbwm14" align="center" autoClearItems="true">
+      <gearDisplay controller="chooseReward" pages="1"/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+  </displayList>
+  <transition name="chooseAni">
+    <item time="0" type="Visible" target="n7_gbwm" value="true"/>
+    <item time="0" type="XY" target="n5_gbwm" tween="true" startValue="-,787,0,0.729" endValue="-,199" duration="12"/>
+  </transition>
+  <transition name="reset">
+    <item time="0" type="Visible" target="n7_gbwm" value="false"/>
+    <item time="0" type="XY" target="n5_gbwm" value="-,787"/>
+  </transition>
+</component>

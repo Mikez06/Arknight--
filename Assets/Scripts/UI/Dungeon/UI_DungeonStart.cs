@@ -29,7 +29,6 @@ namespace DungeonUI
             m_Start.onClick.Add(async () =>
             {
                 await DungeonManager.Instance.StartDungeon();
-                UIManager.Instance.ChangeView<UI_Map>(UI_Map.URL);
             });
         }
 

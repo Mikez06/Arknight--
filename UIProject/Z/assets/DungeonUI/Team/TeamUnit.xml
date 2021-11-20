@@ -4,19 +4,23 @@
     <remark page="1" value="空"/>
     <remark page="2" value="禁用"/>
   </controller>
-  <controller name="select" pages="0,,1," selected="1"/>
+  <controller name="select" pages="0,,1," selected="0"/>
+  <controller name="upgrade" pages="0,,1,,2," selected="2"/>
   <displayList>
     <graph id="n1_t5h9" name="n1" xy="0,0" size="444,172" type="rect" fillColor="#ff33ccff" corner="20"/>
-    <loader id="n0_t5h9" name="Head" xy="21,25" size="130,130" group="n7_t5h9" url="ui://kera0i3huizyuy" fill="scale"/>
+    <loader id="n0_t5h9" name="Head" xy="21,9" size="130,130" group="n7_t5h9" url="ui://kera0i3huizyuy" fill="scale"/>
     <text id="n2_t5h9" name="Name" xy="249,132" pivot="0.5,0.5" anchor="true" size="179,48" group="n7_t5h9" fontSize="35" align="center" text="干员名字子"/>
     <list id="n4_t5h9" name="Skills" xy="179,22" size="249,66" group="n7_t5h9" layout="row" colGap="30" defaultItem="ui://hgasjns6t5h97">
       <item/>
       <item/>
       <item/>
     </list>
-    <text id="n5_t5h9" name="level" xy="345,133" size="54,29" group="n7_t5h9" fontSize="20" align="center" vars="true" text="Lv.{l=10}"/>
-    <text id="n6_t5h9" name="exp" xy="345,99" size="75,29" group="n7_t5h9" fontSize="20" align="center" vars="true" text="exp:{n=1}/{m=2}"/>
-    <group id="n7_t5h9" name="n7" xy="21,22" size="407,140" advanced="true">
+    <text id="n5_t5h9" name="level" xy="73,143" size="54,29" group="n7_t5h9" fontSize="20" align="center" vars="true" text="Lv.{l=10}"/>
+    <text id="n6_t5h9" name="exp" xy="345,128" size="75,29" group="n7_t5h9" fontSize="20" align="center" vars="true" text="exp:{n=1}/{m=2}"/>
+    <loader id="n11_gbwm" name="n11" xy="6,139" size="53,35" group="n7_t5h9" url="ui://kera0i3hgbwm1a9" align="center" vAlign="middle" fill="scaleNoBorder">
+      <gearIcon controller="upgrade" pages="0,2" values="ui://kera0i3hgbwm1a7|ui://kera0i3hgbwm1a9" default="ui://kera0i3hgbwm1a8"/>
+    </loader>
+    <group id="n7_t5h9" name="n7" xy="6,9" size="422,165" advanced="true">
       <gearDisplay controller="State" pages="0"/>
     </group>
     <text id="n8_t5h9" name="n8" xy="52,54" size="340,64" fontSize="48" text="点击加入新队员">

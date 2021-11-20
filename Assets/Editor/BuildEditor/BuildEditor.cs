@@ -47,13 +47,14 @@ public class BuildEditor
         SetAssetMark(PathHelper.EffectPath, null);
         SetAssetMark(PathHelper.OtherPath, null);
         SetAssetMark(PathHelper.DungeonGridPath, null);
+        SetAssetMark(PathHelper.SpritePath, null);
         SetStandPic();
         Debug.Log("重新标记完成!");
     }
 
     static void SetStandPic()
     {
-        List<string> paths = EditorResHelper.GetAllResourcePath(PathHelper.SpritePath, true);
+        List<string> paths = EditorResHelper.GetAllResourcePath(PathHelper.StandPicPath, true);
         //var group = groupName == null ? setting.DefaultGroup : setting.FindGroup(groupName);
         var group = setting.FindGroup("StandPic");
         var unitDatas = Database.Instance.GetAll<UnitData>().Select(x => x.StandPic).ToList();

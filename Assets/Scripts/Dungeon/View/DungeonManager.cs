@@ -15,7 +15,7 @@ public class DungeonManager : Singleton<DungeonManager>
     {
         if (Dungeon != null) return;
         Dungeon = new Dungeon();
-        var card = Dungeon.AddUnit(0);
+        var card = Dungeon.GainUnit(0);
         Dungeon.StartCard = card;
     }
 
@@ -36,6 +36,7 @@ public class DungeonManager : Singleton<DungeonManager>
             tile.TileController.SetDark(!tile.InSight);
             //if (tile.InSight && tile.TileType == DungeonTileTypeEnum.Battle) tile.TileController.BuildBuildingModel();
         }
+        await Dungeon.TriggerNowTile();
     }
 
     public async Task Move(DungeonTile dungeonTile)

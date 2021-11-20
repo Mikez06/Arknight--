@@ -1,0 +1,4 @@
+{"Group":"初始事件","EventId":"入口","Description":"前方会有什么等待着你呢。","Background":"Background/rl_camp","Tile":"启程"}
+{"Group":"初始事件","Description":"你感到充满……","Choices":["+2金钱","+2希望"],"ChoicesTitle":["决心","信心"],"Next":["1","1"]}
+{"Group":"初始事件","EventId":"1","Description":"你获得了一些初始物资…","Rewards":[0,2,1]}
+{"Group":"初始事件","Description":"你匆匆上路了"}

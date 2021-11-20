@@ -8,6 +8,11 @@ namespace DungeonUI
     {
         public static void BindAll()
         {
+            UIObjectFactory.SetPackageItemExtension(UI_Dialogue.URL, typeof(UI_Dialogue));
+            UIObjectFactory.SetPackageItemExtension(UI_Choice.URL, typeof(UI_Choice));
+            UIObjectFactory.SetPackageItemExtension(UI_Reward.URL, typeof(UI_Reward));
+            UIObjectFactory.SetPackageItemExtension(UI_Recruit.URL, typeof(UI_Recruit));
+            UIObjectFactory.SetPackageItemExtension(UI_RecruitUnit.URL, typeof(UI_RecruitUnit));
             UIObjectFactory.SetPackageItemExtension(UI_MissionInfo.URL, typeof(UI_MissionInfo));
             UIObjectFactory.SetPackageItemExtension(UI_Battle.URL, typeof(UI_Battle));
             UIObjectFactory.SetPackageItemExtension(UI_BattleContract.URL, typeof(UI_BattleContract));

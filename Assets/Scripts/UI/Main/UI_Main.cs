@@ -33,6 +33,12 @@ namespace MainUI
                 DungeonManager.Instance.PrepareDungeon();
                 UIManager.Instance.ChangeView<DungeonUI.UI_DungeonStart>(DungeonUI.UI_DungeonStart.URL);
             });
+            onRightClick.Add(async () =>
+            {
+                var ui = UIManager.Instance.ChangeView<DungeonUI.UI_Dialogue>(DungeonUI.UI_Dialogue.URL);
+                await ui.StartDialogue("初始事件");
+                UIManager.Instance.ChangeView<GComponent>(URL);
+            });
         }
 
         public void Enter()
@@ -45,7 +51,7 @@ namespace MainUI
             if (gameData.Teams[0].Cards.Count > 0)
             {
                 string picName = Database.Instance.Get<UnitData>(gameData.Teams[0].Cards[0].UnitId).StandPic;
-                m_standPic.texture = new NTexture(ResHelper.GetAsset<Texture>(PathHelper.SpritePath + picName));
+                m_standPic.texture = new NTexture(ResHelper.GetAsset<Texture>(PathHelper.StandPicPath + picName));
             }
         }
     }

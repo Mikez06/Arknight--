@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <displayList>
+    <graph id="n1_gbwm" name="n1" xy="0,0" size="1920,1080" type="rect"/>
+    <list id="n2_gbwm" name="units" xy="637,27" size="1243,967" layout="flow_vt" overflow="scroll" scroll="horizontal" lineGap="10" colGap="18" defaultItem="ui://hgasjns6gbwm16">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <component id="n3_gbwm" name="cancel" src="t5h9t" fileName="Team/SelectBtn.xml" xy="1483,1011">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n4_gbwm" name="ok" src="t5h9u" fileName="Team/SelectBtn(1).xml" xy="1691,1011">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n0_gbwm" name="leftUnit" src="t5h9q" fileName="Team/Folder/LeftUnitInfo.xml" xy="0,0"/>
+  </displayList>
+</component>

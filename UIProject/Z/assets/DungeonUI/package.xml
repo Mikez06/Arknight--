@@ -23,6 +23,12 @@
     <component id="gbwmy" name="BattleContract.xml" path="/DungeonBattle/"/>
     <component id="gbwmz" name="Relic.xml" path="/DungeonBattle/"/>
     <component id="gbwm10" name="GoBattle.xml" path="/DungeonBattle/"/>
+    <component id="gbwm11" name="Dialogue.xml" path="/Dialougue/" exported="true"/>
+    <image id="gbwm12" name="rl_camp.png" path="/Dialougue/"/>
+    <component id="gbwm13" name="Choice.xml" path="/Dialougue/"/>
+    <component id="gbwm14" name="Reward.xml" path="/Dialougue/"/>
+    <component id="gbwm15" name="Recruit.xml" path="/Recruit/" exported="true"/>
+    <component id="gbwm16" name="RecruitUnit.xml" path="/Recruit/"/>
   </resources>
-  <publish name="" genCode="true"/>
+  <publish name="" genCode="true" excluded="gbwm12"/>
 </packageDescription>

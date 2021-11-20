@@ -25,4 +25,13 @@ public class DungeonCard : ICard
         return 5;
     }
 
+    public void GainExp(int exp)
+    {
+        Exp += exp;
+        while (Exp > GetUpgradeExp() && UpgradeUp < 2)
+        {
+            Exp -= GetUpgradeExp();
+            UpgradeUp++;
+        }
+    }
 }

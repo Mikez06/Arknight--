@@ -1,1 +1,10 @@
 {"Id":"遗物1"}
+{"Id":"先锋招募券","Name":"先锋招募券","Profession":[1]}
+{"Id":"狙击招募券","Name":"狙击招募券","Profession":[3]}
+{"Id":"术士招募券","Name":"术士招募券","Profession":[5]}
+{"Id":"医疗招募券","Name":"医疗招募券","Profession":[7]}
+{"Id":"重装招募券","Name":"重装招募券","Profession":[4]}
+{"Id":"特种招募券","Name":"特种招募券","Profession":[8]}
+{"Id":"近卫招募券","Name":"近卫招募券","Profession":[2]}
+{"Id":"辅助招募券","Name":"辅助招募券","Profession":[6]}
+{"Id":"随机招募券","Icon":"100px-收藏品_1","Name":"随机招募券","Profession":[1,3,5,7,4,8,2,6]}

@@ -114,7 +114,7 @@ namespace BattleUI
             BattleCamera.Instance.Blur = true;
             var unit = Battle.PlayerUnits[UnityEngine.Random.Range(0, Battle.PlayerUnits.Count)];
             string picName = unit.UnitData.StandPic;
-            m_endPic.texture = new NTexture(ResHelper.GetAsset<Texture>(PathHelper.SpritePath + picName));
+            m_endPic.texture = new NTexture(ResHelper.GetAsset<Texture>(PathHelper.StandPicPath + picName));
             if (Battle.Win)
             {
                 m_win.selectedIndex = 0;

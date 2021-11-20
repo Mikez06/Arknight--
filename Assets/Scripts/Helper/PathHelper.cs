@@ -49,7 +49,8 @@ public static class PathHelper
 
     public static string DataPath = "Assets/Bundles/Data/";
     public static string UIPath = "Assets/Bundles/UI/";
-    public static string SpritePath = "Assets/Bundles/Image/StandPic/";
+    public static string SpritePath = "Assets/Bundles/Image/";
+    public static string StandPicPath = "Assets/Bundles/Image/StandPic/";
     public static string OtherPath = "Assets/Bundles/Other/";
     public static string UnitPath = "Assets/Bundles/Units/";
     public static string BulletPath = "Assets/Bundles/Bullet/";

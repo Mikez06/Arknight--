@@ -13,12 +13,79 @@ public class Dungeon
     public List<DungeonRelic> Relics = new List<DungeonRelic>();
     public List<DungeonCard> AllCards = new List<DungeonCard>();
 
+
+    public int Gold;
+    public int Point;
     public int MaxCardCount = 5;
 
     public DungeonTile NowTile;
     public int Sight = 2;
     public System.Random Seed;
 
+    public List<UnitData> GetUnitList(int relicId)
+    {
+        RelicData relicData = Database.Instance.Get<RelicData>(relicId);
+        List<UnitData> result = new List<UnitData>();
+        List<UnitData> all = Database.Instance.GetAll<CardData>().Where(x => relicData.Profession.Contains(Database.Instance.Get<UnitData>(x.units[0]).Profession)).Select(x => Database.Instance.Get<UnitData>(x.units[0])).ToList();
+        if (AllCards.Count >= 5)//玩家有五名干员以上时，则至少有一个可以用于升级
+        {
+            var l = AllCards.Where(x => relicData.Profession.Contains(x.UnitData.Profession)).ToList();
+            if (l.Count > 0)
+            {
+                var u = l[Seed.Next(0, l.Count())];
+                var unitData = Database.Instance.Get<UnitData>(u.CardData.units[0]);
+                result.Add(unitData);
+                all.Remove(unitData);
+            }
+        }
+        for (int i = 2; i < 7; i++)//2到6星各保底一个
+        {
+            List<UnitData> l = all.Where(x => x.Rare == i).ToList();
+            if (l.Count > 0)
+            {
+                var u = l[Seed.Next(0, l.Count)];
+                result.Add(u);
+                all.Remove(u);
+            }
+        }
+        int resultCount = 6; //每次提供6名角色可以选择
+        resultCount = resultCount - result.Count;
+        for (int i = 0; i < resultCount; i++)
+        {
+            if (all.Count == 0) break;
+            var u = all[Seed.Next(0, all.Count)];
+            result.Add(u);
+            all.Remove(u);
+        }
+        return result;
+    }
+
+    public List<DungeonReward> GetRewards(int[] ids)
+    {
+        List<DungeonReward> rewards = new List<DungeonReward>();
+        foreach (var id in ids) rewards.Add(Database.Instance.Get<RewardData>(id).GetReward(Seed));
+        return rewards;
+    }
+
+    public void GainReward(DungeonReward dungeonReward)
+    {
+        if (dungeonReward.Type == 0)
+        {
+            DungeonRelic dungeonRelic = new DungeonRelic()
+            {
+                Id = dungeonReward.Data,
+            };
+            Relics.Add(dungeonRelic);
+        }
+        else if (dungeonReward.Type == 2)
+        {
+            Gold += dungeonReward.Data;
+        }
+        else if (dungeonReward.Type == 3)
+        {
+            Point += dungeonReward.Data;
+        }
+    }
 
     public void RebuildMap(int sizeX, int sizeY)
     {
@@ -40,18 +107,27 @@ public class Dungeon
         updateSight();
     }
 
-    public DungeonCard AddUnit(int cardId)
+    public DungeonCard GainUnit(int cardId)
     {
-        var card = new DungeonCard()
+        var c = AllCards.Find(x => x.CardData.units[0] == cardId);
+        if (c != null)
         {
-            CardId=cardId,
-        };
-        AllCards.Add(card);
-        if (Cards.Count< MaxCardCount)
-        {
-            Cards.Add(card);
+            c.GainExp(3);
+            return c;
         }
-        return card;
+        else
+        {
+            var card = new DungeonCard()
+            {
+                CardId = cardId,
+            };
+            AllCards.Add(card);
+            if (Cards.Count < MaxCardCount)
+            {
+                Cards.Add(card);
+            }
+            return card;
+        }
     }
 
     public bool CanMove(DungeonTile dungeonTile)
@@ -77,6 +153,12 @@ public class Dungeon
                 Dungeon = this,
                 MapName = NowTile.MapId,
             });
+        }
+        else if (NowTile.TileType == DungeonTileTypeEnum.Event)
+        {
+            var ui = UIManager.Instance.ChangeView<DungeonUI.UI_Dialogue>(DungeonUI.UI_Dialogue.URL);
+            await ui.StartDialogue("初始事件");
+            UIManager.Instance.ChangeView<DungeonUI.UI_Map>(DungeonUI.UI_Map.URL);
         }
     }
 

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="373,473">
+  <controller name="type" pages="0,,3,,1,,2," selected="2">
+    <remark page="0" value="遗物"/>
+    <remark page="1" value="招募"/>
+    <remark page="2" value="钱"/>
+    <remark page="3" value="希望"/>
+  </controller>
+  <displayList>
+    <graph id="n9_gbwm" name="n9" xy="0,0" size="373,473" group="n13_gbwm" type="rect" lineSize="2" fillColor="#ff663300" corner="30"/>
+    <text id="n10_gbwm" name="Name" xy="186,28" pivot="0.5,0.5" anchor="true" size="124,54" group="n13_gbwm" fontSize="40" align="center" text="招募券">
+      <gearDisplay controller="type" pages="0,3"/>
+    </text>
+    <loader id="n12_gbwm" name="icon" xy="81,123" size="209,209" group="n13_gbwm" url="ui://kera0i3hgbwm19g" align="center" vAlign="middle" fill="scaleNoBorder">
+      <gearDisplay controller="type" pages="0,3"/>
+    </loader>
+    <graph id="n14_gbwm" name="get" xy="0,423" size="373,50" group="n13_gbwm" type="rect" lineSize="0" fillColor="#ff663333"/>
+    <text id="n15_gbwm" name="n15" xy="154,427" size="64,42" group="n13_gbwm" fontSize="30" text="获取">
+      <gearText controller="type" pages="0,3,1,2" values="获得|招募|获取|获取"/>
+    </text>
+    <text id="n16_gbwm" name="n10" xy="186,27" pivot="0.5,0.5" anchor="true" size="124,54" group="n13_gbwm" fontSize="40" align="center" text="源石锭">
+      <gearDisplay controller="type" pages="1,2"/>
+      <gearText controller="type" pages="2" values="希望" default="源石锭"/>
+    </text>
+    <text id="n17_gbwm" name="count" xy="370,337" pivot="1,0" anchor="true" size="70,79" group="n13_gbwm" fontSize="60" align="right" vars="true" text="x{l=6}"/>
+    <group id="n13_gbwm" name="n13" xy="0,0" size="373,473" advanced="true"/>
+  </displayList>
+  <transition name="get">
+    <item time="0" type="Alpha" tween="true" startValue="1" endValue="0" duration="12"/>
+    <item time="0" type="XY" tween="true" startValue="0,0,0,0" endValue="0,-521" duration="12"/>
+  </transition>
+</component>

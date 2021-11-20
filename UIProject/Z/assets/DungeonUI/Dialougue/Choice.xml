@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="380,717" extention="Button">
+  <controller name="button" pages="2,up,3,down" selected="0">
+    <action type="play_transition" fromPage="" toPage="2" transition="t1" stopOnExit="true"/>
+    <action type="play_transition" fromPage="" toPage="3" transition="t0" stopOnExit="true"/>
+  </controller>
+  <displayList>
+    <graph id="n6_gbwm" name="n6" xy="0,0" size="380,717" group="n10_gbwm" type="rect" lineSize="2" fillColor="#ff333333"/>
+    <text id="n7_gbwm" name="title" xy="190,74" pivot="0.5,0.5" anchor="true" size="164,44" group="n10_gbwm" fontSize="32" color="#ffffff" text="好好睡一觉"/>
+    <text id="n8_gbwm" name="Description" xy="45,182" size="290,335" group="n10_gbwm" fontSize="30" color="#ffffff" align="center" autoSize="none" text="获得3目标生命"/>
+    <text id="n9_gbwm" name="n9" xy="88,626" size="204,35" group="n10_gbwm" fontSize="25" color="#ffffff" align="center" text="你真的要这么做？"/>
+    <group id="n10_gbwm" name="n10" xy="0,0" size="380,717" advanced="true">
+      <gearXY controller="button" pages="3" values="0,-300" default="0,0" tween="true"/>
+    </group>
+  </displayList>
+  <Button mode="Radio"/>
+  <transition name="t0">
+    <item time="0" type="Alpha" tween="true" startValue="0.5" endValue="1" duration="8"/>
+    <item time="0" type="Color" target="n6_gbwm" value="#669966"/>
+  </transition>
+  <transition name="t1">
+    <item time="0" type="Alpha" value="1"/>
+    <item time="0" type="Color" target="n6_gbwm" value="#333333"/>
+  </transition>
+</component>

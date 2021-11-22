@@ -8,6 +8,8 @@
     <graph id="n11_k6t7" name="n11" xy="0,0" size="30,30" type="rect" lineSize="0">
       <gearDisplay controller="type" pages="0"/>
     </graph>
-    <graph id="n12_k6t7" name="n12" xy="0,0" size="30,30" type="rect" lineSize="4" lineColor="#ffcccccc" fillColor="#00ffffff"/>
+    <graph id="n12_k6t7" name="n12" xy="0,0" size="30,30" type="rect" lineSize="4" lineColor="#ffcccccc" fillColor="#00ffffff">
+      <gearDisplay controller="type" pages="1"/>
+    </graph>
   </displayList>
 </component>

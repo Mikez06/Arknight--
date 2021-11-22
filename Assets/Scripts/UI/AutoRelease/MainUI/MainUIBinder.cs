@@ -16,10 +16,15 @@ namespace MainUI
             UIObjectFactory.SetPackageItemExtension(UI_MemberPage.URL, typeof(UI_MemberPage));
             UIObjectFactory.SetPackageItemExtension(UI_sortBtn.URL, typeof(UI_sortBtn));
             UIObjectFactory.SetPackageItemExtension(UI_Battle.URL, typeof(UI_Battle));
+            UIObjectFactory.SetPackageItemExtension(UI_GoBattle.URL, typeof(UI_GoBattle));
             UIObjectFactory.SetPackageItemExtension(UI_ToopTip.URL, typeof(UI_ToopTip));
             UIObjectFactory.SetPackageItemExtension(UI_Team.URL, typeof(UI_Team));
             UIObjectFactory.SetPackageItemExtension(UI_TeamSelect.URL, typeof(UI_TeamSelect));
             UIObjectFactory.SetPackageItemExtension(UI_TeamUnit.URL, typeof(UI_TeamUnit));
+            UIObjectFactory.SetPackageItemExtension(UI_UnitInfo.URL, typeof(UI_UnitInfo));
+            UIObjectFactory.SetPackageItemExtension(UI_UnitInfoUpgrade.URL, typeof(UI_UnitInfoUpgrade));
+            UIObjectFactory.SetPackageItemExtension(UI_UnitSkillIcon.URL, typeof(UI_UnitSkillIcon));
+            UIObjectFactory.SetPackageItemExtension(UI_Pro.URL, typeof(UI_Pro));
         }
     }
 }

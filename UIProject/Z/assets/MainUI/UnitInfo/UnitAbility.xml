@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="143,47" extention="Label">
+  <displayList>
+    <image id="n19_voep" name="n19" src="voep2m" fileName="UnitInfo/天赋背景.png" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <text id="n20_voep" name="title" xy="2,2" size="136,45" fontSize="33" text="紧急除颤"/>
+  </displayList>
+  <relation target="n20_voep" sidePair="width-width"/>
+</component>

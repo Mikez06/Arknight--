@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="333,64">
+<component size="463,77">
   <displayList>
-    <graph id="n24_r8hr" name="n24" xy="0,0" size="333,64" type="rect" lineSize="0" fillColor="#ff0066ff"/>
-    <graph id="n22_r8hr" name="n22" xy="82,0" size="251,64" type="rect" lineSize="0" fillColor="#ff333333"/>
-    <text id="n23_r8hr" name="n23" xy="115,5" size="184,60" fontSize="45" color="#ffffff" text="快捷编队"/>
+    <image id="n25_voep" name="n25" src="voep1x" fileName="Res/fast_team_made.png" xy="-19,0"/>
   </displayList>
 </component>

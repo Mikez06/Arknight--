@@ -15,11 +15,13 @@ namespace MainUI
             m_typeControl.selectedIndex = (int)card.UnitData.Profession;
             m_halfPic.icon = "ui://Res/" + card.UnitData.HalfIcon;
             m_skillIcon.icon = Database.Instance.Get<SkillData>(card.UnitData.MainSkill[skillIndex]).Icon.ToSkillIcon();
-            m_stars.RemoveChildrenToPool();
-            for (int i = 0; i < card.UnitData.Rare; i++)
-            {
-                m_stars.AddItemFromPool();
-            }
+            m_star.selectedIndex = card.UnitData.Rare;
+            m_ugrade.selectedIndex = card.UnitData.Upgrade;
+            //m_stars.RemoveChildrenToPool();
+            //for (int i = 0; i < card.UnitData.Rare; i++)
+            //{
+            //    m_stars.AddItemFromPool();
+            //}
             m_lv.text = card.Level.ToString();
             m_name.text = card.UnitData.Name.ToString();
         }

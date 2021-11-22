@@ -4,7 +4,9 @@
     <image id="n8_kbte" name="n8" src="kbtel" fileName="未标题-1(1).png" xy="0,0" size="1920,1080">
       <relation target="" sidePair="width-width,height-height"/>
     </image>
-    <list id="n0_kbte" name="Cards" xy="124,117" size="1538,835" scale="1.1,1.1" layout="flow_vt" overflow="scroll" scroll="horizontal" scrollBarFlags="4" lineGap="15" colGap="2" defaultItem="ui://k4mja8t1kbte1" autoClearItems="true">
+    <component id="n10_voep" name="back" src="voep3c" fileName="UnitInfo/back.xml" xy="20,12"/>
+    <component id="n11_voep" name="home" src="voep3d" fileName="UnitInfo/home.xml" xy="244,12"/>
+    <list id="n0_kbte" name="Cards" xy="124,117" size="1539,835" scale="1.1,1.1" layout="flow_vt" overflow="scroll" scroll="horizontal" scrollBarFlags="4" lineGap="15" colGap="22" defaultItem="ui://k4mja8t1kbte1" autoClearItems="true">
       <relation target="" sidePair="width-width"/>
       <item/>
       <item/>
@@ -26,7 +28,6 @@
       <item/>
       <item/>
     </list>
-    <component id="n1_kbte" name="back" src="kbteh" fileName="back.xml" xy="37,29"/>
     <graph id="n2_kbte" name="n2" xy="1389,25" size="505,70" group="n9_tku9" type="rect" lineSize="0" fillColor="#ff000000"/>
     <text id="n3_kbte" name="n3" xy="1809,39" size="66,43" group="n9_tku9" fontSize="31" color="#ffff00" text="排序"/>
     <component id="n4_kbte" name="level" src="kbtei" fileName="sortBtn.xml" xy="1412,26" group="n9_tku9"/>

@@ -2,10 +2,13 @@
 <component size="411,88" extention="Button">
   <controller name="button" pages="2,up,3,down" selected="1"/>
   <displayList>
-    <graph id="n14_r8hr" name="n14" xy="0,0" size="411,88" type="rect" lineSize="0" fillColor="#ff333333">
-      <gearColor controller="button" pages="3" values="#333333" default="#0099ff"/>
-    </graph>
-    <text id="n15_r8hr" name="title" xy="83,4" size="244,79" fontSize="60" color="#ffffff" text="第一编队"/>
+    <image id="n16_voep" name="n16" src="voep1t" fileName="Res/team_name_02.png" xy="-1,-2">
+      <gearDisplay controller="button" pages="2"/>
+    </image>
+    <image id="n17_voep" name="n17" src="voep1u" fileName="Res/team_name_01.png" xy="-1,-2">
+      <gearDisplay controller="button" pages="3"/>
+    </image>
+    <text id="n15_r8hr" name="title" xy="68,26" size="160,53" fontSize="39" color="#ffffff" text="第一编队"/>
   </displayList>
   <Button mode="Check"/>
 </component>

@@ -4,6 +4,7 @@ public class UnitData : IConfig
       public string Type;
       public string Model;
       public string Name;
+      public string engName;
       public int Upgrade;
       public int Level;
       public int Hp;
@@ -42,8 +43,11 @@ public class UnitData : IConfig
       public string HeadIcon;
       public string HalfIcon;
       public string StandPic;
+      public float[] StandPicPos;
       public int Rare;
+      public string SetPos;
       public string[] Tags;
+      public System.Collections.Generic.Dictionary<string,object> Ablititys;
       public string[] IdleAnimation;
       public string[] MoveAnimation;
       public string[] StunAnimation;

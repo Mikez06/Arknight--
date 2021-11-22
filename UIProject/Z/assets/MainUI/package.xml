@@ -42,6 +42,79 @@
     <component id="k6t713" name="LeftUnitInfo.xml" path="/"/>
     <component id="k6t714" name="AttackArea.xml" path="/" exported="true"/>
     <component id="k6t715" name="SkillInfo.xml" path="/"/>
+    <image id="voep16" name="属性背景_3.png" path="/"/>
+    <image id="voep17" name="属性背景_6.png" path="/TeamUIRes/"/>
+    <image id="voep18" name="属性背景_1.png" path="/TeamUIRes/" scale9grid="0,0,-2,-20"/>
+    <image id="voep19" name="属性背景_2.png" path="/TeamUIRes/"/>
+    <image id="voep1a" name="属性背景_3.png" path="/TeamUIRes/" scale9grid="0,0,-2,-7"/>
+    <image id="voep1b" name="属性背景_4.png" path="/TeamUIRes/"/>
+    <image id="voep1c" name="属性背景_5.png" path="/TeamUIRes/" scale9grid="0,0,-2,-7"/>
+    <image id="voep1d" name="立绘背景_6.png" path="/TeamUIRes/" scale9grid="0,0,-47,-108"/>
+    <image id="voep1e" name="立绘背景_1-3.png" path="/TeamUIRes/" scale9grid="0,0,-46,-117"/>
+    <image id="voep1f" name="立绘背景_4.png" path="/TeamUIRes/" scale9grid="0,0,-42,-108"/>
+    <image id="voep1g" name="立绘背景_5.png" path="/TeamUIRes/" scale9grid="0,0,-42,-106"/>
+    <image id="voep1h" name="等级_圆.png" path="/TeamUIRes/" scale9grid="0,0,-103,-345"/>
+    <image id="voep1i" name="等级_底.png" path="/TeamUIRes/" scale9grid="0,0,-108,-346"/>
+    <image id="voep1j" name="潜能_6.png" path="/TeamUIRes/" scale9grid="0,0,-164,-403"/>
+    <image id="voep1n" name="support.png" path="/"/>
+    <image id="voep1o" name="arrow_right.png" path="/TeamUIRes/"/>
+    <component id="voep1r" name="right1.xml" path="/"/>
+    <image id="voep1s" name="参考.png" path="/TeamUIRes/"/>
+    <image id="voep1t" name="team_name_02.png" path="/TeamUIRes/"/>
+    <image id="voep1u" name="team_name_01.png" path="/TeamUIRes/"/>
+    <image id="voep1v" name="background_01.png" path="/TeamUIRes/"/>
+    <image id="voep1w" name="empty.png" path="/TeamUIRes/"/>
+    <image id="voep1x" name="fast_team_made.png" path="/TeamUIRes/"/>
+    <image id="voep1y" name="team_clean.png" path="/"/>
+    <image id="voep1z" name="start.png" path="/TeamUIRes/"/>
+    <image id="voep20" name="start_ex.png" path="/TeamUIRes/"/>
+    <image id="voep21" name="back.png" path="/TeamUIRes/"/>
+    <image id="voep22" name="精英化_2.png" path="/TeamUIRes/" scale9grid="0,0,-147,-377"/>
+    <image id="voep23" name="精英化_1.png" path="/TeamUIRes/" scale9grid="0,0,-149,-382"/>
+    <component id="voep24" name="UnitInfo.xml" path="/UnitInfo/" exported="true"/>
+    <image id="voep28" name="持续时间.png" path="/UnitInfo/"/>
+    <image id="voep29" name="等级.png" path="/UnitInfo/"/>
+    <image id="voep2a" name="定位.png" path="/UnitInfo/"/>
+    <image id="voep2b" name="分支 模组 天赋.png" path="/UnitInfo/"/>
+    <image id="voep2c" name="滑动切换.png" path="/UnitInfo/"/>
+    <image id="voep2d" name="技能.png" path="/UnitInfo/"/>
+    <image id="voep2e" name="精二标志.png" path="/UnitInfo/"/>
+    <image id="voep2f" name="精一标志.png" path="/UnitInfo/"/>
+    <image id="voep2g" name="精英化.png" path="/UnitInfo/"/>
+    <image id="voep2h" name="默认技能.png" path="/UnitInfo/"/>
+    <image id="voep2i" name="潜能.png" path="/UnitInfo/"/>
+    <image id="voep2j" name="属性.png" path="/UnitInfo/"/>
+    <image id="voep2k" name="双三角.png" path="/UnitInfo/"/>
+    <image id="voep2l" name="所需技力.png" path="/UnitInfo/"/>
+    <image id="voep2m" name="天赋背景.png" path="/UnitInfo/" scale="9grid" scale9grid="35,11,70,22"/>
+    <image id="voep2n" name="退出按钮.png" path="/UnitInfo/"/>
+    <image id="voep2o" name="退到主菜单.png" path="/UnitInfo/"/>
+    <image id="voep2p" name="位置.png" path="/UnitInfo/"/>
+    <image id="voep2q" name="信赖.png" path="/UnitInfo/"/>
+    <image id="voep2r" name="星.png" path="/UnitInfo/"/>
+    <image id="voep2s" name="专二.png" path="/UnitInfo/"/>
+    <image id="voep2t" name="专精.png" path="/UnitInfo/"/>
+    <image id="voep2u" name="专三.png" path="/UnitInfo/"/>
+    <image id="voep2v" name="专一.png" path="/UnitInfo/"/>
+    <image id="voep2w" name="边缘阴影.png" path="/UnitInfo/"/>
+    <image id="voep2x" name="对照.png" path="/UnitInfo/"/>
+    <component id="voep2y" name="UnitInfoUpgrade.xml" path="/UnitInfo/"/>
+    <component id="voep2z" name="UnitInfoPotential.xml" path="/UnitInfo/"/>
+    <component id="voep30" name="UnitAbility.xml" path="/UnitInfo/"/>
+    <image id="voep31" name="边框.png" path="/UnitInfo/"/>
+    <image id="voep32" name="辅助.png" path="/UnitInfo/职业图标/"/>
+    <image id="voep33" name="近卫.png" path="/UnitInfo/职业图标/"/>
+    <image id="voep34" name="狙击.png" path="/UnitInfo/职业图标/"/>
+    <image id="voep35" name="术士.png" path="/UnitInfo/职业图标/"/>
+    <image id="voep36" name="特种.png" path="/UnitInfo/职业图标/"/>
+    <image id="voep37" name="先锋.png" path="/UnitInfo/职业图标/"/>
+    <image id="voep38" name="医疗.png" path="/UnitInfo/职业图标/"/>
+    <image id="voep39" name="重装.png" path="/UnitInfo/职业图标/"/>
+    <component id="voep3b" name="UnitSkillIcon.xml" path="/UnitInfo/"/>
+    <component id="voep3c" name="back.xml" path="/UnitInfo/"/>
+    <component id="voep3d" name="home.xml" path="/UnitInfo/"/>
+    <image id="voep3e" name="bldsk.png" path="/UnitInfo/"/>
+    <component id="voep3f" name="Pro.xml" path="/UnitInfo/"/>
   </resources>
-  <publish name="" genCode="true"/>
+  <publish name="" genCode="true" excluded="voep3e"/>
 </packageDescription>

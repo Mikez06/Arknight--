@@ -9,8 +9,9 @@ namespace MainUI
     {
         public Controller m_typeControl;
         public Controller m_seletd;
+        public Controller m_star;
+        public Controller m_ugrade;
         public GLoader m_halfPic;
-        public GList m_stars;
         public GTextField m_lv;
         public GTextField m_name;
         public GLoader m_skillIcon;
@@ -28,8 +29,9 @@ namespace MainUI
 
             m_typeControl = GetControllerAt(0);
             m_seletd = GetControllerAt(1);
-            m_halfPic = (GLoader)GetChildAt(0);
-            m_stars = (GList)GetChildAt(5);
+            m_star = GetControllerAt(2);
+            m_ugrade = GetControllerAt(3);
+            m_halfPic = (GLoader)GetChildAt(1);
             m_lv = (GTextField)GetChildAt(8);
             m_name = (GTextField)GetChildAt(9);
             m_skillIcon = (GLoader)GetChildAt(10);

@@ -405,6 +405,38 @@ MonoBehaviour:
     m_Address: Assets/Bundles/UI/Res_atlas2
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 99939f96a19649c43bbf29fd4405a181
+    m_Address: Assets/Bundles/Data/EventData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 40f4ea018fefd484eb497f6d873ac7f2
+    m_Address: Assets/Bundles/Data/RewardData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2fd19c4a2fa89ae41a4d71f5811be86a
+    m_Address: Assets/Bundles/UI/MainUI_atlas0_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8406ab94ea1633f418e4e8a66ec5dcdf
+    m_Address: Assets/Bundles/UI/Res_atlas3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 69bedc550af6dd6459f533461e0882b5
+    m_Address: Assets/Bundles/Image/Background/rl_camp
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 53da5a1fd51031049a428e0021da18a5
+    m_Address: Assets/Bundles/Image/Background/rl_forest
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2a489f56a68ec2b4aae3c8d729de1d17
+    m_Address: Assets/Bundles/Image/Background/rl_messenger
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a6861bc1ca88c744bb5d7bbb2da45382
+    m_Address: Assets/Bundles/UI/MainUI_atlas0_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="133,133">
+  <controller name="p" pages="0,,1,,2,,3,,4,,5,,6,,7,,8," selected="8"/>
+  <displayList>
+    <graph id="n27_voep" name="n27" xy="0,0" size="133,133" type="rect" lineSize="0" fillColor="#66000000"/>
+    <loader id="n26_voep" name="pro" xy="2,2" size="130,130" url="ui://k4mja8t1kbtea" fill="scale">
+      <gearIcon controller="p" pages="1,3,4,5,6,7,8" values="ui://k4mja8t1kbte8|ui://k4mja8t1kbte9|ui://k4mja8t1kbte4|ui://k4mja8t1kbte6|ui://k4mja8t1kbte3|ui://k4mja8t1kbte7|ui://k4mja8t1kbtea" default="ui://k4mja8t1kbte5"/>
+    </loader>
+    <image id="n25_voep" name="n25" src="voep31" fileName="UnitInfo/边框.png" xy="0,0"/>
+  </displayList>
+</component>

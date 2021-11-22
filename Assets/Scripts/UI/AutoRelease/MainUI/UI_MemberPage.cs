@@ -7,8 +7,9 @@ namespace MainUI
 {
     public partial class UI_MemberPage : GComponent
     {
-        public GList m_Cards;
         public GButton m_back;
+        public GButton m_home;
+        public GList m_Cards;
         public UI_sortBtn m_level;
         public UI_sortBtn m_rare;
         public UI_sortBtn m_name;
@@ -24,12 +25,13 @@ namespace MainUI
         {
             base.ConstructFromXML(xml);
 
-            m_Cards = (GList)GetChildAt(1);
-            m_back = (GButton)GetChildAt(2);
-            m_level = (UI_sortBtn)GetChildAt(5);
-            m_rare = (UI_sortBtn)GetChildAt(6);
-            m_name = (UI_sortBtn)GetChildAt(7);
-            m_youshang = (GGroup)GetChildAt(9);
+            m_back = (GButton)GetChildAt(1);
+            m_home = (GButton)GetChildAt(2);
+            m_Cards = (GList)GetChildAt(3);
+            m_level = (UI_sortBtn)GetChildAt(6);
+            m_rare = (UI_sortBtn)GetChildAt(7);
+            m_name = (UI_sortBtn)GetChildAt(8);
+            m_youshang = (GGroup)GetChildAt(10);
             Init();
         }
         partial void Init();

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="110,110">
+  <controller name="level" pages="0,,1,,2,,5," selected="0"/>
+  <controller name="default" pages="0,,1," selected="0"/>
+  <controller name="start" pages="0,,1," selected="0"/>
+  <displayList>
+    <loader id="n30_voep" name="icon" xy="0,1" size="110,110" url="ui://k1fe9lywkbte8" fill="scale"/>
+    <loader id="n29_voep" name="n29" xy="-13,-8" size="32,30" url="ui://k4mja8t1voep2t">
+      <gearIcon controller="level" pages="1,2,5" values="ui://k4mja8t1voep2v|ui://k4mja8t1voep2s|ui://k4mja8t1voep2u" default="ui://k4mja8t1voep2t"/>
+    </loader>
+    <image id="n31_voep" name="n31" src="voep2l" fileName="UnitInfo/所需技力.png" xy="52,81"/>
+    <text id="n32_voep" name="cost" xy="102,105" pivot="0.5,0.5" anchor="true" size="30,33" fontSize="23" color="#ffffff" align="center" text="39"/>
+    <image id="n34_voep" name="n34" src="voep28" fileName="UnitInfo/持续时间.png" xy="-4,83">
+      <gearDisplay controller="start" pages="1"/>
+    </image>
+    <text id="n35_voep" name="startTime" xy="28,89" size="30,33" fontSize="23" color="#ffffff" align="center" text="19">
+      <gearDisplay controller="start" pages="1"/>
+    </text>
+    <text id="n36_voep" name="skillName" xy="6,142" size="115,33" fontSize="23" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" text="链锯延申模块"/>
+    <image id="n37_voep" name="n37" src="voep2h" fileName="UnitInfo/默认技能.png" xy="72,-5">
+      <gearDisplay controller="default" pages="1"/>
+    </image>
+  </displayList>
+</component>

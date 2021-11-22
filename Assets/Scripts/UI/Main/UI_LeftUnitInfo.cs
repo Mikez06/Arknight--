@@ -44,11 +44,13 @@ namespace MainUI
                 }
                 m_attackArea.RemoveChildren();
 
+                float midX = mainSkill.AttackPoints.Max(x => x.x) + mainSkill.AttackPoints.Min(x => x.x) / 2;
+                float midY = mainSkill.AttackPoints.Max(x => x.y) + mainSkill.AttackPoints.Min(x => x.y) / 2;
                 foreach (var point in mainSkill.AttackPoints)
                 {
                     var a = pool.GetObject(UI_AttackArea.URL) as UI_AttackArea;
                     m_attackArea.AddChild(a);
-                    a.xy = new Vector2(point.x * 33 + 45, point.y * 33 + 67);
+                    a.xy = new Vector2((point.x - midX) * 33 - 55, (point.y - midY) * 33 + 67);
                     a.m_type.selectedIndex = (point.x == 0 && point.y == 0) ? 1 : 0;
                 }
 

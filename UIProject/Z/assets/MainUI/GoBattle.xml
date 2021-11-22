@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="180,400">
+  <controller name="ex" pages="0,,1," selected="0"/>
   <displayList>
-    <graph id="n28_kbte" name="n28" xy="0,0" size="180,400" type="rect" lineSize="0" lineColor="#ffff0000" fillColor="#ffff0000"/>
-    <text id="n29_kbte" name="n29" xy="25,122" size="152,256" fontSize="67" color="#ffffff" leading="-9" autoSize="none" text="开始行动"/>
+    <image id="n30_voep" name="n30" src="voep1z" fileName="Res/start.png" xy="-60,-1">
+      <gearDisplay controller="ex" pages="0"/>
+    </image>
+    <image id="n31_voep" name="n31" src="voep20" fileName="Res/start_ex.png" xy="-60,-2">
+      <gearDisplay controller="ex" pages="1"/>
+    </image>
   </displayList>
 </component>

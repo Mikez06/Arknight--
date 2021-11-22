@@ -30,7 +30,7 @@ namespace MainUI
         public GButton m_right;
         public GButton m_left;
         public GComponent m_support;
-        public GComponent m_battle;
+        public UI_GoBattle m_battle;
         public const string URL = "ui://k4mja8t1r8hrm";
 
         public static UI_Team CreateInstance()
@@ -65,7 +65,7 @@ namespace MainUI
             m_right = (GButton)GetChildAt(20);
             m_left = (GButton)GetChildAt(21);
             m_support = (GComponent)GetChildAt(22);
-            m_battle = (GComponent)GetChildAt(23);
+            m_battle = (UI_GoBattle)GetChildAt(23);
             Init();
         }
         partial void Init();

@@ -4,6 +4,7 @@ public class SkillData : IConfig
       public string Type;
       public string Name;
       public string Desc;
+      public int Upgrade;
       public SkillReadyEnum ReadyType;
       public SkillUseTypeEnum UseType;
       public TriggerEnum Trigger;

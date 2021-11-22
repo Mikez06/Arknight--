@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080" designImage="ui://k4mja8t1voep2x" designImageAlpha="0" designImageLayer="1">
+  <controller name="star" pages="0,,1,,2,,3,,4,,5,,6," selected="0"/>
+  <displayList>
+    <image id="n2_voep" name="n2" src="voep2w" fileName="UnitInfo/边缘阴影.png" xy="0,0"/>
+    <loader id="n53_voep" name="standPic" xy="211,81" size="1500,1500" url="ui://k4mja8t1voep3e" align="center" vAlign="middle" fill="scale"/>
+    <image id="n42_voep" name="n42" src="voep2p" fileName="UnitInfo/位置.png" xy="392,927"/>
+    <image id="n3_voep" name="n3" src="voep2a" fileName="UnitInfo/定位.png" xy="392,977"/>
+    <image id="n4_voep" name="n4" src="voep2b" fileName="UnitInfo/分支 模组 天赋.png" xy="1322,716"/>
+    <image id="n5_voep" name="n5" src="voep2c" fileName="UnitInfo/滑动切换.png" xy="812,971"/>
+    <image id="n6_voep" name="n6" src="voep2d" fileName="UnitInfo/技能.png" xy="1320,435"/>
+    <component id="n7_voep" name="upgrade" src="voep2y" fileName="UnitInfo/UnitInfoUpgrade.xml" xy="1322,269"/>
+    <component id="n9_voep" name="n9" src="voep2z" fileName="UnitInfo/UnitInfoPotential.xml" xy="1602,257"/>
+    <image id="n10_voep" name="n10" src="voep2j" fileName="UnitInfo/属性.png" xy="26,415"/>
+    <text id="n11_voep" name="hp" xy="64,462" size="76,44" fontSize="32" text="2821"/>
+    <text id="n12_voep" name="atk" xy="63,508" size="58,44" fontSize="32" text="853"/>
+    <text id="n13_voep" name="def" xy="62,550" size="58,44" fontSize="32" text="415"/>
+    <text id="n14_voep" name="magDef" xy="62,597" size="22,44" fontSize="32" text="0"/>
+    <text id="n15_voep" name="rebuild" xy="262,463" size="36,44" fontSize="32" text="慢"/>
+    <text id="n16_voep" name="cost" xy="261,509" size="40,44" fontSize="32" text="23"/>
+    <text id="n17_voep" name="stop" xy="263,551" size="22,44" fontSize="32" text="3"/>
+    <text id="n18_voep" name="agi" xy="261,596" size="68,44" fontSize="32" text="中等"/>
+    <list id="n21_voep" name="abs" xy="1446,897" size="353,138" lineGap="7" defaultItem="ui://k4mja8t1voep30" autoItemSize="false">
+      <item/>
+      <item/>
+    </list>
+    <graph id="n23_voep" name="n23" xy="171,927" size="213,137" type="rect" lineSize="0" fillColor="#66000000" corner="10"/>
+    <component id="n55_voep" name="attackArea" src="kbte11" fileName="Container.xml" xy="277,977" size="0,0"/>
+    <text id="n24_voep" name="n24" xy="230,1024" size="104,35" fontSize="25" color="#ffffff" text="攻击范围"/>
+    <component id="n27_voep" name="Pro" src="voep3f" fileName="UnitInfo/Pro.xml" xy="28,928"/>
+    <text id="n28_voep" name="rank" xy="1402,436" size="25,50" fontSize="37" color="#ffffff" text="7"/>
+    <image id="n33_voep" name="n33" src="voep2q" fileName="UnitInfo/信赖.png" xy="33,651"/>
+    <image id="n36_voep" name="n36" src="voep2r" fileName="UnitInfo/星.png" xy="21,699">
+      <gearDisplay controller="star" pages="1,2,3,4,5,6"/>
+    </image>
+    <image id="n37_voep" name="n37" src="voep2r" fileName="UnitInfo/星.png" xy="57,699">
+      <gearDisplay controller="star" pages="2,3,4,5,6"/>
+    </image>
+    <image id="n38_voep" name="n38" src="voep2r" fileName="UnitInfo/星.png" xy="92,699">
+      <gearDisplay controller="star" pages="3,4,5,6"/>
+    </image>
+    <image id="n39_voep" name="n39" src="voep2r" fileName="UnitInfo/星.png" xy="129,699">
+      <gearDisplay controller="star" pages="4,5,6"/>
+    </image>
+    <image id="n40_voep" name="n40" src="voep2r" fileName="UnitInfo/星.png" xy="165,699">
+      <gearDisplay controller="star" pages="5,6"/>
+    </image>
+    <image id="n41_voep" name="n41" src="voep2r" fileName="UnitInfo/星.png" xy="201,699">
+      <gearDisplay controller="star" pages="6"/>
+    </image>
+    <text id="n43_voep" name="place" xy="450,925" size="103,45" fontSize="33" color="#ffffff" align="center" text="近战位"/>
+    <text id="n44_voep" name="tags" xy="428,993" size="143,45" fontSize="33" color="#ffffff" align="center" text="输出 生存"/>
+    <image id="n45_voep" name="n45" src="voep29" fileName="UnitInfo/等级.png" xy="1312,55"/>
+    <text id="n46_voep" name="LV" xy="1347,75" size="118,129" fontSize="100" color="#ffffff" align="center" text="90"/>
+    <list id="n48_voep" name="Skills" xy="1475,433" size="403,194" layout="row" colGap="22" defaultItem="ui://k4mja8t1voep3b">
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <component id="n49_voep" name="back" src="voep3c" fileName="UnitInfo/back.xml" xy="23,19"/>
+    <component id="n50_voep" name="home" src="voep3d" fileName="UnitInfo/home.xml" xy="247,19"/>
+    <text id="n51_voep" name="engName" xy="27,736" size="129,64" fontSize="48" color="#ffffff" align="center" strokeColor="#000000" strokeSize="2" text="Blaze"/>
+    <text id="n52_voep" name="Name" xy="23,770" size="144,179" fontSize="140" color="#ffffff" align="center" strokeColor="#000000" strokeSize="2" text="煌"/>
+    <text id="n54_voep" name="n54" xy="1442,800" size="94,42" fontSize="30" color="#ffffff" align="center" text="未完成"/>
+  </displayList>
+</component>

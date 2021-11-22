@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using FairyGUI;
 
 namespace MainUI
 {
@@ -21,6 +22,7 @@ namespace MainUI
             m_level.onClick.Add(() => updateSort(0));
             m_rare.onClick.Add(() => updateSort(1));
             m_name.onClick.Add(() => updateSort(2));
+            m_Cards.onClickItem.Add(clickCard);
         }
 
         public void Enter()
@@ -64,6 +66,14 @@ namespace MainUI
             if (Sort == index) Up = !Up;
             else Sort = index;
             Flush();
+        }
+
+        async void clickCard(EventContext evt)
+        {
+            var uiCard = evt.data as UI_HalfUnit;
+            var unitInfo = UIManager.Instance.ChangeView<UI_UnitInfo>(UI_UnitInfo.URL);
+            await unitInfo.ShowUnit(uiCard.Card);
+            UIManager.Instance.ChangeView<GComponent>(URL);
         }
     }
 }

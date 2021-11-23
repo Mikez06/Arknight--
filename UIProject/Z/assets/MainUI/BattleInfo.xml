@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="176,70" extention="Label">
+<component size="176,70" pivot="0.5,0.5" anchor="true" extention="Label">
   <displayList>
-    <graph id="n4_kbte" name="n4" xy="0,0" size="176,70" type="rect" lineSize="0" fillColor="#ff0099ff"/>
+    <graph id="n4_kbte" name="aaa" xy="0,0" size="176,70" type="rect" lineSize="0" fillColor="#ff0099ff"/>
     <text id="n5_kbte" name="title" xy="48,2" size="80,66" fontSize="50" color="#ffffff" align="center" text="1-1"/>
   </displayList>
 </component>

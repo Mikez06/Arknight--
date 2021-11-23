@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="236,66" extention="Button">
+  <displayList>
+    <image id="n48_voep" name="n48" src="voep45" fileName="TeamSelect/提升等级按钮.png" xy="-13,-4"/>
+  </displayList>
+  <Button downEffect="dark" downEffectValue=".8"/>
+</component>

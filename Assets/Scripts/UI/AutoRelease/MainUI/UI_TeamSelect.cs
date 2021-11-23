@@ -39,11 +39,11 @@ namespace MainUI
             m_cancel = (GLabel)GetChildAt(5);
             m_ok = (GComponent)GetChildAt(6);
             m_clear = (GLabel)GetChildAt(7);
-            m_level = (UI_sortBtn)GetChildAt(10);
-            m_rare = (UI_sortBtn)GetChildAt(11);
-            m_name = (UI_sortBtn)GetChildAt(12);
-            m_nn = (UI_sortBtn)GetChildAt(13);
-            m_youshang = (GGroup)GetChildAt(14);
+            m_level = (UI_sortBtn)GetChildAt(9);
+            m_rare = (UI_sortBtn)GetChildAt(10);
+            m_name = (UI_sortBtn)GetChildAt(11);
+            m_nn = (UI_sortBtn)GetChildAt(12);
+            m_youshang = (GGroup)GetChildAt(13);
             Init();
         }
         partial void Init();

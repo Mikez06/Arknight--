@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="683,1080">
   <controller name="left" exported="true" pages="0,,1," selected="0"/>
+  <controller name="time" pages="0,,1," selected="0"/>
   <displayList>
-    <graph id="n25_kbte" name="n25" xy="0,0" size="683,1080" type="rect" lineSize="0" fillColor="#99000000"/>
-    <loader id="n51_kbte" name="standPic" xy="48,69" size="609,944" url="ui://vp312gabkbte3u" align="center">
-      <gearXY controller="left" pages="1" values="-148,69" default="48,69" tween="true" duration=".03"/>
+    <image id="n52_voep" name="n52" src="voep4i" fileName="Map/渐变.png" pkg="k4mja8t1" xy="0,0" pivot="1,0" anchor="true" scale="-1,1"/>
+    <component id="n51_kbte" name="standPic" src="voep4z" fileName="Pic.xml" xy="-396,0" size="1500,1500">
+      <gearXY controller="left" pages="0,1" values="-396,0|-501,0" tween="true" duration=".03"/>
       <gearLook controller="left" pages="1" values="0.5,0,0,1" default="1,0,0,1" tween="true" duration=".03"/>
-    </loader>
-    <graph id="n26_kbte" name="n26" xy="39,156" size="100,100" type="rect"/>
+    </component>
     <text id="n27_kbte" name="name" xy="87,320" pivot="0.5,0.5" anchor="true" size="109,48" fontSize="35" color="#ffffff" align="center" text="阿米娅"/>
     <text id="n28_kbte" name="n28" xy="34,341" size="37,42" fontSize="30" color="#ffffff" align="center" text="Lv"/>
     <text id="n29_kbte" name="Lv" xy="51,365" size="62,66" fontSize="50" color="#ffffff" align="center" text="50"/>
@@ -25,12 +25,21 @@
     <graph id="n41_kbte" name="n41" xy="144,444" size="136,100" type="rect" lineSize="0" fillColor="#66000000"/>
     <graph id="n42_kbte" name="n42" xy="295,444" size="338,100" type="rect" lineSize="0" fillColor="#66000000"/>
     <text id="n43_kbte" name="n43" xy="160,505" size="104,35" fontSize="25" color="#ffffff" align="center" text="攻击范围"/>
-    <graph id="n44_kbte" name="n44" xy="198,468" size="30,30" type="rect"/>
     <text id="n45_kbte" name="subSkill" xy="301,453" size="324,83" fontSize="25" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="技能可以治疗友方单位"/>
-    <graph id="n46_kbte" name="n46" xy="30,588" size="610,171" type="rect" lineSize="0" fillColor="#4c000000"/>
-    <text id="n47_kbte" name="SkillName" xy="147,600" size="104,35" fontSize="25" color="#ffffff" align="center" text="技能名字"/>
-    <graph id="n48_kbte" name="n48" xy="57,604" size="77,77" type="rect"/>
-    <text id="n49_kbte" name="UseType" xy="145,646" size="211,35" fontSize="25" color="#ffffff" align="center" text="自动回复,自动触发"/>
-    <text id="n50_kbte" name="SkillDesc" xy="51,689" size="564,61" fontSize="20" color="#ffffff" ubb="true" autoSize="none" text="一大堆的技能描述,一大堆的技能描述一大堆的技能描述一大堆的技能描述[color=#33CCFF]一段变色文字[/color]一大堆的技能描述"/>
+    <graph id="n46_kbte" name="n46" xy="30,588" size="610,171" type="rect" lineSize="0" fillColor="#4c000000">
+      <relation target="n50_kbte" sidePair="height-height"/>
+    </graph>
+    <text id="n47_kbte" name="SkillName" xy="147,600" size="104,35" fontSize="25" color="#cccccc" align="center" text="技能名字"/>
+    <loader id="n48_kbte" name="skillIcon" xy="57,604" size="77,77" fill="scaleNoBorder"/>
+    <text id="n50_kbte" name="SkillDesc" xy="51,689" size="564,56" fontSize="20" color="#ffffff" ubb="true" autoSize="height" text="一大堆的技能描述,一大堆的技能描述一大堆的技能描述一大堆的技能描述[color=#33CCFF]一段变色文字[/color]一大堆的技能描述"/>
+    <component id="n53_voep" name="Pro" src="voep3f" fileName="UnitInfo/Pro.xml" pkg="k4mja8t1" xy="33,154" scale="0.8,0.8"/>
+    <component id="n54_voep" name="Recover" src="voep4q" fileName="TeamSelect/Recover.xml" pkg="k4mja8t1" xy="147,647"/>
+    <component id="n55_voep" name="UseType" src="voep4r" fileName="TeamSelect/UseType.xml" pkg="k4mja8t1" xy="258,647"/>
+    <image id="n56_voep" name="n56" src="voep3p" fileName="TeamSelect/技能_持续时间背景.png" pkg="k4mja8t1" xy="371,647">
+      <gearDisplay controller="time" pages="0"/>
+    </image>
+    <text id="n57_voep" name="lastTime" xy="420,662" pivot="0.5,0.5" anchor="true" size="18,35" fontSize="25" color="#ffffff" text="1">
+      <gearDisplay controller="time" pages="0"/>
+    </text>
   </displayList>
 </component>

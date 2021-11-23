@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1024,1024" overflow="hidden" scroll="horizontal">
+  <displayList>
+    <loader id="n51_kbte" name="standPic" xy="0,1" size="1500,1500" url="ui://vp312gabkbte3u" align="center" fill="scaleNoBorder"/>
+  </displayList>
+</component>

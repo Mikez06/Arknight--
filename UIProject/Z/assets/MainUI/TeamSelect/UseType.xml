@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="109,32">
+  <controller name="useType" pages="0,,1,,2," selected="0">
+    <remark page="0" value="自动"/>
+    <remark page="1" value="手动"/>
+    <remark page="2" value="被动"/>
+  </controller>
+  <displayList>
+    <loader id="n18_voep" name="n18" xy="0,0" size="109,32" url="ui://k4mja8t1voep3o">
+      <gearIcon controller="useType" pages="0,2" values="ui://k4mja8t1voep3o|ui://k4mja8t1voep47" default="ui://k4mja8t1voep3m"/>
+    </loader>
+  </displayList>
+</component>

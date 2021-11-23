@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="315,101" extention="Button">
+  <displayList>
+    <image id="n5_voep" name="n5" src="voep4f" fileName="Map/关卡选择_演习.png" xy="-23,-16"/>
+  </displayList>
+  <Button downEffect="dark" downEffectValue=".8"/>
+</component>

@@ -23,7 +23,7 @@
     <image id="kbtek" name="zone_map_8_up.png" path="/"/>
     <image id="kbtel" name="未标题-1(1).png" path="/"/>
     <component id="r8hrm" name="Team.xml" path="/" exported="true"/>
-    <component id="r8hrn" name="TeamSelect.xml" path="/" exported="true"/>
+    <component id="r8hrn" name="TeamSelect.xml" path="/TeamSelect/" exported="true"/>
     <component id="r8hro" name="TeamUnit.xml" path="/"/>
     <component id="r8hrp" name="TeamTab.xml" path="/"/>
     <component id="r8hrq" name="QuickTeam.xml" path="/"/>
@@ -32,16 +32,16 @@
     <component id="r8hrt" name="Right.xml" path="/"/>
     <component id="r8hru" name="SelectBtn.xml" path="/"/>
     <component id="r8hrv" name="SelectBtn(1).xml" path="/"/>
-    <component id="kbtew" name="Battle.xml" path="/" exported="true"/>
+    <component id="kbtew" name="Battle.xml" path="/Map/" exported="true"/>
     <component id="kbtex" name="SupportCard.xml" path="/"/>
     <component id="kbtey" name="GoBattle.xml" path="/"/>
     <component id="kbtez" name="ToopTip.xml" path="/" exported="true"/>
     <component id="kbte10" name="BattleInfo.xml" path="/"/>
     <component id="kbte11" name="Container.xml" path="/"/>
     <component id="kbte12" name="World1.xml" path="/Level/"/>
-    <component id="k6t713" name="LeftUnitInfo.xml" path="/"/>
+    <component id="k6t713" name="LeftUnitInfo.xml" path="/TeamSelect/"/>
     <component id="k6t714" name="AttackArea.xml" path="/" exported="true"/>
-    <component id="k6t715" name="SkillInfo.xml" path="/"/>
+    <component id="k6t715" name="SkillInfo1.xml" path="/TeamSelect/"/>
     <image id="voep16" name="属性背景_3.png" path="/"/>
     <image id="voep17" name="属性背景_6.png" path="/TeamUIRes/"/>
     <image id="voep18" name="属性背景_1.png" path="/TeamUIRes/" scale9grid="0,0,-2,-20"/>
@@ -59,7 +59,7 @@
     <image id="voep1n" name="support.png" path="/"/>
     <image id="voep1o" name="arrow_right.png" path="/TeamUIRes/"/>
     <component id="voep1r" name="right1.xml" path="/"/>
-    <image id="voep1s" name="参考.png" path="/TeamUIRes/"/>
+    <image id="voep1s" name="参考.png" path="/参考/"/>
     <image id="voep1t" name="team_name_02.png" path="/TeamUIRes/"/>
     <image id="voep1u" name="team_name_01.png" path="/TeamUIRes/"/>
     <image id="voep1v" name="background_01.png" path="/TeamUIRes/"/>
@@ -114,7 +114,50 @@
     <component id="voep3c" name="back.xml" path="/UnitInfo/"/>
     <component id="voep3d" name="home.xml" path="/UnitInfo/"/>
     <image id="voep3e" name="bldsk.png" path="/UnitInfo/"/>
-    <component id="voep3f" name="Pro.xml" path="/UnitInfo/"/>
+    <component id="voep3f" name="Pro.xml" path="/UnitInfo/" exported="true"/>
+    <image id="voep3h" name="参考1.jpg" path="/参考/"/>
+    <image id="voep3i" name="参考2.jpg" path="/参考/"/>
+    <image id="voep3j" name="参考3.jpg" path="/参考/"/>
+    <image id="voep3k" name="技能_受击回复.png" path="/TeamSelect/"/>
+    <image id="voep3l" name="技能_攻击回复.png" path="/TeamSelect/"/>
+    <image id="voep3m" name="技能_手动触发.png" path="/TeamSelect/"/>
+    <image id="voep3n" name="技能_自动回复.png" path="/TeamSelect/"/>
+    <image id="voep3o" name="技能_自动触发.png" path="/TeamSelect/"/>
+    <image id="voep3p" name="技能_持续时间背景.png" path="/TeamSelect/" exported="true"/>
+    <component id="voep3q" name="SkillInfo.xml" path="/TeamSelect/"/>
+    <image id="voep3r" name="详情界面_空.png" path="/TeamSelect/"/>
+    <image id="voep3u" name="详情界面_分隔线.png" path="/TeamSelect/"/>
+    <image id="voep3v" name="详情界面_技能栏.png" path="/TeamSelect/"/>
+    <image id="voep3w" name="1.png" path="/"/>
+    <image id="voep3x" name="2.png" path="/"/>
+    <image id="voep3y" name="2.png" path="/TeamSelect/"/>
+    <component id="voep3z" name="SelectBtn.xml" path="/TeamSelect/"/>
+    <image id="voep40" name="快速筛选_背景.png" path="/TeamSelect/"/>
+    <image id="voep41" name="箭头.png" path="/TeamSelect/"/>
+    <image id="voep42" name="技能_技能图标阴影.png" path="/UnitInfo/"/>
+    <image id="voep44" name="详情界面_背景(1).png" path="/TeamSelect/"/>
+    <image id="voep45" name="提升等级按钮.png" path="/TeamSelect/"/>
+    <component id="voep46" name="levelup.xml" path="/TeamSelect/"/>
+    <image id="voep47" name="被动.png" path="/TeamSelect/"/>
+    <image id="voep48" name="关卡选择_背景.png" path="/参考/"/>
+    <component id="voep49" name="LevelInfo.xml" path="/Map/"/>
+    <image id="voep4a" name="关卡选择_理智（计划书）剩余.png" path="/Map/"/>
+    <image id="voep4b" name="关卡选择_关卡名背景.png" path="/Map/"/>
+    <image id="voep4c" name="关卡选择_推荐平均等级背景.png" path="/Map/"/>
+    <image id="voep4d" name="关卡选择_代理指挥.png" path="/Map/"/>
+    <image id="voep4e" name="关卡选择_开始行动.png" path="/Map/"/>
+    <image id="voep4f" name="关卡选择_演习.png" path="/Map/"/>
+    <image id="voep4g" name="关卡选择_报酬背景.png" path="/Map/"/>
+    <image id="voep4i" name="渐变.png" path="/Map/" exported="true"/>
+    <component id="voep4j" name="Start.xml" path="/Map/"/>
+    <component id="voep4k" name="Train.xml" path="/Map/"/>
+    <component id="voep4l" name="Auto.xml" path="/Map/"/>
+    <image id="voep4m" name="关卡选择_星_已完成_4.png" path="/Map/"/>
+    <image id="voep4n" name="关卡选择_星_未完成.png" path="/Map/"/>
+    <image id="voep4o" name="关卡选择_星_已完成.png" path="/Map/"/>
+    <component id="voep4p" name="Star.xml" path="/Map/"/>
+    <component id="voep4q" name="Recover.xml" path="/TeamSelect/" exported="true"/>
+    <component id="voep4r" name="UseType.xml" path="/TeamSelect/" exported="true"/>
   </resources>
   <publish name="" genCode="true" excluded="voep3e"/>
 </packageDescription>

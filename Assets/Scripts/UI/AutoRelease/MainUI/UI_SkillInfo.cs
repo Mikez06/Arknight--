@@ -7,11 +7,14 @@ namespace MainUI
 {
     public partial class UI_SkillInfo : GComponent
     {
-        public Controller m_seleted;
-        public GLoader m_icon;
-        public GTextField m_name;
+        public Controller m_time;
+        public Controller m_selected;
+        public UI_UnitSkillIcon m_skillIcon;
+        public UI_Recover m_r;
+        public UI_UseType m_UseType;
+        public GTextField m_lastTime;
         public GTextField m_desc;
-        public const string URL = "ui://k4mja8t1k6t715";
+        public const string URL = "ui://k4mja8t1voep3q";
 
         public static UI_SkillInfo CreateInstance()
         {
@@ -22,10 +25,13 @@ namespace MainUI
         {
             base.ConstructFromXML(xml);
 
-            m_seleted = GetControllerAt(0);
-            m_icon = (GLoader)GetChildAt(0);
-            m_name = (GTextField)GetChildAt(1);
-            m_desc = (GTextField)GetChildAt(3);
+            m_time = GetControllerAt(0);
+            m_selected = GetControllerAt(1);
+            m_skillIcon = (UI_UnitSkillIcon)GetChildAt(0);
+            m_r = (UI_Recover)GetChildAt(1);
+            m_UseType = (UI_UseType)GetChildAt(2);
+            m_lastTime = (GTextField)GetChildAt(4);
+            m_desc = (GTextField)GetChildAt(5);
             Init();
         }
         partial void Init();

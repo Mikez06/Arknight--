@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="169,54">
+<component size="233,77">
   <displayList>
-    <graph id="n10_r8hr" name="n10" xy="0,0" size="169,54" type="rect" lineSize="0" fillColor="#ff3399ff"/>
-    <text id="n12_r8hr" name="n12" xy="39,0" size="94,60" fontSize="45" color="#ffffff" text="确定"/>
+    <image id="n13_voep" name="n13" src="voep3w" fileName="1.png" xy="-15,-6"/>
   </displayList>
 </component>

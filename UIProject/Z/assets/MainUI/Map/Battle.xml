@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080" overflow="hidden">
+  <controller name="showLevelInfo" pages="0,,1," selected="1"/>
+  <displayList>
+    <image id="n8_kbte" name="n8" src="kbtek" fileName="zone_map_8_up.png" xy="0,-100" size="1920,1280" aspect="true">
+      <relation target="" sidePair="width-width,height-height,center-center,middle-middle"/>
+    </image>
+    <component id="n7_kbte" name="world" src="kbte12" fileName="Level/World1.xml" xy="0,0"/>
+    <component id="n10_voep" name="back" src="voep3c" fileName="UnitInfo/back.xml" xy="23,19"/>
+    <component id="n11_voep" name="home" src="voep3d" fileName="UnitInfo/home.xml" xy="247,19"/>
+    <component id="n12_voep" name="levelInfo" src="voep49" fileName="Map/LevelInfo.xml" xy="1236,0">
+      <gearDisplay controller="showLevelInfo" pages="1"/>
+      <gearLook controller="showLevelInfo" pages="0,1" values="0,0,0,1|1,0,0,1" tween="true"/>
+      <relation target="" sidePair="right-right"/>
+    </component>
+  </displayList>
+</component>

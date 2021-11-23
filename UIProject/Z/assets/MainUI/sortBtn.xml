@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="66,70" extention="Label">
-  <controller name="up" pages="0,,1,,2," selected="1"/>
+  <controller name="up" pages="0,,1,,2," selected="2"/>
   <displayList>
-    <text id="n4_kbte" name="title" xy="0,13" size="66,43" fontSize="31" color="#ffffff" text="等级"/>
-    <image id="n6_kbte" name="n6" src="kbtej" fileName="图层 1(1).png" xy="13,48" color="#66ff00">
+    <text id="n4_kbte" name="title" xy="6,17" size="54,35" fontSize="25" color="#ffffff" text="等级"/>
+    <image id="n6_kbte" name="n6" src="voep41" fileName="TeamSelect/箭头.png" xy="13,57">
       <gearDisplay controller="up" pages="2"/>
     </image>
-    <image id="n7_kbte" name="n7" src="kbtej" fileName="图层 1(1).png" xy="14,18" scale="1,-1" color="#66ff00">
+    <image id="n7_kbte" name="n7" src="voep41" fileName="TeamSelect/箭头.png" xy="14,10" scale="1,-1">
       <gearDisplay controller="up" pages="1"/>
     </image>
   </displayList>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="110,32">
+  <controller name="recover" pages="0,,1,,2," selected="0">
+    <remark page="0" value="自动"/>
+    <remark page="1" value="攻击"/>
+    <remark page="2" value="受击"/>
+  </controller>
+  <displayList>
+    <loader id="n17_voep" name="r" xy="0,0" size="110,32" url="ui://k4mja8t1voep3n">
+      <gearIcon controller="recover" pages="1,2" values="ui://k4mja8t1voep3l|ui://k4mja8t1voep3k" default="ui://k4mja8t1voep3n"/>
+    </loader>
+  </displayList>
+</component>

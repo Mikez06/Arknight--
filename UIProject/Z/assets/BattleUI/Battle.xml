@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080" opaque="false">
-  <controller name="state" pages="0,,1,,8,,9,,10,,11,,12," selected="6">
+  <controller name="state" pages="0,,1,,8,,9,,10,,11,,12," selected="1">
     <remark page="0" value="正常"/>
     <remark page="1" value="放置单位"/>
     <remark page="2" value="放置单位_选择位置"/>
@@ -20,7 +20,7 @@
     <component id="n35_h4sa" name="Units" src="f1463m" fileName="Container.xml" xy="0,0" group="n42_kbte"/>
     <component id="n15_f146" name="Builds" src="f1463m" fileName="Container.xml" xy="0,0" group="n42_kbte"/>
     <component id="n54_n3en" name="DamageInfo" src="f1463m" fileName="Container.xml" xy="0,0" group="n42_kbte"/>
-    <component id="n25_kbte" name="left" src="kbte3s" fileName="BattleLeft.xml" xy="-1,4" group="n42_kbte" touchable="false">
+    <component id="n25_kbte" name="left" src="kbte3s" fileName="BattleLeft.xml" xy="-1,0" group="n42_kbte" touchable="false">
       <gearDisplay controller="state" pages="1,8,9,10"/>
     </component>
     <component id="n41_kbte" name="SkillUseBack" src="f1463m" fileName="Container.xml" xy="0,0" size="1920,1080" group="n42_kbte">
@@ -39,7 +39,7 @@
     <group id="n55_tku9" name="youxia" xy="1602,747" size="307,123" group="n42_kbte" advanced="true">
       <relation target="" sidePair="right-right"/>
     </group>
-    <group id="n42_kbte" name="normalGroup" xy="-1,0" size="1921,1084" advanced="true">
+    <group id="n42_kbte" name="normalGroup" xy="-1,0" size="1921,1080" advanced="true">
       <gearDisplay controller="state" pages="0,1,8,9,10,12"/>
     </group>
     <component id="n53_kbte" name="endClick" src="f1463m" fileName="Container.xml" xy="0,0" size="1920,1080" group="n52_kbte"/>

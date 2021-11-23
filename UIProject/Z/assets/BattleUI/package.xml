@@ -49,6 +49,8 @@
     <component id="gbwm4w" name="Setting.xml" path="/"/>
     <component id="gbwm4x" name="GiveUP.xml" path="/"/>
     <component id="gbwm4y" name="CancelGiveUp.xml" path="/"/>
+    <component id="voep4z" name="Pic.xml" path="/"/>
+    <image id="voep50" name="技能_持续时间背景.png" path="/TeamSelect/"/>
   </resources>
   <publish name="" genCode="true" excluded="kbte3u,kbte3n"/>
 </packageDescription>

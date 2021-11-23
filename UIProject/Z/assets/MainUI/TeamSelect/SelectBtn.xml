@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="232,75" extention="Label">
+  <displayList>
+    <image id="n13_voep" name="n13" src="voep3y" fileName="TeamSelect/2.png" xy="-2,-3"/>
+    <text id="n14_voep" name="n14" xy="44,13" size="144,48" fontSize="35" color="#ffffff" text="清空选择"/>
+  </displayList>
+</component>

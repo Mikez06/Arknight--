@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080" designImage="ui://k4mja8t1voep3h" designImageOffsetX="-100" designImageAlpha="0" designImageLayer="1">
+  <controller name="quick" pages="0,,1," selected="1"/>
+  <displayList>
+    <image id="n1_r8hr" name="n100" src="voep1v" fileName="TeamUIRes/background_01.png" xy="0,0" size="1920,1080">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <component id="n2_r8hr" name="leftUnit" src="k6t713" fileName="TeamSelect/LeftUnitInfo.xml" xy="0,0"/>
+    <component id="n14_voep" name="back" src="voep3c" fileName="UnitInfo/back.xml" xy="24,20"/>
+    <component id="n15_voep" name="home" src="voep3d" fileName="UnitInfo/home.xml" xy="249,20"/>
+    <list id="n3_r8hr" name="Cards" xy="630,109" size="1274,835" layout="flow_vt" overflow="scroll" scroll="horizontal" scrollBarFlags="4" lineGap="15" colGap="22" defaultItem="ui://k4mja8t1kbte1" autoClearItems="true">
+      <relation target="" sidePair="width-width"/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <component id="n10_r8hr" name="cancel" src="r8hru" fileName="SelectBtn.xml" xy="1401,976">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n11_r8hr" name="ok" src="r8hrv" fileName="SelectBtn(1).xml" xy="1659,975">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n12_r8hr" name="clear" src="voep3z" fileName="TeamSelect/SelectBtn.xml" xy="644,976">
+      <gearDisplay controller="quick" pages="1"/>
+    </component>
+    <image id="n23_voep" name="n23" src="voep40" fileName="TeamSelect/快速筛选_背景.png" xy="1113,-17" group="n13_tku9"/>
+    <component id="n6_r8hr" name="level" src="kbtei" fileName="sortBtn.xml" xy="1160,17" group="n13_tku9"/>
+    <component id="n7_r8hr" name="rare" src="kbtei" fileName="sortBtn.xml" xy="1281,17" group="n13_tku9">
+      <Label title="稀有"/>
+    </component>
+    <component id="n8_r8hr" name="name" src="kbtei" fileName="sortBtn.xml" xy="1401,17" group="n13_tku9">
+      <Label title="名字"/>
+    </component>
+    <component id="n9_r8hr" name="nn" src="kbtei" fileName="sortBtn.xml" xy="1523,17" group="n13_tku9">
+      <Label title="信赖"/>
+    </component>
+    <group id="n13_tku9" name="youshang" xy="1113,-17" size="784,142" advanced="true">
+      <relation target="" sidePair="right-right"/>
+    </group>
+  </displayList>
+</component>

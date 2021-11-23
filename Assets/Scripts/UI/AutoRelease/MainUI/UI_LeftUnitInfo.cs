@@ -32,10 +32,10 @@ namespace MainUI
             base.ConstructFromXML(xml);
 
             m_empty = GetControllerAt(0);
-            m_name = (GTextField)GetChildAt(1);
-            m_lv = (GTextField)GetChildAt(3);
-            m_attackArea = (GComponent)GetChildAt(9);
-            m_Skills = (GList)GetChildAt(10);
+            m_name = (GTextField)GetChildAt(5);
+            m_lv = (GTextField)GetChildAt(7);
+            m_attackArea = (GComponent)GetChildAt(10);
+            m_Skills = (GList)GetChildAt(11);
             m_reset = (GTextField)GetChildAt(20);
             m_cost = (GTextField)GetChildAt(21);
             m_stop = (GTextField)GetChildAt(22);

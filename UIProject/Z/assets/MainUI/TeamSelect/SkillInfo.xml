@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="528,184" restrictSize="0,0,177,0">
+  <controller name="time" pages="0,,1," selected="0"/>
+  <controller name="selected" pages="0,,1," selected="1"/>
+  <displayList>
+    <component id="n16_voep" name="skillIcon" src="voep3b" fileName="UnitInfo/UnitSkillIcon.xml" xy="18,21" controller="style,1">
+      <relation target="" sidePair="middle-middle%"/>
+    </component>
+    <component id="n17_voep" name="r" src="voep4q" fileName="TeamSelect/Recover.xml" xy="182,31"/>
+    <component id="n18_voep" name="UseType" src="voep4r" fileName="TeamSelect/UseType.xml" xy="292,31"/>
+    <image id="n19_voep" name="n19" src="voep3p" fileName="TeamSelect/技能_持续时间背景.png" xy="400,31">
+      <gearDisplay controller="time" pages="0"/>
+    </image>
+    <text id="n20_voep" name="lastTime" xy="449,46" pivot="0.5,0.5" anchor="true" size="18,35" fontSize="25" color="#ffffff" text="1">
+      <gearDisplay controller="time" pages="0"/>
+    </text>
+    <text id="n21_voep" name="desc" xy="180,64" size="329,124" restrictSize="0,0,124,0" fontSize="24" leading="1" autoSize="height" text="停止攻击，持续时间内回复总共18停止攻击，持续时间内回11111111111111111111111111"/>
+    <graph id="n23_voep" name="n23" xy="0,0" size="528,188" touchable="false" type="rect" lineSize="6" lineColor="#ff33ccff" fillColor="#00ffffff">
+      <gearDisplay controller="selected" pages="1"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
+  </displayList>
+</component>

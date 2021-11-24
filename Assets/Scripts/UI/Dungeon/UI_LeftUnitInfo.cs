@@ -30,14 +30,14 @@ namespace DungeonUI
                 m_empty.selectedIndex = 0;
                 m_name.text = card.UnitData.Name;
                 m_lv.text = card.Level.ToString();
-                m_reset.text = card.UnitData.ResetTime.ToString();
-                m_cost.text = card.UnitData.Cost.ToString();
+                m_reset.text = (card.UnitData.ResetTime + card.UnitData.ResetTimeEx).ToString();
+                m_cost.text = (card.UnitData.Cost + card.UnitData.CostEx).ToString();
                 m_stop.text = card.UnitData.StopCount.ToString();
                 var mainSkill = Database.Instance.Get<SkillData>(card.UnitData.Skills[0]);
                 m_agi.text = mainSkill.Cooldown.ToString();
-                m_hp.text = card.UnitData.Hp.ToString();
-                m_def.text = card.UnitData.Defence.ToString();
-                m_magdefence.text = card.UnitData.MagicDefence.ToString();
+                m_hp.text = (card.UnitData.Hp + card.UnitData.HpEx).ToString();
+                m_def.text = (card.UnitData.Defence + card.UnitData.DefenceEx).ToString();
+                m_magdefence.text = (card.UnitData.MagicDefence + card.UnitData.MagicDefenceEx).ToString();
 
                 foreach (var item in m_attackArea.GetChildren())
                 {
@@ -75,14 +75,14 @@ namespace DungeonUI
                 m_empty.selectedIndex = 0;
                 m_name.text = unitData.Name;
                 m_lv.text = unitData.Level.ToString();
-                m_reset.text = unitData.ResetTime.ToString();
-                m_cost.text = unitData.Cost.ToString();
+                m_reset.text = (unitData.ResetTime+unitData.ResetTimeEx).ToString();
+                m_cost.text = (unitData.Cost+unitData.CostEx).ToString();
                 m_stop.text = unitData.StopCount.ToString();
                 var mainSkill = Database.Instance.Get<SkillData>(unitData.Skills[0]);
                 m_agi.text = mainSkill.Cooldown.ToString();
-                m_hp.text = unitData.Hp.ToString();
-                m_def.text = unitData.Defence.ToString();
-                m_magdefence.text = unitData.MagicDefence.ToString();
+                m_hp.text = (unitData.Hp+unitData.HpEx).ToString();
+                m_def.text = (unitData.Defence+unitData.DefenceEx).ToString();
+                m_magdefence.text = (unitData.MagicDefence + unitData.MagicDefenceEx).ToString();
 
                 foreach (var item in m_attackArea.GetChildren())
                 {

@@ -25,6 +25,8 @@ public class Battle
 
     public int EnemyCount;
 
+    Unit RuleUnit;
+
     public List<Units.干员> PlayerUnits = new List<Units.干员>();
 
     public List<Unit> Enemys = new List<Unit>();
@@ -49,6 +51,19 @@ public class Battle
     {
         MapData = Database.Instance.Get<MapData>(battleConfig.MapName);
         Random = new System.Random(battleConfig.Seed);
+
+        RuleUnit = new Unit();
+        RuleUnit.Battle = this;
+        RuleUnit.Init();
+        foreach (var contracrId in battleConfig.Contracts)
+        {
+            var skills = Database.Instance.Get<ContractData>(contracrId).Skills;
+            if (skills!=null)
+            foreach (var skillId in skills)
+            {
+                    RuleUnit.LearnSkill(skillId);
+            }
+        }
 
         Cost = MapData.InitCost;
         BuildCount = MapData.MaxBuildCount;
@@ -392,6 +407,7 @@ public class Battle
 
     public void Trigger(TriggerEnum triggerEnum)
     {
+        RuleUnit.Trigger(triggerEnum);
         foreach (var unit in PlayerUnits.ToArray())
         {
             unit.Trigger(triggerEnum);

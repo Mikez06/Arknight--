@@ -21,6 +21,7 @@ public class SkillData : IConfig
       public bool UseEventTarget;
       public SkillTargetFilterEnum TargetFilter;
       public UnitTypeEnum ProfessionLimit;
+      public int[] UnitLimit;
       public AttackTargetOrderEnum AttackOrder;
       public AttackTargetOrder2Enum AttackOrder2;
       public UnityEngine.Vector2Int[] AttackPoints;
@@ -52,6 +53,7 @@ public class SkillData : IConfig
       public int? Bullet;
       public string ShootPoint;
       public int[] Modifys;
+      public int[] ModifyDatas;
       public int[] BuffRemoves;
       public int[] Buffs;
       public float[] BuffData;

@@ -1,3 +1,4 @@
+{"Id":"0","Hp":1}
 {"Id":"原石虫","Type":"敌人","Model":"enemy_1007_smile_2","Hp":1550,"Attack":240,"Defence":0,"MagicDefence":0,"AttackGap":1,"Speed":1,"HpBarType":1,"Damage":1,"Radius":0.25,"IdleAnimation":["Idle"],"MoveAnimation":["Move_Begin","Move_Loop","Move_End"],"MaxAnimationScale":1}
 {"Id":"狗","Type":"敌人","Model":"enemy_1000_gopro","Hp":1700,"Attack":260,"Defence":0,"MagicDefence":20,"AttackGap":1,"Speed":1.9,"Skills":[127],"HpBarType":1,"Damage":1,"Radius":0.25,"IdleAnimation":["Idle"],"MoveAnimation":["Run_Begin","Run_Loop","Run_End"],"MaxAnimationScale":1}
 {"Id":"盾","Type":"敌人","Model":"enemy_1006_shield_2","Hp":6000,"Attack":600,"Defence":800,"MagicDefence":0,"AttackGap":1,"Speed":0.75,"Skills":[125,127],"HpBarType":1,"Damage":1,"Radius":0.25,"IdleAnimation":["Idle"],"MoveAnimation":["Move_Begin","Move_Loop","Move_End"],"MaxAnimationScale":1}

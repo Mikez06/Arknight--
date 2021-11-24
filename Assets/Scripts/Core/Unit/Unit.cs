@@ -538,6 +538,7 @@ public class Unit
 
     public void CreateModel()
     {
+        if (string.IsNullOrEmpty(UnitData.Model)) return;
         GameObject go = ResHelper.Instantiate(PathHelper.UnitPath + UnitData.Model);
         UnitModel = go.GetComponent<UnitModel>();
         UnitModel.Init(this);

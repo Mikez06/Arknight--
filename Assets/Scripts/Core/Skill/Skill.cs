@@ -9,7 +9,7 @@ public class Skill
 {
     public Unit Unit;
 
-    protected Modify[] Modifies;
+    public List<Modify> Modifies = new List<Modify>();
 
     public List<Unit> Targets = new List<Unit>();
     protected Battle Battle => Unit.Battle;
@@ -58,15 +58,14 @@ public class Skill
     {
         if (SkillData.Modifys != null)
         {
-            Modifies = new Modify[SkillData.Modifys.Length];
             for (int i = 0; i < SkillData.Modifys.Length; i++)
             {
-                Modifies[i] = ModifyManager.Instance.Get(SkillData.Modifys[i]);
+                Modifies.Add(ModifyManager.Instance.Get(SkillData.Modifys[i]));
             }
         }
         else
         {
-            Modifies = new Modify[0];
+
         }
 
         if (SkillData.AttackPoints != null)
@@ -182,6 +181,7 @@ public class Skill
                 if (!(Unit as Units.干员).Children.Contains(target)) return false;
                 break;
         }
+        if (SkillData.UnitLimit != null && !SkillData.UnitLimit.Contains(target.Id)) return false; 
         if ((SkillData.TargetTeam >> target.Team) % 2 == 0) return false;
         if (SkillData.ProfessionLimit != UnitTypeEnum.无 && SkillData.ProfessionLimit != target.UnitData.Profession) return false;
         if (!SkillData.AttackFly && target.Height > 0) return false;

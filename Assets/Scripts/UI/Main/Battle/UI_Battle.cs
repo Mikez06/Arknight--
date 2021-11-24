@@ -11,6 +11,7 @@ namespace MainUI
     partial class UI_Battle
     {
         TaskCompletionSource<bool> goTcs;
+        List<int> contracts = new List<int>();
         partial void Init()
         {
             m_back.onClick.Add(() =>
@@ -31,6 +32,31 @@ namespace MainUI
                 x.PreventDefault();
                 cancelLevelInfo();
             });
+
+            m_levelInfo.m_Train.onClick.Add(() => m_contractChoose.selectedIndex = 1);
+            m_contractBack.onClick.Add(() => m_contractChoose.selectedIndex = 0);
+
+            m_contracts.RemoveChildrenToPool();
+            ContractData[] array = Database.Instance.GetAll<ContractData>();
+            for (int i = 0; i < array.Length; i++)
+            {
+                int k = i;
+                ContractData cData = array[i];
+                var uiContract = m_contracts.AddItemFromPool() as DungeonUI.UI_BattleContract;
+                uiContract.m_icon.icon = cData.Icon.ToContractIcon();
+                uiContract.m_TagName.text = cData.Name;
+                uiContract.onClick.Add(() => { if (contracts.Contains(k)) contracts.Remove(k); else contracts.Add(k); freshContract(); });
+            }
+            freshContract();
+        }
+
+        void freshContract()
+        {
+            for (int i = 0; i < m_contracts.numItems; i++)
+            {
+                var uiContract = m_contracts.GetChildAt(i) as DungeonUI.UI_BattleContract;
+                uiContract.m_button.selectedIndex = contracts.Contains(i) ? 0 : 1;
+            }
         }
 
         void cancelLevelInfo()
@@ -78,6 +104,7 @@ namespace MainUI
                         MapName = battleLevel,
                         Seed = 0,
                         Team = GameData.Instance.Teams[teamIndex],
+                        Contracts = new List<int>(contracts),
                     });
                     UIManager.Instance.ChangeView<GComponent>(URL);
                 }

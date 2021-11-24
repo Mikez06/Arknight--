@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080" overflow="hidden">
   <controller name="showLevelInfo" pages="0,,1," selected="1"/>
+  <controller name="contractChoose" pages="0,,1," selected="1"/>
   <displayList>
     <image id="n8_kbte" name="n8" src="kbtek" fileName="zone_map_8_up.png" xy="0,-100" size="1920,1280" aspect="true">
       <relation target="" sidePair="width-width,height-height,center-center,middle-middle"/>
@@ -13,5 +14,20 @@
       <gearLook controller="showLevelInfo" pages="0,1" values="0,0,0,1|1,0,0,1" tween="true"/>
       <relation target="" sidePair="right-right"/>
     </component>
+    <graph id="n16_voep" name="contractBack" xy="0,0" size="1920,1080" type="rect" lineSize="0" fillColor="#00cccccc">
+      <gearDisplay controller="contractChoose" pages="1"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
+    <graph id="n14_voep" name="n1" xy="1468,0" size="452,1080" type="rect" lineSize="0" fillColor="#ffcccccc">
+      <gearDisplay controller="contractChoose" pages="1"/>
+      <relation target="" sidePair="right-right"/>
+    </graph>
+    <list id="n15_voep" name="contracts" xy="1521,44" size="353,965" overflow="scroll" lineGap="19" defaultItem="ui://hgasjns6gbwmy" autoClearItems="true">
+      <gearDisplay controller="contractChoose" pages="1"/>
+      <relation target="" sidePair="right-right"/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
   </displayList>
 </component>

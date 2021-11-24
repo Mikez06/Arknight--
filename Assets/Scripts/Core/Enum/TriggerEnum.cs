@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 public enum TriggerEnum
 {
     无,
+    起始,
     出场,
     入场,
     落地,

@@ -7,7 +7,7 @@
     <image id="n2_voep" name="n2" src="voep4c" fileName="Map/关卡选择_推荐平均等级背景.png" xy="205,265"/>
     <component id="n3_voep" name="n3" src="voep4l" fileName="Map/Auto.xml" xy="329,858"/>
     <component id="n4_voep" name="start" src="voep4j" fileName="Map/Start.xml" xy="314,940"/>
-    <component id="n5_voep" name="n5" src="voep4k" fileName="Map/Train.xml" xy="9,939"/>
+    <component id="n5_voep" name="Train" src="voep4k" fileName="Map/Train.xml" xy="9,939"/>
     <image id="n6_voep" name="n6" src="voep4g" fileName="Map/关卡选择_报酬背景.png" xy="146,729"/>
     <text id="n9_voep" name="Desc" xy="212,303" size="425,418" fontSize="24" color="#cccccc" autoSize="none" autoClearText="true" text="站在阳光下的人们，尚未注意到正在头顶上方聚集的阴影，"/>
     <text id="n10_voep" name="level" xy="366,262" size="133,34" fontSize="24" color="#ffffff" text="精英1 LV.30"/>

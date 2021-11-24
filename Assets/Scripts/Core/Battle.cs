@@ -35,6 +35,8 @@ public class Battle
 
     public CountDown CostCounting = new CountDown(1);
 
+    public float CostCountSpeed = 1;
+
     public bool Finish;
 
     public bool Win;
@@ -86,7 +88,8 @@ public class Battle
                 CreatePlayerUnit(card, card.UsingSkill);
             }
         }
-     
+
+        Trigger(TriggerEnum.起始);
         foreach (var unit in PlayerUnits)
         {
             TriggerDatas.Push(new TriggerData()
@@ -120,7 +123,7 @@ public class Battle
         WaveTick++;
         checkSceneUnit();
         updateUnitMap();
-        if (CostCounting.Update(SystemConfig.DeltaTime))
+        if (CostCounting.Update(SystemConfig.DeltaTime * CostCountSpeed))
         {
             Cost++;
             CostCounting.Set(1);

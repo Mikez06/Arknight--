@@ -8,6 +8,7 @@ namespace MainUI
     public partial class UI_LevelInfo : GComponent
     {
         public GButton m_start;
+        public GButton m_Train;
         public GTextField m_Desc;
         public GTextField m_level;
         public GTextField m_id;
@@ -28,6 +29,7 @@ namespace MainUI
             base.ConstructFromXML(xml);
 
             m_start = (GButton)GetChildAt(5);
+            m_Train = (GButton)GetChildAt(6);
             m_Desc = (GTextField)GetChildAt(8);
             m_level = (GTextField)GetChildAt(9);
             m_id = (GTextField)GetChildAt(10);

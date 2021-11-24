@@ -20,7 +20,7 @@
     <component id="gbwmv" name="MissionInfo.xml" path="/MissionInfo/"/>
     <component id="gbwmw" name="go.xml" path="/MissionInfo/"/>
     <component id="gbwmx" name="Battle.xml" path="/DungeonBattle/" exported="true"/>
-    <component id="gbwmy" name="BattleContract.xml" path="/DungeonBattle/"/>
+    <component id="gbwmy" name="BattleContract.xml" path="/DungeonBattle/" exported="true"/>
     <component id="gbwmz" name="Relic.xml" path="/DungeonBattle/"/>
     <component id="gbwm10" name="GoBattle.xml" path="/DungeonBattle/"/>
     <component id="gbwm11" name="Dialogue.xml" path="/Dialougue/" exported="true"/>

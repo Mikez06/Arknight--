@@ -15,6 +15,12 @@
 {"Id":"防御提升2","Type":"数值变化","LastTime":0.01,"DeadRemain":1,"Data":{"t":["DefenceRate"]}}
 {"Id":"部署费用提升2","Type":"数值变化","LastTime":9999,"DeadRemain":1,"Data":{"t":["CostAdd"]}}
 {"Id":"再部署时间降低2","Type":"数值变化","LastTime":9999,"DeadRemain":1,"Data":{"t":["ResetTimeRate"]}}
+{"Id":"攻击变化f"}
+{"Id":"防御变化f"}
+{"Id":"魔防变化f"}
+{"Id":"攻速变化f"}
+{"Id":"生命变化f"}
+{"Id":"移速变化f"}
 {"Id":"物理格挡2","Type":"数值变化","LastTime":9999,"Data":{"t":["Block"]}}
 {"Id":"魔法格挡2","Type":"数值变化","LastTime":9999,"Data":{"t":["MagBlock"]}}
 {"Id":"绝食","Type":"绝食"}
@@ -25,7 +31,7 @@
 {"Id":"眩晕","Type":"眩晕","Data":{"ChangeAnimation":1}}
 {"Id":"眩晕2","Type":"眩晕"}
 {"Id":"无敌","Type":"无敌"}
-{"Id":"寒冷","Type":"数值变化","LastingEffect":4,"Upgrade":28,"Data":{"t":["AgiAdd"]}}
+{"Id":"寒冷","Type":"数值变化","LastingEffect":4,"Upgrade":34,"Data":{"t":["AgiAdd"]}}
 {"Id":"冻结","Type":"冻结","LastingEffect":5}
 {"Id":"已复活标记","Type":"普通Buff"}
 {"Id":"斑点闪避","Type":"闪避","LastTime":3,"Data":{"Chance":0.3,"AvoidType":"Normal"}}

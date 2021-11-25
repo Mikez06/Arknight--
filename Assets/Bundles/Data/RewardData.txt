@@ -1,3 +1,5 @@
 {"Id":"随机招募券","RewardItem":[1,2,3,4,5,6,7,8],"Weights":[10,10,10,10,10,0,10,10]}
 {"Id":"少量点数","RewardPoint":4}
 {"Id":"少量金钱","RewardGold":4}
+{"Id":"2点数","RewardPoint":2}
+{"Id":"2金钱","RewardGold":2}

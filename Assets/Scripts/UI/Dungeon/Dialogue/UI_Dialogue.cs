@@ -45,6 +45,7 @@ namespace DungeonUI
             int next = nowEventIndex + 1;
             if (nowEvent.Choices != null)
             {
+                int chooseResult=0;
                 if (nowEvent.Branch != null)
                 {
                     //按权重自动分支
@@ -57,7 +58,7 @@ namespace DungeonUI
                     setChoice();
                     await m_chooseAni.PlayAsync();
                     chooseTcs = new TaskCompletionSource<int>();
-                    var chooseResult = await chooseTcs.Task;
+                    chooseResult = await chooseTcs.Task;
                     if (nowEvent.Next == null || nowEvent.Next.Length <= chooseResult)
                     {
                         //不执行任何操作，把下一行当下一句
@@ -68,6 +69,12 @@ namespace DungeonUI
                         m_reset.Play();
                     }
                 }
+
+                if (nowEvent.Rewards != null && nowEvent.AutoReward)
+                {
+                    Rewards = DungeonManager.Instance.Dungeon.GetRewards(nowEvent.Rewards);
+                    DungeonManager.Instance.Dungeon.GainReward(Rewards[chooseResult]);
+                }
             }
             else
             {
@@ -76,12 +83,15 @@ namespace DungeonUI
             }
             if (nowEvent.Rewards != null)
             {
-                m_chooseReward.selectedIndex = 1;
                 Rewards = DungeonManager.Instance.Dungeon.GetRewards(nowEvent.Rewards);
-                freshReward();
-                rewardTcs = new TaskCompletionSource<bool>();
-                await rewardTcs.Task;
-                m_chooseReward.selectedIndex = 0;
+                if (!nowEvent.AutoReward)
+                {
+                    m_chooseReward.selectedIndex = 1;
+                    freshReward();
+                    rewardTcs = new TaskCompletionSource<bool>();
+                    await rewardTcs.Task;
+                    m_chooseReward.selectedIndex = 0;
+                }
             }
 
             var nextEvent = Database.Instance.Get<EventData>(next);

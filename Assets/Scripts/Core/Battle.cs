@@ -68,7 +68,6 @@ public class Battle
         }
 
         Cost = MapData.InitCost;
-        BuildCount = MapData.MaxBuildCount;
 
         //读取场景地图信息
         Map.Init(this);
@@ -80,6 +79,7 @@ public class Battle
                 Card unitInput = battleConfig.Team.Cards[i];
                 CreatePlayerUnit(unitInput, battleConfig.Team.UnitSkill[i]);
             }
+            BuildCount = MapData.MaxBuildCount;
         }
         else
         {
@@ -87,6 +87,16 @@ public class Battle
             {
                 CreatePlayerUnit(card, card.UsingSkill);
             }
+            foreach (var relic in battleConfig.Dungeon.Relics)
+            {
+                var skills = relic.RelicData.Skills;
+                if (skills != null)
+                    foreach (var skillId in skills)
+                    {
+                        RuleUnit.LearnSkill(skillId);
+                    }
+            }
+            BuildCount = battleConfig.Dungeon.MaxBuildCount;
         }
 
         Trigger(TriggerEnum.起始);

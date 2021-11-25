@@ -63,7 +63,12 @@ public class Buff
 
     public virtual void Update()
     {
-        Duration.Update(SystemConfig.DeltaTime);
+        if (BuffData.Resist)
+        {
+            Duration.Update(SystemConfig.DeltaTime / Unit.Resist);
+        }
+        else
+            Duration.Update(SystemConfig.DeltaTime);
         if (Duration.Finished())
         {
             Finish();

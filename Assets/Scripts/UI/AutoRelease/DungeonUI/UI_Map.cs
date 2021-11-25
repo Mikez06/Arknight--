@@ -11,6 +11,8 @@ namespace DungeonUI
         public GButton m_Team;
         public GComponent m_unselect;
         public UI_MissionInfo m_MissionInfo;
+        public GTextField m_gold;
+        public GTextField m_hope;
         public const string URL = "ui://hgasjns6t5h94";
 
         public static UI_Map CreateInstance()
@@ -26,6 +28,8 @@ namespace DungeonUI
             m_Team = (GButton)GetChildAt(0);
             m_unselect = (GComponent)GetChildAt(1);
             m_MissionInfo = (UI_MissionInfo)GetChildAt(2);
+            m_gold = (GTextField)GetChildAt(3);
+            m_hope = (GTextField)GetChildAt(4);
             Init();
         }
         partial void Init();

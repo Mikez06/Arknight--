@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080" opaque="false">
-  <controller name="showInfo" pages="0,,1,,2," selected="2"/>
+  <controller name="showInfo" pages="0,,1,,2," selected="0"/>
   <displayList>
     <component id="n4_t5h9" name="Team" src="t5h95" fileName="btn.xml" xy="33,979"/>
     <component id="n6_gbwm" name="unselect" src="f1463m" fileName="Container.xml" pkg="vp312gab" xy="0,0" size="1920,1080">
@@ -10,5 +10,7 @@
       <gearXY controller="showInfo" pages="0,2" values="1920,0,1,0|1920,0,1,0" default="1424,0,0.742,0" tween="true" positionsInPercent="true"/>
       <relation target="" sidePair="right-right%"/>
     </component>
+    <text id="n7_voep" name="gold" xy="21,17" size="141,42" fontSize="30" vars="true" text="源石锭：{c=1}"/>
+    <text id="n8_voep" name="hope" xy="21,69" size="111,42" fontSize="30" vars="true" text="希望：{c=1}"/>
   </displayList>
 </component>

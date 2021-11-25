@@ -1,0 +1,6 @@
+{"TeamCount":0,"BuildCount":0,"Exp":0}
+{"TeamCount":3,"BuildCount":3,"Exp":1}
+{"TeamCount":5,"BuildCount":4,"Exp":3}
+{"TeamCount":6,"BuildCount":5,"Exp":5}
+{"TeamCount":7,"BuildCount":6,"Exp":7}
+{"TeamCount":8,"BuildCount":7,"Exp":9999999}

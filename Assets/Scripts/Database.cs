@@ -44,7 +44,8 @@ public class Database
             AddAsync<RelicData>("RelicData"),
             AddAsync<ContractData>("ContractData"),
             AddAsync<EventData>("EventData"),
-            AddAsync<RewardData>("RewardData")
+            AddAsync<RewardData>("RewardData"),
+            AddAsync<DungeonLevelData>("DungeonLevelData")
             );
         }
         catch (Exception e)
@@ -72,6 +73,7 @@ public class Database
             Add<ContractData>("ContractData");
             Add<EventData>("EventData");
             Add<RewardData>("RewardData");
+            Add<DungeonLevelData>("DungeonLevelData");
         }
         catch (Exception e)
         {

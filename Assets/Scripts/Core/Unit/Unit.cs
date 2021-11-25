@@ -64,7 +64,7 @@ public class Unit
 
     public float Block, MagBlock;
 
-    public float PowerSpeed;
+    public float PowerSpeed, PowerSpeedAdd;
 
     public float HpRecover;
     public float HpRecoverBase;
@@ -73,6 +73,15 @@ public class Unit
 
     public int Weight;
     public int WeightBase, WeightAdd;
+
+    public float SkillCost;
+    public float SkillCostAdd;
+
+    public float Resist;
+    public float ResistAdd;
+
+    public float AttackRange;
+    public float AttackRangeAdd, AttackRangeRate;
 
     public bool IfHide;
     public bool IfHideAnti;
@@ -151,11 +160,14 @@ public class Unit
         AgiAdd = AgiRate = AgiAddFin = AgiRateFin = 0;
         HpRecoverBase = 0;
         WeightAdd = 0;
-        PowerSpeed = 1f;
         AttackGapAdd = AttackGapRate = 0;
         Block = MagBlock = 0;
+        SkillCostAdd = 0;
+        PowerSpeedAdd = 0;
         CanAttack = true;
         CanBeHeal = true;
+        ResistAdd = 0;
+        AttackRangeAdd = AttackRangeRate = 0;
         foreach (var buff in Buffs)
         {
             buff.Apply();
@@ -172,6 +184,10 @@ public class Unit
         if (MagicDefence < 0) MagicDefence = 0;
         Weight = WeightBase + WeightAdd;
         AttackGap = (AttackGapBase + AttackGapAdd) * (1 + AttackGapRate);
+        SkillCost = SkillCostAdd + 1;
+        PowerSpeed = PowerSpeedAdd + 1;
+        Resist = ResistAdd+1;
+        AttackRange = (1 + AttackRangeAdd) * (1 + AttackRangeRate);
     }
 
     public void UpdateBuffs()

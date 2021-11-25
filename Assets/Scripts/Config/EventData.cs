@@ -9,6 +9,7 @@ public class EventData : IConfig
       public string[] Next;
       public int[] Branch;
       public int[] Rewards;
+      public bool AutoReward;
       public string Background;
       public string Tile;
 }

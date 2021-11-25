@@ -28,6 +28,13 @@ namespace DungeonUI
             });
         }
 
+        protected override void OnUpdate()
+        {
+            base.OnUpdate();
+            m_hope.SetVar("c", DungeonManager.Instance.Dungeon.Hope.ToString()).FlushVars();
+            m_gold.SetVar("c", DungeonManager.Instance.Dungeon.Gold.ToString()).FlushVars();
+        }
+
         public void SelectTile(DungeonTile dungeonTile)
         {
             NowSelect = dungeonTile;

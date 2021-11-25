@@ -48,7 +48,8 @@ public class Skill
     public CountDown Opening = new CountDown();
 
     public float Power;
-    public float MaxPower;
+    public int MaxPower => (int)(Unit.SkillCost * MaxPowerBase);
+    public float MaxPowerBase;
     public int PowerCount;
     public int UseCount;
 
@@ -74,7 +75,7 @@ public class Skill
             UpdateAttackPoints();
         }
 
-        MaxPower = SkillData.MaxPower;
+        MaxPowerBase = SkillData.MaxPower;
         PowerCount = SkillData.PowerCount;
         Reset();
     }
@@ -610,7 +611,7 @@ public class Skill
         {
             if (AttackPoints == null&&!SkillData.AttackAreaWithMain)//根据攻击范围进行索敌
             {
-                tempTargets.AddRange(Battle.FindAll(Unit.Position2, SkillData.AttackRange, SkillData.TargetTeam));
+                tempTargets.AddRange(Battle.FindAll(Unit.Position2, SkillData.AttackRange * Unit.AttackRange, SkillData.TargetTeam));
             }
             else
             {

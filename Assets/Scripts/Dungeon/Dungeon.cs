@@ -15,8 +15,14 @@ public class Dungeon
 
 
     public int Gold;
-    public int Point;
-    public int MaxCardCount = 5;
+    public int Hope;
+    public int MaxCardCount;
+    public int MaxBuildCount;
+    public float GoldDropRate;
+
+    public int PlayerLevel = 1;
+    DungeonLevelData DungeonLevelData => Database.Instance.Get<DungeonLevelData>(PlayerLevel);
+    public int PlayerExp;
 
     public DungeonTile NowTile;
     public int Sight = 2;
@@ -76,6 +82,9 @@ public class Dungeon
                 Id = dungeonReward.Data,
             };
             Relics.Add(dungeonRelic);
+            Hope += dungeonRelic.RelicData.Hope;
+            Gold += dungeonRelic.RelicData.Gold;
+            refresh();
         }
         else if (dungeonReward.Type == 2)
         {
@@ -83,7 +92,7 @@ public class Dungeon
         }
         else if (dungeonReward.Type == 3)
         {
-            Point += dungeonReward.Data;
+            Hope += dungeonReward.Data;
         }
     }
 
@@ -159,6 +168,24 @@ public class Dungeon
             var ui = UIManager.Instance.ChangeView<DungeonUI.UI_Dialogue>(DungeonUI.UI_Dialogue.URL);
             await ui.StartDialogue("初始事件");
             UIManager.Instance.ChangeView<DungeonUI.UI_Map>(DungeonUI.UI_Map.URL);
+        }
+    }
+
+    public void Start()
+    {
+        refresh();
+    }
+
+    void refresh()
+    {
+        MaxCardCount = DungeonLevelData.TeamCount;
+        MaxBuildCount = DungeonLevelData.BuildCount;
+        GoldDropRate = 1;
+        foreach (var relic in Relics)
+        {
+            MaxCardCount += relic.RelicData.CardCount;
+            MaxBuildCount += relic.RelicData.BuildCount;
+            GoldDropRate += relic.RelicData.GoldDropRate;
         }
     }
 

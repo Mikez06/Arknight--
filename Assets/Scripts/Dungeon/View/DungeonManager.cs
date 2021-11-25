@@ -21,6 +21,7 @@ public class DungeonManager : Singleton<DungeonManager>
 
     public async Task StartDungeon()
     {
+        Dungeon.Start();
         await SceneManager.LoadSceneAsync("Dungeon");
         await TimeHelper.Instance.WaitAsync(0.1f);
         Dungeon.RebuildMap(8, 4);

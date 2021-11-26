@@ -39,7 +39,7 @@ namespace Units
         public int TempIndex;
         protected Vector3 TempTarget => TempIndex >= TempPath.Count - 1 ? TempPath[TempPath.Count - 1] : TempPath[TempIndex + 1];
 
-
+        public bool Visiable = true;
         public override void Init()
         {
             base.Init();
@@ -66,8 +66,16 @@ namespace Units
             UnitModel = null;
         }
 
+        public override void Refresh()
+        {
+            base.Refresh();
+            if (!Visiable) IfSelectable = false;
+        }
+
         public override void UpdateAction()
         {
+            if (!Visiable) updateHide();
+            if (!Visiable) return;
             base.UpdateAction();
             if (ScaleX != TargetScaleX)
             {
@@ -116,6 +124,8 @@ namespace Units
 
         public virtual void CheckArrive()
         {
+            if (TempPath == null) findNewPath();
+
             if ((TempTarget - Position).magnitude < TempArriveDistance)
             {
                 TempIndex++;
@@ -125,6 +135,10 @@ namespace Units
                     if (NowPathPoint != PathPoints.Count-1)//抵达临时目标点，如果该目标点不是终点,重新找去下一个点的路
                     {
                         PathWaiting.Set(PathPoints[NowPathPoint].Delay);
+                        if (PathPoints[NowPathPoint].HideMove)
+                        {
+                            Visiable = false;
+                        }
                         TempPath = null;
                     }
                     else
@@ -132,6 +146,18 @@ namespace Units
                         NowPathPoint--;
                     }
                 }
+            }
+        }
+
+        void updateHide()
+        {
+            if (PathWaiting.Update(SystemConfig.DeltaTime))
+            {
+                NowPathPoint++;
+                Position = PathPoints[NowPathPoint].Pos;
+                Visiable = true;
+                UnitModel?.gameObject.SetActive(true);
+                Refresh();
             }
         }
 
@@ -145,7 +171,7 @@ namespace Units
                 return;
             }
             CheckArrive();
-            if (Unbalance) return;//失衡状态下不许主动移动
+            if (Unbalance || !Visiable) return;//失衡状态下不许主动移动
             if (StopUnit != null)
             {
                 if (AnimationName == UnitData.MoveAnimation)
@@ -216,13 +242,11 @@ namespace Units
 
         void findNewPath()
         {
-            TempPath = Battle.Map.FindPath(Position, NextPoint, PathPoints[NowPathPoint].DirectMove);
+            var offset = new Vector3(WaveData.OffsetX, 0, WaveData.OffetsetY);
+            TempPath = Battle.Map.FindPath(Position - offset, NextPoint - offset, PathPoints[NowPathPoint].DirectMove);
             for (int i = 0; i < TempPath.Count; i++)
             {
-                if (i != 0 && i != TempPath.Count - 1)
-                {
-                    TempPath[i] += new Vector3(WaveData.OffsetX, 0, WaveData.OffetsetY);
-                }
+                TempPath[i] += offset;
             }
             //var log = "";
             //foreach (var p in TempPath) log += p.ToString() + ",";

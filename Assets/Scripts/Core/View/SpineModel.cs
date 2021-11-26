@@ -57,6 +57,11 @@ public class SpineModel : UnitModel
 
     protected virtual void updateState()
     {
+        if (Unit is Units.敌人 u)
+        {
+            gameObject.SetActive(u.Visiable);
+            if (!u.Visiable) return;
+        }
         SkeletonAnimation.transform.localScale = new Vector3(Unit.ScaleX, 1, 1);
         if (Unit.State == StateEnum.Default)
         {

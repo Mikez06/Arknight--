@@ -890,7 +890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PathPoint:
-    Pos: {x: 0, y: 0, z: 0}
+    Pos: {x: 8, y: 1.5, z: 1.25}
     Delay: 0
     DirectMove: 0
     HideMove: 0
@@ -1044,10 +1044,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PathPoint:
-    Pos: {x: 0, y: 0, z: 0}
-    Delay: 0
+    Pos: {x: 5.12, y: 1.5, z: 3}
+    Delay: 3
     DirectMove: 0
-    HideMove: 0
+    HideMove: 1
 --- !u!1 &669119446
 GameObject:
   m_ObjectHideFlags: 0
@@ -1516,7 +1516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PathPoint:
-    Pos: {x: 0, y: 0, z: 0}
+    Pos: {x: 9, y: 1.5, z: 1.16}
     Delay: 0
     DirectMove: 0
     HideMove: 0
@@ -1723,7 +1723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PathPoint:
-    Pos: {x: 0, y: 0, z: 0}
+    Pos: {x: -0.25, y: 1.5, z: 1}
     Delay: 0
     DirectMove: 1
     HideMove: 0
@@ -2196,7 +2196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PathPoint:
-    Pos: {x: 0, y: 0, z: 0}
+    Pos: {x: 1, y: 1.5, z: 1}
     Delay: 5
     DirectMove: 0
     HideMove: 0
@@ -3588,28 +3588,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path:
-  - Pos: {x: 0, y: 0, z: 0}
+  - Pos: {x: -0.25, y: 1.5, z: 1}
     Delay: 0
     DirectMove: 1
     HideMove: 0
-  - Pos: {x: 0, y: 0, z: 0}
+  - Pos: {x: 1, y: 1.5, z: 1}
     Delay: 5
     DirectMove: 0
     HideMove: 0
-  - Pos: {x: 0, y: 0, z: 0}
+  - Pos: {x: 5.12, y: 1.5, z: 3}
+    Delay: 3
+    DirectMove: 0
+    HideMove: 1
+  - Pos: {x: 8, y: 1.5, z: 1.25}
     Delay: 0
     DirectMove: 0
     HideMove: 0
-  - Pos: {x: 0, y: 0, z: 0}
-    Delay: 0
-    DirectMove: 0
-    HideMove: 0
-  - Pos: {x: 0, y: 0, z: 0}
+  - Pos: {x: 9, y: 1.5, z: 1.16}
     Delay: 0
     DirectMove: 0
     HideMove: 0
   PreviewPoints:
-  - {x: -0.25, y: 1.5000001, z: 0.8299999}
+  - {x: -0.25, y: 1.5000001, z: 1}
   - {x: 1, y: 1.5000001, z: 1}
   - {x: 1, y: 1.5000001, z: 1}
   - {x: 2, y: 1.5000001, z: 1}

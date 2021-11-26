@@ -1,8 +1,8 @@
 {"Id":"1-1","MapName":"场景名字1","Description":"测试性地图1","Scene":"TestMap","InitCost":100,"MaxBuildCount":8,"MapModel":"enemy_1000_gopro","Contracts":[0,1,2]}
-{"Id":"1-2","MapName":"场景名字2","Description":"测试性地图2","Scene":"TestMap1","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1510_frstar2","Contracts":[0,1,3]}
-{"Id":"1-3","MapName":"场景名字3","Description":"测试性地图3","Scene":"TestMap1","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1065_snwolf_2","Contracts":[0,1,4]}
-{"Id":"1-4","MapName":"场景名字4","Description":"测试性地图4","Scene":"TestMap1","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1067_snslime_2","Contracts":[0,1,2]}
-{"Id":"1-5","MapName":"场景名字5","Description":"测试性地图5","Scene":"TestMap1","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1068_snmage_2","Contracts":[0,1,3]}
-{"Id":"1-6","MapName":"场景名字6","Description":"测试性地图6","Scene":"TestMap1","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1066_snbow_2","Contracts":[0,1,2]}
-{"Id":"1-7","MapName":"场景名字7","Description":"测试性地图7","Scene":"TestMap1","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1069_icebrk_2","Contracts":[0,1,3]}
-{"Id":"1-8","MapName":"场景名字8","Description":"测试性地图8","Scene":"TestMap1","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1024_mortar_2","Contracts":[0,1,4]}
+{"Id":"1-2","MapName":"场景名字2","Description":"测试性地图2","Scene":"H6-4","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1510_frstar2","Contracts":[0,1,3]}
+{"Id":"1-3","MapName":"场景名字3","Description":"测试性地图3","Scene":"H6-4","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1065_snwolf_2","Contracts":[0,1,4]}
+{"Id":"1-4","MapName":"场景名字4","Description":"测试性地图4","Scene":"H6-4","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1067_snslime_2","Contracts":[0,1,2]}
+{"Id":"1-5","MapName":"场景名字5","Description":"测试性地图5","Scene":"H6-4","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1068_snmage_2","Contracts":[0,1,3]}
+{"Id":"1-6","MapName":"场景名字6","Description":"测试性地图6","Scene":"H6-4","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1066_snbow_2","Contracts":[0,1,2]}
+{"Id":"1-7","MapName":"场景名字7","Description":"测试性地图7","Scene":"H6-4","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1069_icebrk_2","Contracts":[0,1,3]}
+{"Id":"1-8","MapName":"场景名字8","Description":"测试性地图8","Scene":"H6-4","InitCost":20,"MaxBuildCount":8,"MapModel":"enemy_1024_mortar_2","Contracts":[0,1,4]}

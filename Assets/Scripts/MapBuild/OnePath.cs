@@ -47,7 +47,10 @@ public class OnePath : MonoBehaviour
             var start = transform.GetChild(i).position;
             var end = transform.GetChild(i + 1).position;
 
-            if (Path[i].HideMove) continue;
+            if (Path[i].HideMove)
+            {
+                continue;
+            }
             var p= ABPath.Construct(start, end);
             AstarPath.StartPath(p);
             p.BlockUntilCalculated();

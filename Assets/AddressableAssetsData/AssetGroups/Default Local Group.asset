@@ -449,6 +449,10 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Data/DungeonLevelData
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: c4dc4e7618c37914fa950c7d39dd2803
+    m_Address: Assets/Bundles/Other/Trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

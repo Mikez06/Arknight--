@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Bullets
 {
@@ -27,12 +22,12 @@ namespace Bullets
                 TargetPos = Target.UnitModel.GetPoint(Target.UnitData.HitPointName);
             if (moveHeight == 0)
             {
-                Position = posBy(tickTime);
+                Position = getPosOfTime(tickTime);
             }
             else
             {
-                Position = posBy(tickTime);
-                Direction = posBy(tickTime + SystemConfig.DeltaTime) - posBy(tickTime);
+                Position = getPosOfTime(tickTime);
+                Direction = getPosOfTime(tickTime + SystemConfig.DeltaTime) - getPosOfTime(tickTime);
             }
             //Vector3 delta = TargetPos - Postion;
             //if (delta.magnitude < BulletData.Speed * SystemConfig.DeltaTime)
@@ -49,7 +44,7 @@ namespace Bullets
             //}
         }
 
-        Vector3 posBy(float time)
+        Vector3 getPosOfTime(float time)
         {
             Vector3 Postion;
             float totalTime = (TargetPos - StartPosition).magnitude / BulletData.Speed;

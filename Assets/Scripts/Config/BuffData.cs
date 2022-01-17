@@ -9,5 +9,6 @@ public class BuffData : IConfig
       public int? Upgrade;
       public bool Resist;
       public bool DeadRemain;
+      public int? RelyBuff;
       public System.Collections.Generic.Dictionary<string,object> Data;
 }

@@ -254,6 +254,17 @@ namespace Units
             TempIndex = 0;
         }
 
+        public void DisplayPath()
+        {
+            List<Vector3> p = new List<Vector3>();
+            for (int i = NowPathPoint; i < PathPoints.Count - 1; i++)
+            {
+                var p1 = Battle.Map.FindPath(PathPoints[i].Pos, PathPoints[i + 1].Pos, PathPoints[i].DirectMove);
+                p.AddRange(p1);
+            }
+            TrailManager.Instance.ShowPath(p);
+        }
+
         Vector3 GetPoint(int index)
         {
             return PathPoints[index].Pos + new Vector3(WaveData.OffsetX, 0, WaveData.OffetsetY);

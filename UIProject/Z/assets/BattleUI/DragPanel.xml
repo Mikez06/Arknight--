@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080" pivot="0.5,0.5" anchor="true">
   <displayList>
-    <component id="n28_kbte" name="DirectionBack" src="kbte3x" fileName="灰罩.xml" xy="0,0"/>
-    <component id="n37_h4sa" name="DirectonCancal" src="f1463m" fileName="Container.xml" xy="0,0" size="1920,1080"/>
-    <component id="n27_kbte" name="DirectionPanel" src="kbte3y" fileName="SetPanel/SetPanel.xml" xy="959,539" pivot="0.5,0.5" anchor="true"/>
+    <component id="n28_kbte" name="DirectionBack" src="kbte3x" fileName="灰罩.xml" xy="0,0">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n37_h4sa" name="DirectonCancal" src="f1463m" fileName="Container.xml" xy="0,0" size="1920,1080">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n27_kbte" name="DirectionPanel" src="kbte3y" fileName="SetPanel/SetPanel.xml" xy="959,539" pivot="0.5,0.5" anchor="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
   </displayList>
 </component>

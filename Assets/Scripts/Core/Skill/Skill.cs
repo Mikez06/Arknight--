@@ -311,7 +311,7 @@ public class Skill
     {
         if (SkillData.ReadyType == SkillReadyEnum.充能释放 && SkillData.UseType == SkillUseTypeEnum.手动 && !SkillData.NoTargetAlsoUse)
         {
-            var target = getAttackTarget();
+            var target = GetAttackTarget();
             if (target.Count == 0)
             {
                 return false;
@@ -471,7 +471,7 @@ public class Skill
             if (SkillData.BurstFind) //当目标为随机时
             {
                 LastTargets.Clear();
-                LastTargets.AddRange(getAttackTarget());
+                LastTargets.AddRange(GetAttackTarget());
             }
             foreach (var target in LastTargets)
             {
@@ -593,11 +593,11 @@ public class Skill
     public virtual void FindTarget()
     {      
         Targets.Clear();
-        Targets.AddRange(getAttackTarget());
+        Targets.AddRange(GetAttackTarget());
     }
 
     List<Unit> tempTargets = new List<Unit>();
-    protected List<Unit> getAttackTarget()
+    public List<Unit> GetAttackTarget()
     {
         tempTargets.Clear();
         if (SkillData.UseEventTarget)
@@ -811,7 +811,11 @@ public class Skill
     public void BreakCast()
     {
         Targets.Clear();
-        if (Unit.AttackingSkill == this) Unit.AttackingSkill = null;
+        if (Unit.AttackingSkill == this)
+        {
+            Unit.AttackingSkill = null;
+            Unit.AttackingAction.Finish();
+        }
         Unit.UnitModel?.BreakAnimation();
         Casting.Finish();
         Bursting.Finish();

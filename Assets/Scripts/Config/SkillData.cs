@@ -58,6 +58,7 @@ public class SkillData : IConfig
       public int[] Buffs;
       public float[] BuffData;
       public float? BuffLastTime;
+      public bool BuffRely;
       public System.Collections.Generic.Dictionary<string,object> Data;
       public int? ReadyEffect;
       public int? StartEffect;

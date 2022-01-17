@@ -142,13 +142,27 @@ public class Battle
         {
             var wave = Waves[0];
             Waves.RemoveAt(0);
-            var enemy = CreateEnemy(wave);
-            TriggerDatas.Push(new TriggerData()
+            if (wave.UnitId == null)
             {
-                Target = enemy,
-            });
-            Trigger(TriggerEnum.入场);
-            TriggerDatas.Pop();
+                var PathPoints = PathManager.Instance.GetPath(wave.Path);
+                List<Vector3> p = new List<Vector3>();
+                for (int i = 0; i < PathPoints.Count - 1; i++)
+                {
+                    var p1 = Map.FindPath(PathPoints[i].Pos, PathPoints[i + 1].Pos, PathPoints[i].DirectMove);
+                    p.AddRange(p1);
+                }
+                TrailManager.Instance.ShowPath(p);
+            }
+            else
+            {
+                var enemy = CreateEnemy(wave);
+                TriggerDatas.Push(new TriggerData()
+                {
+                    Target = enemy,
+                });
+                Trigger(TriggerEnum.入场);
+                TriggerDatas.Pop();
+            }
         }
 
         foreach (var tile in Map.Tiles)

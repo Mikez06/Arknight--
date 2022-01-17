@@ -209,6 +209,10 @@ public class Unit
             SetStatus(StateEnum.Idle);
         }
         if (IfHideAnti || IfStoped()) IfHide = false;
+        foreach (var buff in Buffs.Reverse<Buff>())//计算完单位属性后，有些buff要更新显示状态
+        {
+            buff.UpdateView();
+        }
     }
     public virtual void UpdateAction()
     {
@@ -637,7 +641,7 @@ public class Unit
 
     public void BreakAllCast()
     {
-        AttackingAction.Finish();
+        //AttackingAction.Finish();
         foreach (var skill in Skills)
         {
             skill.BreakCast();

@@ -14,7 +14,6 @@ public class Effect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (PS != null && PS.isStopped)
         {
             EffectManager.Instance.ReturnEffect(this);

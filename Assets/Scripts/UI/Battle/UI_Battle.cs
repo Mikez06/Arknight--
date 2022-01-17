@@ -37,6 +37,8 @@ namespace BattleUI
             worldUI = ResHelper.Instantiate("Assets/Bundles/Other/UIPanel");
             GameObject.DontDestroyOnLoad(worldUI);
             dragPanel = worldUI.GetComponent<UIPanel>().ui as UI_DragPanel;
+            dragPanel.AddRelation(GRoot.inst, RelationType.Size);
+            dragPanel.SetSize(GRoot.inst.size.x, GRoot.inst.size.y);
             dragPanel.visible = false;
             dragPanel.displayObject.cachedTransform.localPosition = new Vector3(-dragPanel.size.x / 2, dragPanel.size.y / 2, -50);
             dragPanel.Parent = this;

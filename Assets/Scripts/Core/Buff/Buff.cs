@@ -19,6 +19,9 @@ public class Buff
 
     public Effect LastingEffect;
 
+    public Buff RelayBuff;
+    public bool Dead;
+
     public virtual void Init()
     {
         updateLastTime();
@@ -41,7 +44,12 @@ public class Buff
         updateLastTime();
         if (BuffData.Upgrade != null)
         {
-            Finish();
+            if (LastingEffect != null)
+            {
+                EffectManager.Instance.ReturnEffect(LastingEffect);
+                LastingEffect = null;
+            }
+            //Finish();
             //Unit.RemoveBuff(this);
             Unit.AddBuff(BuffData.Upgrade.Value, this.Skill);
         }
@@ -63,6 +71,20 @@ public class Buff
 
     public virtual void Update()
     {
+        if (Skill.SkillData.BuffRely)//单位离开技能范围，或施法者死亡时，buff自动消失
+        {
+            if (!Skill.Unit.Alive() || !Skill.GetAttackTarget().Contains(Unit) || (Skill.SkillData.OpenTime > 0 && Skill.Opening.Finished()))
+            {
+                Finish();
+            }
+        }
+
+        if (BuffData.RelyBuff != null)
+        {
+            if (RelayBuff == null) RelayBuff = Unit.Buffs.FirstOrDefault(x => x.Id == BuffData.RelyBuff.Value);
+            if (RelayBuff == null || RelayBuff.Dead) Finish();
+        }
+
         if (BuffData.Resist)
         {
             Duration.Update(SystemConfig.DeltaTime / Unit.Resist);
@@ -75,8 +97,14 @@ public class Buff
         }
     }
 
+    public virtual void UpdateView()
+    {
+
+    }
+
     public virtual void Finish()
     {
+        Dead = true;
         Unit.RemoveBuff(this);
         if (LastingEffect != null)
         {

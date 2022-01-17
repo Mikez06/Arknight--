@@ -188,6 +188,7 @@ namespace Units
 
         public void LeaveMap(bool recoverPower = false)
         {
+            IfAlive = false;
             UnitModel.gameObject.SetActive(false);
             BattleUI.UI_Battle.Instance.ReturnUIUnit(this);
             State = StateEnum.Default;

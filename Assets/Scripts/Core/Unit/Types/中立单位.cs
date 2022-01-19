@@ -30,7 +30,7 @@ namespace Units
         {
             base.Init();
             if (UnitData.MainSkill != null)
-                MainSkill = LearnSkill(UnitData.MainSkill[0]);
+                MainSkill = LearnSkill(UnitData.MainSkill[0], null);
             BattleUI.UI_Battle.Instance.CreateUIUnit(this);
             Agi = 100;
         }

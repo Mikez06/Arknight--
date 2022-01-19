@@ -100,6 +100,7 @@ public class Unit
     /// </summary>
     public CountDown AttackingAction = new CountDown();
 
+    public Skill FirstSkill;
     public Skill AttackingSkill;
 
     /// <summary>
@@ -126,9 +127,11 @@ public class Unit
     {
         baseAttributeInit();
         if (UnitData.Skills != null)
-            foreach (var skillId in UnitData.Skills)
+            for (int i = 0; i < UnitData.Skills.Length; i++)
             {
-                LearnSkill(skillId);
+                int skillId = UnitData.Skills[i];
+                var skill= LearnSkill(skillId);
+                if (i == 0) FirstSkill = skill;
             }
         CreateModel();
         Refresh();
@@ -362,7 +365,7 @@ public class Unit
         }
     }
 
-    public Skill LearnSkill(int skillId)
+    public Skill LearnSkill(int skillId, Skill parent = null)
     {
         var s = Skills.Find(x => x.Id == skillId);
         if (s != null) return s;
@@ -371,6 +374,7 @@ public class Unit
         skill.Unit = this;
         skill.Id = skillId;
         skill.Init();
+        if (parent != null) skill.Parent = parent;
         if (Skills.Count > 0 && skillId < Skills.Last().Id)
         {
             for (int i = 0; i < Skills.Count; i++)
@@ -387,12 +391,12 @@ public class Unit
         if (skillConfig.Skills != null)
             foreach (var id in skillConfig.Skills)
             {
-                LearnSkill(id);
+                LearnSkill(id, skill);
             }
         if (skillConfig.ExSkills != null)
             foreach (var id in skillConfig.ExSkills)
             {
-                LearnSkill(id);
+                LearnSkill(id, skill);
             }
         return skill;
     }
@@ -564,11 +568,11 @@ public class Unit
         UnitModel.Init(this);
     }
 
-    public void Heal(DamageInfo heal)
+    public void Heal(DamageInfo heal,bool ifShowHeal)
     {
         heal.FinalDamage = heal.Attack * heal.DamageRate;
-        Hp += heal.Attack;
-        UnitModel.ShowHeal(heal);
+        Hp += heal.FinalDamage;
+        if (ifShowHeal) UnitModel.ShowHeal(heal);
         if (Hp > MaxHp)
             Hp = MaxHp;
     }

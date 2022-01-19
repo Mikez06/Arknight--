@@ -9,6 +9,8 @@ public class Skill
 {
     public Unit Unit;
 
+    public Skill Parent;
+
     public List<Modify> Modifies = new List<Modify>();
 
     public List<Unit> Targets = new List<Unit>();
@@ -78,6 +80,14 @@ public class Skill
         MaxPowerBase = SkillData.MaxPower;
         PowerCount = SkillData.PowerCount;
         Reset();
+    }
+
+    public Skill GetFinalParent()
+    {
+        var result = this;
+        while (result.Parent != null)
+            result = result.Parent;
+        return result;
     }
 
     public virtual void Reset()
@@ -150,7 +160,7 @@ public class Skill
 
     public bool Useable()
     {
-        if (this == Unit.Skills[0] && !Unit.CanAttack)
+        if (GetFinalParent() == Unit.FirstSkill && !Unit.CanAttack)
         {
             //Debug.Log($"{Unit.UnitData.Id} 因为缴械无法使用{SkillData.Id}");
             return false;
@@ -285,7 +295,7 @@ public class Skill
     {
         //TODO 读Unit的攻击间隔变化
         var cooldown = (SkillData.Cooldown == 0 && SkillData.AttackMode == AttackModeEnum.跟随攻击 ? Unit.AttackGap : SkillData.Cooldown) * attackSpeed;
-        //Debug.Log(SkillData.Id + "cooldown:" + cooldown);
+        Debug.Log(SkillData.Id + "cooldown:" + cooldown);
         //if (cooldown < 0.1f) cooldown = 0.1f;
         Cooldown.Set(cooldown);
     }
@@ -377,7 +387,7 @@ public class Skill
 
         //走到这里技能就真的用出来了
         UseCount++;
-        //Debug.Log(Unit.UnitData.Id + "的" + SkillData.Id + "使用次数:" + UseCount);
+        Debug.Log(Unit.UnitData.Id + "的" + SkillData.Id + "使用次数:" + UseCount);
         if (SkillData.ReadyType == SkillReadyEnum.充能释放)
         {
             Power -= MaxPower;
@@ -544,7 +554,7 @@ public class Skill
                         ps.Play();
                     }
                     t.Damage(GetDamageInfo(target, t != target));
-                    OnBeAttack(target);
+                    if (!SkillData.IfHeal) OnBeAttack(target);
                 }
             }
             else
@@ -557,13 +567,13 @@ public class Skill
                 }
                 if (SkillData.IfHeal)
                 {
-                    target.Heal(GetDamageInfo(target));
+                    target.Heal(GetDamageInfo(target), !SkillData.DamageWithFrameRate);
                 }
                 else
                 {
                     target.Damage(GetDamageInfo(target));
                 }
-                OnBeAttack(target);
+                if (!SkillData.IfHeal) OnBeAttack(target);
             }
         }
         addBuff(target);
@@ -674,7 +684,7 @@ public class Skill
                 result = -unit.Height;
                 break;
             case AttackTargetOrder2Enum.远程:
-                result = unit.Skills.Count == 0 ? 0 : -unit.Skills[0].SkillData.AttackRange;
+                result = unit.Skills.Count == 0 ? 0 : -unit.FirstSkill.SkillData.AttackRange;
                 Debug.Log($"{unit.UnitData.Id} , {result}");
                 break;
             case AttackTargetOrder2Enum.Buff:
@@ -825,6 +835,10 @@ public class Skill
     protected virtual void OnOpenEnd()
     {
         Unit.OverWriteAnimation = null;
+        if (SkillData.UpgradeSkill != null)
+        {
+            DoUpgrade(SkillData.UpgradeSkill.Value);
+        }
     }
 
     protected virtual void OnAttack(Unit target)
@@ -866,7 +880,7 @@ public class Skill
             Target = target,
             AllCount = tempTargets.Count,
             Source = this,
-            DamageRate = IfAOE ? SkillData.AreaDamage : SkillData.DamageRate,
+            DamageRate = (IfAOE ? SkillData.AreaDamage : SkillData.DamageRate) * (SkillData.DamageWithFrameRate ? SystemConfig.DeltaTime : 1),
             DamageType = SkillData.DamageType,
         };
         switch (SkillData.DamageBase)
@@ -897,6 +911,33 @@ public class Skill
             }
         }
         return result;
+    }
+
+    protected void DoUpgrade(int skillId)
+    {
+        Id = skillId;
+        Modifies.Clear();
+        if (SkillData.Modifys != null)
+        {
+            for (int i = 0; i < SkillData.Modifys.Length; i++)
+            {
+                Modifies.Add(ModifyManager.Instance.Get(SkillData.Modifys[i]));
+            }
+        }
+        else
+        {
+
+        }
+
+        if (SkillData.AttackPoints != null)
+        {
+            AttackPoints = new List<Vector2Int>();
+            UpdateAttackPoints();
+        }
+
+        MaxPowerBase = SkillData.MaxPower;
+        PowerCount = SkillData.PowerCount;
+        Reset();
     }
 }
 

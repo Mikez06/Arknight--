@@ -137,7 +137,7 @@ public class BattleCamera : MonoBehaviour
         }
         Tiles.Clear();
         var targetUnit = FocusUnit == null ? BuildUnit : FocusUnit;
-        bool ifHeal = targetUnit.Skills[0].SkillData.IfHeal;
+        bool ifHeal = targetUnit.FirstSkill.SkillData.IfHeal;
         foreach (var tile in targetUnit.GetNowAttackSkill().AttackPoints)
         {
             var tileAsset = ResHelper.GetAsset<GameObject>(PathHelper.OtherPath + "HighLight").GetComponent<MapTile>();

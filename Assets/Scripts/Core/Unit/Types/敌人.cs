@@ -158,6 +158,7 @@ namespace Units
                 Visiable = true;
                 UnitModel?.gameObject.SetActive(true);
                 Refresh();
+                findNewPath();
             }
         }
 
@@ -171,6 +172,10 @@ namespace Units
                 return;
             }
             CheckArrive();
+            if (TempPath == null || NeedResetPath)//无路径或因为外力走出了预定路线，重寻路
+            {
+                findNewPath();
+            }
             if (Unbalance || !Visiable) return;//失衡状态下不许主动移动
             if (StopUnit != null)
             {
@@ -182,10 +187,6 @@ namespace Units
             }
             AnimationName = UnitData.MoveAnimation;
             AnimationSpeed = 1;
-            if (TempPath == null || NeedResetPath)//无路径或因为外力走出了预定路线，重寻路
-            {
-                findNewPath();
-            }
 
             var delta = TempTarget - Position;
             if (delta != Vector3.zero) Direction = new Vector2(delta.x, delta.z);

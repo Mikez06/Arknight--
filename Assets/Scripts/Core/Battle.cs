@@ -63,7 +63,7 @@ public class Battle
             if (skills!=null)
             foreach (var skillId in skills)
             {
-                    RuleUnit.LearnSkill(skillId);
+                    RuleUnit.LearnSkill(skillId, null);
             }
         }
 
@@ -93,7 +93,7 @@ public class Battle
                 if (skills != null)
                     foreach (var skillId in skills)
                     {
-                        RuleUnit.LearnSkill(skillId);
+                        RuleUnit.LearnSkill(skillId, null);
                     }
             }
             BuildCount = battleConfig.Dungeon.MaxBuildCount;

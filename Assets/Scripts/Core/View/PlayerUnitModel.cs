@@ -25,6 +25,11 @@ public class PlayerUnitModel : SpineModel
         if (angle < 0) angle += 360;
         bool backward = angle > 45 && angle < 135;//在这个角度下，显示干员背面
         if (Unit.State == StateEnum.Die || Unit.AnimationName == Unit.UnitData.StunAnimation) backward = false;//死亡和眩晕时，只有正面有动画
+        var ani = Unit.AnimationName.Length > 1 ? Unit.AnimationName[1] : Unit.AnimationName[0];
+        if (Unit.UnitData.ForwardAnimation != null && Unit.UnitData.ForwardAnimation.Contains(ani)) //有些动画会将单位强制设置为正面
+        {
+            backward = false;
+        }
         if (backward == forward) //需要变换正背面
         {
             forward = !forward;

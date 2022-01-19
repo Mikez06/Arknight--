@@ -30,6 +30,7 @@ public class SkillData : IConfig
       public DamageTypeEnum DamageType;
       public bool IfHeal;
       public float DamageRate;
+      public bool DamageWithFrameRate;
       public int DamageBase;
       public int DamageCount;
       public int BurstCount;
@@ -41,6 +42,7 @@ public class SkillData : IConfig
       public int CostCount;
       public int[] Skills;
       public int[] ExSkills;
+      public int? UpgradeSkill;
       public float Cooldown;
       public float OpenTime;
       public float StartPower;

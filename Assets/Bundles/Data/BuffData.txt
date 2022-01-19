@@ -55,3 +55,9 @@
 {"Id":"m3协同标记","Type":"打断攻击"}
 {"Id":"m3融毁加攻","Type":"m3融毁加攻"}
 {"Id":"凯尔希背刺标记","Type":"普通Buff"}
+{"Id":"棘刺毒素","Type":"中毒","LastTime":3,"Data":{"Damage":155,"FarAttackUnitRate":2}}
+{"Id":"棘刺禁用回血","Type":"普通Buff"}
+{"Id":"棘刺反击标记","Type":"缴械"}
+{"Id":"棘刺反击Buff","Type":"数值变化","Data":{"t":["AttackRate","DefenceRate"]}}
+{"Id":"之高之术buff","Type":"数值变化","Data":{"t":["AttackRate","AgiAdd"]}}
+{"Id":"之高之术buff2","Type":"数值变化","Data":{"t":["AttackRate","AgiAdd"]}}

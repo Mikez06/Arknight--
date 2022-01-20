@@ -298,11 +298,27 @@ namespace BattleUI
             m_state.SetSelectedIndex(0);
         }
 
+        Queue<(int, int, Vector2)> textQueue = new Queue<(int, int, Vector2)>();       
+
         public void ShowDamageText(DamageInfo damage, int type,Vector2 pos)
         {
             int showDamage = Mathf.RoundToInt(Mathf.Abs(damage.FinalDamage));
             if (showDamage == 0) return;
-            ShowDamageText(showDamage.ToString(), type, pos);
+            textQueue.Enqueue((showDamage, type, pos));
+            DoShowText();
+            //ShowDamageText(showDamage.ToString(), type, pos);
+        }
+
+        async void DoShowText()
+        {
+            if (textQueue.Count > 1) return;
+            while (textQueue.Count > 0)
+            {
+                var target = textQueue.Peek();
+                ShowDamageText(target.Item1.ToString(), target.Item2, target.Item3);
+                await TimeHelper.Instance.WaitAsync(0.1f);
+                textQueue.Dequeue();
+            }
         }
 
         public void ShowDamageText(string text,int type,Vector2 pos)

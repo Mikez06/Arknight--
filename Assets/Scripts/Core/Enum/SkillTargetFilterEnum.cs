@@ -8,6 +8,7 @@ public enum SkillTargetFilterEnum
 {
     无,
     仅自己,
+    自己以外,
     召唤物,
     仅召唤,
 }

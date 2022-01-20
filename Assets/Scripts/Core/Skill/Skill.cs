@@ -92,6 +92,7 @@ public class Skill
 
     public virtual void Reset()
     {
+        UseCount = 0;
         Power = SkillData.StartPower;
         BreakCast();
         Cooldown.Finish();
@@ -185,6 +186,9 @@ public class Skill
             case SkillTargetFilterEnum.仅自己:
                 if (target != Unit) return false;
                 break;
+            case SkillTargetFilterEnum.自己以外:
+                if (target == Unit) return false;
+                break;
             case SkillTargetFilterEnum.召唤物:
                 if (target != Unit && !(Unit as Units.干员).Children.Contains(target)) return false;
                 break;
@@ -192,12 +196,20 @@ public class Skill
                 if (!(Unit as Units.干员).Children.Contains(target)) return false;
                 break;
         }
-        if (SkillData.UnitLimit != null && !SkillData.UnitLimit.Contains(target.Id)) return false; 
+        if (SkillData.UnitLimit != null && !SkillData.UnitLimit.Contains(target.Id)) return false;
         if ((SkillData.TargetTeam >> target.Team) % 2 == 0) return false;
         if (SkillData.ProfessionLimit != UnitTypeEnum.无 && SkillData.ProfessionLimit != target.UnitData.Profession) return false;
         if (!SkillData.AttackFly && target.Height > 0) return false;
         if (!target.Alive()) return false;
         if (!SkillData.AntiHide && target.IfHide) return false;
+        if (SkillData.TargetDisableBuff != null)
+        {
+            if (SkillData.TargetDisableBuff.Any(x => target.Buffs.Any(y => y.Id == x))) return false;
+        }
+        if (SkillData.TargetEnableBuff != null)
+        {
+            if (SkillData.TargetEnableBuff.All(x => target.Buffs.Any(y => y.Id == x))) return false;
+        }
         return true;
     }
 
@@ -230,6 +242,7 @@ public class Skill
         if (Unit.IfStun)
             return false;
         if (SkillData.UseType == SkillUseTypeEnum.被动) return false;
+        if (SkillData.MaxUseCount != 0 && UseCount >= SkillData.MaxUseCount) return false;
         switch (SkillData.ReadyType)
         {
             case SkillReadyEnum.特技激活:
@@ -262,8 +275,8 @@ public class Skill
 
         if (SkillData.UseType == SkillUseTypeEnum.手动) //手动技能在技能开启时可以使用
             return !Opening.Finished();
-        //自动充能技在有充能时才能使用
-        if (SkillData.MaxPower > 0 && SkillData.UseType == SkillUseTypeEnum.自动 && Power < MaxPower) return false;
+        //自动充能技在有充能时才能使用,另外要和自动开启技能区分开
+        if (SkillData.MaxPower > 0 && SkillData.UseType == SkillUseTypeEnum.自动 && Power < MaxPower &&!SkillData.AutoUse) return false;
         //不管什么技能 都要遵循技能CD
         return Cooldown.Finished();
     }
@@ -363,6 +376,8 @@ public class Skill
     /// </summary>
     public virtual void Start()
     {
+        if (SkillData.MaxUseCount != 0 && UseCount >= SkillData.MaxUseCount) return;//使用次数需要再判断一次，因为被动技能不会走ready的逻辑
+
         if (!Useable()) return;
         if (Targets.Count == 0)
         {
@@ -383,11 +398,10 @@ public class Skill
         {
             return;
         }
-        if (SkillData.MaxUseCount != 0 && UseCount >= SkillData.MaxUseCount) return;//使用次数不在ready里判断，因为被动技能不会走ready的逻辑
 
         //走到这里技能就真的用出来了
         UseCount++;
-        Debug.Log(Unit.UnitData.Id + "的" + SkillData.Id + "使用次数:" + UseCount);
+        //Debug.Log(Unit.UnitData.Id + "的" + SkillData.Id + "使用次数:" + UseCount);
         if (SkillData.ReadyType == SkillReadyEnum.充能释放)
         {
             Power -= MaxPower;

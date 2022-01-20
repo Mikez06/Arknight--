@@ -12,7 +12,7 @@ namespace Bullets
             if (Target.Alive())
                 TargetPos = Target.UnitModel.GetPoint(Target.UnitData.HitPointName);
             moveHeight = BulletData.Data.GetFloat("MoveHeight");
-            Debug.Log("高度:" + moveHeight);
+            //Debug.Log("高度:" + moveHeight);
             if (moveHeight == 0) Direction = TargetPos - this.Position;
         }
         public override void Update()

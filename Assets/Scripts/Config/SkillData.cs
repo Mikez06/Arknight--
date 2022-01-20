@@ -11,6 +11,8 @@ public class SkillData : IConfig
       public int MaxUseCount;
       public int[] EnableBuff;
       public int[] DisableBuff;
+      public int[] TargetEnableBuff;
+      public int[] TargetDisableBuff;
       public bool AutoUse;
       public bool NoTargetAlsoUse;
       public bool RegetTarget;

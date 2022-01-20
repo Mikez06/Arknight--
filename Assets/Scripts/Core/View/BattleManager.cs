@@ -25,13 +25,19 @@ public class BattleManager : MonoBehaviour
 
     public Battle Battle;
 
-    public float startTime;
+    public bool Pause;
+
+    public float ExcuteTime;
+
+
     private void Update()
     {
         if (Battle != null)
         {
-            int frame = Mathf.FloorToInt((Time.time - startTime - Battle.Tick * SystemConfig.DeltaTime) / SystemConfig.DeltaTime);
-            for (int i = 0; i < frame; i++)
+            if (Pause) return;
+            ExcuteTime += Time.deltaTime;
+            int frame = Mathf.FloorToInt(ExcuteTime / SystemConfig.DeltaTime);
+            for (int i = 0; i < frame - Battle.Tick; i++)
             {
                 Battle.Update();
             }
@@ -51,7 +57,7 @@ public class BattleManager : MonoBehaviour
         Battle = new Battle();
         Battle.Init(battleConfig);
         battleUI.SetBattle(Battle);
-        startTime = Time.time;
+        ExcuteTime = 0;
         await battleTcs.Task;
         Debug.Log("ExitBattleScene");
         //Battle = null;

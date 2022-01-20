@@ -33,6 +33,8 @@ namespace BattleUI
             m_CancelGiveUp.onClick.Add(cancelGiveup);
             m_GiveUpBack.onClick.Add(cancelGiveup);
             m_GiveUp.onClick.Add(doGiveUp);
+            m_GameSpeed.onClick.Add(() => TimeHelper.Instance.SetFastSpeed(!TimeHelper.Instance.FastSpeed));
+            m_Pause.onClick.Add(() => TimeHelper.Instance.SetPause(!TimeHelper.Instance.Pause));
 
             worldUI = ResHelper.Instantiate("Assets/Bundles/Other/UIPanel");
             GameObject.DontDestroyOnLoad(worldUI);
@@ -50,6 +52,8 @@ namespace BattleUI
             base.OnUpdate();
             if (Battle != null)
             {
+                m_GameSpeed.m_Speed.selectedIndex = TimeHelper.Instance.FastSpeed ? 1 : 0;
+                m_Pause.m_Speed.selectedIndex = TimeHelper.Instance.Pause ? 1 : 0;
                 m_enemy.text = Battle.EnemyCount.ToString();
                 m_hp.text = Battle.Hp.ToString();
                 m_cost.text = Battle.Cost.ToString();
@@ -270,7 +274,7 @@ namespace BattleUI
         void TryGiveup()
         {
             m_state.selectedIndex = 6;
-            TimeHelper.Instance.SetGameSpeed(0f);
+            TimeHelper.Instance.SetPause(true);
             BattleCamera.Instance.BuildMode = false;
             if (selectedUnit != null)
             {
@@ -283,6 +287,7 @@ namespace BattleUI
 
         void cancelGiveup()
         {
+            TimeHelper.Instance.SetPause(false);
             m_state.selectedIndex = 0;
         }
 
@@ -290,6 +295,8 @@ namespace BattleUI
         {
             BattleManager.Instance.Battle.GiveUp();
             TimeHelper.Instance.SetGameSpeed(1f);
+            TimeHelper.Instance.SetFastSpeed(false);
+            TimeHelper.Instance.SetPause(false);
             //BattleManager.Instance.FinishBattle();
         }
 

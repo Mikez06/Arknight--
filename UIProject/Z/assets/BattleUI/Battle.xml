@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080" opaque="false">
-  <controller name="state" pages="0,,1,,8,,9,,10,,11,,12," selected="1">
+  <controller name="state" pages="0,,1,,8,,9,,10,,11,,12," selected="0">
     <remark page="0" value="正常"/>
     <remark page="1" value="放置单位"/>
     <remark page="2" value="放置单位_选择位置"/>
@@ -39,6 +39,8 @@
     <group id="n55_tku9" name="youxia" xy="1602,747" size="307,123" group="n42_kbte" advanced="true">
       <relation target="" sidePair="right-right"/>
     </group>
+    <component id="n71_rkte" name="GameSpeed" src="rkte51" fileName="FastSpeed.xml" xy="1572,33" group="n42_kbte"/>
+    <component id="n73_rkte" name="Pause" src="rkte52" fileName="Pause.xml" xy="1742,34" group="n42_kbte"/>
     <group id="n42_kbte" name="normalGroup" xy="-1,0" size="1921,1080" advanced="true">
       <gearDisplay controller="state" pages="0,1,8,9,10,12"/>
     </group>

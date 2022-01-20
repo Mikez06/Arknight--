@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="160,75">
+  <controller name="Speed" pages="0,,1," selected="0">
+    <remark page="0" value="1x"/>
+    <remark page="1" value="2x"/>
+  </controller>
+  <displayList>
+    <graph id="n71_rkte" name="n71" xy="0,0" size="160,75" type="rect"/>
+    <text id="n72_rkte" name="n72" xy="80,37" pivot="0.5,0.5" anchor="true" size="58,65" fontSize="49" align="center" text="x1">
+      <gearText controller="Speed" pages="1" values="x2" default="x1"/>
+    </text>
+  </displayList>
+</component>

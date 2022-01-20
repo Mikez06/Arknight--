@@ -30,12 +30,14 @@ public class TimeHelper : MonoBehaviour
 
     List<Timer> timers = new List<Timer>();
 
-    float fixedDeltaTime;
+    public float TimeScale;
+    public bool FastSpeed;
+    public bool Pause;
     
     private void Awake()
     {
         instance = this;
-        fixedDeltaTime = Time.fixedDeltaTime;
+        TimeScale = Time.timeScale;
     }
 
     private void Update()
@@ -49,8 +51,24 @@ public class TimeHelper : MonoBehaviour
 
     public void SetGameSpeed(float rate)
     {
-        Time.timeScale = rate;
-        Time.fixedDeltaTime = fixedDeltaTime * Time.timeScale;
+        TimeScale = rate;
+        calGameSpeed();
+    }
+
+    public void SetFastSpeed(bool bo)
+    {
+        FastSpeed = bo;
+        calGameSpeed();
+    }
+    public void SetPause(bool bo)
+    {
+        Pause = bo; 
+        calGameSpeed();
+    }
+
+    protected void calGameSpeed()
+    {
+        Time.timeScale = TimeScale * (TimeScale == 1 && FastSpeed ? 2 : 1) * (Pause ? 0 : 1);
     }
 
     public Task WaitAsync(float time, CancellationToken cancellationToken)

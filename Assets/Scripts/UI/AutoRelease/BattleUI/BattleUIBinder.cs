@@ -21,6 +21,8 @@ namespace BattleUI
             UIObjectFactory.SetPackageItemExtension(UI_MainSkillInfo.URL, typeof(UI_MainSkillInfo));
             UIObjectFactory.SetPackageItemExtension(UI_PingJiaXingXing.URL, typeof(UI_PingJiaXingXing));
             UIObjectFactory.SetPackageItemExtension(UI_DamageInfo.URL, typeof(UI_DamageInfo));
+            UIObjectFactory.SetPackageItemExtension(UI_FastSpeed.URL, typeof(UI_FastSpeed));
+            UIObjectFactory.SetPackageItemExtension(UI_Pause.URL, typeof(UI_Pause));
             UIObjectFactory.SetPackageItemExtension(UI_DragPanel.URL, typeof(UI_DragPanel));
             UIObjectFactory.SetPackageItemExtension(UI_Pic.URL, typeof(UI_Pic));
         }

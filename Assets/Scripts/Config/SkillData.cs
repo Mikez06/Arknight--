@@ -22,6 +22,7 @@ public class SkillData : IConfig
       public bool AttackFly;
       public bool UseEventTarget;
       public SkillTargetFilterEnum TargetFilter;
+      public bool DeadFind;
       public UnitTypeEnum ProfessionLimit;
       public int[] UnitLimit;
       public AttackTargetOrderEnum AttackOrder;
@@ -62,6 +63,7 @@ public class SkillData : IConfig
       public int[] Buffs;
       public float[] BuffData;
       public float? BuffLastTime;
+      public float BuffChance;
       public bool BuffRely;
       public System.Collections.Generic.Dictionary<string,object> Data;
       public int? ReadyEffect;

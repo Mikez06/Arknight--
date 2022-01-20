@@ -198,9 +198,10 @@ public class Skill
         }
         if (SkillData.UnitLimit != null && !SkillData.UnitLimit.Contains(target.Id)) return false;
         if ((SkillData.TargetTeam >> target.Team) % 2 == 0) return false;
-        if (SkillData.ProfessionLimit != UnitTypeEnum.无 && SkillData.ProfessionLimit != target.UnitData.Profession) return false;
+        if (SkillData.ProfessionLimit != UnitTypeEnum.无 && SkillData.ProfessionLimit != target.UnitData.Profession) 
+            return false;
         if (!SkillData.AttackFly && target.Height > 0) return false;
-        if (!target.Alive()) return false;
+        if (!target.Alive() && !SkillData.DeadFind) return false;
         if (!SkillData.AntiHide && target.IfHide) return false;
         if (SkillData.TargetDisableBuff != null)
         {
@@ -313,14 +314,14 @@ public class Skill
         Cooldown.Set(cooldown);
     }
 
-    public void RecoverPower(float count, bool withTip = false)
+    public void RecoverPower(float count, bool withTip = false,bool ignoreOpening=false)
     {
         if (withTip)
         {
             Unit.UnitModel.ShowPower(count);
         }
         if (PowerCount == 0) return;
-        if (!Opening.Finished())
+        if (!Opening.Finished() && !ignoreOpening)
             return;
         Power += count;
         if (Power > MaxPower * PowerCount)
@@ -597,10 +598,15 @@ public class Skill
     protected virtual void addBuff(Unit target)
     {
         if (SkillData.Buffs != null)
-            foreach (var buffId in SkillData.Buffs)
+        {
+            if (SkillData.BuffChance == 0 || Battle.Random.NextDouble() < SkillData.BuffChance)
             {
-                target.AddBuff(buffId, this);
+                foreach (var buffId in SkillData.Buffs)
+                {
+                    target.AddBuff(buffId, this);
+                }
             }
+        }
     }
 
     protected virtual void removeBuff(Unit target)
@@ -635,12 +641,12 @@ public class Skill
         {
             if (AttackPoints == null&&!SkillData.AttackAreaWithMain)//根据攻击范围进行索敌
             {
-                tempTargets.AddRange(Battle.FindAll(Unit.Position2, SkillData.AttackRange * Unit.AttackRange, SkillData.TargetTeam));
+                tempTargets.AddRange(Battle.FindAll(Unit.Position2, SkillData.AttackRange * Unit.AttackRange, SkillData.TargetTeam,!SkillData.DeadFind));
             }
             else
             {
                 var attackPoints = SkillData.AttackAreaWithMain ?Unit.GetNowAttackSkill().AttackPoints : AttackPoints;
-                tempTargets.AddRange(Battle.FindAll(attackPoints, SkillData.TargetTeam));
+                tempTargets.AddRange(Battle.FindAll(attackPoints, SkillData.TargetTeam, !SkillData.DeadFind));
             }
         }
         orderTargets(tempTargets);

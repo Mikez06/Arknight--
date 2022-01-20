@@ -1,5 +1,5 @@
-{"Map":"1-1","UnitId":3,"Delay":0,"Path":"P0","OffetsetY":0.2}
-{"Map":"1-1","UnitId":3,"Delay":0,"Path":"P0","OffetsetY":-0.2}
+{"Map":"1-1","UnitId":2,"Delay":0,"Path":"P0","OffetsetY":0.2}
+{"Map":"1-1","UnitId":2,"Delay":0,"Path":"P0","OffetsetY":-0.2}
 {"Map":"1-1","UnitId":2,"Delay":10,"Path":"P0","OffetsetY":0.12}
 {"Map":"1-2","Delay":1,"Path":"P0"}
 {"Map":"1-2","Delay":1,"Path":"P1"}

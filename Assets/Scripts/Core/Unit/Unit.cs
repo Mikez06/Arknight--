@@ -265,7 +265,7 @@ public class Unit
         {
             Target = this,
         });
-        Trigger(TriggerEnum.死亡);
+        Battle.Trigger(TriggerEnum.死亡);
         Battle.TriggerDatas.Pop();
     }
 

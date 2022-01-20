@@ -329,7 +329,7 @@ public class Battle
         return result;
     }
 
-    public HashSet<Unit> FindAll(List<Vector2Int> points, int team)
+    public HashSet<Unit> FindAll(List<Vector2Int> points, int team, bool aliveOnly = true)
     {
         var result = new HashSet<Unit>();
         foreach (var point in points)
@@ -340,7 +340,7 @@ public class Battle
                 var target = Map.Tiles[targetPoint.x, targetPoint.y].Unit;
                 if (target != null)
                 {
-                    if (target.Alive())
+                    if (!aliveOnly || target.Alive())
                         result.Add(target);
                 }
             }
@@ -348,7 +348,7 @@ public class Battle
             {
                 foreach (var unit in UnitMap[targetPoint.x, targetPoint.y])
                 {
-                    if (unit.Alive())
+                    if (!aliveOnly || unit.Alive())
                         result.Add(unit);
                 }
             }
@@ -356,23 +356,26 @@ public class Battle
         return result;
     }
 
-    public HashSet<Unit> FindAll(Vector2 pos, float radius, int team)
+    public HashSet<Unit> FindAll(Vector2 pos, float radius, int team, bool aliveOnly = true)
     {
         HashSet<Unit> result = new HashSet<Unit>();
         if (team%2 == 1)
         {
-            var units = PlayerUnits.Where(x => x.InputTime >= 0 && x.Alive()).ToList();
+            var units = PlayerUnits.Where(x => x.InputTime >= 0).ToList();
             foreach (var unit in units) //需要优化！
             {
                 if ((unit.Position2 - pos).magnitude < radius + unit.UnitData.Radius
-                    ) result.Add(unit);
+                    ) if (!aliveOnly || unit.Alive())
+                        result.Add(unit);
             }
         }
         else if ((team >> 1) % 2 == 1)
         {
             foreach (var unit in Enemys) //需要优化！
             {
-                if ((unit.Position2 - pos).magnitude < radius + unit.UnitData.Radius && unit.Alive()) result.Add(unit);
+                if ((unit.Position2 - pos).magnitude < radius + unit.UnitData.Radius) 
+                    if (!aliveOnly || unit.Alive())
+                        result.Add(unit);
             }
         }
         return result;

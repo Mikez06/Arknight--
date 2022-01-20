@@ -8,10 +8,10 @@ namespace Skills
 {
     public class 获得费用 : Skill
     {
-        public override void Effect(Unit target)
+        public override void Cast()
         {
             Battle.Cost += SkillData.CostCount;
-            base.Effect(target);
+            base.Cast();
         }
     }
 }

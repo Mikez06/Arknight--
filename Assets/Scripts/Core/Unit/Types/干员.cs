@@ -89,14 +89,14 @@ namespace Units
             {
                 if (Start.Update(SystemConfig.DeltaTime))
                 {
+                    hideBase = false;
+                    SetStatus(StateEnum.Idle);
                     Battle.TriggerDatas.Push(new TriggerData()
                     {
                         Target = this,
                     });
                     Trigger(TriggerEnum.落地);
                     Battle.TriggerDatas.Pop();
-                    hideBase = false;
-                    SetStatus(StateEnum.Idle);
                 }
                 return;
             }
@@ -219,6 +219,10 @@ namespace Units
             BattleUI.UI_Battle.Instance.UpdateUnitsLayout();
             foreach (var skill in Skills)
             {
+                if (skill.StartId != -1)
+                {
+                    skill.DoUpgrade(skill.StartId);
+                }
                 skill.Reset();
             }
         }

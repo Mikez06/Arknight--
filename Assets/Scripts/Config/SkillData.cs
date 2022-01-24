@@ -40,6 +40,7 @@ public class SkillData : IConfig
       public float BurstDelay;
       public bool BurstFind;
       public float AreaRange;
+      public float AreaMainDamage;
       public float AreaDamage;
       public int PushPower;
       public int CostCount;

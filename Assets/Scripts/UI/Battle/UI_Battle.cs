@@ -323,7 +323,7 @@ namespace BattleUI
             {
                 var target = textQueue.Peek();
                 ShowDamageText(target.Item1.ToString(), target.Item2, target.Item3);
-                await TimeHelper.Instance.WaitAsync(0.1f);
+                await TimeHelper.Instance.WaitAsync(0.0f);
                 textQueue.Dequeue();
             }
         }

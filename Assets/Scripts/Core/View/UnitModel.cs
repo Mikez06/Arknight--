@@ -62,5 +62,9 @@ public class UnitModel:MonoBehaviour
     {
         BattleUI.UI_Battle.Instance.ShowDamageText(count.ToString("F0"), 3, transform.position.WorldToUI());
     }
+    public virtual void ChangeToEnd()
+    {
+
+    }
 }
 

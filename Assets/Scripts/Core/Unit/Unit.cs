@@ -122,6 +122,7 @@ public class Unit
     public string[] OverWriteIdle;
     public bool CanChangeAnimation = true;
     public float AnimationSpeed = 1;
+    public CountDown OverWriteAnimationChangeEnd = new CountDown();
 
     public virtual void Init()
     {
@@ -180,13 +181,18 @@ public class Unit
         MaxHp = ((HpBase + HpAdd) * (1 + HpRate) + HpAddFin) * (1 + HpRateFin);
         Hp = MaxHp - hpDown;
         Attack = ((AttackBase + AttackAdd) * (1 + AttackRate) + AttackAddFin) * (1 + AttackRateFin);
+        if (Attack < 0) Attack = 0;
         Defence = ((DefenceBase + DefenceAdd) * (1 + DefenceRate) + DefenceAddFin) * (1 + DefenceRateFin);
+        if (Defence < 0) Defence = 0;
         MagicDefence = ((MagicDefenceBase + MagicDefenceAdd) * (1 + MagicDefenceRate) + MagicDefenceAddFin) * (1 + MagicDefenceRateFin);
-        HpRecover = HpRecoverBase;
-        Agi = ((AgiBase + AgiAdd) * (1 + AgiRate) + AgiAddFin) * (1 + AgiRateFin);
         if (MagicDefence < 0) MagicDefence = 0;
+        HpRecover = HpRecoverBase;
+        if (HpRecover < 0) HpRecover = 0;
+        Agi = ((AgiBase + AgiAdd) * (1 + AgiRate) + AgiAddFin) * (1 + AgiRateFin);
+        if (Agi < 10f) Agi = 10f;
         Weight = WeightBase + WeightAdd;
         AttackGap = (AttackGapBase + AttackGapAdd) * (1 + AttackGapRate);
+        if (AttackGap < 0.1f) AttackGap = 0.1f;
         SkillCost = SkillCostAdd + 1;
         PowerSpeed = PowerSpeedAdd + 1;
         Resist = ResistAdd+1;
@@ -222,6 +228,10 @@ public class Unit
         //HP自动回复
         Hp += HpRecover * MaxHp * SystemConfig.DeltaTime;
         if (Hp > MaxHp) Hp = MaxHp;
+        if (OverWriteAnimationChangeEnd.Update(SystemConfig.DeltaTime))
+        {
+            UnitModel.ChangeToEnd();
+        }
     }
 
     protected void UpdateDie()

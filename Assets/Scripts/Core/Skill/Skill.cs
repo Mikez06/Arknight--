@@ -20,6 +20,8 @@ public class Skill
 
     public int Id;
 
+    public int StartId = -1;//升级前id
+
     public List<Vector2Int> AttackPoints;
 
 
@@ -316,13 +318,13 @@ public class Skill
 
     public void RecoverPower(float count, bool withTip = false,bool ignoreOpening=false)
     {
+        if (PowerCount == 0) return;
+        if (!Opening.Finished() && !ignoreOpening)
+            return;
         if (withTip)
         {
             Unit.UnitModel.ShowPower(count);
         }
-        if (PowerCount == 0) return;
-        if (!Opening.Finished() && !ignoreOpening)
-            return;
         Power += count;
         if (Power > MaxPower * PowerCount)
         {
@@ -361,6 +363,10 @@ public class Skill
             Start();
         }
         Unit.OverWriteAnimation = SkillData.OverwriteAnimation;
+        if (SkillData.OverwriteAnimation != null && SkillData.OverwriteAnimation.Length > 1)
+        {
+            Unit.OverWriteAnimationChangeEnd.Set(Opening.value - Unit.UnitModel.GetAnimationDuration(SkillData.OverwriteAnimation[2]));
+        }
         OnSkillOpen();
     }
 
@@ -435,8 +441,11 @@ public class Skill
             Unit.AnimationName = SkillData.ModelAnimation;
             Unit.AttackingSkill = this;
             //Debug.Log(SkillData.ModelAnimation);
-            Unit.UnitModel?.BreakAnimation();
-            Unit.AnimationSpeed = 1 / attackSpeed * (beginDuration + fullDuration) / fullDuration;
+            if (SkillData.OverwriteAnimation == null)
+            {
+                Unit.UnitModel?.BreakAnimation();//防止覆盖动画被打断
+                Unit.AnimationSpeed = 1 / attackSpeed * (beginDuration + fullDuration) / fullDuration;
+            }
             duration = (duration + beginDuration) * fullDuration / (beginDuration + fullDuration);
             Casting.Set(duration);
             Debug.Log(Unit.UnitData.Id + "的" + SkillData.Id + "AttackStart,pointDelay:" + duration + ",fullDuration" + fullDuration + ",beginDuration" + beginDuration + ",Time:" + Time.time);
@@ -562,18 +571,20 @@ public class Skill
                 var targets = Battle.FindAll(target.Position2, SkillData.AreaRange, SkillData.TargetTeam);
                 foreach (var t in targets)
                 {
+                    addBuff(target);
                     if (SkillData.EffectEffect != null)
                     {
                         var ps = EffectManager.Instance.GetEffect(SkillData.EffectEffect.Value);
                         ps.transform.position = target.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.EffectEffect.Value).BindPoint);
                         ps.Play();
                     }
-                    t.Damage(GetDamageInfo(target, t != target));
+                    t.Damage(GetDamageInfo(target, t == target ? SkillData.AreaMainDamage : SkillData.AreaDamage));
                     if (!SkillData.IfHeal) OnBeAttack(target);
                 }
             }
             else
             {
+                addBuff(target);
                 if (SkillData.EffectEffect != null)
                 {
                     var ps = EffectManager.Instance.GetEffect(SkillData.EffectEffect.Value);
@@ -591,7 +602,10 @@ public class Skill
                 if (!SkillData.IfHeal) OnBeAttack(target);
             }
         }
-        addBuff(target);
+        else
+        {
+            addBuff(target);
+        }
         removeBuff(target);
     }
 
@@ -894,14 +908,14 @@ public class Skill
         Battle.TriggerDatas.Pop();
     }
 
-    protected DamageInfo GetDamageInfo(Unit target, bool IfAOE = false)
+    protected DamageInfo GetDamageInfo(Unit target, float damageRate=1)
     {
         var result = new DamageInfo()
         {
             Target = target,
             AllCount = tempTargets.Count,
             Source = this,
-            DamageRate = (IfAOE ? SkillData.AreaDamage : SkillData.DamageRate) * (SkillData.DamageWithFrameRate ? SystemConfig.DeltaTime : 1),
+            DamageRate = damageRate * SkillData.DamageRate * (SkillData.DamageWithFrameRate ? SystemConfig.DeltaTime : 1),
             DamageType = SkillData.DamageType,
         };
         switch (SkillData.DamageBase)
@@ -934,8 +948,9 @@ public class Skill
         return result;
     }
 
-    protected void DoUpgrade(int skillId)
+    public void DoUpgrade(int skillId)
     {
+        if (StartId == -1) StartId = Id;
         Id = skillId;
         Modifies.Clear();
         if (SkillData.Modifys != null)

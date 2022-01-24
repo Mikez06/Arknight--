@@ -10,9 +10,12 @@ namespace Skills
     {
         public override void Hit(Unit target)
         {
+            int count0 = SkillData.Data.GetInt("PowerCount");
+            int count1 = SkillData.Data.GetInt("PowerCount2");
+            int power = count0 < count1 ? Battle.Random.Next(count0, count1) : count0;
             foreach (var skill in target.Skills)
             {
-                skill.RecoverPower(SkillData.Data.GetFloat("PowerCount"), true);
+                skill.RecoverPower(power, !SkillData.Data.GetBool("IgnoreTip"), SkillData.Data.GetBool("IgnorePrevent"));
             }
             base.Hit(target);
         }

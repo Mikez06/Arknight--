@@ -65,4 +65,7 @@
 {"Id":"之高之术buff2","Type":"数值变化","Data":{"t":["AttackRate","AgiAdd"]}}
 {"Id":"能天使祝福","Type":"数值变化","Data":{"t":["AttackRate","HpRate"]}}
 {"Id":"推王被动","Type":"数值变化","DeadRemain":1,"Data":{"t":["AttackRate","DefenceRate"]}}
+{"Id":"小火龙buff","Type":"数值变化","Data":{"t":["AttackRate","AgiAdd"]}}
 {"Id":"小火龙灼烧","Type":"中毒","Data":{"DamageBase":1,"TriggerTime":1}}
+{"Id":"羊buff","Type":"数值变化","Data":{"t":["AttackRate","AgiAdd"]}}
+{"Id":"羊火山buff","Type":"数值变化","Data":{"t":["AttackRate","AttackGapAdd"]}}

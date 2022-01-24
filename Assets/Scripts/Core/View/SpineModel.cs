@@ -73,16 +73,15 @@ public class SpineModel : UnitModel
         {
             changeAnimation(Unit.GetAnimation());
         }
-        if (Unit.AnimationSpeed != SkeletonAnimation.timeScale && !nullAnimation)
+        if (Unit.AnimationSpeed != SkeletonAnimation.timeScale)
         {
             SkeletonAnimation.timeScale = Unit.AnimationSpeed;
         }
     }
 
-    bool nullAnimation;
-
     void changeAnimation(string[] animations)
     {
+        var nowAnimation = SkeletonAnimation.AnimationName;
         if (animations == null || animations.Length == 0)//如果模型上不存在目标动画 那么就把当前动作暂停住 一般用于怪物被击晕
         {
             nowAnimations = animations;
@@ -92,7 +91,7 @@ public class SpineModel : UnitModel
         SkeletonAnimation.state.ClearTracks();
         if (animations[0].Contains("Idle"))//从其他状态返回Idle时，如果有退出动画，就播放
         {
-            if (nowAnimations.Length >= 3)
+            if (nowAnimations.Length >= 3 && nowAnimation != nowAnimations[2])
             {
                 Debug.Log($"{Unit.UnitData.Id}播放切出动画{nowAnimations[2]} ,至{animations[0]}");
                 SkeletonAnimation.state.AddAnimation(0, nowAnimations[2], false, 0);
@@ -112,6 +111,15 @@ public class SpineModel : UnitModel
         //SkeletonAnimation.state.AddAnimation(0, nextAnimation, nextAnimation == "Move"|| nextAnimation == "Idle" || nextAnimation.EndsWith("Loop"), delay);
         SkeletonAnimation.state.AddAnimation(0, nextAnimation, loop, delay);
         nowAnimations = animations;
+    }
+
+    public override void ChangeToEnd()
+    {
+        if (nowAnimations.Length >= 3)
+        {
+            SkeletonAnimation.state.ClearTracks();
+            SkeletonAnimation.state.AddAnimation(0, nowAnimations[2], false, 0);//.Complete += (x) => { Unit.OverWriteAnimation = null; };
+        }
     }
 
     public override void BreakAnimation()

@@ -62,6 +62,7 @@ public class SkillData : IConfig
       public int[] BuffRemoves;
       public int[] Buffs;
       public float[] BuffData;
+      public float[] BuffData2;
       public float? BuffLastTime;
       public float BuffChance;
       public bool BuffRely;

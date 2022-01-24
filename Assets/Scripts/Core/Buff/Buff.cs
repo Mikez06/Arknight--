@@ -9,6 +9,7 @@ public class Buff
 {
     public BuffData BuffData => Database.Instance.Get<BuffData>(Id);
     public int Id;
+    public int Index;
 
     [System.NonSerialized]
     public Unit Unit;
@@ -51,7 +52,7 @@ public class Buff
             }
             //Finish();
             //Unit.RemoveBuff(this);
-            Unit.AddBuff(BuffData.Upgrade.Value, this.Skill);
+            Unit.AddBuff(BuffData.Upgrade.Value, this.Skill, Index);
         }
         if (BuffData.IfSwitch)
         {

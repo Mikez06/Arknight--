@@ -178,6 +178,10 @@ namespace Units
             InputTime = Battle.Tick;
             Battle.Map.Tiles[GridPos.x, GridPos.y].Unit = this;
             BattleUI.UI_Battle.Instance.CreateUIUnit(this);
+            foreach (var skill in Skills)//重置非普攻类技能的基础cd
+            {
+                if (skill.SkillData.AttackMode != AttackModeEnum.跟随攻击) skill.ResetCooldown(1);
+            }
             Battle.TriggerDatas.Push(new TriggerData()
             {
                 Target = this,

@@ -11,10 +11,23 @@ namespace Buffs
     {
         float farAttackRate = 1;
         float damage;
+        float triggerTime;
+        CountDown Trigger = new CountDown();
         public override void Init()
         {
             base.Init();
-            damage = Skill.SkillData.BuffData[0];
+            switch (BuffData.Data.GetInt("DamageBase"))
+            {
+                case 0:
+                    damage = Skill.SkillData.GetBuffData(Index)[0];
+                    break;
+                case 1:
+                    damage = Skill.SkillData.GetBuffData(Index)[0] * Skill.Unit.Attack;
+                    break;
+            }
+            triggerTime = BuffData.Data.GetFloat("TriggerTime");
+            if (triggerTime < SystemConfig.DeltaTime) triggerTime = SystemConfig.DeltaTime;
+            Trigger.Set(triggerTime);
             if (Unit.FirstSkill.SkillData.AttackRange > 0)
             {
                 farAttackRate = BuffData.Data.GetFloat("FarAttackUnitRate", 1);
@@ -24,13 +37,17 @@ namespace Buffs
         public override void Update()
         {
             base.Update();
-            Unit.Damage(new DamageInfo()
+            if (Trigger.Update(SystemConfig.DeltaTime))
             {
-                Attack = damage * farAttackRate * SystemConfig.DeltaTime,
-                DamageType = DamageTypeEnum.Magic,
-                Target = Unit,
-                Source = this,
-            });
+                Unit.Damage(new DamageInfo()
+                {
+                    Attack = damage * farAttackRate * triggerTime,
+                    DamageType = DamageTypeEnum.Magic,
+                    Target = Unit,
+                    Source = this,
+                });
+                Trigger.Set(triggerTime);
+            }
         }
     }
 }

@@ -15,6 +15,7 @@
 {"Id":"抵抗变化","Type":"数值变化","Data":{"t":["ResistAdd"]}}
 {"Id":"射程变化","Type":"数值变化","Data":{"t":["AttackRangeRate"]}}
 {"Id":"攻击间隔变化","Type":"数值变化","Data":{"t":["AttackGapAdd"]}}
+{"Id":"魔防变化","Type":"数值变化","Data":{"t":["MagicDefenceAdd"]}}
 {"Id":"攻速提升2","Type":"数值变化","LastTime":5,"DeadRemain":1,"Data":{"t":["AgiAdd"]}}
 {"Id":"减速2","Type":"数值变化","LastTime":0.3,"DeadRemain":1,"Data":{"t":["SpeedRate"]}}
 {"Id":"攻击提升2","Type":"数值变化","LastTime":5,"DeadRemain":1,"Data":{"t":["AttackRate"]}}
@@ -43,8 +44,8 @@
 {"Id":"眩晕","Type":"眩晕","Data":{"ChangeAnimation":1}}
 {"Id":"眩晕2","Type":"眩晕"}
 {"Id":"无敌","Type":"无敌"}
-{"Id":"寒冷","Type":"数值变化","LastingEffect":4,"Upgrade":46,"Data":{"t":["AgiAdd"]}}
-{"Id":"冻结","Type":"冻结","LastingEffect":5}
+{"Id":"寒冷","Type":"数值变化","UnSourceCheck":1,"LastingEffect":4,"Upgrade":47,"Data":{"t":["AgiAdd"]}}
+{"Id":"冻结","Type":"冻结","UnSourceCheck":1,"LastingEffect":5}
 {"Id":"已复活标记","Type":"普通Buff"}
 {"Id":"斑点闪避","Type":"闪避","LastTime":3,"Data":{"Chance":0.3,"AvoidType":"Normal"}}
 {"Id":"银灰雪境","Type":"数值变化","IfSwitch":1,"LastTime":9999,"Data":{"t":["DefenceRate","HpRecoverBase"]}}
@@ -56,7 +57,7 @@
 {"Id":"m3协同标记","Type":"打断攻击"}
 {"Id":"m3融毁加攻","Type":"m3融毁加攻"}
 {"Id":"凯尔希背刺标记","Type":"普通Buff"}
-{"Id":"棘刺毒素","Type":"中毒","LastTime":3,"Data":{"Damage":155,"FarAttackUnitRate":2}}
+{"Id":"棘刺毒素","Type":"中毒","LastTime":3,"Data":{"FarAttackUnitRate":2}}
 {"Id":"棘刺禁用回血","Type":"普通Buff"}
 {"Id":"棘刺反击标记","Type":"缴械"}
 {"Id":"棘刺反击Buff","Type":"数值变化","Data":{"t":["AttackRate","DefenceRate"]}}
@@ -64,3 +65,4 @@
 {"Id":"之高之术buff2","Type":"数值变化","Data":{"t":["AttackRate","AgiAdd"]}}
 {"Id":"能天使祝福","Type":"数值变化","Data":{"t":["AttackRate","HpRate"]}}
 {"Id":"推王被动","Type":"数值变化","DeadRemain":1,"Data":{"t":["AttackRate","DefenceRate"]}}
+{"Id":"小火龙灼烧","Type":"中毒","Data":{"DamageBase":1,"TriggerTime":1}}

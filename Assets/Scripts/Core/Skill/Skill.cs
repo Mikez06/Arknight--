@@ -601,9 +601,10 @@ public class Skill
         {
             if (SkillData.BuffChance == 0 || Battle.Random.NextDouble() < SkillData.BuffChance)
             {
-                foreach (var buffId in SkillData.Buffs)
+                for (int i = 0; i < SkillData.Buffs.Length; i++)
                 {
-                    target.AddBuff(buffId, this);
+                    int buffId = SkillData.Buffs[i];
+                    target.AddBuff(buffId, this, i);
                 }
             }
         }

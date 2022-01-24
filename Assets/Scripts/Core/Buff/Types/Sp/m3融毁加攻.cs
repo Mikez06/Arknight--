@@ -29,7 +29,7 @@ namespace Buffs
         public override void Apply()
         {
             var p = (Unit as Units.干员).Parent;
-            Unit.AttackRate += Skill.SkillData.BuffData[0] * p.MainSkill.Opening.value / p.MainSkill.SkillData.OpenTime;
+            Unit.AttackRate += Skill.SkillData.GetBuffData(Index)[0] * p.MainSkill.Opening.value / p.MainSkill.SkillData.OpenTime;
         }
     }
 }

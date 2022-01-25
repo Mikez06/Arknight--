@@ -469,6 +469,14 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Units/char_134_ifrit
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: de35c4015ca4c5644b16b229a8b3fcd0
+    m_Address: Assets/Bundles/Units/char_180_amgoat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9131656c91ef0844da71a8fe8d57ed1c
+    m_Address: Assets/Bundles/Units/char_291_aglina
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

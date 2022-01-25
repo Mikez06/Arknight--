@@ -52,6 +52,7 @@ public class PlayerUnitModel : SpineModel
 
     public override Vector3 GetPoint(string name)
     {
+        if (name != null && name.StartsWith("F_")) return base.GetPoint(name);
         return base.GetPoint((forward ? "F_" : "B_") + name);
     }
 }

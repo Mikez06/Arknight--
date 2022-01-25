@@ -74,7 +74,7 @@ public class Buff
     {
         if (Skill.SkillData.BuffRely)//单位离开技能范围，或施法者死亡时，buff自动消失
         {
-            if (!Skill.Unit.Alive() || !Skill.GetAttackTarget().Contains(Unit) || (Skill.SkillData.OpenTime > 0 && Skill.Opening.Finished()))
+            if (!Skill.Unit.Alive() || (Skill.SkillData.OpenTime > 0 && Skill.Opening.Finished() || (Skill.SkillData.UseType != SkillUseTypeEnum.被动 && !Skill.GetAttackTarget().Contains(Unit))))
             {
                 Finish();
             }

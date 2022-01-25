@@ -15,16 +15,12 @@ using System.Text.RegularExpressions;
 
 public class Test : MonoBehaviour
 {
-    public string s;
+    public Vector3 d;
+    public Vector3 c;
     // Start is called before the first frame update
     async void Start()
     {
-        var tween = DOTween.To(() => -30f, x =>
-        {
-            var v3 = transform.eulerAngles;
-            v3.z = x; transform.eulerAngles = v3;
-        }, 30f, 1).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
-        tween.fullPosition = 1.5f;
+
         //var animation = GetComponent<SkeletonAnimation>().Skeleton.Data.FindAnimation(s);
         //foreach (var timeline in animation.Timelines)
         //{
@@ -63,52 +59,10 @@ public class Test : MonoBehaviour
     }
     private void OnGUI()
     {
-        GUI.Label(new Rect(0, 0, 150, 100), Time.time.ToString());
+
     }
-    IEnumerator Download()
+    private void Update()
     {
-        UnityEngine.Networking.UnityWebRequest wr = UnityEngine.Networking.UnityWebRequest.Get(s);
-        yield return wr.SendWebRequest();
-        if (!string.IsNullOrEmpty(wr.error))
-        {
-            Debug.Log("Download Error:" + wr.error);
-        }
-        else
-        {
-            var s = (wr.downloadHandler.text);
-            Debug.Log(s);
-            string a = "<tr><td></td><td style='white-space: nowrap;'>";
-            int startIndex = s.IndexOf(a);
-            Debug.Log(startIndex);
-            int index1 = s.IndexOf('\"', startIndex + a.Length);
-            int index2 = s.IndexOf('\"', index1 + 1);
-            Debug.Log(index1 + "," + index2);
-            var next = s.Substring(index1 + 1, index2 - index1 - 1);
-            var nextUrl = $"http://prts.wiki" + next;
-            Debug.Log(nextUrl);
-            wr = UnityEngine.Networking.UnityWebRequest.Get(nextUrl);
-            yield return wr.SendWebRequest();
-            if (!string.IsNullOrEmpty(wr.error))
-            {
-                Debug.Log("Download Error:" + wr.error);
-            }
-            else
-            {
-                string path = "E://1.png";
-                FileStream txt = new FileStream(path, FileMode.Create);
-                StreamWriter sw = new StreamWriter(txt);
-                //Debug.Log(txt.Name);
-                try
-                {
-                    sw.BaseStream.Write(wr.downloadHandler.data, 0, wr.downloadHandler.data.Length);
-                }
-                catch (System.Exception e)
-                {
-                    Debug.LogError(e);
-                }
-                sw.Close();
-                txt.Close();
-            }
-        }
+        transform.rotation = Quaternion.LookRotation(d,c);
     }
 }

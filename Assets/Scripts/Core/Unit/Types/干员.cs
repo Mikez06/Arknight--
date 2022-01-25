@@ -329,5 +329,10 @@ namespace Units
                 }
             }
         }
+
+        public override bool Alive()
+        {
+            return base.Alive() && InputTime > 0;
+        }
     }
 }

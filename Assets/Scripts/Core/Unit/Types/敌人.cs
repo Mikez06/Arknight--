@@ -280,7 +280,7 @@ namespace Units
             }
             for (int i = TempIndex + 1; i < TempPath.Count - 1; i++)
             {
-                result += (TempPath[i] - TempPath[i + 1]).magnitude;
+                result += Mathf.Abs(TempPath[i].x - TempPath[i + 1].x)+ Mathf.Abs(TempPath[i].y - TempPath[i + 1].y);
             }
             result += (Position - TempTarget).magnitude;
             return result;

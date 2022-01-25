@@ -72,7 +72,7 @@ public class Unit
     public int Team;
 
     public int Weight;
-    public int WeightBase, WeightAdd;
+    public float WeightBase, WeightAdd;
 
     public float SkillCost;
     public float SkillCostAdd;
@@ -190,7 +190,7 @@ public class Unit
         if (HpRecover < 0) HpRecover = 0;
         Agi = ((AgiBase + AgiAdd) * (1 + AgiRate) + AgiAddFin) * (1 + AgiRateFin);
         if (Agi < 10f) Agi = 10f;
-        Weight = WeightBase + WeightAdd;
+        Weight = (int)(WeightBase + WeightAdd);
         AttackGap = (AttackGapBase + AttackGapAdd) * (1 + AttackGapRate);
         if (AttackGap < 0.1f) AttackGap = 0.1f;
         SkillCost = SkillCostAdd + 1;
@@ -528,7 +528,7 @@ public class Unit
         }
     }
 
-    public bool Alive()
+    public virtual bool Alive()
     {
         return IfAlive;
     }

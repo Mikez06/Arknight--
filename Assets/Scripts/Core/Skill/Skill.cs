@@ -161,8 +161,10 @@ public class Skill
         }
     }
 
+    //与ready不同的是，被动技能也会受此函数影响
     public bool Useable()
     {
+        if (SkillData.MaxUseCount != 0 && UseCount >= SkillData.MaxUseCount) return false;
         if (GetFinalParent() == Unit.FirstSkill && !Unit.CanAttack)
         {
             //Debug.Log($"{Unit.UnitData.Id} 因为缴械无法使用{SkillData.Id}");
@@ -171,6 +173,7 @@ public class Skill
         if (SkillData.StopBreak && Unit.IfStoped()) return false;
         if (!Cooldown.Finished()) return false;
 
+        if (SkillData.OpenDisable && !Unit.MainSkill.Opening.Finished()) return false;
         if (SkillData.EnableBuff != null && !SkillData.EnableBuff.All(x => Unit.Buffs.Any(y => y.Id == x)))
             return false;
         if (SkillData.DisableBuff != null && SkillData.DisableBuff.Any(x => Unit.Buffs.Any(y => y.Id == x)))
@@ -245,7 +248,6 @@ public class Skill
         if (Unit.IfStun)
             return false;
         if (SkillData.UseType == SkillUseTypeEnum.被动) return false;
-        if (SkillData.MaxUseCount != 0 && UseCount >= SkillData.MaxUseCount) return false;
         switch (SkillData.ReadyType)
         {
             case SkillReadyEnum.特技激活:
@@ -266,12 +268,6 @@ public class Skill
             default:
                 break;
         }
-
-        if (SkillData.EnableBuff != null && !SkillData.EnableBuff.All(x => Unit.Buffs.Any(y => y.Id == x))) 
-            return false;
-        if (SkillData.DisableBuff != null && SkillData.DisableBuff.Any(x => Unit.Buffs.Any(y => y.Id == x)))
-            return false;
-
         if (SkillData.StopBreak && Unit.IfStoped()) return false;
 
         if (SkillData.AttackMode == AttackModeEnum.跟随攻击 && Unit.AttackingSkill != null) return false;
@@ -383,8 +379,6 @@ public class Skill
     /// </summary>
     public virtual void Start()
     {
-        if (SkillData.MaxUseCount != 0 && UseCount >= SkillData.MaxUseCount) return;//使用次数需要再判断一次，因为被动技能不会走ready的逻辑
-
         if (!Useable()) return;
         if (Targets.Count == 0)
         {
@@ -910,12 +904,14 @@ public class Skill
 
     protected DamageInfo GetDamageInfo(Unit target, float damageRate=1)
     {
+        var cooldown = SkillData.Cooldown;
+        if (cooldown < SystemConfig.DeltaTime) cooldown = SystemConfig.DeltaTime;
         var result = new DamageInfo()
         {
             Target = target,
             AllCount = tempTargets.Count,
             Source = this,
-            DamageRate = damageRate * SkillData.DamageRate * (SkillData.DamageWithFrameRate ? SystemConfig.DeltaTime : 1),
+            DamageRate = damageRate * SkillData.DamageRate * (SkillData.DamageWithFrameRate ? cooldown : 1),
             DamageType = SkillData.DamageType,
         };
         switch (SkillData.DamageBase)

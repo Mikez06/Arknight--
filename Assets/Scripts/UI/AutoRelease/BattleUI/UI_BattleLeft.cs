@@ -25,6 +25,7 @@ namespace BattleUI
         public GComponent m_Recover;
         public GComponent m_UseType;
         public GTextField m_lastTime;
+        public GTextField m_agi;
         public const string URL = "ui://vp312gabkbte3s";
 
         public static UI_BattleLeft CreateInstance()
@@ -54,6 +55,7 @@ namespace BattleUI
             m_Recover = (GComponent)GetChildAt(23);
             m_UseType = (GComponent)GetChildAt(24);
             m_lastTime = (GTextField)GetChildAt(26);
+            m_agi = (GTextField)GetChildAt(28);
             Init();
         }
         partial void Init();

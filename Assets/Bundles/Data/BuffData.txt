@@ -3,6 +3,7 @@
 {"Id":"减速","Type":"数值变化","LastTime":0.3,"Data":{"t":["SpeedRate"]}}
 {"Id":"攻击提升","Type":"数值变化","LastTime":5,"Data":{"t":["AttackRate"]}}
 {"Id":"生命提升","Type":"数值变化","Data":{"t":["HpRate"]}}
+{"Id":"防御提升加","Type":"数值变化","LastTime":0.01,"Data":{"t":["DefenceAdd"]}}
 {"Id":"防御提升","Type":"数值变化","LastTime":0.01,"Data":{"t":["DefenceRate"]}}
 {"Id":"部署费用提升","Type":"数值变化","LastTime":9999,"Data":{"t":["CostAdd"]}}
 {"Id":"再部署时间降低","Type":"数值变化","LastTime":9999,"Data":{"t":["ResetTimeRate"]}}
@@ -46,7 +47,7 @@
 {"Id":"眩晕","Type":"眩晕","Data":{"ChangeAnimation":1}}
 {"Id":"眩晕2","Type":"眩晕"}
 {"Id":"无敌","Type":"无敌"}
-{"Id":"寒冷","Type":"数值变化","UnSourceCheck":1,"LastingEffect":4,"Upgrade":49,"Data":{"t":["AgiAdd"]}}
+{"Id":"寒冷","Type":"数值变化","UnSourceCheck":1,"LastingEffect":4,"Upgrade":50,"Data":{"t":["AgiAdd"]}}
 {"Id":"冻结","Type":"冻结","UnSourceCheck":1,"LastingEffect":5}
 {"Id":"已复活标记","Type":"普通Buff"}
 {"Id":"斑点闪避","Type":"闪避","LastTime":3,"Data":{"Chance":0.3,"AvoidType":"Normal"}}
@@ -73,3 +74,9 @@
 {"Id":"羊火山buff","Type":"数值变化","Data":{"t":["AttackRate","AttackGapAdd"]}}
 {"Id":"洁哥Idle变化","Type":"覆盖动作","Data":{"IdleAnimation":["Idle_Charge"]}}
 {"Id":"洁哥技能标签","Type":"普通Buff"}
+{"Id":"闪灵信条buff","Type":"数值变化","Data":{"t":["AttackRate","AgiAdd"]}}
+{"Id":"闪灵盾","Type":"护盾","LastingEffect":3,"Data":{"ShieldType":"Normal","Base":1}}
+{"Id":"闪灵盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":77,"Data":{"t":["DefenceRate"]}}
+{"Id":"夜莺盾","Type":"护盾","LastingEffect":3,"Data":{"ShieldType":"Magic","Base":1}}
+{"Id":"夜莺盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":79,"Data":{"t":["MagicDefenceAdd"]}}
+{"Id":"圣域buff","Type":"数值变化","Data":{"t":["MagicDefenceAdd","MagBlock"]}}

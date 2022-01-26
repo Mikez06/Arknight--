@@ -17,14 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: e48c33a6a4b436b4b9d8900de5bf82e5
   m_SerializeEntries:
-  - m_GUID: f65c79ac3c8a94a418db386aa2769957
-    m_Address: Assets/Bundles/Image/StandPic/amgoat
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: a2c66a190a418724da022f059ef6743d
-    m_Address: Assets/Bundles/Image/StandPic/angel
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 031b188f7399d4946a4e67230c8aa6ca
     m_Address: Assets/Bundles/Image/StandPic/ansel
     m_ReadOnly: 0
@@ -49,8 +41,12 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Image/StandPic/fang
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 137e419436826744babd3a72c77a8454
-    m_Address: Assets/Bundles/Image/StandPic/ifrit
+  - m_GUID: 7df2b75d8435d3e449cd6ddcc0ff5667
+    m_Address: Assets/Bundles/Image/StandPic/hibisc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3bc4509d954fd96479c5f74c199fff2f
+    m_Address: Assets/Bundles/Image/StandPic/hsguma
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 195e2ef1224ac1f41a86dcce6a0a80bb
@@ -81,6 +77,10 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Image/StandPic/popka
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 9e52fbf3858a522418c9542443a313cc
+    m_Address: Assets/Bundles/Image/StandPic/shining
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   - m_GUID: 6b754af0a26d4434dbd56beafcaf456a
     m_Address: Assets/Bundles/Image/StandPic/spot
     m_ReadOnly: 0
@@ -93,8 +93,8 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Image/StandPic/siege
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 7df2b75d8435d3e449cd6ddcc0ff5667
-    m_Address: Assets/Bundles/Image/StandPic/hibisc
+  - m_GUID: 137e419436826744babd3a72c77a8454
+    m_Address: Assets/Bundles/Image/StandPic/ifrit
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: d1dbf5e7e2f40604a9ac96ec6c2e346d
@@ -111,6 +111,14 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: 7c109591746327e4b8809d5d14555189
     m_Address: Assets/Bundles/Image/StandPic/wyvern
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a2c66a190a418724da022f059ef6743d
+    m_Address: Assets/Bundles/Image/StandPic/angel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f65c79ac3c8a94a418db386aa2769957
+    m_Address: Assets/Bundles/Image/StandPic/amgoat
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 8b06e655014e8f448a1be0b060b79f35

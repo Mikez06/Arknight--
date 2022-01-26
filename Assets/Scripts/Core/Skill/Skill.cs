@@ -307,7 +307,7 @@ public class Skill
     {
         //TODO 读Unit的攻击间隔变化
         var cooldown = (SkillData.Cooldown == 0 && SkillData.AttackMode == AttackModeEnum.跟随攻击 ? Unit.AttackGap : SkillData.Cooldown) * attackSpeed;
-        Debug.Log(SkillData.Id + "cooldown:" + cooldown);
+        //Debug.Log(SkillData.Id + "cooldown:" + cooldown);
         //if (cooldown < 0.1f) cooldown = 0.1f;
         Cooldown.Set(cooldown);
     }
@@ -417,7 +417,7 @@ public class Skill
         }
         else
         {
-            var duration = Unit.UnitModel.GetSkillDelay(SkillData.ModelAnimation, Unit.GetAnimation(), out float fullDuration, out float beginDuration);//.SkeletonAnimation.skeleton.data.Animations.Find(x => x.Name == "Attack");
+            var duration = Unit.UnitModel.GetSkillDelay(SkillData.OverwriteAnimation == null ? SkillData.ModelAnimation : SkillData.OverwriteAnimation, Unit.GetAnimation(), out float fullDuration, out float beginDuration);//.SkeletonAnimation.skeleton.data.Animations.Find(x => x.Name == "Attack");
             float attackSpeed = 1f / Unit.Agi * 100;//攻速影响冷却时间
             ResetCooldown(attackSpeed);
             //float aniSpeed = 1;//动画表现上的攻速
@@ -675,6 +675,10 @@ public class Skill
 
     protected virtual void SortTarget(List<Unit> targets)
     {
+        if (SkillData.Id == "冰狙击攻击")
+        {
+            Debug.Log(1);
+        }
         targets.RemoveAll(OrderFilter);
         var l = targets.OrderBy(GetSortOrder1).ThenBy(GetSortOrder2).ThenBy(x => x.Hatred()).ToList();
         targets.Clear();

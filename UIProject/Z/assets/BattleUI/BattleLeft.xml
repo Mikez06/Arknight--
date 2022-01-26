@@ -41,5 +41,7 @@
     <text id="n57_voep" name="lastTime" xy="420,662" pivot="0.5,0.5" anchor="true" size="18,35" fontSize="25" color="#ffffff" text="1">
       <gearDisplay controller="time" pages="0"/>
     </text>
+    <text id="n58_o60l" name="n58" xy="16,547" size="44,29" fontSize="20" color="#ffffff" align="center" text="攻速"/>
+    <text id="n59_o60l" name="agi" xy="68,547" size="48,29" fontSize="20" color="#ffffff" align="center" text="1000"/>
   </displayList>
 </component>

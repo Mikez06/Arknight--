@@ -35,6 +35,12 @@ namespace MainUI
             for (int i = 0; i < teamBtns.Length; i++)
             {
                 teamBtns[i] = GetChild("team" + i).asButton;
+                int k = i;
+                teamBtns[i].onClick.Add(() =>
+                {
+                    TeamIndex = k;
+                    Flush();
+                });
             }
             m_back.onClick.Add(() =>
             {

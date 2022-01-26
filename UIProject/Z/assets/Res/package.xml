@@ -2,7 +2,9 @@
 <packageDescription id="kera0i3h">
   <resources>
     <folder id="/半身立绘/" name="半身立绘" path="/" atlas="0"/>
+    <folder id="/合约图标/" name="合约图标" path="/" atlas="2"/>
     <folder id="/头像/" name="头像" path="/" atlas="1"/>
+    <folder id="/遗物图标/" name="遗物图标" path="/" atlas="3"/>
     <image id="uizyuw" name="icon_12fce.png" path="/头像/" exported="true"/>
     <image id="uizyux" name="icon_absin.png" path="/头像/" exported="true"/>
     <image id="uizyuy" name="icon_acdrop.png" path="/头像/" exported="true"/>
@@ -407,7 +409,6 @@
     <image id="uizy161" name="half_zebra.png" path="/半身立绘/" exported="true"/>
     <image id="uizy162" name="half_zumama.png" path="/半身立绘/" exported="true"/>
     <image id="t5h9163" name="头像_召唤物_Mon3tr.png" path="/头像/" exported="true"/>
-    <folder id="/合约图标/" name="合约图标" path="/" atlas="2"/>
     <image id="gbwm16o" name="反机动.png" path="/合约图标/" exported="true"/>
     <image id="gbwm16p" name="反机动II.png" path="/合约图标/" exported="true"/>
     <image id="gbwm16q" name="反集群.png" path="/合约图标/" exported="true"/>
@@ -426,7 +427,6 @@
     <image id="gbwm173" name="源石环境：活性I.png" path="/合约图标/" exported="true"/>
     <image id="gbwm174" name="源石环境：活性II.png" path="/合约图标/" exported="true"/>
     <image id="gbwm175" name="源石环境：活性III.png" path="/合约图标/" exported="true"/>
-    <folder id="/遗物图标/" name="遗物图标" path="/" atlas="3"/>
     <image id="gbwm176" name="100px-收藏品_133.png" path="/遗物图标/" exported="true"/>
     <image id="gbwm177" name="100px-收藏品_134.png" path="/遗物图标/" exported="true"/>
     <image id="gbwm178" name="100px-收藏品_135.png" path="/遗物图标/" exported="true"/>
@@ -539,6 +539,7 @@
     <image id="gbwm1a7" name="精英_0_大图.png" path="/其他/" exported="true"/>
     <image id="gbwm1a8" name="精英_1_大图.png" path="/其他/" exported="true"/>
     <image id="gbwm1a9" name="精英_2_大图.png" path="/其他/" exported="true"/>
+    <image id="o60l1aa" name="头像_召唤物_幻影.png" path="/头像/" exported="true"/>
   </resources>
   <publish name=""/>
 </packageDescription>

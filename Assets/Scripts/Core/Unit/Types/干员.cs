@@ -161,7 +161,7 @@ namespace Units
 
         public bool CanBuild()
         {
-            return GetCost() <= Battle.Cost;
+            return GetCost() <= Battle.Cost && Reseting.Finished();
         }
 
         public void JoinMap()
@@ -181,6 +181,13 @@ namespace Units
             foreach (var skill in Skills)//重置非普攻类技能的基础cd
             {
                 if (skill.SkillData.AttackMode != AttackModeEnum.跟随攻击) skill.ResetCooldown(1);
+            }
+            foreach (var unit in Battle.PlayerUnits)
+            {
+                if (unit.Id == Id && unit != this)
+                {
+                    unit.Reseting.Set(ResetTime);
+                }
             }
             Battle.TriggerDatas.Push(new TriggerData()
             {
@@ -215,6 +222,24 @@ namespace Units
                 Battle.AllUnits.Remove(this);
                 if (Parent != null) Parent.Children.Remove(this);
             }
+
+            if (Parent!=null&& Parent.InputTime < 0)
+            {
+                Battle.AllUnits.Remove(this);
+                Battle.PlayerUnits.Remove(this);
+            }
+
+            foreach (var unit in Children)
+            {
+                if ((unit as 干员).InputTime < 0)
+                {
+                    Battle.AllUnits.Remove(unit);
+                    Battle.PlayerUnits.Remove(unit);
+                }
+                if (!unit.UnitData.NotReturn)
+                    (unit as 干员).LeaveMap();
+            }
+            Children.Clear();
 
             BattleUI.UI_Battle.Instance.UpdateUnitsLayout();
             foreach (var skill in Skills)
@@ -261,14 +286,7 @@ namespace Units
 
         public override void DoDie(object source)
         {
-            base.DoDie(source);
-
-            foreach (var unit in Children)
-            {
-                (unit as 干员).DoDie(null);
-            }
-            Children.Clear();
-
+            base.DoDie(source); 
             foreach (var unit in StopUnits)
             {
                 unit.StopUnit = null;
@@ -298,7 +316,7 @@ namespace Units
 
         public override float Hatred()
         {
-            return base.Hatred() + InputTime;
+            return base.Hatred() - InputTime;
         }
 
         public override bool IfStoped()

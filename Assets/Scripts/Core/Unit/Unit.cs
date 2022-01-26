@@ -36,6 +36,7 @@ public class Unit
     public Skill MainSkill;
 
     public List<Buff> Buffs = new List<Buff>();
+    public List<IShield> Shields = new List<IShield>();
 
     public float MaxHp;
     public float HpBase, HpAdd, HpRate, HpAddFin, HpRateFin;
@@ -94,6 +95,8 @@ public class Unit
 
     public bool IfSelectable = true;//能否被技能指定为目标
     public bool CanBeHeal = false;
+
+    public int Shield, NormalShield, MagicShield;
 
     /// <summary>
     /// 攻击动画
@@ -431,6 +434,7 @@ public class Unit
             buff.Skill = source;
             buff.Unit = this;
             Buffs.Add(buff);
+            if (buff is IShield shield) Shields.Add(shield);
             buff.Init();
             Refresh();
             return buff;
@@ -440,6 +444,7 @@ public class Unit
     public void AddBuff(Buff buff)
     {
         Buffs.Add(buff);
+        if (buff is IShield shield) Shields.Add(shield);
         buff.Unit = this;
         Refresh();
     }
@@ -447,6 +452,7 @@ public class Unit
     public void RemoveBuff(Buff buff)
     {
         Buffs.Remove(buff);
+        if (buff is IShield shield) Shields.Remove(shield);
         Refresh();
     }
     #region 推拉相关
@@ -600,7 +606,11 @@ public class Unit
         if (damageInfo.DamageType == DamageTypeEnum.Magic && MagBlock > 0 && Battle.Random.NextDouble() < MagBlock) damageInfo.Avoid = true;
         if (!damageInfo.Avoid)
         {
-            Hp -= damage;
+            foreach (var shield in Shields)
+            {
+                shield.Absorb(damageInfo);
+            }
+            Hp -= damageInfo.FinalDamage;
             if (Hp <= 0)
             {
                 Battle.TriggerDatas.Push(new TriggerData()
@@ -651,7 +661,7 @@ public class Unit
 
     public virtual float Hatred()
     {
-        return UnitData.Hatred * 1000;
+        return -UnitData.Hatred * 100000;
     }
 
     public void BreakAllCast()

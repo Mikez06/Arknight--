@@ -477,6 +477,18 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Units/char_291_aglina
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 16749038fb7a85448bfec4fd61bd1f15
+    m_Address: Assets/Bundles/Units/char_147_shining
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9e921d1a077db124980cae585d3ea49c
+    m_Address: Assets/Bundles/Units/char_179_cgbird
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 608bdd1da2e4cf14a9bd9c1a3179abda
+    m_Address: Assets/Bundles/Units/token_10003_cgbird_bird
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

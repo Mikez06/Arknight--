@@ -361,7 +361,7 @@ public class Battle
         HashSet<Unit> result = new HashSet<Unit>();
         if (team%2 == 1)
         {
-            var units = PlayerUnits.Where(x => x.InputTime >= 0).ToList();
+            var units = PlayerUnits.Where(x => !aliveOnly || x.InputTime >= 0).ToList();
             foreach (var unit in units) //需要优化！
             {
                 if ((unit.Position2 - pos).magnitude < radius + unit.UnitData.Radius

@@ -2,7 +2,7 @@
 <component size="1920,1080" designImage="ui://k4mja8t1voep1s" designImageAlpha="0" designImageLayer="1">
   <controller name="goBattle" pages="0,,1," selected="0"/>
   <displayList>
-    <image id="n18_r8hr" name="n18" src="voep1v" fileName="Res/background_01.png" xy="0,0" size="1920,1080">
+    <image id="n18_r8hr" name="n18" src="voep1v" fileName="TeamUIRes/background_01.png" xy="0,0" size="1920,1080">
       <relation target="" sidePair="width-width,height-height"/>
     </image>
     <component id="n0_r8hr" name="u0" src="r8hro" fileName="TeamUnit.xml" xy="163,121">
@@ -54,18 +54,18 @@
       <relation target="" sidePair="left-left%"/>
     </component>
     <component id="n13_r8hr" name="back" src="kbteh" fileName="back.xml" xy="24,20"/>
-    <component id="n14_r8hr" name="team0" src="r8hrp" fileName="TeamTab.xml" xy="146,991" touchable="false">
+    <component id="n14_r8hr" name="team0" src="r8hrp" fileName="TeamTab.xml" xy="146,991">
       <relation target="" sidePair="left-left%"/>
     </component>
-    <component id="n19_r8hr" name="team1" src="r8hrp" fileName="TeamTab.xml" xy="556,992" touchable="false">
+    <component id="n19_r8hr" name="team1" src="r8hrp" fileName="TeamTab.xml" xy="556,992">
       <relation target="" sidePair="left-left%"/>
       <Button checked="true" title="第二编队"/>
     </component>
-    <component id="n20_r8hr" name="team2" src="r8hrp" fileName="TeamTab.xml" xy="962,992" touchable="false">
+    <component id="n20_r8hr" name="team2" src="r8hrp" fileName="TeamTab.xml" xy="962,992">
       <relation target="" sidePair="left-left%"/>
       <Button checked="true" title="第三编队"/>
     </component>
-    <component id="n21_r8hr" name="team3" src="r8hrp" fileName="TeamTab.xml" xy="1369,992" touchable="false">
+    <component id="n21_r8hr" name="team3" src="r8hrp" fileName="TeamTab.xml" xy="1369,992">
       <relation target="" sidePair="left-left%"/>
       <Button checked="true" title="第四编队"/>
     </component>

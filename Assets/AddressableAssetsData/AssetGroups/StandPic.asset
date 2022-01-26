@@ -17,10 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: e48c33a6a4b436b4b9d8900de5bf82e5
   m_SerializeEntries:
-  - m_GUID: 031b188f7399d4946a4e67230c8aa6ca
-    m_Address: Assets/Bundles/Image/StandPic/ansel
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 810bcb1638811f6498647ce1a995371e
     m_Address: Assets/Bundles/Image/StandPic/ardign
     m_ReadOnly: 0
@@ -31,6 +27,14 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: 44ef2aa30b087624db5bcb9a2ac157ca
     m_Address: Assets/Bundles/Image/StandPic/catap
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f9e7d6145a9ec3e499b8c19d201d7983
+    m_Address: Assets/Bundles/Image/StandPic/cgbird
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7d831bedba7331940b926a7e896c7a23
+    m_Address: Assets/Bundles/Image/StandPic/demkni
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: a08e62fdca2f0ce409cafbcb24ed6d2b
@@ -45,8 +49,8 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Image/StandPic/hibisc
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 3bc4509d954fd96479c5f74c199fff2f
-    m_Address: Assets/Bundles/Image/StandPic/hsguma
+  - m_GUID: 137e419436826744babd3a72c77a8454
+    m_Address: Assets/Bundles/Image/StandPic/ifrit
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 195e2ef1224ac1f41a86dcce6a0a80bb
@@ -77,24 +81,24 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Image/StandPic/popka
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 9e52fbf3858a522418c9542443a313cc
-    m_Address: Assets/Bundles/Image/StandPic/shining
+  - m_GUID: c56e7988f9ad0c84485f5ef902282c1d
+    m_Address: Assets/Bundles/Image/StandPic/siege
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 6b754af0a26d4434dbd56beafcaf456a
     m_Address: Assets/Bundles/Image/StandPic/spot
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 9e52fbf3858a522418c9542443a313cc
+    m_Address: Assets/Bundles/Image/StandPic/shining
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3bc4509d954fd96479c5f74c199fff2f
+    m_Address: Assets/Bundles/Image/StandPic/hsguma
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   - m_GUID: 47fc0d3bff85c2242aa418d4ed6826da
     m_Address: Assets/Bundles/Image/StandPic/stward
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: c56e7988f9ad0c84485f5ef902282c1d
-    m_Address: Assets/Bundles/Image/StandPic/siege
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 137e419436826744babd3a72c77a8454
-    m_Address: Assets/Bundles/Image/StandPic/ifrit
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: d1dbf5e7e2f40604a9ac96ec6c2e346d
@@ -109,8 +113,8 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Image/StandPic/thorns
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 7c109591746327e4b8809d5d14555189
-    m_Address: Assets/Bundles/Image/StandPic/wyvern
+  - m_GUID: 031b188f7399d4946a4e67230c8aa6ca
+    m_Address: Assets/Bundles/Image/StandPic/ansel
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: a2c66a190a418724da022f059ef6743d
@@ -127,6 +131,10 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: fe01b04ff10e98d49bce93c71fc1bb35
     m_Address: Assets/Bundles/Image/StandPic/adnach
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7c109591746327e4b8809d5d14555189
+    m_Address: Assets/Bundles/Image/StandPic/wyvern
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

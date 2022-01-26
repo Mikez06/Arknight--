@@ -20,6 +20,8 @@
 {"Id":"攻击间隔变化乘","Type":"数值变化","Data":{"t":["AttackGapRate"]}}
 {"Id":"魔防变化","Type":"数值变化","Data":{"t":["MagicDefenceAdd"]}}
 {"Id":"重量变化","Type":"数值变化","Data":{"t":["WeightAdd"]}}
+{"Id":"易伤","Type":"数值变化","Data":{"t":["DamageReceiveRate"]}}
+{"Id":"法术易伤","Type":"数值变化","Data":{"t":["MagicDamageReceiveRate"]}}
 {"Id":"攻速提升2","Type":"数值变化","LastTime":5,"DeadRemain":1,"Data":{"t":["AgiAdd"]}}
 {"Id":"减速2","Type":"数值变化","LastTime":0.3,"DeadRemain":1,"Data":{"t":["SpeedRate"]}}
 {"Id":"攻击提升2","Type":"数值变化","LastTime":5,"DeadRemain":1,"Data":{"t":["AttackRate"]}}
@@ -49,7 +51,7 @@
 {"Id":"眩晕","Type":"眩晕","Data":{"ChangeAnimation":1}}
 {"Id":"眩晕2","Type":"眩晕"}
 {"Id":"无敌","Type":"无敌"}
-{"Id":"寒冷","Type":"数值变化","UnSourceCheck":1,"LastingEffect":4,"Upgrade":52,"Data":{"t":["AgiAdd"]}}
+{"Id":"寒冷","Type":"数值变化","UnSourceCheck":1,"LastingEffect":4,"Upgrade":54,"Data":{"t":["AgiAdd"]}}
 {"Id":"冻结","Type":"冻结","UnSourceCheck":1,"LastingEffect":5}
 {"Id":"已复活标记","Type":"普通Buff"}
 {"Id":"斑点闪避","Type":"闪避","LastTime":3,"Data":{"Chance":0.3,"AvoidType":"Normal"}}
@@ -78,8 +80,10 @@
 {"Id":"洁哥技能标签","Type":"普通Buff"}
 {"Id":"闪灵信条buff","Type":"数值变化","Data":{"t":["AttackRate","AgiAdd"]}}
 {"Id":"闪灵盾","Type":"护盾","LastingEffect":3,"Data":{"ShieldType":"Normal","Base":1}}
-{"Id":"闪灵盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":79,"Data":{"t":["DefenceRate"]}}
+{"Id":"闪灵盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":81,"Data":{"t":["DefenceRate"]}}
 {"Id":"夜莺盾","Type":"护盾","LastingEffect":3,"Data":{"ShieldType":"Magic","Base":1}}
-{"Id":"夜莺盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":81,"Data":{"t":["MagicDefenceAdd"]}}
+{"Id":"夜莺盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":83,"Data":{"t":["MagicDefenceAdd"]}}
 {"Id":"圣域buff","Type":"数值变化","Data":{"t":["MagicDefenceAdd","MagBlock"]}}
-{"Id":"星熊buff","Type":"数值变化","DeadRemain":1,"Data":{"t":["AttackRate","DefenceRate"]}}
+{"Id":"星熊buff","Type":"数值变化","Data":{"t":["AttackRate","DefenceRate"]}}
+{"Id":"塞雷娅充能服buff","Type":"数值变化叠加","Data":{"t":["AttackRate","DefenceRate"]}}
+{"Id":"塞雷娅钙质化buff","Type":"数值变化","Data":{"t":["MagicDamageReceiveRate","SpeedRate"]}}

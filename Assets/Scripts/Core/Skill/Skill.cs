@@ -184,7 +184,7 @@ public class Skill
     public bool CanUseTo(Unit target)
     {
         if (target == null) return false;
-        if (SkillData.IfHeal && !target.CanBeHeal) return false;
+        if (SkillData.IfHeal && (!target.CanBeHeal || target.Hp == target.MaxHp)) return false;
         if (!target.IfSelectable) return false;
         switch (SkillData.TargetFilter)
         {
@@ -201,6 +201,7 @@ public class Skill
                 if (!(Unit as Units.干员).Children.Contains(target)) return false;
                 break;
         }
+        if (SkillData.TargetHpLess != 0 && target.Hp / target.MaxHp > SkillData.TargetHpLess) return false;
         if (SkillData.UnitLimit != null && !SkillData.UnitLimit.Contains(target.Id)) return false;
         if ((SkillData.TargetTeam >> target.Team) % 2 == 0) return false;
         if (SkillData.ProfessionLimit != UnitTypeEnum.无 && SkillData.ProfessionLimit != target.UnitData.Profession) 
@@ -715,9 +716,9 @@ public class Skill
             case AttackTargetOrder2Enum.近身:
                 if (unit is Units.干员 u)
                 {
-                    if (u.StopUnits.Contains(unit))
+                    if (u.StopUnits.Contains(Unit))
                     {
-                        result += 1;
+                        result = -1;
                     }
                 }
                 break;

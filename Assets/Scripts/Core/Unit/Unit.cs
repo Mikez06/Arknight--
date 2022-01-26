@@ -97,6 +97,7 @@ public class Unit
     public bool CanBeHeal = false;
 
     public int Shield, NormalShield, MagicShield;
+    public float DamageReceiveRate, MagicDamageReceiveRate;
 
     /// <summary>
     /// 攻击动画
@@ -175,6 +176,7 @@ public class Unit
         CanBeHeal = true;
         ResistAdd = 0;
         AttackRangeAdd = AttackRangeRate = 0;
+        DamageReceiveRate = MagicDamageReceiveRate = 1;
         foreach (var buff in Buffs)
         {
             buff.Apply();
@@ -424,6 +426,7 @@ public class Unit
         if (oldBuff != null)
         {
             oldBuff.Reset();
+            Refresh();
             return oldBuff;
         }
         else
@@ -597,6 +600,8 @@ public class Unit
     public void Damage(DamageInfo damageInfo)
     {
         float damage = damageInfo.Attack * damageInfo.DamageRate;
+        if (damageInfo.DamageType == DamageTypeEnum.Normal) damage *= DamageReceiveRate;
+        if (damageInfo.DamageType == DamageTypeEnum.Magic) damage *= MagicDamageReceiveRate;
         damage = damageWithDefence(damage, damageInfo.DamageType,damageInfo.DefIgnore, damageInfo.DefIgnore);
         damageInfo.FinalDamage = damage;
         float damageEx = damageInfo.Attack;

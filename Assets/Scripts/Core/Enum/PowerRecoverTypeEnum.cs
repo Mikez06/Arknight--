@@ -9,6 +9,7 @@ public enum PowerRecoverTypeEnum
     自动,
     攻击,
     受击,
+    无,
 }
 
 public enum SkillUseTypeEnum

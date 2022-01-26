@@ -8,6 +8,8 @@ public class TriggerData
 {
     public Unit Target;
 
+    public Unit User;
+
     public Skill Skill;
 
     public void Clear()

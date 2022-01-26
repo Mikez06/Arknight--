@@ -63,7 +63,7 @@ public class Unit
     public float MagicDefence;
     public float MagicDefenceBase, MagicDefenceRate, MagicDefenceAdd, MagicDefenceRateFin, MagicDefenceAddFin;
 
-    public float Block, MagBlock;
+    public float AllBlock,Block, MagBlock;
 
     public float PowerSpeed, PowerSpeedAdd;
 
@@ -602,6 +602,7 @@ public class Unit
         float damageEx = damageInfo.Attack;
         damageEx = damageWithDefence(damageEx, damageInfo.DamageType, 0, 0);
         if (damage > damageEx * 1.5f) UnitModel.ShowCrit(damageInfo);
+        if (AllBlock > 0 && Battle.Random.NextDouble() < AllBlock) damageInfo.Avoid = true;
         if (damageInfo.DamageType == DamageTypeEnum.Normal && Block > 0 && Battle.Random.NextDouble() < Block) damageInfo.Avoid = true;
         if (damageInfo.DamageType == DamageTypeEnum.Magic && MagBlock > 0 && Battle.Random.NextDouble() < MagBlock) damageInfo.Avoid = true;
         if (!damageInfo.Avoid)

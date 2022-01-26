@@ -1,8 +1,8 @@
 {"Id":"暴击1","Type":"暴击","Data":{"Chance":0.1,"Rate":1.6}}
 {"Id":"多重攻击1","Type":"额外目标","Data":{"Chance":0.1,"Count":1}}
-{"Id":"破冰1","Type":"对buff伤害","Buff":50,"Data":{"DamageRate":1.5}}
-{"Id":"破冰2","Type":"对buff伤害","Buff":50,"Data":{"DamageRate":2}}
-{"Id":"破冰3","Type":"对buff伤害","Buff":50,"Data":{"DamageRate":2.5}}
-{"Id":"破冰4","Type":"对buff伤害","Buff":50,"Data":{"DamageRate":3}}
+{"Id":"破冰1","Type":"对buff伤害","Buff":52,"Data":{"DamageRate":1.5}}
+{"Id":"破冰2","Type":"对buff伤害","Buff":52,"Data":{"DamageRate":2}}
+{"Id":"破冰3","Type":"对buff伤害","Buff":52,"Data":{"DamageRate":2.5}}
+{"Id":"破冰4","Type":"对buff伤害","Buff":52,"Data":{"DamageRate":3}}
 {"Id":"42穿甲","Type":"穿甲","Data":{"Chance":1,"Rate":0.24}}
 {"Id":"42单体加伤","Type":"对个数伤害","Data":{"Count":1,"Rate":1.6}}

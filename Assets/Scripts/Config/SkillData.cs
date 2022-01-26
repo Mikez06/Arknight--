@@ -21,6 +21,7 @@ public class SkillData : IConfig
       public bool StopOtherSkill;
       public int TargetTeam;
       public bool AttackFly;
+      public bool UseEventUser;
       public bool UseEventTarget;
       public SkillTargetFilterEnum TargetFilter;
       public bool DeadFind;

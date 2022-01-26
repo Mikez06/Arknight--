@@ -7,6 +7,7 @@
 {"Id":"防御提升","Type":"数值变化","LastTime":0.01,"Data":{"t":["DefenceRate"]}}
 {"Id":"部署费用提升","Type":"数值变化","LastTime":9999,"Data":{"t":["CostAdd"]}}
 {"Id":"再部署时间降低","Type":"数值变化","LastTime":9999,"Data":{"t":["ResetTimeRate"]}}
+{"Id":"全部格挡","Type":"数值变化","LastTime":9999,"Data":{"t":["Block"]}}
 {"Id":"物理格挡","Type":"数值变化","LastTime":9999,"Data":{"t":["Block"]}}
 {"Id":"魔法格挡","Type":"数值变化","LastTime":9999,"Data":{"t":["MagBlock"]}}
 {"Id":"移速变化","Type":"数值变化","Data":{"t":["SpeedRate"]}}
@@ -37,8 +38,9 @@
 {"Id":"攻速变化f","Type":"数值变化","DeadRemain":1,"Data":{"t":["AgiAddFin"]}}
 {"Id":"生命变化f","Type":"数值变化","DeadRemain":1,"Data":{"t":["HpRateFin"]}}
 {"Id":"再部署时间变化f","Type":"数值变化","LastTime":9999,"DeadRemain":1,"Data":{"t":["ResetTimeRate"]}}
-{"Id":"物理格挡2","Type":"数值变化","LastTime":9999,"Data":{"t":["Block"]}}
-{"Id":"魔法格挡2","Type":"数值变化","LastTime":9999,"Data":{"t":["MagBlock"]}}
+{"Id":"全部格挡2","Type":"数值变化","LastTime":9999,"DeadRemain":1,"Data":{"t":["Block"]}}
+{"Id":"物理格挡2","Type":"数值变化","LastTime":9999,"DeadRemain":1,"Data":{"t":["Block"]}}
+{"Id":"魔法格挡2","Type":"数值变化","LastTime":9999,"DeadRemain":1,"Data":{"t":["MagBlock"]}}
 {"Id":"绝食","Type":"绝食"}
 {"Id":"绝食2","Type":"绝食","DeadRemain":1}
 {"Id":"隐身","Type":"隐身","LastingEffect":3,"Data":{"HideTime":1}}
@@ -47,7 +49,7 @@
 {"Id":"眩晕","Type":"眩晕","Data":{"ChangeAnimation":1}}
 {"Id":"眩晕2","Type":"眩晕"}
 {"Id":"无敌","Type":"无敌"}
-{"Id":"寒冷","Type":"数值变化","UnSourceCheck":1,"LastingEffect":4,"Upgrade":50,"Data":{"t":["AgiAdd"]}}
+{"Id":"寒冷","Type":"数值变化","UnSourceCheck":1,"LastingEffect":4,"Upgrade":52,"Data":{"t":["AgiAdd"]}}
 {"Id":"冻结","Type":"冻结","UnSourceCheck":1,"LastingEffect":5}
 {"Id":"已复活标记","Type":"普通Buff"}
 {"Id":"斑点闪避","Type":"闪避","LastTime":3,"Data":{"Chance":0.3,"AvoidType":"Normal"}}
@@ -76,7 +78,8 @@
 {"Id":"洁哥技能标签","Type":"普通Buff"}
 {"Id":"闪灵信条buff","Type":"数值变化","Data":{"t":["AttackRate","AgiAdd"]}}
 {"Id":"闪灵盾","Type":"护盾","LastingEffect":3,"Data":{"ShieldType":"Normal","Base":1}}
-{"Id":"闪灵盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":77,"Data":{"t":["DefenceRate"]}}
+{"Id":"闪灵盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":79,"Data":{"t":["DefenceRate"]}}
 {"Id":"夜莺盾","Type":"护盾","LastingEffect":3,"Data":{"ShieldType":"Magic","Base":1}}
-{"Id":"夜莺盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":79,"Data":{"t":["MagicDefenceAdd"]}}
+{"Id":"夜莺盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":81,"Data":{"t":["MagicDefenceAdd"]}}
 {"Id":"圣域buff","Type":"数值变化","Data":{"t":["MagicDefenceAdd","MagBlock"]}}
+{"Id":"星熊buff","Type":"数值变化","DeadRemain":1,"Data":{"t":["AttackRate","DefenceRate"]}}

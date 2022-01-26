@@ -419,6 +419,7 @@ public class Skill
         {
             var duration = Unit.UnitModel.GetSkillDelay(SkillData.OverwriteAnimation == null ? SkillData.ModelAnimation : SkillData.OverwriteAnimation, Unit.GetAnimation(), out float fullDuration, out float beginDuration);//.SkeletonAnimation.skeleton.data.Animations.Find(x => x.Name == "Attack");
             float attackSpeed = 1f / Unit.Agi * 100;//攻速影响冷却时间
+            if (SkillData.AttackMode == AttackModeEnum.固定间隔) attackSpeed = 1;
             ResetCooldown(attackSpeed);
             //float aniSpeed = 1;//动画表现上的攻速
             if (fullDuration * attackSpeed != Cooldown.value)
@@ -639,6 +640,13 @@ public class Skill
     public List<Unit> GetAttackTarget()
     {
         tempTargets.Clear();
+        if (SkillData.UseEventUser)
+        {
+            //正在事件当中，技能去取事件目标
+            var t = Battle.TriggerDatas.Peek().User;
+            if (t != null && CanUseTo(t))
+                tempTargets.Add(t);
+        }
         if (SkillData.UseEventTarget)
         {
             //正在事件当中，技能去取事件目标
@@ -646,15 +654,15 @@ public class Skill
             if (t != null && CanUseTo(t))
                 tempTargets.Add(t);
         }
-        else //if (tempTargets.Count == 0)
+        if (!SkillData.UseEventTarget && !SkillData.UseEventUser)
         {
-            if (AttackPoints == null&&!SkillData.AttackAreaWithMain)//根据攻击范围进行索敌
+            if (AttackPoints == null && !SkillData.AttackAreaWithMain)//根据攻击范围进行索敌
             {
-                tempTargets.AddRange(Battle.FindAll(Unit.Position2, SkillData.AttackRange * Unit.AttackRange, SkillData.TargetTeam,!SkillData.DeadFind));
+                tempTargets.AddRange(Battle.FindAll(Unit.Position2, SkillData.AttackRange * Unit.AttackRange, SkillData.TargetTeam, !SkillData.DeadFind));
             }
             else
             {
-                var attackPoints = SkillData.AttackAreaWithMain ?Unit.GetNowAttackSkill().AttackPoints : AttackPoints;
+                var attackPoints = SkillData.AttackAreaWithMain ? Unit.GetNowAttackSkill().AttackPoints : AttackPoints;
                 tempTargets.AddRange(Battle.FindAll(attackPoints, SkillData.TargetTeam, !SkillData.DeadFind));
             }
         }
@@ -889,6 +897,7 @@ public class Skill
     {
         Battle.TriggerDatas.Push(new TriggerData()
         {
+            User = Unit,
             Target = target,
             Skill = this,
         });

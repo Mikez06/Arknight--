@@ -87,6 +87,10 @@ namespace MainUI
             {
                 int index = m_leftUnit.m_Skills.GetChildIndex((x.data as GObject));
                 int cardIndex = NowTeam.IndexOf(m_leftUnit.Card);
+                if (cardIndex < 0)
+                {
+                    return;
+                }
                 NowSkill[cardIndex] = index;
                 m_leftUnit.SetCard(m_leftUnit.Card, index);
                 Flush(false);

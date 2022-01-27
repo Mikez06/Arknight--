@@ -632,7 +632,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAABAIewvJ3q5SgIAAPQEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VMtS4zAQ/JWUzgtlmwBhb7sOhD1AUoQtLr4o8jhWRZZcepBX5d93JNuxCbUnq6Z7Wj0P+Ui4NDUwq/RM8/xF5UB+jog/kx+jHnyGHV0rueQH6DgfPLelJ9HAeaOWK4zHPs2oCqzm7JdcC0+OMOgkL5SuHvM1pMpYg+GCCgMIaWV9tsTQcUR2bcK+/R78d3TCEwNpQfes8fVtxwsnz0yubwPXSSZoVUPuPfcpSaccN5ISq2kZ3jlTQnDTWiF2X4dSU1obh4UgIecUSwsmPL8Evi6t1x0mz4vCgG3ta7qfco0dalTJb9W0raJm0/j6pMLBuchG8uUbehUHuNCqeu5ujSN/gy0527zRPaPGDro6DE+/2nZyS8WGrgR8lCBf1UwrJ3MErXY+1RlIpgOpc2VpCWzT8xqvF0FXf59j3M/xFGrfpYJXqzC5KIqb0FKo0O8HnwUaJ/MHLYfNMK0WRr2Nvwbe6Xq4Qi3wxLWxCLVXSu9vpZz2VPKEB9955myqtAQ9FKhBUmH3C5SxlyO8wP6f9UT9Y2kvb7HuDVykhHDPj6ILaKG253GZUm1fwJRzZwWXQzGPvGKjUiVls2KmH0SXtnS6oGyYtnY8/7pdhD3AZMzuHyar2yhKbu6ukji6S+4nk6KIbyAZj0lYPy6xUCoWjdO2Pzg22V8rcdW6n8hopmkd1j3XdDvjh0oNDHJZqCXTAHLeKJzLAo2X4LPMH3OOHVqCtVyGgZNjRoRiG8izs1AWSn3cWU2zXiUjNf9U1kcykoZfR0ZO5PQPUEsDBBQAAAgIAABAIewdWq6zbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM01VFQSi9KLMgoBooYgjilmSkgdrRSsmWqhUmyuaVFkqmBgZGxma6RoYGZkbmFRVqaoXGqkYmJUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAABAIewvJ3q5SgIAAPQEAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAABAIewdWq6zbQAAAHgAAAAJACQAAAAAAAAAAAAAAJcCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAATwMAAAAA
+    dataString: UEsDBBQAAAgIAABAIexDHb0zSwIAAPQEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMzi1jG0igt9YkpAeSTGgnF1+EvMYaZMmjjwDJ8N+7km3skOnJmn1vn95+yB+ES1MDs0qvNM/XKgfyY0T8mXwb9eADHOlOyQ1/h47zynNbehINnBdqucJ47NOMqsBqzn7KnfDkCINO8kLp6i7fQaqMNRguqDCAkFbWZ0sMfYzIsU04td93/x2d8cRAWtA9azqedbxw8sxkPAtcJ5mgVQ2599ynJJ1y3EhKrKZleOdMCcFNa4XYUx1KTWltHBaChJxTLC2Y8PwS+K60XneY/FQUBmxrX9PTkmvsUKNKfqmmbRU1+8bXGxUOLkU2kusv6GwR4EKr6qG7NR5PMGRLzvYv9MSosYOuDsPLz7adPFCxp1sBryXIR7XSyskcQaudT3UGkuVA6lJZWgLb97zG61XQ1V/nGPdzPIfaj6ng1TZMLoriJrQRKvR74bNA42R+o+WwGabVwqi38dfAH7obrlAL3HNtLELtldL72yqnPZXc48F3njmbKi1BDwVqkFTY0zPK2OsRXmH/z7qn/rG0l7dY9wauUkK450fRFfSsDpdxmVId1mDKJ2cFl0Mxjzxio1IlZbNiph9El7ZxuqBsmLZzPP+8XYQtYD5lt4v5dhZFyeTmexJHN8ntfF4U8QSS6ZSE9eMSC6XiuXHa9gfHJvtrJa5a9xMZrTStw7rnmh5W/L1SA4NcFmrDNIB8ahQuZYHGS/BZ5nc5xw5twFouw8DJR0aEYnvIs4tQFkq9O1pNs14lIzV/U9ZHMpKGX0dGzuT8D1BLAwQUAAAICAAAQCHsHVqus20AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNVRUEovSizIKAaKGII4pZkpIHa0UrJlqoVJsrmlRZKpgYGRsZmukaGBmZG5hUVamqFxqpGJiVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAQCHsQx29M0sCAAD0BAAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAQCHsHVqus20AAAB4AAAACQAkAAAAAAAAAAAAAACYAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAFADAAAAAA==
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -648,7 +648,7 @@ MonoBehaviour:
   logPathResults: 4
   maxNearestNodeDistance: 100
   scanOnStartup: 1
-  fullGetNearestSearch: 0
+  fullGetNearestSearch: 1
   prioritizeGraphs: 0
   prioritizeGraphsLimit: 1
   colorSettings:
@@ -1047,7 +1047,7 @@ MonoBehaviour:
     Pos: {x: 5.12, y: 1.5, z: 3}
     Delay: 3
     DirectMove: 0
-    HideMove: 1
+    HideMove: 0
 --- !u!1 &669119446
 GameObject:
   m_ObjectHideFlags: 0
@@ -1845,7 +1845,7 @@ GameObject:
   - component: {fileID: 1272540678}
   - component: {fileID: 1272540677}
   - component: {fileID: 1272540676}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3599,7 +3599,7 @@ MonoBehaviour:
   - Pos: {x: 5.12, y: 1.5, z: 3}
     Delay: 3
     DirectMove: 0
-    HideMove: 1
+    HideMove: 0
   - Pos: {x: 8, y: 1.5, z: 1.25}
     Delay: 0
     DirectMove: 0
@@ -3618,12 +3618,6 @@ MonoBehaviour:
   - {x: 4, y: 1.5000001, z: 2}
   - {x: 4, y: 1.5000001, z: 3.0000002}
   - {x: 5.1199994, y: 1.5000001, z: 3.0000002}
-  - {x: 5.1199994, y: 1.5000001, z: 3.0000002}
-  - {x: 6.0000005, y: 1.5000001, z: 3.0000002}
-  - {x: 7.0000005, y: 1.5000001, z: 3.0000002}
-  - {x: 7.0000005, y: 1.5000001, z: 2}
-  - {x: 8, y: 1.5000001, z: 2}
-  - {x: 8, y: 1.5000001, z: 1.25}
   - {x: 8, y: 1.5000001, z: 1.25}
   - {x: 9, y: 1.5000001, z: 1.1600001}
 --- !u!65 &3008285881167632040
@@ -4192,7 +4186,7 @@ BoxCollider:
   m_GameObject: {fileID: 3008285882508571692}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

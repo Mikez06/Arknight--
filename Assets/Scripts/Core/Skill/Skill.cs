@@ -784,10 +784,10 @@ public class Skill
                 result = -x.Attack;
                 break;
             case AttackTargetOrderEnum.自身距离升序:
-                result = -(x.Position - Unit.Position).magnitude;
+                result = (x.Position - Unit.Position).magnitude;
                 break;
             case AttackTargetOrderEnum.自身距离降序:
-                result = (x.Position - Unit.Position).magnitude;
+                result = -(x.Position - Unit.Position).magnitude;
                 break;
             case AttackTargetOrderEnum.血量未满随机:
                 result = Battle.Random.Next(0, 1000);

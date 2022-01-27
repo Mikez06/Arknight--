@@ -11,7 +11,9 @@ namespace Buffs
     {
         public int Power;
 
-        public Unit source;
+        public float PowerAll;
+
+        public Unit Source;
 
         public float FullDuration;
 
@@ -20,20 +22,44 @@ namespace Buffs
         public override void Init()
         {
             Duration.Set(FullDuration);
-            StartDistance = (source.Position2 - Unit.Position2).magnitude;
+            StartDistance = (Source.Position2 - Unit.Position2).magnitude;
+
         }
 
-        public Vector2 GetPushPower()
+        public override void Update()
         {
-            if (Unit.IfStoped()) return Vector2.zero;
-            float dis= (source.Position2 - Unit.Position2).magnitude;
+            base.Update();
+
+            float dis = (Source.Position2 - Unit.Position2).magnitude;
             if (dis < StartDistance)
             {
                 dis = Mathf.Pow(dis / StartDistance, 4);
             }
             else
                 dis = 1;
-            return (source.Position2 - Unit.Position2).normalized * Power / 100f * dis;
+            if (dis > 1) dis = 1;
+            PowerAll += dis * Power;
+            PowerAll -= 490 * SystemConfig.DeltaTime;
+        }
+
+        public Vector2 GetPushPower()
+        {
+            if (Unit.IfStoped() && (Unit as Units.敌人).StopUnit == Source)
+            {
+                Finish();
+                return Vector2.zero;
+            }
+            //float dis= (Source.Position2 - Unit.Position2).magnitude;
+            //if (dis < StartDistance)
+            //{
+            //    dis = Mathf.Pow(dis / StartDistance, 4);
+            //}
+            //else
+            //    dis = 1;
+            //if (dis > 1) dis = 1;
+            //var result= (Source.Position2 - Unit.Position2).normalized * Power / 100f * dis;
+            //Debug.Log("拉力:" + result.x + "," + result.y);
+            return (Source.Position2 - Unit.Position2).normalized * PowerAll / 100f;
         }
         public override void Finish()
         {

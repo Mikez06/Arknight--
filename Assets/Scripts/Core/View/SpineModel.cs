@@ -79,7 +79,7 @@ public class SpineModel : UnitModel
         }
     }
 
-    void changeAnimation(string[] animations)
+    protected virtual void changeAnimation(string[] animations)
     {
         var nowAnimation = SkeletonAnimation.AnimationName;
         if (animations == null || animations.Length == 0)//如果模型上不存在目标动画 那么就把当前动作暂停住 一般用于怪物被击晕
@@ -91,7 +91,7 @@ public class SpineModel : UnitModel
         SkeletonAnimation.state.ClearTracks();
         if (animations[0].Contains("Idle"))//从其他状态返回Idle时，如果有退出动画，就播放
         {
-            if (nowAnimations.Length >= 3 && nowAnimation != nowAnimations[2])
+            if (nowAnimations.Length >= 3 && nowAnimation != nowAnimations[2] && SkeletonAnimation.Skeleton.Data.FindAnimation(nowAnimations[2]) != null)
             {
                 Debug.Log($"{Unit.UnitData.Id}播放切出动画{nowAnimations[2]} ,至{animations[0]}");
                 SkeletonAnimation.state.AddAnimation(0, nowAnimations[2], false, 0);

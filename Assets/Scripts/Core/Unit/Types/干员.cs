@@ -311,6 +311,7 @@ namespace Units
             if (!CanStopOther) return false;
             if (StopUnits.Contains(target)) return true;
             if (target.StopUnit != null) return false;
+            if (NowGrid.FarAttackGrid) return false;
             return StopUnits.Count < StopCount;
         }
 

@@ -170,11 +170,6 @@ public class Battle
             tile.Update();
         }
 
-        foreach (var unit in Enemys)
-        {
-            unit.UpdateCollision();
-        }
-
         foreach (var bullet in Bullets.ToArray())
         {
             bullet.Update();
@@ -191,6 +186,10 @@ public class Battle
         foreach (var unit in AllUnits.ToArray())
         {
             unit.UpdateAction();
+        }
+        foreach (var unit in Enemys)
+        {
+            unit.UpdateCollision();
         }
         foreach (var unit in Enemys.ToArray())
         {

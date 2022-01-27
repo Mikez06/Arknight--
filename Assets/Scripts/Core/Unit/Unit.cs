@@ -340,12 +340,13 @@ public class Unit
     public void UpdateCollision()
     {
         var tile = Battle.Map.Tiles[GridPos.x, GridPos.y];
+
         if (!tile.CanMove)
         {
             float x = Position2.x - GridPos.x;
             float y = Position2.y - GridPos.y;
             bool b1 = y - x > 0;
-            bool b2 = x + y < 1;
+            bool b2 = x + y < 0;
             if (b1 && b2)
             {
                 Position.x = Mathf.RoundToInt(Position.x) - 0.5f;
@@ -470,7 +471,9 @@ public class Unit
 
     protected bool unbalance;
 
-    public void UpdatePush()
+    Vector2 power;
+
+    public virtual void UpdatePush()
     {
         if (!Alive()) return;
         Unbalancing.Update(SystemConfig.DeltaTime);
@@ -479,20 +482,18 @@ public class Unit
             buff.Update();
         }
         if (!Unbalance) return;
+        //(this as Units.敌人).CheckBlock();
         Vector2 power = Vector2.zero;
         foreach (var buff in PushBuffs.ToList())
         {
             var pushPower= buff.GetPushPower();
             power += pushPower;
         }
-        if (power.magnitude < 0.1f) //力太小，失衡状态结束
+        if (power.magnitude < 0.1f && Unbalancing.Finished()) //力太小，失衡状态结束
         {
             unbalance = false;
         }
-        else
-        {
-            Unbalancing.Set(0.1f);
-        }
+
         if (Unbalance)
         {
             var posChange = power * SystemConfig.DeltaTime;

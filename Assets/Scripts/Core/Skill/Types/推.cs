@@ -7,7 +7,7 @@ namespace Skills
         protected override void addBuff(Unit target)
         {
             base.addBuff(target);
-            int power = 0;
+            int power;
             Vector2 direction;
             var angle = Vector2.SignedAngle(target.Position2 - Unit.Position2, Unit.Direction);
             if ((Unit.Position2 - target.Position2).magnitude < 0.25f || angle > 45f)
@@ -24,6 +24,8 @@ namespace Skills
             {
                 Debug.Log($"此次推力大小为{power}");
                 Buffs.推动 push = new Buffs.推动();
+                push.Skill = this;
+                push.Unit = target;
                 push.Power = power;
                 push.Direction = direction;
                 target.AddPush(push);

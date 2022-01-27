@@ -493,6 +493,10 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Units/char_202_demkni
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 238f6bc24ccb494489affef8d3d54f2e
+    m_Address: Assets/Bundles/Units/char_236_rope
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

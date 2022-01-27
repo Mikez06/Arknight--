@@ -17,11 +17,14 @@ namespace Skills
             if (power > 0)
             {
                 Buffs.拉动 push = new Buffs.拉动();
-                push.source = Unit;
+                push.Skill = this;
+                push.Source = Unit;
+                push.Unit = target;
+                push.Power = getPower(SkillData.PushPower, target.Weight);
                 if (SkillData.PushPower - target.Weight > -1) push.FullDuration = 1;
                 else push.FullDuration = 0.5f;
                 push.Init();
-                target.AddBuff(push);
+                target.AddPush(push);
             }
         }
         static int[] pow = new int[] { 0, 2, 10, 40, 42, 44, 46 };

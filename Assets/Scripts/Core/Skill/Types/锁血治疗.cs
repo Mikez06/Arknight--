@@ -30,6 +30,7 @@ namespace Skills
             {
                 if (Healing.Update(SystemConfig.DeltaTime))
                 {
+                    Unit.SetStatus(StateEnum.Idle);
                     Unit.Hp= healCount;
                 }
                 else

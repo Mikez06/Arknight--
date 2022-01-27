@@ -86,29 +86,37 @@ namespace MainUI
 
             m_levelInfo.SetInfo(battleLevel);
             m_showLevelInfo.selectedIndex = 1;
-            goTcs = new TaskCompletionSource<bool>();
-            var ifGo= await goTcs.Task;
-            if (ifGo)
+
+            var teamIndex = -1;
+            while (teamIndex < 0)
             {
-                var uiTeam = UIManager.Instance.ChangeView<UI_Team>(UI_Team.URL);
-                uiTeam.IfGoBattle(true);
-                var teamIndex = await uiTeam.ChooseTeam();
-                if (teamIndex < 0)
+                goTcs = new TaskCompletionSource<bool>();
+                var ifGo = await goTcs.Task;
+                if (ifGo)
                 {
-                    UIManager.Instance.ChangeView<GComponent>(URL);
+                    var uiTeam = UIManager.Instance.ChangeView<UI_Team>(UI_Team.URL);
+                    uiTeam.IfGoBattle(true);
+
+                    teamIndex = await uiTeam.ChooseTeam();
+                    if (teamIndex < 0)
+                    {
+                        UIManager.Instance.ChangeView<GComponent>(URL);
+                    }
                 }
                 else
                 {
-                    await BattleManager.Instance.StartBattle(new BattleInput()
-                    {
-                        MapName = battleLevel,
-                        Seed = 0,
-                        Team = GameData.Instance.Teams[teamIndex],
-                        Contracts = new List<int>(contracts),
-                    });
-                    UIManager.Instance.ChangeView<GComponent>(URL);
+                    return;
                 }
             }
+
+            await BattleManager.Instance.StartBattle(new BattleInput()
+            {
+                MapName = battleLevel,
+                Seed = 0,
+                Team = GameData.Instance.Teams[teamIndex],
+                Contracts = new List<int>(contracts),
+            });
+            UIManager.Instance.ChangeView<GComponent>(URL);
         }
     }
 }

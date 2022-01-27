@@ -14,7 +14,11 @@ namespace Skills
             if (Unit is Units.干员 u)
             {
                 Targets.AddRange(u.StopUnits);
-                if (Targets.Count == 0) Targets.AddRange(GetAttackTarget());
+                if (Targets.Count < SkillData.DamageCount)
+                {
+                    Targets.AddRange(GetAttackTarget());
+                    Targets.Distinct();
+                }
             }
             else if (Unit is Units.敌人 u1)
             {

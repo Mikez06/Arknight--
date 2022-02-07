@@ -15,6 +15,8 @@ namespace BattleUI
             this.Unit = unit;
             unit.uiUnit = this;
             m_unitType.selectedIndex = unit.UnitData.HpBarType;
+            m_readyControl.selectedIndex = 0;
+            m_skillCount.selectedIndex = 0;
             Flush();
         }
 
@@ -68,7 +70,7 @@ namespace BattleUI
 
                             if (Unit.MainSkill.Power >= Unit.MainSkill.MaxPower)
                             {
-                                if (Unit.MainSkill.SkillData.UseType == SkillUseTypeEnum.手动)
+                                if (Unit.MainSkill.SkillData.UseType == SkillUseTypeEnum.手动 && Unit.MainSkill.SkillData.ReadyType != SkillReadyEnum.充能释放)
                                 {
                                     m_readyControl.selectedIndex = 1;
                                 }

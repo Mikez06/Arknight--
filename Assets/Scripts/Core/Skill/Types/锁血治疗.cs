@@ -41,6 +41,11 @@ namespace Skills
             }
         }
 
+        public override void Start()
+        {
+            base.Start();
+        }
+
         public override void Cast()
         {
             var targetHp = SkillData.Data.GetFloat("LockHp") * Unit.MaxHp;
@@ -48,7 +53,7 @@ namespace Skills
             if (targetHp > Unit.Hp)
                 Unit.Hp = targetHp;
             healCount = SkillData.Data.GetFloat("HealCount") * Unit.MaxHp;
-            if (healCount != 0)
+            if (healCount != 0 && HealStarting.Finished())
             {
                 HealStarting.Set(SkillData.Data.GetFloat("HealStart"));
                 if (HealStarting.Finished())

@@ -282,6 +282,8 @@ public class Unit
         });
         Battle.Trigger(TriggerEnum.死亡);
         Battle.TriggerDatas.Pop();
+
+        if (Dying.Finished()) Finish();
     }
 
     public virtual void Finish()
@@ -561,7 +563,7 @@ public class Unit
             else if (state == StateEnum.Start)
                 AnimationName = Unit.StartAnimation;
             else if (state == StateEnum.Die)
-                AnimationName = Unit.DieAnimation;
+                AnimationName = UnitData.DeadAnimation;
             AnimationSpeed = 1;
             if (state == StateEnum.Stun)
             {

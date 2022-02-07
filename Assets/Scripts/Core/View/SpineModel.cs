@@ -166,14 +166,14 @@ public class SpineModel : UnitModel
         }
         //Debug.Log("A:" + animation.duration);
         fullDuration += animation.Duration;
-        //if (!ifAttackEvent) result = fullDuration;
+        if (!ifAttackEvent) result = fullDuration;
         return result;
     }
 
     public override float GetAnimationDuration(string animationName)
     {
-        var result= SkeletonAnimation.Skeleton.Data.FindAnimation(animationName).Duration;
-        return result;
+        var result = SkeletonAnimation.Skeleton.Data.FindAnimation(animationName);;
+        return result == null ? 0 : result.Duration;
     }
 
     public override void SetColor(Color color)

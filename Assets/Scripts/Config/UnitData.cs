@@ -50,6 +50,7 @@ public class UnitData : IConfig
       public System.Collections.Generic.Dictionary<string,object> Ablititys;
       public string[] IdleAnimation;
       public string[] MoveAnimation;
+      public string[] DeadAnimation;
       public string[] StunAnimation;
       public string[] ForwardAnimation;
       public int MaxAnimationScale;

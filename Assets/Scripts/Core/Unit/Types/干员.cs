@@ -167,6 +167,7 @@ namespace Units
         public void JoinMap()
         {
             Debug.Log("StartStart" + Time.time);
+            IfAlive = true;
             hideBase = true;
             Battle.Cost -= GetCost();
             Battle.BuildCount -= UnitData.BuildCountCost;
@@ -199,6 +200,14 @@ namespace Units
 
         public void LeaveMap(bool recoverPower = false)
         {
+            if (recoverPower)
+                Battle.Cost += Mathf.FloorToInt(UnitData.Cost * UnitData.LeaveReturn);
+            Finish();
+        }
+
+        public override void Finish()
+        {
+            base.Finish();
             IfAlive = false;
             UnitModel.gameObject.SetActive(false);
             BattleUI.UI_Battle.Instance.ReturnUIUnit(this);
@@ -208,8 +217,6 @@ namespace Units
             Battle.Map.Tiles[GridPos.x, GridPos.y].Unit = null;
             Reseting.Set(ResetTime);
             BuildTime++;
-            if (recoverPower)
-                Battle.Cost += Mathf.FloorToInt(UnitData.Cost * UnitData.LeaveReturn);
             Battle.BuildCount += UnitData.BuildCountCost;
             foreach (var unit in StopUnits)
             {
@@ -223,7 +230,7 @@ namespace Units
                 if (Parent != null) Parent.Children.Remove(this);
             }
 
-            if (Parent!=null&& Parent.InputTime < 0)
+            if (Parent != null && Parent.InputTime < 0)
             {
                 Battle.AllUnits.Remove(this);
                 Battle.PlayerUnits.Remove(this);
@@ -248,14 +255,8 @@ namespace Units
                 {
                     skill.DoUpgrade(skill.StartId);
                 }
-                skill.Reset();
+                else skill.Reset();
             }
-        }
-
-        public override void Finish()
-        {
-            LeaveMap();
-            base.Finish();
         }
 
         public override Vector2Int PointWithDirection(Vector2Int point)

@@ -94,6 +94,7 @@ public class Skill
 
     public virtual void Reset()
     {
+        Opening.Finish();
         UseCount = 0;
         Power = SkillData.StartPower;
         BreakCast();
@@ -469,7 +470,7 @@ public class Skill
 
         if (Targets.Count > 0)
         {
-            foreach (var t in Targets) Effect(t);
+            foreach (var t in Targets.ToArray()) Effect(t);
         }
         CastExSkill();
         if (SkillData.BurstCount > 0)
@@ -871,6 +872,7 @@ public class Skill
         Unit.UnitModel?.BreakAnimation();
         Casting.Finish();
         Bursting.Finish();
+        //Opening.Finish();
         BurstCount = -1;
     }
 

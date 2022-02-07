@@ -19,7 +19,7 @@ public class Battle
 
     public MapData MapData;
 
-    public List<WaveData> Waves = new List<WaveData>();
+    public List<OneWave> Waves = new List<OneWave>();
 
     public List<MapUnitInfo> SceneUnits = new List<MapUnitInfo>();
 
@@ -117,12 +117,20 @@ public class Battle
                 UnitMap[i, j] = new HashSet<Unit>();
             }
 
-        foreach (var wave in Database.Instance.GetAll<WaveData>())
+        WaveData[] array = Database.Instance.GetAll<WaveData>();
+        for (int id = 0; id < array.Length; id++)
         {
-            if (wave.Map == battleConfig.MapName) Waves.Add(wave);
+            WaveData wave = array[id];
+            if (wave.Map == battleConfig.MapName)
+            {
+                for (int i = 0; i < wave.Count; i++)
+                {
+                    Waves.Add(new OneWave() { WaveId = id, Time = wave.Delay + wave.GapTime * i });
+                }
+            }
         }
-        Waves.Sort((x, y) => Math.Sign(x.Delay - y.Delay));
-        EnemyCount = Waves.Count;
+        Waves.Sort((x, y) => Math.Sign(x.Time - y.Time));
+        EnemyCount = Waves.Where(x => x.WaveData.UnitId != null).Count();
     }
 
     public void Update()
@@ -138,13 +146,13 @@ public class Battle
             Cost++;
             CostCounting.Set(1);
         }
-        while (Waves.Count > 0 && Tick * SystemConfig.DeltaTime > Waves[0].Delay)
+        while (Waves.Count > 0 && Tick * SystemConfig.DeltaTime > Waves[0].Time)
         {
             var wave = Waves[0];
             Waves.RemoveAt(0);
-            if (wave.UnitId == null)
+            if (wave.WaveData.UnitId == null)
             {
-                var PathPoints = PathManager.Instance.GetPath(wave.Path);
+                var PathPoints = PathManager.Instance.GetPath(wave.WaveData.Path);
                 List<Vector3> p = new List<Vector3>();
                 for (int i = 0; i < PathPoints.Count - 1; i++)
                 {
@@ -155,7 +163,7 @@ public class Battle
             }
             else
             {
-                var enemy = CreateEnemy(wave);
+                var enemy = CreateEnemy(wave.WaveData);
                 TriggerDatas.Push(new TriggerData()
                 {
                     Target = enemy,

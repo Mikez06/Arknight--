@@ -501,6 +501,14 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Units/char_277_sqrrel
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 05ad7165fb8095a459da34f46cf45de9
+    m_Address: Assets/Bundles/Units/enemy_1064_snsbr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0910d0bba5b87b84890be71d05ed5d37
+    m_Address: Assets/Bundles/Units/enemy_1015_litamr_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

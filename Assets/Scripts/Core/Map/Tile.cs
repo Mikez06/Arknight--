@@ -47,7 +47,7 @@ public class Tile
         mapGrid.Tile = this;
         this.Map = map;
         this.MapGrid = mapGrid;
-        this.Pos = mapGrid.transform.position;
+        this.Pos = mapGrid.GetPos();
         this.X = mapGrid.X;
         this.Y = mapGrid.Y;
         this.CanBuildUnit = mapGrid.CanBuildUnit;

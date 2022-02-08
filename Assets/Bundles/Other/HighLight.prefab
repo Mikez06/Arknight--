@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd297bbc114302a4f9e0c9c0c143388d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myMeshRenderer: {fileID: 7611343966404296154}
+  myMeshRenderer: {fileID: 7978085960990096334}
   myMeshRenderer2: {fileID: 7611343966404296154}
 --- !u!114 &6782485354889841197
 MonoBehaviour:
@@ -183,7 +183,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4022169519983707838}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.00001, z: 0}
+  m_LocalPosition: {x: 0, y: 0.004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4765037094171782577}

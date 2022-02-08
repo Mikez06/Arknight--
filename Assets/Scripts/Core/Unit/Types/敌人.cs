@@ -227,6 +227,7 @@ namespace Units
             {
                 var target = Position + (TempTarget - Position).normalized * Speed * SystemConfig.DeltaTime;
                 Position = target;
+                //Debug.Log(Position.x);
             }
         }
 

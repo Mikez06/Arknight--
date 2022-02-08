@@ -93,7 +93,7 @@ public class BattleCamera : MonoBehaviour
                 {
                     //预览干员位置和攻击范围
                     canBuild = true;
-                    g.transform.position = grid.transform.position;
+                    g.transform.position = grid.GetPos();
                     BuildUnit.ChangePos(grid.X, grid.Y, DirectionEnum.Left);
 
                     if (grid != lastGrid)
@@ -140,8 +140,10 @@ public class BattleCamera : MonoBehaviour
         bool ifHeal = targetUnit.FirstSkill.SkillData.IfHeal;
         foreach (var tile in targetUnit.GetNowAttackSkill().AttackPoints)
         {
+            var grid = BattleManager.Instance.Battle.Map.Tiles[tile.x, tile.y];
+            if (grid == null) continue;
             var tileAsset = ResHelper.GetAsset<GameObject>(PathHelper.OtherPath + "HighLight").GetComponent<MapTile>();
-            var go = TilePool.Spawn(tileAsset, BattleManager.Instance.Battle.Map.Tiles[tile.x, tile.y].Pos, null);
+            var go = TilePool.Spawn(tileAsset, grid.MapGrid.GetPos(), null);
             go.IfHeal(ifHeal);
             Tiles.Add(go);
         }
@@ -167,6 +169,7 @@ public class BattleCamera : MonoBehaviour
     {
         foreach (var grid in BattleManager.Instance.Battle.Map.Tiles)
         {
+            if (grid == null) continue;
             if (grid.CanSet(BuildUnit))
             {
                 grid.MapGrid.ChangeHighLight(true);
@@ -182,7 +185,7 @@ public class BattleCamera : MonoBehaviour
     {
         foreach (var grid in BattleManager.Instance.Battle.Map.Tiles)
         {
-            grid.MapGrid.ChangeHighLight(false);
+            grid?.MapGrid.ChangeHighLight(false);
         }
     }
     public void ShowUnitInfo(Unit unit)

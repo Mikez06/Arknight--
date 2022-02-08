@@ -26,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4724143315630845853}
-  m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
+  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1588933787747308190}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!33 &6900260221405151860
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 1588933787747308190}
   - component: {fileID: 1793964174837093691}
   m_Layer: 0
-  m_Name: gopro
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -236,64 +236,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432eac9b20482b64a8d3780a70317cb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Unit:
-    Id: 0
-    UnitModel: {fileID: 0}
-    Position: {x: 0, y: 0, z: 0}
-    Height: 0
-    Direction: {x: 1, y: 0}
-    State: 4
-    Hp: 0
-    MaxHp: 0
-    HpBase: 0
-    HpAdd: 0
-    HpRate: 0
-    HpAddFin: 0
-    HpRateFin: 0
-    Agi: 0
-    AgiBase: 0
-    AgiAdd: 0
-    AgiRate: 0
-    AgiAddFin: 0
-    AgiRateFin: 0
-    Speed: 0
-    SpeedBase: 0
-    SpeedRate: 0
-    SpeedAdd: 0
-    AttackGap: 0
-    AttackGapBase: 0
-    AttackGapAdd: 0
-    AttackGapRate: 0
-    Attack: 0
-    AttackBase: 0
-    AttackRate: 0
-    AttackAdd: 0
-    AttackRateFin: 0
-    AttackAddFin: 0
-    Defence: 0
-    DefenceBase: 0
-    DefenceRate: 0
-    DefenceAdd: 0
-    DefenceRateFin: 0
-    DefenceAddFin: 0
-    MagicDefence: 0
-    MagicDefenceBase: 0
-    MagicDefenceRate: 0
-    MagicDefenceAdd: 0
-    MagicDefenceRateFin: 0
-    MagicDefenceAddFin: 0
-    PowerSpeed: 0
-    Team: 0
-    Weight: 0
-    WeightBase: 0
-    WeightAdd: 0
-    IfHide: 0
-    IfHideAnti: 0
-    IfAlive: 1
-    IfStun: 0
-    ScaleX: -1
-    TargetScaleX: -1
-    AnimationName: Default
-    OverWriteAnimation: 
-    AnimationSpeed: 1
   SkeletonAnimation: {fileID: 1365670448253340619}

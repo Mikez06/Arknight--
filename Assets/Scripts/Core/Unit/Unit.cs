@@ -288,6 +288,7 @@ public class Unit
 
     public virtual void Finish()
     {
+        IfAlive = false;
         Battle.TriggerDatas.Push(new TriggerData()
         {
             Target = this,

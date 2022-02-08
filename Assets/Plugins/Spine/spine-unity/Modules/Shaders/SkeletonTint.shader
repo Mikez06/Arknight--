@@ -12,6 +12,7 @@ Shader "Spine/Skeleton Tint" {
 		_Black ("Black Point", Color) = (0,0,0,0)
 		[NoScaleOffset] _MainTex ("MainTex", 2D) = "black" {}
 		_Cutoff ("Shadow alpha cutoff", Range(0,1)) = 0.1
+		_angle ("Angle" , Range(0,180))=40
 	}
 
 	SubShader {
@@ -33,6 +34,7 @@ Shader "Spine/Skeleton Tint" {
 			uniform sampler2D _MainTex; uniform float4 _MainTex_ST;
 			uniform float4 _Color;
 			uniform float4 _Black;
+			uniform float _angle;
 
 			struct VertexInput {
 				float4 vertex : POSITION;
@@ -50,6 +52,26 @@ Shader "Spine/Skeleton Tint" {
 				VertexOutput o;
 				o.pos = UnityObjectToClipPos(v.vertex);
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+
+				 //在MVP变换之后再进行旋转操作,并修改顶点的Z值(深度)
+                //弧度
+                fixed radian = _angle / 180 * 3.14159;
+                fixed cosTheta = cos(radian);
+                fixed sinTheta = sin(radian);
+
+                //旋转中心点(测试用的四边形, 正常的spine做的模型脚下旋转的点就是(0,0), 可以省去下面这一步已经旋转完成后的 +center操作)
+                half2 center = half2(0, -0);
+                v.vertex.zy -= center;
+
+                half z = v.vertex.z * cosTheta - v.vertex.y * sinTheta;
+                half y = v.vertex.z * sinTheta + v.vertex.y * cosTheta;
+                v.vertex = half4(v.vertex.x, y, z, v.vertex.w);
+
+                v.vertex.zy += center;
+
+                float4 verticalClipPos = UnityObjectToClipPos(v.vertex);
+                o.pos.z = verticalClipPos.z / verticalClipPos.w * o.pos.w ;
+
 				o.vertexColor = v.vertexColor * float4(_Color.rgb * _Color.a, _Color.a); // Combine a PMA version of _Color with vertexColor.
 				return o;
 			}

@@ -175,7 +175,7 @@ public class Battle
 
         foreach (var tile in Map.Tiles)
         {
-            tile.Update();
+            tile?.Update();
         }
 
         foreach (var bullet in Bullets.ToArray())
@@ -434,12 +434,9 @@ public class Battle
 
     public void DoDamage(int count)
     {
+        if (Hp <= 0) return;
         Hp -= count;
         Hurt += count;
-        if (Hp <= 0)
-        {
-            Finish = true;
-        }
     }
 
     public void Trigger(TriggerEnum triggerEnum)

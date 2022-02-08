@@ -30,6 +30,8 @@ public class SpineImportEditor
             string materialPath = assetPath.Replace("SkeletonData.asset", "Material.mat");
             Material material = AssetDatabase.LoadAssetAtPath<Material>(materialPath);
             material.shader = Shader.Find("Spine/Skeleton Tint");
+            material.SetFloat("_angle", 60);
+            
             var dataAsset = AssetDatabase.LoadAssetAtPath<SkeletonDataAsset>(Path.Combine(assetPath));
             dataAsset.scale = 0.003f;
             //dataAsset.
@@ -54,6 +56,7 @@ public class SpineImportEditor
             sa.Initialize(true);
         }
         AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
         EditorUtility.ClearProgressBar();
         //AssetDatabase.Instance.Refresh();
     }

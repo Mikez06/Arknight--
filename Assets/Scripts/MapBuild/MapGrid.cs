@@ -29,12 +29,15 @@ public class MapGrid : MonoBehaviour, IPointerClickHandler
 
     //public int ConfigId;
 
+    BoxCollider BoxCollider;
+
     Renderer Renderer;
     [HideInInspector]
     public Tile Tile;
 
     private void Awake()
     {
+        BoxCollider = GetComponent<BoxCollider>();
         Renderer = GetComponentInChildren<Renderer>();
     }
 
@@ -57,5 +60,16 @@ public class MapGrid : MonoBehaviour, IPointerClickHandler
     {
         if (Tile.Unit != null && !FairyGUI.Stage.isTouchOnUI)
             BattleUI.UI_Battle.Instance.ChooseUnit(Tile.Unit);
+    }
+
+    public Vector3 GetPos()
+    {
+        if (BoxCollider != null)
+        {
+            //var result = BoxCollider.center + transform.position;
+            //result.y += BoxCollider.bounds.size.y / 2;
+            return transform.TransformPoint(BoxCollider.center + new Vector3(0, BoxCollider.size.y / 2, 0));
+        }
+        return transform.position;
     }
 }

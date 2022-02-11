@@ -31,7 +31,7 @@ namespace Bullets
                 var t = target.FirstOrDefault();
                 if (t.Alive())
                 {
-                    Skill.Hit(t);
+                    Skill.Hit(t, this);
                     Finish();
                 }
             }

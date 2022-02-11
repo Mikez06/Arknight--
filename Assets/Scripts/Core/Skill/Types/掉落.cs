@@ -20,7 +20,7 @@ namespace Skills
             base.Update();
         }
 
-        public override void Hit(Unit target)
+        public override void Hit(Unit target, Bullet bullet = null)
         {
             //base.Hit(target);
             var X = Unit.GridPos.x;

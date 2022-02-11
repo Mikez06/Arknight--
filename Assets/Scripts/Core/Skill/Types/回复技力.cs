@@ -8,7 +8,7 @@ namespace Skills
 {
     public class 回复技力 : Skill
     {
-        public override void Hit(Unit target)
+        public override void Hit(Unit target, Bullet bullet = null)
         {
             int count0 = SkillData.Data.GetInt("PowerCount");
             int count1 = SkillData.Data.GetInt("PowerCount2");

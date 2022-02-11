@@ -69,20 +69,20 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Bullet/testBullet
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 3f1f82360f5568b42be664a6559710d4
-    m_Address: "Assets/Bundles/Bullet/\u84DD\u8272\u5B50\u5F39"
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 51b8e44d8556d9e43a072f2cd03821b8
-    m_Address: "Assets/Bundles/Effect/\u51FB\u4E2D1"
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 75817fb64010cba41940c970f0255d49
-    m_Address: "Assets/Bundles/Effect/\u51FB\u4E2D2"
+  - m_GUID: 02a3f8824dc4462488b719024aae43ce
+    m_Address: "Assets/Bundles/Effect/\u51B0\u672F\u58EB\u5C31\u7EEA"
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 4a783fa085cbf574f9ded34225389f3d
     m_Address: "Assets/Bundles/Effect/\u84C4\u529B"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 62cfeba3c730d5e408a2529f68f92451
+    m_Address: "Assets/Bundles/Effect/\u7729\u6655"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 75817fb64010cba41940c970f0255d49
+    m_Address: "Assets/Bundles/Effect/\u51FB\u4E2D2"
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: a5c18cd2e7f7f54448aa697d524ff21d
@@ -133,8 +133,8 @@ MonoBehaviour:
     m_Address: "Assets/Bundles/Units/\u6D4B\u8BD5\u9677\u5751"
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 4ac1281432c04304e8ce033734c156bf
-    m_Address: "Assets/Bundles/Effect/\u9690\u8EAB"
+  - m_GUID: 51b8e44d8556d9e43a072f2cd03821b8
+    m_Address: "Assets/Bundles/Effect/\u51FB\u4E2D1"
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: e76b8bf638d433e43acf5eac82854d43
@@ -145,24 +145,24 @@ MonoBehaviour:
     m_Address: "Assets/Bundles/Effect/\u5BD2\u51B7"
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 69f81e05419bb0b4b94d8b13571a8ce6
-    m_Address: "Assets/Bundles/Effect/\u51BB\u7ED3"
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 62cfeba3c730d5e408a2529f68f92451
-    m_Address: "Assets/Bundles/Effect/\u7729\u6655"
+  - m_GUID: 3f1f82360f5568b42be664a6559710d4
+    m_Address: "Assets/Bundles/Effect/\u84DD\u8272\u5B50\u5F39"
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: d79645b63c410d44ead0b00c91a585b0
     m_Address: "Assets/Bundles/Effect/\u5730\u677F\u635F\u574F"
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 02a3f8824dc4462488b719024aae43ce
-    m_Address: "Assets/Bundles/Effect/\u51B0\u672F\u58EB\u5C31\u7EEA"
+  - m_GUID: f126c7b8bc4386d4f99c4d9cb6f5a68f
+    m_Address: "Assets/Bundles/Effect/\u5EF6\u8FDF\u5B50\u5F39"
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: f126c7b8bc4386d4f99c4d9cb6f5a68f
-    m_Address: "Assets/Bundles/Bullet/\u5EF6\u8FDF\u5B50\u5F39"
+  - m_GUID: 4ac1281432c04304e8ce033734c156bf
+    m_Address: "Assets/Bundles/Effect/\u9690\u8EAB"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 69f81e05419bb0b4b94d8b13571a8ce6
+    m_Address: "Assets/Bundles/Effect/\u51BB\u7ED3"
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: ff150897b2b4ebf43a30de074b49c088
@@ -507,6 +507,154 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: 608bdd1da2e4cf14a9bd9c1a3179abda
     m_Address: Assets/Bundles/Units/token_10003_cgbird_bird
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 19f46d5618a6b6c49ad438ccc5c3c83f
+    m_Address: Assets/Bundles/Effect/common_ resistance_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 52bb8bfba3d886b4b820e34c3a6a5124
+    m_Address: Assets/Bundles/Effect/common_buff_parry_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 68793260fca1272418d22a2bfd569e43
+    m_Address: Assets/Bundles/Effect/common_buff_parry_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 766c11d66d8d56a4da54c855a467789d
+    m_Address: Assets/Bundles/Effect/common_call_start_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a8abe9cb76101ff47bfb593011416309
+    m_Address: Assets/Bundles/Effect/common_charge_cost_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d269f8212059c6f4793093491c17e104
+    m_Address: Assets/Bundles/Effect/common_charge_cost_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f5394a00709cae443ad2c0eb348dde1f
+    m_Address: Assets/Bundles/Effect/common_charge_cost_start_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ad767c97372b1d4498ac9a82684f9ab6
+    m_Address: Assets/Bundles/Effect/common_char_birth_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 07a020190b7430540a71dad201193fe9
+    m_Address: Assets/Bundles/Effect/common_char_die_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e64abb62c94d2ad429be44cd9b042710
+    m_Address: Assets/Bundles/Effect/common_cuting_hit_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1504b42e4a302bf45a135fd339538853
+    m_Address: Assets/Bundles/Effect/common_disarm_icon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 168f529ff2d507544a9fc6f2f185e064
+    m_Address: Assets/Bundles/Effect/common_enemy_die_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 490cc084cd6542542810c3fe2795d336
+    m_Address: Assets/Bundles/Effect/common_enemy_hit_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d979974b825e20443b1226e20d7d5d3f
+    m_Address: Assets/Bundles/Effect/common_firemagic_hit_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 986fd5c5e1314d741b7a1f0dd84d26dc
+    m_Address: Assets/Bundles/Effect/common_gongjian_trail_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 633bfc9cd96439f4a9ef22a7e2041676
+    m_Address: Assets/Bundles/Effect/common_heal_hit_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3807a36dd6f46934b9f1e746955788d9
+    m_Address: Assets/Bundles/Effect/common_heal_range_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e09c594d66d67bc4095c432de439d86d
+    m_Address: Assets/Bundles/Effect/common_heal_start_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b504904160ff7cf4083544a5d28b725f
+    m_Address: Assets/Bundles/Effect/common_hit_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e5de764b9311f3c48ae56a75ba99db36
+    m_Address: Assets/Bundles/Effect/common_ignite_attack
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 63d40aea2a8c3d144806e9eb4946bd4d
+    m_Address: Assets/Bundles/Effect/common_ignite_defense
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7fd64ba7665c1c64883a3e46aa787b01
+    m_Address: Assets/Bundles/Effect/common_ignite_support
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 59b3e36ce5985ad429a1596936b655c8
+    m_Address: Assets/Bundles/Effect/common_invincible_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 08e91b867910aa642bfd37f0f435c90c
+    m_Address: Assets/Bundles/Effect/common_invisible
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 61f135e0c92e0194eb22164b3d9045d8
+    m_Address: Assets/Bundles/Effect/common_invisible_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ad1542b47cd6d48438e5c6d3474514a9
+    m_Address: Assets/Bundles/Effect/common_item_recycle_trail_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9af5a7f55a90780479562a736abcbc6c
+    m_Address: Assets/Bundles/Effect/common_magic_hit_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f4a729df8b4168542bf8597dd90c2792
+    m_Address: Assets/Bundles/Effect/common_magic_hit_01_m
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1af8b38c242fee44e935c874a1ad8c30
+    m_Address: Assets/Bundles/Effect/common_magic_trail_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 849ffc4397399b94397bcd75ad5a2f41
+    m_Address: Assets/Bundles/Effect/common_magic_trail_01_m
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 20d01ea8d217e3441b829b06d6547d31
+    m_Address: Assets/Bundles/Effect/common_nerve_injury_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 70cc2922000aa444abcbcf38416a44bf
+    m_Address: Assets/Bundles/Effect/common_next_atk_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e1f3f4267cc217246b56dc195f82a034
+    m_Address: Assets/Bundles/Effect/common_refresh_bullet_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d18be9e221f283542ae75420a13c86a8
+    m_Address: Assets/Bundles/Effect/common_V015_ liberation_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2037f083ced6a1a4c94e25f736b03461
+    m_Address: Assets/Bundles/Effect/common_V015_ liberation_02_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2590b5d2fe5557d40b944f3f3c84a02b
+    m_Address: Assets/Bundles/Effect/common_waterElementExplosion
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cc1a93560e6593643b3cf694b1371025
+    m_Address: Assets/Bundles/Effect/kros_skill_01_start
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

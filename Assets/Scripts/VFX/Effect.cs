@@ -4,24 +4,38 @@ using UnityEngine;
 
 public class Effect : MonoBehaviour
 {
-    public ParticleSystem PS;
-    // Start is called before the first frame update
-    void Start()
+    ParticleSystem[] PS;
+    float LifeTime = 5f;
+
+    private void Awake()
     {
-        
+        PS = GetComponentsInChildren<ParticleSystem>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (PS != null && PS.isStopped)
+        LifeTime -= Time.deltaTime;
+        if (LifeTime < 0)
         {
             EffectManager.Instance.ReturnEffect(this);
         }
     }
 
+    public void SetLifeTime(float time)
+    {
+        LifeTime = time;
+    }
+
     public void Play()
     {
-        if (PS != null) PS.Play();
+        foreach (var p in PS)
+        {
+            p.Play();
+        }
+    }
+    public void Init(Unit parent, Vector3 basePos, Vector3 direction)
+    {
+        Play();
     }
 }

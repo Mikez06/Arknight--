@@ -52,7 +52,7 @@ namespace Bullets
             {
                 Finish();
                 if (Target.Alive())
-                    Skill.Hit(Target);
+                    Skill.Hit(Target, this);
             }
             Postion = StartPosition + (TargetPos - StartPosition) * (time / totalTime);
             if (moveHeight > 0)

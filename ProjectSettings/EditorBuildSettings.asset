@@ -14,9 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Maps/TestMap.unity
     guid: b1ccb345816eecc4a8f89b0076795e2c
-  - enabled: 1
-    path: Assets/Scenes/Maps/H6-4.unity
-    guid: 88ec5e6c4bb889c49ad7a010d35c7830
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Dungeon.unity
     guid: 2f119fddf1807b84ab6270ab7b0d28b6

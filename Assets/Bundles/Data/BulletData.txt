@@ -3,3 +3,6 @@
 {"Id":"阿米娅强力击子弹","Type":"子弹","Model":"testBullet","Speed":10}
 {"Id":"弩箭","Type":"冲击波","Model":"蓝色子弹","Speed":10}
 {"Id":"延迟打击","Type":"延迟打击","Model":"延迟子弹","Data":{"delay":0.3}}
+{"Id":"普通弓箭","Type":"子弹","Model":"common_gongjian_trail_01","Speed":10}
+{"Id":"普通法球","Type":"子弹","Model":"common_magic_trail_01"}
+{"Id":"普通法球m","Type":"子弹","Model":"common_magic_trail_01_m"}

@@ -42,8 +42,6 @@ public class BuildEditor
 
         SetAssetMark(PathHelper.UIPath, null);
 
-        SetAssetMark(PathHelper.BulletPath, null);
-
         SetAssetMark(PathHelper.EffectPath, null);
         SetAssetMark(PathHelper.OtherPath, null);
         SetAssetMark(PathHelper.DungeonGridPath, null);

@@ -542,13 +542,20 @@ public class Skill
     /// 伤害判定阶段
     /// </summary>
     /// <param name="target"></param>
-    public virtual void Hit(Unit target)
+    public virtual void Hit(Unit target,Bullet bullet=null)
     {
         if (SkillData.HitEffect != null)
         {
             var ps = EffectManager.Instance.GetEffect(SkillData.HitEffect.Value);
-            ps.transform.position = target.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.HitEffect.Value).BindPoint);
-            ps.Play();
+            //ps.transform.position = target.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.HitEffect.Value).BindPoint);
+            if (bullet != null)
+            {
+                ps.Init(target, bullet.BulletModel.transform.position, bullet.Direction);
+                //ps.transform.rotation = bullet.BulletModel.transform.rotation;
+                //ps.transform.Rotate(new Vector3(0, 0, 1),90);
+            }
+            else ps.Init(target, target.UnitModel.transform.position, Vector3.zero); //ps.transform.rotation = Quaternion.identity;
+            //ps.Play();
         }
         if (SkillData.UseType == SkillUseTypeEnum.自动 && SkillData.MaxPower == 0 && SkillData.ModelAnimation != null)//三个条件判断技能是否为普攻，判断条件存疑
         {

@@ -20,7 +20,7 @@ public class Test : MonoBehaviour
     // Start is called before the first frame update
     async void Start()
     {
-
+        transform.Rotate(new Vector3(0, 1, 0), 90);
         //var animation = GetComponent<SkeletonAnimation>().Skeleton.Data.FindAnimation(s);
         //foreach (var timeline in animation.Timelines)
         //{
@@ -59,10 +59,10 @@ public class Test : MonoBehaviour
     }
     private void OnGUI()
     {
-
+        //GUI.Button(new Vector3(0,0,150,50),transform.position)
     }
     private void Update()
     {
-        transform.rotation = Quaternion.LookRotation(d,c);
+        //transform.rotation = Quaternion.LookRotation(d,c);
     }
 }

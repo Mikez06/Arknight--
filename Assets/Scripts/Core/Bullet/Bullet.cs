@@ -29,7 +29,8 @@ public class Bullet
 
     public virtual void CreateModel()
     {
-        BulletModel = ResHelper.Instantiate(PathHelper.BulletPath + BulletData.Model).GetComponent<BulletModel>();
+        BulletModel = ResHelper.Instantiate(PathHelper.EffectPath + BulletData.Model).GetComponent<BulletModel>();
+        BulletModel.GetComponent<Effect>().SetLifeTime(float.PositiveInfinity);
         BulletModel.Init(this);
     }
 

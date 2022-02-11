@@ -22,7 +22,7 @@ namespace Bullets
             Delay.Update(SystemConfig.DeltaTime);
             if (Delay.Finished())
             {
-                Skill.Hit(Target);
+                Skill.Hit(Target, this);
                 Finish();
             }
         }

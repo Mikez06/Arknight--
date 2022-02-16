@@ -9,7 +9,7 @@ using UnityEngine;
 public class PlayerUnitModel : SpineModel
 {
     public SkeletonAnimation SkeletonAnimation2;
-    bool forward = true;
+    public bool Forward = true;
 
     public override void Init(Unit unit)
     {
@@ -25,7 +25,7 @@ public class PlayerUnitModel : SpineModel
         if (angle < 0) angle += 360;
         bool backward = angle > 45 && angle < 135;//在这个角度下，显示干员背面
         if (Unit.State == StateEnum.Die || Unit.AnimationName == Unit.UnitData.StunAnimation) backward = false;//死亡和眩晕时，只有正面有动画
-        if (backward == forward)
+        if (backward == Forward)
         {
             var ani = Unit.AnimationName.Length > 1 ? Unit.AnimationName[1] : Unit.AnimationName[0];
             if (Unit.UnitData.ForwardAnimation != null && Unit.UnitData.ForwardAnimation.Contains(ani) && backward) //有些动画会将单位强制设置为正面
@@ -42,7 +42,7 @@ public class PlayerUnitModel : SpineModel
 
     void changeForward()
     {
-        forward = !forward;
+        Forward = !Forward;
         var s = SkeletonAnimation;
         SkeletonAnimation = SkeletonAnimation2;
         SkeletonAnimation2 = s;
@@ -53,7 +53,7 @@ public class PlayerUnitModel : SpineModel
     protected override void changeAnimation(string[] animations)
     {
         var ani = animations.Length > 1 ? animations[1] : animations[0];
-        if (Unit.UnitData.ForwardAnimation != null && Unit.UnitData.ForwardAnimation.Contains(ani) && !forward) //有些动画会将单位强制设置为正面
+        if (Unit.UnitData.ForwardAnimation != null && Unit.UnitData.ForwardAnimation.Contains(ani) && !Forward) //有些动画会将单位强制设置为正面
         {
             changeForward();
         }
@@ -71,12 +71,12 @@ public class PlayerUnitModel : SpineModel
     public override Vector3 GetPoint(string name)
     {
         if (name != null && name.StartsWith("F_")) return base.GetPoint(name);
-        return base.GetPoint((forward ? "F_" : "B_") + name);
+        return base.GetPoint((Forward ? "F_" : "B_") + name);
     }
 
     public override float GetSkillDelay(string[] animationName, string[] lastState, out float fullDuration, out float beginDuration)
     {
-        Spine.Unity.SkeletonAnimation SkeletonAnimation = forward ? this.SkeletonAnimation : this.SkeletonAnimation2;
+        Spine.Unity.SkeletonAnimation SkeletonAnimation = Forward ? this.SkeletonAnimation : this.SkeletonAnimation2;
         float result = 0;
         fullDuration = 0;
         beginDuration = 0;

@@ -455,9 +455,10 @@ public class Skill
         if (SkillData.StartEffect != null)
         {
             var ps = EffectManager.Instance.GetEffect(SkillData.StartEffect.Value);
-            ps.transform.position = Unit.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.StartEffect.Value).BindPoint);
-            ps.transform.localScale = new Vector3(Unit.TargetScaleX, 1, 1);
-            ps.Play();
+            //ps.transform.position = Unit.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.StartEffect.Value).BindPoint);
+            ps.Init(Unit, Unit, Unit.Position, Unit.Direction);
+            //ps.transform.localScale = new Vector3(Unit.TargetScaleX, 1, 1);
+            //ps.Play();
         }
     }
 
@@ -478,6 +479,14 @@ public class Skill
             Burst();
         }
         Targets.Clear();
+        if (SkillData.CastEffect != null)
+        {
+            var ps = EffectManager.Instance.GetEffect(SkillData.CastEffect.Value);
+            //ps.transform.position = Unit.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.CastEffect.Value).BindPoint);
+            ps.Init(Unit, Unit, Unit.Position, Unit.Direction);
+            //ps.transform.localScale = new Vector3(Unit.TargetScaleX, 1, 1);
+            //ps.Play();
+        }
     }
 
     protected virtual void CastExSkill()
@@ -550,11 +559,11 @@ public class Skill
             //ps.transform.position = target.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.HitEffect.Value).BindPoint);
             if (bullet != null)
             {
-                ps.Init(target, bullet.BulletModel.transform.position, bullet.Direction);
+                ps.Init(Unit, target, bullet.BulletModel.transform.position, bullet.Direction);
                 //ps.transform.rotation = bullet.BulletModel.transform.rotation;
                 //ps.transform.Rotate(new Vector3(0, 0, 1),90);
             }
-            else ps.Init(target, target.UnitModel.transform.position, Vector3.zero); //ps.transform.rotation = Quaternion.identity;
+            else ps.Init(Unit, target, target.GetHitPoint(), Vector3.zero); //ps.transform.rotation = Quaternion.identity;
             //ps.Play();
         }
         if (SkillData.UseType == SkillUseTypeEnum.自动 && SkillData.MaxPower == 0 && SkillData.ModelAnimation != null)//三个条件判断技能是否为普攻，判断条件存疑
@@ -579,8 +588,9 @@ public class Skill
                     if (SkillData.EffectEffect != null)
                     {
                         var ps = EffectManager.Instance.GetEffect(SkillData.EffectEffect.Value);
-                        ps.transform.position = target.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.EffectEffect.Value).BindPoint);
-                        ps.Play();
+                        ps.Init(Unit, target, bullet != null ? bullet.Position : Unit.Position, bullet != null ? bullet.Direction : Unit.Direction.ToV3());
+                        //ps.transform.position = target.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.EffectEffect.Value).BindPoint);
+                        //ps.Play();
                     }
                     t.Damage(GetDamageInfo(target, t == target ? SkillData.AreaMainDamage : SkillData.AreaDamage));
                     if (!SkillData.IfHeal) OnBeAttack(target);
@@ -692,10 +702,6 @@ public class Skill
 
     protected virtual void SortTarget(List<Unit> targets)
     {
-        if (SkillData.Id == "冰狙击攻击")
-        {
-            Debug.Log(1);
-        }
         targets.RemoveAll(OrderFilter);
         var l = targets.OrderBy(GetSortOrder1).ThenBy(GetSortOrder2).ThenBy(x => x.Hatred()).ToList();
         targets.Clear();

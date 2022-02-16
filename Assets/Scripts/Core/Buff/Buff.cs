@@ -29,8 +29,8 @@ public class Buff
         if (BuffData.LastingEffect.HasValue)
         {
             LastingEffect = EffectManager.Instance.GetEffect(BuffData.LastingEffect.Value);
-            LastingEffect.transform.SetParent(Unit.UnitModel.transform);
-            LastingEffect.transform.position = Unit.UnitModel.GetPoint(Database.Instance.Get<EffectData>(BuffData.LastingEffect.Value).BindPoint);
+            LastingEffect.Init(Skill.Unit, Unit, Unit.Position, Unit.Direction);
+            LastingEffect.SetLifeTime(float.PositiveInfinity);
         }
         Log.Debug($"{Unit.UnitData.Id} 新获得了buff {BuffData.Id}");
     }

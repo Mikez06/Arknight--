@@ -6,3 +6,11 @@
 {"Id":"普通弓箭","Type":"子弹","Model":"common_gongjian_trail_01","Speed":10}
 {"Id":"普通法球","Type":"子弹","Model":"common_magic_trail_01"}
 {"Id":"普通法球m","Type":"子弹","Model":"common_magic_trail_01_m"}
+{"Id":"斑点弹道","Type":"子弹","Model":"spot_skill_01_trail","Speed":10}
+{"Id":"月见夜弹道","Type":"子弹","Model":"midn_attack_01_trail","Speed":10}
+{"Id":"月见夜技能弹道","Type":"子弹","Model":"midn_skill_01_trail","Speed":10}
+{"Id":"空爆弹道","Type":"子弹","Model":"catap_attack_01_trail","Speed":10,"Data":{"MoveHeight":0.5}}
+{"Id":"梓兰弹道","Type":"子弹","Model":"orchid_attack_01_trail","Speed":10}
+{"Id":"史都华德弹道","Type":"子弹","Model":"stward_skill_01_trail","Speed":10}
+{"Id":"安塞尔弹道","Type":"子弹","Model":"ansel_attack_01_trail","Speed":10,"Data":{"MoveHeight":0.5}}
+{"Id":"银灰弹道","Type":"子弹","Model":"svrash_attack_01_trail","Speed":10,"FaceCamera":1,"ScaleX":2,"Data":{"delay":0.3}}

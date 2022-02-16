@@ -657,6 +657,122 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Effect/kros_skill_01_start
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: af9ddf9f73981e84aa288617cbe6381a
+    m_Address: Assets/Bundles/Data/SystemData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 49ea37449b8061841bb744659faea926
+    m_Address: Assets/Bundles/Effect/popka_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f79c36ab30126804fb6013ef821dfe79
+    m_Address: Assets/Bundles/Effect/midn_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 35fdcfaad94809040b9c68a619d41763
+    m_Address: Assets/Bundles/Effect/midn_attack_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 90e81ee162d2a934b924e8d24332febb
+    m_Address: Assets/Bundles/Effect/midn_skill_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2840ce472d1f80a4cb68f98ebccae196
+    m_Address: Assets/Bundles/Effect/midn_skill_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1bfff08e249b65a47975de201127d17c
+    m_Address: Assets/Bundles/Effect/catap_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bf856344af3757743ab67955aeeca0f4
+    m_Address: Assets/Bundles/Effect/catap_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3dab7183ea8993d4a9f36319e4b61213
+    m_Address: Assets/Bundles/Effect/catap_attack_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 47d1d0d5b5afdf6408dd93968e852bc7
+    m_Address: Assets/Bundles/Effect/orchid_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 24ce7411c2f72ad4ea1bed400af810ee
+    m_Address: Assets/Bundles/Effect/orchid_attack_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c93da6a468f24e346ac60996a2669b61
+    m_Address: Assets/Bundles/Effect/stward_skill_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c55aa6da10b19b04e88eebcd4c8e6603
+    m_Address: Assets/Bundles/Effect/stward_skill_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e83e7753cc3ef864f8aceaf7b06e9c66
+    m_Address: Assets/Bundles/Effect/stward_skill_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 574afaa5460abaf429a47fd589692074
+    m_Address: Assets/Bundles/Effect/spot_skill_01_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 67923aee75173d54b990bf6bdffd8ec2
+    m_Address: Assets/Bundles/Effect/spot_skill_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7fe6be677fdb7774ab3a02c6dad7b8f7
+    m_Address: Assets/Bundles/Effect/spot_skill_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: aca0a4f3cf52a5b4ca35fa69495d5ba2
+    m_Address: Assets/Bundles/Effect/ansel_attack_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a358723c3b68402449366aaedf881887
+    m_Address: Assets/Bundles/Effect/lava_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dc552a674f9160846b8b7b5a7405e10d
+    m_Address: Assets/Bundles/Effect/svrash_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9e6493e67bcb54045bc528db0acc29d8
+    m_Address: Assets/Bundles/Effect/svrash_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0a6c4182e6d392548be697f36603eaa9
+    m_Address: Assets/Bundles/Effect/svrash_attack_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1b0b9b8f0e5613a498e9d263502d8f48
+    m_Address: Assets/Bundles/Effect/svrash_skill_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 108c4fdc4fd59fd4e9b93561547661a8
+    m_Address: Assets/Bundles/Effect/svrash_skill_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fe3bc18eb85e1b54daed3a624913ec57
+    m_Address: Assets/Bundles/Effect/svrash_skill_02_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7e5d9df3a01eeac40ae1426dcccc6bfd
+    m_Address: Assets/Bundles/Effect/svrash_skill_03_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: de5c4041ab2fb524e820ce9c7591d2bf
+    m_Address: Assets/Bundles/Effect/svrash_skill_03_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 15aa99ac25d5f7d4097532039cba1c86
+    m_Address: Assets/Bundles/Effect/svrash_skill_03_start_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 63d8a8df67728324799d72e797e4e84d
+    m_Address: Assets/Bundles/Effect/svrash_skill_03_start_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

@@ -8,18 +8,23 @@ namespace Bullets
         float tickTime;
         public override void Init()
         {
-            base.Init(); 
+            base.Init();
             if (Target.Alive())
-                TargetPos = Target.UnitModel.GetPoint(Target.UnitData.HitPointName);
+                TargetPos = Target.GetHitPoint();
             moveHeight = BulletData.Data.GetFloat("MoveHeight");
             //Debug.Log("高度:" + moveHeight);
-            if (moveHeight == 0) Direction = TargetPos - this.Position;
+            if (moveHeight == 0 && BulletData.FaceCamera == 2) Direction = TargetPos - this.Position;
+            if (BulletData.FaceCamera == 1) BulletModel.transform.eulerAngles = new Vector3(60, 0, 0);
+            float scaleX = 1;
+            if (BulletData.ScaleX == 1) scaleX = Target.ScaleX;
+            if (BulletData.ScaleX == 2) scaleX = Skill.Unit.ScaleX;
+            BulletModel.transform.localScale = new Vector3(scaleX, 1, 1);
         }
         public override void Update()
         {
             tickTime += SystemConfig.DeltaTime;
             if (Target.Alive())
-                TargetPos = Target.UnitModel.GetPoint(Target.UnitData.HitPointName);
+                TargetPos = Target.GetHitPoint();
             if (moveHeight == 0)
             {
                 Position = getPosOfTime(tickTime);
@@ -27,7 +32,8 @@ namespace Bullets
             else
             {
                 Position = getPosOfTime(tickTime);
-                Direction = getPosOfTime(tickTime + SystemConfig.DeltaTime) - getPosOfTime(tickTime);
+                if (BulletData.FaceCamera==2)
+                    Direction = getPosOfTime(tickTime + SystemConfig.DeltaTime) - getPosOfTime(tickTime);
             }
             //Vector3 delta = TargetPos - Postion;
             //if (delta.magnitude < BulletData.Speed * SystemConfig.DeltaTime)

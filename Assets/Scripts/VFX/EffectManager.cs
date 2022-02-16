@@ -37,6 +37,7 @@ public class EffectManager : MonoBehaviour
         //var result = pool.Spawn(ResourcesManager.Instance.GetAsset<GameObject>(PathHelper.EffectPath + name, name).GetComponent<Effect>(), Vector3.zero, null);
         var config = Database.Instance.Get<EffectData>(id);
         var result = pool.Spawn(ResHelper.GetAsset<GameObject>(PathHelper.EffectPath + config.Prefab).GetComponent<Effect>(), Vector3.zero, Quaternion.identity);//.GetComponent<Effect>();
+        result.Id = id;
         result.SetLifeTime(config.LifeTime);
         return result;
     }

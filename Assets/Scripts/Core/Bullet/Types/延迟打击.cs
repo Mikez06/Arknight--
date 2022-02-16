@@ -14,7 +14,8 @@ namespace Bullets
         {
             base.Init();
             Position = Target.Position;
-            Delay.Set(BulletData.Data.GetFloat("delay"));        
+            Delay.Set(BulletData.Data.GetFloat("delay"));
+            BulletModel.transform.localScale = new UnityEngine.Vector3(Skill.Unit.ScaleX, 1, 1);
         }
 
         public override void Update()

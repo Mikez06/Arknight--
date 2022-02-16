@@ -270,6 +270,10 @@ public class ExcelExportEditor
                 case "UnityEngine.Vector2Int":
                     sp = value.Split(',');
                     return $"{{\"x\":{sp[0]},\"y\":{sp[1]}}}";
+                case "UnityEngine.Vector3":
+                case "UnityEngine.Vector3Int":
+                    sp = value.Split(',');
+                    return $"{{\"x\":{sp[0]},\"y\":{sp[1]},\"z\":{sp[2]}}}";
                 case "UnityEngine.Vector2[]":
                 case "UnityEngine.Vector2Int[]":
                     sbCache.Clear();

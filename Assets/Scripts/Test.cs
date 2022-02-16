@@ -20,7 +20,14 @@ public class Test : MonoBehaviour
     // Start is called before the first frame update
     async void Start()
     {
-        transform.Rotate(new Vector3(0, 1, 0), 90);
+        foreach (var b in GetComponent<SkeletonAnimation>().Skeleton.Bones)
+        {
+            var g = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            g.transform.localScale = Vector3.one * 0.1f;
+            g.name = b.Data.Name;
+            g.transform.position = b.GetWorldPosition(transform);
+        }
+        //transform.Rotate(new Vector3(0, 1, 0), 90);
         //var animation = GetComponent<SkeletonAnimation>().Skeleton.Data.FindAnimation(s);
         //foreach (var timeline in animation.Timelines)
         //{

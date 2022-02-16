@@ -698,4 +698,9 @@ public class Unit
     {
         return GridPos + v2;
     }
+
+    public Vector3 GetHitPoint()
+    {
+        return UnitModel.GetPoint(UnitData.HitPointName);
+    }
 }

@@ -54,8 +54,13 @@
 {"Id":"寒冷","Type":"数值变化","UnSourceCheck":1,"LastingEffect":4,"Upgrade":54,"Data":{"t":["AgiAdd"]}}
 {"Id":"冻结","Type":"冻结","UnSourceCheck":1,"LastingEffect":5}
 {"Id":"已复活标记","Type":"普通Buff"}
-{"Id":"斑点闪避","Type":"闪避","LastTime":3,"Data":{"Chance":0.3,"AvoidType":"Normal"}}
-{"Id":"银灰雪境","Type":"数值变化","IfSwitch":1,"LastTime":9999,"Data":{"t":["DefenceRate","HpRecoverBase"]}}
+{"Id":"斑点加攻","Type":"数值变化","LastingEffect":25,"LastTime":5,"Data":{"t":["AttackRate"]}}
+{"Id":"斑点闪避","Type":"闪避","LastingEffect":40,"LastTime":3,"Data":{"Chance":0.3,"AvoidType":"Normal"}}
+{"Id":"泡普卡加攻","Type":"数值变化","LastingEffect":23,"LastTime":5,"Data":{"t":["AttackRate"]}}
+{"Id":"炎溶攻速提升","Type":"数值变化","LastingEffect":23,"LastTime":5,"Data":{"t":["AgiAdd"]}}
+{"Id":"米格鲁防御提升","Type":"数值变化","LastingEffect":24,"LastTime":0.01,"Data":{"t":["DefenceRate"]}}
+{"Id":"银灰雪境","Type":"数值变化","IfSwitch":1,"LastingEffect":53,"LastTime":9999,"Data":{"t":["DefenceRate","HpRecoverBase"]}}
+{"Id":"真银斩加攻","Type":"数值变化","LastingEffect":56,"LastTime":5,"Data":{"t":["AttackRate"]}}
 {"Id":"42黄昏Buff","Type":"数值变化","Data":{"t":["AttackRate","HpAdd"]}}
 {"Id":"42黄昏掉血","Type":"剧毒","Data":{"MaxDamageRate":0.2,"MaxTime":60,"TriggerGap":0.2}}
 {"Id":"42黄昏动作","Type":"覆盖动作","LastTime":5,"Data":{"IdleAnimation":["Skill_3_Idle"]}}
@@ -80,9 +85,9 @@
 {"Id":"洁哥技能标签","Type":"普通Buff"}
 {"Id":"闪灵信条buff","Type":"数值变化","Data":{"t":["AttackRate","AgiAdd"]}}
 {"Id":"闪灵盾","Type":"护盾","LastingEffect":3,"Data":{"ShieldType":"Normal","Base":1}}
-{"Id":"闪灵盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":81,"Data":{"t":["DefenceRate"]}}
+{"Id":"闪灵盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":86,"Data":{"t":["DefenceRate"]}}
 {"Id":"夜莺盾","Type":"护盾","LastingEffect":3,"Data":{"ShieldType":"Magic","Base":1}}
-{"Id":"夜莺盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":83,"Data":{"t":["MagicDefenceAdd"]}}
+{"Id":"夜莺盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":88,"Data":{"t":["MagicDefenceAdd"]}}
 {"Id":"圣域buff","Type":"数值变化","Data":{"t":["MagicDefenceAdd","MagBlock"]}}
 {"Id":"星熊buff","Type":"数值变化","Data":{"t":["AttackRate","DefenceRate"]}}
 {"Id":"塞雷娅充能服buff","Type":"数值变化叠加","Data":{"t":["AttackRate","DefenceRate"]}}

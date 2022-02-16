@@ -73,6 +73,7 @@ public class SkillData : IConfig
       public System.Collections.Generic.Dictionary<string,object> Data;
       public int? ReadyEffect;
       public int? StartEffect;
+      public int? CastEffect;
       public int? HitEffect;
       public int? EffectEffect;
       public string Icon;

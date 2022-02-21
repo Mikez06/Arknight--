@@ -773,6 +773,70 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Effect/svrash_skill_03_start_02
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 898fb2da5c6748d4480750e64869a017
+    m_Address: Assets/Bundles/Effect/surtr_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 57991ddfcebe1c14996c633a31635eef
+    m_Address: Assets/Bundles/Effect/surtr_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2a2be40cec20da648be3da661010dffd
+    m_Address: Assets/Bundles/Effect/surtr_attack_01_start_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f788d90978bb46a4e802b2e59ffc639d
+    m_Address: Assets/Bundles/Effect/surtr_buff_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a0a656482213bf94aaf807c2f0809ad2
+    m_Address: Assets/Bundles/Effect/surtr_skill_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f015e5667bfb2e04faab40b95e317c06
+    m_Address: Assets/Bundles/Effect/surtr_skill_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 716b2ee64d14e2a48b06f1e21a426990
+    m_Address: Assets/Bundles/Effect/surtr_skill_02_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6ea7b0c4474a8fa4d93b8a7905cb080d
+    m_Address: Assets/Bundles/Effect/surtr_skill_02_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 96195ada0b41017409c5c6050ae1e545
+    m_Address: Assets/Bundles/Effect/surtr_skill_02_start_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1ab56ff37beb7c34ab972d1aa4ad71c6
+    m_Address: Assets/Bundles/Effect/surtr_skill_03_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 62b5d651e6405fa408f69ff0715e5d18
+    m_Address: Assets/Bundles/Effect/surtr_skill_03_buff_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bab69ebcbe6a4ca4e8fa0acba4053a55
+    m_Address: Assets/Bundles/Effect/surtr_skill_03_buff_03
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4c8bff877f3a1f6428357c32d0cb7ce2
+    m_Address: Assets/Bundles/Effect/surtr_skill_03_buff_04
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 61702cf8892d6254d94a8a05424749f3
+    m_Address: Assets/Bundles/Effect/surtr_skill_03_range
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e736976acb2e11b449d129188b4d51e1
+    m_Address: Assets/Bundles/Effect/surtr_skill_03_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 173a3e00035d540408247034b590c124
+    m_Address: Assets/Bundles/Effect/surtr_skill_03_start_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

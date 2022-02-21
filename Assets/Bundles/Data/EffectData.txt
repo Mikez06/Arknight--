@@ -55,3 +55,17 @@
 {"Id":"银灰真银斩击中","Prefab":"svrash_skill_03_hit","ScaleXFollow":2,"LifeTime":5}
 {"Id":"银灰真银斩启动","Prefab":"svrash_skill_03_start_02","Offset":{"x":0,"y":1,"z":0},"ForwordDirection":2,"LifeTime":5}
 {"Id":"银灰真银斩buff","Prefab":"svrash_skill_03_buff","ScaleXFollow":1,"FaceCamera":1}
+{"Id":"42普攻击中","Prefab":"surtr_attack_01_hit","ScaleXFollow":2,"LifeTime":5}
+{"Id":"42普攻抬手","Prefab":"surtr_attack_01_start","Offset":{"x":0,"y":0.3,"z":0},"ScaleXFollow":2,"FaceCamera":1,"LifeTime":5}
+{"Id":"42锁血特效","Prefab":"surtr_buff_01_start","ScaleXFollow":1}
+{"Id":"42强力击击中","Prefab":"surtr_skill_01_hit","ScaleXFollow":2,"LifeTime":5}
+{"Id":"42强力击抬手","Prefab":"surtr_skill_01_start","Offset":{"x":0,"y":0.3,"z":0},"ScaleXFollow":2,"FaceCamera":1,"LifeTime":5}
+{"Id":"42巨影buff","Prefab":"surtr_skill_02_buff","ScaleXFollow":1}
+{"Id":"42巨影抬手","Prefab":"surtr_skill_02_start","ForwordDirection":2,"LifeTime":5}
+{"Id":"42巨影抬手2","Prefab":"surtr_skill_02_start_02","BindPoint":"Weapon2","ScaleXFollow":2,"LifeTime":5}
+{"Id":"42黄昏刀buff","Prefab":"surtr_skill_03_buff","BindPoint":"Rb_Weapon2","BoneFollow":1,"ParentFollow":1,"ScaleXFollow":1}
+{"Id":"42黄昏buff","Prefab":"surtr_skill_03_buff_02","ScaleXFollow":1}
+{"Id":"42黄昏左眼buff","Prefab":"surtr_skill_03_buff_03","BindPoint":"Face_Default_i","BoneFollow":1,"ForwardOnly":1}
+{"Id":"42黄昏右眼buff","Prefab":"surtr_skill_03_buff_04","BindPoint":"Face_Default_j","BoneFollow":1,"ForwardOnly":1}
+{"Id":"42黄昏击中","Prefab":"surtr_skill_03_range","ScaleXFollow":2,"LifeTime":5}
+{"Id":"42黄昏启动","Prefab":"surtr_skill_03_start_02","ScaleXFollow":2,"LifeTime":5}

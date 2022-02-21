@@ -130,6 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkeletonAnimation: {fileID: 3094568676524820491}
   SkeletonAnimation2: {fileID: 5058324070914417938}
+  Forward: 1
 --- !u!1 &5226768621320163163
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ public class EffectData : IConfig
       public UnityEngine.Vector3 Offset;
       public string BindPoint;
       public bool BoneFollow;
+      public bool ForwardOnly;
       public int ParentFollow;
       public int ScaleXFollow;
       public int ForwordDirection;

@@ -388,7 +388,7 @@ public class Skill
         }
         if (Targets.Count > 0)
         {
-            if (Targets.Count == 1 && Targets[0] != Unit && SkillData.ModelAnimation != null)//默认不填动作的技能不需要转身
+            if (Targets[0] != Unit && SkillData.ModelAnimation != null)//默认不填动作的技能不需要转身
             {
                 var scaleX = (Targets[0].Position - Unit.Position).x > 0 ? 1 : -1;
                 if (scaleX != Unit.ScaleX)

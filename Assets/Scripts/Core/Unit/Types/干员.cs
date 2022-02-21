@@ -200,6 +200,7 @@ namespace Units
 
         public void LeaveMap(bool recoverPower = false)
         {
+            SetStatus(StateEnum.Default);
             if (recoverPower)
                 Battle.Cost += Mathf.FloorToInt(UnitData.Cost * UnitData.LeaveReturn);
             Finish();
@@ -277,7 +278,7 @@ namespace Units
 
         public int GetCost()
         {
-            return (int)(Cost * (BuildTime == 0 ? 1 : BuildTime == 1 ? 1 + CostAdd : 1 + CostAdd * 2));
+            return (int)(Cost * (BuildTime == 0 ? 1 : BuildTime == 1 ? 1 + UnitData.CostAdd : 1 + UnitData.CostAdd * 2));
         }
 
         public bool Useable()

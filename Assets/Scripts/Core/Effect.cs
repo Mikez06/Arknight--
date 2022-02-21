@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Spine.Unity;
 
 public class Effect : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class Effect : MonoBehaviour
     public Unit Parent;
     ParticleSystem[] PS;
     float LifeTime = 5f;
+
+    PlayerUnitModel PlayerUnitModel;
+    BoneFollower BoneFollower;
+    bool forward;
 
     private void Awake()
     {
@@ -26,7 +31,12 @@ public class Effect : MonoBehaviour
         LifeTime -= Time.deltaTime;
         if (LifeTime < 0)
         {
+            if (BoneFollower != null) Destroy(BoneFollower);
             EffectManager.Instance.ReturnEffect(this);
+        }
+        if (BoneFollower != null)
+        {
+            if (forward != PlayerUnitModel.Forward) updateBoneFollow();
         }
     }
 
@@ -42,6 +52,26 @@ public class Effect : MonoBehaviour
             p.Play();
         }
     }
+    void updateBoneFollow()
+    {
+        this.forward = PlayerUnitModel.Forward;
+        if (!forward && EffectData.ForwardOnly)
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+            return;
+        }
+        else
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
+        BoneFollower.boneName = (forward ? "F_" : "B_") + EffectData.BindPoint;
+        var sr = (PlayerUnitModel.SkeletonAnimation).GetComponent<SkeletonRenderer>();
+        BoneFollower.SkeletonRenderer = sr;
+        transform.SetParent(null);
+        transform.localScale = new Vector3(1, 1, 1);
+        transform.SetParent(sr.transform);
+    }
+
     public void Init(Unit user,Unit target, Vector3 basePos, Vector3 direction)
     {
         Play();
@@ -55,6 +85,17 @@ public class Effect : MonoBehaviour
         {
             basePos = Parent.UnitModel.GetPoint(EffectData.BindPoint);
         }
+        if (EffectData.BoneFollow)
+        {
+            PlayerUnitModel = Parent.UnitModel as PlayerUnitModel;
+            BoneFollower = gameObject.AddComponent<BoneFollower>();
+            updateBoneFollow();
+            //BoneFollower.boneName = EffectData.BindPoint;
+            //var sr= Parent.UnitModel.GetComponentInChildren<SkeletonRenderer>();
+            //BoneFollower.SkeletonRenderer = sr;
+            //transform.SetParent(sr.transform);
+        }
+
         if (EffectData.StartPos == 0)
         {
             transform.position = basePos + EffectData.Offset;

@@ -837,6 +837,118 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Effect/surtr_skill_03_start_02
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 0e3628ba6d964254380399da8586bc1d
+    m_Address: Assets/Bundles/Effect/kalts_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7eb51ff3154fe2548821bb187fb7be42
+    m_Address: Assets/Bundles/Effect/kalts_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 66eb61a865f493a4abc076b35265133e
+    m_Address: Assets/Bundles/Effect/kalts_attack_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3c5b009ce487ec240a5e859ef084879a
+    m_Address: Assets/Bundles/Effect/kalts_skill_01_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 67b7635c214beb8448e95d775dc16ae5
+    m_Address: Assets/Bundles/Effect/kalts_skill_02_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: efa6f149801751541a869931321392c2
+    m_Address: Assets/Bundles/Effect/kalts_skill_03_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2efac3fe1dcc3d146a487da4ee0c38c2
+    m_Address: Assets/Bundles/Effect/thorns_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6023b7273963a5843a33481ccec5be83
+    m_Address: Assets/Bundles/Effect/thorns_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 60199c746485bcf4daa572481b6647e4
+    m_Address: Assets/Bundles/Effect/thorns_attack_02_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8e15a97a105957d439de2c72c1e69005
+    m_Address: Assets/Bundles/Effect/thorns_attack_02_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d0980b888fbf43b41849f24e4590b73f
+    m_Address: Assets/Bundles/Effect/thorns_attack_02_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1695df4190bb2314989d7f0396cf941d
+    m_Address: Assets/Bundles/Effect/thorns_buff_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cba713f9845e96f4f8cda1dc58d29196
+    m_Address: Assets/Bundles/Effect/thorns_skill_02_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d8afc065714921d43845dc31e8f7344a
+    m_Address: Assets/Bundles/Effect/thorns_skill_02_range
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5dd601dca02b8bf43a2f921630bdc978
+    m_Address: Assets/Bundles/Effect/thorns_skill_02_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7ec8e944119fc51498ed48e40084fbc6
+    m_Address: Assets/Bundles/Effect/thorns_skill_03_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 81a003af65c22764c9b82f73142cb66a
+    m_Address: Assets/Bundles/Effect/thorns_skill_03_buff_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2ceec1abf874b7544889144447c04237
+    m_Address: Assets/Bundles/Effect/thorns_skill_03_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b26f4c9c1b474d844b978c02135d2e46
+    m_Address: Assets/Bundles/Effect/thorns_skill_03_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: db4c11a5e5c277e498b7dd2f27be0e4e
+    m_Address: Assets/Bundles/Effect/thorns_skill_03_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f29bd30990a880d4da6b71b58b01c755
+    m_Address: Assets/Bundles/Effect/angle_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 377427704847a584896c159788f8aa18
+    m_Address: Assets/Bundles/Effect/angle_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8987411eac17b66449bb8317178278bd
+    m_Address: Assets/Bundles/Effect/angle_attack_02_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2a46d65a54737c84d8c8116c4995b646
+    m_Address: Assets/Bundles/Effect/angle_buff_00_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: aba01c81abaa2b1489b5f8ef32018388
+    m_Address: Assets/Bundles/Effect/angle_skill_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d82dbcd6672c2a84588f1c16f8b7d97f
+    m_Address: Assets/Bundles/Effect/angle_skill_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 10ccd1b403f28dd4cb2c810ddbe36775
+    m_Address: Assets/Bundles/Effect/angle_skill_02_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 93a5fdde7bb72f243ac243a5ee0a1785
+    m_Address: Assets/Bundles/Effect/angle_skill_03_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

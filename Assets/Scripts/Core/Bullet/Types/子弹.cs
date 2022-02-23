@@ -32,8 +32,8 @@ namespace Bullets
             else
             {
                 Position = getPosOfTime(tickTime);
-                if (BulletData.FaceCamera==2)
-                    Direction = getPosOfTime(tickTime + SystemConfig.DeltaTime) - getPosOfTime(tickTime);
+                if (BulletData.FaceCamera == 2)
+                    Direction = getPosOfTime(tickTime + SystemConfig.DeltaTime) - Position;
             }
             //Vector3 delta = TargetPos - Postion;
             //if (delta.magnitude < BulletData.Speed * SystemConfig.DeltaTime)
@@ -56,6 +56,7 @@ namespace Bullets
             float totalTime = (TargetPos - StartPosition).magnitude / BulletData.Speed;
             if (time > totalTime)
             {
+                Position = TargetPos;
                 Finish();
                 if (Target.Alive())
                     Skill.Hit(Target, this);

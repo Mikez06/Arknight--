@@ -10,9 +10,9 @@ public class BulletModel : MonoBehaviour
         this.Bullet = bullet;
         transform.position = bullet.Position;
 
-        var vec = Vector3.Cross(Bullet.Position - Camera.main.transform.position, Bullet.Direction);
-
-        transform.rotation = Quaternion.LookRotation(Bullet.Direction, vec);
+        var dir = Vector3.ProjectOnPlane(Bullet.Direction, Camera.main.transform.forward);
+        var angle = Vector3.SignedAngle(dir, Vector3.right, Vector3.up);
+        transform.eulerAngles = new Vector3(60, 0, angle);
     }
 
     // Use this for initialization
@@ -25,8 +25,12 @@ public class BulletModel : MonoBehaviour
     void Update()
     {
         transform.position = Bullet.Position;
-        var vec = Vector3.Cross(Bullet.Position - Camera.main.transform.position, Bullet.Direction);
+        //var vec = Vector3.Cross(Bullet.Position - Camera.main.transform.position, Bullet.Direction);
 
-        transform.rotation = Quaternion.LookRotation(Bullet.Direction, vec);
+        //transform.rotation = Quaternion.LookRotation(Bullet.Direction, vec);
+
+        var dir = Vector3.ProjectOnPlane(Bullet.Direction, Camera.main.transform.forward);
+        var angle = Vector3.SignedAngle(dir, Vector3.right, Vector3.up);
+        transform.eulerAngles = new Vector3(60, 0, angle);
     }
 }

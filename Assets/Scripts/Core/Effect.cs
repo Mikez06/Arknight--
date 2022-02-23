@@ -95,6 +95,11 @@ public class Effect : MonoBehaviour
             //BoneFollower.SkeletonRenderer = sr;
             //transform.SetParent(sr.transform);
         }
+        if (EffectData.ParentFollow != 0)
+        {
+            transform.parent = Parent.UnitModel.transform;
+        }
+
 
         if (EffectData.StartPos == 0)
         {

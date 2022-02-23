@@ -559,7 +559,7 @@ public class Skill
             //ps.transform.position = target.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.HitEffect.Value).BindPoint);
             if (bullet != null)
             {
-                ps.Init(Unit, target, bullet.BulletModel.transform.position, bullet.Direction);
+                ps.Init(Unit, target, bullet.TargetPos, bullet.Direction);
                 //ps.transform.rotation = bullet.BulletModel.transform.rotation;
                 //ps.transform.Rotate(new Vector3(0, 0, 1),90);
             }

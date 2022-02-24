@@ -126,7 +126,6 @@ public class Unit
     public string[] OverWriteIdle;
     public bool CanChangeAnimation = true;
     public float AnimationSpeed = 1;
-    public CountDown OverWriteAnimationChangeEnd = new CountDown();
 
     public virtual void Init()
     {
@@ -233,10 +232,6 @@ public class Unit
         //HP自动回复
         Hp += HpRecover * MaxHp * SystemConfig.DeltaTime;
         if (Hp > MaxHp) Hp = MaxHp;
-        if (OverWriteAnimationChangeEnd.Update(SystemConfig.DeltaTime))
-        {
-            UnitModel.ChangeToEnd();
-        }
     }
 
     protected void UpdateDie()
@@ -304,6 +299,10 @@ public class Unit
         foreach (var buff in PushBuffs.ToArray())
         {
             (buff as Buff).Finish();
+        }
+        foreach (var skill in Skills)
+        {
+            skill.Finish();
         }
         PushBuffs.Clear();
     }

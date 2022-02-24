@@ -57,7 +57,9 @@ public class SkillData : IConfig
       public int PowerCount;
       public PowerRecoverTypeEnum PowerType;
       public string[] ModelAnimation;
+      public string[] ModelAnimationDown;
       public string[] OverwriteAnimation;
+      public string[] OverwriteAnimationDown;
       public AttackModeEnum AttackMode;
       public int? Bullet;
       public string ShootPoint;
@@ -76,6 +78,8 @@ public class SkillData : IConfig
       public int? CastEffect;
       public int? HitEffect;
       public int? EffectEffect;
+      public int? LoopStartEffect;
+      public int? LoopCastEffect;
       public string Icon;
       public bool AntiHide;
 }

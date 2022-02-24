@@ -59,6 +59,10 @@ public class Skill
 
     Effect ReadyEffect;
 
+    public CountDown LoopingStart = new CountDown();
+    public CountDown LoopingEnd = new CountDown();
+    public Effect LoopStartEffect, LoopCastEffect;
+
     public virtual void Init()
     {
         if (SkillData.Modifys != null)
@@ -103,6 +107,24 @@ public class Skill
 
     public virtual void Update()
     {
+        if (LoopingStart.Update(SystemConfig.DeltaTime))
+        {
+            if (SkillData.LoopCastEffect != null)
+            {
+                LoopCastEffect = EffectManager.Instance.GetEffect(SkillData.LoopCastEffect.Value);
+                LoopCastEffect.Init(Unit, Unit, Unit.Position, Unit.Direction);
+            }
+        }
+        if (LoopingEnd.Update(SystemConfig.DeltaTime))
+        {
+            Unit.UnitModel.ChangeToEnd();
+            if (LoopCastEffect != null)
+            {
+                EffectManager.Instance.ReturnEffect(LoopCastEffect);
+                LoopCastEffect = null;
+            }
+        }
+
         if (SkillData.PowerType == PowerRecoverTypeEnum.自动)
         {
             RecoverPower(Unit.PowerSpeed * SystemConfig.DeltaTime);
@@ -247,6 +269,7 @@ public class Skill
 
     public virtual bool Ready()
     {
+        if (!LoopingStart.Finished()) return false;
         if (Unit.IfStun)
             return false;
         if (SkillData.UseType == SkillUseTypeEnum.被动) return false;
@@ -360,22 +383,27 @@ public class Skill
         {
             Start();
         }
-        Unit.OverWriteAnimation = SkillData.OverwriteAnimation;
-        if (SkillData.OverwriteAnimation != null && SkillData.OverwriteAnimation.Length > 1)
+        var animation = SkillData.OverwriteAnimation;
+        if (SkillData.OverwriteAnimationDown != null && Unit is Units.干员 u && u.Direction_E == DirectionEnum.Up) animation = SkillData.OverwriteAnimationDown;
+        Unit.OverWriteAnimation = animation;
+        if (animation != null && animation.Length > 1)
         {
-            Unit.OverWriteAnimationChangeEnd.Set(Opening.value - Unit.UnitModel.GetAnimationDuration(SkillData.OverwriteAnimation[2]));
+            if (SkillData.LoopStartEffect != null)
+            {
+                LoopStartEffect = EffectManager.Instance.GetEffect(SkillData.LoopStartEffect.Value);
+                LoopStartEffect.Init(Unit, Unit, Unit.Position, Unit.Direction);
+            }
+            LoopingStart.Set(Unit.UnitModel.GetAnimationDuration(animation[0]));
+            LoopingEnd.Set(Opening.value - Unit.UnitModel.GetAnimationDuration(animation[2]));
         }
         OnSkillOpen();
-    }
-
-    protected virtual void OnFinish()
-    {
-
     }
 
     #endregion
 
     #region 使用流程
+
+    float lastSpeed;
     /// <summary>
     /// 技能抬手
     /// </summary>
@@ -419,7 +447,9 @@ public class Skill
         }
         else
         {
-            var duration = Unit.UnitModel.GetSkillDelay(SkillData.OverwriteAnimation == null ? SkillData.ModelAnimation : SkillData.OverwriteAnimation, Unit.GetAnimation(), out float fullDuration, out float beginDuration);//.SkeletonAnimation.skeleton.data.Animations.Find(x => x.Name == "Attack");
+            var animation = SkillData.ModelAnimation;
+            if (SkillData.ModelAnimationDown != null && Unit is Units.干员 u && u.Direction_E == DirectionEnum.Up) animation = SkillData.ModelAnimationDown;
+            var duration = Unit.UnitModel.GetSkillDelay(SkillData.OverwriteAnimation == null ? animation: SkillData.OverwriteAnimation, Unit.GetAnimation(), out float fullDuration, out float beginDuration);//.SkeletonAnimation.skeleton.data.Animations.Find(x => x.Name == "Attack");
             float attackSpeed = 1f / Unit.Agi * 100;//攻速影响冷却时间
             if (SkillData.AttackMode == AttackModeEnum.固定间隔) attackSpeed = 1;
             ResetCooldown(attackSpeed);
@@ -433,9 +463,10 @@ public class Skill
             }
             duration = duration * attackSpeed;
             fullDuration = fullDuration * attackSpeed;
+            this.lastSpeed = 1f / attackSpeed;
             Unit.AttackingAction.Set(fullDuration);
             Unit.State = StateEnum.Attack;
-            Unit.AnimationName = SkillData.ModelAnimation;
+            Unit.AnimationName = animation;
             Unit.AttackingSkill = this;
             //Debug.Log(SkillData.ModelAnimation);
             if (SkillData.OverwriteAnimation == null)
@@ -456,7 +487,7 @@ public class Skill
         {
             var ps = EffectManager.Instance.GetEffect(SkillData.StartEffect.Value);
             //ps.transform.position = Unit.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.StartEffect.Value).BindPoint);
-            ps.Init(Unit, Unit, Unit.Position, Unit.Direction);
+            ps.Init(Unit, Unit, Unit.Position, Unit.Direction, lastSpeed);
             //ps.transform.localScale = new Vector3(Unit.TargetScaleX, 1, 1);
             //ps.Play();
         }
@@ -483,7 +514,7 @@ public class Skill
         {
             var ps = EffectManager.Instance.GetEffect(SkillData.CastEffect.Value);
             //ps.transform.position = Unit.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.CastEffect.Value).BindPoint);
-            ps.Init(Unit, Unit, Unit.Position, Unit.Direction);
+            ps.Init(Unit, Unit, Unit.Position, Unit.Direction, lastSpeed);
             //ps.transform.localScale = new Vector3(Unit.TargetScaleX, 1, 1);
             //ps.Play();
         }
@@ -896,6 +927,11 @@ public class Skill
         {
             DoUpgrade(SkillData.UpgradeSkill.Value);
         }
+        if (LoopStartEffect != null)
+        {
+            EffectManager.Instance.ReturnEffect(LoopStartEffect);
+            LoopStartEffect = null;
+        }
     }
 
     protected virtual void OnAttack(Unit target)
@@ -999,6 +1035,24 @@ public class Skill
         MaxPowerBase = SkillData.MaxPower;
         PowerCount = SkillData.PowerCount;
         Reset();
+    }
+    public void Finish()
+    {
+        if (ReadyEffect != null)
+        {
+            EffectManager.Instance.ReturnEffect(ReadyEffect);
+            ReadyEffect = null;
+        }
+        if (LoopStartEffect != null)
+        {
+            EffectManager.Instance.ReturnEffect(LoopStartEffect);
+            LoopStartEffect = null;
+        }
+        if (LoopCastEffect != null)
+        {
+            EffectManager.Instance.ReturnEffect(LoopCastEffect);
+            LoopCastEffect = null;
+        }
     }
 }
 

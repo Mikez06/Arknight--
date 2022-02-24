@@ -82,7 +82,7 @@
 {"Id":"棘刺2Buff","Prefab":"thorns_skill_02_buff","ScaleXFollow":1,"FaceCamera":1}
 {"Id":"棘刺2击中","Prefab":"thorns_skill_02_range","ScaleXFollow":2,"LifeTime":5}
 {"Id":"棘刺2启动","Prefab":"thorns_skill_02_start","ScaleXFollow":2,"FaceCamera":1,"LifeTime":5}
-{"Id":"棘刺3刀buff","Prefab":"thorns_skill_03_buff","BindPoint":"Weapon","BoneFollow":1,"ParentFollow":1,"ScaleXFollow":1}
+{"Id":"棘刺3刀buff","Prefab":"thorns_skill_03_buff","BindPoint":"Weapon","BoneFollow":1,"ParentFollow":2,"ScaleXFollow":1}
 {"Id":"棘刺3buff","Prefab":"thorns_skill_03_buff_02","ScaleXFollow":1,"FaceCamera":1}
 {"Id":"棘刺3击中","Prefab":"thorns_skill_03_hit","ScaleXFollow":2,"LifeTime":5}
 {"Id":"棘刺3启动","Prefab":"thorns_skill_03_start","ScaleXFollow":2,"FaceCamera":1,"LifeTime":0.2}
@@ -93,3 +93,14 @@
 {"Id":"能天使1抬手","Prefab":"angle_skill_01_start","BindPoint":"Muzzle","ScaleXFollow":2,"FaceCamera":1,"LifeTime":0.2}
 {"Id":"能天使2buff","Prefab":"angle_skill_02_buff","ScaleXFollow":1,"FaceCamera":1}
 {"Id":"能天使3buff","Prefab":"angle_skill_03_buff","ScaleXFollow":1,"FaceCamera":1}
+{"Id":"推王攻击启动","Prefab":"siege_attack_01_start","ScaleXFollow":2,"FaceCamera":1,"LifeTime":5}
+{"Id":"推王2启动","Prefab":"siege_skill_02_start","ScaleXFollow":2,"FaceCamera":1,"LifeTime":5}
+{"Id":"推王3武器buff","Prefab":"siege_skill_03_buff_03","BindPoint":"Weapon","BoneFollow":1,"ParentFollow":2,"ScaleXFollow":1}
+{"Id":"推王3击中","Prefab":"siege_skill_03_hit","ScaleXFollow":2,"FaceCamera":1,"LifeTime":5}
+{"Id":"推王3启动","Prefab":"siege_skill_03_start","ScaleXFollow":2,"FaceCamera":1,"LifeTime":5}
+{"Id":"小火龙抬手","Prefab":"ifrit_attack_01_start","BindPoint":"Muzzle","ForwordDirection":2,"LifeTime":5}
+{"Id":"小火龙2范围","Prefab":"ifrit_skill_02_range","ForwordDirection":2,"LifeTime":5}
+{"Id":"小火龙2启动","Prefab":"ifrit_skill_02_start","BindPoint":"Muzzle","ScaleXFollow":2,"FaceCamera":1,"LifeTime":5}
+{"Id":"小火龙3背后","Prefab":"ifrit_skill_03_buff","ScaleXFollow":1,"FaceCamera":1}
+{"Id":"小火龙3烧地","Prefab":"ifrit_skill_03_range","ForwordDirection":2,"LifeTime":20}
+{"Id":"小火龙3自身持续","Prefab":"ifrit_skill_03_start","BindPoint":"Muzzle","ForwordDirection":2,"LifeTime":20}

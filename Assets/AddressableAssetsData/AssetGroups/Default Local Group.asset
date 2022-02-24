@@ -949,6 +949,54 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Effect/angle_skill_03_buff
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 6274c4d5025bae24e8b075028073dd06
+    m_Address: Assets/Bundles/Effect/siege_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f8210ac1f261f494090ff48cf458c4f4
+    m_Address: Assets/Bundles/Effect/siege_skill_02_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 538823faa80fc214ca47222feafe4e89
+    m_Address: Assets/Bundles/Effect/siege_skill_03_buff_03
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 734b6a028865ebc47ae1a596118f8f21
+    m_Address: Assets/Bundles/Effect/siege_skill_03_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2650f95e3e2427243ba99e4d572b0596
+    m_Address: Assets/Bundles/Effect/siege_skill_03_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: aeebe998417a99c41bd04725d23ed007
+    m_Address: Assets/Bundles/Effect/ifrit_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8c4f2b864763baf45876cc27506f3b63
+    m_Address: Assets/Bundles/Effect/ifrit_skill_02_range
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 24c8eb84bca00bd49919814b1a05314e
+    m_Address: Assets/Bundles/Effect/ifrit_skill_02_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d79e54cbdbe51ea43b8e57802c524fe3
+    m_Address: Assets/Bundles/Effect/ifrit_skill_02_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 846bf1a0334656e40991bde9cb2ebf54
+    m_Address: Assets/Bundles/Effect/ifrit_skill_03_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: adbb9bc95abedf143a3b527ba16f9a62
+    m_Address: Assets/Bundles/Effect/ifrit_skill_03_range
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 279c7499ee2dbaf4eafbf590b1dac987
+    m_Address: Assets/Bundles/Effect/ifrit_skill_03_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

@@ -72,8 +72,13 @@ public class Effect : MonoBehaviour
         transform.SetParent(sr.transform);
     }
 
-    public void Init(Unit user,Unit target, Vector3 basePos, Vector3 direction)
+    public void Init(Unit user, Unit target, Vector3 basePos, Vector3 direction, float speed = 1)
     {
+        foreach (var p in PS)
+        {
+            var m = p.main;
+            m.simulationSpeed = speed;
+        }
         Play();
         if (EffectData.ParentFollow == 2)
             this.Parent = user;
@@ -85,6 +90,11 @@ public class Effect : MonoBehaviour
         {
             basePos = Parent.UnitModel.GetPoint(EffectData.BindPoint);
         }
+
+        if (EffectData.ParentFollow != 0)
+        {
+            transform.parent = Parent.UnitModel.transform;
+        }
         if (EffectData.BoneFollow)
         {
             PlayerUnitModel = Parent.UnitModel as PlayerUnitModel;
@@ -95,11 +105,6 @@ public class Effect : MonoBehaviour
             //BoneFollower.SkeletonRenderer = sr;
             //transform.SetParent(sr.transform);
         }
-        if (EffectData.ParentFollow != 0)
-        {
-            transform.parent = Parent.UnitModel.transform;
-        }
-
 
         if (EffectData.StartPos == 0)
         {
@@ -122,7 +127,7 @@ public class Effect : MonoBehaviour
         float angleX = EffectData.FaceCamera ? 60 : 0;
         float angleY = 0;
         float angleZ = 0;
-        if (EffectData.ForwordDirection==1)
+        if (EffectData.ForwordDirection == 1)
         {
             if (!(Parent.UnitModel as PlayerUnitModel).Forward)
             {

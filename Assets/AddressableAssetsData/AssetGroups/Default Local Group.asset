@@ -997,6 +997,42 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Effect/ifrit_skill_03_start
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: b4fe02df7572c3b43928f83f1bee9f14
+    m_Address: Assets/Bundles/Effect/amgoat_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 68173c6f2d1bff64fbc49cb9c0d0830d
+    m_Address: Assets/Bundles/Effect/amgoat_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 086b2d3262d169a4c9b3c3495172df18
+    m_Address: Assets/Bundles/Effect/amgoat_attack_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c05fd3777c3b8254d9cffcd5cd7af80b
+    m_Address: Assets/Bundles/Effect/amgoat_skill_02_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c422811fd1875324da667918a440d18e
+    m_Address: Assets/Bundles/Effect/amgoat_skill_02_range
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1263ab241b93a7248b7b86b410b7c47b
+    m_Address: Assets/Bundles/Effect/amgoat_skill_02_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d8323583058cab84e847e4ff0efe55c6
+    m_Address: Assets/Bundles/Effect/amgoat_skill_03_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 48835b542e5b985499d9984c7a0514c8
+    m_Address: Assets/Bundles/Effect/amgoat_skill_03_buff_end
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2128a0b3585377c4e923e94a5dff5986
+    m_Address: Assets/Bundles/Effect/amgoat_skill_03_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

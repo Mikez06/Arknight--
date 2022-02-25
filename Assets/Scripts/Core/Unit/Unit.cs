@@ -574,7 +574,6 @@ public class Unit
                     //没有眩晕动画的场合，暂停模型动画
                     AnimationSpeed = 0;
                 }
-
             }
         }
         if (state != StateEnum.Attack && !AttackingAction.Finished())

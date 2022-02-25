@@ -18,3 +18,6 @@
 {"Id":"棘刺普通弹道","Type":"子弹","Model":"thorns_attack_02_trail","Speed":10,"FaceCamera":2}
 {"Id":"棘刺3弹道","Type":"子弹","Model":"thorns_skill_03_trail","Speed":10,"FaceCamera":2}
 {"Id":"能天使弹道","Type":"子弹","Model":"angle_skill_01_trail","Speed":100,"FaceCamera":2}
+{"Id":"羊普攻弹道","Type":"子弹","Model":"amgoat_attack_01_trail","Speed":10,"FaceCamera":2}
+{"Id":"羊2弹道","Type":"子弹","Model":"amgoat_skill_02_trail","Speed":10,"FaceCamera":2}
+{"Id":"羊3弹道","Type":"子弹","Model":"amgoat_skill_03_trail","Speed":10,"FaceCamera":2,"Data":{"MoveHeight":1}}

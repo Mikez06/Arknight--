@@ -269,7 +269,7 @@ public class Skill
 
     public virtual bool Ready()
     {
-        if (!LoopingStart.Finished()) return false;
+        //if (!LoopingStart.Finished()) return false;
         if (Unit.IfStun)
             return false;
         if (SkillData.UseType == SkillUseTypeEnum.被动) return false;

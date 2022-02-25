@@ -34495,6 +34495,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4763471572129018564}
+  - component: {fileID: 1753716367475850835}
   m_Layer: 0
   m_Name: amgoat_skill_03_buff_end
   m_TagString: Untagged
@@ -34517,6 +34518,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1753716367475850835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7455481084992137379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e41edb0a33b5c4c960c2eca9373202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: 0
 --- !u!1 &8414532158409084641
 GameObject:
   m_ObjectHideFlags: 0

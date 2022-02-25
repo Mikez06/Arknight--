@@ -104,3 +104,9 @@
 {"Id":"小火龙3背后","Prefab":"ifrit_skill_03_buff","ScaleXFollow":1,"FaceCamera":1}
 {"Id":"小火龙3烧地","Prefab":"ifrit_skill_03_range","ForwordDirection":2,"LifeTime":20}
 {"Id":"小火龙3自身持续","Prefab":"ifrit_skill_03_start","BindPoint":"Muzzle","ForwordDirection":2,"LifeTime":20}
+{"Id":"羊普攻击中","Prefab":"amgoat_attack_01_hit","ScaleXFollow":2,"FaceCamera":1,"LifeTime":5}
+{"Id":"羊普攻抬手","Prefab":"amgoat_attack_01_start","BindPoint":"Muzzle","ScaleXFollow":2,"FaceCamera":1,"LifeTime":5}
+{"Id":"羊2击中","Prefab":"amgoat_skill_02_hit","ScaleXFollow":2,"FaceCamera":1,"LifeTime":5}
+{"Id":"羊2范围","Prefab":"amgoat_skill_02_range","ScaleXFollow":1,"FaceCamera":1,"LifeTime":5}
+{"Id":"羊3buff","Prefab":"amgoat_skill_03_buff","ParentFollow":1,"ScaleXFollow":2,"FaceCamera":1,"LifeTime":30}
+{"Id":"羊3buff结束","Prefab":"amgoat_skill_03_buff_end","ScaleXFollow":2,"FaceCamera":1,"LifeTime":5}

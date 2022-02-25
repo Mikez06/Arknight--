@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 691f88a27ef78c347b2277dc05eb76dd, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 48dfeb35e580b364491ad1d1666b6159, type: 2}
   initialSkinName: default
   separatorSlotNames: []
   zSpacing: 0
@@ -201,7 +201,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 07eb7462a429b42489a46204887e5bc3, type: 2}
+  - {fileID: 2100000, guid: f0bf9fa06e0a13543be78ed66145b6ad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

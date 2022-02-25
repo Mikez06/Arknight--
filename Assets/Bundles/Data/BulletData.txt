@@ -21,3 +21,7 @@
 {"Id":"羊普攻弹道","Type":"子弹","Model":"amgoat_attack_01_trail","Speed":10,"FaceCamera":2}
 {"Id":"羊2弹道","Type":"子弹","Model":"amgoat_skill_02_trail","Speed":10,"FaceCamera":2}
 {"Id":"羊3弹道","Type":"子弹","Model":"amgoat_skill_03_trail","Speed":10,"FaceCamera":2,"Data":{"MoveHeight":1}}
+{"Id":"洁哥弹道","Type":"子弹","Model":"aglina_attack_01_trail","Speed":10,"FaceCamera":2}
+{"Id":"洁哥2弹道","Type":"子弹","Model":"aglina_skill_02_trail","Speed":10,"FaceCamera":2}
+{"Id":"洁哥3弹道","Type":"子弹","Model":"aglina_attack_01_trail","Speed":10,"FaceCamera":2,"Data":{"MoveHeight":0.5}}
+{"Id":"塞雷娅弹道","Type":"子弹","Model":"demkni_skill_01_trail","Speed":10,"FaceCamera":2}

@@ -124,7 +124,7 @@ public class Effect : MonoBehaviour
             transform.localScale = new Vector3(user.ScaleX, 1, 1);
         }
 
-        float angleX = EffectData.FaceCamera ? 60 : 0;
+        float angleX = EffectData.FaceCamera;
         float angleY = 0;
         float angleZ = 0;
         if (EffectData.ForwordDirection == 1)

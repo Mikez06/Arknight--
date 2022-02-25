@@ -1033,6 +1033,154 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Effect/amgoat_skill_03_trail
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 4cdf8ddf6e9cfca45879e7d3ef02821a
+    m_Address: Assets/Bundles/Effect/aglina_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9271f36c11331d644ae6e866a465916c
+    m_Address: Assets/Bundles/Effect/aglina_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7955a9b71f97afd40b77379f4c821b72
+    m_Address: Assets/Bundles/Effect/aglina_attack_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f0da74517d0c87a4793a4810fbf65ebc
+    m_Address: Assets/Bundles/Effect/aglina_skill_02_gather
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8ba045f10c31b444b8661405e3745890
+    m_Address: Assets/Bundles/Effect/aglina_skill_02_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b822ddeb96add2049950649b6bd6221e
+    m_Address: Assets/Bundles/Effect/aglina_skill_02_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2f3e26f3fed37e04a995e00520a2c7f4
+    m_Address: Assets/Bundles/Effect/aglina_skill_02_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 95124fa8b22ee484aa1999997ce6c501
+    m_Address: Assets/Bundles/Effect/aglina_skill_03_range
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 87f9cbd84cc972548aee7b62283c310d
+    m_Address: Assets/Bundles/Effect/aglina_skill_03_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1be29901d03a2304398e328153beaba2
+    m_Address: Assets/Bundles/Effect/shining_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e1ec3a5195ccf8149b9c23189d9c570d
+    m_Address: Assets/Bundles/Effect/shining_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 68315f90e8ba6a4469d3ab665591de23
+    m_Address: Assets/Bundles/Effect/shining_skill_01_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4b35bffd1a7468248b3699a82c45a703
+    m_Address: Assets/Bundles/Effect/shining_skill_02_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 781e4e5fedbcc2644834458880e82d0c
+    m_Address: Assets/Bundles/Effect/shining_skill_02_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 46853b9ffd5d3a948abf3a2a68fa57a7
+    m_Address: Assets/Bundles/Effect/shining_skill_03_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a5456c835fe57be4680262ae72d71a00
+    m_Address: Assets/Bundles/Effect/cgbird_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0036aa91005dd4c41a22eee13a1cdcdc
+    m_Address: Assets/Bundles/Effect/cgbird_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dbe244ba74b501040a3dde4921b4eff3
+    m_Address: Assets/Bundles/Effect/cgbird_buff_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 12b2ced0088f23b439a8080d497af0fa
+    m_Address: Assets/Bundles/Effect/cgbird_skill_02_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e374b29f8830d6d4c99536d8080920fd
+    m_Address: Assets/Bundles/Effect/cgbird_skill_03_range
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fc09367e29f97bd42b760a2bfa6ec95c
+    m_Address: Assets/Bundles/Effect/hsguma_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e7dc9b7e7de1a2842a1e36101625bed1
+    m_Address: Assets/Bundles/Effect/hsguma_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0a2094d327a67b948b24638c18b07f12
+    m_Address: Assets/Bundles/Effect/hsguma_skill_02_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c7abec9a50226de4985d20076eb996fa
+    m_Address: Assets/Bundles/Effect/hsguma_skill_03_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c0ee2072b8f97284e835c7be4daf71f3
+    m_Address: Assets/Bundles/Effect/hsguma_skill_03_buff_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0c6a360137543e447902a41e8fe96ea3
+    m_Address: Assets/Bundles/Effect/hsguma_skill_03_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 83e1075e16f77f749baf3cf74c424dd4
+    m_Address: Assets/Bundles/Effect/hsguma_skill_03_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7c09bb305b5cd4c4f88c993a6fa8270f
+    m_Address: Assets/Bundles/Effect/demkni_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c915946760b4e0c44b4cbd0038f8239a
+    m_Address: Assets/Bundles/Effect/demkni_buff_01_self
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d3b2f2b97c55a6a47990d0417fc69e55
+    m_Address: Assets/Bundles/Effect/demkni_buff_02_self
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a3980d46943ab7748b96fa7756c74405
+    m_Address: Assets/Bundles/Effect/demkni_skill_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: af9fa270e8564354585105024d5d8884
+    m_Address: Assets/Bundles/Effect/demkni_skill_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 191ca93b40f6c8e4e9aff3c74c2746c1
+    m_Address: Assets/Bundles/Effect/demkni_skill_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 263d6aeaa0c40d64f988f216590887ff
+    m_Address: Assets/Bundles/Effect/demkni_skill_02_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5582e5a4f0b6caf4189aa1649b61e452
+    m_Address: Assets/Bundles/Effect/demkni_skill_03_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 70cf0b2f9b932934d9107be8542c8ccb
+    m_Address: Assets/Bundles/Effect/demkni_skill_03_range
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0151c96670faaea4990619723b44dd77
+    m_Address: Assets/Bundles/Effect/demkni_skill_03_self
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

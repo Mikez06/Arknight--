@@ -10,6 +10,6 @@ public class EffectData : IConfig
       public int ParentFollow;
       public int ScaleXFollow;
       public int ForwordDirection;
-      public bool FaceCamera;
+      public float FaceCamera;
       public float LifeTime;
 }

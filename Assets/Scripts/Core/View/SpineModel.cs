@@ -12,11 +12,14 @@ public class SpineModel : UnitModel
     protected Renderer Renderer;
     protected MaterialPropertyBlock mpb;
     string[] nowAnimations;
+
+    public Transform Shadow;
     private void Awake()
     {
         mpb = new MaterialPropertyBlock();
         Renderer = SkeletonAnimation.GetComponent<Renderer>();
         Renderer.GetPropertyBlock(mpb);
+        Shadow = transform.GetChild(0);
     }
 
     public override void Init(Unit unit)
@@ -26,6 +29,7 @@ public class SpineModel : UnitModel
         nowAnimations = Unit.DefaultAnimation;
         SkeletonAnimation.SkeletonDataAsset.GetAnimationStateData().DefaultMix = 0f;
         updateState();
+        Shadow.localScale = Vector3.one * unit.UnitData.ModelScale;
     }
 
     public void LateUpdate()
@@ -62,7 +66,8 @@ public class SpineModel : UnitModel
             gameObject.SetActive(u.Visiable);
             if (!u.Visiable) return;
         }
-        SkeletonAnimation.transform.localScale = new Vector3(Unit.ScaleX, 1, 1);
+        SkeletonAnimation.transform.localScale = new Vector3(Unit.ScaleX, 1, 1) * Unit.UnitData.ModelScale;
+        SkeletonAnimation.transform.localPosition = new Vector3(0, Unit.Height, Unit.Height*0.45f);//没什么道理的z轴偏移
         if (Unit.State == StateEnum.Default)
         {
             return;

@@ -12,6 +12,7 @@ namespace Skills
         protected override void addBuff(Unit target)
         {
             base.addBuff(target);
+            if (target.Height > 0) return;
             float power = getPower(SkillData.PushPower, target.Weight);
 
             if (power > 0)

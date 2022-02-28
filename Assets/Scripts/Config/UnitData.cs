@@ -3,6 +3,7 @@ public class UnitData : IConfig
       public string Id { get ; set ; }
       public string Type;
       public string Model;
+      public float ModelScale;
       public string Name;
       public string engName;
       public int Upgrade;

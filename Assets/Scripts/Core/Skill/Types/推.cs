@@ -7,6 +7,7 @@ namespace Skills
         protected override void addBuff(Unit target)
         {
             base.addBuff(target);
+            if (target.Height > 0) return;
             int power;
             Vector2 direction;
             var angle = Vector2.SignedAngle(target.Position2 - Unit.Position2, Unit.Direction);

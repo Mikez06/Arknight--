@@ -17,11 +17,18 @@ namespace Buffs
             {
                 names[i] = Convert.ToString(datas[i]);
             }
-            Unit.OverWriteIdle = names;
+            if (BuffData.Data.GetBool("AllOverWrite"))
+            {
+                Unit.OverWriteAnimation = names;
+            }
+            else
+                Unit.OverWriteIdle = names;
         }
+
         public override void Finish()
         {
             base.Finish();
+            Unit.OverWriteAnimation = null;
             Unit.OverWriteIdle = null;
         }
     }

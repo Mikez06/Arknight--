@@ -40,6 +40,8 @@ namespace Units
         protected Vector3 TempTarget => TempIndex >= TempPath.Count - 1 ? TempPath[TempPath.Count - 1] : TempPath[TempIndex + 1];
 
         public bool Visiable = true;
+        public bool UnStopped;
+
         public override void Init()
         {
             base.Init();
@@ -68,6 +70,7 @@ namespace Units
 
         public override void Refresh()
         {
+            UnStopped = false;
             base.Refresh();
             if (!Visiable) IfSelectable = false;
         }
@@ -159,6 +162,65 @@ namespace Units
                 UnitModel?.gameObject.SetActive(true);
                 Refresh();
                 findNewPath();
+            }
+        }
+
+        public void Jump(float distance)
+        {
+            if (StopUnit != null) StopUnit.RemoveStop(this);
+            if (TempPath == null) findNewPath();
+            List<Vector3> points = new List<Vector3>();
+            points.Add(Position);
+            for (int i = TempIndex + 1; i < TempPath.Count; i++)
+            {
+                points.Add(TempPath[i]);
+            }
+            int pathIndex = NowPathPoint;
+            int index = 1;
+            while (distance > 0)
+            {
+                if (index >= points.Count)
+                {
+                    if (pathIndex >= PathPoints.Count - 1)//跳跃后已经可以进门了
+                    {
+                        Position = PathPoints[PathPoints.Count - 1].Pos;
+                        break;
+                    }
+                    else
+                    {
+                        //否则把下个寻路节点找到
+                        var offset = new Vector3(WaveData.OffsetX, 0, WaveData.OffetsetY);
+                        var tempPath = Battle.Map.FindPath(Position - offset, GetPoint(pathIndex + 1) - offset, PathPoints[NowPathPoint].DirectMove);
+                        for (int i = 1; i < tempPath.Count; i++) //注意不要把起点加进去了
+                        {
+                            Vector3 p = tempPath[i];
+                            points.Add(p + offset);
+                        }
+                        pathIndex++;
+                    }
+                }
+                float pathDist = (points[index] - points[index - 1]).magnitude;
+                if (pathDist > distance)
+                {
+                    Position = points[index - 1] + (points[index] - points[index - 1]).normalized * distance;
+                    distance = 0;
+                }
+                else
+                {
+                    distance -= pathDist;
+                    index++;
+                }
+            }
+
+            if (NowPathPoint != pathIndex)
+            {
+                NowPathPoint = pathIndex;
+                PathWaiting.Finish();
+                NeedResetPath = true;
+            }
+            else
+            {
+                TempIndex = TempPath.IndexOf(points[index - 1]);
             }
         }
 

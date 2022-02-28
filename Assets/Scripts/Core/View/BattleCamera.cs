@@ -106,6 +106,7 @@ public class BattleCamera : MonoBehaviour
                 {
                     lastGrid = null;
                     HideUnitAttackArea();
+                    //BuildUnit.UnitModel.gameObject.SetActive(false);
                     g.transform.position = hit.point - new Vector3(0, 0.5f, 0);
                 }
             }
@@ -120,9 +121,8 @@ public class BattleCamera : MonoBehaviour
                 }
                 else
                 {
-                    BuildUnit.UnitModel.gameObject.SetActive(false);
+                    CancelBuild();
                     BattleUI.UI_Battle.Instance.m_state.selectedIndex = 1;
-                    BuildUnit = null;
                 }
             }
         }
@@ -163,6 +163,14 @@ public class BattleCamera : MonoBehaviour
         BuildMode = true;
         BuildUnit.UnitModel.gameObject.SetActive(true);
         ShowHighLight();
+    }
+
+    public void CancelBuild()
+    {
+        if (BuildUnit == null || BuildUnit.InputTime > 0) return;
+        HideUnitAttackArea();
+        BuildUnit.UnitModel.gameObject.SetActive(false);
+        BuildUnit = null;
     }
 
     public void ShowHighLight()

@@ -96,7 +96,6 @@ namespace BattleUI
             selectedUnit = unit as Units.干员;
             m_state.selectedIndex = 4;
             m_left.SetUnit(unit as Units.干员);
-            Debug.Log(unit.UnitData.Name);
             BattleCamera.Instance.ShowUnitInfo(unit);
         }
 
@@ -186,10 +185,12 @@ namespace BattleUI
             if (selectedUnit == unit)
             {
                 selectedUnit = null;
+                BattleCamera.Instance.CancelBuild();
                 m_state.selectedIndex = 0;
             }
             else
             {
+                BattleCamera.Instance.CancelBuild();
                 selectedUnit = unit;
                 m_state.selectedIndex = 1;
                 inSelectUnit();

@@ -403,6 +403,11 @@ public class Skill
 
     #region 使用流程
 
+    protected virtual float GetSkillDelay(string[] animationName, string[] lastState, out float fullDuration, out float beginDuration)
+    {
+        return Unit.UnitModel.GetSkillDelay(animationName, lastState, out fullDuration, out beginDuration);
+    }
+
     float lastSpeed;
     /// <summary>
     /// 技能抬手
@@ -449,7 +454,7 @@ public class Skill
         {
             var animation = SkillData.ModelAnimation;
             if (SkillData.ModelAnimationDown != null && Unit is Units.干员 u && u.Direction_E == DirectionEnum.Up) animation = SkillData.ModelAnimationDown;
-            var duration = Unit.UnitModel.GetSkillDelay(SkillData.OverwriteAnimation == null ? animation: SkillData.OverwriteAnimation, Unit.GetAnimation(), out float fullDuration, out float beginDuration);//.SkeletonAnimation.skeleton.data.Animations.Find(x => x.Name == "Attack");
+            var duration = GetSkillDelay(SkillData.OverwriteAnimation == null ? animation: SkillData.OverwriteAnimation, Unit.GetAnimation(), out float fullDuration, out float beginDuration);//.SkeletonAnimation.skeleton.data.Animations.Find(x => x.Name == "Attack");
             float attackSpeed = 1f / Unit.Agi * 100;//攻速影响冷却时间
             if (SkillData.AttackMode == AttackModeEnum.固定间隔) attackSpeed = 1;
             ResetCooldown(attackSpeed);

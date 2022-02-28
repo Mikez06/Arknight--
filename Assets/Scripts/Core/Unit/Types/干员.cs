@@ -311,6 +311,7 @@ namespace Units
         public bool CanStop(Units.敌人 target)
         {
             if (!CanStopOther) return false;
+            if (target.UnStopped) return false;
             if (StopUnits.Contains(target)) return true;
             if (target.StopUnit != null) return false;
             if (NowGrid.FarAttackGrid) return false;

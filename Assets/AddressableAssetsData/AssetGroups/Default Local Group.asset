@@ -1185,6 +1185,14 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Units/enemy_1005_yokai
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: f5d261065e9d81b428aec6d5daa67e82
+    m_Address: Assets/Bundles/Units/enemy_1008_ghost
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8824c1cd848608549bfc49b8136dfeb4
+    m_Address: Assets/Bundles/Units/enemy_1502_crowns
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

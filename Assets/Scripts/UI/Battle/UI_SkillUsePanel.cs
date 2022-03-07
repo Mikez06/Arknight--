@@ -9,8 +9,8 @@ namespace BattleUI
 {
     partial class UI_SkillUsePanel
     {
-        public Units.干员 Unit;
-        public void SetUnit(Units.干员 unit)
+        public Unit Unit;
+        public void SetUnit(Unit unit)
         {
             this.Unit = unit;
         }

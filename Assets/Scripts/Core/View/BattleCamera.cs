@@ -138,15 +138,17 @@ public class BattleCamera : MonoBehaviour
         Tiles.Clear();
         var targetUnit = FocusUnit == null ? BuildUnit : FocusUnit;
         bool ifHeal = targetUnit.FirstSkill.SkillData.IfHeal;
-        foreach (var tile in targetUnit.GetNowAttackSkill().AttackPoints)
-        {
-            var grid = BattleManager.Instance.Battle.Map.Tiles[tile.x, tile.y];
-            if (grid == null) continue;
-            var tileAsset = ResHelper.GetAsset<GameObject>(PathHelper.OtherPath + "HighLight").GetComponent<MapTile>();
-            var go = TilePool.Spawn(tileAsset, grid.MapGrid.GetPos(), null);
-            go.IfHeal(ifHeal);
-            Tiles.Add(go);
-        }
+        var sk = targetUnit.GetNowAttackSkill();
+        if (sk != null)
+            foreach (var tile in sk.AttackPoints)
+            {
+                var grid = BattleManager.Instance.Battle.Map.Tiles[tile.x, tile.y];
+                if (grid == null) continue;
+                var tileAsset = ResHelper.GetAsset<GameObject>(PathHelper.OtherPath + "HighLight").GetComponent<MapTile>();
+                var go = TilePool.Spawn(tileAsset, grid.MapGrid.GetPos(), null);
+                go.IfHeal(ifHeal);
+                Tiles.Add(go);
+            }
     }
 
     public void HideUnitAttackArea()

@@ -15,7 +15,8 @@ namespace BattleUI
 
         GObjectPool UIPool;
 
-        public Units.干员 selectedUnit;
+        public Unit selectedUnit;
+        public Units.干员 SelectPlayerUnit => selectedUnit as Units.干员;
 
         GameObject worldUI;
         UI_DragPanel dragPanel;
@@ -93,9 +94,9 @@ namespace BattleUI
         public void ChooseUnit(Unit unit)
         {
             TimeHelper.Instance.SetGameSpeed(0.2f);
-            selectedUnit = unit as Units.干员;
+            selectedUnit = unit;
             m_state.selectedIndex = 4;
-            m_left.SetUnit(unit as Units.干员);
+            m_left.SetUnit(unit);
             BattleCamera.Instance.ShowUnitInfo(unit);
         }
 
@@ -205,7 +206,7 @@ namespace BattleUI
             if (unit != selectedUnit) clickUnit(unit);
             //if (m_state.selectedIndex != 1 && unit != selectedUnit) return;//拽错了也不许出来
             m_state.selectedIndex = 2;
-            BattleCamera.Instance.BuildUnit = selectedUnit;
+            BattleCamera.Instance.BuildUnit = SelectPlayerUnit;
             BattleCamera.Instance.StartBuild();
         }
 
@@ -214,7 +215,7 @@ namespace BattleUI
 
         void leaveUnit()
         {
-            selectedUnit.LeaveMap(true);
+            SelectPlayerUnit.LeaveMap(true);
             m_state.selectedIndex = 0;
         }
 
@@ -267,7 +268,7 @@ namespace BattleUI
             TimeHelper.Instance.SetGameSpeed(0.2f);
             m_left.SetUnit(selectedUnit);
             BattleCamera.Instance.Rotate = true;
-            BattleCamera.Instance.BuildUnit = selectedUnit;
+            BattleCamera.Instance.BuildUnit = SelectPlayerUnit;
             BattleCamera.Instance.ShowHighLight();
             UpdateUnitsLayout();
         }

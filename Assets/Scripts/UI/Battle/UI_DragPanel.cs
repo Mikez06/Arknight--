@@ -44,27 +44,27 @@ namespace BattleUI
                 if (angle < 0) angle += 360;
                 if (angle >= 45 && angle < 135)
                 {
-                    Parent.selectedUnit.Direction_E = DirectionEnum.Up;
-                    Parent.selectedUnit.ResetAttackPoint();
+                    Parent.SelectPlayerUnit.Direction_E = DirectionEnum.Up;
+                    Parent.SelectPlayerUnit.ResetAttackPoint();
                     m_DirectionPanel.m_coner.selectedIndex = 3;
                 }
                 else if (angle >= 135 && angle < 225)
                 {
-                    Parent.selectedUnit.Direction_E = DirectionEnum.Left;
+                    Parent.SelectPlayerUnit.Direction_E = DirectionEnum.Left;
                     m_DirectionPanel.m_coner.selectedIndex = 4;
-                    Parent.selectedUnit.ResetAttackPoint();
+                    Parent.SelectPlayerUnit.ResetAttackPoint();
                 }
                 else if (angle >= 225 && angle < 315)
                 {
-                    Parent.selectedUnit.Direction_E = DirectionEnum.Down;
+                    Parent.SelectPlayerUnit.Direction_E = DirectionEnum.Down;
                     m_DirectionPanel.m_coner.selectedIndex = 1;
-                    Parent.selectedUnit.ResetAttackPoint();
+                    Parent.SelectPlayerUnit.ResetAttackPoint();
                 }
                 else
                 {
                     m_DirectionPanel.m_coner.selectedIndex = 2;
-                    Parent.selectedUnit.Direction_E = DirectionEnum.Right;
-                    Parent.selectedUnit.ResetAttackPoint();
+                    Parent.SelectPlayerUnit.Direction_E = DirectionEnum.Right;
+                    Parent.SelectPlayerUnit.ResetAttackPoint();
                 }
                 BattleCamera.Instance.ShowUnitAttackArea();
             }
@@ -82,7 +82,7 @@ namespace BattleUI
             }
             else
             {
-                Parent.selectedUnit.JoinMap();
+                Parent.SelectPlayerUnit.JoinMap();
                 Parent.selectedUnit = null;
                 //BattleCamera.Instance.FocusUnit = null;
                 Parent.m_state.selectedIndex = 0;

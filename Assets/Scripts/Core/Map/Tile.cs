@@ -25,7 +25,7 @@ public class Tile
     /// </summary>
     public bool CanMove;
 
-    public Units.干员 Unit;
+    public Unit Unit;
     /// <summary>
     /// 广搜临时数据
     /// </summary>

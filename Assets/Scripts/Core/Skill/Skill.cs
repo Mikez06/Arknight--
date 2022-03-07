@@ -152,7 +152,7 @@ public class Skill
         
         if (!Casting.Finished()) //抬手期间，如果无有效目标，则取消抬手
         {
-            if (!SkillData.RegetTarget && Targets.All(x => !CanUseTo(x)))
+            if ((!SkillData.RegetTarget && !SkillData.NoTargetAlsoUse) && Targets.All(x => !CanUseTo(x)))
             {
                 Log.Debug($"{Unit.UnitData.Id}的{SkillData.Name}全部目标不合法,强制打断抬手动作{Time.time}");
                 BreakCast();

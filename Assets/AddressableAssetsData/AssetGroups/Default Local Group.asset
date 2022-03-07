@@ -1193,6 +1193,14 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Units/enemy_1502_crowns
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 0074753f9da926c419af4bc950f2abd9
+    m_Address: Assets/Bundles/Units/skin_ballis_default
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: de0bb0bc8f9e6344dbbf788108552b66
+    m_Address: Assets/Bundles/Units/skin_emp_chbo_a
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

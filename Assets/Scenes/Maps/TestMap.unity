@@ -3535,10 +3535,10 @@ MonoBehaviour:
   CanBuildUnit: 0
   FarAttackGrid: 0
   CanMove: 0
-  MapUnitId: "\u51B0\u51BB\u51B2\u51FB\u88C5\u7F6E"
+  MapUnitId: "\u73A9\u5BB6\u51B2\u51FB\u88C5\u7F6E"
   Alive: 0
-  Tag: 11
-  ActiveTime: 10
+  Tag: 
+  ActiveTime: 0
 --- !u!1 &2105284105
 GameObject:
   m_ObjectHideFlags: 0

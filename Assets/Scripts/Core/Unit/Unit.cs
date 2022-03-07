@@ -328,7 +328,7 @@ public class Unit
                 sk.Update();
             }
         }
-        if (inAttack && AttackingAction.Finished())
+        if (inAttack && AttackingAction.Finished() && State != StateEnum.Die)
         {
             SetStatus(StateEnum.Idle);
         }
@@ -664,7 +664,7 @@ public class Unit
                 return Skills[i];
             }
         }
-        throw new Exception($"{UnitData.Id}没有普攻技能");
+        return null;
     }
 
     public virtual float Hatred()

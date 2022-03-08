@@ -46,7 +46,7 @@ namespace Units
         public override void Init()
         {
             base.Init();
-            if (MainSkillId >= 0)
+            if (UnitData.MainSkill != null && MainSkillId >= 0)
                 MainSkill = LearnSkill(UnitData.MainSkill[MainSkillId], null);
         }
 

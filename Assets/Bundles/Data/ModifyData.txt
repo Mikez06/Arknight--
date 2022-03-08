@@ -1,5 +1,6 @@
 {"Id":"暴击1","Type":"暴击","Data":{"Chance":0.1,"Rate":1.6}}
 {"Id":"多重攻击1","Type":"额外目标","Data":{"Chance":0.1,"Count":1}}
+{"Id":"飞行加伤","Type":"对飞行伤害","Data":{"DamageRate":1.5}}
 {"Id":"破冰1","Type":"对buff伤害","Buff":54,"Data":{"DamageRate":1.5}}
 {"Id":"破冰2","Type":"对buff伤害","Buff":54,"Data":{"DamageRate":2}}
 {"Id":"破冰3","Type":"对buff伤害","Buff":54,"Data":{"DamageRate":2.5}}

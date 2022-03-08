@@ -9,25 +9,27 @@ public class ModifyManager
     public static ModifyManager Instance => instance == null ? instance = new ModifyManager() : instance;
     private static ModifyManager instance;
 
-    Dictionary<int, Modify> modifies = new Dictionary<int, Modify>();
+    //Dictionary<int, Modify> modifies = new Dictionary<int, Modify>();
 
-    public void Init()
-    {
-        ModifyData[] array = Database.Instance.GetAll<ModifyData>();
-        for (int i = 0; i < array.Length; i++)
-        {
-            ModifyData data = array[i];
-            Modify modify = typeof(Unit).Assembly.CreateInstance(nameof(Modifys) + "." + data.Type) as Modify;
-            modify.Id = i;
-            modify.Init();
-            modifies.Add(i, modify);
-        }
-    }
+    //public void Init()
+    //{
+    //    ModifyData[] array = Database.Instance.GetAll<ModifyData>();
+    //    for (int i = 0; i < array.Length; i++)
+    //    {
+    //        ModifyData data = array[i];
+    //        Modify modify = typeof(Unit).Assembly.CreateInstance(nameof(Modifys) + "." + data.Type) as Modify;
+    //        modify.Id = i;
+    //        modify.Init();
+    //        modifies.Add(i, modify);
+    //    }
+    //}
 
-    public Modify Get(int id)
+    public Modify Get(int id,Skill skill)
     {
-        modifies.TryGetValue(id, out Modify result);
-        return result;
+        ModifyData data = Database.Instance.Get<ModifyData>(id);
+        Modify modify = typeof(Unit).Assembly.CreateInstance(nameof(Modifys) + "." + data.Type) as Modify;
+        modify.Skill = skill;
+        return modify;
     }
 }
 

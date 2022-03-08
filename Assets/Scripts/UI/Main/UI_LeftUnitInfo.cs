@@ -56,13 +56,14 @@ namespace MainUI
 
                 m_Skills.RemoveChildrenToPool();
 
-                for (int i = 0; i < card.UnitData.MainSkill.Length; i++)
-                {
-                    int skill = card.UnitData.MainSkill[i];
-                    var uiSkill = m_Skills.AddItemFromPool() as UI_SkillInfo;
-                    uiSkill.SetSkill(skill);
-                    uiSkill.m_selected.selectedIndex = i == skillIndex ? 1 : 0;
-                }
+                if (card.UnitData.MainSkill != null)
+                    for (int i = 0; i < card.UnitData.MainSkill.Length; i++)
+                    {
+                        int skill = card.UnitData.MainSkill[i];
+                        var uiSkill = m_Skills.AddItemFromPool() as UI_SkillInfo;
+                        uiSkill.SetSkill(skill);
+                        uiSkill.m_selected.selectedIndex = i == skillIndex ? 1 : 0;
+                    }
             }
         }
     }

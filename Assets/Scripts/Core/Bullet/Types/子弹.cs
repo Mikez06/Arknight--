@@ -35,19 +35,6 @@ namespace Bullets
                 if (BulletData.FaceCamera == 2)
                     Direction = getPosOfTime(tickTime + SystemConfig.DeltaTime) - Position;
             }
-            //Vector3 delta = TargetPos - Postion;
-            //if (delta.magnitude < BulletData.Speed * SystemConfig.DeltaTime)
-            //{
-            //    Finish();
-            //    if (Target.Alive())
-            //        Skill.Hit(Target);
-            //}
-            //else
-            //{
-            //    if (moveHeight == 0)
-            //        Postion += delta.normalized * BulletData.Speed * SystemConfig.DeltaTime;
-            //    //Direction = TargetPos - this.Postion;
-            //}
         }
 
         Vector3 getPosOfTime(float time)

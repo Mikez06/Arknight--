@@ -14,7 +14,7 @@ namespace Skills
             {
                 foreach (var modifyId in SkillData.ModifyDatas)
                 {
-                    var m = ModifyManager.Instance.Get(modifyId);
+                    var m = ModifyManager.Instance.Get(modifyId, this);
                     foreach (var skill in target.Skills)
                     {
                         skill.Modifies.Add(m);

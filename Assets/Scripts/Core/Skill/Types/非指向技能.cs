@@ -89,10 +89,11 @@ namespace Skills
 
             if (SkillData.StartEffect != null)
             {
-                var ps = EffectManager.Instance.GetEffect(SkillData.StartEffect.Value);
-                ps.transform.position = Unit.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.StartEffect.Value).BindPoint);
-                ps.transform.localScale = new Vector3(Unit.TargetScaleX, 1, 1);
-                ps.Play();
+                foreach (var id in SkillData.StartEffect)
+                {
+                    var ps = EffectManager.Instance.GetEffect(id);
+                    ps.Init(Unit, Unit, Unit.Position, Unit.Direction);
+                }
             }
         }
 

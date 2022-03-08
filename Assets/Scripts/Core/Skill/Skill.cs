@@ -69,7 +69,7 @@ public class Skill
         {
             for (int i = 0; i < SkillData.Modifys.Length; i++)
             {
-                Modifies.Add(ModifyManager.Instance.Get(SkillData.Modifys[i]));
+                Modifies.Add(ModifyManager.Instance.Get(SkillData.Modifys[i], this));
             }
         }
         else
@@ -240,30 +240,40 @@ public class Skill
         {
             if (SkillData.TargetEnableBuff.All(x => target.Buffs.Any(y => y.Id == x))) return false;
         }
+        if (SkillData.RareLimit != 0 && target.UnitData.Rare != SkillData.RareLimit) return false;
+        if (SkillData.PosLimit != 0)
+        {
+            if (SkillData.PosLimit == 1 && !target.UnitData.CanSetGround) return false;
+            if (SkillData.PosLimit == 2 && !target.UnitData.CanSetHigh) return false;
+        }
         return true;
     }
 
     public virtual void UpdateCooldown()
     {
-        if (!Opening.Finished())
+        if (!Opening.Finished() && SkillData.PowerUseType == PowerRecoverTypeEnum.自动)
         {
-            if (Opening.Update(SystemConfig.DeltaTime))
-            {
-                Battle.TriggerDatas.Push(new TriggerData()
-                {
-                    Target = Unit,
-                    Skill = this,
-                });
-                Unit.Trigger(TriggerEnum.技能结束);
-                Battle.TriggerDatas.Pop();
-                OnOpenEnd();
-            }
-            //Power -= MaxPower / Config.OpenTime * SystemConfig.DeltaTime;
+            UpdateOpening(SystemConfig.DeltaTime);
         }
         if (Cooldown.Update(SystemConfig.DeltaTime))
         {
             if (Unit.AttackingSkill == this)
                 Unit.AttackingSkill = null;
+        }
+    }
+
+    public void UpdateOpening(float time)
+    {
+        if (Opening.Update(time))
+        {
+            Battle.TriggerDatas.Push(new TriggerData()
+            {
+                Target = Unit,
+                Skill = this,
+            });
+            Unit.Trigger(TriggerEnum.技能结束);
+            Battle.TriggerDatas.Pop();
+            OnOpenEnd();
         }
     }
 
@@ -440,7 +450,6 @@ public class Skill
         //Debug.Log(Unit.UnitData.Id + "的" + SkillData.Id + "使用次数:" + UseCount);
         if (SkillData.ReadyType == SkillReadyEnum.充能释放)
         {
-            Power -= MaxPower;
             Opening.Set(SkillData.OpenTime);
         }
 
@@ -490,11 +499,11 @@ public class Skill
 
         if (SkillData.StartEffect != null)
         {
-            var ps = EffectManager.Instance.GetEffect(SkillData.StartEffect.Value);
-            //ps.transform.position = Unit.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.StartEffect.Value).BindPoint);
-            ps.Init(Unit, Unit, Unit.Position, Unit.Direction, lastSpeed);
-            //ps.transform.localScale = new Vector3(Unit.TargetScaleX, 1, 1);
-            //ps.Play();
+            foreach (var id in SkillData.StartEffect)
+            {
+                var ps = EffectManager.Instance.GetEffect(id);
+                ps.Init(Unit, Unit, Unit.Position, Unit.Direction, lastSpeed);
+            }
         }
     }
 
@@ -503,6 +512,16 @@ public class Skill
     /// </summary>
     public virtual void Cast()
     {
+        if (SkillData.ReadyType == SkillReadyEnum.充能释放)//充能类技能成功释放时才会消耗充能
+        {
+            Power -= MaxPower;
+        }
+
+        if (SkillData.PowerUseType == PowerRecoverTypeEnum.攻击 && SkillData.DamageRate > 0&&SkillData.ModelAnimation!=null)//有动作有伤害的技能视为普攻，用于消耗弹药
+        {
+            UpdateOpening(1);
+        }
+
         if (SkillData.RegetTarget) FindTarget();//对于某些技能，无法攻击到已经离开攻击区域的单位
 
         if (Targets.Count > 0)
@@ -517,21 +536,40 @@ public class Skill
         Targets.Clear();
         if (SkillData.CastEffect != null)
         {
-            var ps = EffectManager.Instance.GetEffect(SkillData.CastEffect.Value);
-            //ps.transform.position = Unit.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.CastEffect.Value).BindPoint);
-            ps.Init(Unit, Unit, Unit.Position, Unit.Direction, lastSpeed);
-            //ps.transform.localScale = new Vector3(Unit.TargetScaleX, 1, 1);
-            //ps.Play();
+            foreach (var id in SkillData.CastEffect)
+            {
+                var ps = EffectManager.Instance.GetEffect(id);
+                ps.Init(Unit, Unit, Unit.Position, Unit.Direction, lastSpeed);
+            }
         }
     }
 
     protected virtual void CastExSkill()
     {
         if (SkillData.ExSkills != null)
-            foreach (var skillId in SkillData.ExSkills)
+        {
+            if (SkillData.ExSkillWeight == null)
             {
-                Unit.Skills.Find(x => x.Id == skillId).Start();
+                foreach (var skillId in SkillData.ExSkills)
+                {
+                    Unit.Skills.Find(x => x.Id == skillId).Start();
+                }
             }
+            else
+            {
+                int sum = SkillData.ExSkillWeight.Sum();
+                var r = Battle.Random.Next(0, sum);
+                for (int i = 0; i < SkillData.ExSkillWeight.Length; i++)
+                {
+                    r -= SkillData.ExSkillWeight[i];
+                    if (r < 0)
+                    {
+                        Unit.Skills.Find(x => x.Id == SkillData.ExSkills[i]).Start();
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     protected virtual void Burst()
@@ -921,7 +959,10 @@ public class Skill
         Unit.UnitModel?.BreakAnimation();
         Casting.Finish();
         Bursting.Finish();
-        //Opening.Finish();
+        if (SkillData.ReadyType == SkillReadyEnum.充能释放)
+        {
+            Opening.Finish();
+        }
         BurstCount = -1;
     }
 
@@ -1023,7 +1064,7 @@ public class Skill
         {
             for (int i = 0; i < SkillData.Modifys.Length; i++)
             {
-                Modifies.Add(ModifyManager.Instance.Get(SkillData.Modifys[i]));
+                Modifies.Add(ModifyManager.Instance.Get(SkillData.Modifys[i], this));
             }
         }
         else

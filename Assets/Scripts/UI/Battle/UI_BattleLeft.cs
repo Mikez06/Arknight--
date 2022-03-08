@@ -48,6 +48,10 @@ namespace BattleUI
                         m_time.selectedIndex = mainSkill.SkillData.OpenTime >= 1f ? 0 : 1;
                         m_SkillDesc.text = mainSkill.SkillData.Desc;
                     }
+                    else
+                    {
+                        m_palyerUnit.selectedIndex = 1;
+                    }
                 }
                 else
                 {

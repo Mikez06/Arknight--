@@ -3,6 +3,7 @@
 {"Id":"阿米娅强力击子弹","Type":"子弹","Model":"testBullet","Speed":10}
 {"Id":"弩箭","Type":"冲击波","Model":"common_gongjian_trail_01","Speed":10}
 {"Id":"延迟打击","Type":"延迟打击","Model":"延迟子弹","Data":{"delay":0.3}}
+{"Id":"大飞镖","Type":"大飞镖","Speed":10,"Data":{"LifeTime":4,"Radius":0.75,"Trigger":1}}
 {"Id":"普通弓箭","Type":"子弹","Model":"common_gongjian_trail_01","Speed":10}
 {"Id":"普通法球","Type":"子弹","Model":"common_magic_trail_01","Speed":10,"FaceCamera":2}
 {"Id":"普通法球m","Type":"子弹","Model":"common_magic_trail_01_m","Speed":10,"FaceCamera":2}
@@ -25,3 +26,4 @@
 {"Id":"洁哥2弹道","Type":"子弹","Model":"aglina_skill_02_trail","Speed":10,"FaceCamera":2}
 {"Id":"洁哥3弹道","Type":"子弹","Model":"aglina_attack_01_trail","Speed":10,"FaceCamera":2,"Data":{"MoveHeight":0.5}}
 {"Id":"塞雷娅弹道","Type":"子弹","Model":"demkni_skill_01_trail","Speed":10,"FaceCamera":2}
+{"Id":"夜烟2弹道","Type":"子弹","Model":"nights_skill_02_trail","Speed":10,"FaceCamera":2}

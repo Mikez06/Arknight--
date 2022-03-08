@@ -14902,6 +14902,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5132248545859984714}
   - component: {fileID: -6794918739242164585}
+  - component: {fileID: 2267329030554637751}
   m_Layer: 0
   m_Name: common_magic_trail_01_m
   m_TagString: Untagged
@@ -14934,6 +14935,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50e41edb0a33b5c4c960c2eca9373202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: 0
+--- !u!114 &2267329030554637751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958395500014381323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baad9ea8d4c17114cb265d2bb221f7d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4887357282727127271

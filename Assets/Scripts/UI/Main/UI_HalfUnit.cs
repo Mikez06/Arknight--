@@ -14,7 +14,7 @@ namespace MainUI
             this.Card = card;
             m_typeControl.selectedIndex = (int)card.UnitData.Profession;
             m_halfPic.icon = "ui://Res/" + card.UnitData.HalfIcon;
-            m_skillIcon.icon = Database.Instance.Get<SkillData>(card.UnitData.MainSkill[skillIndex]).Icon.ToSkillIcon();
+            m_skillIcon.icon = card.UnitData.MainSkill == null ? "" : Database.Instance.Get<SkillData>(card.UnitData.MainSkill[skillIndex]).Icon.ToSkillIcon();
             m_star.selectedIndex = card.UnitData.Rare;
             m_ugrade.selectedIndex = card.UnitData.Upgrade;
             //m_stars.RemoveChildrenToPool();

@@ -9,13 +9,17 @@ public class Modify
 {
     public int Id;
 
-    public ModifyData ModifyData ;
+    public ModifyData ModifyData => Database.Instance.Get<ModifyData>(Id);
 
-    protected Battle Battle => BattleManager.Instance.Battle;
+    public Skill Skill;
+
+    protected Unit Unit => Skill.Unit;
+
+    protected Battle Battle => Skill.Unit.Battle;
 
     public virtual void Init()
     {
-        ModifyData = Database.Instance.Get<ModifyData>(Id);
+
     }
 }
 

@@ -28,6 +28,8 @@ public class SkillData : IConfig
       public bool DeadFind;
       public UnitTypeEnum ProfessionLimit;
       public int[] UnitLimit;
+      public int RareLimit;
+      public int PosLimit;
       public AttackTargetOrderEnum AttackOrder;
       public AttackTargetOrder2Enum AttackOrder2;
       public UnityEngine.Vector2Int[] AttackPoints;
@@ -49,6 +51,7 @@ public class SkillData : IConfig
       public int CostCount;
       public int[] Skills;
       public int[] ExSkills;
+      public int[] ExSkillWeight;
       public int? UpgradeSkill;
       public float Cooldown;
       public float OpenTime;
@@ -56,6 +59,7 @@ public class SkillData : IConfig
       public float MaxPower;
       public int PowerCount;
       public PowerRecoverTypeEnum PowerType;
+      public PowerRecoverTypeEnum PowerUseType;
       public string[] ModelAnimation;
       public string[] ModelAnimationDown;
       public string[] OverwriteAnimation;
@@ -74,8 +78,8 @@ public class SkillData : IConfig
       public bool BuffRely;
       public System.Collections.Generic.Dictionary<string,object> Data;
       public int? ReadyEffect;
-      public int? StartEffect;
-      public int? CastEffect;
+      public int[] StartEffect;
+      public int[] CastEffect;
       public int? HitEffect;
       public int? EffectEffect;
       public int? LoopStartEffect;

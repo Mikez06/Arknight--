@@ -1201,6 +1201,74 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Units/skin_emp_chbo_a
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 9b7afa50ef1438c4d82a49fba9e7dbb3
+    m_Address: Assets/Bundles/Units/char_285_medic2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4e8877cf20db71a4588f6dde05bfa87e
+    m_Address: Assets/Bundles/Units/char_286_cast3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 709729a99b06aac4c94f721e26c57838
+    m_Address: Assets/Bundles/Units/char_141_nights
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: af8d98086c5e52040aa48c3049c9a113
+    m_Address: Assets/Bundles/Effect/nights_skill_02_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 054d799cd13a9124bac5ed9e723274fc
+    m_Address: Assets/Bundles/Effect/nights_skill_02_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e6f665475f32dba40bda62ada096ae05
+    m_Address: Assets/Bundles/Effect/nights_skill_02_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4480c18448b24e44f9cfdb7179bc21aa
+    m_Address: Assets/Bundles/Units/char_500_noirc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f3cde06ba60db3740b241ce90cda6549
+    m_Address: Assets/Bundles/Units/char_501_durin
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2c23faa88384e22458fb6d8fbe776c7f
+    m_Address: Assets/Bundles/Units/char_502_nblade
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 28e5b5d85b218ef42b81ce7bdf565eda
+    m_Address: Assets/Bundles/Units/char_503_rang
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ac22502720230bc49a579b3cbf9d2653
+    m_Address: Assets/Bundles/Units/char_109_fmout
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: efcf61776c3f9ca4aa313dd86b89842a
+    m_Address: Assets/Bundles/Effect/fmout_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8982524f4613ec94faffd757b244d44b
+    m_Address: Assets/Bundles/Effect/fmout_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7d2ad3b8656c1e84ea8de72e944940af
+    m_Address: Assets/Bundles/Effect/fmout_skill_02_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bd22445bdbc648141a19193833925477
+    m_Address: Assets/Bundles/Effect/fmout_skill_02_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 13af3a537f95084488197e5452b31c85
+    m_Address: Assets/Bundles/Effect/fmout_skill_02_range
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dfed6c37602093944ac068dd93327105
+    m_Address: Assets/Bundles/Effect/fmout_skill_02_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

@@ -28,7 +28,9 @@ public class ModifyManager
     {
         ModifyData data = Database.Instance.Get<ModifyData>(id);
         Modify modify = typeof(Unit).Assembly.CreateInstance(nameof(Modifys) + "." + data.Type) as Modify;
+        modify.Id = id;
         modify.Skill = skill;
+        modify.Init();
         return modify;
     }
 }

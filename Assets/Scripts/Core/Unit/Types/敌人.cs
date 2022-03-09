@@ -160,7 +160,7 @@ namespace Units
                 Position = PathPoints[NowPathPoint].Pos;
                 Visiable = true;
                 UnitModel?.gameObject.SetActive(true);
-                Refresh();
+                //Refresh();
                 findNewPath();
             }
         }

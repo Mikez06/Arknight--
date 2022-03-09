@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 78ded0785808e964ea529fd7550b52c6, type: 2}
+  - {fileID: 2100000, guid: 22d0b0a4dce0b0b498017c23df19d281, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: f12ca984ebb0f6d429f34b2a617e6c5f, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: b89db39c7dbe5a64b9cce8af97445ece, type: 2}
   initialSkinName: default
   separatorSlotNames: []
   zSpacing: 0
@@ -301,7 +301,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fa080696977abd046a9c60b0dfd86728, type: 2}
+  - {fileID: 2100000, guid: 6861acd1df021f640b6dfceb2d1c1c8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 4465e5a08394edd4abb6dec106b82293, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 3d1e5edddb9be9d4a9298918818826b2, type: 2}
   initialSkinName: default
   separatorSlotNames: []
   zSpacing: 0

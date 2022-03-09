@@ -20,7 +20,7 @@ namespace Buffs
 
         public void Modify(DamageInfo damageInfo)
         {
-            if (damageInfo.DamageType == AvoidType && Battle.Random.NextDouble() < Chance)
+            if ((AvoidType == DamageTypeEnum.Real || damageInfo.DamageType == AvoidType) && Battle.Random.NextDouble() < Chance)
             {
                 damageInfo.Avoid = true;
             }

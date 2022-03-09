@@ -3,6 +3,8 @@ public class BuffData : IConfig
       public string Id { get ; set ; }
       public string Type;
       public string Name;
+      public int StopNeed;
+      public int RoundNeed;
       public bool UnSourceCheck;
       public bool IfSwitch;
       public int? LastingEffect;

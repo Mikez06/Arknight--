@@ -311,6 +311,7 @@ public class Skill
             return !Opening.Finished();
         //自动充能技在有充能时才能使用,另外要和自动开启技能区分开
         if (SkillData.MaxPower > 0 && SkillData.UseType == SkillUseTypeEnum.自动 && Power < MaxPower &&!SkillData.AutoUse) return false;
+        if (SkillData.EffectiveRate > 0 && Battle.Random.NextDouble() > SkillData.EffectiveRate) return false;
         //不管什么技能 都要遵循技能CD
         return Cooldown.Finished();
     }
@@ -594,7 +595,6 @@ public class Skill
         }
         BurstCount--;
         if (BurstCount != -1)
-
             if (SkillData.BurstDelay > 0)
                 Bursting.Set(SkillData.BurstDelay);
             else

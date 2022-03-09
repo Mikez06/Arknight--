@@ -8,22 +8,11 @@ namespace Buffs
 {
     public class m3融毁加攻 : Buff
     {
-        public CountDown c = new CountDown();
 
         public override void Init()
         {
             base.Init();
             Unit.BreakAllCast();
-        }
-
-        public override void Update()
-        {
-            if (c.Finished()) c.Set(1);
-            if (c.Update(SystemConfig.DeltaTime))
-            {
-                Unit.Refresh();
-            }
-            base.Update();
         }
 
         public override void Apply()

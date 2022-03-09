@@ -19,6 +19,7 @@ public class SkillData : IConfig
       public bool NoTargetAlsoUse;
       public bool RegetTarget;
       public bool StopBreak;
+      public float EffectiveRate;
       public bool StopOtherSkill;
       public int TargetTeam;
       public bool AttackFly;

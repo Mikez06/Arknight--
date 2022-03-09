@@ -52,9 +52,10 @@ namespace Bullets
                         Direction = getPosOfTime(tickTime + SystemConfig.DeltaTime) - Position;
                 }
             }
-            if (LifeTime.Update(SystemConfig.DeltaTime)) Finish();
-            if (TriggerTime.Finished()) TriggerTime.Set(BulletData.Data.GetFloat("Tirgger"));
-            if (TriggerTime.Update(SystemConfig.DeltaTime)) DamagedUnits.Clear();
+            if (DamagedUnits.Count > 0 && TriggerTime.Finished())
+                TriggerTime.Set(BulletData.Data.GetFloat("Trigger"));
+            if (TriggerTime.Update(SystemConfig.DeltaTime))
+                DamagedUnits.Clear();
             var targets = Battle.FindAll(Position, radius, Skill.SkillData.TargetTeam);
             foreach (var t in targets)
             {
@@ -63,6 +64,10 @@ namespace Bullets
                     DamagedUnits.Add(t);
                     Skill.Hit(t, this);
                 }
+            }
+            if (LifeTime.Update(SystemConfig.DeltaTime))
+            {
+                Finish();
             }
         }
 

@@ -1269,6 +1269,98 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Effect/fmout_skill_02_start
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 62f31af442a0a914db80afe5b7efabf0
+    m_Address: Assets/Bundles/Units/char_118_yuki
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bc0684ad8dbb7334bae99ef78112b4c8
+    m_Address: Assets/Bundles/Units/char_126_shotst
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a280d226bdd5f1b4a8bfc298886adc7b
+    m_Address: Assets/Bundles/Units/char_198_blackd
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3fb6d11af9e4ace4bb0cc11ccd5de824
+    m_Address: Assets/Bundles/Effect/blackd_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8917e5e9356ada3488af15d03fedc4a7
+    m_Address: Assets/Bundles/Effect/blackd_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c47e15ec7b17785418a74e35d486d69c
+    m_Address: Assets/Bundles/Effect/jesica_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 95b8641c15c36a940b9435dde2df16b0
+    m_Address: Assets/Bundles/Effect/jesica_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 204ed15157acfd14192fcd5ae65f3450
+    m_Address: Assets/Bundles/Effect/jesica_skill_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 988c489398c00664582a0227026ccbc7
+    m_Address: Assets/Bundles/Effect/jesica_skill_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e65fb97a1be09494aa02a369c6e4ff36
+    m_Address: Assets/Bundles/Effect/jesica_skill_02_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4c4ec416fb88af3408ba2d94c94c93fd
+    m_Address: Assets/Bundles/Effect/shotst_skill_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8008ecc9bdd3f8b4aa30a575261b4053
+    m_Address: Assets/Bundles/Effect/shotst_skill_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a40bbb793376e2b4d951052ec7eed852
+    m_Address: Assets/Bundles/Effect/shotst_skill_02_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4b915b12f4173364c95f9f9909a06a61
+    m_Address: Assets/Bundles/Effect/yuki_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c5fa861fa6cd51f47aae8b2662c6ea14
+    m_Address: Assets/Bundles/Effect/yuki_skill_02_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 04a3fe1bcbb14714a9ecbc57c9e9b374
+    m_Address: Assets/Bundles/Effect/scave_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 81328c4d33df83e409edb60d3a7ce390
+    m_Address: Assets/Bundles/Effect/scave_attack_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fcdc62c99cff1fa498480761e381b8dd
+    m_Address: Assets/Bundles/Units/char_149_scave
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9ca8ab4f80fa4014fb5dc43f080015ef
+    m_Address: Assets/Bundles/Units/char_290_vigna
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c6278edc87839f4478f6d0381cb5b716
+    m_Address: Assets/Bundles/Effect/vigna_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0a187ab7f383aa244849a959beb57a18
+    m_Address: Assets/Bundles/Effect/vigna_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2a2aec98f74025844a3f31d2b2fd8703
+    m_Address: Assets/Bundles/Effect/vigna_skill_02_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1e8786036dec8664095885ce21074002
+    m_Address: Assets/Bundles/Effect/vigna_skill_02_buff_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 [System.Serializable]
 public class Buff
 {
+    public static List<Vector2Int> Round1 = new List<Vector2Int> { new Vector2Int(0, 0), new Vector2Int(1, 0), new Vector2Int(-1, 0), new Vector2Int(0, 1), new Vector2Int(0, -1) };
     public BuffData BuffData => Database.Instance.Get<BuffData>(Id);
     public int Id;
     public int Index;
@@ -23,6 +25,8 @@ public class Buff
     public Buff RelayBuff;
     public bool Dead;
 
+    List<Vector2Int> rounds;
+
     public virtual void Init()
     {
         updateLastTime();
@@ -33,6 +37,26 @@ public class Buff
             LastingEffect.SetLifeTime(float.PositiveInfinity);
         }
         Log.Debug($"{Unit.UnitData.Id} 新获得了buff {BuffData.Id}");
+        if (BuffData.RoundNeed == 1)
+        {
+            rounds = new List<Vector2Int>();
+            foreach (var v in Round1)
+            {
+                rounds.Add(v + Unit.GridPos);
+            }
+        }
+    }
+
+    public bool Enable()
+    {
+        if (!Unit.Alive()) return false;
+        if (BuffData.StopNeed != 0 && Unit is Units.干员 u && u.StopUnits.Count < BuffData.StopNeed) return false;
+        if (BuffData.RoundNeed != 0)
+        {
+            var units = Battle.FindAll(rounds, 1);
+            if (units.Count > 1) return false;
+        }
+        return true;
     }
 
     public virtual void Apply()

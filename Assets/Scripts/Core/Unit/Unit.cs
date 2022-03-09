@@ -178,7 +178,7 @@ public class Unit
         DamageReceiveRate = MagicDamageReceiveRate = 1;
         foreach (var buff in Buffs)
         {
-            buff.Apply();
+            if (buff.Enable()) buff.Apply();
         }
         Speed = (SpeedBase + SpeedAdd) * (1 + SpeedRate) / 2;
         if (Speed < 0) Speed = 0;
@@ -216,6 +216,8 @@ public class Unit
         {
             buff.Update();
         }
+        Refresh();
+
         if (unbalance) IfStun = true;
         if (lastIfStun && !IfStun)
         {
@@ -429,7 +431,7 @@ public class Unit
         if (oldBuff != null)
         {
             oldBuff.Reset();
-            Refresh();
+            //Refresh();
             return oldBuff;
         }
         else
@@ -442,7 +444,7 @@ public class Unit
             Buffs.Add(buff);
             if (buff is IShield shield) Shields.Add(shield);
             buff.Init();
-            Refresh();
+            //Refresh();
             return buff;
         }
     }
@@ -452,14 +454,14 @@ public class Unit
         Buffs.Add(buff);
         if (buff is IShield shield) Shields.Add(shield);
         buff.Unit = this;
-        Refresh();
+        //Refresh();
     }
 
     public void RemoveBuff(Buff buff)
     {
         Buffs.Remove(buff);
         if (buff is IShield shield) Shields.Remove(shield);
-        Refresh();
+        //Refresh();
     }
     #region 推拉相关
     public List<IPushBuff> PushBuffs = new List<IPushBuff>();

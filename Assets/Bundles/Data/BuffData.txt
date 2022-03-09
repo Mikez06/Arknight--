@@ -64,6 +64,13 @@
 {"Id":"炎溶攻速提升","Type":"数值变化","LastingEffect":23,"LastTime":5,"Data":{"t":["AgiAdd"]}}
 {"Id":"米格鲁防御提升","Type":"数值变化","LastingEffect":24,"LastTime":0.01,"Data":{"t":["DefenceRate"]}}
 {"Id":"远山2buff","Type":"数值变化","LastingEffect":148,"LastTime":5,"Data":{"t":["AttackRate"]}}
+{"Id":"杰西卡闪避","Type":"闪避","LastingEffect":158,"LastTime":3,"Data":{"Chance":0.75,"AvoidType":"Real"}}
+{"Id":"白雪被动","Type":"数值变化","LastTime":9999,"DeadRemain":1,"Data":{"t":["AttackGapAdd","AttackRate"]}}
+{"Id":"迅使被动","Type":"数值变化","StopNeed":2,"LastTime":0.01,"DeadRemain":1,"Data":{"t":["DefenceRate"]}}
+{"Id":"迅使防御提升","Type":"数值变化","LastingEffect":25,"LastTime":0.01,"Data":{"t":["DefenceRate"]}}
+{"Id":"清道夫被动","Type":"数值变化","RoundNeed":1,"LastTime":0.01,"Data":{"t":["AttackRate","DefenceRate"]}}
+{"Id":"红豆buff","Type":"数值变化","LastingEffect":166,"LastTime":9999,"DeadRemain":1,"Data":{"t":["AttackGapAdd","AttackRate"]}}
+{"Id":"红豆刀特效","Type":"普通Buff","LastingEffect":165}
 {"Id":"银灰雪境","Type":"数值变化","IfSwitch":1,"LastingEffect":53,"LastTime":9999,"Data":{"t":["DefenceRate","HpRecoverBase"]}}
 {"Id":"真银斩加攻","Type":"数值变化","LastingEffect":56,"LastTime":5,"Data":{"t":["AttackRate"]}}
 {"Id":"42锁血绝食","Type":"绝食","LastingEffect":59}
@@ -103,11 +110,11 @@
 {"Id":"洁哥缴械","Type":"缴械","LastingEffect":114}
 {"Id":"闪灵信条buff","Type":"数值变化","LastingEffect":120,"Data":{"t":["AttackRate","AgiAdd"]}}
 {"Id":"闪灵盾","Type":"护盾","LastingEffect":121,"Data":{"ShieldType":"Normal","Base":1}}
-{"Id":"闪灵盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":104,"Data":{"t":["DefenceRate"]}}
+{"Id":"闪灵盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":111,"Data":{"t":["DefenceRate"]}}
 {"Id":"闪灵3加攻","Type":"数值变化","LastingEffect":123,"LastTime":5,"Data":{"t":["AttackRate"]}}
 {"Id":"夜莺1加攻","Type":"数值变化","LastingEffect":126,"LastTime":5,"Data":{"t":["AttackRate"]}}
 {"Id":"夜莺盾","Type":"护盾","LastingEffect":127,"Data":{"ShieldType":"Magic","Base":1}}
-{"Id":"夜莺盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":108,"Data":{"t":["MagicDefenceAdd"]}}
+{"Id":"夜莺盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":115,"Data":{"t":["MagicDefenceAdd"]}}
 {"Id":"圣域buff","Type":"数值变化","Data":{"t":["MagicDefenceAdd","MagBlock"]}}
 {"Id":"圣域自身buff","Type":"数值变化","LastingEffect":128,"LastTime":5,"Data":{"t":["AttackRate"]}}
 {"Id":"星熊防御提升","Type":"数值变化","LastingEffect":131,"Data":{"t":["DefenceRate"]}}

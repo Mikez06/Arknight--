@@ -9,3 +9,4 @@
 {"Id":"破冰4","Type":"对buff伤害","Buff":54,"Data":{"DamageRate":3}}
 {"Id":"42穿甲","Type":"穿甲","Data":{"Chance":1,"Rate":0.24}}
 {"Id":"42单体加伤","Type":"对个数伤害","Data":{"Count":1,"Rate":1.6}}
+{"Id":"未阻挡伤害1","Type":"未阻挡伤害","Data":{"Rate":1.2}}

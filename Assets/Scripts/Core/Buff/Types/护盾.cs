@@ -10,12 +10,15 @@ namespace Buffs
     {
         public DamageTypeEnum Type;
         public float Count;
+        public bool AutoReduce;
+        protected float MaxCount;
 
         public override void Init()
         {
             base.Init();
             Type = (DamageTypeEnum)Enum.Parse(typeof(DamageTypeEnum), BuffData.Data.GetStr("ShieldType"));
             Count = Skill.SkillData.GetBuffData(Index)[0];
+            AutoReduce = BuffData.Data.GetBool("AutoReduce");
             switch (BuffData.Data.GetInt("Base"))
             {
                 case 0:
@@ -23,12 +26,20 @@ namespace Buffs
                 case 1:
                     Count = Count * Skill.Unit.Attack;
                     break;
+                case 2:
+                    Count = Count * Skill.Unit.MaxHp;
+                    break;
             }
+            MaxCount = Count;
         }
 
         public override void Update()
         {
             base.Update();
+            if (AutoReduce)
+            {
+                Count -= MaxCount / Skill.SkillData.BuffLastTime.Value * SystemConfig.DeltaTime;
+            }
             if (Count == 0) Finish();
         }
 

@@ -31,3 +31,5 @@
 {"Id":"流星2弹道","Type":"子弹","Model":"shotst_skill_02_trail","Speed":10,"FaceCamera":2,"Data":{"MoveHeight":0.5}}
 {"Id":"白雪普通弹道","Type":"子弹","Model":"yuki_skill_02_start","Speed":10,"FaceCamera":2}
 {"Id":"白雪大飞镖","Type":"大飞镖","Model":"yuki_skill_02_start","Speed":10,"Data":{"LifeTime":3,"Radius":0.75,"Trigger":1}}
+{"Id":"霜叶弹道","Type":"子弹","Model":"frostl_attack_01_trail","Speed":10,"FaceCamera":2}
+{"Id":"霜叶1弹道","Type":"子弹","Model":"frostl_skill_01_trail","Speed":10,"FaceCamera":2}

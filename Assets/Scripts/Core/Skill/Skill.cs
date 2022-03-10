@@ -241,6 +241,7 @@ public class Skill
             if (SkillData.TargetEnableBuff.All(x => target.Buffs.Any(y => y.Id == x))) return false;
         }
         if (SkillData.RareLimit != 0 && target.UnitData.Rare != SkillData.RareLimit) return false;
+        if (SkillData.CostLimit != 0 && target.UnitData.Cost > SkillData.CostLimit) return false;
         if (SkillData.PosLimit != 0)
         {
             if (SkillData.PosLimit == 1 && !target.UnitData.CanSetGround) return false;
@@ -701,9 +702,11 @@ public class Skill
     {
         if (SkillData.Buffs != null)
         {
-            if (SkillData.BuffChance == 0 || Battle.Random.NextDouble() < SkillData.BuffChance)
+            for (int i = 0; i < SkillData.Buffs.Length; i++)
             {
-                for (int i = 0; i < SkillData.Buffs.Length; i++)
+                var buffChance = 0f;
+                if (SkillData.BuffChance != null && SkillData.BuffChance.Length > i) buffChance = SkillData.BuffChance[i];
+                if (buffChance == 0 || Battle.Random.NextDouble() < buffChance)
                 {
                     int buffId = SkillData.Buffs[i];
                     target.AddBuff(buffId, this, i);

@@ -1361,6 +1361,122 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Effect/vigna_skill_02_buff_02
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: a1a93403d13388a42a7160839bddbe9e
+    m_Address: Assets/Bundles/Units/char_130_doberm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c8963536522487442ba47dd7eaec2c58
+    m_Address: Assets/Bundles/Effect/doberm_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ca3f25e1702dedb48b1486dbdd838dca
+    m_Address: Assets/Bundles/Effect/doberm_skill_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3b116f648ca50384d923cd1ae30f510a
+    m_Address: Assets/Bundles/Units/char_289_gyuki
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4e0234ae3e333454a9f40fdd10f9b16e
+    m_Address: Assets/Bundles/Effect/gyuki_skill_02_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0a0a9dabc3c48e24f9232a79e2bbe083
+    m_Address: Assets/Bundles/Effect/gyuki_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cf46441260c38ec4b8ee56419e8b4a89
+    m_Address: Assets/Bundles/Effect/gyuki_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ff534dc255ad17942aeb95c90b0d62dd
+    m_Address: Assets/Bundles/Units/char_193_frostl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e902917fe61897f4bada061b9059b2ca
+    m_Address: Assets/Bundles/Effect/frostl_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 196c607409f7560478c31a5bbb02c032
+    m_Address: Assets/Bundles/Effect/frostl_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 12e5143b2e97a4342bafdba5cc08bad4
+    m_Address: Assets/Bundles/Effect/frostl_attack_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8b9fc5d5f9eca41489607c06fbfa6d08
+    m_Address: Assets/Bundles/Effect/frostl_skill_01_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bd0d4c7b40fdc8549a9a289ca51c2cdd
+    m_Address: Assets/Bundles/Effect/frostl_skill_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b09d1e8a3f466694b84b5cbf2eb32b8a
+    m_Address: Assets/Bundles/Effect/frostl_skill_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cd861d72e5beab04993d35850e9b4757
+    m_Address: Assets/Bundles/Effect/frostl_skill_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 585d0b17fd7952846be4ef94ac810d7e
+    m_Address: Assets/Bundles/Effect/frostl_skill_02_buff_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0400aefb81bac7949bded916ca7c7bcc
+    m_Address: Assets/Bundles/Units/char_127_estell
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 27ddb8872943c0147b88415c97b1b8b8
+    m_Address: Assets/Bundles/Effect/estell_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b72fbd548a1bd4b4c83eb59717267c3c
+    m_Address: Assets/Bundles/Effect/estell_skill_02_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 428df10540e5cd743be236d9567b4392
+    m_Address: Assets/Bundles/Units/char_185_frncat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b9f4e9829a117c84fb66376ec432c440
+    m_Address: Assets/Bundles/Effect/frncat_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f7b950553ab182941aa0103f8d455c0c
+    m_Address: Assets/Bundles/Effect/frncat_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 102fcecb4a7eb2f4e92593be4847e3ce
+    m_Address: Assets/Bundles/Effect/frncat_skill_02_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 068c588ef7d91f64f829da655f0a0d8c
+    m_Address: Assets/Bundles/Effect/frncat_skill_02_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7209c8530f3025643b574648b7c6df58
+    m_Address: Assets/Bundles/Units/char_237_gravel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5e51b06e89f7daf4eb5d7b9abf78815b
+    m_Address: Assets/Bundles/Effect/gravel_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7740d8999102c2c48a70cd0250914af8
+    m_Address: Assets/Bundles/Effect/gravel_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5b0651e9f22811a4b952c83b9b1deea1
+    m_Address: Assets/Bundles/Effect/gravel_skill_01_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8630f23f44c9b4e4a97a2bf0b54d6a93
+    m_Address: Assets/Bundles/Effect/gravel_skill_02_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

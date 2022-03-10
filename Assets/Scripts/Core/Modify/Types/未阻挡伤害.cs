@@ -18,7 +18,7 @@ namespace Modifys
         {
             if (Unit is Units.干员 u && !u.StopUnits.Contains(damageInfo.Target))
             {
-                damageInfo.Attack *= Rate;
+                damageInfo.DamageRate *= Rate;
             }
         }
     }

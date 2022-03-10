@@ -31,6 +31,7 @@ public class SkillData : IConfig
       public int[] UnitLimit;
       public int RareLimit;
       public int PosLimit;
+      public int CostLimit;
       public AttackTargetOrderEnum AttackOrder;
       public AttackTargetOrder2Enum AttackOrder2;
       public UnityEngine.Vector2Int[] AttackPoints;
@@ -75,7 +76,7 @@ public class SkillData : IConfig
       public float[] BuffData;
       public float[] BuffData2;
       public float? BuffLastTime;
-      public float BuffChance;
+      public float[] BuffChance;
       public bool BuffRely;
       public System.Collections.Generic.Dictionary<string,object> Data;
       public int? ReadyEffect;

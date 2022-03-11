@@ -18,7 +18,7 @@ namespace Modifys
         }
         public int Modify(int count)
         {
-            if (Battle.Random.NextDouble() < Chance)
+            if (Chance == 0 || Battle.Random.NextDouble() < Chance)
             {
                 count += Count;
             }

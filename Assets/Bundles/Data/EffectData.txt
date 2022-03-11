@@ -186,3 +186,13 @@
 {"Id":"砾抬手","Prefab":"gravel_attack_01_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":0.2}
 {"Id":"砾1buff","Prefab":"gravel_skill_01_buff","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"砾2buff","Prefab":"gravel_skill_02_buff","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"末药击中","Prefab":"myrrh_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"嘉维尔buff","Prefab":"ccheal_skill_01_buff","Offset":{"x":0,"y":0.5,"z":0},"ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"嘉维尔2抬手","Prefab":"ccheal_skill_02_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"调香师抬手","Prefab":"flower_attack_01_start","Offset":{"x":0,"y":1.5,"z":0},"ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"调香师被动","Prefab":"flower_buff_01_range","ParentFollow":2,"ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"角峰击中","Prefab":"yak_attack_01_end","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"角峰抬手","Prefab":"yak_attack_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"角峰buff","Prefab":"yak_skill_02_buff","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"古米奶中","Prefab":"sunbr_skill_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"古米2buff","Prefab":"sunbr_skill_02_buff","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}

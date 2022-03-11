@@ -42,7 +42,9 @@ public class Buff
             rounds = new List<Vector2Int>();
             foreach (var v in Round1)
             {
-                rounds.Add(v + Unit.GridPos);
+                var point = v + Unit.GridPos;
+                if (point.x < 0 || point.x >= Battle.Map.Tiles.GetLength(0) || point.y < 0 || point.y >= Battle.Map.Tiles.GetLength(1)) continue;
+                rounds.Add(point);
             }
         }
     }

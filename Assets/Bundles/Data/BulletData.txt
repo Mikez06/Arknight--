@@ -33,3 +33,5 @@
 {"Id":"白雪大飞镖","Type":"大飞镖","Model":"yuki_skill_02_start","Speed":10,"Data":{"LifeTime":3,"Radius":0.75,"Trigger":1}}
 {"Id":"霜叶弹道","Type":"子弹","Model":"frostl_attack_01_trail","Speed":10,"FaceCamera":2}
 {"Id":"霜叶1弹道","Type":"子弹","Model":"frostl_skill_01_trail","Speed":10,"FaceCamera":2}
+{"Id":"末药弹道","Type":"子弹","Model":"myrrh_attack_01_trail","Speed":10,"FaceCamera":2,"Data":{"MoveHeight":0.3}}
+{"Id":"古米弹道","Type":"子弹","Model":"sunbr_skill_01_trail","Speed":10,"FaceCamera":2}

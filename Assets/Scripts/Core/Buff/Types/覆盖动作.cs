@@ -23,6 +23,7 @@ namespace Buffs
             }
             else
                 Unit.OverWriteIdle = names;
+            Unit.SetStatus(Unit.State);
         }
 
         public override void Finish()

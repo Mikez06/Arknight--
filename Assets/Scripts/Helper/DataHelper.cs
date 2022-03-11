@@ -64,7 +64,7 @@ public static class DataHelper
         if (self == null) return null;
         if (self.TryGetValue(key, out object r))
         {
-            return (r as Newtonsoft.Json.Linq.JArray).ToObject<string[]>();
+            return (r as Newtonsoft.Json.Linq.JArray).ToObject<object[]>();
         }
         return null;
     }

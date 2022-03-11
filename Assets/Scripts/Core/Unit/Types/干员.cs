@@ -35,7 +35,8 @@ namespace Units
         /// 建造次数
         /// </summary>
         public int BuildTime;
-        public int StopCount, StopCountAdd;
+        public int StopCount;
+        public float StopCountAdd;
 
         public float Cost;
         public float CostBase, CostAdd;
@@ -63,7 +64,7 @@ namespace Units
             ResetTimeAdd = ResetTimeRate = 0;
             StopCountAdd = 0;
             base.Refresh();
-            StopCount = UnitData.StopCount + StopCountAdd;
+            StopCount = UnitData.StopCount + (int)StopCountAdd;
             Cost = CostBase + CostAdd;
             ResetTime = (ResetTimeBase + ResetTimeAdd) * (1 + ResetTimeRate);
         }

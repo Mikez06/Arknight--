@@ -90,14 +90,7 @@ namespace Units
             {
                 if (Start.Update(SystemConfig.DeltaTime))
                 {
-                    hideBase = false;
-                    SetStatus(StateEnum.Idle);
-                    Battle.TriggerDatas.Push(new TriggerData()
-                    {
-                        Target = this,
-                    });
-                    Trigger(TriggerEnum.落地);
-                    Battle.TriggerDatas.Pop();
+                    startEnd();
                 }
                 return;
             }
@@ -125,6 +118,18 @@ namespace Units
                 UpdateSkills();
             }
             //Recover.Update(SystemConfig.DeltaTime);
+        }
+
+        void startEnd()
+        {
+            hideBase = false;
+            SetStatus(StateEnum.Idle);
+            Battle.TriggerDatas.Push(new TriggerData()
+            {
+                Target = this,
+            });
+            Trigger(TriggerEnum.落地);
+            Battle.TriggerDatas.Pop();
         }
 
         public void ChangePos(int x,int y, DirectionEnum directionEnum)
@@ -176,7 +181,9 @@ namespace Units
             Start.Set(UnitModel.GetAnimationDuration("Start"));
             CheckBlock();
             //Debug.Log("start:" + Time.time + "," + Start.value);
-            SetStatus(StateEnum.Start);
+            if (Start.Finished()) startEnd();
+            else
+                SetStatus(StateEnum.Start);
             InputTime = Battle.Tick;
             Battle.Map.Tiles[GridPos.x, GridPos.y].Unit = this;
             BattleUI.UI_Battle.Instance.CreateUIUnit(this);

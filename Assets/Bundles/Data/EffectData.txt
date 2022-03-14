@@ -196,3 +196,8 @@
 {"Id":"角峰buff","Prefab":"yak_skill_02_buff","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"古米奶中","Prefab":"sunbr_skill_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"古米2buff","Prefab":"sunbr_skill_02_buff","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"深海色击中","Prefab":"deepcl_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"深海色抬手","Prefab":"deepcl_attack_01_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"深海色范围","Prefab":"deepcl_skill_02_range","ForwordDirection":2,"LifeTime":60}
+{"Id":"地灵击中","Prefab":"skgoat_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"地灵范围","Prefab":"skgoat_skill_02_range","ForwordDirection":2,"LifeTime":30}

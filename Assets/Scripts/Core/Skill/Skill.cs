@@ -408,6 +408,12 @@ public class Skill
             LoopingStart.Set(Unit.UnitModel.GetAnimationDuration(animation[0]));
             LoopingEnd.Set(Opening.value - Unit.UnitModel.GetAnimationDuration(animation[2]));
         }
+        if (SkillData.OverwriteAnimation == null && SkillData.LoopCastEffect != null)
+        {
+            LoopCastEffect = EffectManager.Instance.GetEffect(SkillData.LoopCastEffect.Value);
+            LoopCastEffect.Init(Unit, Unit, Unit.Position, Unit.Direction);
+            LoopingEnd.Set(Opening.value);
+        }
         OnSkillOpen();
     }
 

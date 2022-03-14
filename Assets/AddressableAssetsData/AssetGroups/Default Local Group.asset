@@ -1549,6 +1549,42 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Effect/sunbr_skill_02_buff
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 9377f40b675f8d640b7dc0721eb6ea99
+    m_Address: Assets/Bundles/Units/char_110_deepcl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4ab1a00c3dd524a4c865ba714ae08088
+    m_Address: Assets/Bundles/Units/token_10001_deepcl_tentacle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a5b77724c3694c043b790109a300ebe0
+    m_Address: Assets/Bundles/Effect/deepcl_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 482c6e12a1527704398661efd877c0e0
+    m_Address: Assets/Bundles/Effect/deepcl_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 697fe5883e10d674ab65869cf9c8be93
+    m_Address: Assets/Bundles/Effect/deepcl_skill_02_range
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 03d24cf236de58047ae8c27a23fac09e
+    m_Address: Assets/Bundles/Units/char_183_skgoat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f92e69d9880d91745a1c8f6a8bae314e
+    m_Address: Assets/Bundles/Effect/skgoat_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3af56d0dfef25a0409ea5db9c9e3fa48
+    m_Address: Assets/Bundles/Effect/skgoat_attack_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f432229862294804ea10802a2b22914b
+    m_Address: Assets/Bundles/Effect/skgoat_skill_02_range
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

@@ -90,7 +90,7 @@ namespace Units
             {
                 if (Start.Update(SystemConfig.DeltaTime))
                 {
-                    startEnd();
+                    StartEnd();
                 }
                 return;
             }
@@ -120,7 +120,7 @@ namespace Units
             //Recover.Update(SystemConfig.DeltaTime);
         }
 
-        void startEnd()
+        public void StartEnd()
         {
             hideBase = false;
             SetStatus(StateEnum.Idle);
@@ -181,7 +181,7 @@ namespace Units
             Start.Set(UnitModel.GetAnimationDuration("Start"));
             CheckBlock();
             //Debug.Log("start:" + Time.time + "," + Start.value);
-            if (Start.Finished()) startEnd();
+            if (Start.Finished()) StartEnd();
             else
                 SetStatus(StateEnum.Start);
             InputTime = Battle.Tick;
@@ -189,7 +189,7 @@ namespace Units
             BattleUI.UI_Battle.Instance.CreateUIUnit(this);
             foreach (var skill in Skills)//重置非普攻类技能的基础cd
             {
-                if (skill.SkillData.AttackMode != AttackModeEnum.跟随攻击) skill.ResetCooldown(1);
+                if (skill.SkillData.AttackMode != AttackModeEnum.跟随攻击 && skill.SkillData.MaxPower == 0) skill.ResetCooldown(1);
             }
             foreach (var unit in Battle.PlayerUnits)
             {
@@ -204,6 +204,9 @@ namespace Units
             });
             Battle.Trigger(TriggerEnum.入场);
             Battle.TriggerDatas.Pop();
+
+            var joinEffect = EffectManager.Instance.GetEffect(Database.Instance.GetIndex<EffectData>("入场"));
+            joinEffect.Init(this, this, Position, Direction);
         }
 
         public void LeaveMap(bool recoverPower = false)
@@ -296,7 +299,10 @@ namespace Units
 
         public override void DoDie(object source)
         {
-            base.DoDie(source); 
+            base.DoDie(source);
+
+            var leaveEffect = EffectManager.Instance.GetEffect(Database.Instance.GetIndex<EffectData>("离场"));
+            leaveEffect.Init(this, this, Position, Direction);
             foreach (var unit in StopUnits)
             {
                 unit.StopUnit = null;

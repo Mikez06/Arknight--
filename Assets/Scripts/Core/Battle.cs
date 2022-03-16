@@ -131,6 +131,12 @@ public class Battle
         }
         Waves.Sort((x, y) => Math.Sign(x.Time - y.Time));
         EnemyCount = Waves.Where(x => x.WaveData.UnitId != null).Count();
+
+        //这里刷新下单位状态，有些开场附加数据需要刷新
+        foreach (var unit in PlayerUnits)
+        {
+            unit.Refresh();
+        }
     }
 
     public void Update()

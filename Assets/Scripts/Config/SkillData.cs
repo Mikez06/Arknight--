@@ -42,6 +42,7 @@ public class SkillData : IConfig
       public float DamageRate;
       public bool DamageWithFrameRate;
       public int DamageBase;
+      public float LifeSteal;
       public int DamageCount;
       public int BurstCount;
       public float BurstDelay;
@@ -63,6 +64,7 @@ public class SkillData : IConfig
       public PowerRecoverTypeEnum PowerType;
       public PowerRecoverTypeEnum PowerUseType;
       public string[] ModelAnimation;
+      public float AnimationTime;
       public string[] ModelAnimationDown;
       public string[] OverwriteAnimation;
       public string[] OverwriteAnimationDown;
@@ -88,4 +90,5 @@ public class SkillData : IConfig
       public int? LoopCastEffect;
       public string Icon;
       public bool AntiHide;
+      public bool CanDestory;
 }

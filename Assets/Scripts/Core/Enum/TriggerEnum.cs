@@ -19,4 +19,5 @@ public enum TriggerEnum
     死亡,
     释放技能,
     技能结束,
+    闪避,
 }

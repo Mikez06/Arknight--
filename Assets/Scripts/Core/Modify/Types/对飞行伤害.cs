@@ -10,13 +10,11 @@ namespace Modifys
     {
         public void Modify(DamageInfo damageInfo)
         {
-            if (ModifyData.Buff != null)
+            if (damageInfo.Target.Height > 0)
             {
-                if (damageInfo.Target.Height > 0)
-                {
-                    damageInfo.DamageRate *= ModifyData.Data.GetFloat("DamageRate");
-                }
+                damageInfo.DamageRate *= ModifyData.Data.GetFloat("DamageRate");
             }
+            
         }
     }
 }

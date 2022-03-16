@@ -51,7 +51,7 @@ public class Buff
 
     public bool Enable()
     {
-        if (!Unit.Alive()) return false;
+        //if (!Unit.Alive()) return false;
         if (BuffData.StopNeed != 0 && Unit is Units.干员 u && u.StopUnits.Count < BuffData.StopNeed) return false;
         if (BuffData.RoundNeed != 0)
         {

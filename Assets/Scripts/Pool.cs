@@ -62,6 +62,7 @@ public class Pool<T> where T : Component
     {
         obj.gameObject.SetActive(false);
         obj.transform.SetParent(null);
+        if (!_live.ContainsKey(obj)) return;
         _pool[_live[obj]].Push(obj);
         _live.Remove(obj);
     }

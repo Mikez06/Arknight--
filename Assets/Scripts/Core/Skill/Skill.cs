@@ -62,6 +62,7 @@ public class Skill
     public CountDown LoopingStart = new CountDown();
     public CountDown LoopingEnd = new CountDown();
     public Effect LoopStartEffect, LoopCastEffect;
+    public bool Destroyed;
 
     public virtual void Init()
     {
@@ -187,6 +188,7 @@ public class Skill
     //与ready不同的是，被动技能也会受此函数影响
     public bool Useable()
     {
+        if (Destroyed) return false;
         if (SkillData.MaxUseCount != 0 && UseCount >= SkillData.MaxUseCount) return false;
         if (GetFinalParent() == Unit.FirstSkill && !Unit.CanAttack)
         {
@@ -381,6 +383,11 @@ public class Skill
 
     public void DoOpen()
     {
+        if (Unit is Units.干员 u1 && !u1.Start.Finished())
+        {
+            u1.Start.Finish();
+            u1.StartEnd();
+        }
         Debug.Log("OpenSkill");
         if (SkillData.StopOtherSkill)
         {
@@ -472,6 +479,7 @@ public class Skill
             var animation = SkillData.ModelAnimation;
             if (SkillData.ModelAnimationDown != null && Unit is Units.干员 u && u.Direction_E == DirectionEnum.Up) animation = SkillData.ModelAnimationDown;
             var duration = GetSkillDelay(SkillData.OverwriteAnimation == null ? animation: SkillData.OverwriteAnimation, Unit.GetAnimation(), out float fullDuration, out float beginDuration);//.SkeletonAnimation.skeleton.data.Animations.Find(x => x.Name == "Attack");
+            if (SkillData.AnimationTime != 0) duration = SkillData.AnimationTime;
             float attackSpeed = 1f / Unit.Agi * 100;//攻速影响冷却时间
             if (SkillData.AttackMode == AttackModeEnum.固定间隔) attackSpeed = 1;
             ResetCooldown(attackSpeed);
@@ -590,7 +598,7 @@ public class Skill
         }
         else
         {
-            if (SkillData.BurstFind) //当目标为随机时
+            if (SkillData.BurstFind || SkillData.RegetTarget) //当目标为随机时
             {
                 LastTargets.Clear();
                 LastTargets.AddRange(GetAttackTarget());
@@ -673,8 +681,18 @@ public class Skill
                         //ps.transform.position = target.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.EffectEffect.Value).BindPoint);
                         //ps.Play();
                     }
-                    t.Damage(GetDamageInfo(target, t == target ? SkillData.AreaMainDamage : SkillData.AreaDamage));
-                    if (!SkillData.IfHeal) OnBeAttack(target);
+                    var dInfo = GetDamageInfo(target, t == target ? SkillData.AreaMainDamage : SkillData.AreaDamage);
+                    t.Damage(dInfo);
+
+                    if (!SkillData.IfHeal)
+                    {
+                        if (dInfo.Avoid)
+                        {
+                            OnBeAvoid(t);
+                        }
+                        DoLifeSteal(dInfo);
+                        OnBeAttack(target);
+                    }
                 }
             }
             else
@@ -692,7 +710,13 @@ public class Skill
                 }
                 else
                 {
-                    target.Damage(GetDamageInfo(target));
+                    var dInfo = GetDamageInfo(target);
+                    target.Damage(dInfo);
+                    if (dInfo.Avoid)
+                    {
+                        OnBeAvoid(target);
+                    }
+                    DoLifeSteal(dInfo);
                 }
                 if (!SkillData.IfHeal) OnBeAttack(target);
             }
@@ -1012,6 +1036,38 @@ public class Skill
         Battle.TriggerDatas.Pop();
     }
 
+    protected virtual void OnBeAvoid(Unit target)
+    {
+        foreach (var skill in target.Skills)
+        {
+            if (skill.SkillData.PowerType == PowerRecoverTypeEnum.闪避)
+            {
+                skill.RecoverPower(1);
+            }
+        }
+        Battle.TriggerDatas.Push(new TriggerData()
+        {
+            User = Unit,
+            Target = target,
+            Skill = this,
+        });
+        target.Trigger(TriggerEnum.闪避);
+        Battle.TriggerDatas.Pop();
+    }
+
+    protected virtual void DoLifeSteal(DamageInfo damageInfo)
+    {
+        if (SkillData.LifeSteal == 0 || damageInfo.Avoid) return;
+        float healCount = damageInfo.FinalDamage;
+        if (healCount < damageInfo.Attack) healCount = damageInfo.Attack;
+        Unit.Heal(new DamageInfo()
+        {
+            Attack = healCount*SkillData.LifeSteal,
+            Target = Unit,
+            Source = this,
+        }, false);
+    }
+
     protected virtual void OnSkillOpen()
     {
         Battle.TriggerDatas.Push(new TriggerData()
@@ -1046,6 +1102,13 @@ public class Skill
                 result.Attack = result.DamageRate;
                 result.DamageRate = 1;
                 break;
+        }
+        foreach (var buff in Unit.Buffs)
+        {
+            if (buff is ISelfDamageModify damageModify)
+            {
+                damageModify.Modify(result);
+            }
         }
         foreach (var buff in target.Buffs)
         {

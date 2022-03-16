@@ -251,6 +251,7 @@ public class Unit
         SetStatus(StateEnum.Die);
         Dying.Set(UnitModel.GetAnimationDuration("Die"));
 
+        Unit sourceUnit = null;
         //根据伤害来源，判断击杀事件
         if (source is DamageInfo damageInfo)
         {
@@ -263,11 +264,10 @@ public class Unit
                 });
                 Debug.Log($"{skill.Unit.UnitData.Id} 击杀了 {UnitData.Id}");
                 if (skill.Unit is Units.干员 u && u.Parent != null)//召唤物杀人，算主子击杀
-                {
-                    u.Parent.Trigger(TriggerEnum.击杀);
-                }
+                    sourceUnit = u.Parent;
                 else
-                    skill.Unit.Trigger(TriggerEnum.击杀);
+                    sourceUnit = skill.Unit;
+                sourceUnit.Trigger(TriggerEnum.击杀);
                 Battle.TriggerDatas.Pop();
             }
         }
@@ -276,6 +276,7 @@ public class Unit
         Battle.TriggerDatas.Push(new TriggerData()
         {
             Target = this,
+            User = sourceUnit,
         });
         Battle.Trigger(TriggerEnum.死亡);
         Battle.TriggerDatas.Pop();
@@ -606,7 +607,7 @@ public class Unit
         float damage = damageInfo.Attack * damageInfo.DamageRate;
         if (damageInfo.DamageType == DamageTypeEnum.Normal) damage *= DamageReceiveRate;
         if (damageInfo.DamageType == DamageTypeEnum.Magic) damage *= MagicDamageReceiveRate;
-        damage = damageWithDefence(damage, damageInfo.DamageType,damageInfo.DefIgnore, damageInfo.DefIgnore);
+        damage = damageWithDefence(damage, damageInfo.DamageType,damageInfo.DefIgnore, damageInfo.DefIgnoreRate);
         damageInfo.FinalDamage = damage;
         float damageEx = damageInfo.Attack;
         damageEx = damageWithDefence(damageEx, damageInfo.DamageType, 0, 0);

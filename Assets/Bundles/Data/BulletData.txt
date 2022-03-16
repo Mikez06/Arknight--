@@ -36,3 +36,10 @@
 {"Id":"末药弹道","Type":"子弹","Model":"myrrh_attack_01_trail","Speed":10,"FaceCamera":2,"Data":{"MoveHeight":0.3}}
 {"Id":"古米弹道","Type":"子弹","Model":"sunbr_skill_01_trail","Speed":10,"FaceCamera":2}
 {"Id":"地灵弹道","Type":"子弹","Model":"skgoat_attack_01_trail","Speed":10,"FaceCamera":2}
+{"Id":"拉普兰德2弹道","Type":"子弹","Model":"whitew_skill_02_trail","Speed":10,"FaceCamera":2}
+{"Id":"蓝毒弹道","Type":"子弹","Model":"bluep_skill_01_trail","Speed":10,"FaceCamera":2,"Data":{"MoveHeight":0.3}}
+{"Id":"白金弹道","Type":"子弹","Model":"platnm_attack_01_trail","Speed":10,"FaceCamera":2,"Data":{"MoveHeight":0.3}}
+{"Id":"白金2弹道","Type":"子弹","Model":"platnm_skill_02_trail","Speed":10,"FaceCamera":2,"Data":{"MoveHeight":0.3}}
+{"Id":"陨星弹道","Type":"子弹","Model":"meteo_attack_01_trail","Speed":10,"FaceCamera":2,"Data":{"MoveHeight":0.3}}
+{"Id":"陨星1弹道","Type":"子弹","Model":"meteo_skill_01_trail","Speed":10,"FaceCamera":2,"Data":{"MoveHeight":0.3}}
+{"Id":"陨星2弹道","Type":"子弹","Model":"meteo_skill_02_trail","Speed":10,"FaceCamera":2,"Data":{"MoveHeight":0.3}}

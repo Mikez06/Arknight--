@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4389694870602094551}
   - component: {fileID: 4789741999281819545}
   - component: {fileID: 5105557200972385050}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: guangyun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4847,7 +4847,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9c1fc3f7c1d2d0a409647be665f5867f, type: 2}
-  - {fileID: 2100000, guid: 9c1fc3f7c1d2d0a409647be665f5867f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4904,7 +4903,7 @@ GameObject:
   - component: {fileID: 158418988651140461}
   - component: {fileID: 7951349917017926979}
   - component: {fileID: 864933453837857204}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: shuxian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9731,7 +9730,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: cb7fdd70dfedaa94a90da5a101967fef, type: 2}
-  - {fileID: 2100000, guid: cb7fdd70dfedaa94a90da5a101967fef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9821,6 +9819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50e41edb0a33b5c4c960c2eca9373202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Id: 0
 --- !u!1 &6249882178006814067
 GameObject:
   m_ObjectHideFlags: 0
@@ -9832,7 +9831,7 @@ GameObject:
   - component: {fileID: 6216422771719948058}
   - component: {fileID: 2043351354032830551}
   - component: {fileID: 510610423496750614}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: xingdian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14668,7 +14667,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 6395af048c79e5745975944bda0fb830, type: 2}
-  - {fileID: 2100000, guid: 6395af048c79e5745975944bda0fb830, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14725,7 +14723,7 @@ GameObject:
   - component: {fileID: 5922192497456079059}
   - component: {fileID: 5135541281854233339}
   - component: {fileID: 436892329678836651}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: huan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19561,7 +19559,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 8b37215131ad1654892fa64586335fbc, type: 2}
-  - {fileID: 2100000, guid: 8b37215131ad1654892fa64586335fbc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19618,7 +19615,7 @@ GameObject:
   - component: {fileID: 8388688673598206688}
   - component: {fileID: 7459397083406364528}
   - component: {fileID: 1373737887612805412}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: xialuo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24445,7 +24442,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: cb7fdd70dfedaa94a90da5a101967fef, type: 2}
-  - {fileID: 2100000, guid: cb7fdd70dfedaa94a90da5a101967fef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -24502,7 +24498,7 @@ GameObject:
   - component: {fileID: 6569620050358155075}
   - component: {fileID: 4424893503353769985}
   - component: {fileID: 8696411098705502248}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: guangyun_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29338,7 +29334,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 6616471dd799c404d93a48dd347ac0e0, type: 2}
-  - {fileID: 2100000, guid: 6616471dd799c404d93a48dd347ac0e0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -34164,7 +34159,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 0}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -34229,7 +34223,7 @@ GameObject:
   - component: {fileID: 4464359242578590437}
   - component: {fileID: 4573566478997699551}
   - component: {fileID: 9002710822837982}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: baoshan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39047,7 +39041,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: cb7fdd70dfedaa94a90da5a101967fef, type: 2}
-  - {fileID: 2100000, guid: cb7fdd70dfedaa94a90da5a101967fef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -39104,7 +39097,7 @@ GameObject:
   - component: {fileID: 508977247346706331}
   - component: {fileID: 795965970765334793}
   - component: {fileID: 5283267914105262339}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: hengxian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43930,7 +43923,6 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cb7fdd70dfedaa94a90da5a101967fef, type: 2}
   - {fileID: 2100000, guid: cb7fdd70dfedaa94a90da5a101967fef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0

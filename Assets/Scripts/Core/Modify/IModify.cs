@@ -23,6 +23,11 @@ public class Modify
     }
 }
 
+public interface ISelfDamageModify
+{
+    void Modify(DamageInfo damageInfo);
+}
+
 public interface IDamageModify
 {
     void Modify(DamageInfo damageInfo);

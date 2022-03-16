@@ -54,5 +54,5 @@ public class UnitData : IConfig
       public string[] DeadAnimation;
       public string[] StunAnimation;
       public string[] ForwardAnimation;
-      public int MaxAnimationScale;
+      public float MaxAnimationScale;
 }

@@ -8,7 +8,7 @@ namespace Buffs
 {
     public class 数值变化 : Buff
     {
-        string[] names;
+        protected string[] names;
         public override void Init()
         {
             base.Init();

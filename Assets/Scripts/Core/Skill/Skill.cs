@@ -513,6 +513,12 @@ public class Skill
             }
         }
 
+        if (SkillData.GatherEffect != null && Targets.Count > 0)
+        {
+            var ps = EffectManager.Instance.GetEffect(SkillData.GatherEffect.Value);
+            ps.Init(Unit, Targets[0], Targets[0].Position, Targets[0].Direction, lastSpeed);
+        }
+
         if (SkillData.StartEffect != null)
         {
             foreach (var id in SkillData.StartEffect)
@@ -649,8 +655,6 @@ public class Skill
             if (bullet != null)
             {
                 ps.Init(Unit, target, bullet.TargetPos, bullet.Direction);
-                //ps.transform.rotation = bullet.BulletModel.transform.rotation;
-                //ps.transform.Rotate(new Vector3(0, 0, 1),90);
             }
             else ps.Init(Unit, target, target.GetHitPoint(), Vector3.zero); //ps.transform.rotation = Quaternion.identity;
             //ps.Play();
@@ -668,6 +672,7 @@ public class Skill
         if (SkillData.DamageRate > 0)
         {
             OnAttack(target);
+            DamageInfo dInfo=null;
             if (SkillData.AreaRange != 0)
             {
                 var targets = Battle.FindAll(target.Position2, SkillData.AreaRange, SkillData.TargetTeam);
@@ -681,7 +686,7 @@ public class Skill
                         //ps.transform.position = target.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.EffectEffect.Value).BindPoint);
                         //ps.Play();
                     }
-                    var dInfo = GetDamageInfo(target, t == target ? SkillData.AreaMainDamage : SkillData.AreaDamage);
+                    dInfo = GetDamageInfo(target, t == target ? SkillData.AreaMainDamage : SkillData.AreaDamage);
                     t.Damage(dInfo);
 
                     if (!SkillData.IfHeal)
@@ -706,11 +711,12 @@ public class Skill
                 }
                 if (SkillData.IfHeal)
                 {
-                    target.Heal(GetDamageInfo(target), !SkillData.DamageWithFrameRate);
+                    dInfo = GetDamageInfo(target);
+                    target.Heal(dInfo, !SkillData.DamageWithFrameRate);
                 }
                 else
                 {
-                    var dInfo = GetDamageInfo(target);
+                    dInfo = GetDamageInfo(target);
                     target.Damage(dInfo);
                     if (dInfo.Avoid)
                     {
@@ -719,6 +725,16 @@ public class Skill
                     DoLifeSteal(dInfo);
                 }
                 if (!SkillData.IfHeal) OnBeAttack(target);
+            }
+            if (dInfo != null && dInfo.FinalDamage > 0)
+            {
+                Battle.TriggerDatas.Push(new TriggerData()
+                {
+                    User = Unit,
+                    Target = target,
+                });
+                Unit.Trigger(TriggerEnum.击中);
+                Battle.TriggerDatas.Pop();
             }
         }
         else
@@ -1075,6 +1091,11 @@ public class Skill
             Skill = this,
         });
         Unit.Trigger(TriggerEnum.释放技能);
+        //if (Unit is Units.干员 u)
+        //    foreach (var unit in u.Children)
+        //    {
+        //        unit.Trigger(TriggerEnum.释放技能);
+        //    }
         Battle.TriggerDatas.Pop();
     }
 

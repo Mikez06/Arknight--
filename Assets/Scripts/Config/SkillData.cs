@@ -86,6 +86,7 @@ public class SkillData : IConfig
       public int[] CastEffect;
       public int? HitEffect;
       public int? EffectEffect;
+      public int? GatherEffect;
       public int? LoopStartEffect;
       public int? LoopCastEffect;
       public string Icon;

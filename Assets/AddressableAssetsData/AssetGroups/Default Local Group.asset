@@ -1825,6 +1825,98 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Effect/meteo_skill_02_trail
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: f8cf61f40625f6b40868f25ded2378d9
+    m_Address: Assets/Bundles/Effect/amiya_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9aafc618b20f64b4d8c74c84cdee44d7
+    m_Address: Assets/Bundles/Effect/amiya_attack_01_start_yuan
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8d54a2f30ab71a041b39d9f9d7f1bb15
+    m_Address: Assets/Bundles/Effect/amiya_attack_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2822cfcfa194295418ec8be8626a02b7
+    m_Address: Assets/Bundles/Effect/amiya_skill_02_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 023fa7f3d6fc42a4fa95ea3dd1f6c9a8
+    m_Address: Assets/Bundles/Effect/amiya_skill_02_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bc48ec0a4675d5d4b9c2d004de988b67
+    m_Address: Assets/Bundles/Effect/amiya_skill_02_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 95872c0e1d5daf2448450cb48cd06654
+    m_Address: Assets/Bundles/Effect/amiya_skill_03_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a87264f831608264db46050bc953df19
+    m_Address: Assets/Bundles/Effect/amiya_skill_03_buff_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fd741f60822d529429cb8b100a0ebd8a
+    m_Address: Assets/Bundles/Effect/amiya_skill_03_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f5476e40550642348aca697cac8b7e85
+    m_Address: Assets/Bundles/Effect/amiya_skill_03_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f26eb7899780c594fa49d4b8b03a4686
+    m_Address: Assets/Bundles/Effect/amiya_skill_03_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 045f2b5820caf624fbcc08791901b230
+    m_Address: Assets/Bundles/Units/char_166_skfire
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 103c68230cf92fe42bf6a83b4ca028ac
+    m_Address: Assets/Bundles/Effect/skfire_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 187db418b7ea8ee468272a6b6ee8a518
+    m_Address: Assets/Bundles/Effect/skfire_skill_02_gather
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c7747de2fd459a747b29ca4aa050458e
+    m_Address: Assets/Bundles/Effect/skfire_skill_02_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f14cec7cf045bee42a2a6fddc35341c8
+    m_Address: Assets/Bundles/Effect/skfire_skill_02_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 84dd6006b43b08b418431b87225cb92b
+    m_Address: Assets/Bundles/Effect/skfire_skill_02_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f2cb8903478885d498522aa3d4e500db
+    m_Address: Assets/Bundles/Units/char_242_otter
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5a50f01389eba24458a665d06985d5c1
+    m_Address: Assets/Bundles/Units/token_10004_otter_motter
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4baa5a2656703864290e513ca4b2d367
+    m_Address: Assets/Bundles/Effect/otter_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ff536cb42d66c044db201d747a97bcf1
+    m_Address: Assets/Bundles/Effect/otter_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 04d1203eeeb9c1048af273f1958efc57
+    m_Address: Assets/Bundles/Effect/otter_attack_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5fbb0284caed13442976d632a9683184
+    m_Address: Assets/Bundles/Effect/otter_skill_02_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

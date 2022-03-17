@@ -43,3 +43,8 @@
 {"Id":"陨星弹道","Type":"子弹","Model":"meteo_attack_01_trail","Speed":10,"FaceCamera":2,"Data":{"MoveHeight":0.3}}
 {"Id":"陨星1弹道","Type":"子弹","Model":"meteo_skill_01_trail","Speed":10,"FaceCamera":2,"Data":{"MoveHeight":0.3}}
 {"Id":"陨星2弹道","Type":"子弹","Model":"meteo_skill_02_trail","Speed":10,"FaceCamera":2,"Data":{"MoveHeight":0.3}}
+{"Id":"阿米娅弹道","Type":"子弹","Model":"amiya_attack_01_trail","Speed":10,"FaceCamera":2}
+{"Id":"阿米娅2弹道","Type":"子弹","Model":"amiya_skill_02_trail","Speed":10,"FaceCamera":2}
+{"Id":"阿米娅3弹道","Type":"子弹","Model":"amiya_skill_03_trail","Speed":10,"FaceCamera":2}
+{"Id":"天火2弹道","Type":"延迟打击","Model":"skfire_skill_02_trail","Data":{"delay":0.35}}
+{"Id":"梅尔弹道","Type":"子弹","Model":"otter_attack_01_trail","Speed":10,"FaceCamera":2}

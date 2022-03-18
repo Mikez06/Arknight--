@@ -24,6 +24,9 @@ namespace Buffs
                 case 1:
                     damage = Skill.SkillData.GetBuffData(Index)[0] * Skill.Unit.Attack;
                     break;
+                case 2:
+                    damage = Skill.SkillData.GetBuffData(Index)[0] * Unit.MaxHp;
+                    break;
             }
             triggerTime = BuffData.Data.GetFloat("TriggerTime");
             if (triggerTime < SystemConfig.DeltaTime) triggerTime = SystemConfig.DeltaTime;

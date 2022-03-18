@@ -186,7 +186,7 @@ public class Skill
     }
 
     //与ready不同的是，被动技能也会受此函数影响
-    public bool Useable()
+    public virtual bool Useable()
     {
         if (Destroyed) return false;
         if (SkillData.MaxUseCount != 0 && UseCount >= SkillData.MaxUseCount) return false;
@@ -381,7 +381,7 @@ public class Skill
         return Opening.Finished() && Power >= MaxPower && Useable();
     }
 
-    public void DoOpen()
+    public virtual void DoOpen()
     {
         if (Unit is Units.干员 u1 && !u1.Start.Finished())
         {
@@ -433,7 +433,7 @@ public class Skill
         return Unit.UnitModel.GetSkillDelay(animationName, lastState, out fullDuration, out beginDuration);
     }
 
-    float lastSpeed;
+    float lastSpeed = 1;
     /// <summary>
     /// 技能抬手
     /// </summary>
@@ -1110,6 +1110,7 @@ public class Skill
             Source = this,
             DamageRate = damageRate * SkillData.DamageRate * (SkillData.DamageWithFrameRate ? cooldown : 1),
             DamageType = SkillData.DamageType,
+            MinDamageRate = Unit.UnitData.MinDamageRate,
         };
         switch (SkillData.DamageBase)
         {

@@ -258,3 +258,16 @@
 {"Id":"梅尔击中","Prefab":"otter_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"梅尔抬手","Prefab":"otter_attack_01_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"梅尔2抬手","Prefab":"otter_skill_02_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":2}
+{"Id":"临光击中","Prefab":"nearl_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"临光1抬手","Prefab":"nearl_skill_01_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"临光1击中","Prefab":"nearl_skill_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"临光2Buff","Prefab":"nearl_skill_02_buff","ScaleXFollow":2,"FaceCamera":60,"LifeTime":40}
+{"Id":"华法琳击中","Prefab":"bldsk_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"华法琳抬手","Prefab":"bldsk_attack_01_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"华法琳1击中","Prefab":"bldsk_skill_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"华法琳1抬手","Prefab":"bldsk_skill_01_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"华法琳2Buff","Prefab":"bldsk_skill_02_buff","Offset":{"x":0,"y":0.5,"z":0},"ScaleXFollow":2,"FaceCamera":60,"LifeTime":40}
+{"Id":"红击中","Prefab":"red_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"红抬手","Prefab":"red_attack_01_start_r","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"红1buff","Prefab":"red_skill_02_buff","BindPoint":"Head","ScaleXFollow":2,"FaceCamera":60,"LifeTime":40}
+{"Id":"红2抬手","Prefab":"red_skill_02_start","ScaleXFollow":0,"FaceCamera":60,"LifeTime":5}

@@ -21,6 +21,7 @@ public class UnitData : IConfig
       public float CostAdd;
       public int ResetTime;
       public int ResetTimeEx;
+      public float MinDamageRate;
       public float AttackGap;
       public int BuildCountCost;
       public bool NotReturn;
@@ -40,6 +41,7 @@ public class UnitData : IConfig
       public int Damage;
       public float Radius;
       public bool CanStop;
+      public float LifeTime;
       public UnitTypeEnum Profession;
       public string HeadIcon;
       public string HalfIcon;

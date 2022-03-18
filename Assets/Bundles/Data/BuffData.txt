@@ -23,6 +23,7 @@
 {"Id":"重量变化","Type":"数值变化","Data":{"t":["WeightAdd"]}}
 {"Id":"易伤","Type":"数值变化","Data":{"t":["DamageReceiveRate"]}}
 {"Id":"法术易伤","Type":"数值变化","Data":{"t":["MagicDamageReceiveRate"]}}
+{"Id":"治疗易伤","Type":"数值变化","Data":{"t":["HealReceiveRate"]}}
 {"Id":"攻速提升2","Type":"数值变化","LastTime":5,"DeadRemain":1,"Data":{"t":["AgiAdd"]}}
 {"Id":"减速2","Type":"数值变化","LastTime":0.3,"DeadRemain":1,"Data":{"t":["SpeedRate"]}}
 {"Id":"攻击提升2","Type":"数值变化","LastTime":5,"DeadRemain":1,"Data":{"t":["AttackRate"]}}
@@ -52,7 +53,7 @@
 {"Id":"眩晕","Type":"眩晕","Data":{"ChangeAnimation":1}}
 {"Id":"眩晕2","Type":"眩晕"}
 {"Id":"无敌","Type":"无敌"}
-{"Id":"寒冷","Type":"数值变化","UnSourceCheck":1,"LastingEffect":4,"Upgrade":55,"Data":{"t":["AgiAdd"]}}
+{"Id":"寒冷","Type":"数值变化","UnSourceCheck":1,"LastingEffect":4,"Upgrade":56,"Data":{"t":["AgiAdd"]}}
 {"Id":"冻结","Type":"冻结","UnSourceCheck":1,"LastingEffect":5}
 {"Id":"不可阻挡","Type":"不可阻挡"}
 {"Id":"未阻挡加伤","Type":"未阻挡伤害","Data":{"Rate":1.12}}
@@ -115,6 +116,9 @@
 {"Id":"阿米娅3buff","Type":"数值变化","LastingEffect":248,"Data":{"t":["AttackRate","HpRate"]}}
 {"Id":"天火2buff","Type":"数值变化","LastingEffect":23,"Data":{"t":["AttackGapRate"]}}
 {"Id":"梅尔闪避","Type":"闪避","UnSourceCheck":1,"LastingEffect":3,"LastTime":3,"Data":{"Chance":1,"AvoidType":"Real"}}
+{"Id":"临光2buff","Type":"数值变化","LastingEffect":263,"Data":{"t":["AttackRate","AttackGapRate"]}}
+{"Id":"华法琳毒素","Type":"中毒","LastingEffect":268,"LastTime":3,"Data":{"FarAttackUnitRate":1,"DamageBase":2}}
+{"Id":"红闪避","Type":"闪避","LastingEffect":271,"LastTime":3,"Data":{"Chance":0.5,"AvoidType":"Real"}}
 {"Id":"银灰雪境","Type":"数值变化","IfSwitch":1,"LastingEffect":53,"LastTime":9999,"Data":{"t":["DefenceRate","HpRecoverBase"]}}
 {"Id":"真银斩加攻","Type":"数值变化","LastingEffect":56,"LastTime":5,"Data":{"t":["AttackRate"]}}
 {"Id":"42锁血绝食","Type":"绝食","LastingEffect":59}
@@ -154,11 +158,11 @@
 {"Id":"洁哥缴械","Type":"缴械","LastingEffect":114}
 {"Id":"闪灵信条buff","Type":"数值变化","LastingEffect":120,"Data":{"t":["AttackRate","AgiAdd"]}}
 {"Id":"闪灵盾","Type":"护盾","LastingEffect":121,"Data":{"ShieldType":"Normal","Base":1}}
-{"Id":"闪灵盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":155,"Data":{"t":["DefenceRate"]}}
+{"Id":"闪灵盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":159,"Data":{"t":["DefenceRate"]}}
 {"Id":"闪灵3加攻","Type":"数值变化","LastingEffect":123,"LastTime":5,"Data":{"t":["AttackRate"]}}
 {"Id":"夜莺1加攻","Type":"数值变化","LastingEffect":126,"LastTime":5,"Data":{"t":["AttackRate"]}}
 {"Id":"夜莺盾","Type":"护盾","LastingEffect":127,"Data":{"ShieldType":"Magic","Base":1}}
-{"Id":"夜莺盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":159,"Data":{"t":["MagicDefenceAdd"]}}
+{"Id":"夜莺盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":163,"Data":{"t":["MagicDefenceAdd"]}}
 {"Id":"圣域buff","Type":"数值变化","Data":{"t":["MagicDefenceAdd","MagBlock"]}}
 {"Id":"圣域自身buff","Type":"数值变化","LastingEffect":128,"LastTime":5,"Data":{"t":["AttackRate"]}}
 {"Id":"星熊防御提升","Type":"数值变化","LastingEffect":131,"Data":{"t":["DefenceRate"]}}

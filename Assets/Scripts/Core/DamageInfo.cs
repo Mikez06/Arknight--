@@ -17,6 +17,7 @@ public class DamageInfo
     public float DefIgnoreRate;
     public bool Avoid;
     public bool Block;
+    public float MinDamageRate;
     //public List<int> BuffIds = new List<int>();
     //public List<Dictionary<string, object>> BuffDatas = new List<Dictionary<string, object>>();
 }

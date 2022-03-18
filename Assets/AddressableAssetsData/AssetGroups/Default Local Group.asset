@@ -1917,6 +1917,82 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Effect/otter_skill_02_start
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 7b114de36218fd74aad1f73527231fd6
+    m_Address: Assets/Bundles/Units/char_148_nearl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6209ea77ac5cfe0418fb3f16ff2ad938
+    m_Address: Assets/Bundles/Effect/nearl_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 51dc06ce0185b074f8efb727c5a87dde
+    m_Address: Assets/Bundles/Effect/nearl_skill_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bf60d384b32abfd4486987ecbc72868b
+    m_Address: Assets/Bundles/Effect/nearl_skill_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3d1ece18f446574479d52146ad3eca0a
+    m_Address: Assets/Bundles/Effect/nearl_skill_02_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3fe4ee787b852294f9c0f7efc5c09374
+    m_Address: Assets/Bundles/Units/char_108_silent
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0876ba5e568c1684a90e5dda54c1be56
+    m_Address: Assets/Bundles/Units/token_10000_silent_healrb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: afeb7e8c3400c4b46a1941e10829aeab
+    m_Address: Assets/Bundles/Effect/silent_attack_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 220e1207ed61f554496835362135c7e4
+    m_Address: Assets/Bundles/Units/char_171_bldsk
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2c935d7bdfd2db34f8ee9e19dd425eb1
+    m_Address: Assets/Bundles/Effect/bldsk_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 72a65aa4a423d7549992bed0c71489c0
+    m_Address: Assets/Bundles/Effect/bldsk_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: db9b228ff8f1b644c9e627847eda9c5c
+    m_Address: Assets/Bundles/Effect/bldsk_skill_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 87cdcbb3b7c005b43ba5169a95a09143
+    m_Address: Assets/Bundles/Effect/bldsk_skill_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f0215114b9e73764285b4fd740785a83
+    m_Address: Assets/Bundles/Effect/bldsk_skill_02_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4c120be13b464b24695852a6d2cc1ace
+    m_Address: Assets/Bundles/Units/char_144_red
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 02b72eece4db7b2479b6ae9135d1954a
+    m_Address: Assets/Bundles/Effect/red_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a644c913ec34a9347b99e8ee69fbb597
+    m_Address: Assets/Bundles/Effect/red_attack_01_start_r
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5113eb9b23aa295459cc0db3e57280ea
+    m_Address: Assets/Bundles/Effect/red_skill_02_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 68b4bb80fab7395418e41c34ea568b2e
+    m_Address: Assets/Bundles/Effect/red_skill_02_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

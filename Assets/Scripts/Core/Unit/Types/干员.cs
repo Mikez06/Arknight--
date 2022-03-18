@@ -72,6 +72,7 @@ namespace Units
         public override void UpdateAction()
         {
             base.UpdateAction();
+
             //不管怎么样 都要检测阻挡是否已经失效
             foreach (var target in StopUnits.ToList())
             {
@@ -116,6 +117,10 @@ namespace Units
             else
             {
                 UpdateSkills();
+                if (LifeTime != null && LifeTime.Update(SystemConfig.DeltaTime))
+                {
+                    DoDie(null);
+                }
             }
             //Recover.Update(SystemConfig.DeltaTime);
         }
@@ -203,6 +208,13 @@ namespace Units
                 Target = this,
             });
             Battle.Trigger(TriggerEnum.入场);
+            Battle.TriggerDatas.Pop();
+
+            Battle.TriggerDatas.Push(new TriggerData()
+            {
+                Target = this,
+            });
+            Trigger(TriggerEnum.自己入场);
             Battle.TriggerDatas.Pop();
 
             var joinEffect = EffectManager.Instance.GetEffect(Database.Instance.GetIndex<EffectData>("入场"));

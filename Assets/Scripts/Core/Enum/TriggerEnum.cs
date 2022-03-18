@@ -10,6 +10,7 @@ public enum TriggerEnum
     起始,
     出场,
     入场,
+    自己入场,
     落地,
     离场,
     攻击,

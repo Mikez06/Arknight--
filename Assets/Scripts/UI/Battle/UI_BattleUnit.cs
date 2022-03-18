@@ -40,8 +40,16 @@ namespace BattleUI
                 xy = Unit.UnitModel.GetModelPositon().WorldToUI();
                 if (m_unitType.selectedIndex == 0 || m_unitType.selectedIndex == 2)
                 {
-                    m_hp.max = Unit.MaxHp;
-                    m_hp.value = Unit.Hp;
+                    if (Unit.LifeTime != null)
+                    {
+                        m_hp.max = Unit.UnitData.LifeTime;
+                        m_hp.value = Unit.LifeTime.value;
+                    }
+                    else
+                    {
+                        m_hp.max = Unit.MaxHp;
+                        m_hp.value = Unit.Hp;
+                    }
                     if (Unit.MainSkill != null)
                     {
                         if (Unit.MainSkill.MaxPower > 0)
@@ -96,9 +104,17 @@ namespace BattleUI
                 }
                 else
                 {
-                    m_eHp.max = Unit.MaxHp;
-                    m_eHp.value = Unit.Hp;
-                    m_eHp.visible = m_eHp.value != m_eHp.max;
+                    if (Unit.LifeTime != null)
+                    {
+                        m_eHp.max = Unit.UnitData.LifeTime;
+                        m_eHp.value = Unit.LifeTime.value;
+                    }
+                    else
+                    {
+                        m_eHp.max = Unit.MaxHp;
+                        m_eHp.value = Unit.Hp;
+                    }
+                    m_eHp.visible = Unit.LifeTime == null ? m_eHp.value != m_eHp.max : true;
                 }
             }
         }

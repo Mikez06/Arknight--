@@ -96,8 +96,7 @@ public class Unit
     public bool IfSelectable = true;//能否被技能指定为目标
     public bool CanBeHeal = false;
 
-    public int Shield, NormalShield, MagicShield;
-    public float DamageReceiveRate, MagicDamageReceiveRate;
+    public float DamageReceiveRate, MagicDamageReceiveRate, HealReceiveRate;
 
     /// <summary>
     /// 攻击动画
@@ -107,6 +106,8 @@ public class Unit
     public Skill FirstSkill;
     public Skill AttackingSkill;
 
+
+    public CountDown LifeTime;
     /// <summary>
     /// 死亡动画
     /// </summary>
@@ -137,6 +138,7 @@ public class Unit
                 var skill= LearnSkill(skillId);
                 if (i == 0) FirstSkill = skill;
             }
+        if (UnitData.LifeTime != 0) LifeTime=new CountDown(UnitData.LifeTime);
         CreateModel();
         Refresh();
         Hp = MaxHp;
@@ -175,7 +177,7 @@ public class Unit
         CanBeHeal = true;
         ResistAdd = 0;
         AttackRangeAdd = AttackRangeRate = 0;
-        DamageReceiveRate = MagicDamageReceiveRate = 1;
+        DamageReceiveRate = MagicDamageReceiveRate = HealReceiveRate = 1;
         foreach (var buff in Buffs)
         {
             if (buff.Enable()) buff.Apply();
@@ -595,7 +597,7 @@ public class Unit
 
     public void Heal(DamageInfo heal,bool ifShowHeal)
     {
-        heal.FinalDamage = heal.Attack * heal.DamageRate;
+        heal.FinalDamage = heal.Attack * heal.DamageRate * HealReceiveRate;
         Hp += heal.FinalDamage;
         if (ifShowHeal) UnitModel.ShowHeal(heal);
         if (Hp > MaxHp)
@@ -607,10 +609,10 @@ public class Unit
         float damage = damageInfo.Attack * damageInfo.DamageRate;
         if (damageInfo.DamageType == DamageTypeEnum.Normal) damage *= DamageReceiveRate;
         if (damageInfo.DamageType == DamageTypeEnum.Magic) damage *= MagicDamageReceiveRate;
-        damage = damageWithDefence(damage, damageInfo.DamageType,damageInfo.DefIgnore, damageInfo.DefIgnoreRate);
+        damage = damageWithDefence(damage, damageInfo.DamageType,damageInfo.DefIgnore, damageInfo.DefIgnoreRate,damageInfo.MinDamageRate);
         damageInfo.FinalDamage = damage;
         float damageEx = damageInfo.Attack;
-        damageEx = damageWithDefence(damageEx, damageInfo.DamageType, 0, 0);
+        damageEx = damageWithDefence(damageEx, damageInfo.DamageType, 0, 0, damageInfo.MinDamageRate);
         if (damage > damageEx * 1.5f) UnitModel.ShowCrit(damageInfo);
         if (AllBlock > 0 && Battle.Random.NextDouble() < AllBlock) damageInfo.Avoid = true;
         if (damageInfo.DamageType == DamageTypeEnum.Normal && Block > 0 && Battle.Random.NextDouble() < Block) damageInfo.Avoid = true;
@@ -641,18 +643,18 @@ public class Unit
         }
     }
 
-    float damageWithDefence(float damage,DamageTypeEnum damageType,float defIgnore, float defIgnoreRate)
+    float damageWithDefence(float damage,DamageTypeEnum damageType,float defIgnore, float defIgnoreRate,float minDamageRate)
     {
         switch (damageType)
         {
             case DamageTypeEnum.Normal:
                 var defence = Mathf.Max(0, Defence * (1 - defIgnoreRate) - defIgnore);
-                damage = Mathf.Max(damage * 0.05f, damage - defence);//抛光系数0.05
+                damage = Mathf.Max(damage * minDamageRate, damage - defence);//抛光系数0.05
                 if (damage < 0) damage = 1;
                 break;
             case DamageTypeEnum.Magic:
                 var magDefence = Mathf.Max(0, MagicDefence * (1 - defIgnoreRate) - defIgnore);
-                damage = Mathf.Max(damage * 0.05f, damage * (100 - magDefence) / 100);
+                damage = Mathf.Max(damage * minDamageRate, damage * (100 - magDefence) / 100);
                 break;
         }
         return damage;

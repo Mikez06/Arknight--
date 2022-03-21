@@ -328,6 +328,8 @@ public class Skill
             return false;
         if (SkillData.AttackPoints == null) return false;
 
+        if (SkillData.DamageRate == 0) return false;
+
         if (SkillData.ReadyType == SkillReadyEnum.特技激活 &&
             ((SkillData.MaxPower > 0 && !Opening.Finished())
             || (SkillData.MaxPower == 0 && !Unit.MainSkill.Opening.Finished())

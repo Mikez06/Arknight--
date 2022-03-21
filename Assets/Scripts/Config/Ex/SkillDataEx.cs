@@ -11,8 +11,9 @@ public static class SkillDataEx
     {
         if (index == 0)
             return self.BuffData;
-        else
+        else if (index == 1)
             return self.BuffData2;
+        else return self.BuffData3;
     }
 }
 

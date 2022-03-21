@@ -271,3 +271,14 @@
 {"Id":"红抬手","Prefab":"red_attack_01_start_r","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"红1buff","Prefab":"red_skill_02_buff","BindPoint":"Head","ScaleXFollow":2,"FaceCamera":60,"LifeTime":40}
 {"Id":"红2抬手","Prefab":"red_skill_02_start","ScaleXFollow":0,"FaceCamera":60,"LifeTime":5}
+{"Id":"雷蛇抬手","Prefab":"liskam_attack_01_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"雷蛇2buff","Prefab":"liskam_skill_02_buff","ScaleXFollow":2,"FaceCamera":60,"LifeTime":40}
+{"Id":"雷蛇2抬手","Prefab":"liskam_skill_02_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"雷蛇2启动","Prefab":"liskam_skill_02_start_02","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"可颂击中","Prefab":"moeshd_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"可颂抬手","Prefab":"moeshd_attack_01_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"可颂1Buff","Prefab":"moeshd_buff_01_range","ForwordDirection":2,"LifeTime":40}
+{"Id":"可颂2抬手","Prefab":"moeshd_skill_02_gather","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"火神击中","Prefab":"hpsts_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"火神2抬手","Prefab":"hpsts_skill_02_gather","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"火神2抬手2","Prefab":"hpsts_skill_02_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}

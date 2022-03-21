@@ -77,6 +77,7 @@ public class SkillData : IConfig
       public int[] Buffs;
       public float[] BuffData;
       public float[] BuffData2;
+      public float[] BuffData3;
       public float? BuffLastTime;
       public float[] BuffChance;
       public bool BuffRely;

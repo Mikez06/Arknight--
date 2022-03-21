@@ -619,7 +619,7 @@ public class Unit
         if (damageInfo.DamageType == DamageTypeEnum.Magic && MagBlock > 0 && Battle.Random.NextDouble() < MagBlock) damageInfo.Avoid = true;
         if (!damageInfo.Avoid)
         {
-            foreach (var shield in Shields)
+            foreach (var shield in Shields.ToArray())
             {
                 shield.Absorb(damageInfo);
             }

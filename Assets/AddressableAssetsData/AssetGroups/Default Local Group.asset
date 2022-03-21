@@ -1993,6 +1993,62 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Effect/red_skill_02_start
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: d27bea35aa6bdb348811b4301127c63e
+    m_Address: Assets/Bundles/Units/char_107_liskarm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cc3e011d02ab89b4e9e06131a988fb34
+    m_Address: Assets/Bundles/Effect/liskam_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c4c47cfa6763fca4b9444b314adc2942
+    m_Address: Assets/Bundles/Effect/liskam_skill_02_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 51fd4971f1f0d1440b70300b5ad837c5
+    m_Address: Assets/Bundles/Effect/liskam_skill_02_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f909ecff04eeab44caebc9afcede68a7
+    m_Address: Assets/Bundles/Effect/liskam_skill_02_start_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 86edfdba9c309a84c88c0789e29df49c
+    m_Address: Assets/Bundles/Units/char_201_moeshd
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ea86255e051296c4d93cea58d6856e26
+    m_Address: Assets/Bundles/Effect/moeshd_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7e5d8631477410949890471ef9a10a82
+    m_Address: Assets/Bundles/Effect/moeshd_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9c5f7ce671c3fd940b523f2e42c5f175
+    m_Address: Assets/Bundles/Effect/moeshd_buff_01_range
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 30a53c9b131d6524da60e68da7ece0d8
+    m_Address: Assets/Bundles/Effect/moeshd_skill_02_gather
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ef87fbfc93ef08144bd8a68228b1c85a
+    m_Address: Assets/Bundles/Units/char_163_hpsts
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e8c8e99c9c0ef2845b4da280840dd218
+    m_Address: Assets/Bundles/Effect/hpsts_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cc100ade6342a3a4d820d93cd48ec079
+    m_Address: Assets/Bundles/Effect/hpsts_skill_02_gather
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bfb5f72a2a822de45b19a50cad22a094
+    m_Address: Assets/Bundles/Effect/hpsts_skill_02_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

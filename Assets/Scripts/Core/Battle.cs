@@ -318,6 +318,19 @@ public class Battle
         result.Init();
         return result;
     }
+    public Bullet CreateBullet(int id, Vector3 startPos, Vector3 targetPos, Vector2 target, Skill skill)
+    {
+        var config = Database.Instance.Get<BulletData>(id);
+        var result = typeof(Battle).Assembly.CreateInstance(nameof(Bullets) + "." + config.Type) as Bullet;
+        result.Id = id;
+        result.Position = startPos;
+        result.TargetPos = targetPos;
+        result.Target = null;
+        result.Skill = skill;
+        Bullets.Add(result);
+        result.Init();
+        return result;
+    }
 
     public HashSet<Unit> FindAll(Vector2Int point,int team,bool aliveOnly=true)
     {

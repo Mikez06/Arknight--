@@ -84,11 +84,14 @@ public class Effect : MonoBehaviour
             this.Parent = user;
         else
             this.Parent = target;
-
-        var bonePos = Parent.UnitModel.transform.position;
-        if (!string.IsNullOrEmpty(EffectData.BindPoint))
+        Vector3 bonePos = Vector3.zero;
+        if (Parent != null)
         {
-            basePos = Parent.UnitModel.GetPoint(EffectData.BindPoint);
+            bonePos = Parent.UnitModel.transform.position;
+            if (!string.IsNullOrEmpty(EffectData.BindPoint))
+            {
+                basePos = Parent.UnitModel.GetPoint(EffectData.BindPoint);
+            }
         }
 
         if (EffectData.ParentFollow != 0)

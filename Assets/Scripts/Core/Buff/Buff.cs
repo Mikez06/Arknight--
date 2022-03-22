@@ -53,6 +53,7 @@ public class Buff
     {
         //if (!Unit.Alive()) return false;
         if (BuffData.StopNeed != 0 && Unit is Units.干员 u && u.StopUnits.Count < BuffData.StopNeed) return false;
+        if (BuffData.StopLess != 0 && Unit is Units.干员 u2 && u2.StopUnits.Count >= BuffData.StopLess) return false;
         if (BuffData.StopNeed != 0 && Unit is Units.敌人 u1 && u1.StopUnit == null) return false;
         if (BuffData.RoundNeed != 0)
         {

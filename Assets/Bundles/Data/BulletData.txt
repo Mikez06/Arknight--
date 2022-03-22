@@ -49,3 +49,6 @@
 {"Id":"天火2弹道","Type":"延迟打击","Model":"skfire_skill_02_trail","Data":{"delay":0.35}}
 {"Id":"梅尔弹道","Type":"子弹","Model":"otter_attack_01_trail","Speed":10,"FaceCamera":2}
 {"Id":"赫默弹道","Type":"子弹","Model":"silent_attack_01_trail","Speed":10,"FaceCamera":2,"Data":{"MoveHeight":0.3}}
+{"Id":"普罗旺斯弹道","Type":"子弹","Model":"prove_attack_01_trail","Speed":10,"FaceCamera":2}
+{"Id":"守林人弹道","Type":"子弹","Model":"milu_attack_01_trail","Speed":10,"FaceCamera":2}
+{"Id":"守林人2弹道","Type":"延迟打击","Model":"milu_skill_02_trail","Speed":10,"FaceCamera":2,"Data":{"delay":0.35}}

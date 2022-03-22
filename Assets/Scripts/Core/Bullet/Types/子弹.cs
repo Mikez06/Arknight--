@@ -9,7 +9,7 @@ namespace Bullets
         public override void Init()
         {
             base.Init();
-            if (Target.Alive())
+            if (Target!=null&& Target.Alive())
                 TargetPos = Target.GetHitPoint();
             moveHeight = BulletData.Data.GetFloat("MoveHeight");
             //Debug.Log("高度:" + moveHeight);
@@ -23,7 +23,7 @@ namespace Bullets
         public override void Update()
         {
             tickTime += SystemConfig.DeltaTime;
-            if (Target.Alive())
+            if (Target != null && Target.Alive())
                 TargetPos = Target.GetHitPoint();
             if (moveHeight == 0)
             {
@@ -45,7 +45,9 @@ namespace Bullets
             {
                 Position = TargetPos;
                 Finish();
-                if (Target.Alive())
+                if (Target == null)
+                    Skill.Hit(TargetPos.ToV2(), this);
+                else if (Target.Alive())
                     Skill.Hit(Target, this);
             }
             Postion = StartPosition + (TargetPos - StartPosition) * (time / totalTime);

@@ -282,3 +282,11 @@
 {"Id":"火神击中","Prefab":"hpsts_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"火神2抬手","Prefab":"hpsts_skill_02_gather","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"火神2抬手2","Prefab":"hpsts_skill_02_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"普罗旺斯击中","Prefab":"prove_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"普罗旺斯抬手","Prefab":"prove_attack_01_start","BindPoint":"Muzzle","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"普罗旺斯buff","Prefab":"prove_skill_02_buff","Offset":{"x":0,"y":-0.1,"z":0},"BindPoint":"R_eye","BoneFollow":1,"ForwardOnly":1,"ParentFollow":2,"ScaleXFollow":1,"FaceCamera":60,"LifeTime":5}
+{"Id":"普罗旺斯2抬手","Prefab":"prove_skill_02_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"守林人击中","Prefab":"milu_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"守林人抬手","Prefab":"milu_attack_01_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"守林人2击中","Prefab":"milu_skill_02_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":1}
+{"Id":"守林人2抬手","Prefab":"milu_skill_02_start","ScaleXFollow":2,"FaceCamera":0,"LifeTime":5}

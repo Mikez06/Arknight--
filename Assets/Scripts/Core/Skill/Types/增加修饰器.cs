@@ -10,17 +10,29 @@ namespace Skills
     {
         public override void Effect(Unit target)
         {
-            if (SkillData.ModifyDatas != null)
+            foreach (int modifyId in SkillData.ModifyDatas)
             {
-                foreach (var modifyId in SkillData.ModifyDatas)
+                foreach (string skillId in SkillData.Data.GetArray("TargetSkill"))
                 {
-                    var m = ModifyManager.Instance.Get(modifyId, this);
-                    foreach (var skill in target.Skills)
+                    var sk = target.Skills.FirstOrDefault(x => x.SkillData.Id == skillId);
+                    if (sk != null)
                     {
-                        skill.Modifies.Add(m);
+                        var m = ModifyManager.Instance.Get(modifyId, sk);
+                        sk.Modifies.Add(m);
                     }
                 }
             }
+            //if (SkillData.ModifyDatas != null)
+            //{
+            //    foreach (var modifyId in SkillData.ModifyDatas)
+            //    {
+            //        var m = ModifyManager.Instance.Get(modifyId, this);
+            //        foreach (var skill in target.Skills)
+            //        {
+            //            skill.Modifies.Add(m);
+            //        }
+            //    }
+            //}
             base.Effect(target);
         }
     }

@@ -15,6 +15,7 @@ public class SkillData : IConfig
       public int[] TargetDisableBuff;
       public bool OpenDisable;
       public float TargetHpLess;
+      public float TargetHpMore;
       public bool AutoUse;
       public bool NoTargetAlsoUse;
       public bool RegetTarget;
@@ -35,6 +36,7 @@ public class SkillData : IConfig
       public AttackTargetOrderEnum AttackOrder;
       public AttackTargetOrder2Enum AttackOrder2;
       public UnityEngine.Vector2Int[] AttackPoints;
+      public bool AttackPoint;
       public float AttackRange;
       public bool AttackAreaWithMain;
       public DamageTypeEnum DamageType;
@@ -93,4 +95,5 @@ public class SkillData : IConfig
       public string Icon;
       public bool AntiHide;
       public bool CanDestory;
+      public bool NotAttackFlag;
 }

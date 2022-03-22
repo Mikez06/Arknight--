@@ -2049,6 +2049,58 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Effect/hpsts_skill_02_start
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 31348be57ce93f24881ce694770d5470
+    m_Address: Assets/Bundles/Units/char_145_prove
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b6bdd13311ef4ba45ab30ef16fd8c8f6
+    m_Address: Assets/Bundles/Effect/prove_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f4288498c703a9743be0a41fb0ef6da3
+    m_Address: Assets/Bundles/Effect/prove_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 00d73c0fa567e1a4795e1b6413ffb9ba
+    m_Address: Assets/Bundles/Effect/prove_attack_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d0c06df6f1b38194d8b63c49581407ca
+    m_Address: Assets/Bundles/Effect/prove_skill_02_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 64238a37a8f4ff944a25ef358e3710ed
+    m_Address: Assets/Bundles/Effect/prove_skill_02_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5d63dcc2c5754dd46adada320ebb34bc
+    m_Address: Assets/Bundles/Units/char_158_milu
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 97f77c41df2a39f4e8354a8b1fd09ea1
+    m_Address: Assets/Bundles/Effect/milu_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 254c40960370e014cad0277005b7e885
+    m_Address: Assets/Bundles/Effect/milu_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d3ee08750185d4d43b87f819e3c99b1f
+    m_Address: Assets/Bundles/Effect/milu_attack_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9a8f9ce2e59b99b449e66f0d6c67a28a
+    m_Address: Assets/Bundles/Effect/milu_skill_02_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6a3af4b4c4174ed4594873f7ad75ba49
+    m_Address: Assets/Bundles/Effect/milu_skill_02_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: eefda4fabeb65844cab20a2d974fa15a
+    m_Address: Assets/Bundles/Effect/milu_skill_02_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

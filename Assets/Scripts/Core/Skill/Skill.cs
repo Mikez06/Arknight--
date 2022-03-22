@@ -227,13 +227,14 @@ public class Skill
                 break;
         }
         if (SkillData.TargetHpLess != 0 && target.Hp / target.MaxHp > SkillData.TargetHpLess) return false;
+        if (SkillData.TargetHpMore != 0 && target.Hp / target.MaxHp < SkillData.TargetHpMore) return false;
         if (SkillData.UnitLimit != null && !SkillData.UnitLimit.Contains(target.Id)) return false;
         if ((SkillData.TargetTeam >> target.Team) % 2 == 0) return false;
         if (SkillData.ProfessionLimit != UnitTypeEnum.无 && SkillData.ProfessionLimit != target.UnitData.Profession) 
             return false;
         if (!SkillData.AttackFly && target.Height > 0) return false;
         if (!target.Alive() && !SkillData.DeadFind) return false;
-        if (!SkillData.AntiHide && target.IfHide) return false;
+        if ((!(SkillData.AntiHide || Unit.Team == target.Team)) && target.IfHide) return false;
         if (SkillData.TargetDisableBuff != null)
         {
             if (SkillData.TargetDisableBuff.Any(x => target.Buffs.Any(y => y.Id == x))) return false;
@@ -321,6 +322,7 @@ public class Skill
 
     public virtual bool InAttackUsing()
     {
+        if (SkillData.NotAttackFlag) return false;
         if (SkillData.UseType == SkillUseTypeEnum.被动) return false;
         if (SkillData.EnableBuff != null && !SkillData.EnableBuff.All(x => Unit.Buffs.Any(y => y.Id == x)))
             return false;
@@ -515,12 +517,6 @@ public class Skill
             }
         }
 
-        if (SkillData.GatherEffect != null && Targets.Count > 0)
-        {
-            var ps = EffectManager.Instance.GetEffect(SkillData.GatherEffect.Value);
-            ps.Init(Unit, Targets[0], Targets[0].Position, Targets[0].Direction, lastSpeed);
-        }
-
         if (SkillData.StartEffect != null)
         {
             foreach (var id in SkillData.StartEffect)
@@ -550,7 +546,29 @@ public class Skill
 
         if (Targets.Count > 0)
         {
-            foreach (var t in Targets.ToArray()) Effect(t);
+            if (SkillData.AttackPoint)
+            {
+                List<Vector2Int> ps = new List<Vector2Int>();
+                foreach (var t in Targets) if (!ps.Contains(t.GridPos) && AttackPoints.Contains(t.GridPos)) ps.Add(t.GridPos);
+                if (ps.Count < SkillData.Data.GetInt("HitCount"))//索敌数量不够 随机炸
+                {
+                    int count = SkillData.Data.GetInt("HitCount") - ps.Count;
+                    List<Vector2Int> al = new List<Vector2Int>(AttackPoints);
+                    foreach (var p in ps) al.Remove(p);
+                    for (int i = 0; i < count; i++)
+                    {
+                        var p = al[Battle.Random.Next(0, al.Count)];
+                        al.Remove(p);
+                        ps.Add(p);
+                    }
+                }
+                foreach (var p in ps)
+                {
+                    Effect(Battle.Map.Tiles.Get(p.x, p.y).Pos);
+                }
+            }
+            else
+                foreach (var t in Targets.ToArray()) Effect(t);
         }
         CastExSkill();
         if (SkillData.BurstCount > 0)
@@ -631,6 +649,11 @@ public class Skill
     public virtual void Effect(Unit target)
     {
         if (!CanUseTo(target)) return;
+        if (SkillData.GatherEffect != null && Targets.Count > 0)
+        {
+            var ps = EffectManager.Instance.GetEffect(SkillData.GatherEffect.Value);
+            ps.Init(Unit, Targets[0], Targets[0].Position, Targets[0].Direction, lastSpeed);
+        }
         if (SkillData.Bullet == null)
         {
             Hit(target);
@@ -641,6 +664,26 @@ public class Skill
             var startPoint = Unit.UnitModel.GetPoint(SkillData.ShootPoint);
             //Debug.Log($"攻击{target.Config.Name}:{target.Hp} 起点：{startPoint}");
             Battle.CreateBullet(SkillData.Bullet.Value, startPoint, Vector3.zero, target, this);
+        }
+    }
+
+    public virtual void Effect(Vector3 pos)
+    {
+        if (SkillData.GatherEffect != null && Targets.Count > 0)
+        {
+            var ps = EffectManager.Instance.GetEffect(SkillData.GatherEffect.Value);
+            ps.Init(Unit, null, pos, Vector2.zero, lastSpeed);
+        }
+        if (SkillData.Bullet == null)
+        {
+            Hit(pos);
+        }
+        else
+        {
+            //创建一个子弹
+            var startPoint = Unit.UnitModel.GetPoint(SkillData.ShootPoint);
+            //Debug.Log($"攻击{target.Config.Name}:{target.Hp} 起点：{startPoint}");
+            Battle.CreateBullet(SkillData.Bullet.Value, startPoint, pos, null, this);
         }
     }
 
@@ -680,15 +723,15 @@ public class Skill
                 var targets = Battle.FindAll(target.Position2, SkillData.AreaRange, SkillData.TargetTeam);
                 foreach (var t in targets)
                 {
-                    addBuff(target);
+                    addBuff(t);
                     if (SkillData.EffectEffect != null)
                     {
                         var ps = EffectManager.Instance.GetEffect(SkillData.EffectEffect.Value);
-                        ps.Init(Unit, target, bullet != null ? bullet.Position : Unit.Position, bullet != null ? bullet.Direction : Unit.Direction.ToV3());
+                        ps.Init(Unit, t, bullet != null ? bullet.Position : Unit.Position, bullet != null ? bullet.Direction : Unit.Direction.ToV3());
                         //ps.transform.position = target.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.EffectEffect.Value).BindPoint);
                         //ps.Play();
                     }
-                    dInfo = GetDamageInfo(target, t == target ? SkillData.AreaMainDamage : SkillData.AreaDamage);
+                    dInfo = GetDamageInfo(t, t == target ? SkillData.AreaMainDamage : SkillData.AreaDamage);
                     t.Damage(dInfo);
 
                     if (!SkillData.IfHeal)
@@ -698,7 +741,7 @@ public class Skill
                             OnBeAvoid(t);
                         }
                         DoLifeSteal(dInfo);
-                        OnBeAttack(target);
+                        OnBeAttack(t);
                     }
                 }
             }
@@ -744,6 +787,52 @@ public class Skill
             addBuff(target);
         }
         removeBuff(target);
+    }
+
+    public virtual void Hit(Vector2 pos,Bullet bullet=null)
+    {
+        if (SkillData.HitEffect != null)
+        {
+            var ps = EffectManager.Instance.GetEffect(SkillData.HitEffect.Value);
+            //ps.transform.position = target.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.HitEffect.Value).BindPoint);
+            if (bullet != null)
+            {
+                ps.Init(Unit, null, bullet.TargetPos, bullet.Direction);
+            }
+            else ps.Init(Unit, null, pos, Vector3.zero); //ps.transform.rotation = Quaternion.identity;
+            //ps.Play();
+        }
+        if (SkillData.DamageRate > 0)
+        {
+            DamageInfo dInfo = null;
+            if (SkillData.AreaRange != 0)
+            {
+                var targets = Battle.FindAll(pos, SkillData.AreaRange, SkillData.TargetTeam);
+                foreach (var t in targets)
+                {
+                    addBuff(t);
+                    if (SkillData.EffectEffect != null)
+                    {
+                        var ps = EffectManager.Instance.GetEffect(SkillData.EffectEffect.Value);
+                        ps.Init(Unit, t, bullet != null ? bullet.Position : Unit.Position, bullet != null ? bullet.Direction : Unit.Direction.ToV3());
+                        //ps.transform.position = target.UnitModel.GetPoint(Database.Instance.Get<EffectData>(SkillData.EffectEffect.Value).BindPoint);
+                        //ps.Play();
+                    }
+                    dInfo = GetDamageInfo(t, SkillData.AreaDamage);
+                    t.Damage(dInfo);
+
+                    if (!SkillData.IfHeal)
+                    {
+                        if (dInfo.Avoid)
+                        {
+                            OnBeAvoid(t);
+                        }
+                        DoLifeSteal(dInfo);
+                        OnBeAttack(t);
+                    }
+                }
+            }
+        }
     }
 
     protected virtual void addBuff(Unit target)

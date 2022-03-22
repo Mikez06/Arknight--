@@ -13,8 +13,11 @@ namespace Bullets
         public override void Init()
         {
             base.Init();
-            TargetPos = Target.Position;
-            Position = Target.Position;
+            if (Target != null)
+            {
+                TargetPos = Target.Position;
+                Position = Target.Position;
+            }
             Delay.Set(BulletData.Data.GetFloat("delay"));
             BulletModel.transform.localScale = new UnityEngine.Vector3(Skill.Unit.ScaleX, 1, 1);
 
@@ -25,7 +28,14 @@ namespace Bullets
             Delay.Update(SystemConfig.DeltaTime);
             if (Delay.Finished())
             {
-                Skill.Hit(Target, this);
+                if (Target == null)
+                {
+                    Skill.Hit(TargetPos.ToV2(), this);
+                }
+                else if (Target.Alive())
+                {
+                    Skill.Hit(Target, this);
+                }
                 Finish();
             }
         }

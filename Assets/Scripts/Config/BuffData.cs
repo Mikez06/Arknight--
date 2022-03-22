@@ -3,6 +3,7 @@ public class BuffData : IConfig
       public string Id { get ; set ; }
       public string Type;
       public string Name;
+      public int StopLess;
       public int StopNeed;
       public int RoundNeed;
       public bool UnSourceCheck;

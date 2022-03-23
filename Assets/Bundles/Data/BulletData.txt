@@ -52,3 +52,7 @@
 {"Id":"普罗旺斯弹道","Type":"子弹","Model":"prove_attack_01_trail","Speed":10,"FaceCamera":2}
 {"Id":"守林人弹道","Type":"子弹","Model":"milu_attack_01_trail","Speed":10,"FaceCamera":2}
 {"Id":"守林人2弹道","Type":"延迟打击","Model":"milu_skill_02_trail","Speed":10,"FaceCamera":2,"Data":{"delay":0.35}}
+{"Id":"崖心弹道","Type":"子弹","Model":"slchan_attack_01_trail","Speed":10,"FaceCamera":2}
+{"Id":"崖心1弹道","Type":"钩子","Model":"slchan_skill_01_trail","Line":"slchan_skill_01_line","Speed":10,"FaceCamera":2}
+{"Id":"崖心2弹道","Type":"钩子","Model":"slchan_skill_01_trail","Line":"slchan_skill_02_line","Speed":10,"FaceCamera":2}
+{"Id":"初雪弹道","Type":"子弹","Model":"slbell_attack_01_trail","Speed":10,"FaceCamera":2}

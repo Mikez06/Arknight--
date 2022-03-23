@@ -17,13 +17,13 @@ public class Test : MonoBehaviour
 {
     public Vector3 d;
     public Vector3 c;
-    public SkeletonRenderer SkeletonRenderer;
-    public string BoneName;
+    LineRenderer[] ls;
     // Start is called before the first frame update
     async void Start()
     {
-        GetComponent<BoneFollower>().boneName = BoneName;
-        GetComponent<BoneFollower>().SkeletonRenderer = SkeletonRenderer;
+        ls = GetComponentsInChildren<LineRenderer>();
+        //GetComponent<BoneFollower>().boneName = BoneName;
+        //GetComponent<BoneFollower>().SkeletonRenderer = SkeletonRenderer;
         //GetComponent<BoneFollower>().Initialize();
         //transform.Rotate(new Vector3(0, 1, 0), 90);
         //var animation = GetComponent<SkeletonAnimation>().Skeleton.Data.FindAnimation(s);
@@ -68,6 +68,11 @@ public class Test : MonoBehaviour
     }
     private void Update()
     {
+        foreach (var lr in ls)
+        {
+            lr.SetPosition(0, d);
+            lr.SetPosition(1, c);
+        }
         //transform.rotation = Quaternion.LookRotation(d,c);
     }
 }

@@ -290,3 +290,15 @@
 {"Id":"守林人抬手","Prefab":"milu_attack_01_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"守林人2击中","Prefab":"milu_skill_02_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":1}
 {"Id":"守林人2抬手","Prefab":"milu_skill_02_start","ScaleXFollow":2,"FaceCamera":0,"LifeTime":5}
+{"Id":"崖心击中","Prefab":"slchan_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"崖心拉buff","Prefab":"slchan_skill_01_buff","ParentFollow":2,"ForwordDirection":2,"FaceCamera":60,"LifeTime":40}
+{"Id":"崖心1击中","Prefab":"slchan_skill_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":0.5}
+{"Id":"崖心1抬手","Prefab":"slchan_skill_01_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"崖心2击中","Prefab":"slchan_skill_02_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":0.5}
+{"Id":"初雪击中","Prefab":"slbell_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"初雪1范围","Prefab":"slbell_skill_01_range","ForwordDirection":2,"LifeTime":40}
+{"Id":"初雪2范围","Prefab":"slbell_skill_02_range","ForwordDirection":2,"LifeTime":40}
+{"Id":"初雪1抬手","Prefab":"slbell_skill_01_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":1}
+{"Id":"真理击中","Prefab":"glassb_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"真理抬手","Prefab":"glassb_attack_01_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"真理2范围","Prefab":"glassb_skill_02_range","ForwordDirection":2,"LifeTime":40}

@@ -2101,6 +2101,86 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Effect/milu_skill_02_trail
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: bb6c2cb6e5bc85f43bd1e6bf33237e22
+    m_Address: Assets/Bundles/Units/char_173_slchan
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e31cf052f1192be4eada843fbaddd2b3
+    m_Address: Assets/Bundles/Effect/slchan_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ce03401e3d6c8644bab0b2008838d6a4
+    m_Address: Assets/Bundles/Effect/slchan_attack_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d45a63c74489bde40beb755f14c19f5d
+    m_Address: Assets/Bundles/Effect/slchan_skill_01_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4d47c33c6f4548349be24d9d12e36f63
+    m_Address: Assets/Bundles/Effect/slchan_skill_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 11a1619d51b73c349ab004519108b196
+    m_Address: Assets/Bundles/Effect/slchan_skill_01_line
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 50c4ddee6e908c3438f58f3db11a649b
+    m_Address: Assets/Bundles/Effect/slchan_skill_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a880575409be04149943f922729d4d26
+    m_Address: Assets/Bundles/Effect/slchan_skill_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dffa940c3f9953b4e9ca9fe840a26567
+    m_Address: Assets/Bundles/Effect/slchan_skill_02_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7bede83a9200f8c40bd4210499ea0c92
+    m_Address: Assets/Bundles/Effect/slchan_skill_02_line
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 53dda4db207e1114296a1a0c016407dc
+    m_Address: Assets/Bundles/Units/char_174_slbell
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7eb00e482acc1ba45b14da4dc92c8c34
+    m_Address: Assets/Bundles/Effect/slbell_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3565d6909a16a004f9090ab1b370786e
+    m_Address: Assets/Bundles/Effect/slbell_attack_01_trail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 78d0a78f447cade419736ce4408daa92
+    m_Address: Assets/Bundles/Effect/slbell_skill_01_range
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 227ccce0c9c20da41a6c908480df1921
+    m_Address: Assets/Bundles/Effect/slbell_skill_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f8bc2b72bcdb37c41b227cc2b6310284
+    m_Address: Assets/Bundles/Effect/slbell_skill_02_range
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 01c84d6c22a40dc468884e503b1c12c8
+    m_Address: Assets/Bundles/Units/char_195_glassb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c48cfa7aa4217c74295e9553ac0e5975
+    m_Address: Assets/Bundles/Effect/glassb_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8f83094e37cd7ca479ae6f6199ef9ac5
+    m_Address: Assets/Bundles/Effect/glassb_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7bc9981e2064f954e9e702c6cb53874f
+    m_Address: Assets/Bundles/Effect/glassb_skill_02_range
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

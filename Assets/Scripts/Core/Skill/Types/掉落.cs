@@ -31,6 +31,7 @@ namespace Skills
                 target.DoDie(this);
             }
             target.Position.y -= DropSpeed * SystemConfig.DeltaTime;
+            target.unbalance = false;
         }
     }
 }

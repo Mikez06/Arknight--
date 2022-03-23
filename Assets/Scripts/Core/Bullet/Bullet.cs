@@ -29,7 +29,7 @@ public class Bullet
 
     public virtual void CreateModel()
     {
-        BulletModel = ResHelper.Instantiate(PathHelper.EffectPath + BulletData.Model).GetComponent<BulletModel>();
+        BulletModel = BulletManager.Instance.Get(BulletData.Model); //ResHelper.Instantiate(PathHelper.EffectPath + BulletData.Model).GetComponent<BulletModel>();
         BulletModel.GetComponent<Effect>().SetLifeTime(float.PositiveInfinity);
         BulletModel.Init(this);
     }
@@ -42,7 +42,12 @@ public class Bullet
     public virtual void Finish()
     {
         Battle.Bullets.Remove(this);
-        GameObject.Destroy(BulletModel.gameObject);
+        if (BulletModel != null)
+        {
+            BulletManager.Instance.Return(BulletModel);
+            BulletModel = null;
+        }
+        //GameObject.Destroy(BulletModel.gameObject);
     }
 }
 

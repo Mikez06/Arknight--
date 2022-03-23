@@ -70,8 +70,10 @@ public class PlayerUnitModel : SpineModel
 
     public override Vector3 GetPoint(string name)
     {
-        if (name != null && name.StartsWith("F_")) return base.GetPoint(name);
-        return base.GetPoint((Forward ? "F_" : "B_") + name);
+        var bone = SkeletonAnimation.Skeleton.FindBone((Forward ? "F_" : "B_")+name);
+        if (bone != null) return bone.GetWorldPosition(SkeletonAnimation.transform);
+        //if (name != null && name.StartsWith("F_")) return base.GetPoint(name);
+        return base.GetPoint(name);
     }
 
     public override float GetSkillDelay(string[] animationName, string[] lastState, out float fullDuration, out float beginDuration)

@@ -96,4 +96,5 @@ public class SkillData : IConfig
       public bool AntiHide;
       public bool CanDestory;
       public bool NotAttackFlag;
+      public bool IgnoreSleep;
 }

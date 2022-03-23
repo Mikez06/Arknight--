@@ -93,6 +93,7 @@ public class Unit
 
     public bool IfAlive = true;
 
+    public bool IfSleep = true;
     public bool IfSelectable = true;//能否被技能指定为目标
     public bool CanBeHeal = false;
 
@@ -210,6 +211,7 @@ public class Unit
         if (!Alive()) return;
         IfHide = hideBase;
         IfHideAnti = false;
+        IfSleep = false;
         IfSelectable = true;
         CanStopOther = true;
         bool lastIfStun = IfStun;
@@ -476,13 +478,13 @@ public class Unit
 
     public bool Unbalance => unbalance || !Unbalancing.Finished();
 
-    protected bool unbalance;
+    public bool unbalance;
 
     Vector2 power;
 
     public virtual void UpdatePush()
     {
-        if (!Alive()) return;
+        //if (!Alive()) return;
         Unbalancing.Update(SystemConfig.DeltaTime);
         foreach (Buff buff in PushBuffs.Reverse<IPushBuff>())
         {

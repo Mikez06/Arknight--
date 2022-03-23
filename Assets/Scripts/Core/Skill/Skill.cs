@@ -210,6 +210,7 @@ public class Skill
     {
         if (target == null) return false;
         if (SkillData.IfHeal && (!target.CanBeHeal || target.Hp == target.MaxHp)) return false;
+        if (target.IfSleep && !SkillData.IgnoreSleep) return false;
         if (!target.IfSelectable) return false;
         switch (SkillData.TargetFilter)
         {

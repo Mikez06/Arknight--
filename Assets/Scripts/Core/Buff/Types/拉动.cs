@@ -23,7 +23,13 @@ namespace Buffs
         {
             Duration.Set(FullDuration);
             StartDistance = (Source.Position2 - Unit.Position2).magnitude;
-
+            var effect = Skill.SkillData.Data.GetStr("PullEffect");
+            if (!string.IsNullOrEmpty(effect))
+            {
+                LastingEffect = EffectManager.Instance.GetEffect(Database.Instance.GetIndex<EffectData>(effect));
+                LastingEffect.Init(Unit, Unit, Unit.Position, Unit.Direction);
+                LastingEffect.SetLifeTime(float.PositiveInfinity);
+            }
         }
 
         public override void Update()

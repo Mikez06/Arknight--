@@ -671,7 +671,9 @@ public class Unit
                 return Skills[i];
             }
         }
-        return null;
+        if (Skills.Count > 0)
+            return Skills[0];
+        else return null;
     }
 
     public virtual float Hatred()

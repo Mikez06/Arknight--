@@ -302,3 +302,4 @@
 {"Id":"真理击中","Prefab":"glassb_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"真理抬手","Prefab":"glassb_attack_01_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"真理2范围","Prefab":"glassb_skill_02_range","ForwordDirection":2,"LifeTime":40}
+{"Id":"空范围","Prefab":"sora_dance_01_loop","ForwordDirection":2,"LifeTime":9999}

@@ -2181,6 +2181,10 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Effect/glassb_skill_02_range
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: cb8b4b6fb74020f41ac634fb3f66c772
+    m_Address: Assets/Bundles/Effect/sora_dance_01_loop
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

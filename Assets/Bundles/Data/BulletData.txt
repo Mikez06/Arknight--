@@ -56,3 +56,6 @@
 {"Id":"崖心1弹道","Type":"钩子","Model":"slchan_skill_01_trail","Line":"slchan_skill_01_line","Speed":10,"FaceCamera":2}
 {"Id":"崖心2弹道","Type":"钩子","Model":"slchan_skill_01_trail","Line":"slchan_skill_02_line","Speed":10,"FaceCamera":2}
 {"Id":"初雪弹道","Type":"子弹","Model":"slbell_attack_01_trail","Speed":10,"FaceCamera":2}
+{"Id":"暗锁弹道","Type":"子弹","Model":"rope_attack_01_trail","Speed":10,"FaceCamera":2}
+{"Id":"暗锁1弹道","Type":"钩子","Model":"rope_attack_01_trail","Line":"rope_skill_01_line","Speed":10,"FaceCamera":2}
+{"Id":"暗锁2弹道","Type":"钩子","Model":"rope_skill_02_trail","Line":"rope_skill_01_line","Speed":10,"FaceCamera":2}

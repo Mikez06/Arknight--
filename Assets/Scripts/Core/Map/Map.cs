@@ -16,6 +16,8 @@ public class Map
 
     public int Id;
 
+    public float minX = float.MaxValue, minZ = float.MaxValue, maxX = float.MinValue, maxZ = float.MinValue;
+
     public void Init(Battle battle)
     {
         this.Battle = battle;
@@ -46,6 +48,10 @@ public class Map
     {
         Tile tile = new Tile();
         tile.Init(this, mapGrid);
+        if (tile.Pos.x > maxX) maxX = tile.Pos.x;
+        if (tile.Pos.x < minX) minX = tile.Pos.x;
+        if (tile.Pos.z > maxZ) maxZ = tile.Pos.z;
+        if (tile.Pos.z < minZ) minZ = tile.Pos.z;
         return tile;
     }
 

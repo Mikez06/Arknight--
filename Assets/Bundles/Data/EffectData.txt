@@ -314,3 +314,5 @@
 {"Id":"食铁兽1击中","Prefab":"panda_skill_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"食铁兽2击中","Prefab":"panda_skill_02_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"食铁兽2抬手","Prefab":"panda_skill_02_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"暗锁拉buff","Prefab":"rope_skill_01_buff","ParentFollow":2,"ForwordDirection":2,"FaceCamera":60,"LifeTime":40}
+{"Id":"暗锁击中","Prefab":"rope_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}

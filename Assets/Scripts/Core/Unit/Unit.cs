@@ -348,6 +348,13 @@ public class Unit
 
     public void UpdateCollision()
     {
+        var t0 = Battle.Map.Tiles[0, 0];
+        var t1 = Battle.Map.Tiles[Battle.Map.Tiles.GetLength(0) - 1, Battle.Map.Tiles.GetLength(1) - 1];
+        if (Position.x < t0.Pos.x - 0.5f) Position.x = t0.Pos.x - 0.4999f;
+        if (Position.y < t0.Pos.y - 0.5f) Position.x = t0.Pos.y - 0.4999f;
+        if (Position.x > t1.Pos.x + 0.5f) Position.x = t1.Pos.x + 0.4999f;
+        if (Position.y > t1.Pos.y + 0.5f) Position.x = t1.Pos.y + 0.4999f;
+
         var tile = Battle.Map.Tiles[GridPos.x, GridPos.y];
 
         if (!tile.CanMove)

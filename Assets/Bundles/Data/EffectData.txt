@@ -303,3 +303,14 @@
 {"Id":"真理抬手","Prefab":"glassb_attack_01_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"真理2范围","Prefab":"glassb_skill_02_range","ForwordDirection":2,"LifeTime":40}
 {"Id":"空范围","Prefab":"sora_dance_01_loop","ForwordDirection":2,"LifeTime":9999}
+{"Id":"狮蝎击中","Prefab":"mantic_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"狮蝎抬手","Prefab":"mantic_attack_01_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":1.5}
+{"Id":"狮蝎1击中","Prefab":"mantic_skill_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"狮蝎1抬手","Prefab":"mantic_skill_01_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":1.5}
+{"Id":"狮蝎2击中","Prefab":"mantic_skill_02_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"狮蝎2聚集","Prefab":"mantic_skill_02_gather","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"狮蝎2抬手","Prefab":"mantic_skill_02_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":1.5}
+{"Id":"食铁兽击中","Prefab":"panda_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"食铁兽1击中","Prefab":"panda_skill_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"食铁兽2击中","Prefab":"panda_skill_02_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"食铁兽2抬手","Prefab":"panda_skill_02_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}

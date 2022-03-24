@@ -1704,7 +1704,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1206165219}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.25, y: 1.5, z: 1}
+  m_LocalPosition: {x: -0.25, y: 1.5, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2105284106}
@@ -1723,7 +1723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PathPoint:
-    Pos: {x: -0.25, y: 1.5, z: 1}
+    Pos: {x: -0.25, y: 1.5, z: 2}
     Delay: 0
     DirectMove: 1
     HideMove: 0
@@ -2177,7 +2177,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1342127439}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1.5, z: 1}
+  m_LocalPosition: {x: 1, y: 1.5, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2105284106}
@@ -2196,7 +2196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PathPoint:
-    Pos: {x: 1, y: 1.5, z: 1}
+    Pos: {x: 1, y: 1.5, z: 2}
     Delay: 5
     DirectMove: 0
     HideMove: 0
@@ -3588,12 +3588,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path:
-  - Pos: {x: -0.25, y: 1.5, z: 1}
+  - Pos: {x: -0.25, y: 1.5, z: 2}
     Delay: 0
     DirectMove: 1
     HideMove: 0
-  - Pos: {x: 1, y: 1.5, z: 1}
-    Delay: 10
+  - Pos: {x: 1, y: 1.5, z: 2}
+    Delay: 5
     DirectMove: 0
     HideMove: 0
   - Pos: {x: 5.12, y: 1.5, z: 3}
@@ -3609,15 +3609,20 @@ MonoBehaviour:
     DirectMove: 0
     HideMove: 0
   PreviewPoints:
-  - {x: -0.25, y: 1.5000001, z: 1}
-  - {x: 1, y: 1.5000001, z: 1}
-  - {x: 1, y: 1.5000001, z: 1}
-  - {x: 2, y: 1.5000001, z: 1}
-  - {x: 3.0000002, y: 1.5000001, z: 1}
-  - {x: 4, y: 1.5000001, z: 1}
+  - {x: -0.25, y: 1.5000001, z: 2.0000002}
+  - {x: 1, y: 1.5000001, z: 2.0000002}
+  - {x: 1, y: 1.5000001, z: 2.0000002}
+  - {x: 2, y: 1.5000001, z: 2}
+  - {x: 3.0000002, y: 1.5000001, z: 2}
   - {x: 4, y: 1.5000001, z: 2}
   - {x: 4, y: 1.5000001, z: 3.0000002}
   - {x: 5.1199994, y: 1.5000001, z: 3.0000002}
+  - {x: 5.1199994, y: 1.5000001, z: 3.0000002}
+  - {x: 6.0000005, y: 1.5000001, z: 3.0000002}
+  - {x: 7.0000005, y: 1.5000001, z: 3.0000002}
+  - {x: 7.0000005, y: 1.5000001, z: 2}
+  - {x: 8, y: 1.5000001, z: 2}
+  - {x: 8, y: 1.5000001, z: 1.25}
   - {x: 8, y: 1.5000001, z: 1.25}
   - {x: 9, y: 1.5000001, z: 1.1600001}
 --- !u!65 &3008285881167632040

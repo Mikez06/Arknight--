@@ -21,7 +21,8 @@ namespace Bullets
             if (!string.IsNullOrEmpty(BulletData.Line))
             {
                 PullLine = BulletManager.Instance.GetLine(BulletData.Line);
-                PullLine.SetStart(StartPosition);
+                //PullLine.SetStart(StartPosition);
+                PullLine.SetStart(Skill.Unit.UnitModel.GetPoint(Skill.SkillData.ShootPoint));
                 PullLine.SetEnd(StartPosition);
             }
         }
@@ -30,7 +31,7 @@ namespace Bullets
             tickTime += SystemConfig.DeltaTime;
             if (Target != null && Target.Alive())
                 TargetPos = Target.GetHitPoint();
-            PullLine.SetStart(Skill.Unit.UnitModel.GetPoint(Skill.SkillData.ShootPoint));
+            //PullLine.SetStart(Skill.Unit.UnitModel.GetPoint(Skill.SkillData.ShootPoint));
             if (arrive)
             {
                 if (pull == null) Finish();

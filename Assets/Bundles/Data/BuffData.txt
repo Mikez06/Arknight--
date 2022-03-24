@@ -133,6 +133,11 @@
 {"Id":"真理被动","Type":"数值变化","LastTime":0.01,"Data":{"t":["AgiAdd","DefenceRate"]}}
 {"Id":"真理1","Type":"数值变化","Data":{"t":["AttackGapAdd"]}}
 {"Id":"空2buff","Type":"鼓舞","Data":{"t":["AttackAdd"]}}
+{"Id":"狮蝎加攻","Type":"数值变化","LastTime":5,"Data":{"t":["AttackRate"]}}
+{"Id":"狮蝎闪避","Type":"闪避","LastTime":3,"Data":{"Chance":0.5,"AvoidType":"Real"}}
+{"Id":"狮蝎禁用被动","Type":"普通Buff"}
+{"Id":"狮蝎2buff","Type":"数值变化","Data":{"t":["AttackRate","AttackGapAdd"]}}
+{"Id":"食铁兽闪避","Type":"闪避","Data":{"Chance":0.43,"AvoidType":"Normal"}}
 {"Id":"银灰雪境","Type":"数值变化","IfSwitch":1,"LastingEffect":53,"LastTime":9999,"Data":{"t":["DefenceRate","HpRecoverBase"]}}
 {"Id":"真银斩加攻","Type":"数值变化","LastingEffect":56,"LastTime":5,"Data":{"t":["AttackRate"]}}
 {"Id":"42锁血绝食","Type":"绝食","LastingEffect":59}
@@ -172,11 +177,11 @@
 {"Id":"洁哥缴械","Type":"缴械","LastingEffect":114}
 {"Id":"闪灵信条buff","Type":"数值变化","LastingEffect":120,"Data":{"t":["AttackRate","AgiAdd"]}}
 {"Id":"闪灵盾","Type":"护盾","LastingEffect":121,"Data":{"ShieldType":"Normal","Base":1}}
-{"Id":"闪灵盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":173,"Data":{"t":["DefenceRate"]}}
+{"Id":"闪灵盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":178,"Data":{"t":["DefenceRate"]}}
 {"Id":"闪灵3加攻","Type":"数值变化","LastingEffect":123,"LastTime":5,"Data":{"t":["AttackRate"]}}
 {"Id":"夜莺1加攻","Type":"数值变化","LastingEffect":126,"LastTime":5,"Data":{"t":["AttackRate"]}}
 {"Id":"夜莺盾","Type":"护盾","LastingEffect":127,"Data":{"ShieldType":"Magic","Base":1}}
-{"Id":"夜莺盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":177,"Data":{"t":["MagicDefenceAdd"]}}
+{"Id":"夜莺盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":182,"Data":{"t":["MagicDefenceAdd"]}}
 {"Id":"圣域buff","Type":"数值变化","Data":{"t":["MagicDefenceAdd","MagBlock"]}}
 {"Id":"圣域自身buff","Type":"数值变化","LastingEffect":128,"LastTime":5,"Data":{"t":["AttackRate"]}}
 {"Id":"星熊防御提升","Type":"数值变化","LastingEffect":131,"Data":{"t":["DefenceRate"]}}

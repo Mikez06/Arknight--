@@ -2185,6 +2185,54 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Effect/sora_dance_01_loop
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: f3552dea70ff9ca40974ce1a2273f9c9
+    m_Address: Assets/Bundles/Effect/mantic_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f91cce8feed5b504ebad4d7455d8fda0
+    m_Address: Assets/Bundles/Effect/mantic_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 747cc077e30cf0b4f879d6c362adbe57
+    m_Address: Assets/Bundles/Effect/mantic_skill_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a71bbbaa802537a469dd11b4f0798c3b
+    m_Address: Assets/Bundles/Effect/mantic_skill_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0850b306dc66ea74da776a4b41dead01
+    m_Address: Assets/Bundles/Effect/mantic_skill_02_gather
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 892d8e5053f7ac04699f61911a4b2fc1
+    m_Address: Assets/Bundles/Effect/mantic_skill_02_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 87882259c7c78ce4c80aff4475a36f7a
+    m_Address: Assets/Bundles/Effect/mantic_skill_02_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b3f605b956b096549bc0e4d8d3a83242
+    m_Address: Assets/Bundles/Units/char_241_panda
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1ee7bacb0902e3943b97849f94284151
+    m_Address: Assets/Bundles/Effect/panda_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b31bc4987e1f5d246a78e688bbaf0268
+    m_Address: Assets/Bundles/Effect/panda_skill_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 77ed8971ecd631945ac66daba4f6573f
+    m_Address: Assets/Bundles/Effect/panda_skill_02_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6b6267f694a66844d94c972487271478
+    m_Address: Assets/Bundles/Effect/panda_skill_02_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

@@ -1,6 +1,5 @@
 {"Map":"1-1","UnitId":5,"Delay":0,"GapTime":2,"Count":1,"Path":"P0","OffetsetY":0.2}
-{"Map":"1-1","UnitId":9,"Delay":0,"GapTime":10,"Count":1,"Path":"P0","OffetsetY":-0.2}
-{"Map":"1-1","UnitId":2,"Delay":0,"Count":1,"Path":"P0","OffetsetY":0.12}
+{"Map":"1-1","UnitId":5,"Delay":0,"GapTime":10,"Count":1,"Path":"P0","OffetsetY":-0.2}
 {"Map":"1-2","Delay":1,"Path":"P0"}
 {"Map":"1-2","Delay":1,"Path":"P1"}
 {"Map":"1-2","UnitId":7,"Delay":5,"GapTime":2,"Count":2,"Path":"P0"}

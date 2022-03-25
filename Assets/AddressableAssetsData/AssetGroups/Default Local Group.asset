@@ -2253,6 +2253,110 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Effect/rope_skill_02_trail
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 5252c353225e67b459e5c5558498bcd7
+    m_Address: Assets/Bundles/Units/0Empty
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0c50a507de33d3948900f24e5ac39c98
+    m_Address: Assets/Bundles/Units/enemy_1006_shield
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f3fabde0b681b944197914cb2882f473
+    m_Address: Assets/Bundles/Units/enemy_1015_litamr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f7c2e50bebef8634c96683f4d37ddf13
+    m_Address: Assets/Bundles/Units/enemy_1023_jmage_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 30aba862b2fd0784bb6d0e63da4a7eac
+    m_Address: Assets/Bundles/Units/enemy_1025_reveng
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c94a45dc1c0441b40befc31e664f76ed
+    m_Address: Assets/Bundles/Units/enemy_1025_reveng_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9662c934187376d40b26b5a438f94fd8
+    m_Address: Assets/Bundles/Units/enemy_1035_haxe
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 749e80ad4519dc24ba6c2b6732853315
+    m_Address: Assets/Bundles/Effect/buff_ fragile_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9b3a0a6828c510648b49cc3f4cb34f08
+    m_Address: Assets/Bundles/Effect/buff_atkup
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d1385d1446fc0dc489c6bcaba57c0869
+    m_Address: Assets/Bundles/Effect/buff_attack_speed_reduction_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c96cbeef694f8ba42b6ee3e81e52dcd3
+    m_Address: Assets/Bundles/Effect/buff_burn
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e149331871ebc2b4a8aaf03723a9d99a
+    m_Address: Assets/Bundles/Effect/buff_cold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4ecbfa85fa65f2a44a7bba8e904c0738
+    m_Address: Assets/Bundles/Effect/buff_curse_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c1cd6104bb6647a4a91f134c34f248ce
+    m_Address: Assets/Bundles/Effect/buff_defdown
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ce913d06a2ce36b4c8503b348d74c933
+    m_Address: Assets/Bundles/Effect/buff_defup
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b8d8e94713876074f81692c09943f8a8
+    m_Address: Assets/Bundles/Effect/buff_desert_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9e4e570cf436c0a45ae95e20497418af
+    m_Address: Assets/Bundles/Effect/buff_distraction
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5110596265606bb49bee064fff99db6d
+    m_Address: Assets/Bundles/Effect/buff_frozen
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e38cbbc6a240a5d40b580816a7653cd8
+    m_Address: Assets/Bundles/Effect/buff_frozen_to_fly
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0dd80151e3273404796c6f4e7d24c26a
+    m_Address: Assets/Bundles/Effect/buff_frozen_to_walk
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ccbb3a793560e474b927764942a36aae
+    m_Address: Assets/Bundles/Effect/buff_poison
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 08843c2a1a3163c45b19059c480934ee
+    m_Address: Assets/Bundles/Effect/buff_silence
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d4c1d0ab1014d024f8cf3199690e7c8f
+    m_Address: Assets/Bundles/Effect/buff_sluggish
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 55fc3878998ddb54b8506a673ef3a981
+    m_Address: Assets/Bundles/Effect/buff_stun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 08f21e7420428e34897f639913baf3d7
+    m_Address: Assets/Bundles/Effect/buff_violent
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6e09eeca6c6a7dd4dac742d278799b79
+    m_Address: Assets/Bundles/Effect/buff_weak
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

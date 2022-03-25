@@ -1362,7 +1362,7 @@ MonoBehaviour:
   CanBuildUnit: 1
   FarAttackGrid: 0
   CanMove: 1
-  MapUnitId: 
+  MapUnitId: "\u6E90\u77F3\u5730\u677F"
   Alive: 0
   Tag: 
   ActiveTime: 0

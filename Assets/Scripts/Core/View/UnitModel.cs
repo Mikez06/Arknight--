@@ -12,7 +12,7 @@ public class UnitModel:MonoBehaviour
 
     public virtual void Init(Unit unit)
     {
-
+        transform.position = unit.Position;
     }
 
     public virtual Vector3 GetModelPositon()

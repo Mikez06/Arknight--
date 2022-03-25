@@ -37,12 +37,14 @@ public class UnitData : IConfig
       public bool CanSetGround;
       public int StopCount;
       public float LeaveReturn;
+      public bool NotUseTile;
       public bool WithoutCheckCount;
       public int Damage;
       public float Radius;
       public bool CanStop;
       public float LifeTime;
       public UnitTypeEnum Profession;
+      public string Profession2;
       public string HeadIcon;
       public string HalfIcon;
       public string StandPic;
@@ -50,6 +52,7 @@ public class UnitData : IConfig
       public int Rare;
       public string SetPos;
       public string[] Tags;
+      public string AblitityInfo;
       public System.Collections.Generic.Dictionary<string,object> Ablititys;
       public string[] IdleAnimation;
       public string[] MoveAnimation;

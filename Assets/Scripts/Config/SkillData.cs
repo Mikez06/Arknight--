@@ -4,6 +4,7 @@ public class SkillData : IConfig
       public string Type;
       public string Name;
       public string Desc;
+      public string Icon;
       public int Upgrade;
       public SkillReadyEnum ReadyType;
       public SkillUseTypeEnum UseType;
@@ -92,7 +93,6 @@ public class SkillData : IConfig
       public int? GatherEffect;
       public int? LoopStartEffect;
       public int? LoopCastEffect;
-      public string Icon;
       public bool AntiHide;
       public bool CanDestory;
       public bool NotAttackFlag;

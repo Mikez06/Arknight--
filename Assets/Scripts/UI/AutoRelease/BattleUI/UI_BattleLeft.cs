@@ -16,6 +16,7 @@ namespace BattleUI
         public GTextField m_def;
         public GTextField m_magDef;
         public GTextField m_block;
+        public GComponent m_attackArea;
         public GTextField m_subSkill;
         public GTextField m_agi;
         public GTextField m_name;
@@ -28,6 +29,7 @@ namespace BattleUI
         public GComponent m_UseType;
         public GTextField m_lastTime;
         public GGroup m_skillInfo;
+        public GTextField m_midUnitDesc;
         public const string URL = "ui://vp312gabkbte3s";
 
         public static UI_BattleLeft CreateInstance()
@@ -48,18 +50,20 @@ namespace BattleUI
             m_def = (GTextField)GetChildAt(8);
             m_magDef = (GTextField)GetChildAt(9);
             m_block = (GTextField)GetChildAt(10);
-            m_subSkill = (GTextField)GetChildAt(14);
-            m_agi = (GTextField)GetChildAt(16);
-            m_name = (GTextField)GetChildAt(17);
-            m_Lv = (GTextField)GetChildAt(19);
-            m_SkillName = (GTextField)GetChildAt(21);
-            m_skillIcon = (GLoader)GetChildAt(22);
-            m_SkillDesc = (GTextField)GetChildAt(23);
-            m_Recover = (GComponent)GetChildAt(24);
-            m_Pro = (GComponent)GetChildAt(25);
-            m_UseType = (GComponent)GetChildAt(26);
-            m_lastTime = (GTextField)GetChildAt(28);
-            m_skillInfo = (GGroup)GetChildAt(29);
+            m_attackArea = (GComponent)GetChildAt(13);
+            m_subSkill = (GTextField)GetChildAt(15);
+            m_agi = (GTextField)GetChildAt(17);
+            m_name = (GTextField)GetChildAt(18);
+            m_Lv = (GTextField)GetChildAt(21);
+            m_SkillName = (GTextField)GetChildAt(23);
+            m_skillIcon = (GLoader)GetChildAt(24);
+            m_SkillDesc = (GTextField)GetChildAt(25);
+            m_Recover = (GComponent)GetChildAt(26);
+            m_Pro = (GComponent)GetChildAt(27);
+            m_UseType = (GComponent)GetChildAt(28);
+            m_lastTime = (GTextField)GetChildAt(30);
+            m_skillInfo = (GGroup)GetChildAt(31);
+            m_midUnitDesc = (GTextField)GetChildAt(32);
             Init();
         }
         partial void Init();

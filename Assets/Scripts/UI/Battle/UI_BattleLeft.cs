@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FairyGUI;
+using MainUI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,10 +13,12 @@ namespace BattleUI
     {
         Texture alt;
         Unit Unit;
+        GObjectPool pool;
         partial void Init()
         {
             FairyGUI.UIConfig.allowSoftnessOnTopOrLeftSide = false;
             alt = ResHelper.GetAsset<Texture>(PathHelper.OtherPath + "a遮罩");
+            pool = new GObjectPool(container.cachedTransform);
             //m_standPic.m_standPic.tex
         }
 
@@ -23,6 +27,7 @@ namespace BattleUI
             base.OnUpdate();
             if (Unit != null)
             {
+                m_subSkill.text = Unit.UnitData.AblitityInfo;
                 m_name.text = Unit.UnitData.Name;
                 m_atk.text = Unit.Attack.ToString();
                 m_def.text = Unit.Defence.ToString();
@@ -38,7 +43,7 @@ namespace BattleUI
                     (m_Pro as MainUI.UI_Pro).m_p.selectedIndex = (int)Unit.UnitData.Profession;
                     var mainSkill = Unit.MainSkill;
                     if (mainSkill != null)
-                    {
+                    {                     
                         m_SkillName.text = mainSkill.SkillData.Name;
 
                         m_skillIcon.icon = mainSkill.SkillData.Icon.ToSkillIcon();
@@ -51,11 +56,13 @@ namespace BattleUI
                     else
                     {
                         m_palyerUnit.selectedIndex = 1;
+                        m_midUnitDesc.text = "";
                     }
                 }
                 else
                 {
                     m_palyerUnit.selectedIndex = 1;
+                    m_midUnitDesc.text = Unit.UnitData.AblitityInfo;
                 }
             }
         }
@@ -63,6 +70,26 @@ namespace BattleUI
         public void SetUnit(Unit unit)
         {
             this.Unit = unit;
+
+            foreach (var item in m_attackArea.GetChildren())
+            {
+                pool.ReturnObject(item);
+            }
+            m_attackArea.RemoveChildren();
+
+            if (unit != null && unit is Units.干员)
+            {
+                var mainSkill = Unit.FirstSkill;
+                float midX = (mainSkill.SkillData.AttackPoints.Max(x => x.x) + mainSkill.AttackPoints.Min(x => x.x)) / 2f;
+                float midY = (mainSkill.SkillData.AttackPoints.Max(x => x.y) + mainSkill.AttackPoints.Min(x => x.y)) / 2f;
+                foreach (var point in mainSkill.SkillData.AttackPoints)
+                {
+                    var a = pool.GetObject(UI_AttackArea.URL) as UI_AttackArea;
+                    m_attackArea.AddChild(a);
+                    a.xy = new Vector2((point.x - midX) * 33 - 12f, (point.y - midY) * 33 - 12f);
+                    a.m_type.selectedIndex = (point.x == 0 && point.y == 0) ? 1 : 0;
+                }
+            }
         }
     }
 }

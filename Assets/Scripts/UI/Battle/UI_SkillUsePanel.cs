@@ -40,6 +40,10 @@ namespace BattleUI
                 }
                 m_mainSkillInfo.m_text.text = $"{(int)m_mainSkillInfo.value}/{ (int)m_mainSkillInfo.max}";
             }
+            else
+            {
+                m_mainSkillInfo.visible = false;
+            }
         }
     }
 }

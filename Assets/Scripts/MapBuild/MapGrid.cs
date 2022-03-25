@@ -58,8 +58,13 @@ public class MapGrid : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (Tile.Unit != null && !FairyGUI.Stage.isTouchOnUI)
-            BattleUI.UI_Battle.Instance.ChooseUnit(Tile.Unit);
+        if (!FairyGUI.Stage.isTouchOnUI)
+        {
+            if (Tile.Unit != null)
+                BattleUI.UI_Battle.Instance.ChooseUnit(Tile.Unit);
+            else if (Tile.MidUnit != null)
+                BattleUI.UI_Battle.Instance.ChooseUnit(Tile.MidUnit);
+        }
     }
 
     public Vector3 GetPos()

@@ -22,10 +22,12 @@ public class Map
     {
         this.Battle = battle;
         var grids = MapManager.Instance.GetComponentsInChildren<MapGrid>();
-        Tiles = new Tile[grids.Max(x => x.X) + 1, grids.Max(x => x.Y) + 1];
+        int minX = grids.Min(x => x.X);
+        int minY= grids.Min(x => x.Y);
+        Tiles = new Tile[grids.Max(x => x.X)-minX + 1, grids.Max(x => x.Y)-minY + 1];
         foreach (var grid in grids)
         {
-            Tiles[grid.X, grid.Y] = CreateTile(grid);
+            Tiles[grid.X - minX, grid.Y - minY] = CreateTile(grid);
         }
         foreach (var grid in grids)
         {
@@ -39,6 +41,20 @@ public class Map
                     Pos = grid.transform.position,
                     Direction = grid.transform.forward.ToV2(),
                 });
+            }
+        }
+        for (int i = 0; i < Tiles.GetLength(0); i++)
+        {
+            for (int j = 0; j < Tiles.GetLength(1); j++)
+            {
+                if (Tiles[i, j] == null)
+                {
+                    var t = new Tile()
+                    {
+                        Pos = new Vector3(i, 0, j),
+                    };
+                    Tiles[i, j] = t;
+                }
             }
         }
         battle.SortSceneUnit();

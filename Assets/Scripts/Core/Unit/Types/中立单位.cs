@@ -43,6 +43,8 @@ namespace Units
             BattleUI.UI_Battle.Instance.ReturnUIUnit(this);
             if (Battle.Map.Tiles[GridPos.x, GridPos.y].Unit == this)
                 Battle.Map.Tiles[GridPos.x, GridPos.y].Unit = null;
+            if (Battle.Map.Tiles[GridPos.x, GridPos.y].MidUnit == this)
+                Battle.Map.Tiles[GridPos.x, GridPos.y].MidUnit = null;
         }
     }
 }

@@ -26,12 +26,11 @@ public class Tile
     public bool CanMove;
 
     public Unit Unit;
+    public Unit MidUnit;
     /// <summary>
     /// 广搜临时数据
     /// </summary>
     public Tile PreGrid;
-
-    public TileTypeEnum TileType;
 
     public string Tag;
     public float ActiveTime;
@@ -68,12 +67,9 @@ public class Tile
                 return unit.UnitData.CanSetGround;
         return false;
     }
-}
 
-public enum TileTypeEnum
-{
-    普通,
-    陷坑,
-    灼烧,
-    火山,
+    public void ChangeToDefault()
+    {
+        Pos = new Vector3(X, 0, Y);
+    }
 }

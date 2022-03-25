@@ -36,7 +36,7 @@ public class BattleCamera : MonoBehaviour
                 _focusUnit = value;
                 var tween= DOTween.To(() => transform.position,
                     (x) => transform.position = x,
-                    _focusUnit == null ? startPosition : _focusUnit.UnitModel.GetModelPositon() + new Vector3(0, 5, -3),
+                    _focusUnit == null ? startPosition : _focusUnit.UnitModel.GetModelPositon() + new Vector3(0, 8, -4.5f),
                     0.1f);
                 tween.SetUpdate(true);
                 if (_focusUnit != null) 

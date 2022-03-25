@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="683,1080">
-  <controller name="left" exported="true" pages="0,,1," selected="1"/>
+  <controller name="left" exported="true" pages="0,,1," selected="0"/>
   <controller name="time" pages="0,,1," selected="0"/>
-  <controller name="palyerUnit" pages="0,,1," selected="0"/>
+  <controller name="palyerUnit" pages="0,,1," selected="1"/>
   <displayList>
     <image id="n52_voep" name="n52" src="voep4i" fileName="Map/渐变.png" pkg="k4mja8t1" xy="0,0" pivot="1,0" anchor="true" scale="-1,1"/>
-    <component id="n51_kbte" name="standPic" src="voep4z" fileName="Pic.xml" xy="-501,0" size="1500,1500" alpha="0.5">
+    <component id="n51_kbte" name="standPic" src="voep4z" fileName="Pic.xml" xy="-396,0" size="1500,1500">
       <gearXY controller="left" pages="0,1" values="-396,0|-501,0" tween="true" duration=".03"/>
       <gearLook controller="left" pages="1" values="0.5,0,0,1" default="1,0,0,1" tween="true" duration=".03"/>
     </component>
@@ -21,12 +21,21 @@
     <text id="n39_kbte" name="magDef" xy="68,493" size="48,29" fontSize="20" color="#ffffff" align="center" text="1000"/>
     <text id="n40_kbte" name="block" xy="68,519" size="48,29" fontSize="20" color="#ffffff" align="center" text="1000"/>
     <graph id="n41_kbte" name="n41" xy="144,444" size="136,100" type="rect" lineSize="0" fillColor="#66000000"/>
-    <graph id="n42_kbte" name="n42" xy="295,444" size="338,100" type="rect" lineSize="0" fillColor="#66000000"/>
-    <text id="n43_kbte" name="n43" xy="160,505" size="104,35" fontSize="25" color="#ffffff" align="center" text="攻击范围"/>
-    <text id="n45_kbte" name="subSkill" xy="301,453" size="324,83" fontSize="25" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="技能可以治疗友方单位"/>
+    <graph id="n42_kbte" name="n42" xy="295,444" size="338,100" type="rect" lineSize="0" fillColor="#66000000">
+      <gearDisplay controller="palyerUnit" pages="0"/>
+    </graph>
+    <component id="n61_ku3z" name="attackArea" src="ku3z53" fileName="Container(1).xml" xy="212,482" size="0,0"/>
+    <text id="n43_kbte" name="n43" xy="160,519" size="104,35" fontSize="25" color="#ffffff" align="center" text="攻击范围"/>
+    <text id="n45_kbte" name="subSkill" xy="301,453" size="324,83" fontSize="25" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="技能可以治疗友方单位">
+      <gearDisplay controller="palyerUnit" pages="0"/>
+    </text>
     <text id="n58_o60l" name="n58" xy="16,547" size="44,29" fontSize="20" color="#ffffff" align="center" text="攻速"/>
     <text id="n59_o60l" name="agi" xy="68,547" size="48,29" fontSize="20" color="#ffffff" align="center" text="1000"/>
     <text id="n27_kbte" name="name" xy="87,320" pivot="0.5,0.5" anchor="true" size="109,48" fontSize="35" color="#ffffff" align="center" text="阿米娅"/>
+    <graph id="n62_h25x" name="n62" xy="30,589" size="610,171" type="rect" lineSize="0" fillColor="#4c000000">
+      <gearDisplay controller="palyerUnit" pages="1"/>
+      <relation target="n50_kbte" sidePair="height-height"/>
+    </graph>
     <text id="n28_kbte" name="n28" xy="34,341" size="37,42" group="n60_x9ub" fontSize="30" color="#ffffff" align="center" text="Lv"/>
     <text id="n29_kbte" name="Lv" xy="51,365" size="62,66" group="n60_x9ub" fontSize="50" color="#ffffff" align="center" text="50"/>
     <graph id="n46_kbte" name="n46" xy="30,588" size="610,171" group="n60_x9ub" type="rect" lineSize="0" fillColor="#4c000000">
@@ -47,5 +56,8 @@
     <group id="n60_x9ub" name="skillInfo" xy="30,154" size="610,605" advanced="true">
       <gearDisplay controller="palyerUnit" pages="0"/>
     </group>
+    <text id="n63_h25x" name="midUnitDesc" xy="42,606" size="581,139" fontSize="20" color="#ffffff" autoSize="none" text="技能可以治疗友方单位">
+      <gearDisplay controller="palyerUnit" pages="1"/>
+    </text>
   </displayList>
 </component>

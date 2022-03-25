@@ -2,8 +2,6 @@
 {"Id":"击中1","Prefab":"击中1","LifeTime":5}
 {"Id":"击中2","Prefab":"击中2","LifeTime":5}
 {"Id":"隐身","Prefab":"隐身","LifeTime":5}
-{"Id":"寒冷","Prefab":"寒冷","LifeTime":5}
-{"Id":"冻结","Prefab":"冻结","LifeTime":5}
 {"Id":"眩晕","Prefab":"眩晕","LifeTime":5}
 {"Id":"地板损坏","Prefab":"地板损坏","LifeTime":5}
 {"Id":"冰术士就绪","Prefab":"冰术士就绪","BindPoint":"C_R_Hand","LifeTime":5}
@@ -32,6 +30,22 @@
 {"Id":"攻击提升","Prefab":"common_next_atk_buff"}
 {"Id":"解放开始","Prefab":"common_V015_ liberation_01_start"}
 {"Id":"解放开始2","Prefab":"common_V015_ liberation_02_start"}
+{"Id":"攻击提升","Prefab":"buff_atkup","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
+{"Id":"冒黑雾","Prefab":"buff_attack_speed_reduction_01","ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
+{"Id":"燃烧","Prefab":"buff_burn","ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
+{"Id":"寒冷","Prefab":"buff_cold","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
+{"Id":"诅咒","Prefab":"buff_curse_01","ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
+{"Id":"降防","Prefab":"buff_defdown","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
+{"Id":"加防","Prefab":"buff_defup","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
+{"Id":"刁民","Prefab":"buff_desert_01","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
+{"Id":"刁民1","Prefab":"buff_distraction","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
+{"Id":"冻结","Prefab":"buff_frozen","ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
+{"Id":"飞行冻结","Prefab":"buff_frozen_to_fly","ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
+{"Id":"中毒","Prefab":"buff_poison","ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
+{"Id":"沉默","Prefab":"buff_silence","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
+{"Id":"麻痹","Prefab":"buff_sluggish","ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
+{"Id":"眩晕","Prefab":"buff_stun","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
+{"Id":"虚弱","Prefab":"buff_weak","ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
 {"Id":"治疗击中","Prefab":"common_heal_hit_01","LifeTime":5}
 {"Id":"切割击中","Prefab":"common_cuting_hit_01","ScaleXFollow":2,"LifeTime":0.3}
 {"Id":"敌人击中","Prefab":"common_enemy_hit_01","LifeTime":5}

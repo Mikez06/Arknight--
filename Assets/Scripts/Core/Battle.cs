@@ -247,7 +247,10 @@ public class Battle
         unit.Position = pos;
         unit.Direction = direction;
         unit.Init();
-        Map.Tiles[(int)pos.x, (int)pos.z].Unit = unit;
+        if (!unit.UnitData.NotUseTile)
+            Map.Tiles[(int)pos.x, (int)pos.z].Unit = unit;
+        else
+            Map.Tiles[(int)pos.x, (int)pos.z].MidUnit = unit;
         AllUnits.Add(unit);
         return unit;
     }
@@ -341,7 +344,7 @@ public class Battle
             var target = Map.Tiles[point.x, point.y].Unit;
             if (target != null)
             {
-                if ((!aliveOnly || target.Alive()) && team >> target.Team == 1)
+                if ((!aliveOnly || target.Alive()) && (team >> target.Team) % 2 == 1)
                     result.Add(target);
             }
         }
@@ -349,7 +352,7 @@ public class Battle
         {
             foreach (var unit in UnitMap[point.x, point.y])
             {
-                if ((!aliveOnly || unit.Alive()) && team >> unit.Team == 1)
+                if ((!aliveOnly || unit.Alive()) && (team >> unit.Team) % 2 == 1)
                     result.Add(unit);
             }
         }
@@ -368,7 +371,7 @@ public class Battle
                 var target = Map.Tiles[targetPoint.x, targetPoint.y].Unit;
                 if (target != null)
                 {
-                    if ((!aliveOnly || target.Alive()) && team >> target.Team == 1)
+                    if ((!aliveOnly || target.Alive()) && (team >> target.Team) % 2 == 1)
                         result.Add(target);
                 }
             }
@@ -376,7 +379,7 @@ public class Battle
             {
                 foreach (var unit in UnitMap[targetPoint.x, targetPoint.y])
                 {
-                    if ((!aliveOnly || unit.Alive()) && team >> unit.Team == 1)
+                    if ((!aliveOnly || unit.Alive()) && (team >> unit.Team) % 2 == 1)
                         result.Add(unit);
                 }
             }
@@ -393,7 +396,7 @@ public class Battle
             foreach (var unit in units) //需要优化！
             {
                 if ((unit.Position2 - pos).magnitude < radius + unit.UnitData.Radius
-                    ) if ((!aliveOnly || unit.Alive() && team >> unit.Team == 1))
+                    ) if ((!aliveOnly || unit.Alive() && (team >> unit.Team) % 2 == 1))
                         result.Add(unit);
             }
         }
@@ -402,7 +405,7 @@ public class Battle
             foreach (var unit in Enemys) //需要优化！
             {
                 if ((unit.Position2 - pos).magnitude < radius + unit.UnitData.Radius) 
-                    if ((!aliveOnly || unit.Alive()) && team >> unit.Team == 1)
+                    if ((!aliveOnly || unit.Alive()) && (team >> unit.Team) % 2 == 1)
                         result.Add(unit);
             }
         }
@@ -411,7 +414,7 @@ public class Battle
             foreach (var unit in AllUnits) //需要优化！
             {
                 if ((unit.Position2 - pos).magnitude < radius + unit.UnitData.Radius)
-                    if ((!aliveOnly || unit.Alive()) && team >> unit.Team == 1)
+                    if ((!aliveOnly || unit.Alive()) && (team >> unit.Team) % 2 == 1)
                         result.Add(unit);
             }
         }

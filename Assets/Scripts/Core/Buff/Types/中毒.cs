@@ -13,6 +13,7 @@ namespace Buffs
         float damage;
         float triggerTime;
         CountDown Trigger = new CountDown();
+        DamageTypeEnum DamageType;
         public override void Init()
         {
             base.Init();
@@ -35,6 +36,7 @@ namespace Buffs
             {
                 farAttackRate = BuffData.Data.GetFloat("FarAttackUnitRate", 1);
             }
+            DamageType = (DamageTypeEnum)Enum.Parse(typeof(DamageTypeEnum), BuffData.Data.GetStr("DamageType"));
         }
 
         public override void Update()
@@ -45,7 +47,7 @@ namespace Buffs
                 Unit.Damage(new DamageInfo()
                 {
                     Attack = damage * farAttackRate * triggerTime,
-                    DamageType = DamageTypeEnum.Magic,
+                    DamageType = DamageType,
                     Target = Unit,
                     Source = this,
                 });

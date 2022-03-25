@@ -27,6 +27,10 @@ public class Effect : MonoBehaviour
         {
             transform.localScale = new Vector3(Parent.ScaleX, 1, 1);
         }
+        if (EffectData.ParentFollow == 3)
+        {
+            transform.position = Parent.Position + EffectData.Offset;
+        }
 
         LifeTime -= Time.deltaTime;
         if (LifeTime < 0)
@@ -94,7 +98,7 @@ public class Effect : MonoBehaviour
             }
         }
 
-        if (EffectData.ParentFollow != 0)
+        if (EffectData.ParentFollow == 1)
         {
             transform.parent = Parent.UnitModel.transform;
         }

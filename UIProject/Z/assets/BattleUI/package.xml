@@ -53,6 +53,7 @@
     <image id="voep50" name="技能_持续时间背景.png" path="/TeamSelect/"/>
     <component id="rkte51" name="FastSpeed.xml" path="/"/>
     <component id="rkte52" name="Pause.xml" path="/"/>
+    <component id="ku3z53" name="Container(1).xml" path="/"/>
   </resources>
   <publish name="" genCode="true" excluded="kbte3u,kbte3n"/>
 </packageDescription>

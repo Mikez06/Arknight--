@@ -143,7 +143,7 @@ public class BattleCamera : MonoBehaviour
             foreach (var tile in sk.AttackPoints)
             {
                 var grid = BattleManager.Instance.Battle.Map.Tiles[tile.x, tile.y];
-                if (grid == null) continue;
+                if (grid == null || grid.MapGrid == null) continue;
                 var tileAsset = ResHelper.GetAsset<GameObject>(PathHelper.OtherPath + "HighLight").GetComponent<MapTile>();
                 var go = TilePool.Spawn(tileAsset, grid.MapGrid.GetPos(), null);
                 go.IfHeal(ifHeal);
@@ -179,7 +179,7 @@ public class BattleCamera : MonoBehaviour
     {
         foreach (var grid in BattleManager.Instance.Battle.Map.Tiles)
         {
-            if (grid == null) continue;
+            if (grid == null || grid.MapGrid == null) continue;
             if (grid.CanSet(BuildUnit))
             {
                 grid.MapGrid.ChangeHighLight(true);
@@ -195,7 +195,7 @@ public class BattleCamera : MonoBehaviour
     {
         foreach (var grid in BattleManager.Instance.Battle.Map.Tiles)
         {
-            grid?.MapGrid.ChangeHighLight(false);
+            grid?.MapGrid?.ChangeHighLight(false);
         }
     }
     public void ShowUnitInfo(Unit unit)

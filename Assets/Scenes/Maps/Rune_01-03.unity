@@ -7316,6 +7316,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7118179551117689292, guid: f297e9b867e620b4cb179fffd0a6d5a6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f297e9b867e620b4cb179fffd0a6d5a6, type: 3}
 --- !u!1 &970506791 stripped
@@ -7742,7 +7747,7 @@ MonoBehaviour:
   Y: 1
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -7763,7 +7768,7 @@ MonoBehaviour:
   Y: 6
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -7784,7 +7789,7 @@ MonoBehaviour:
   Y: 6
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -7805,7 +7810,7 @@ MonoBehaviour:
   Y: 6
   CanBuildUnit: 0
   FarAttackGrid: 1
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -7826,7 +7831,7 @@ MonoBehaviour:
   Y: 6
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -7847,7 +7852,7 @@ MonoBehaviour:
   Y: 6
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -7868,7 +7873,7 @@ MonoBehaviour:
   Y: 6
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -7889,7 +7894,7 @@ MonoBehaviour:
   Y: 4
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -7931,7 +7936,7 @@ MonoBehaviour:
   Y: 1
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -7952,7 +7957,7 @@ MonoBehaviour:
   Y: 1
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -7973,7 +7978,7 @@ MonoBehaviour:
   Y: 1
   CanBuildUnit: 0
   FarAttackGrid: 1
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -7994,7 +7999,7 @@ MonoBehaviour:
   Y: 1
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8015,7 +8020,7 @@ MonoBehaviour:
   Y: 1
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8036,7 +8041,7 @@ MonoBehaviour:
   Y: 2
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8057,7 +8062,7 @@ MonoBehaviour:
   Y: 3
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8078,7 +8083,7 @@ MonoBehaviour:
   Y: 4
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8099,7 +8104,7 @@ MonoBehaviour:
   Y: 5
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8141,7 +8146,7 @@ MonoBehaviour:
   Y: 4
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8162,7 +8167,7 @@ MonoBehaviour:
   Y: 5
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8183,7 +8188,7 @@ MonoBehaviour:
   Y: 5
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8225,7 +8230,7 @@ MonoBehaviour:
   Y: 4
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8246,7 +8251,7 @@ MonoBehaviour:
   Y: 3
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8267,7 +8272,7 @@ MonoBehaviour:
   Y: 3
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8288,7 +8293,7 @@ MonoBehaviour:
   Y: 3
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8309,7 +8314,7 @@ MonoBehaviour:
   Y: 2
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8335,27 +8340,6 @@ MonoBehaviour:
   Alive: 0
   Tag: 
   ActiveTime: 0
---- !u!114 &970506887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 970506821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6309b98a7b787a458cef688f59e544d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  X: -1
-  Y: 4
-  CanBuildUnit: 0
-  FarAttackGrid: 1
-  CanMove: 0
-  MapUnitId: 
-  Alive: 0
-  Tag: 
-  ActiveTime: 0
 --- !u!114 &970506888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8372,7 +8356,7 @@ MonoBehaviour:
   Y: 4
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8393,7 +8377,7 @@ MonoBehaviour:
   Y: 6
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8414,7 +8398,7 @@ MonoBehaviour:
   Y: 6
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8435,7 +8419,7 @@ MonoBehaviour:
   Y: 6
   CanBuildUnit: 0
   FarAttackGrid: 1
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8477,7 +8461,7 @@ MonoBehaviour:
   Y: 3
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8498,7 +8482,7 @@ MonoBehaviour:
   Y: 3
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8519,7 +8503,7 @@ MonoBehaviour:
   Y: 1
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8540,7 +8524,7 @@ MonoBehaviour:
   Y: 2
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8561,7 +8545,7 @@ MonoBehaviour:
   Y: 3
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8582,7 +8566,7 @@ MonoBehaviour:
   Y: 4
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8603,7 +8587,7 @@ MonoBehaviour:
   Y: 4
   CanBuildUnit: 0
   FarAttackGrid: 1
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8687,7 +8671,7 @@ MonoBehaviour:
   Y: 1
   CanBuildUnit: 0
   FarAttackGrid: 1
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8708,7 +8692,7 @@ MonoBehaviour:
   Y: 5
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8855,7 +8839,7 @@ MonoBehaviour:
   Y: 3
   CanBuildUnit: 0
   FarAttackGrid: 1
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -8965,27 +8949,6 @@ MonoBehaviour:
   Alive: 0
   Tag: 
   ActiveTime: 0
---- !u!114 &970506917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 970506851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6309b98a7b787a458cef688f59e544d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  X: 0
-  Y: 4
-  CanBuildUnit: 0
-  FarAttackGrid: 1
-  CanMove: 0
-  MapUnitId: 
-  Alive: 0
-  Tag: 
-  ActiveTime: 0
 --- !u!114 &970506918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9002,7 +8965,7 @@ MonoBehaviour:
   Y: 4
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -9023,7 +8986,7 @@ MonoBehaviour:
   Y: 1
   CanBuildUnit: 0
   FarAttackGrid: 1
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 
@@ -9044,7 +9007,7 @@ MonoBehaviour:
   Y: 6
   CanBuildUnit: 1
   FarAttackGrid: 0
-  CanMove: 0
+  CanMove: 1
   MapUnitId: 
   Alive: 0
   Tag: 

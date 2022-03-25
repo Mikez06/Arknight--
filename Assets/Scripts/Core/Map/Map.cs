@@ -22,8 +22,9 @@ public class Map
     {
         this.Battle = battle;
         var grids = MapManager.Instance.GetComponentsInChildren<MapGrid>();
-        int minX = grids.Min(x => x.X);
-        int minY= grids.Min(x => x.Y);
+        int minX = 0;//grids.Min(x => x.X);//如果不让坐标和下标对应 会造成未知bug 不想修。。
+        int minY = 0;//grids.Min(x => x.Y);
+        //Debug.Log(minX + "," + minY);
         Tiles = new Tile[grids.Max(x => x.X)-minX + 1, grids.Max(x => x.Y)-minY + 1];
         foreach (var grid in grids)
         {

@@ -19,9 +19,9 @@
 {"Id":"范围治疗","Prefab":"common_heal_range_01","LifeTime":5}
 {"Id":"治疗2","Prefab":"common_heal_start_01","LifeTime":5}
 {"Id":"普通击中","Prefab":"common_hit_01","LifeTime":5}
-{"Id":"攻击强化","Prefab":"common_ignite_attack","ScaleXFollow":1,"FaceCamera":60}
-{"Id":"防御强化","Prefab":"common_ignite_defense","ScaleXFollow":1,"FaceCamera":60}
-{"Id":"支援强化","Prefab":"common_ignite_support","ScaleXFollow":1,"FaceCamera":60}
+{"Id":"攻击强化","Prefab":"common_ignite_attack","ParentFollow":3,"FaceCamera":60}
+{"Id":"防御强化","Prefab":"common_ignite_defense","ParentFollow":3,"FaceCamera":60}
+{"Id":"支援强化","Prefab":"common_ignite_support","ParentFollow":3,"FaceCamera":60}
 {"Id":"消失","Prefab":"common_invisible","LifeTime":5}
 {"Id":"消失2","Prefab":"common_invisible_02"}
 {"Id":"魔法击中","Prefab":"common_magic_hit_01"}

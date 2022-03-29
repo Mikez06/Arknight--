@@ -13,7 +13,7 @@ namespace Skills
         {
             base.addBuff(target);
             if (target.Height > 0) return;
-            float power = getPower(SkillData.PushPower, target.Weight);
+            float power = getPower(SkillData.PushPower + (int)Unit.PushPower, target.Weight);
 
             if (power > 0)
             {
@@ -21,7 +21,7 @@ namespace Skills
                 pull.Skill = this;
                 pull.Source = Unit;
                 pull.Unit = target;
-                pull.Power = getPower(SkillData.PushPower, target.Weight);
+                pull.Power = getPower(SkillData.PushPower + (int)Unit.PushPower, target.Weight);
                 if (SkillData.PushPower - target.Weight > -1) pull.FullDuration = 1;
                 else pull.FullDuration = 0.5f;
                 pull.Init();

@@ -1111,6 +1111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 738745708}
   - component: {fileID: 738745709}
+  - component: {fileID: 738745710}
   m_Layer: 0
   m_Name: tile5
   m_TagString: Untagged
@@ -1154,6 +1155,21 @@ MonoBehaviour:
   Alive: 0
   Tag: 
   ActiveTime: 0
+--- !u!114 &738745710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738745707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81c48be265199c44fbc806fd11a66d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActiveTime: 0
+  UnitId: "\u5C01\u5730\u677F"
+  Tag: 
 --- !u!1 &743597980
 GameObject:
   m_ObjectHideFlags: 0

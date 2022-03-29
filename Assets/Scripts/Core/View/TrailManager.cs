@@ -17,7 +17,7 @@ public class TrailManager : Singleton<TrailManager>
     {
         if (points == null || points.Count == 0) return;
         var go = TrailPool.Spawn(ResHelper.GetAsset<GameObject>(PathHelper.OtherPath + "Trail").GetComponent<TrailRenderer>(), points.FirstOrDefault());
-        for (int i = 1; i < points.Count() - 1; i++)
+        for (int i = 1; i < points.Count(); i++)
         {
             await go.transform.DOMove(points[i] + new Vector3(0, 0.001f, 0), MoveSpeed).SetEase(Ease.Linear).SetSpeedBased().Wait();
         }

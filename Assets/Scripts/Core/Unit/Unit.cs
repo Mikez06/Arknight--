@@ -99,6 +99,8 @@ public class Unit
 
     public float DamageReceiveRate, MagicDamageReceiveRate, HealReceiveRate;
 
+    public float PushPower;
+
     /// <summary>
     /// 攻击动画
     /// </summary>
@@ -162,6 +164,7 @@ public class Unit
     public virtual void Refresh()
     {
         float hpDown = MaxHp - Hp;
+        PushPower = 0;
         SpeedAdd = SpeedRate = 0;
         HpAdd = HpRate = HpAddFin = HpRateFin = 0;
         AttackAdd = AttackRate = AttackAddFin = AttackRateFin = 0;

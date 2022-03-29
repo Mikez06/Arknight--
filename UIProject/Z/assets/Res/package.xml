@@ -409,24 +409,6 @@
     <image id="uizy161" name="half_zebra.png" path="/半身立绘/" exported="true"/>
     <image id="uizy162" name="half_zumama.png" path="/半身立绘/" exported="true"/>
     <image id="t5h9163" name="头像_召唤物_Mon3tr.png" path="/头像/" exported="true"/>
-    <image id="gbwm16o" name="反机动.png" path="/合约图标/" exported="true"/>
-    <image id="gbwm16p" name="反机动II.png" path="/合约图标/" exported="true"/>
-    <image id="gbwm16q" name="反集群.png" path="/合约图标/" exported="true"/>
-    <image id="gbwm16r" name="反狙击I.png" path="/合约图标/" exported="true"/>
-    <image id="gbwm16s" name="反狙击II.png" path="/合约图标/" exported="true"/>
-    <image id="gbwm16t" name="反装甲I.png" path="/合约图标/" exported="true"/>
-    <image id="gbwm16u" name="目标：摧毁弓弩I.png" path="/合约图标/" exported="true"/>
-    <image id="gbwm16v" name="目标：摧毁弓弩II.png" path="/合约图标/" exported="true"/>
-    <image id="gbwm16w" name="目标：摧毁弓弩III.png" path="/合约图标/" exported="true"/>
-    <image id="gbwm16x" name="目标：抹消机型I.png" path="/合约图标/" exported="true"/>
-    <image id="gbwm16y" name="目标：抹消机型II.png" path="/合约图标/" exported="true"/>
-    <image id="gbwm16z" name="目标：抹消机型III.png" path="/合约图标/" exported="true"/>
-    <image id="gbwm170" name="源石环境：刺激I.png" path="/合约图标/" exported="true"/>
-    <image id="gbwm171" name="源石环境：刺激II.png" path="/合约图标/" exported="true"/>
-    <image id="gbwm172" name="源石环境：刺激III.png" path="/合约图标/" exported="true"/>
-    <image id="gbwm173" name="源石环境：活性I.png" path="/合约图标/" exported="true"/>
-    <image id="gbwm174" name="源石环境：活性II.png" path="/合约图标/" exported="true"/>
-    <image id="gbwm175" name="源石环境：活性III.png" path="/合约图标/" exported="true"/>
     <image id="gbwm176" name="100px-收藏品_133.png" path="/遗物图标/" exported="true"/>
     <image id="gbwm177" name="100px-收藏品_134.png" path="/遗物图标/" exported="true"/>
     <image id="gbwm178" name="100px-收藏品_135.png" path="/遗物图标/" exported="true"/>
@@ -540,6 +522,74 @@
     <image id="gbwm1a8" name="精英_1_大图.png" path="/其他/" exported="true"/>
     <image id="gbwm1a9" name="精英_2_大图.png" path="/其他/" exported="true"/>
     <image id="o60l1aa" name="头像_召唤物_幻影.png" path="/头像/" exported="true"/>
+    <image id="usve1ab" name="目标：战略调度.png" path="/合约图标/" exported="true"/>
+    <image id="usve1ac" name="目标：战略调度2.png" path="/合约图标/" exported="true"/>
+    <image id="usve1ad" name="目标：战略调度3.png" path="/合约图标/" exported="true"/>
+    <image id="usve1ae" name="目标：战略调度4.png" path="/合约图标/" exported="true"/>
+    <image id="usve1af" name="目标：战略调度5.png" path="/合约图标/" exported="true"/>
+    <image id="usve1ag" name="目标：战略调度6.png" path="/合约图标/" exported="true"/>
+    <image id="usve1ah" name="目标：战略调度7.png" path="/合约图标/" exported="true"/>
+    <image id="usve1ai" name="目标：战略调度8.png" path="/合约图标/" exported="true"/>
+    <image id="usve1aj" name="目标：最后防线.png" path="/合约图标/" exported="true"/>
+    <image id="usve1ak" name="协同战术：备战.png" path="/合约图标/" exported="true"/>
+    <image id="usve1al" name="协同战术：技巧.png" path="/合约图标/" exported="true"/>
+    <image id="usve1am" name="协同战术：军械.png" path="/合约图标/" exported="true"/>
+    <image id="usve1an" name="协同战术：突击.png" path="/合约图标/" exported="true"/>
+    <image id="usve1ao" name="协同战术：重部署.png" path="/合约图标/" exported="true"/>
+    <image id="usve1ap" name="源石环境：刺激I.png" path="/合约图标/" exported="true"/>
+    <image id="usve1aq" name="源石环境：刺激II.png" path="/合约图标/" exported="true"/>
+    <image id="usve1ar" name="源石环境：刺激III.png" path="/合约图标/" exported="true"/>
+    <image id="usve1as" name="源石环境：活性I.png" path="/合约图标/" exported="true"/>
+    <image id="usve1at" name="源石环境：活性II.png" path="/合约图标/" exported="true"/>
+    <image id="usve1au" name="源石环境：活性III.png" path="/合约图标/" exported="true"/>
+    <image id="usve1av" name="源石环境：侵蚀I.png" path="/合约图标/" exported="true"/>
+    <image id="usve1aw" name="源石环境：侵蚀II.png" path="/合约图标/" exported="true"/>
+    <image id="usve1ax" name="源石环境：侵蚀III.png" path="/合约图标/" exported="true"/>
+    <image id="usve1ay" name="反机动.png" path="/合约图标/" exported="true"/>
+    <image id="usve1az" name="反机动II.png" path="/合约图标/" exported="true"/>
+    <image id="usve1b0" name="反集群.png" path="/合约图标/" exported="true"/>
+    <image id="usve1b1" name="反狙击I.png" path="/合约图标/" exported="true"/>
+    <image id="usve1b2" name="反狙击II.png" path="/合约图标/" exported="true"/>
+    <image id="usve1b3" name="反装甲I.png" path="/合约图标/" exported="true"/>
+    <image id="usve1b4" name="环境：低能见度.png" path="/合约图标/" exported="true"/>
+    <image id="usve1b5" name="环境：腐蚀气体.png" path="/合约图标/" exported="true"/>
+    <image id="usve1b6" name="环境：高价值目标I.png" path="/合约图标/" exported="true"/>
+    <image id="usve1b7" name="环境：高价值目标II.png" path="/合约图标/" exported="true"/>
+    <image id="usve1b8" name="环境：高价值目标III.png" path="/合约图标/" exported="true"/>
+    <image id="usve1b9" name="环境：交战区I.png" path="/合约图标/" exported="true"/>
+    <image id="usve1ba" name="环境：交战区II.png" path="/合约图标/" exported="true"/>
+    <image id="usve1bb" name="环境：交战区III.png" path="/合约图标/" exported="true"/>
+    <image id="usve1bc" name="环境：险峻地势I.png" path="/合约图标/" exported="true"/>
+    <image id="usve1bd" name="环境：险峻地势II.png" path="/合约图标/" exported="true"/>
+    <image id="usve1be" name="环境：险峻地势III.png" path="/合约图标/" exported="true"/>
+    <image id="usve1bf" name="目标：摧毁弓弩I.png" path="/合约图标/" exported="true"/>
+    <image id="usve1bg" name="目标：摧毁弓弩II.png" path="/合约图标/" exported="true"/>
+    <image id="usve1bh" name="目标：摧毁弓弩III.png" path="/合约图标/" exported="true"/>
+    <image id="usve1bi" name="目标：绞碎利刃I.png" path="/合约图标/" exported="true"/>
+    <image id="usve1bj" name="目标：绞碎利刃II.png" path="/合约图标/" exported="true"/>
+    <image id="usve1bk" name="目标：绞碎利刃III.png" path="/合约图标/" exported="true"/>
+    <image id="usve1bl" name="目标：秘密作战I.png" path="/合约图标/" exported="true"/>
+    <image id="usve1bm" name="目标：秘密作战II.png" path="/合约图标/" exported="true"/>
+    <image id="usve1bn" name="目标：秘密作战III.png" path="/合约图标/" exported="true"/>
+    <image id="usve1bo" name="目标：抹消机型I.png" path="/合约图标/" exported="true"/>
+    <image id="usve1bp" name="目标：抹消机型II.png" path="/合约图标/" exported="true"/>
+    <image id="usve1bq" name="目标：抹消机型III.png" path="/合约图标/" exported="true"/>
+    <image id="usve1br" name="目标：破坏武装I.png" path="/合约图标/" exported="true"/>
+    <image id="usve1bs" name="目标：破坏武装II.png" path="/合约图标/" exported="true"/>
+    <image id="usve1bt" name="目标：破坏武装III.png" path="/合约图标/" exported="true"/>
+    <image id="usve1bu" name="目标：深度渗透I.png" path="/合约图标/" exported="true"/>
+    <image id="usve1bv" name="目标：深度渗透II.png" path="/合约图标/" exported="true"/>
+    <image id="usve1bw" name="目标：深度渗透III.png" path="/合约图标/" exported="true"/>
+    <image id="usve1bx" name="目标：隐秘行动I.png" path="/合约图标/" exported="true"/>
+    <image id="usve1by" name="目标：隐秘行动II.png" path="/合约图标/" exported="true"/>
+    <image id="usve1bz" name="目标：隐秘行动III.png" path="/合约图标/" exported="true"/>
+    <image id="usve1c0" name="目标：应急合约.png" path="/合约图标/" exported="true"/>
+    <image id="usve1c1" name="目标：应急合约2.png" path="/合约图标/" exported="true"/>
+    <image id="usve1c2" name="目标：应急合约3.png" path="/合约图标/" exported="true"/>
+    <image id="usve1c3" name="目标：应急合约4.png" path="/合约图标/" exported="true"/>
+    <image id="usve1c4" name="目标：应急合约5.png" path="/合约图标/" exported="true"/>
+    <image id="usve1c5" name="目标：应急合约6.png" path="/合约图标/" exported="true"/>
+    <image id="usve1c6" name="目标：应急合约7.png" path="/合约图标/" exported="true"/>
   </resources>
   <publish name=""/>
 </packageDescription>

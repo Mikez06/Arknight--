@@ -22,6 +22,9 @@ namespace MainUI
             UIObjectFactory.SetPackageItemExtension(UI_Team.URL, typeof(UI_Team));
             UIObjectFactory.SetPackageItemExtension(UI_TeamSelect.URL, typeof(UI_TeamSelect));
             UIObjectFactory.SetPackageItemExtension(UI_TeamUnit.URL, typeof(UI_TeamUnit));
+            UIObjectFactory.SetPackageItemExtension(UI_Contract.URL, typeof(UI_Contract));
+            UIObjectFactory.SetPackageItemExtension(UI_ContractIcon.URL, typeof(UI_ContractIcon));
+            UIObjectFactory.SetPackageItemExtension(UI_ContractInfo.URL, typeof(UI_ContractInfo));
             UIObjectFactory.SetPackageItemExtension(UI_UnitInfo.URL, typeof(UI_UnitInfo));
             UIObjectFactory.SetPackageItemExtension(UI_UnitInfoUpgrade.URL, typeof(UI_UnitInfoUpgrade));
             UIObjectFactory.SetPackageItemExtension(UI_UnitSkillIcon.URL, typeof(UI_UnitSkillIcon));

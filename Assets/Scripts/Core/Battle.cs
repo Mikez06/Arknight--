@@ -49,9 +49,13 @@ public class Battle
 
     public int BuildCount;
 
+    public int TeamLimit = 99;
+    public HashSet<UnitTypeEnum> ProfessionLimit = new HashSet<UnitTypeEnum>();
+
     public void Init(BattleInput battleConfig)
     {
         MapData = Database.Instance.Get<MapData>(battleConfig.MapName);
+        Hp = MapData.InitHp;
         Random = new System.Random(battleConfig.Seed);
 
         RuleUnit = new Unit();
@@ -59,7 +63,11 @@ public class Battle
         RuleUnit.Init();
         foreach (var contracrId in battleConfig.Contracts)
         {
-            var skills = Database.Instance.Get<ContractData>(contracrId).Skills;
+            var contract = Database.Instance.Get<ContractData>(contracrId);
+            if (contract.MapHp != 0) Hp = contract.MapHp;
+            if (contract.TeamLimit > 0 && TeamLimit > contract.TeamLimit) TeamLimit = contract.TeamLimit;
+            if (contract.ProfessionLimit != null) foreach (var p in contract.ProfessionLimit) ProfessionLimit.Add(p);
+            var skills = contract.Skills;
             if (skills!=null)
             foreach (var skillId in skills)
             {
@@ -76,7 +84,9 @@ public class Battle
         {
             for (int i = 0; i < battleConfig.Team.Cards.Count; i++)
             {
+                if (i >= TeamLimit) continue;
                 Card unitInput = battleConfig.Team.Cards[i];
+                if (ProfessionLimit.Contains(unitInput.UnitData.Profession)) continue;
                 CreatePlayerUnit(unitInput, battleConfig.Team.UnitSkill[i]);
             }
             BuildCount = MapData.MaxBuildCount;
@@ -152,6 +162,7 @@ public class Battle
             Cost++;
             CostCounting.Set(1);
         }
+        if (Cost > Map.Config.MaxCost) Cost = Map.Config.MaxCost;
         while (Waves.Count > 0 && Tick * SystemConfig.DeltaTime > Waves[0].Time)
         {
             var wave = Waves[0];
@@ -475,13 +486,17 @@ public class Battle
     public void Trigger(TriggerEnum triggerEnum)
     {
         RuleUnit.Trigger(triggerEnum);
-        foreach (var unit in PlayerUnits.ToArray())
+        //foreach (var unit in PlayerUnits.ToArray())
+        //{
+        //    unit.Trigger(triggerEnum);
+        //}
+        //foreach (var enemy in Enemys)
+        //{
+        //    enemy.Trigger(triggerEnum);
+        //}
+        foreach (var unit in AllUnits)
         {
             unit.Trigger(triggerEnum);
-        }
-        foreach (var enemy in Enemys)
-        {
-            enemy.Trigger(triggerEnum);
         }
     }
 }

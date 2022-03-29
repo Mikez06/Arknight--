@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080" designImage="ui://k4mja8t1usve4t" designImageOffsetX="-100" designImageAlpha="0" designImageLayer="1">
+  <displayList>
+    <image id="n5_usve" name="n100" src="voep1v" fileName="TeamUIRes/background_01.png" xy="0,0" size="1920,1080">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <graph id="n15_usve" name="n15" xy="59,567" size="1861,513" type="rect" lineSize="0" fillColor="#ff663300"/>
+    <graph id="n0_usve" name="n0" xy="0,0" size="364,1080" type="rect" lineSize="0" fillColor="#ffcccccc"/>
+    <component id="n1_usve" name="back" src="voep3c" fileName="UnitInfo/back.xml" xy="25,22"/>
+    <component id="n2_usve" name="home" src="voep3d" fileName="UnitInfo/home.xml" xy="249,22"/>
+    <text id="n4_usve" name="n4" xy="454,110" size="104,66" fontSize="50" text="支援"/>
+    <text id="n6_usve" name="n6" xy="17,922" size="254,66" fontSize="50" text="历史最高："/>
+    <text id="n7_usve" name="HisMax" xy="247,1000" size="33,66" fontSize="50" text="0"/>
+    <graph id="n10_usve" name="n10" xy="402,186" size="232,329" type="rect" lineSize="0" fillColor="#ff999999" corner="20"/>
+    <graph id="n14_usve" name="n14" xy="709,186" size="1182,329" type="rect" lineSize="0" fillColor="#ff999999" corner="20"/>
+    <list id="n9_usve" name="supportList" xy="417,204" size="202,293" layout="flow_hz" lineGap="10" colGap="10" defaultItem="ui://k4mja8t1usve4u" autoClearItems="true">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <list id="n11_usve" name="conList" xy="727,204" size="1150,292" layout="flow_vt" overflow="scroll" scroll="horizontal" lineGap="10" colGap="10" defaultItem="ui://k4mja8t1usve4u">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <text id="n12_usve" name="mapName" xy="52,238" size="259,128" fontSize="50" align="center" vAlign="middle" autoSize="shrink" text="59废墟"/>
+    <list id="n20_usve" name="choose" xy="514,593" size="1372,355" layout="flow_vt" overflow="scroll" lineGap="5" colGap="5" defaultItem="ui://k4mja8t1usve4w">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <text id="n21_usve" name="n21" xy="409,606" size="95,354" fontSize="50" color="#ffffff" align="center" letterSpacing="1" autoSize="none" text="已选中合约"/>
+    <component id="n22_usve" name="start" src="voep4j" fileName="Map/Start.xml" xy="1559,971"/>
+    <graph id="n23_usve" name="clear" xy="386,985" size="201,68" type="rect" corner="10"/>
+    <text id="n24_usve" name="n24" xy="484,994" size="85,54" fontSize="40" align="center" letterSpacing="1" text="清空"/>
+  </displayList>
+</component>

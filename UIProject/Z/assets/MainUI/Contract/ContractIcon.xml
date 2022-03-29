@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="85,85" extention="Label">
+  <controller name="state" pages="0,,1,,2,,3," selected="0">
+    <remark page="0" value="可选"/>
+    <remark page="1" value="选中"/>
+    <remark page="2" value="冲突"/>
+    <remark page="3" value="空"/>
+  </controller>
+  <displayList>
+    <loader id="n0_usve" name="icon" xy="0,0" size="85,85" url="ui://kera0i3husve1be" align="center" vAlign="middle">
+      <gearDisplay controller="state" pages="0,1,2"/>
+      <gearColor controller="state" pages="1,2" values="#66ccff|#999999" default="#ffffff"/>
+    </loader>
+  </displayList>
+</component>

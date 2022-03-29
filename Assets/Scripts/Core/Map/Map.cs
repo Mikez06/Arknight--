@@ -43,6 +43,18 @@ public class Map
                     Direction = grid.transform.forward.ToV2(),
                 });
             }
+            var exUnits = grid.GetComponents<MapExUnit>();
+            if (exUnits != null) foreach (var u in exUnits)
+                {
+                    battle.SceneUnits.Add(new MapUnitInfo()
+                    {
+                        Time = u.ActiveTime,
+                        Id = u.UnitId,
+                        Tag = u.Tag,
+                        Pos = grid.transform.position,
+                        Direction = grid.transform.forward.ToV2(),
+                    });
+                }
         }
         for (int i = 0; i < Tiles.GetLength(0); i++)
         {
@@ -90,7 +102,7 @@ public class Map
 
         startEndModifier.Apply(p);
 
-        if (raycastModifier) raycastModifier.Apply(p);
+        if (raycastModify) raycastModifier.Apply(p);
 
         var result = new List<Vector3>(p.vectorPath);
         return result;

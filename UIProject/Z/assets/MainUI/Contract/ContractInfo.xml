@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="638,39">
+  <controller name="level" pages="0,,1,,2,,3," selected="0"/>
+  <displayList>
+    <text id="n16_usve" name="info" xy="79,0" size="559,39" fontSize="28" color="#ffffff" letterSpacing="1" autoSize="height" text="所有我方单位的攻击力降低15%"/>
+    <graph id="n18_usve" name="n18" xy="0,2" size="75,33" type="rect" corner="10"/>
+    <text id="n19_usve" name="n19" xy="28,0" size="20,39" fontSize="28" align="center" letterSpacing="1" text="0">
+      <gearText controller="level" pages="0,2,3" values="0|2|3" default="1"/>
+    </text>
+  </displayList>
+  <relation target="n16_usve" sidePair="height-height"/>
+</component>

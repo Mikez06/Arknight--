@@ -2357,6 +2357,10 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Effect/buff_weak
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 39cc9372a9a69004db4c08484ab73d83
+    m_Address: "Assets/Bundles/Units/\u5730\u677F\u5C01\u5370"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

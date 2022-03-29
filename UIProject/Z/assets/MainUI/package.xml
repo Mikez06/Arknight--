@@ -158,6 +158,10 @@
     <component id="voep4p" name="Star.xml" path="/Map/"/>
     <component id="voep4q" name="Recover.xml" path="/TeamSelect/" exported="true"/>
     <component id="voep4r" name="UseType.xml" path="/TeamSelect/" exported="true"/>
+    <component id="usve4s" name="Contract.xml" path="/Contract/" exported="true"/>
+    <image id="usve4t" name="Screenshot_2022-03-29-21-33-40-754_com.hypergryph.jpg" path="/Contract/"/>
+    <component id="usve4u" name="ContractIcon.xml" path="/Contract/"/>
+    <component id="usve4w" name="ContractInfo.xml" path="/Contract/"/>
   </resources>
   <publish name="" genCode="true" excluded="voep3e"/>
 </packageDescription>

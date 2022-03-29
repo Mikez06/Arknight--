@@ -444,10 +444,6 @@ public class Skill
     /// </summary>
     public virtual void Start()
     {
-        if (SkillData.Id== "源石地板buff")
-        {
-            Debug.Log(0);
-        }
         if (!Useable()) return;
         if (Targets.Count == 0)
         {

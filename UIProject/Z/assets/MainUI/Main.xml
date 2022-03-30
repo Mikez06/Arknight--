@@ -17,5 +17,8 @@
     <component id="n12_hc1b" name="rogue" src="kbtec" fileName="btn.xml" xy="1646,393">
       <Button title="肉鸽"/>
     </component>
+    <component id="n13_vc4z" name="contract" src="kbtec" fileName="btn.xml" xy="1192,539">
+      <Button title="合约"/>
+    </component>
   </displayList>
 </component>

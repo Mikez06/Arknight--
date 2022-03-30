@@ -67,7 +67,7 @@ public class SkillData : IConfig
       public PowerRecoverTypeEnum PowerType;
       public PowerRecoverTypeEnum PowerUseType;
       public string[] ModelAnimation;
-      public float AnimationTime;
+      public float? AnimationTime;
       public string[] ModelAnimationDown;
       public string[] OverwriteAnimation;
       public string[] OverwriteAnimationDown;

@@ -93,7 +93,7 @@ public class Unit
 
     public bool IfAlive = true;
 
-    public bool IfSleep = true;
+    public bool IfSleep = false;
     public bool IfSelectable = true;//能否被技能指定为目标
     public bool CanBeHeal = false;
 
@@ -291,15 +291,18 @@ public class Unit
         if (Dying.Finished()) Finish();
     }
 
-    public virtual void Finish()
+    public virtual void Finish(bool leaveEvent=true)
     {
         IfAlive = false;
-        Battle.TriggerDatas.Push(new TriggerData()
+        if (leaveEvent)
         {
-            Target = this,
-        });
-        Trigger(TriggerEnum.离场);
-        Battle.TriggerDatas.Pop();
+            Battle.TriggerDatas.Push(new TriggerData()
+            {
+                Target = this,
+            });
+            Trigger(TriggerEnum.离场);
+            Battle.TriggerDatas.Pop();
+        }
 
         foreach (var buff in Buffs.ToArray())
         {
@@ -337,6 +340,10 @@ public class Unit
             {
                 sk.Update();
             }
+        }
+        foreach (var skill in Skills)
+        {
+            skill.UpdateOpening();
         }
         if (inAttack && AttackingAction.Finished() && State != StateEnum.Die)
         {

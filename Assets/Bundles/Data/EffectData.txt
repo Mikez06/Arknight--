@@ -1,7 +1,7 @@
 {"Id":"蓄力","Prefab":"蓄力","LifeTime":5}
 {"Id":"击中1","Prefab":"击中1","LifeTime":5}
 {"Id":"击中2","Prefab":"击中2","LifeTime":5}
-{"Id":"隐身","Prefab":"隐身","LifeTime":5}
+{"Id":"隐身","Prefab":"隐身","ParentFollow":3,"LifeTime":5}
 {"Id":"眩晕","Prefab":"眩晕","LifeTime":5}
 {"Id":"地板损坏","Prefab":"地板损坏","LifeTime":5}
 {"Id":"冰术士就绪","Prefab":"冰术士就绪","BindPoint":"C_R_Hand","LifeTime":5}
@@ -11,7 +11,7 @@
 {"Id":"咏唱","Prefab":"common_call_start_01"}
 {"Id":"入场","Prefab":"common_char_birth_01","FaceCamera":60,"LifeTime":5}
 {"Id":"离场","Prefab":"common_char_die_01","FaceCamera":60,"LifeTime":5}
-{"Id":"加费1","Prefab":"common_charge_cost_01","LifeTime":5}
+{"Id":"加费1","Prefab":"common_charge_cost_01","Offset":{"x":0,"y":0.6,"z":0.7},"LifeTime":5}
 {"Id":"加费2","Prefab":"common_charge_cost_01","LifeTime":5}
 {"Id":"瞬间加费","Prefab":"common_charge_cost_start_01","BindPoint":"Hip","LifeTime":5}
 {"Id":"缴械","Prefab":"common_disarm_icon"}
@@ -27,7 +27,7 @@
 {"Id":"魔法击中","Prefab":"common_magic_hit_01"}
 {"Id":"魔法击中m","Prefab":"common_magic_hit_01_m"}
 {"Id":"神经损伤击中","Prefab":"common_nerve_injury_01_hit"}
-{"Id":"攻击提升","Prefab":"common_next_atk_buff"}
+{"Id":"攻击提升","Prefab":"common_next_atk_buff","Offset":{"x":0,"y":0.6,"z":0.7},"ParentFollow":3,"FaceCamera":60}
 {"Id":"解放开始","Prefab":"common_V015_ liberation_01_start"}
 {"Id":"解放开始2","Prefab":"common_V015_ liberation_02_start"}
 {"Id":"攻击提升","Prefab":"buff_atkup","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
@@ -38,7 +38,7 @@
 {"Id":"降防","Prefab":"buff_defdown","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
 {"Id":"加防","Prefab":"buff_defup","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
 {"Id":"刁民","Prefab":"buff_desert_01","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
-{"Id":"刁民1","Prefab":"buff_distraction","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
+{"Id":"投降","Prefab":"buff_distraction","Offset":{"x":0,"y":0.7,"z":1},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
 {"Id":"冻结","Prefab":"buff_frozen","ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
 {"Id":"飞行冻结","Prefab":"buff_frozen_to_fly","ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
 {"Id":"中毒","Prefab":"buff_poison","ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
@@ -330,3 +330,6 @@
 {"Id":"食铁兽2抬手","Prefab":"panda_skill_02_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"暗锁拉buff","Prefab":"rope_skill_01_buff","ParentFollow":2,"ForwordDirection":2,"FaceCamera":60,"LifeTime":40}
 {"Id":"暗锁击中","Prefab":"rope_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"桃金娘击中","Prefab":"myrtle_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"桃金娘抬手","Prefab":"myrtle_attack_01_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":0.3}
+{"Id":"桃金娘Buff","Prefab":"myrtle_skill_02_buff","ScaleXFollow":2,"FaceCamera":60,"LifeTime":40}

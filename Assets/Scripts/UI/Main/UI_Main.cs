@@ -33,6 +33,10 @@ namespace MainUI
                 DungeonManager.Instance.PrepareDungeon();
                 UIManager.Instance.ChangeView<DungeonUI.UI_DungeonStart>(DungeonUI.UI_DungeonStart.URL);
             });
+            m_contract.onClick.Add(() =>
+            {
+                UIManager.Instance.ChangeView<UI_Contract>(UI_Contract.URL).SetMap("1-3");
+            });
             onRightClick.Add(async () =>
             {
                 var ui = UIManager.Instance.ChangeView<DungeonUI.UI_Dialogue>(DungeonUI.UI_Dialogue.URL);

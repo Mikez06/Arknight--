@@ -37,7 +37,14 @@ namespace Buffs
         public override void UpdateView()
         {
             base.UpdateView();
-            LastingEffect?.gameObject?.SetActive(Unit.IfHide);
+            if (LastingEffect != null)
+            {
+                if (!LastingEffect.gameObject.activeSelf && Unit.IfHide)
+                {
+                    LastingEffect.Play();
+                }
+                LastingEffect?.gameObject?.SetActive(Unit.IfHide);
+            }
         }
     }
 }

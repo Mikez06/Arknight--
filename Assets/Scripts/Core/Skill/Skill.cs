@@ -256,14 +256,18 @@ public class Skill
 
     public virtual void UpdateCooldown()
     {
-        if (!Opening.Finished() && SkillData.PowerUseType == PowerRecoverTypeEnum.自动)
-        {
-            UpdateOpening(SystemConfig.DeltaTime);
-        }
         if (Cooldown.Update(SystemConfig.DeltaTime))
         {
             if (Unit.AttackingSkill == this)
                 Unit.AttackingSkill = null;
+        }
+    }
+
+    public void UpdateOpening()
+    {
+        if (!Opening.Finished() && SkillData.PowerUseType == PowerRecoverTypeEnum.自动)
+        {
+            UpdateOpening(SystemConfig.DeltaTime);
         }
     }
 
@@ -484,7 +488,7 @@ public class Skill
             var animation = SkillData.ModelAnimation;
             if (SkillData.ModelAnimationDown != null && Unit is Units.干员 u && u.Direction_E == DirectionEnum.Up) animation = SkillData.ModelAnimationDown;
             var duration = GetSkillDelay(SkillData.OverwriteAnimation == null ? animation: SkillData.OverwriteAnimation, Unit.GetAnimation(), out float fullDuration, out float beginDuration);//.SkeletonAnimation.skeleton.data.Animations.Find(x => x.Name == "Attack");
-            if (SkillData.AnimationTime != 0) duration = SkillData.AnimationTime;
+            if (SkillData.AnimationTime != null) duration = SkillData.AnimationTime.Value;
             float attackSpeed = 1f / Unit.Agi * 100;//攻速影响冷却时间
             if (SkillData.AttackMode == AttackModeEnum.固定间隔) attackSpeed = 1;
             ResetCooldown(attackSpeed);
@@ -1118,6 +1122,10 @@ public class Skill
         {
             EffectManager.Instance.ReturnEffect(LoopStartEffect);
             LoopStartEffect = null;
+        }
+        if (Unit.AttackingSkill == this && SkillData.OverwriteAnimation!=null)
+        {
+            Unit.AttackingAction.Finish();
         }
     }
 

@@ -26,6 +26,7 @@ public class GameData
                 Level = unitdata.Level,
                 Upgrade = unitdata.Upgrade,
             };
+            if (card.UnitData.MainSkill != null) card.DefaultUsingSkill = card.UnitData.MainSkill.Length - 1;
             Cards.Add(card);
         }
 
@@ -34,8 +35,12 @@ public class GameData
             Teams[i] = new Team();
             foreach (var unitId in Database.Instance.GetAll<SystemData>()[0].StartUnits)
             {
-                Teams[i].Cards.Add(Cards.Find(x => x.UnitId == unitId));
-                Teams[i].UnitSkill.Add(0);
+                var card = Cards.Find(x => x.UnitId == unitId);
+                Teams[i].Cards.Add(card);
+                if (card.UnitData.MainSkill == null)
+                    Teams[i].UnitSkill.Add(0);
+                else
+                    Teams[i].UnitSkill.Add(card.UnitData.MainSkill.Length - 1);
             }
         }
         MainPageUnitId = Cards[0].UnitId;

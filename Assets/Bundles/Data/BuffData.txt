@@ -61,8 +61,9 @@
 {"Id":"未阻挡加伤","Type":"未阻挡伤害","Data":{"Rate":1.12}}
 {"Id":"破坏","Type":"破坏","LastingEffect":44}
 {"Id":"睡眠","Type":"睡眠"}
+{"Id":"投降","Type":"缴械","LastingEffect":40}
 {"Id":"已复活标记","Type":"普通Buff"}
-{"Id":"源石地板buff","Type":"数值变化","LastingEffect":36,"Data":{"t":["AttackRate","AgiAdd"]}}
+{"Id":"源石地板buff","Type":"数值变化","LastingEffect":29,"Data":{"t":["AttackRate","AgiAdd"]}}
 {"Id":"源石地板毒素","Type":"中毒","LastTime":3,"Data":{"FarAttackUnitRate":1,"DamageType":"Real","TriggerTime":0.2}}
 {"Id":"合约破坏武装","Type":"数值变化","Data":{"t":["HpRateFin","AttackRateFin","MagicDefenceRateFin","WeightAdd"]}}
 {"Id":"防御提升加图标","Type":"数值变化","LastingEffect":37,"LastTime":0.01,"Data":{"t":["DefenceAdd"]}}
@@ -184,11 +185,11 @@
 {"Id":"洁哥缴械","Type":"缴械","LastingEffect":128}
 {"Id":"闪灵信条buff","Type":"数值变化","LastingEffect":134,"Data":{"t":["AttackRate","AgiAdd"]}}
 {"Id":"闪灵盾","Type":"护盾","LastingEffect":135,"Data":{"ShieldType":"Normal","Base":1}}
-{"Id":"闪灵盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":185,"Data":{"t":["DefenceRate"]}}
+{"Id":"闪灵盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":186,"Data":{"t":["DefenceRate"]}}
 {"Id":"闪灵3加攻","Type":"数值变化","LastingEffect":137,"LastTime":5,"Data":{"t":["AttackRate"]}}
 {"Id":"夜莺1加攻","Type":"数值变化","LastingEffect":140,"LastTime":5,"Data":{"t":["AttackRate"]}}
 {"Id":"夜莺盾","Type":"护盾","LastingEffect":141,"Data":{"ShieldType":"Magic","Base":1}}
-{"Id":"夜莺盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":189,"Data":{"t":["MagicDefenceAdd"]}}
+{"Id":"夜莺盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":190,"Data":{"t":["MagicDefenceAdd"]}}
 {"Id":"圣域buff","Type":"数值变化","Data":{"t":["MagicDefenceAdd","MagBlock"]}}
 {"Id":"圣域自身buff","Type":"数值变化","LastingEffect":142,"LastTime":5,"Data":{"t":["AttackRate"]}}
 {"Id":"星熊防御提升","Type":"数值变化","LastingEffect":145,"Data":{"t":["DefenceRate"]}}

@@ -36,9 +36,9 @@ namespace Units
             Team = 2;
         }
 
-        public override void Finish()
+        public override void Finish(bool leaveEvent = true)
         {
-            base.Finish();
+            base.Finish(leaveEvent);
             Battle.AllUnits.Remove(this);
             BattleUI.UI_Battle.Instance.ReturnUIUnit(this);
             if (Battle.Map.Tiles[GridPos.x, GridPos.y].Unit == this)

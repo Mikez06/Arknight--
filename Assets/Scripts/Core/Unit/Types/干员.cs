@@ -226,16 +226,17 @@ namespace Units
             SetStatus(StateEnum.Default);
             if (recoverPower)
                 Battle.Cost += Mathf.FloorToInt(UnitData.Cost * UnitData.LeaveReturn);
-            Finish();
+            Finish(false);
         }
 
-        public override void Finish()
+        public override void Finish(bool leaveEvent = true)
         {
-            base.Finish();
+            base.Finish(leaveEvent);
             IfAlive = false;
             UnitModel.gameObject.SetActive(false);
             BattleUI.UI_Battle.Instance.ReturnUIUnit(this);
-            State = StateEnum.Default;
+            //State = StateEnum.Default;
+            SetStatus(StateEnum.Default);
             Direction = new Vector2(1, 0);
             InputTime = -1;
             Battle.Map.Tiles[GridPos.x, GridPos.y].Unit = null;

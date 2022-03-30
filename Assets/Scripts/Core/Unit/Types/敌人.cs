@@ -55,9 +55,9 @@ namespace Units
             BattleUI.UI_Battle.Instance.CreateUIUnit(this);
         }
 
-        public override void Finish()
+        public override void Finish(bool leaveEvent = true)
         {
-            base.Finish();
+            base.Finish(leaveEvent);
             Debug.Log($"{UnitData.Id}Finish");
             Hp = 0;
             if (!UnitData.WithoutCheckCount) Battle.EnemyCount--;
@@ -275,7 +275,7 @@ namespace Units
                     {
                         //破门了
                         Battle.DoDamage(UnitData.Damage);
-                        Finish();
+                        Finish(false);
                     }
                     else
                     {

@@ -494,7 +494,7 @@ public class Battle
         //{
         //    enemy.Trigger(triggerEnum);
         //}
-        foreach (var unit in AllUnits)
+        foreach (var unit in AllUnits.ToArray())
         {
             unit.Trigger(triggerEnum);
         }

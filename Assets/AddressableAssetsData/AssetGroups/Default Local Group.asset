@@ -2269,14 +2269,6 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Units/enemy_1023_jmage_2
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 30aba862b2fd0784bb6d0e63da4a7eac
-    m_Address: Assets/Bundles/Units/enemy_1025_reveng
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: c94a45dc1c0441b40befc31e664f76ed
-    m_Address: Assets/Bundles/Units/enemy_1025_reveng_2
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 9662c934187376d40b26b5a438f94fd8
     m_Address: Assets/Bundles/Units/enemy_1035_haxe
     m_ReadOnly: 0
@@ -2359,6 +2351,30 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: 39cc9372a9a69004db4c08484ab73d83
     m_Address: "Assets/Bundles/Units/\u5730\u677F\u5C01\u5370"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 329de4d578e333446bb7534db55eba1e
+    m_Address: Assets/Bundles/Units/char_151_myrtle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9f7bdac42a220b84aabe6844e4578ccc
+    m_Address: Assets/Bundles/Effect/myrtle_attack_01_hit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 06745e700fb65404cba8fc9afb8d3eb2
+    m_Address: Assets/Bundles/Effect/myrtle_attack_01_start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 01229c9a8abfdf54f952b93d9a9fbb9d
+    m_Address: Assets/Bundles/Effect/myrtle_skill_02_buff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 30aba862b2fd0784bb6d0e63da4a7eac
+    m_Address: Assets/Bundles/Units/enemy_1025_reveng
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c94a45dc1c0441b40befc31e664f76ed
+    m_Address: Assets/Bundles/Units/enemy_1025_reveng_2
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

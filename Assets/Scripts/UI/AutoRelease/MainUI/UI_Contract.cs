@@ -16,6 +16,7 @@ namespace MainUI
         public GList m_choose;
         public GButton m_start;
         public GGraph m_clear;
+        public GTextField m_nowLevel;
         public const string URL = "ui://k4mja8t1usve4s";
 
         public static UI_Contract CreateInstance()
@@ -36,6 +37,7 @@ namespace MainUI
             m_choose = (GList)GetChildAt(13);
             m_start = (GButton)GetChildAt(15);
             m_clear = (GGraph)GetChildAt(16);
+            m_nowLevel = (GTextField)GetChildAt(19);
             Init();
         }
         partial void Init();

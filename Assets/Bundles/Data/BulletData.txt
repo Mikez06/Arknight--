@@ -15,7 +15,7 @@
 {"Id":"史都华德弹道","Type":"子弹","Model":"stward_skill_01_trail","Speed":10,"FaceCamera":2}
 {"Id":"安塞尔弹道","Type":"子弹","Model":"ansel_attack_01_trail","Speed":10,"FaceCamera":2,"Data":{"MoveHeight":0.5}}
 {"Id":"银灰弹道","Type":"子弹","Model":"svrash_attack_01_trail","Speed":10,"FaceCamera":1,"ScaleX":2,"Data":{"delay":0.3}}
-{"Id":"凯尔希弹道","Type":"子弹","Model":"kalts_attack_01_trail","Speed":10,"FaceCamera":2,"Data":{"MoveHeight":0.3}}
+{"Id":"凯尔希弹道","Type":"子弹","Model":"kalts_attack_01_trail","Speed":6,"FaceCamera":2,"Data":{"MoveHeight":0.3}}
 {"Id":"棘刺普通弹道","Type":"子弹","Model":"thorns_attack_02_trail","Speed":10,"FaceCamera":2}
 {"Id":"棘刺3弹道","Type":"子弹","Model":"thorns_skill_03_trail","Speed":10,"FaceCamera":2}
 {"Id":"能天使弹道","Type":"子弹","Model":"angle_skill_01_trail","Speed":100,"FaceCamera":2}

@@ -73,6 +73,7 @@ namespace BattleUI
         public void SetBattle(Battle battle)
         {
             this.Battle = battle;
+            m_DamageInfo.RemoveChildren(0, m_DamageInfo.numChildren, true);
             UpdateUnitsLayout();
         }
 

@@ -62,6 +62,8 @@ public class BattleManager : MonoBehaviour
         Debug.Log("ExitBattleScene");
         //Battle = null;
         await SceneManager.UnloadSceneAsync(sceneName, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
+        EffectManager.Instance.ReturnAll();
+        BulletManager.Instance.ReturnAll();
         //var path = Battle.Map.FindPath(Battle.Map.Grids[1, 3], Battle.Map.Grids[8, 1]);
         //foreach (var grid in path)
         //{

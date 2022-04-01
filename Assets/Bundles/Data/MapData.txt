@@ -1,6 +1,6 @@
 {"Id":"1-1","MapName":"场景名字1","Description":"真的是测试用的","Scene":"TestMap","InitHp":100,"InitCost":100,"MaxBuildCount":8,"MaxCost":999,"MapModel":"enemy_1000_gopro"}
 {"Id":"1-2","MapName":"场景名字2","Description":"有点怪的H6-4","Scene":"H6-4","InitHp":3,"InitCost":20,"MaxBuildCount":8,"MaxCost":99,"MapModel":"enemy_1510_frstar2"}
-{"Id":"1-3","MapName":"切尔诺伯格\n59区废墟","Description":"有点怪的H6-4","Scene":"Rune_01-03","InitHp":3,"InitCost":10,"MaxBuildCount":9,"MaxCost":99,"MapModel":"enemy_1065_snwolf_2","Contracts":[3,4,5,6,7,8,9,10,11,12,13,23,24,25,48,29,30,31,26,27,28,32,33,34,44,14,15,16,37,36,20,17,18,19]}
+{"Id":"1-3","MapName":"切尔诺伯格\n59区废墟","Description":"有点怪的H6-4","Scene":"Rune_01-03","InitHp":3,"InitCost":10,"MaxBuildCount":9,"MaxCost":99,"MapModel":"enemy_1065_snwolf_2","Contracts":[3,4,5,6,7,8,9,10,11,12,13,23,24,25,48,29,30,31,26,27,28,32,33,34,44,14,15,16,37,36,20,17,18,19,21,22]}
 {"Id":"1-4","MapName":"场景名字4","Description":"有点怪的H6-4","Scene":"H6-4","InitHp":3,"InitCost":20,"MaxBuildCount":8,"MaxCost":99,"MapModel":"enemy_1067_snslime_2"}
 {"Id":"1-5","MapName":"场景名字5","Description":"有点怪的H6-4","Scene":"H6-4","InitHp":3,"InitCost":20,"MaxBuildCount":8,"MaxCost":99,"MapModel":"enemy_1068_snmage_2"}
 {"Id":"1-6","MapName":"场景名字6","Description":"有点怪的H6-4","Scene":"H6-4","InitHp":3,"InitCost":20,"MaxBuildCount":8,"MaxCost":99,"MapModel":"enemy_1066_snbow_2"}

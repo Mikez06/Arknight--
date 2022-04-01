@@ -92,12 +92,13 @@ namespace MainUI
         void updateSkill()
         {
             m_Skills.RemoveChildrenToPool();
-            for (int i = 0; i < UnitData.MainSkill.Length; i++)
-            {
-                var uiSkill = m_Skills.AddItemFromPool() as UI_UnitSkillIcon;
-                uiSkill.SetSkill(UnitData.MainSkill[i]);
-                uiSkill.m_default.selectedIndex = Card.DefaultUsingSkill == i ? 1 : 0;
-            }
+            if (UnitData.MainSkill != null)
+                for (int i = 0; i < UnitData.MainSkill.Length; i++)
+                {
+                    var uiSkill = m_Skills.AddItemFromPool() as UI_UnitSkillIcon;
+                    uiSkill.SetSkill(UnitData.MainSkill[i]);
+                    uiSkill.m_default.selectedIndex = Card.DefaultUsingSkill == i ? 1 : 0;
+                }
         }
 
         void clickSkill(EventContext evt)

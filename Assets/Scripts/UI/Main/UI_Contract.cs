@@ -144,6 +144,7 @@ namespace MainUI
                 Team = GameData.Instance.Teams[teamIndex],
                 Contracts = new List<int>(chooseList),
             });
+            UIManager.Instance.ChangeView<GComponent>(URL);
             var battle = BattleManager.Instance.Battle;
             if (battle.Win)
             {

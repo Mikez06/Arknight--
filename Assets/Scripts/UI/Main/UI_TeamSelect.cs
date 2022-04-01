@@ -132,7 +132,7 @@ namespace MainUI
             if (index != -1)//-1表示新增卡
             {
                 NowTeam.Add(card);
-                NowSkill.Add(baseTeam.UnitSkill[index]);
+                NowSkill.Add(card.DefaultUsingSkill);
             }
             Flush(true);
             if (card == null)
@@ -231,7 +231,7 @@ namespace MainUI
                     NowTeam.Clear();
                     NowSkill.Clear();
                     NowTeam.Add(card);
-                    NowSkill.Add(0);
+                    NowSkill.Add(card.DefaultUsingSkill);
                 }
             }
             else
@@ -245,7 +245,7 @@ namespace MainUI
                 else if (NowTeam.Count < 12)
                 {
                     NowTeam.Add(card);
-                    NowSkill.Add(0);
+                    NowSkill.Add(card.DefaultUsingSkill);
                 }
             }
             Flush(false);

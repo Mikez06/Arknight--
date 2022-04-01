@@ -93,8 +93,8 @@ public class SpineModel : UnitModel
             SkeletonAnimation.timeScale = 0;
             return;
         }
-        //SkeletonAnimation.state.SetEmptyAnimation(0, 0);
-        SkeletonAnimation.Skeleton.SetToSetupPose();
+        SkeletonAnimation.state.SetEmptyAnimation(0, 0);
+        //SkeletonAnimation.Skeleton.SetToSetupPose();
         SkeletonAnimation.state.ClearTracks();
         if (animations[0].Contains("Idle"))//从其他状态返回Idle时，如果有退出动画，就播放
         {

@@ -33,7 +33,7 @@ namespace Buffs
                 }
                 float baseValue = (float)field.GetValue(Unit);
                 field.SetValue(Unit, baseValue + GetValue(i));
-                UnityEngine.Debug.Log($"{Unit.UnitData.Id}的{names[i]}变成{field.GetValue(Unit)}");
+                //UnityEngine.Debug.Log($"{Unit.UnitData.Id}的{names[i]}变成{field.GetValue(Unit)}");
             }
         }
 

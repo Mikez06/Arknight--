@@ -65,7 +65,7 @@
 {"Id":"已复活标记","Type":"普通Buff"}
 {"Id":"源石地板buff","Type":"数值变化","LastingEffect":29,"Data":{"t":["AttackRate","AgiAdd"]}}
 {"Id":"源石地板毒素","Type":"中毒","LastTime":3,"Data":{"FarAttackUnitRate":1,"DamageType":"Real","TriggerTime":0.2}}
-{"Id":"合约破坏武装","Type":"数值变化","Data":{"t":["HpRateFin","AttackRateFin","MagicDefenceRateFin","WeightAdd"]}}
+{"Id":"合约破坏武装","Type":"数值变化","Data":{"t":["HpRateFin","AttackRateFin","MagicDefenceAddFin","WeightAdd"]}}
 {"Id":"防御提升加图标","Type":"数值变化","LastingEffect":37,"LastTime":0.01,"Data":{"t":["DefenceAdd"]}}
 {"Id":"防御提升图标","Type":"数值变化","LastingEffect":37,"LastTime":0.01,"Data":{"t":["DefenceRate"]}}
 {"Id":"法术闪避","Type":"闪避","LastTime":3,"Data":{"Chance":0.5,"AvoidType":"Magic"}}

@@ -34,4 +34,10 @@ public class BulletManager
     {
         Pool1.Despawn(bulletModel);
     }
+
+    public void ReturnAll()
+    {
+        Pool.DespawnAll();
+        Pool1.DespawnAll();
+    }
 }

@@ -46,4 +46,8 @@ public class EffectManager : MonoBehaviour
     {
         pool.Despawn(ps);
     }
+    public void ReturnAll()
+    {
+        pool.DespawnAll();
+    }
 }

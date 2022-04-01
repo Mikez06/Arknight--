@@ -20,7 +20,7 @@ namespace Units
          */
     public class 敌人 : Unit
     {
-        public const float StopExCheck = 0.1f, TempArriveDistance = 0.1f;
+        public const float StopExCheck = 0.29f, TempArriveDistance = 0.1f;
         public 干员 StopUnit;
 
         public WaveData WaveData => Database.Instance.Get<WaveData>(WaveId);

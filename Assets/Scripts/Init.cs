@@ -7,8 +7,10 @@ using UnityEngine;
 
 public class Init : MonoBehaviour
 {
+    public static Init Instance;
     private void Awake()
     {
+        Instance = this;
         DontDestroyOnLoad(gameObject);
         TaskScheduler.UnobservedTaskException += (sender, args) =>
         {

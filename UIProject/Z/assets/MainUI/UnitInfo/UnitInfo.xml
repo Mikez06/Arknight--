@@ -49,7 +49,7 @@
       <gearDisplay controller="star" pages="6"/>
     </image>
     <text id="n43_voep" name="place" xy="450,925" size="103,45" fontSize="33" color="#ffffff" align="center" text="近战位"/>
-    <text id="n44_voep" name="tags" xy="428,993" size="143,45" fontSize="33" color="#ffffff" align="center" text="输出 生存"/>
+    <text id="n44_voep" name="tags" xy="428,993" pivot="0.5,0.5" size="143,45" fontSize="33" color="#ffffff" align="center" text="输出 生存"/>
     <image id="n45_voep" name="n45" src="voep29" fileName="UnitInfo/等级.png" xy="1312,55"/>
     <text id="n46_voep" name="LV" xy="1347,75" size="118,129" fontSize="100" color="#ffffff" align="center" text="90"/>
     <list id="n48_voep" name="Skills" xy="1475,433" size="403,194" layout="row" colGap="22" defaultItem="ui://k4mja8t1voep3b">

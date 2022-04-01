@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Pool<T> where T : Component
 {
     private readonly Dictionary<T, Stack<T>> _pool = new Dictionary<T, Stack<T>>();
     private readonly Dictionary<T, T> _live = new Dictionary<T, T>();
+    public static Transform PoolRoot;
+
 
     public T Spawn(T original, Vector3 position, Quaternion? rotation = null)
     {
@@ -61,9 +64,19 @@ public class Pool<T> where T : Component
     public void Despawn(T obj)
     {
         obj.gameObject.SetActive(false);
-        obj.transform.SetParent(null);
+        obj.transform.SetParent(Init.Instance.transform);
         if (!_live.ContainsKey(obj)) return;
         _pool[_live[obj]].Push(obj);
         _live.Remove(obj);
+    }
+
+    public void DespawnAll()
+    {
+        foreach (var obj in _live.Keys.ToArray())
+        {
+            if (obj == null) continue;
+            Despawn(obj);
+        }
+        _live.Clear();
     }
 }

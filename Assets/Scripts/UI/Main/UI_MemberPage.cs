@@ -28,7 +28,7 @@ namespace MainUI
         public void Enter()
         {
             Sort = 0;
-            Up = true;
+            //Up = true;
             Flush();
         }
 

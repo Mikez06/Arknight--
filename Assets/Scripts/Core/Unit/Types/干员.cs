@@ -67,6 +67,15 @@ namespace Units
             StopCount = UnitData.StopCount + (int)StopCountAdd;
             Cost = CostBase + CostAdd;
             ResetTime = (ResetTimeBase + ResetTimeAdd) * (1 + ResetTimeRate);
+
+            if (StopCount < StopUnits.Count)
+            {
+                int c = StopUnits.Count - StopCount;
+                for (int i = StopUnits.Count - 1; i >= StopCount; i--)
+                {
+                    RemoveStop(StopUnits[i]);
+                }
+            }
         }
 
         public override void UpdateAction()

@@ -9,6 +9,7 @@ public class Effect : MonoBehaviour
     public EffectData EffectData => Database.Instance.Get<EffectData>(Id);
     public Unit Parent;
     ParticleSystem[] PS;
+    public TrailRenderer[] TR;
     float LifeTime = 5f;
 
     PlayerUnitModel PlayerUnitModel;
@@ -18,6 +19,8 @@ public class Effect : MonoBehaviour
     private void Awake()
     {
         PS = GetComponentsInChildren<ParticleSystem>();
+        TR = GetComponentsInChildren<TrailRenderer>();
+        Debug.Log(name + "," + TR.Length);
     }
 
     // Update is called once per frame
@@ -54,6 +57,10 @@ public class Effect : MonoBehaviour
         foreach (var p in PS)
         {
             p.Play();
+        }
+        foreach (var t in TR)
+        {
+            t.Clear();
         }
     }
     void updateBoneFollow()

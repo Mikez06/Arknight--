@@ -34,11 +34,11 @@ public class Database
             AddAsync<MapTileData>("MapTileData"),
             AddAsync<CardData>("CardData"),
             AddAsync<UnitData>("UnitData"),
-            AddAsync<MapData>("MapData"),
+            //AddAsync<MapData>("MapData"),
             AddAsync<SkillData>("SkillData"),
             AddAsync<BuffData>("BuffData"),
             AddAsync<BulletData>("BulletData"),
-            AddAsync<WaveData>("WaveData"),
+            //AddAsync<WaveData>("WaveData"),
             AddAsync<ModifyData>("ModifyData"),
             AddAsync<EffectData>("EffectData"),
             AddAsync<RelicData>("RelicData"),
@@ -63,11 +63,11 @@ public class Database
             Add<MapTileData>("MapTileData");
             Add<CardData>("CardData");
             Add<UnitData>("UnitData");
-            Add<MapData>("MapData");
+            //Add<MapData>("MapData");
             Add<SkillData>("SkillData");
             Add<BuffData>("BuffData");
             Add<BulletData>("BulletData");
-            Add<WaveData>("WaveData");
+            //Add<WaveData>("WaveData");
             Add<ModifyData>("ModifyData");
             Add<EffectData>("EffectData");
             Add<RelicData>("RelicData");
@@ -167,5 +167,20 @@ public class Database
         //Debug.Log(Time.time);
         Addressables.ReleaseInstance(operation);
         dic.Add(typeof(T), values);
+    }
+    Dictionary<string, MapInfo> Maps = new Dictionary<string, MapInfo>();
+    public MapInfo GetMap(string mapName)
+    {
+        if (Maps.TryGetValue(mapName, out MapInfo result))
+        {
+            return result;
+        }
+        else
+        {
+            var str = SaveHelper.LoadFile("/Map/" + mapName + ".map");
+            result = JsonHelper.FromJson<MapInfo>(str);
+            Maps.Add(mapName, result);
+            return result;
+        }
     }
 }

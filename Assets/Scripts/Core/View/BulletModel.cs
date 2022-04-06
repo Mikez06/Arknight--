@@ -13,6 +13,8 @@ public class BulletModel : MonoBehaviour
         var dir = Vector3.ProjectOnPlane(Bullet.Direction, Camera.main.transform.forward);
         var angle = Vector3.SignedAngle(dir, Vector3.right, Vector3.up);
         transform.eulerAngles = new Vector3(60, 0, angle);
+
+        GetComponent<Effect>()?.Play();
     }
 
     // Use this for initialization

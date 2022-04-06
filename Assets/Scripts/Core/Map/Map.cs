@@ -12,50 +12,45 @@ public class Map
     //public List<MapGrid> EndPoints = new List<MapGrid>();//终点好像也没什么卵用
     public Tile[,] Tiles;
 
-    public MapData Config => Database.Instance.Get<MapData>(Id);
-
-    public int Id;
-
     public float minX = float.MaxValue, minZ = float.MaxValue, maxX = float.MinValue, maxZ = float.MinValue;
 
     public void Init(Battle battle)
     {
         this.Battle = battle;
+        var mapData = battle.MapData;
         var grids = MapManager.Instance.GetComponentsInChildren<MapGrid>();
-        int minX = 0;//grids.Min(x => x.X);//如果不让坐标和下标对应 会造成未知bug 不想修。。
-        int minY = 0;//grids.Min(x => x.Y);
-        //Debug.Log(minX + "," + minY);
-        Tiles = new Tile[grids.Max(x => x.X)-minX + 1, grids.Max(x => x.Y)-minY + 1];
+        //这里需要多做一个判断，如果是纯玩家制作的逻辑图，要先创建出地图
+        Tiles = new Tile[mapData.GridInfos.GetLength(0), mapData.GridInfos.GetLength(1)];
         foreach (var grid in grids)
         {
-            Tiles[grid.X - minX, grid.Y - minY] = CreateTile(grid);
+            Tiles[grid.X, grid.Y] = CreateTile(grid);
         }
-        foreach (var grid in grids)
-        {
-            if (!string.IsNullOrEmpty(grid.MapUnitId))
-            {
-                battle.SceneUnits.Add(new MapUnitInfo()
-                {
-                    Time = grid.ActiveTime,
-                    Id = grid.MapUnitId,
-                    Tag = grid.Tag,
-                    Pos = grid.transform.position,
-                    Direction = grid.transform.forward.ToV2(),
-                });
-            }
-            var exUnits = grid.GetComponents<MapExUnit>();
-            if (exUnits != null) foreach (var u in exUnits)
-                {
-                    battle.SceneUnits.Add(new MapUnitInfo()
-                    {
-                        Time = u.ActiveTime,
-                        Id = u.UnitId,
-                        Tag = u.Tag,
-                        Pos = grid.transform.position,
-                        Direction = grid.transform.forward.ToV2(),
-                    });
-                }
-        }
+        //foreach (var grid in grids)
+        //{
+        //    if (!string.IsNullOrEmpty(grid.MapUnitId))
+        //    {
+        //        battle.SceneUnits.Add(new MapUnitInfo()
+        //        {
+        //            Time = grid.ActiveTime,
+        //            Id = grid.MapUnitId,
+        //            Tag = grid.Tag,
+        //            Pos = grid.transform.position,
+        //            Direction = grid.transform.forward.ToV2(),
+        //        });
+        //    }
+        //    var exUnits = grid.GetComponents<MapExUnit>();
+        //    if (exUnits != null) foreach (var u in exUnits)
+        //        {
+        //            battle.SceneUnits.Add(new MapUnitInfo()
+        //            {
+        //                Time = u.ActiveTime,
+        //                Id = u.UnitId,
+        //                Tag = u.Tag,
+        //                Pos = grid.transform.position,
+        //                Direction = grid.transform.forward.ToV2(),
+        //            });
+        //        }
+        //}
         for (int i = 0; i < Tiles.GetLength(0); i++)
         {
             for (int j = 0; j < Tiles.GetLength(1); j++)
@@ -70,7 +65,7 @@ public class Map
                 }
             }
         }
-        battle.SortSceneUnit();
+        //battle.SortSceneUnit();
     }
 
     Tile CreateTile(MapGrid mapGrid)

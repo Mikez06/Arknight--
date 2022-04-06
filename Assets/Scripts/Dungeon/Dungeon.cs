@@ -204,6 +204,7 @@ public class Dungeon
                 if (tile.TileType == DungeonTileTypeEnum.Battle && string.IsNullOrEmpty(tile.MapId))
                 {
                     tile.MapId = getTileBattleMap();
+                    tile.MapData = Database.Instance.GetMap(tile.MapId);
                     usingMap.Add(tile.MapId);
                     facedMap.Remove(tile.MapId);
                 }
@@ -351,36 +352,37 @@ public class Dungeon
     List<string> facedMap = new List<string>();//玩家已经见过的地图
     string getTileBattleMap()
     {
-        List<MapData> mapDatas = Database.Instance.GetAll<MapData>().ToList();
-        List<string> maps = mapDatas.Select(x => x.Id).ToList();
-        maps.RemoveAll(x => usingMap.Contains(x) || battleMap.Contains(x));//尽量不使用视野中和已经挑战过的图
-        List<string> unfaced = maps.Where(x => !facedMap.Contains(x)).ToList();
-        //见过的地图和没见过的地图按照1:3权重加成进行随机
-        int all = unfaced.Count * 3 + facedMap.Count;
-        if (all == 0)//地图不够用了
-        {
-            if (battleMap.Count > 0)
-            {
-                //把已挑战地图全部踢到见过的地图里
-                facedMap.AddRange(battleMap);
-                battleMap.Clear();
-                all = facedMap.Count;
-            }
-            else
-            {
-                //全部地图都在视野里了？建议去揍策划
-                return usingMap.ToList()[Seed.Next(0, usingMap.Count)];
-            }
-        }
-        int s = Seed.Next(0, all);
-        if (facedMap.Count > s)
-        {
-            return facedMap[s];
-        }
-        else
-        {
-            return unfaced[(s - facedMap.Count) / 3];
-        }
+        return null;
+        //List<MapData> mapDatas = Database.Instance.GetAll<MapData>().ToList();
+        //List<string> maps = mapDatas.Select(x => x.Id).ToList();
+        //maps.RemoveAll(x => usingMap.Contains(x) || battleMap.Contains(x));//尽量不使用视野中和已经挑战过的图
+        //List<string> unfaced = maps.Where(x => !facedMap.Contains(x)).ToList();
+        ////见过的地图和没见过的地图按照1:3权重加成进行随机
+        //int all = unfaced.Count * 3 + facedMap.Count;
+        //if (all == 0)//地图不够用了
+        //{
+        //    if (battleMap.Count > 0)
+        //    {
+        //        //把已挑战地图全部踢到见过的地图里
+        //        facedMap.AddRange(battleMap);
+        //        battleMap.Clear();
+        //        all = facedMap.Count;
+        //    }
+        //    else
+        //    {
+        //        //全部地图都在视野里了？建议去揍策划
+        //        return usingMap.ToList()[Seed.Next(0, usingMap.Count)];
+        //    }
+        //}
+        //int s = Seed.Next(0, all);
+        //if (facedMap.Count > s)
+        //{
+        //    return facedMap[s];
+        //}
+        //else
+        //{
+        //    return unfaced[(s - facedMap.Count) / 3];
+        //}
     }
 
     int randomToInt(float f)

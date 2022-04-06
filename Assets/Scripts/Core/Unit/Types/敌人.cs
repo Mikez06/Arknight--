@@ -23,8 +23,8 @@ namespace Units
         public const float StopExCheck = 0.29f, TempArriveDistance = 0.1f;
         public 干员 StopUnit;
 
-        public WaveData WaveData => Database.Instance.Get<WaveData>(WaveId);
-        public int WaveId;
+        public WaveInfo WaveData;//=> Database.Instance.Get<WaveData>(WaveId);
+        //public int WaveId;
         /// <summary>
         /// 当前走到第几个目标点
         /// </summary>
@@ -46,7 +46,7 @@ namespace Units
         {
             base.Init();
             Team = 1;
-            PathPoints = PathManager.Instance.GetPath(WaveData.Path);
+            PathPoints = Battle.MapData.PathInfos.Find(x => x.Name == WaveData.Path).Path; //PathManager.Instance.GetPath(WaveData.Path);
             Position = GetPoint(0);
 
             findNewPath();
@@ -101,6 +101,7 @@ namespace Units
             }
             //Recover.Update(SystemConfig.DeltaTime);
 
+            CheckBlock();
             if (
                 //ScaleX==TargetScaleX &&
                 (State == StateEnum.Move || State == StateEnum.Idle))
@@ -226,7 +227,6 @@ namespace Units
 
         protected override void UpdateMove()
         {
-            CheckBlock();
             if (!PathWaiting.Finished())
             {
                 if (AnimationName == UnitData.MoveAnimation) SetStatus(StateEnum.Idle);

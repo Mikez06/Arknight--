@@ -39,6 +39,7 @@ namespace BattleUI
                 m_standPic.m_standPic.texture = new FairyGUI.NTexture(ResHelper.GetAsset<Texture>(PathHelper.StandPicPath + Unit.UnitData.StandPic), alt, 1, 1);
                 if (Unit is Units.干员)
                 {
+                    m_Lv.text = Unit.UnitData.Level.ToString();
                     m_palyerUnit.selectedIndex = 0;
                     (m_Pro as MainUI.UI_Pro).m_p.selectedIndex = (int)Unit.UnitData.Profession;
                     var mainSkill = Unit.MainSkill;

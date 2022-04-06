@@ -17,7 +17,8 @@ public class Battle
 
     public Map Map = new Map();
 
-    public MapData MapData;
+    //public MapData MapData;
+    public MapInfo MapData;
 
     public List<OneWave> Waves = new List<OneWave>();
 
@@ -54,7 +55,7 @@ public class Battle
 
     public void Init(BattleInput battleConfig)
     {
-        MapData = Database.Instance.Get<MapData>(battleConfig.MapName);
+        MapData = Database.Instance.GetMap(battleConfig.MapName);
         Hp = MapData.InitHp;
         Random = new System.Random(battleConfig.Seed);
 
@@ -79,6 +80,18 @@ public class Battle
 
         //读取场景地图信息
         Map.Init(this);
+        //读取中立单位信息
+        foreach (var u in MapData.UnitInfos)
+        {
+            SceneUnits.Add(new MapUnitInfo()
+            {
+                Time = u.ActiveTime,
+                Id = u.UnitId,
+                Tag = u.Tag,
+                Pos = Map.Tiles[u.X, u.Y].MapGrid.transform.position,
+                Direction = u.Direction,
+            });
+        }
 
         if (battleConfig.Team != null)
         {
@@ -127,16 +140,14 @@ public class Battle
                 UnitMap[i, j] = new HashSet<Unit>();
             }
 
-        WaveData[] array = Database.Instance.GetAll<WaveData>();
-        for (int id = 0; id < array.Length; id++)
+        //WaveData[] array = Database.Instance.GetAll<WaveData>();
+        //for (int id = 0; id < array.Length; id++)
+        foreach (var wave in MapData.WaveInfos)
         {
-            WaveData wave = array[id];
-            if (wave.Map == battleConfig.MapName)
+            //WaveData wave = array[id];
+            for (int i = 0; i < wave.Count; i++)
             {
-                for (int i = 0; i < wave.Count; i++)
-                {
-                    Waves.Add(new OneWave() { WaveId = id, Time = wave.Delay + wave.GapTime * i });
-                }
+                Waves.Add(new OneWave() { WaveData = wave, Time = wave.Delay + wave.GapTime * i });
             }
         }
         Waves.Sort((x, y) => Math.Sign(x.Time - y.Time));
@@ -162,14 +173,14 @@ public class Battle
             Cost++;
             CostCounting.Set(1);
         }
-        if (Cost > Map.Config.MaxCost) Cost = Map.Config.MaxCost;
+        if (Cost > MapData.MaxCost) Cost = MapData.MaxCost;
         while (Waves.Count > 0 && Tick * SystemConfig.DeltaTime > Waves[0].Time)
         {
             var wave = Waves[0];
             Waves.RemoveAt(0);
             if (wave.WaveData.UnitId == null)
             {
-                var PathPoints = PathManager.Instance.GetPath(wave.WaveData.Path);
+                var PathPoints = MapData.PathInfos.Find(x => x.Name == wave.WaveData.Path).Path;
                 List<Vector3> p = new List<Vector3>();
                 for (int i = 0; i < PathPoints.Count - 1; i++)
                 {
@@ -298,12 +309,12 @@ public class Battle
         return unit;
     }
 
-    public Units.敌人 CreateEnemy(WaveData waveConfig)
+    public Units.敌人 CreateEnemy(WaveInfo waveConfig)
     {
         var config = Database.Instance.Get<UnitData>(waveConfig.UnitId.Value);
         var unit = typeof(Battle).Assembly.CreateInstance(nameof(Units) + "." + config.Type) as Units.敌人;
         unit.Id = waveConfig.UnitId.Value;
-        unit.WaveId = Database.Instance.GetIndex(waveConfig);
+        unit.WaveData = waveConfig;
         unit.Battle = this;
         unit.Init();
         //var grid = Map.Grids[waveConfig.Path, y];

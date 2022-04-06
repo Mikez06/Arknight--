@@ -12,8 +12,8 @@ namespace DungeonUI
         Dungeon Dungeon => DungeonManager.Instance.Dungeon;
         UI_TeamUnit[] uiUnits = new UI_TeamUnit[12];
         TaskCompletionSource<bool> tcs;
-        string mapId;
-        MapData MapData => Database.Instance.Get<MapData>(mapId);
+        MapInfo MapData;
+
         HashSet<int> contracts = new HashSet<int>();
         partial void Init()
         {
@@ -51,9 +51,9 @@ namespace DungeonUI
 
         public async Task<HashSet<int>> BuildTeam(string mapId)
         {
-            this.mapId = mapId;
             tcs = new TaskCompletionSource<bool>();
 
+            MapData = Database.Instance.GetMap(mapId);
             m_Contracts.RemoveChildrenToPool();
             if (MapData.Contracts != null)
                 foreach (var id in MapData.Contracts)

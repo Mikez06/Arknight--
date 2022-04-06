@@ -9,11 +9,11 @@ namespace MainUI
 {
     partial class UI_Contract
     {
-        MapData MapData => Database.Instance.Get<MapData>(mapId);
-        string mapId;
         List<int> chooseList = new List<int>();
         const int lineHeight = 3;
         int maxLevel;
+        MapInfo MapData;
+        string mapId;
 
         partial void Init()
         {
@@ -29,6 +29,7 @@ namespace MainUI
         public void SetMap(string mapId)
         {
             this.mapId = mapId;
+            MapData = Database.Instance.GetMap(mapId);
             m_mapName.text = MapData.MapName;
             chooseList.Clear();
             fresh();
@@ -41,8 +42,9 @@ namespace MainUI
             m_supportList.RemoveChildrenToPool();
             m_conList.RemoveChildrenToPool();
 
-            foreach (var contractId in MapData.Contracts)
+            foreach (var c in MapData.Contracts)
             {
+                int contractId = Database.Instance.GetIndex<ContractData>(c);
                 var contractData = Database.Instance.Get<ContractData>(contractId);
                 if (contractData.Level <= 0)
                 {

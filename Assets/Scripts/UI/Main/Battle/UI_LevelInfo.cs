@@ -10,8 +10,8 @@ namespace MainUI
     {
         public void SetInfo(string mapId)
         {
-            var mapData = Database.Instance.Get<MapData>(mapId);
-            m_id.text = mapData.Id;
+            var mapData = Database.Instance.GetMap(mapId);
+            m_id.text = mapId;
             m_name.text = mapData.MapName;
             m_Desc.text = mapData.Description;
         }

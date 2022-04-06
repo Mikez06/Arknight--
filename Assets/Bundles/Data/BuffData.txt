@@ -49,7 +49,7 @@
 {"Id":"魔法格挡2","Type":"数值变化","LastTime":9999,"DeadRemain":1,"Data":{"t":["MagBlock"]}}
 {"Id":"绝食","Type":"绝食"}
 {"Id":"绝食2","Type":"绝食","DeadRemain":1}
-{"Id":"隐身","Type":"隐身","LastingEffect":3,"Data":{"HideTime":1}}
+{"Id":"隐身","Type":"隐身","LastingEffect":3,"Data":{"HideTime":3}}
 {"Id":"反隐","Type":"反隐"}
 {"Id":"缴械","Type":"缴械"}
 {"Id":"眩晕","Type":"眩晕","LastingEffect":4,"Data":{"ChangeAnimation":1}}

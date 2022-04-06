@@ -30,8 +30,8 @@ public class DungeonTileController : MonoBehaviour,IPointerClickHandler
 
     public void BuildBuildingModel()
     {
-        enemyModel = ResHelper.Instantiate(PathHelper.UnitPath + DungeonTile.MapData.MapModel);
-        UnitData= Database.Instance.GetAll<UnitData>().FirstOrDefault(x => x.Model == DungeonTile.MapData.MapModel);
+        //enemyModel = ResHelper.Instantiate(PathHelper.UnitPath + DungeonTile.MapData.MapModel);
+        //UnitData= Database.Instance.GetAll<UnitData>().FirstOrDefault(x => x.Model == DungeonTile.MapData.MapModel);
         enemyModel.transform.parent = transform;
         enemyModel.transform.localPosition = Vector3.zero;
         enemyModel.transform.localScale = new Vector3(-0.7f, 0.7f, 0.7f);

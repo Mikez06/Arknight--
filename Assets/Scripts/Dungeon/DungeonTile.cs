@@ -20,7 +20,7 @@ public class DungeonTile
 
     public Vector3 WorldPos => new Vector3(X, 0, Y);
 
-    public MapData MapData => Database.Instance.Get<MapData>(MapId);
+    public MapInfo MapData;
     public string MapId;
 
     public int Distance(DungeonTile target)

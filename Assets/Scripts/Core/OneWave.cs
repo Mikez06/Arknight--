@@ -8,8 +8,7 @@ using UnityEngine;
 
 public class OneWave
 {
-    public WaveData WaveData => Database.Instance.Get<WaveData>(WaveId);
-    public int WaveId;
     public float Time;
+    public WaveInfo WaveData;
 }
 

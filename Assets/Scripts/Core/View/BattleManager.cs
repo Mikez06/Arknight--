@@ -49,7 +49,7 @@ public class BattleManager : MonoBehaviour
     public async Task StartBattle(BattleInput battleConfig)
     {
         battleTcs = new TaskCompletionSource<bool>();
-        var sceneName = Database.Instance.Get<MapData>(battleConfig.MapName).Scene;
+        var sceneName = Database.Instance.GetMap(battleConfig.MapName).Scene;
         var scene = await SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
         var battleUI = UIManager.Instance.ChangeView<BattleUI.UI_Battle>(BattleUI.UI_Battle.URL);

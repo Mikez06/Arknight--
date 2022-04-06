@@ -21,8 +21,6 @@ public class MapGrid : MonoBehaviour, IPointerClickHandler
 
     public string MapUnitId;
 
-    public bool Alive;
-
     public string Tag;
     public float ActiveTime;
     //public TileTypeEnum TileType;

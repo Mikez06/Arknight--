@@ -29,14 +29,15 @@ namespace MainUI
                 m_empty.selectedIndex = 0;
                 m_name.text = card.UnitData.Name;
                 m_lv.text = card.Level.ToString();
-                m_reset.text = card.UnitData.ResetTime.ToString();
-                m_cost.text = card.UnitData.Cost.ToString();
+                m_reset.text = (card.UnitData.ResetTime + card.UnitData.ResetTimeEx).ToString();
+                m_cost.text = (card.UnitData.Cost + card.UnitData.CostEx).ToString();
                 m_stop.text = card.UnitData.StopCount.ToString();
                 var mainSkill = Database.Instance.Get<SkillData>(card.UnitData.Skills[0]);
-                m_agi.text = mainSkill.Cooldown.ToString();
-                m_hp.text = card.UnitData.Hp.ToString();
-                m_def.text = card.UnitData.Defence.ToString();
-                m_magdefence.text = card.UnitData.MagicDefence.ToString();
+                m_agi.text = card.UnitData.AttackGap.ToString();
+                m_hp.text = (card.UnitData.Hp+card.UnitData.HpEx).ToString();
+                m_attack.text = (card.UnitData.Attack + card.UnitData.AttackEx).ToString();
+                m_def.text = (card.UnitData.Defence + card.UnitData.DefenceEx).ToString();
+                m_magdefence.text = (card.UnitData.MagicDefence + card.UnitData.MagicDefenceEx).ToString();
 
                 foreach (var item in m_attackArea.GetChildren())
                 {

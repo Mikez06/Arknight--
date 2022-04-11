@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace MainUI
 {
-    partial class UI_Battle
+    partial class UI_Battle:IGameUIView
     {
         TaskCompletionSource<bool> goTcs;
         List<int> contracts = new List<int>();
@@ -84,6 +84,7 @@ namespace MainUI
                 //m_world.scrollPane.ScrollToView(sender);
             }
 
+            var mapInfo = Database.Instance.GetMap(battleLevel);
             m_levelInfo.SetInfo(battleLevel);
             m_showLevelInfo.selectedIndex = 1;
 
@@ -94,13 +95,25 @@ namespace MainUI
                 var ifGo = await goTcs.Task;
                 if (ifGo)
                 {
-                    var uiTeam = UIManager.Instance.ChangeView<UI_Team>(UI_Team.URL);
-                    uiTeam.IfGoBattle(true);
-
-                    teamIndex = await uiTeam.ChooseTeam();
-                    if (teamIndex < 0)
+                    if (mapInfo.Contracts != null && mapInfo.Contracts.Count > 0)
                     {
+                        var uiContract = UIManager.Instance.ChangeView<UI_Contract>(UI_Contract.URL);
+                        uiContract.SetMap(battleLevel);
+                        await uiContract.WaitFinish();
+                        m_showLevelInfo.selectedIndex = 0;
                         UIManager.Instance.ChangeView<GComponent>(URL);
+                        return;
+                    }
+                    else
+                    {
+                        var uiTeam = UIManager.Instance.ChangeView<UI_Team>(UI_Team.URL);
+                        uiTeam.IfGoBattle(true);
+
+                        teamIndex = await uiTeam.ChooseTeam();
+                        if (teamIndex < 0)
+                        {
+                            UIManager.Instance.ChangeView<GComponent>(URL);
+                        }
                     }
                 }
                 else
@@ -115,8 +128,31 @@ namespace MainUI
                 Seed = 0,
                 Team = GameData.Instance.Teams[teamIndex],
                 Contracts = new List<int>(contracts),
-            });
+            }); 
+            m_showLevelInfo.selectedIndex = 0;
             UIManager.Instance.ChangeView<GComponent>(URL);
+        }
+
+        void freshMaps()
+        {
+            int fileIndex = 0;
+            var maps = m_world.GetChildren().Select(x => x.data).ToArray();
+            foreach (var file in Database.Instance.GetMaps())
+            {
+                if (maps.Contains(file)) continue;
+                var battleInfo = UIPackage.CreateObject("MainUI", "BattleInfo").asCom;
+                battleInfo.text = file;
+                battleInfo.data = file;
+                m_world.AddChild(battleInfo);
+                battleInfo.onClick.Add(doBattle);
+                battleInfo.position = new Vector3((int)(fileIndex * 100) / 1000 * 200 + 100, 150+(fileIndex * 100) % 1000f);
+                fileIndex++;
+            }
+        }
+
+        public void Enter()
+        {
+            freshMaps();
         }
     }
 }

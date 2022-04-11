@@ -13,6 +13,10 @@ namespace MainUI
         GameData gameData => GameData.Instance;
         partial void Init()
         {
+            m_Map.onClick.Add(() =>
+            {
+                UIManager.Instance.ChangeView<MapBuilderUI.UI_MapBuilder>(MapBuilderUI.UI_MapBuilder.URL);
+            });
             m_member.onClick.Add(() =>
             {
                 UIManager.Instance.ChangeView<UI_MemberPage>(UI_MemberPage.URL);
@@ -30,12 +34,8 @@ namespace MainUI
             });
             m_rogue.onClick.Add(() =>
             {
-                DungeonManager.Instance.PrepareDungeon();
-                UIManager.Instance.ChangeView<DungeonUI.UI_DungeonStart>(DungeonUI.UI_DungeonStart.URL);
-            });
-            m_contract.onClick.Add(() =>
-            {
-                UIManager.Instance.ChangeView<UI_Contract>(UI_Contract.URL).SetMap("1-3");
+                //DungeonManager.Instance.PrepareDungeon();
+                //UIManager.Instance.ChangeView<DungeonUI.UI_DungeonStart>(DungeonUI.UI_DungeonStart.URL);
             });
             onRightClick.Add(async () =>
             {

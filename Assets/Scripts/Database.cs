@@ -177,10 +177,22 @@ public class Database
         }
         else
         {
-            var str = SaveHelper.LoadFile("/Map/" + mapName + ".map");
+            var str = SaveHelper.LoadBaseFile(mapName);
+            if (string.IsNullOrEmpty(str))
+                str = SaveHelper.LoadFile("/Map/" + mapName + ".map");
             result = JsonHelper.FromJson<MapInfo>(str);
             Maps.Add(mapName, result);
             return result;
         }
+    }
+
+    public List<string> GetMaps()
+    {
+        var path = PathHelper.AppHotfixResPath + "/Map/";
+        if (!Directory.Exists(path)) return new List<string>();
+        List<string> files = new List<string>();
+        FileHelper.GetAllFiles(files, path);
+        files.RemoveAll(x => x.EndsWith(".meta"));
+        return files.Select(x => System.IO.Path.GetFileNameWithoutExtension(x)).ToList();
     }
 }

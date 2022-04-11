@@ -151,7 +151,7 @@ public class Battle
             }
         }
         Waves.Sort((x, y) => Math.Sign(x.Time - y.Time));
-        EnemyCount = Waves.Where(x => x.WaveData.UnitId != null).Count();
+        EnemyCount = Waves.Where(x => x.WaveData.sUnitId != null).Count();
 
         //这里刷新下单位状态，有些开场附加数据需要刷新
         foreach (var unit in PlayerUnits)
@@ -178,7 +178,7 @@ public class Battle
         {
             var wave = Waves[0];
             Waves.RemoveAt(0);
-            if (wave.WaveData.UnitId == null)
+            if (wave.WaveData.sUnitId == null)
             {
                 var PathPoints = MapData.PathInfos.Find(x => x.Name == wave.WaveData.Path).Path;
                 List<Vector3> p = new List<Vector3>();
@@ -240,7 +240,7 @@ public class Battle
 
     void checkSceneUnit()
     {
-        while (SceneUnits.Count > 0 && SceneUnits[0].Time <= WaveTick * SystemConfig.DeltaTime && SceneUnits[0].Tag == WaveTag)
+        while (SceneUnits.Count > 0 && SceneUnits[0].Time <= WaveTick * SystemConfig.DeltaTime && (SceneUnits[0].Tag == WaveTag || string.IsNullOrEmpty(SceneUnits[0].Tag)))
         {
             CreateSceneUnit(SceneUnits[0].Id, SceneUnits[0].Pos, SceneUnits[0].Direction);
             SceneUnits.RemoveAt(0);
@@ -311,9 +311,9 @@ public class Battle
 
     public Units.敌人 CreateEnemy(WaveInfo waveConfig)
     {
-        var config = Database.Instance.Get<UnitData>(waveConfig.UnitId.Value);
+        var config = Database.Instance.Get<UnitData>(waveConfig.sUnitId);
         var unit = typeof(Battle).Assembly.CreateInstance(nameof(Units) + "." + config.Type) as Units.敌人;
-        unit.Id = waveConfig.UnitId.Value;
+        unit.Id = Database.Instance.GetIndex<UnitData>(waveConfig.sUnitId);
         unit.WaveData = waveConfig;
         unit.Battle = this;
         unit.Init();

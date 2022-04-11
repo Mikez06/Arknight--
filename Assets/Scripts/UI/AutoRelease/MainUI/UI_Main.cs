@@ -13,7 +13,7 @@ namespace MainUI
         public GTextField m_Name;
         public GButton m_battle;
         public GButton m_rogue;
-        public GButton m_contract;
+        public GButton m_Map;
         public const string URL = "ui://k4mja8t1kbte0";
 
         public static UI_Main CreateInstance()
@@ -31,7 +31,7 @@ namespace MainUI
             m_Name = (GTextField)GetChildAt(5);
             m_battle = (GButton)GetChildAt(6);
             m_rogue = (GButton)GetChildAt(7);
-            m_contract = (GButton)GetChildAt(8);
+            m_Map = (GButton)GetChildAt(8);
             Init();
         }
         partial void Init();

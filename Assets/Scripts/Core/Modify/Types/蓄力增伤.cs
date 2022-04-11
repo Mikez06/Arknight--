@@ -20,7 +20,7 @@ namespace Modifys
         }
         public void Modify(DamageInfo damageInfo)
         {
-            float time = (Battle.Tick - LastTick) * SystemConfig.DeltaTime;
+            float time = (Battle.Tick - LastTick) * SystemConfig.DeltaTime - Unit.AttackGap;
             var t = time / Time;
             if (t > 1) t = 1;
             damageInfo.DamageRate *= 1 + t * (Rate - 1);

@@ -26,11 +26,13 @@ public class UIManager : MonoBehaviour
         BattleUI.BattleUIBinder.BindAll();
         MainUI.MainUIBinder.BindAll();
         DungeonUI.DungeonUIBinder.BindAll();
+        MapBuilderUI.MapBuilderUIBinder.BindAll();
         LoadPackge("BattleUI");
         LoadPackge("MainUI");
         LoadPackge("SkillIcon");
         LoadPackge("Res");
         LoadPackge("DungeonUI");
+        LoadPackge("MapBuilderUI");
         //LoadPackge("UnitFace");
         //LoadPackge("UnitPic");
     }

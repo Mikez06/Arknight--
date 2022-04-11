@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="321,51" extention="Button">
+  <controller name="button" pages="3,up,4,down" selected="1"/>
+  <displayList>
+    <graph id="n15_ei15" name="n15" xy="0,0" size="321,51" type="rect" fillColor="#ffcccccc"/>
+    <graph id="n13_ei15" name="n13" xy="108,4" size="85,43" type="rect"/>
+    <text id="n12_ei15" name="PathName" xy="111,4" size="88,42" fontSize="30" autoSize="none" text="" input="true"/>
+    <text id="n14_ei15" name="n14" xy="10,4" size="94,42" fontSize="30" text="路线名"/>
+    <graph id="n16_jh39" name="n16" xy="-4,-3" size="328,58" touchable="false" type="rect" lineSize="3" lineColor="#ffffff00" fillColor="#00ffffff">
+      <gearDisplay controller="button" pages="4"/>
+    </graph>
+  </displayList>
+  <Button mode="Radio"/>
+</component>

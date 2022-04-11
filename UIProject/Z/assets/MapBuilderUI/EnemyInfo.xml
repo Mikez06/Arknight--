@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="540,102">
+  <displayList>
+    <text id="n5_q2un" name="name" xy="106,4" size="154,42" fontSize="30" color="#0066ff" align="center" autoSize="shrink" text="怪物的名字"/>
+    <loader id="n6_q2un" name="head" xy="0,0" size="102,102" url="ui://kera0i3hq2un1ca" fill="scale"/>
+    <text id="n7_q2un" name="n7" xy="256,57" size="64,42" fontSize="30" text="攻击"/>
+    <text id="n8_q2un" name="atk" xy="326,57" size="72,42" fontSize="30" text="1000"/>
+    <text id="n9_q2un" name="n9" xy="398,57" size="64,42" fontSize="30" text="防御"/>
+    <text id="n10_q2un" name="def" xy="468,57" size="72,42" fontSize="30" text="1000"/>
+    <text id="n11_q2un" name="n11" xy="104,57" size="64,42" fontSize="30" text="生命"/>
+    <text id="n12_q2un" name="hp" xy="174,57" size="72,42" fontSize="30" text="1000"/>
+  </displayList>
+</component>

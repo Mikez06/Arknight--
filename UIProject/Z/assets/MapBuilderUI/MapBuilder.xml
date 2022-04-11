@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080" opaque="false">
+  <controller name="state" pages="0,,1,,5,,2,,3,,4,,6," selected="2">
+    <remark page="0" value="创建地图"/>
+    <remark page="1" value="主页"/>
+    <remark page="2" value="主页_地块模式"/>
+    <remark page="3" value="路线配置"/>
+    <remark page="4" value="敌人配置"/>
+    <remark page="5" value="装置配置"/>
+    <remark page="6" value="选择地板"/>
+  </controller>
+  <displayList>
+    <graph id="n20_jh39" name="n20" xy="0,0" size="1920,1080" type="rect" lineSize="0" fillColor="#ff999999">
+      <gearDisplay controller="state" pages="0"/>
+    </graph>
+    <component id="n4_ei15" name="StartPage" src="ei151" fileName="MapInfo.xml" xy="0,0">
+      <gearDisplay controller="state" pages="0"/>
+    </component>
+    <component id="n0_ei15" name="DoPath" src="ei156" fileName="btn.xml" xy="20,15">
+      <gearDisplay controller="state" pages="1,5"/>
+      <Button title="配置路线"/>
+    </component>
+    <component id="n2_ei15" name="DoUnit" src="ei156" fileName="btn.xml" xy="20,90">
+      <gearDisplay controller="state" pages="1,5"/>
+      <Button title="配置敌人"/>
+    </component>
+    <component id="n3_ei15" name="DoMidUnit" src="ei156" fileName="btn.xml" xy="20,165">
+      <gearDisplay controller="state" pages="1,5"/>
+      <Button title="配置装置"/>
+    </component>
+    <component id="n27_dy0m" name="MidPage" src="dy0mh" fileName="MidPage.xml" xy="0,0">
+      <gearDisplay controller="state" pages="4"/>
+    </component>
+    <component id="n26_dy0m" name="WavePage" src="q2unc" fileName="WavePage.xml" xy="0,0">
+      <gearDisplay controller="state" pages="3"/>
+    </component>
+    <component id="n6_ei15" name="upgrid" src="ei156" fileName="btn.xml" xy="1573,15">
+      <gearDisplay controller="state" pages="5"/>
+      <Button title="抬高地块"/>
+    </component>
+    <component id="n7_ei15" name="downgrid" src="ei156" fileName="btn.xml" xy="1736,15">
+      <gearDisplay controller="state" pages="5"/>
+      <Button title="降低地块"/>
+    </component>
+    <component id="n8_ei15" name="moveable" src="ei156" fileName="btn.xml" xy="1573,89">
+      <gearDisplay controller="state" pages="5"/>
+      <Button title="置为可放置"/>
+    </component>
+    <component id="n9_ei15" name="unmoveable" src="ei156" fileName="btn.xml" xy="1736,89">
+      <gearDisplay controller="state" pages="5"/>
+      <Button title="置不可放置"/>
+    </component>
+    <component id="n19_ei15" name="PathPage" src="ei158" fileName="PathPage.xml" xy="0,0">
+      <gearDisplay controller="state" pages="2"/>
+    </component>
+    <component id="n21_jh39" name="exit" src="ei156" fileName="btn.xml" xy="0,1017">
+      <gearDisplay controller="state" pages="0,1,5"/>
+      <Button title="退出"/>
+    </component>
+    <component id="n22_jh39" name="back" src="ei156" fileName="btn.xml" xy="0,1017">
+      <gearDisplay controller="state" pages="2,3,4,6"/>
+      <Button title="返回"/>
+    </component>
+    <component id="n23_jh39" name="save" src="ei156" fileName="btn.xml" xy="161,1017">
+      <gearDisplay controller="state" pages="0,1,5"/>
+      <Button title="保存"/>
+    </component>
+    <text id="n28_nwqz" name="n28" xy="808,18" size="304,42" fontSize="30" text="点击地块执行对应操作">
+      <gearDisplay controller="state" pages="6"/>
+    </text>
+    <graph id="n30_nwqz" name="n30" xy="1763,169" size="126,54" group="n39_nwqz" type="rect"/>
+    <text id="n29_nwqz" name="X" xy="1770,175" size="107,42" group="n39_nwqz" fontSize="30" autoSize="none" text="3.15" input="true" keyboardType="4"/>
+    <text id="n31_nwqz" name="n31" xy="1728,175" size="22,42" group="n39_nwqz" fontSize="30" text="X"/>
+    <graph id="n32_nwqz" name="n32" xy="1763,228" size="126,54" group="n39_nwqz" type="rect"/>
+    <text id="n33_nwqz" name="Y" xy="1770,234" size="107,42" group="n39_nwqz" fontSize="30" autoSize="none" text="3.15" input="true" keyboardType="4"/>
+    <text id="n34_nwqz" name="n34" xy="1728,234" size="21,42" group="n39_nwqz" fontSize="30" text="Y"/>
+    <graph id="n35_nwqz" name="n35" xy="1763,281" size="126,54" group="n39_nwqz" type="rect"/>
+    <text id="n36_nwqz" name="Z" xy="1770,287" size="107,42" group="n39_nwqz" fontSize="30" autoSize="none" text="3.15" input="true" keyboardType="4"/>
+    <text id="n37_nwqz" name="n37" xy="1728,287" size="22,42" group="n39_nwqz" fontSize="30" text="Z"/>
+    <text id="n38_nwqz" name="n38" xy="1588,175" size="124,42" group="n39_nwqz" fontSize="30" text="相机位置"/>
+    <group id="n39_nwqz" name="n39" xy="1588,169" size="301,166" advanced="true">
+      <gearDisplay controller="state" pages="5"/>
+    </group>
+  </displayList>
+</component>

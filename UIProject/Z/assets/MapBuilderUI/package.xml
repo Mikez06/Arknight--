@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="wof4wytz">
+  <resources>
+    <component id="ei150" name="MapBuilder.xml" path="/" exported="true"/>
+    <component id="ei151" name="MapInfo.xml" path="/"/>
+    <component id="ei152" name="ComboBox1_item.xml" path="/"/>
+    <component id="ei153" name="ComboBox1_popup.xml" path="/"/>
+    <component id="ei154" name="ComboBox1.xml" path="/" exported="true"/>
+    <component id="ei155" name="ContractIcon.xml" path="/"/>
+    <component id="ei156" name="btn.xml" path="/"/>
+    <component id="ei157" name="PathInfo.xml" path="/"/>
+    <component id="ei158" name="PathPage.xml" path="/"/>
+    <component id="jh399" name="PathPoint.xml" path="/"/>
+    <component id="jh39a" name="box.xml" path="/"/>
+    <component id="q2unb" name="WaveInfo.xml" path="/"/>
+    <component id="q2unc" name="WavePage.xml" path="/"/>
+    <component id="q2und" name="ComboBox2_item.xml" path="/"/>
+    <component id="q2une" name="ComboBox2_popup.xml" path="/"/>
+    <component id="q2unf" name="ComboBox2.xml" path="/" exported="true"/>
+    <component id="q2ung" name="EnemyInfo.xml" path="/"/>
+    <component id="dy0mh" name="MidPage.xml" path="/"/>
+    <component id="dy0mi" name="MidInfo.xml" path="/"/>
+    <component id="dy0mj" name="MidUnitInfo.xml" path="/"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

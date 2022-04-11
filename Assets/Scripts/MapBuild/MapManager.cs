@@ -1,24 +1,147 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System.Threading.Tasks;
+using Pathfinding;
+using System;
 
 public class MapManager : MonoBehaviour
 {
     public static MapManager Instance;
+
+    public MapGrid[,] Grids;
+
+    bool choose;
+    bool brush;
+    Action<MapGrid> Action;
+    TaskCompletionSource<MapGrid> tcs;
+
     private void Awake()
     {
         Instance = this;
+        init();
     }
+    void init()
+    {
+        MapGrid[] grids = GetComponentsInChildren<MapGrid>();
+        if (grids != null && grids.Length > 0)
+        {
+            Grids = new MapGrid[grids.Max(x => x.X) + 1, grids.Max(x => x.Y) + 1];
+
+            foreach (var g in grids)
+            {
+                Grids[g.X, g.Y] = g;
+            }
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if ((choose && Input.GetKeyDown(KeyCode.Mouse0)) || (brush && Input.GetKey(KeyCode.Mouse0) && !FairyGUI.Stage.isTouchOnUI))
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+            {
+                var grid = hit.collider.GetComponentInParent<MapGrid>();
+                if (grid != null)
+                {
+                    if (choose)
+                        tcs.SetResult(grid);
+                    if (brush)
+                        Action(grid);
+                }
+            }
+        }
+    }
+
+    public async Task<MapGrid> SelectGrid()
+    {
+        choose = true;
+        tcs = new TaskCompletionSource<MapGrid>();
+        var result = await tcs.Task;
+        choose = false;
+        return result;
+    }
+
+    public void Brush(Action<MapGrid> action)
+    {
+        brush = true;
+        this.Action = action;
+    }
+
+    public void EndBrush()
+    {
+        brush = false;
+        Action = null;
+    }
+
+
+    StartEndModifier startEndModifier = new StartEndModifier()
+    {
+        exactStartPoint = StartEndModifier.Exactness.ClosestOnNode,
+        exactEndPoint = StartEndModifier.Exactness.ClosestOnNode,
+    };
+    RaycastModifier raycastModifier = new RaycastModifier()
+    {
+        useGraphRaycasting = true,
+        useRaycasting = false,
+    };
+    LineRenderer Line;
+    Pool<Transform> Pool = new Pool<Transform>();
+    List<Transform> Sphere = new List<Transform>();
+    public void ShowPath(List<PathPoint> points)
+    {
+        if (Line == null)
+        {
+            Line = ResHelper.Instantiate("Assets/Bundles/Other/Line").GetComponent<LineRenderer>();
+        }
+
+        foreach (var t in Sphere)
+        {
+            Pool.Despawn(t);
+        }
+        Sphere.Clear();
+        if (points != null)
+        {
+            foreach (var p in points)
+            {
+                var t = Pool.Spawn(ResHelper.GetAsset<GameObject>("Assets/Bundles/Other/Sphere").transform, p.Pos + new Vector3(0, 0.3f, 0));
+                Sphere.Add(t);
+            }
+            List<Vector3> r = new List<Vector3>();
+            for (int i = 0; i < points.Count - 1; i++)
+            {
+                PathPoint point = points[i];
+                var p = ABPath.Construct(points[i].Pos, points[i + 1].Pos);
+                AstarPath.StartPath(p);
+                p.BlockUntilCalculated();
+
+                startEndModifier.Apply(p);
+
+                if (points[i].DirectMove || points[i].HideMove) raycastModifier.Apply(p);
+                r.AddRange(p.vectorPath);
+            }
+
+            Line.positionCount = r.Count;
+            for (int i1 = 0; i1 < r.Count; i1++)
+            {
+                r[i1] += new Vector3(0, 0.3f, 0);
+            }
+
+            Line.SetPositions(r.ToArray());
+        }
+        else
+        {
+            Line.positionCount = 0;
+        }
     }
 
     public void AutoBuild()
@@ -77,5 +200,27 @@ public class MapManager : MonoBehaviour
             //}
         }
         Debug.Log("自动设置地图信息完成");
+    }
+
+    public void Build(GridInfo[,] infos)
+    {
+        //Camera.main.transform.position = new Vector3((infos.GetLength(0) - 1) / 2f, 0.6f * infos.GetLength(0), -3.5f + (infos.GetLength(1) - 1) / 3f);
+        for (int i = 0; i < infos.GetLength(0); i++)
+        {
+            for (int j = 0; j < infos.GetLength(1); j++)
+            {
+                var g = infos[i, j];
+                if (g == null) continue;
+                var mapGrid = new GameObject(i + "," + j).AddComponent<MapGrid>();
+                mapGrid.X = i;
+                mapGrid.Y = j;
+                mapGrid.CanBuildUnit = g.CanBuildUnit;
+                mapGrid.CanMove = g.CanMove;
+                mapGrid.FarAttackGrid = g.FarAttack;
+                mapGrid.transform.parent = transform;
+                mapGrid.AutoBuild();
+            }
+        }
+        init();
     }
 }

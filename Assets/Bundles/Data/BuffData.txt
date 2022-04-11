@@ -130,8 +130,8 @@
 {"Id":"红闪避","Type":"闪避","LastingEffect":285,"LastTime":3,"Data":{"Chance":0.5,"AvoidType":"Real"}}
 {"Id":"雷蛇圣盾","Type":"圣盾","Data":{"Count":1}}
 {"Id":"雷蛇2buff","Type":"数值变化","LastingEffect":288,"Data":{"t":["AttackRate","AttackGapRate"]}}
-{"Id":"可颂闪避","Type":"闪避","LastingEffect":285,"LastTime":3,"Data":{"Chance":0.23,"AvoidType":"Real","OpenRate":2}}
-{"Id":"可颂闪避2","Type":"闪避","LastingEffect":285,"LastTime":3,"Data":{"Chance":0.115,"AvoidType":"Real","OpenRate":2}}
+{"Id":"可颂闪避","Type":"闪避","LastTime":3,"Data":{"Chance":0.23,"AvoidType":"Real","OpenRate":2}}
+{"Id":"可颂闪避2","Type":"闪避","LastTime":3,"Data":{"Chance":0.115,"AvoidType":"Real","OpenRate":2}}
 {"Id":"可颂1","Type":"数值变化","LastingEffect":293,"LastTime":0.01,"Data":{"t":["DefenceRate"]}}
 {"Id":"火神回血","Type":"治愈","Data":{"TriggerTime":0.5,"DamageBase":2}}
 {"Id":"火神2buff","Type":"数值变化","LastingEffect":277,"Data":{"t":["AttackRate","AttackGapAdd"]}}
@@ -190,7 +190,7 @@
 {"Id":"夜莺1加攻","Type":"数值变化","LastingEffect":140,"LastTime":5,"Data":{"t":["AttackRate"]}}
 {"Id":"夜莺盾","Type":"护盾","LastingEffect":141,"Data":{"ShieldType":"Magic","Base":1}}
 {"Id":"夜莺盾防","Type":"数值变化","LastTime":0.01,"RelyBuff":190,"Data":{"t":["MagicDefenceAdd"]}}
-{"Id":"圣域buff","Type":"数值变化","Data":{"t":["MagicDefenceAdd","MagBlock"]}}
+{"Id":"圣域buff","Type":"数值变化","Data":{"t":["MagicDefenceRate","MagBlock"]}}
 {"Id":"圣域自身buff","Type":"数值变化","LastingEffect":142,"LastTime":5,"Data":{"t":["AttackRate"]}}
 {"Id":"星熊防御提升","Type":"数值变化","LastingEffect":145,"Data":{"t":["DefenceRate"]}}
 {"Id":"星熊眼睛特效","Type":"普通Buff","LastingEffect":147}

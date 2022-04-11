@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <controller name="selectEnemy" pages="0,,1," selected="0"/>
+  <controller name="Hide" pages="0,,1," selected="0"/>
+  <displayList>
+    <graph id="n19_dy0m" name="n19" xy="8,82" size="761,961" type="rect" fillColor="#ffcccccc">
+      <gearDisplay controller="Hide" pages="0"/>
+    </graph>
+    <list id="n0_q2un" name="wavwList" xy="13,89" size="748,943" overflow="scroll" lineGap="10" defaultItem="ui://wof4wytzq2unb">
+      <gearDisplay controller="Hide" pages="0"/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <component id="n1_q2un" name="AddWave" src="ei156" fileName="btn.xml" xy="19,10">
+      <Button title="添加波次"/>
+    </component>
+    <component id="n2_q2un" name="DeleteWave" src="ei156" fileName="btn.xml" xy="182,10">
+      <Button title="删除波次"/>
+    </component>
+    <component id="n21_uusj" name="CopyWave" src="ei156" fileName="btn.xml" xy="347,10">
+      <Button title="复制波次"/>
+    </component>
+    <graph id="n18_dy0m" name="selectBack" xy="0,0" size="1920,1080" group="n17_dy0m" type="rect" lineSize="0" fillColor="#99000000"/>
+    <graph id="n3_q2un" name="n3" xy="588,84" size="765,930" group="n17_dy0m" type="rect" corner="20"/>
+    <list id="n13_q2un" name="filterList" xy="634,191" size="633,778" group="n17_dy0m" overflow="scroll" lineGap="12" defaultItem="ui://wof4wytzq2ung" autoClearItems="true">
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <graph id="n16_q2un" name="n16" xy="823,114" size="238,48" group="n17_dy0m" type="rect"/>
+    <text id="n14_q2un" name="filterName" xy="835,117" size="219,42" group="n17_dy0m" fontSize="30" autoSize="none" text="" input="true"/>
+    <text id="n15_q2un" name="n15" xy="636,117" size="184,42" group="n17_dy0m" fontSize="30" text="根据名字筛选"/>
+    <group id="n17_dy0m" name="n17" xy="0,0" size="1920,1080" advanced="true">
+      <gearDisplay controller="selectEnemy" pages="1"/>
+    </group>
+    <component id="n20_dy0m" name="Hide" src="ei156" fileName="btn.xml" xy="513,10">
+      <Button title="隐藏面板"/>
+    </component>
+  </displayList>
+</component>

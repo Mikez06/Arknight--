@@ -49,8 +49,21 @@ public class BattleManager : MonoBehaviour
     public async Task StartBattle(BattleInput battleConfig)
     {
         battleTcs = new TaskCompletionSource<bool>();
-        var sceneName = Database.Instance.GetMap(battleConfig.MapName).Scene;
-        var scene = await SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        var mapInfo = Database.Instance.GetMap(battleConfig.MapName);
+        var sceneName = mapInfo.Scene;
+        if (string.IsNullOrEmpty(sceneName))
+        {
+            await SceneManager.LoadSceneAsync("MapBuilder", LoadSceneMode.Additive);
+            MapManager.Instance.Build(mapInfo.GridInfos);
+            await TimeHelper.Instance.WaitAsync(0.1f);
+            Camera.main.transform.position = mapInfo.CameraPos;
+            sceneName = "MapBuilder";
+            AstarPath.active.Scan();
+        }
+        else
+        {
+            await SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        }
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
         var battleUI = UIManager.Instance.ChangeView<BattleUI.UI_Battle>(BattleUI.UI_Battle.URL);
         await TimeHelper.Instance.WaitAsync(0.5f);
@@ -61,7 +74,14 @@ public class BattleManager : MonoBehaviour
         await battleTcs.Task;
         Debug.Log("ExitBattleScene");
         //Battle = null;
-        await SceneManager.UnloadSceneAsync(sceneName, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
+        if (string.IsNullOrEmpty(sceneName))
+        {
+            await SceneManager.UnloadSceneAsync("MapBuilder", UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
+        }
+        else
+        {
+            await SceneManager.UnloadSceneAsync(sceneName, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
+        }
         EffectManager.Instance.ReturnAll();
         BulletManager.Instance.ReturnAll();
         //var path = Battle.Map.FindPath(Battle.Map.Grids[1, 3], Battle.Map.Grids[8, 1]);

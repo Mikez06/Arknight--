@@ -373,19 +373,19 @@ public class Unit
             bool b2 = x + y < 0;
             if (b1 && b2)
             {
-                Position.x = Mathf.RoundToInt(Position.x) - 0.5f;
+                Position.x = Mathf.RoundToInt(Position.x) - 0.5001f;
             }
             if (b1 && !b2)
             {
-                Position.z = Mathf.RoundToInt(Position.z) + 0.5f;
+                Position.z = Mathf.RoundToInt(Position.z) + 0.5001f;
             }
             if (!b1 && b2)
             {
-                Position.z = Mathf.RoundToInt(Position.z) - 0.5f;
+                Position.z = Mathf.RoundToInt(Position.z) - 0.5001f;
             }
             if (!b1 && !b2)
             {
-                Position.x = Mathf.RoundToInt(Position.x) + 0.5f;
+                Position.x = Mathf.RoundToInt(Position.x) + 0.5001f;
             }
         }
     }

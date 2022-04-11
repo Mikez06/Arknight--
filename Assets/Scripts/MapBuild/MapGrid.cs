@@ -41,11 +41,27 @@ public class MapGrid : MonoBehaviour, IPointerClickHandler
 
     public void AutoBuild()
     {
-        X = 0;
-        Y = 0;
-        CanBuildUnit = true;
-        FarAttackGrid = false;
-        CanMove = true;
+        transform.position = new Vector3(X, FarAttackGrid ? 0.2f : 0, Y);
+        if (transform.childCount > 0) Destroy(transform.GetChild(0).gameObject);
+        GameObject go;
+        if (CanBuildUnit)
+        {
+            if (FarAttackGrid)
+                go = ResHelper.Instantiate("Assets/Bundles/Other/Tiles/high");
+            else
+                go = ResHelper.Instantiate("Assets/Bundles/Other/Tiles/ground");
+        }
+        else
+        {
+            if (FarAttackGrid)
+                go = ResHelper.Instantiate("Assets/Bundles/Other/Tiles/unmoveHigh");
+            else
+                go = ResHelper.Instantiate("Assets/Bundles/Other/Tiles/unmove");
+        }
+        go.transform.SetParent(transform);
+        go.transform.localPosition = new Vector3(0, -(go.GetComponent<BoxCollider>().center.y + go.GetComponent<BoxCollider>().size.y / 2) * go.transform.localScale.y, 0);
+        BoxCollider = GetComponent<BoxCollider>();
+        Renderer = GetComponentInChildren<Renderer>();
     }
 
     public void ChangeHighLight(bool bo)
@@ -56,7 +72,7 @@ public class MapGrid : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!FairyGUI.Stage.isTouchOnUI)
+        if (!FairyGUI.Stage.isTouchOnUI && BattleUI.UI_Battle.Instance != null)
         {
             if (Tile.Unit != null)
                 BattleUI.UI_Battle.Instance.ChooseUnit(Tile.Unit);

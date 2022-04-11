@@ -5,10 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class SaveHelper
 {
     public const string SingleSaveKey = "SingleData";
+
+    public static string LoadBaseFile(string fileName)
+    {
+        try
+        {
+            var str = ResHelper.GetAsset<TextAsset>("Assets/Bundles/Data/Maps/" + fileName).text;
+            return str;
+        }
+        catch (Exception e)
+        {
+            return string.Empty;
+        }
+        return string.Empty;
+    }
 
     public static string LoadFile(string fileName)
     {
@@ -47,14 +62,19 @@ public class SaveHelper
 
     public static string Save(string str,string fileName)
     {
+#if UNITY_EDITOR
+        var dir = Directory.GetCurrentDirectory() + "/Assets/Bundles/Data/Maps/";
+        fileName = System.IO.Path.GetFileNameWithoutExtension(fileName) + ".txt";
+#else
+        var dir = System.IO.Path.GetDirectoryName(PathHelper.AppHotfixResPath + fileName)+"/";
+         fileName = System.IO.Path.GetFileNameWithoutExtension(fileName) + ".map";
+#endif
         //var fileName = (errorSave ? "error_" : "") + System.DateTime.Now.ToString("yyyy-MM-dd-HHmmss") + ".txt";
-        var dir = System.IO.Path.GetDirectoryName(PathHelper.AppHotfixResPath + fileName);
-        Debug.Log(dir);
         if (!Directory.Exists(dir))
         {
             Directory.CreateDirectory(dir);
         }
-        FileStream txt = new FileStream(PathHelper.AppHotfixResPath + fileName, FileMode.Create);
+        FileStream txt = new FileStream(dir + fileName, FileMode.Create);
         StreamWriter sw = new StreamWriter(txt);
         sw.Write(str);
         sw.Close();

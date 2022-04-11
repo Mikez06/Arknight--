@@ -14,6 +14,7 @@ namespace MainUI
         int maxLevel;
         MapInfo MapData;
         string mapId;
+        public TaskCompletionSource<bool> tcs;
 
         partial void Init()
         {
@@ -127,6 +128,12 @@ namespace MainUI
             }
         }
 
+        public async Task WaitFinish()
+        {
+            tcs = new TaskCompletionSource<bool>();
+            await tcs.Task;
+        }
+
         async void doBattle()
         {
             var uiTeam = UIManager.Instance.ChangeView<UI_Team>(UI_Team.URL);
@@ -147,15 +154,16 @@ namespace MainUI
                 Contracts = new List<int>(chooseList),
             });
             UIManager.Instance.ChangeView<GComponent>(URL);
-            var battle = BattleManager.Instance.Battle;
-            if (battle.Win)
-            {
-                if (nowLevel() > maxLevel)
-                {
-                    maxLevel = nowLevel();
-                    m_nowLevel.text = maxLevel.ToString();
-                }
-            }
+            tcs?.TrySetResult(true);
+            //var battle = BattleManager.Instance.Battle;
+            //if (battle.Win)
+            //{
+            //    if (nowLevel() > maxLevel)
+            //    {
+            //        maxLevel = nowLevel();
+            //        m_nowLevel.text = maxLevel.ToString();
+            //    }
+            //}
         }
     }
 }

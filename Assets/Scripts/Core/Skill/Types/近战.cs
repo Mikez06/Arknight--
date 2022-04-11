@@ -36,18 +36,18 @@ namespace Skills
             targets.AddRange(l);
         }
 
-        float GetOrder(Unit Unit)
+        float GetOrder(Unit unit)
         {
             float result = 0;
-            if (Unit is Units.干员 u)
+            if (this.Unit is Units.干员 u)
             {
-                var index = u.StopUnits.IndexOf(Unit as Units.敌人);
+                var index = u.StopUnits.IndexOf(unit as Units.敌人);
                 if (index < 0) index = int.MaxValue;
                 result = index;
             }
-            else if (Unit is Units.敌人 u1)
+            else if (this.Unit is Units.敌人 u1)
             {
-                return u1.StopUnit == Unit ? 0 : 1;
+                return u1.StopUnit == unit ? 0 : 1;
             }
             return result;
         }

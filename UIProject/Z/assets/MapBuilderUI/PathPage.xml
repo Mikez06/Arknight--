@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <controller name="select" pages="0,,1," selected="0"/>
+  <displayList>
+    <list id="n16_ei15" name="Paths" xy="23,97" size="335,815" overflow="scroll" scrollBarFlags="512" lineGap="5" defaultItem="ui://wof4wytzei157">
+      <gearDisplay controller="select" pages="0"/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <component id="n17_ei15" name="AddPath" src="ei156" fileName="btn.xml" xy="21,14">
+      <gearDisplay controller="select" pages="0"/>
+      <Button title="新增路线"/>
+    </component>
+    <component id="n18_ei15" name="DeletePath" src="ei156" fileName="btn.xml" xy="189,14">
+      <gearDisplay controller="select" pages="0"/>
+      <Button title="删除路线"/>
+    </component>
+    <list id="n25_jh39" name="PathPoints" xy="1065,92" size="835,301" overflow="scroll" scrollBarFlags="512" lineGap="5" defaultItem="ui://wof4wytzjh399">
+      <gearDisplay controller="select" pages="0"/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <component id="n26_jh39" name="AddPoint" src="ei156" fileName="btn.xml" xy="1398,16">
+      <gearDisplay controller="select" pages="0"/>
+      <Button title="新增路点"/>
+    </component>
+    <component id="n27_jh39" name="DeletePoint" src="ei156" fileName="btn.xml" xy="1736,16">
+      <gearDisplay controller="select" pages="0"/>
+      <Button title="删除路点"/>
+    </component>
+    <text id="n29_jh39" name="n29" xy="710,33" size="499,60" fontSize="45" text="请点选想要添加的路径点">
+      <gearDisplay controller="select" pages="1"/>
+    </text>
+    <component id="n30_uusj" name="CopyPath" src="ei156" fileName="btn.xml" xy="357,14">
+      <gearDisplay controller="select" pages="0"/>
+      <Button title="复制路线"/>
+    </component>
+    <component id="n31_uusj" name="InsertPoint" src="ei156" fileName="btn.xml" xy="1567,16">
+      <gearDisplay controller="select" pages="0"/>
+      <Button title="插入路点"/>
+    </component>
+  </displayList>
+</component>

@@ -16,21 +16,26 @@ public class NormalModel : UnitModel
     public override void Init(Unit unit)
     {
         this.Unit = unit;
-        Animator.Play(Unit.AnimationName[0]);
+        Animator?.Play(Unit.AnimationName[0]);
     }
 
 
     private void LateUpdate()
     {
+        if (Unit == null) return;
         transform.position = Unit.Position;
-        Animator.Play(Unit.AnimationName[0]);
-        Animator.speed = Unit.AnimationSpeed;
+        transform.localEulerAngles = new Vector3(0, Vector2.SignedAngle(Vector2.right, Unit.Direction), 0);
+        if (Animator != null)
+        {
+            Animator.Play(Unit.AnimationName[0]);
+            Animator.speed = Unit.AnimationSpeed;
+        }
     }
 
     public override void BreakAnimation()
     {
         base.BreakAnimation();
-        Animator.Play(Unit.AnimationName[0], 0, 0);
+        Animator?.Play(Unit.AnimationName[0], 0, 0);
     }
 
     public override float GetAnimationDuration(string animationName)

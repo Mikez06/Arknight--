@@ -8,6 +8,7 @@ using UnityEngine;
 public class MapInfo
 {
     public string MapName;
+    public Vector3 CameraPos;
     public string Description;
     public string Scene;
     public int InitHp;
@@ -43,6 +44,7 @@ public class UnitInfo
 public class WaveInfo
 {
     public int? UnitId;
+    public string sUnitId;
     public float Delay;
     public float GapTime;
     public int Count;

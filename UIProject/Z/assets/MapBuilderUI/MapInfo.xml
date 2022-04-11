@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <displayList>
+    <text id="n0_ei15" name="n0" xy="29,111" size="94,42" fontSize="30" text="地图名"/>
+    <graph id="n1_ei15" name="n1" xy="196,107" size="267,51" type="rect" corner="20"/>
+    <text id="n2_ei15" name="MapName" xy="209,111" size="240,42" fontSize="30" autoSize="none" singleLine="true" text="地图名" input="true"/>
+    <text id="n4_ei15" name="n4" xy="29,170" size="124,42" fontSize="30" text="地图简述"/>
+    <graph id="n5_ei15" name="n5" xy="196,166" size="267,51" type="rect" corner="20"/>
+    <text id="n6_ei15" name="MapDesc" xy="209,170" size="240,42" fontSize="30" autoSize="none" singleLine="true" text="挑战xxx" input="true"/>
+    <text id="n7_ei15" name="n7" xy="19,905" size="244,42" fontSize="30" text="使用场景创建地图"/>
+    <graph id="n8_ei15" name="n8" xy="274,901" size="267,51" type="rect" corner="20"/>
+    <text id="n9_ei15" name="SceneName" xy="287,905" size="240,42" fontSize="30" autoSize="none" singleLine="true" text="" input="true"/>
+    <text id="n10_ei15" name="n10" xy="29,228" size="154,42" fontSize="30" text="防御点生命"/>
+    <graph id="n11_ei15" name="n11" xy="196,224" size="267,51" type="rect" corner="20"/>
+    <text id="n12_ei15" name="InitHp" xy="209,228" size="240,42" fontSize="30" autoSize="none" singleLine="true" text="3" input="true" keyboardType="4"/>
+    <text id="n13_ei15" name="n13" xy="8,290" size="184,42" fontSize="30" text="初始部署费用"/>
+    <graph id="n14_ei15" name="n14" xy="196,286" size="267,51" type="rect" corner="20"/>
+    <text id="n15_ei15" name="InitCost" xy="209,290" size="240,42" fontSize="30" autoSize="none" singleLine="true" text="10" input="true" keyboardType="4"/>
+    <text id="n16_ei15" name="n16" xy="29,347" size="154,42" fontSize="30" text="可用部署位"/>
+    <graph id="n17_ei15" name="n17" xy="196,343" size="267,51" type="rect" corner="20"/>
+    <text id="n18_ei15" name="BuildCount" xy="209,347" size="240,42" fontSize="30" autoSize="none" singleLine="true" text="9" input="true" keyboardType="4"/>
+    <text id="n19_ei15" name="n19" xy="8,404" size="184,42" fontSize="30" text="部署费用上限"/>
+    <graph id="n20_ei15" name="n20" xy="196,400" size="267,51" type="rect" corner="20"/>
+    <text id="n21_ei15" name="MaxCost" xy="209,404" size="240,42" fontSize="30" autoSize="none" singleLine="true" text="99" input="true" keyboardType="4"/>
+    <graph id="n27_ei15" name="n27" xy="1180,20" size="349,51" type="rect" corner="20"/>
+    <text id="n28_ei15" name="n28" xy="1221,24" size="274,42" fontSize="30" text="编辑本地图合约信息"/>
+    <text id="n29_ei15" name="n29" xy="19,979" size="244,42" fontSize="30" text="使用方块创建地图"/>
+    <graph id="n30_ei15" name="n30" xy="332,975" size="76,51" type="rect" corner="20"/>
+    <text id="n31_ei15" name="width" xy="345,979" size="51,42" fontSize="30" autoSize="none" singleLine="true" text="12" input="true" keyboardType="4"/>
+    <text id="n32_ei15" name="n32" xy="290,979" size="34,42" fontSize="30" text="宽"/>
+    <graph id="n33_ei15" name="n33" xy="464,974" size="76,51" type="rect" corner="20"/>
+    <text id="n34_ei15" name="height" xy="477,979" size="51,42" fontSize="30" autoSize="none" singleLine="true" text="8" input="true" keyboardType="4"/>
+    <text id="n35_ei15" name="n35" xy="422,979" size="34,42" fontSize="30" text="高"/>
+    <graph id="n36_ei15" name="n36" xy="947,93" size="901,957" type="rect"/>
+    <list id="n37_ei15" name="Contract" xy="965,112" size="863,912" layout="flow_hz" overflow="scroll" defaultItem="ui://wof4wytzei155">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <graph id="n38_ei15" name="next" xy="588,928" size="204,100" type="rect"/>
+    <text id="n39_ei15" name="n39" xy="631,952" size="118,52" fontSize="38" text="下一步"/>
+    <text id="n40_ei15" name="n40" xy="201,825" size="394,42" fontSize="30" text="选择一个方式来创建你的地图"/>
+    <component id="n44_ei15" name="load" src="ei156" fileName="btn.xml" xy="479,28">
+      <Button title="载入地图"/>
+    </component>
+    <text id="n46_jh39" name="n46" xy="29,42" size="94,42" fontSize="30" text="文件名"/>
+    <graph id="n47_jh39" name="n47" xy="196,38" size="267,51" type="rect" corner="20"/>
+    <text id="n48_jh39" name="FileName" xy="209,42" size="240,42" fontSize="30" autoSize="none" singleLine="true" text="文件名" input="true"/>
+  </displayList>
+</component>

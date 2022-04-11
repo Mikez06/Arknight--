@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="831,42" extention="Button">
+  <controller name="button" pages="2,up,3,down" selected="0"/>
+  <displayList>
+    <text id="n19_jh39" name="n19" xy="0,0" size="52,42" fontSize="30" text="X："/>
+    <graph id="n20_jh39" name="n20" xy="61,2" size="64,38" type="rect"/>
+    <text id="n21_jh39" name="X" xy="62,0" size="61,42" fontSize="30" align="right" autoSize="none" text="10"/>
+    <text id="n22_jh39" name="n22" xy="136,0" size="51,42" fontSize="30" text="Y："/>
+    <graph id="n23_jh39" name="n23" xy="197,2" size="64,38" type="rect"/>
+    <text id="n24_jh39" name="Y" xy="199,0" size="58,42" fontSize="30" align="right" autoSize="none" text="10"/>
+    <text id="n26_jh39" name="n26" xy="262,0" size="154,42" fontSize="30" text="等待时间："/>
+    <graph id="n27_jh39" name="n27" xy="403,2" size="64,38" type="rect"/>
+    <text id="n28_jh39" name="Delay" xy="404,0" size="60,42" fontSize="30" align="right" autoSize="none" text="10" input="true" keyboardType="4"/>
+    <text id="n29_jh39" name="n29" xy="470,0" size="154,42" fontSize="30" text="直线移动："/>
+    <component id="n30_jh39" name="DirectMove" src="jh39a" fileName="box.xml" xy="611,2"/>
+    <text id="n32_jh39" name="n32" xy="665,0" size="124,42" fontSize="30" text="传送门："/>
+    <component id="n33_jh39" name="HideMove" src="jh39a" fileName="box.xml" xy="776,2"/>
+    <graph id="n34_jh39" name="n34" xy="-4,-4" size="839,50" touchable="false" type="rect" lineSize="3" lineColor="#ffffff00" fillColor="#00ffffff">
+      <gearDisplay controller="button" pages="3"/>
+    </graph>
+  </displayList>
+  <Button mode="Radio"/>
+</component>

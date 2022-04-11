@@ -10,7 +10,7 @@ namespace Skills
             if (target.Height > 0) return;
             int power;
             Vector2 direction;
-            var angle = Vector2.SignedAngle(target.Position2 - Unit.Position2, Unit.Direction);
+            var angle = Vector2.Angle(target.Position2 - Unit.Position2, Unit.Direction);
             if ((Unit.Position2 - target.Position2).magnitude < 0.25f || angle > 45f)
             {
                 power = getPower(SkillData.PushPower - 2 + (int)Unit.PushPower, target.Weight);

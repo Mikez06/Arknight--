@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="540,102">
+  <displayList>
+    <text id="n5_q2un" name="name" xy="106,4" size="154,42" fontSize="30" color="#0066ff" align="center" autoSize="shrink" text="怪物的名字"/>
+    <loader id="n6_q2un" name="head" xy="0,0" size="102,102" url="ui://kera0i3hq2un1ca" fill="scale"/>
+    <text id="n13_dy0m" name="desc" xy="108,49" size="10,35" fontSize="25" text=""/>
+  </displayList>
+</component>

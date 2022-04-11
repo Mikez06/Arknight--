@@ -48,6 +48,7 @@ namespace Units
             Team = 1;
             PathPoints = Battle.MapData.PathInfos.Find(x => x.Name == WaveData.Path).Path; //PathManager.Instance.GetPath(WaveData.Path);
             Position = GetPoint(0);
+            PathWaiting.Set(PathPoints[0].Delay);
 
             findNewPath();
             ScaleX = TargetScaleX = (GetPoint(NowPathPoint + 1).x - Position.x) > 0 ? 1 : -1;
@@ -191,7 +192,11 @@ namespace Units
                     {
                         //否则把下个寻路节点找到
                         var offset = new Vector3(WaveData.OffsetX, 0, WaveData.OffetsetY);
-                        var tempPath = Battle.Map.FindPath(Position - offset, GetPoint(pathIndex + 1) - offset, PathPoints[NowPathPoint].DirectMove);
+                        List<Vector3> tempPath;
+                        if (Height <= 0)
+                            tempPath = Battle.Map.FindPath(Position - offset, GetPoint(pathIndex + 1) - offset, PathPoints[NowPathPoint].DirectMove);
+                        else
+                            tempPath = new List<Vector3>() { Position - offset, GetPoint(pathIndex + 1) - offset };
                         for (int i = 1; i < tempPath.Count; i++) //注意不要把起点加进去了
                         {
                             Vector3 p = tempPath[i];

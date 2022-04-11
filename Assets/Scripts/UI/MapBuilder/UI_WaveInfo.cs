@@ -21,17 +21,25 @@ namespace MapBuilderUI
             m_gap.onChanged.Add(() => WaveInfo.GapTime = float.Parse(m_gap.text));
             m_headback.onClick.Add(async () =>
             {
-                var id= await (parent.parent as UI_WavePage).Choose();
-                WaveInfo.sUnitId = Database.Instance.Get<UnitData>(id).Id;
-                if (WaveInfo.sUnitId == null)
+                try
                 {
-                    m_head.icon = "";
-                    m_name.text = "出怪指示线";
+                    var id = await (parent.parent as UI_WavePage).Choose();
+                    WaveInfo.sUnitId = Database.Instance.Get<UnitData>(id).Id;
+                    if (WaveInfo.sUnitId == null)
+                    {
+                        m_head.icon = "";
+                        m_name.text = "出怪指示线";
+                    }
+                    else
+                    {
+                        m_head.icon = "ui://Res/" + Database.Instance.Get<UnitData>(WaveInfo.sUnitId).HeadIcon;
+                        m_name.text = Database.Instance.Get<UnitData>(WaveInfo.sUnitId).Name;
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    m_head.icon = "ui://Res/" + Database.Instance.Get<UnitData>(WaveInfo.sUnitId).HeadIcon;
-                    m_name.text = Database.Instance.Get<UnitData>(WaveInfo.sUnitId).Name;
+                    if (e is TaskCanceledException) return;
+                    throw e;
                 }
             });
         }

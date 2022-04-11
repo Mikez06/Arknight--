@@ -44,11 +44,19 @@ namespace MapBuilderUI
 
         async void changeUnit()
         {
-            var result = await (parent.parent as UI_MidPage).Choose();
-            UnitInfo.UnitId = result;
-            m_name.text = Database.Instance.Get<UnitData>(UnitInfo.UnitId).Name;
+            try
+            {
+                var result = await (parent.parent as UI_MidPage).Choose();
+                UnitInfo.UnitId = result;
+                m_name.text = Database.Instance.Get<UnitData>(UnitInfo.UnitId).Name;
 
-            (parent.parent as UI_MidPage).UpdatePoints();
+                (parent.parent as UI_MidPage).UpdatePoints();
+            }
+            catch (Exception e)
+            {
+                if (e is TaskCanceledException) return;
+                throw e;
+            }
         }
     }
 }

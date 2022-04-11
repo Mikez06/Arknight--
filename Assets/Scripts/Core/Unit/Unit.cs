@@ -159,6 +159,17 @@ public class Unit
         AgiBase = 100;
         AttackGapBase = UnitData.AttackGap;
         Height = UnitData.Height;
+        if (Battle.MapData.UnitOvDatas != null)
+        {
+            var ovInfo = Battle.MapData.UnitOvDatas.Find(x => x.UnitId == UnitData.Id);
+            if (ovInfo != null)
+            {
+                HpBase = ovInfo.Hp;
+                AttackBase = ovInfo.Atk;
+                DefenceBase = ovInfo.Def;
+                MagicDefence = ovInfo.MagDef;
+            }
+        }
     }
 
     public virtual void Refresh()

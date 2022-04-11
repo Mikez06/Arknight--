@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080" opaque="false">
-  <controller name="state" pages="0,,1,,5,,2,,3,,4,,6," selected="2">
+  <controller name="state" pages="0,,1,,5,,2,,3,,4,,6," selected="4">
     <remark page="0" value="创建地图"/>
     <remark page="1" value="主页"/>
     <remark page="2" value="主页_地块模式"/>
@@ -69,17 +69,24 @@
       <gearDisplay controller="state" pages="6"/>
     </text>
     <graph id="n30_nwqz" name="n30" xy="1763,169" size="126,54" group="n39_nwqz" type="rect"/>
-    <text id="n29_nwqz" name="X" xy="1770,175" size="107,42" group="n39_nwqz" fontSize="30" autoSize="none" text="3.15" input="true" keyboardType="4"/>
+    <text id="n29_nwqz" name="X" xy="1770,175" size="107,42" group="n39_nwqz" fontSize="30" autoSize="none" text="3.15" input="true"/>
     <text id="n31_nwqz" name="n31" xy="1728,175" size="22,42" group="n39_nwqz" fontSize="30" text="X"/>
     <graph id="n32_nwqz" name="n32" xy="1763,228" size="126,54" group="n39_nwqz" type="rect"/>
-    <text id="n33_nwqz" name="Y" xy="1770,234" size="107,42" group="n39_nwqz" fontSize="30" autoSize="none" text="3.15" input="true" keyboardType="4"/>
+    <text id="n33_nwqz" name="Y" xy="1770,234" size="107,42" group="n39_nwqz" fontSize="30" autoSize="none" text="3.15" input="true"/>
     <text id="n34_nwqz" name="n34" xy="1728,234" size="21,42" group="n39_nwqz" fontSize="30" text="Y"/>
     <graph id="n35_nwqz" name="n35" xy="1763,281" size="126,54" group="n39_nwqz" type="rect"/>
-    <text id="n36_nwqz" name="Z" xy="1770,287" size="107,42" group="n39_nwqz" fontSize="30" autoSize="none" text="3.15" input="true" keyboardType="4"/>
+    <text id="n36_nwqz" name="Z" xy="1770,287" size="107,42" group="n39_nwqz" fontSize="30" autoSize="none" text="3.15" input="true"/>
     <text id="n37_nwqz" name="n37" xy="1728,287" size="22,42" group="n39_nwqz" fontSize="30" text="Z"/>
     <text id="n38_nwqz" name="n38" xy="1588,175" size="124,42" group="n39_nwqz" fontSize="30" text="相机位置"/>
     <group id="n39_nwqz" name="n39" xy="1588,169" size="301,166" advanced="true">
       <gearDisplay controller="state" pages="5"/>
     </group>
+    <text id="n40_uusj" name="n40" xy="914,429" size="204,66" alpha="0" fontSize="50" color="#ffffff" strokeColor="#000000" strokeSize="3" text="保存成功"/>
   </displayList>
+  <transition name="saveSuccess">
+    <item time="0" type="Alpha" target="n40_uusj" value="1"/>
+    <item time="0" type="XY" target="n40_uusj" value="914,429.5"/>
+    <item time="24" type="Alpha" target="n40_uusj" tween="true" startValue="1" endValue="0" duration="6"/>
+    <item time="24" type="XY" target="n40_uusj" tween="true" startValue="914,429.5" endValue="914,295" duration="6"/>
+  </transition>
 </component>

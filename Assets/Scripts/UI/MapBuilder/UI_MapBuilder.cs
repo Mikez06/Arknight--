@@ -41,6 +41,7 @@ namespace MapBuilderUI
                     if (info.PathInfos == null) info.PathInfos = new List<PathInfo>();
                     if (info.UnitInfos == null) info.UnitInfos = new List<UnitInfo>();
                     if (info.WaveInfos == null) info.WaveInfos = new List<WaveInfo>();
+                    if (info.UnitOvDatas == null) info.UnitOvDatas = new List<OverwriteUnitInfo>();
                     else
                     {
                         foreach (var waveInfo in info.WaveInfos)
@@ -86,7 +87,7 @@ namespace MapBuilderUI
                 m_MidPage.UpdatePoints();
             });
 
-            m_save.onClick.Add(() => { check(); SaveHelper.Save(JsonHelper.ToJson(MapInfo), "/Map/" + m_StartPage.m_FileName.text + ".map"); });
+            m_save.onClick.Add(() => { check(); SaveHelper.Save(JsonHelper.ToJson(MapInfo), "/Map/" + m_StartPage.m_FileName.text + ".map"); m_saveSuccess.Play(); });
         }
 
         void changeCamera()
@@ -129,6 +130,7 @@ namespace MapBuilderUI
                 PathInfos = new List<PathInfo>(),
                 UnitInfos = new List<UnitInfo>(),
                 WaveInfos = new List<WaveInfo>(),
+                UnitOvDatas = new List<OverwriteUnitInfo>(),
             };
             m_state.selectedIndex = 0;
             m_StartPage.Fresh();

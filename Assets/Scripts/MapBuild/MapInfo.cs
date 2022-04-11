@@ -21,6 +21,7 @@ public class MapInfo
     public List<UnitInfo> UnitInfos;
     public List<PathInfo> PathInfos;
     public List<WaveInfo> WaveInfos;
+    public List<OverwriteUnitInfo> UnitOvDatas;
 
 }
 
@@ -57,4 +58,10 @@ public class PathInfo
 {
     public string Name;
     public List<PathPoint> Path;
+}
+
+public class OverwriteUnitInfo
+{
+    public string UnitId;
+    public int Atk, Hp, Def, MagDef;
 }

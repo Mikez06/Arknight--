@@ -25,6 +25,7 @@ namespace MapBuilderUI
         public GTextInput m_X;
         public GTextInput m_Y;
         public GTextInput m_Z;
+        public Transition m_saveSuccess;
         public const string URL = "ui://wof4wytzei150";
 
         public static UI_MapBuilder CreateInstance()
@@ -54,6 +55,7 @@ namespace MapBuilderUI
             m_X = (GTextInput)GetChildAt(17);
             m_Y = (GTextInput)GetChildAt(20);
             m_Z = (GTextInput)GetChildAt(23);
+            m_saveSuccess = GetTransitionAt(0);
             Init();
         }
         partial void Init();

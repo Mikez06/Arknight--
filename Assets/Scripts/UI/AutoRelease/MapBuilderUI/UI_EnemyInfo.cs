@@ -9,9 +9,10 @@ namespace MapBuilderUI
     {
         public GTextField m_name;
         public GLoader m_head;
-        public GTextField m_atk;
-        public GTextField m_def;
-        public GTextField m_hp;
+        public GTextInput m_atk;
+        public GTextInput m_def;
+        public GTextInput m_hp;
+        public GTextInput m_magDef;
         public const string URL = "ui://wof4wytzq2ung";
 
         public static UI_EnemyInfo CreateInstance()
@@ -23,11 +24,12 @@ namespace MapBuilderUI
         {
             base.ConstructFromXML(xml);
 
-            m_name = (GTextField)GetChildAt(0);
-            m_head = (GLoader)GetChildAt(1);
-            m_atk = (GTextField)GetChildAt(3);
-            m_def = (GTextField)GetChildAt(5);
-            m_hp = (GTextField)GetChildAt(7);
+            m_name = (GTextField)GetChildAt(4);
+            m_head = (GLoader)GetChildAt(5);
+            m_atk = (GTextInput)GetChildAt(7);
+            m_def = (GTextInput)GetChildAt(9);
+            m_hp = (GTextInput)GetChildAt(11);
+            m_magDef = (GTextInput)GetChildAt(13);
             Init();
         }
         partial void Init();

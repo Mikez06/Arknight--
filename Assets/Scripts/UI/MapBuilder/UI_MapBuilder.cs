@@ -20,7 +20,7 @@ namespace MapBuilderUI
             m_exit.onClick.Add(() => { UIManager.Instance.ChangeView<MainUI.UI_Main>(MainUI.UI_Main.URL); MapManager.Instance?.ShowPath(null); if (m_state.selectedIndex != 0) if (!string.IsNullOrEmpty(scene)) SceneManager.UnloadSceneAsync(scene); else SceneManager.UnloadSceneAsync("MapBuilder"); });
             m_back.onClick.Add(goMain);
             m_DoPath.onClick.Add(() => { m_state.selectedIndex = 3; AstarPath.active.Scan(); m_PathPage.Fresh(); m_PathPage.FreshPoints(); });
-            m_DoUnit.onClick.Add(() => { m_state.selectedIndex = 4; m_WavePage.Fresh(); });
+            m_DoUnit.onClick.Add(() => { m_state.selectedIndex = 4; AstarPath.active.Scan(); m_WavePage.Fresh(); });
             m_DoMidUnit.onClick.Add(() => { m_state.selectedIndex = 5; m_MidPage.Fresh(); });
 
             m_upgrid.onClick.Add(() => { m_state.selectedIndex = 6; MapManager.Instance.Brush(upper); });
@@ -41,15 +41,17 @@ namespace MapBuilderUI
                     if (info.PathInfos == null) info.PathInfos = new List<PathInfo>();
                     if (info.UnitInfos == null) info.UnitInfos = new List<UnitInfo>();
                     if (info.WaveInfos == null) info.WaveInfos = new List<WaveInfo>();
-                    if (info.UnitOvDatas == null) info.UnitOvDatas = new List<OverwriteUnitInfo>();
                     else
                     {
                         foreach (var waveInfo in info.WaveInfos)
                         {
-                            if (waveInfo.UnitId == null) continue;
+                            if (waveInfo.UnitId == null || waveInfo.sUnitId != null) continue;
                             waveInfo.sUnitId = Database.Instance.Get<UnitData>(waveInfo.UnitId.Value).Id;
                         }
                     }
+                    if (info.UnitOvDatas == null) info.UnitOvDatas = new List<OverwriteUnitInfo>();
+                    if (info.Contracts == null) info.Contracts = new List<string>();
+
                     m_StartPage.m_SceneName.text = info.Scene;
                     m_StartPage.m_width.text = info.GridInfos.GetLength(0).ToString();
                     m_StartPage.m_height.text = info.GridInfos.GetLength(1).ToString();
@@ -87,7 +89,7 @@ namespace MapBuilderUI
                 m_MidPage.UpdatePoints();
             });
 
-            m_save.onClick.Add(() => { check(); SaveHelper.Save(JsonHelper.ToJson(MapInfo), "/Map/" + m_StartPage.m_FileName.text + ".map"); m_saveSuccess.Play(); });
+            m_save.onClick.Add(() => { check(); SaveHelper.Save(JsonHelper.ToJson(MapInfo), "/Map/" + m_StartPage.m_FileName.text + ".map"); Database.Instance.Maps.Remove(m_StartPage.m_FileName.text); m_saveSuccess.Play(); });
         }
 
         void changeCamera()

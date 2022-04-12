@@ -24,14 +24,16 @@ namespace MapBuilderUI
                 try
                 {
                     var id = await (parent.parent as UI_WavePage).Choose();
-                    WaveInfo.sUnitId = Database.Instance.Get<UnitData>(id).Id;
-                    if (WaveInfo.sUnitId == null)
+                    if (id == -1)
                     {
+                        WaveInfo.UnitId = null;
+                        WaveInfo.sUnitId = null;
                         m_head.icon = "";
                         m_name.text = "出怪指示线";
                     }
                     else
                     {
+                        WaveInfo.sUnitId = Database.Instance.Get<UnitData>(id).Id;
                         m_head.icon = "ui://Res/" + Database.Instance.Get<UnitData>(WaveInfo.sUnitId).HeadIcon;
                         m_name.text = Database.Instance.Get<UnitData>(WaveInfo.sUnitId).Name;
                     }

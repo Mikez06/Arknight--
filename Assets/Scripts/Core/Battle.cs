@@ -455,7 +455,7 @@ public class Battle
             {
                 for (int j = Mathf.RoundToInt(unit.Position2.y - unit.UnitData.Radius); j <= Mathf.RoundToInt(unit.Position2.y + unit.UnitData.Radius); j++)
                 {
-                    if (i > 0 && i < UnitMap.GetLength(0) && j > 0 && j < UnitMap.GetLength(1))
+                    if (i >= 0 && i < UnitMap.GetLength(0) && j >= 0 && j < UnitMap.GetLength(1))
                         UnitMap[i, j].Add(unit);
                 }
             }

@@ -11,7 +11,7 @@ public class BattleCamera : MonoBehaviour
     Pool<MapTile> TilePool = new Pool<MapTile>();
     HashSet<MapTile> Tiles = new HashSet<MapTile>();
 
-    Vector3 startPosition;
+    public Vector3 startPosition;
     Vector3 startUp;
     Quaternion startRotation;
 

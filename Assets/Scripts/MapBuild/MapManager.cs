@@ -126,7 +126,7 @@ public class MapManager : MonoBehaviour
 
                 startEndModifier.Apply(p);
 
-                if (points[i].DirectMove || points[i].HideMove) raycastModifier.Apply(p);
+                if (p.vectorPath.Count > 0 && (points[i].DirectMove || points[i].HideMove)) raycastModifier.Apply(p);
                 r.AddRange(p.vectorPath);
             }
 

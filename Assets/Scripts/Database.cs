@@ -168,7 +168,7 @@ public class Database
         Addressables.ReleaseInstance(operation);
         dic.Add(typeof(T), values);
     }
-    Dictionary<string, MapInfo> Maps = new Dictionary<string, MapInfo>();
+    public Dictionary<string, MapInfo> Maps = new Dictionary<string, MapInfo>();
     public MapInfo GetMap(string mapName)
     {
         if (Maps.TryGetValue(mapName, out MapInfo result))

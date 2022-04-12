@@ -57,7 +57,8 @@ public class BattleManager : MonoBehaviour
             MapManager.Instance.Build(mapInfo.GridInfos);
             await TimeHelper.Instance.WaitAsync(0.1f);
             Camera.main.transform.position = mapInfo.CameraPos;
-            sceneName = "MapBuilder";
+            Camera.main.transform.GetComponent<BattleCamera>().startPosition = mapInfo.CameraPos;
+           sceneName = "MapBuilder";
             AstarPath.active.Scan();
         }
         else

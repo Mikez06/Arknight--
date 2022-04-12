@@ -23,6 +23,7 @@ Material:
         m_Texture: {fileID: 2800000, guid: 44a7f48be2a3b75468e585f146de2b34, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _Cutoff: 0.1
     - _angle: 60

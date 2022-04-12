@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="17,200" extention="ScrollBar">
+  <ScrollBar/>
+  <displayList>
+    <graph id="n0_rj18" name="n0" xy="0,0" size="17,200" type="rect" lineSize="0" fillColor="#F0F0F0" touchable="false">
+      <relation target="" sidePair="width,height"/>
+    </graph>
+    <graph id="n1_rj18" name="bar" xy="0,0" size="17,200">
+      <relation target="" sidePair="height"/>
+    </graph>
+    <component id="n2_rj18" name="grip" xy="0,20" src="rj18m"/>
+  </displayList>
+</component>

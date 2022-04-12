@@ -137,7 +137,14 @@ public class Database
         IConfig[] values = new IConfig[arr.Length];
         for (int i = 0; i < arr.Length; i++)
         {
-            values[i] = JsonHelper.FromJson<T>(arr[i]);
+            try
+            {
+                values[i] = JsonHelper.FromJson<T>(arr[i]);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(typeof(T).Name + "," + (i+1) + "\n" + e.ToString());
+            }
         }
         dic.Add(typeof(T), values);
 #endif

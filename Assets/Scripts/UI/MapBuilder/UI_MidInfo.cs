@@ -24,7 +24,7 @@ namespace MapBuilderUI
             m_x.onChanged.Add(() => { UnitInfo.X = int.Parse(m_x.text); });
             m_y.onChanged.Add(() => { UnitInfo.Y = int.Parse(m_y.text); });
             m_delay.onChanged.Add(() => { UnitInfo.ActiveTime = float.Parse(m_delay.text); });
-            m_direction.onChanged.Add(() => { UnitInfo.Direction = Directions[m_direction.selectedIndex]; });
+            m_direction.onChanged.Add(() => { UnitInfo.Direction = Directions[m_direction.selectedIndex]; (parent.parent as UI_MidPage).UpdatePoints(); });
             m_headback.onClick.Add(changeUnit);
         }
 

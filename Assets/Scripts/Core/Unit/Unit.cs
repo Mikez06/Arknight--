@@ -168,6 +168,8 @@ public class Unit
                 AttackBase = ovInfo.Atk;
                 DefenceBase = ovInfo.Def;
                 MagicDefence = ovInfo.MagDef;
+                if (ovInfo.Speed != 0)
+                    SpeedBase = ovInfo.Speed;
             }
         }
     }
@@ -207,6 +209,7 @@ public class Unit
         if (Defence < 0) Defence = 0;
         MagicDefence = ((MagicDefenceBase + MagicDefenceAdd) * (1 + MagicDefenceRate) + MagicDefenceAddFin) * (1 + MagicDefenceRateFin);
         if (MagicDefence < 0) MagicDefence = 0;
+        if (MagicDefence > 100) MagicDefence = 100;
         HpRecover = HpRecoverBase;
         if (HpRecover < 0) HpRecover = 0;
         Agi = ((AgiBase + AgiAdd) * (1 + AgiRate) + AgiAddFin) * (1 + AgiRateFin);
@@ -374,9 +377,10 @@ public class Unit
         if (Position.x > Battle.Map.maxX + 0.5f) Position.x = Battle.Map.maxX + 0.4999f;
         if (Position.z > Battle.Map.maxZ + 0.5f) Position.z = Battle.Map.maxZ + 0.4999f;
 
+        if (Height > 0) return;
         var tile = Battle.Map.Tiles[GridPos.x, GridPos.y];
 
-        if (!tile.CanMove)
+        if (tile.FarAttackGrid)
         {
             float x = Position2.x - GridPos.x;
             float y = Position2.y - GridPos.y;

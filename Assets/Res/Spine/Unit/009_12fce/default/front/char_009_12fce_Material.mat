@@ -23,6 +23,7 @@ Material:
         m_Texture: {fileID: 2800000, guid: a9ad8e47bd7fff044bd8852464278b02, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _ColorMask: 15
     - _Cutoff: 0.1

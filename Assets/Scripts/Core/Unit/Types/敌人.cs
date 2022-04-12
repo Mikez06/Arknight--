@@ -61,7 +61,11 @@ namespace Units
             base.Finish(leaveEvent);
             Debug.Log($"{UnitData.Id}Finish");
             Hp = 0;
-            if (!UnitData.WithoutCheckCount) Battle.EnemyCount--;
+            if (!UnitData.WithoutCheckCount)
+            {
+                Battle.EnemyCount--;
+                Battle.CheckPoints.Add(Battle.Tick);
+            }
             BattleUI.UI_Battle.Instance.ReturnUIUnit(this);
             Battle.AllUnits.Remove(this);
             Battle.Enemys.Remove(this);

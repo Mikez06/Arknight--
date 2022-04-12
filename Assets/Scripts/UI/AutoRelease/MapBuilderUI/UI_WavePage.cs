@@ -37,7 +37,7 @@ namespace MapBuilderUI
             m_selectBack = (GGraph)GetChildAt(5);
             m_filterList = (GList)GetChildAt(7);
             m_filterName = (GTextInput)GetChildAt(9);
-            m_Hide_2 = (GButton)GetChildAt(12);
+            m_Hide_2 = (GButton)GetChildAt(13);
             Init();
         }
         partial void Init();

@@ -21,6 +21,8 @@
     <component id="dy0mh" name="MidPage.xml" path="/"/>
     <component id="dy0mi" name="MidInfo.xml" path="/"/>
     <component id="dy0mj" name="MidUnitInfo.xml" path="/"/>
+    <component id="rj18m" name="ScrollBar1_grip.xml" path="/"/>
+    <component id="rj18n" name="ScrollBar1.xml" path="/" exported="true"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

@@ -101,7 +101,7 @@ namespace MapBuilderUI
                 var m = g.GetComponent<UnitModel>();
                 GameObject.Destroy(m);//防止捣乱
                 Points.Add(g);
-                g.transform.eulerAngles = new Vector3(0, Vector2.SignedAngle(Vector2.right, unitInfo.Direction), 0);
+                g.transform.eulerAngles = new Vector3(0, Vector2.SignedAngle(unitInfo.Direction, Vector2.right), 0);
                 //if (unitInfo.UnitId == "红门")
                 //{
                 //    ResHelper.GetAsset<GameObject>(PathHelper.UnitPath + Database.Instance.Get<UnitData>(unitInfo.UnitId).Model);

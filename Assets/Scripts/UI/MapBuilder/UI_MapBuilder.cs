@@ -89,7 +89,14 @@ namespace MapBuilderUI
                 m_MidPage.UpdatePoints();
             });
 
-            m_save.onClick.Add(() => { check(); SaveHelper.Save(JsonHelper.ToJson(MapInfo), "/Map/" + m_StartPage.m_FileName.text + ".map"); Database.Instance.Maps.Remove(m_StartPage.m_FileName.text); m_saveSuccess.Play(); });
+            m_save.onClick.Add(() =>
+            {
+                check();
+                SaveHelper.Save(JsonHelper.ToJson(MapInfo), "/Map/" + m_StartPage.m_FileName.text + ".map");
+                Database.Instance.Maps.Remove(m_StartPage.m_FileName.text);
+                Database.Instance.Maps.Add(m_StartPage.m_FileName.text, MapInfo);
+                m_saveSuccess.Play();
+            });
         }
 
         void changeCamera()

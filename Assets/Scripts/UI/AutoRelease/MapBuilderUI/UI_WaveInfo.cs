@@ -16,6 +16,7 @@ namespace MapBuilderUI
         public GTextInput m_x;
         public GTextInput m_y;
         public GComboBox m_path;
+        public GTextInput m_checkPoint;
         public const string URL = "ui://wof4wytzq2unb";
 
         public static UI_WaveInfo CreateInstance()
@@ -27,15 +28,16 @@ namespace MapBuilderUI
         {
             base.ConstructFromXML(xml);
 
-            m_headback = (GGraph)GetChildAt(5);
-            m_name = (GTextField)GetChildAt(6);
-            m_delay = (GTextInput)GetChildAt(8);
-            m_count = (GTextInput)GetChildAt(10);
-            m_gap = (GTextInput)GetChildAt(12);
-            m_head = (GLoader)GetChildAt(14);
-            m_x = (GTextInput)GetChildAt(17);
-            m_y = (GTextInput)GetChildAt(18);
-            m_path = (GComboBox)GetChildAt(20);
+            m_headback = (GGraph)GetChildAt(6);
+            m_name = (GTextField)GetChildAt(7);
+            m_delay = (GTextInput)GetChildAt(9);
+            m_count = (GTextInput)GetChildAt(11);
+            m_gap = (GTextInput)GetChildAt(13);
+            m_head = (GLoader)GetChildAt(15);
+            m_x = (GTextInput)GetChildAt(18);
+            m_y = (GTextInput)GetChildAt(19);
+            m_path = (GComboBox)GetChildAt(21);
+            m_checkPoint = (GTextInput)GetChildAt(24);
             Init();
         }
         partial void Init();

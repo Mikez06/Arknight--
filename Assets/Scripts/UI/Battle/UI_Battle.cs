@@ -53,6 +53,10 @@ namespace BattleUI
             base.OnUpdate();
             if (Battle != null)
             {
+                if (Input.GetKeyDown(KeyCode.Space) && !Battle.Finish)
+                {
+                    m_Pause.onClick.Call();
+                }
                 m_GameSpeed.m_Speed.selectedIndex = TimeHelper.Instance.FastSpeed ? 1 : 0;
                 m_Pause.m_Speed.selectedIndex = TimeHelper.Instance.Pause ? 1 : 0;
                 m_enemy.text = Battle.EnemyCount.ToString();

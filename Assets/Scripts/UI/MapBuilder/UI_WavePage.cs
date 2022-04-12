@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FairyGUI;
 
 namespace MapBuilderUI
 {
@@ -74,6 +75,8 @@ namespace MapBuilderUI
             {
                 m_Hide.selectedIndex = m_Hide.selectedIndex == 0 ? 1 : 0;
             });
+            m_filterList.SetVirtual();
+            m_filterList.itemRenderer = filterRender;
         }
 
         public void Fresh()
@@ -113,17 +116,25 @@ namespace MapBuilderUI
             return result;
         }
 
+        List<UnitData> filters = new List<UnitData>();
         void filterList()
         {
-            var list = Database.Instance.GetAll<UnitData>().Where(x => x.Type == "敌人");
-            list = list.Where(x => x.Name == null || x.Name.Contains(m_filterName.text));
-            m_filterList.RemoveChildrenToPool();
-            (m_filterList.AddItemFromPool() as UI_EnemyInfo).SetInfo(null);
-            foreach (var unitData in list)
-            {
-                var enemyInfoUI = m_filterList.AddItemFromPool() as UI_EnemyInfo;
-                enemyInfoUI.SetInfo(unitData);
-            }
+            filters = Database.Instance.GetAll<UnitData>().Where(x => x.Type == "敌人").Where(x => x.Name == null || x.Name.Contains(m_filterName.text)).ToList();
+            filters.Insert(0, null);
+            m_filterList.numItems = filters.Count;
+            //m_filterList.RemoveChildrenToPool();
+            //(m_filterList.AddItemFromPool() as UI_EnemyInfo).SetInfo(null);
+            //foreach (var unitData in list)
+            //{
+            //    var enemyInfoUI = m_filterList.AddItemFromPool() as UI_EnemyInfo;
+            //    enemyInfoUI.SetInfo(unitData);
+            //}
+        }
+
+        void filterRender(int index,GObject item)
+        {
+            var enemyInfoUI = item as UI_EnemyInfo;
+            enemyInfoUI.SetInfo(filters[index]);
         }
     }
 }

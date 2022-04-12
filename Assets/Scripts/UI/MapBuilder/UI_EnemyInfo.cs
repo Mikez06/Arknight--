@@ -20,6 +20,8 @@ namespace MapBuilderUI
             m_atk.onClick.Add(x => { x.StopPropagation(); });
             m_magDef.onChanged.Add((x) => { getInfo().MagDef = int.Parse(m_magDef.text); fresh(); });
             m_magDef.onClick.Add(x => { x.StopPropagation(); });
+            m_speed.onChanged.Add((x) => { getInfo().Speed = int.Parse(m_speed.text); fresh(); });
+            m_speed.onClick.Add(x => { x.StopPropagation(); });
         }
 
         public void SetInfo(UnitData unitData)
@@ -32,6 +34,8 @@ namespace MapBuilderUI
                 m_atk.text = "";
                 m_hp.text = "";
                 m_def.text = "";
+                m_speed.text = "";
+                m_test.selectedIndex = 0;
             }
             else
             {
@@ -67,6 +71,8 @@ namespace MapBuilderUI
             m_hp.text = UnitData.Hp.ToString();
             m_def.text = UnitData.Defence.ToString();
             m_magDef.text = UnitData.MagicDefence.ToString();
+            m_speed.text = UnitData.Speed.ToString();
+            m_test.selectedIndex = UnitData.Test ? 1 : 0;
             if (unitovInfo != null)
             {
                 if (UnitData.Attack != unitovInfo.Atk)
@@ -93,6 +99,12 @@ namespace MapBuilderUI
                     m_magDef.color = Color.red;
                 }
                 else m_magDef.color = Color.black;
+                if (UnitData.Speed != unitovInfo.Speed)
+                {
+                    m_speed.text = unitovInfo.Speed.ToString();
+                    m_speed.color = Color.red;
+                }
+                else m_speed.color = Color.black;
             }
         }
     }

@@ -19,6 +19,7 @@ namespace MapBuilderUI
             m_delay.onChanged.Add(() => WaveInfo.Delay = float.Parse(m_delay.text));
             m_count.onChanged.Add(() => WaveInfo.Count = int.Parse(m_count.text));
             m_gap.onChanged.Add(() => WaveInfo.GapTime = float.Parse(m_gap.text));
+            m_checkPoint.onChanged.Add(() => { WaveInfo.CheckPoint = int.Parse(m_checkPoint.text); });
             m_headback.onClick.Add(async () =>
             {
                 try
@@ -62,6 +63,7 @@ namespace MapBuilderUI
                 m_name.text = Database.Instance.Get<UnitData>(waveInfo.sUnitId).Name;
             }
             m_path.value = waveInfo.Path;
+            m_checkPoint.text = waveInfo.CheckPoint.ToString();
             m_x.text = waveInfo.OffsetX.ToString();
             m_y.text = waveInfo.OffetsetY.ToString();
             m_delay.text = waveInfo.Delay.ToString();

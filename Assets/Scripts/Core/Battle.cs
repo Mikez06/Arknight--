@@ -21,6 +21,7 @@ public class Battle
     public MapInfo MapData;
 
     public List<OneWave> Waves = new List<OneWave>();
+    public List<OneWave> CheckPointWaves = new List<OneWave>();
 
     public List<MapUnitInfo> SceneUnits = new List<MapUnitInfo>();
 
@@ -52,6 +53,7 @@ public class Battle
 
     public int TeamLimit = 99;
     public HashSet<UnitTypeEnum> ProfessionLimit = new HashSet<UnitTypeEnum>();
+    public List<int> CheckPoints = new List<int>();
 
     public void Init(BattleInput battleConfig)
     {
@@ -147,7 +149,11 @@ public class Battle
             //WaveData wave = array[id];
             for (int i = 0; i < wave.Count; i++)
             {
-                Waves.Add(new OneWave() { WaveData = wave, Time = wave.Delay + wave.GapTime * i });
+                var waveInfo = new OneWave() { WaveData = wave, Time = wave.Delay + wave.GapTime * i };
+                if (wave.CheckPoint == 0)
+                    Waves.Add(waveInfo);
+                else
+                    CheckPointWaves.Add(waveInfo);
             }
         }
         Waves.Sort((x, y) => Math.Sign(x.Time - y.Time));
@@ -178,26 +184,15 @@ public class Battle
         {
             var wave = Waves[0];
             Waves.RemoveAt(0);
-            if (wave.WaveData.sUnitId == null)
+            createWave(wave);
+        }
+        for (int i = CheckPointWaves.Count-1; i >= 0; i--)
+        {
+            OneWave checkPointWave = CheckPointWaves[i];
+            if (CheckPoints.Count >= checkPointWave.WaveData.CheckPoint && (Tick - CheckPoints[checkPointWave.WaveData.CheckPoint]) * SystemConfig.DeltaTime > checkPointWave.Time)
             {
-                var PathPoints = MapData.PathInfos.Find(x => x.Name == wave.WaveData.Path).Path;
-                List<Vector3> p = new List<Vector3>();
-                for (int i = 0; i < PathPoints.Count - 1; i++)
-                {
-                    var p1 = Map.FindPath(PathPoints[i].Pos, PathPoints[i + 1].Pos, PathPoints[i].DirectMove);
-                    p.AddRange(p1);
-                }
-                TrailManager.Instance.ShowPath(p);
-            }
-            else
-            {
-                var enemy = CreateEnemy(wave.WaveData);
-                TriggerDatas.Push(new TriggerData()
-                {
-                    Target = enemy,
-                });
-                Trigger(TriggerEnum.入场);
-                TriggerDatas.Pop();
+                CheckPointWaves.RemoveAt(i);
+                createWave(checkPointWave);
             }
         }
 
@@ -244,6 +239,31 @@ public class Battle
         {
             CreateSceneUnit(SceneUnits[0].Id, SceneUnits[0].Pos, SceneUnits[0].Direction);
             SceneUnits.RemoveAt(0);
+        }
+    }
+
+    void createWave(OneWave wave)
+    {
+        if (wave.WaveData.sUnitId == null)
+        {
+            var PathPoints = MapData.PathInfos.Find(x => x.Name == wave.WaveData.Path).Path;
+            List<Vector3> p = new List<Vector3>();
+            for (int i = 0; i < PathPoints.Count - 1; i++)
+            {
+                var p1 = Map.FindPath(PathPoints[i].Pos, PathPoints[i + 1].Pos, PathPoints[i].DirectMove);
+                p.AddRange(p1);
+            }
+            TrailManager.Instance.ShowPath(p);
+        }
+        else
+        {
+            var enemy = CreateEnemy(wave.WaveData);
+            TriggerDatas.Push(new TriggerData()
+            {
+                Target = enemy,
+            });
+            Trigger(TriggerEnum.入场);
+            TriggerDatas.Pop();
         }
     }
 

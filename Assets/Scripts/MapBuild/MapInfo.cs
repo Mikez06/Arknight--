@@ -52,6 +52,7 @@ public class WaveInfo
     public string Path;
     public float OffsetX;
     public float OffetsetY;
+    public int CheckPoint;
 }
 
 public class PathInfo
@@ -63,5 +64,5 @@ public class PathInfo
 public class OverwriteUnitInfo
 {
     public string UnitId;
-    public int Atk, Hp, Def, MagDef;
+    public int Atk, Hp, Def, MagDef, Speed;
 }

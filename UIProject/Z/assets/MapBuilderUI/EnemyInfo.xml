@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="562,102">
+<component size="704,102">
+  <controller name="test" pages="0,,1," selected="1"/>
   <displayList>
-    <graph id="n15_uusj" name="n15" xy="169,57" size="83,43" type="rect"/>
+    <graph id="n15_uusj" name="n15" xy="161,57" size="91,43" type="rect"/>
     <graph id="n16_uusj" name="n16" xy="320,57" size="83,43" type="rect"/>
     <graph id="n17_uusj" name="n17" xy="465,57" size="83,43" type="rect"/>
     <graph id="n18_uusj" name="n18" xy="465,9" size="83,43" type="rect"/>
@@ -11,9 +12,15 @@
     <text id="n8_q2un" name="atk" xy="362,78" pivot="0.5,0.5" anchor="true" size="106,42" fontSize="30" align="center" autoSize="none" text="1000" input="true"/>
     <text id="n9_q2un" name="n9" xy="398,57" size="64,42" fontSize="30" text="防御"/>
     <text id="n10_q2un" name="def" xy="504,78" pivot="0.5,0.5" anchor="true" size="106,42" fontSize="30" align="center" autoSize="none" text="1000" input="true"/>
-    <text id="n11_q2un" name="n11" xy="104,57" size="64,42" fontSize="30" text="生命"/>
-    <text id="n12_q2un" name="hp" xy="160,57" pivot="0.5,0.5" size="106,42" fontSize="30" autoSize="none" text="100000" input="true"/>
+    <text id="n11_q2un" name="n11" xy="99,57" size="64,42" fontSize="30" text="生命"/>
+    <text id="n12_q2un" name="hp" xy="163,57" pivot="0.5,0.5" size="106,42" fontSize="30" autoSize="none" text="100000" input="true"/>
     <text id="n13_uusj" name="n13" xy="398,9" size="64,42" fontSize="30" text="魔防"/>
     <text id="n14_uusj" name="magDef" xy="504,30" pivot="0.5,0.5" anchor="true" size="106,42" fontSize="30" align="center" autoSize="none" text="1000" input="true"/>
+    <text id="n19_rj18" name="n19" xy="274,4" size="94,42" fontSize="30" color="#ff0000" text="未实装">
+      <gearDisplay controller="test" pages="1"/>
+    </text>
+    <graph id="n20_rj18" name="n20" xy="615,58" size="83,43" type="rect"/>
+    <text id="n21_rj18" name="n21" xy="548,57" size="64,42" fontSize="30" text="移速"/>
+    <text id="n22_rj18" name="speed" xy="654,78" pivot="0.5,0.5" anchor="true" size="106,42" fontSize="30" align="center" autoSize="none" text="1000" input="true"/>
   </displayList>
 </component>

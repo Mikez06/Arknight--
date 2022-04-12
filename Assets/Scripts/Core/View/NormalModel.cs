@@ -24,7 +24,7 @@ public class NormalModel : UnitModel
     {
         if (Unit == null) return;
         transform.position = Unit.Position;
-        transform.localEulerAngles = new Vector3(0, Vector2.SignedAngle(Vector2.right, Unit.Direction), 0);
+        transform.localEulerAngles = new Vector3(0, Vector2.SignedAngle(Unit.Direction, Vector2.right), 0);
         if (Animator != null)
         {
             Animator.Play(Unit.AnimationName[0]);

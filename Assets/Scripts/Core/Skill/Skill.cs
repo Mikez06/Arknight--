@@ -481,7 +481,10 @@ public class Skill
         {
             //Debug.Log(Unit.UnitData.Id + "的" + SkillData.Id + "没有动画,直接使用");
             ResetCooldown(1);
-            Cast();
+            if (SkillData.AnimationTime == null)
+                Cast();
+            else
+                Casting.Set(SkillData.AnimationTime.Value);
         }
         else
         {

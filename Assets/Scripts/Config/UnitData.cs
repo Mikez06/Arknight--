@@ -2,6 +2,7 @@ public class UnitData : IConfig
 {
       public string Id { get ; set ; }
       public string Type;
+      public bool Test;
       public string Model;
       public float ModelScale;
       public string Name;

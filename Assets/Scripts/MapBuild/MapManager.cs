@@ -93,11 +93,12 @@ public class MapManager : MonoBehaviour
     {
         useGraphRaycasting = true,
         useRaycasting = false,
+        //thickRaycastRadius = 0.25f
     };
     LineRenderer Line;
     Pool<Transform> Pool = new Pool<Transform>();
     List<Transform> Sphere = new List<Transform>();
-    public void ShowPath(List<PathPoint> points)
+    public void ShowPath(List<PathPoint> points,bool fly=false)
     {
         if (Line == null)
         {
@@ -113,27 +114,44 @@ public class MapManager : MonoBehaviour
         {
             foreach (var p in points)
             {
-                var t = Pool.Spawn(ResHelper.GetAsset<GameObject>("Assets/Bundles/Other/Sphere").transform, p.Pos + new Vector3(0, 0.3f, 0));
+                var point = MapBuilderUI.UI_MapBuilder.Instance.m_PathPage.NowPoints;
+                var t = Pool.Spawn(ResHelper.GetAsset<GameObject>("Assets/Bundles/Other/Sphere" + (point == p ? "1" : "")).transform, p.Pos + new Vector3(0, 0.3f, 0));
                 Sphere.Add(t);
             }
             List<Vector3> r = new List<Vector3>();
-            for (int i = 0; i < points.Count - 1; i++)
+            if (!fly)
             {
-                PathPoint point = points[i];
-                var p = ABPath.Construct(points[i].Pos, points[i + 1].Pos);
-                AstarPath.StartPath(p);
-                p.BlockUntilCalculated();
+                for (int i = 0; i < points.Count - 1; i++)
+                {
+                    PathPoint point = points[i];
+                    if (points[i].HideMove)
+                    {
+                        r.Add(points[i].Pos);
+                        r.Add(points[i + 1].Pos);
+                    }
+                    else
+                    {
+                        var p = ABPath.Construct(points[i].Pos, points[i + 1].Pos);
+                        AstarPath.StartPath(p);
+                        p.BlockUntilCalculated();
 
-                startEndModifier.Apply(p);
+                        startEndModifier.Apply(p);
 
-                if (p.vectorPath.Count > 0 && (points[i].DirectMove || points[i].HideMove)) raycastModifier.Apply(p);
-                r.AddRange(p.vectorPath);
+                        if (p.vectorPath.Count > 0 && (points[i].DirectMove || points[i].HideMove))
+                            raycastModifier.Apply(p);
+                        r.AddRange(p.vectorPath);
+                    }
+                }
+            }
+            else
+            {
+                r.AddRange(points.Select(x => x.Pos));
             }
 
             Line.positionCount = r.Count;
             for (int i1 = 0; i1 < r.Count; i1++)
             {
-                r[i1] += new Vector3(0, 0.3f, 0);
+                r[i1] += new Vector3(0, fly ? 0.3f : 0.1f, 0);
             }
 
             Line.SetPositions(r.ToArray());

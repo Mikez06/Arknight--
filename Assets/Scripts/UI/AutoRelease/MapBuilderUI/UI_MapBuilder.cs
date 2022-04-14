@@ -8,6 +8,7 @@ namespace MapBuilderUI
     public partial class UI_MapBuilder : GComponent
     {
         public Controller m_state;
+        public Controller m_sure2;
         public UI_MapInfo m_StartPage;
         public GButton m_DoPath;
         public GButton m_DoUnit;
@@ -25,6 +26,9 @@ namespace MapBuilderUI
         public GTextInput m_X;
         public GTextInput m_Y;
         public GTextInput m_Z;
+        public GTextField m_mapName2;
+        public GButton m_yes;
+        public GButton m_no;
         public Transition m_saveSuccess;
         public const string URL = "ui://wof4wytzei150";
 
@@ -38,6 +42,7 @@ namespace MapBuilderUI
             base.ConstructFromXML(xml);
 
             m_state = GetControllerAt(0);
+            m_sure2 = GetControllerAt(1);
             m_StartPage = (UI_MapInfo)GetChildAt(1);
             m_DoPath = (GButton)GetChildAt(2);
             m_DoUnit = (GButton)GetChildAt(3);
@@ -55,6 +60,9 @@ namespace MapBuilderUI
             m_X = (GTextInput)GetChildAt(17);
             m_Y = (GTextInput)GetChildAt(20);
             m_Z = (GTextInput)GetChildAt(23);
+            m_mapName2 = (GTextField)GetChildAt(31);
+            m_yes = (GButton)GetChildAt(33);
+            m_no = (GButton)GetChildAt(34);
             m_saveSuccess = GetTransitionAt(0);
             Init();
         }

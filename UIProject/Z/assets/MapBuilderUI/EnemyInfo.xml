@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="704,102">
-  <controller name="test" pages="0,,1," selected="1"/>
+  <controller name="test" pages="0,,1," selected="0"/>
   <displayList>
     <graph id="n15_uusj" name="n15" xy="161,57" size="91,43" type="rect"/>
     <graph id="n16_uusj" name="n16" xy="320,57" size="83,43" type="rect"/>

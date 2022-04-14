@@ -58,11 +58,13 @@ public class WaveInfo
 public class PathInfo
 {
     public string Name;
+    public bool FlyPath;
     public List<PathPoint> Path;
 }
 
 public class OverwriteUnitInfo
 {
     public string UnitId;
-    public int Atk, Hp, Def, MagDef, Speed;
+    public int Atk, Hp, Def, MagDef;
+    public float Speed;
 }

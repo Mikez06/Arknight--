@@ -20,6 +20,7 @@ namespace MapBuilderUI
         public GGraph m_next;
         public GButton m_load;
         public GTextInput m_FileName;
+        public GComboBox m_quickLoad;
         public const string URL = "ui://wof4wytzei151";
 
         public static UI_MapInfo CreateInstance()
@@ -44,6 +45,7 @@ namespace MapBuilderUI
             m_next = (GGraph)GetChildAt(32);
             m_load = (GButton)GetChildAt(35);
             m_FileName = (GTextInput)GetChildAt(38);
+            m_quickLoad = (GComboBox)GetChildAt(39);
             Init();
         }
         partial void Init();

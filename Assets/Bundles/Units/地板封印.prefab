@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5824190005391132977}
   - component: {fileID: 5471486115450582751}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: "\u5730\u677F\u5C01\u5370"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 247416433414479}
   m_Father: {fileID: 0}
@@ -56,7 +57,7 @@ GameObject:
   - component: {fileID: 4952655685312878380}
   - component: {fileID: 4352317941879561800}
   - component: {fileID: 8039574459533519280}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,6 +74,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.024, z: 0}
   m_LocalScale: {x: 1, y: 0.05, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5824190005391132977}
   m_RootOrder: 0
@@ -96,6 +98,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1

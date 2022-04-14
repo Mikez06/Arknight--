@@ -22,6 +22,7 @@ public class OnePath : MonoBehaviour
     {
         useGraphRaycasting = true,
         useRaycasting = false,
+        //thickRaycastRadius = 0.25f
     };
 
     public List<PathPoint> Path = new List<PathPoint>();

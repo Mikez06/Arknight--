@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Units
@@ -82,7 +80,7 @@ namespace Units
 
         public override void UpdateAction()
         {
-            if (!Visiable) updateHide();
+            if (!Visiable) if (PathWaiting.Update(SystemConfig.DeltaTime)) finishHide();
             if (!Visiable) return;
             base.UpdateAction();
             if (ScaleX != TargetScaleX)
@@ -146,7 +144,10 @@ namespace Units
                         PathWaiting.Set(PathPoints[NowPathPoint].Delay);
                         if (PathPoints[NowPathPoint].HideMove)
                         {
-                            Visiable = false;
+                            if (PathWaiting.value > 0)
+                                Visiable = false;
+                            else
+                                finishHide();
                         }
                         TempPath = null;
                     }
@@ -158,17 +159,14 @@ namespace Units
             }
         }
 
-        void updateHide()
+        void finishHide()
         {
-            if (PathWaiting.Update(SystemConfig.DeltaTime))
-            {
-                NowPathPoint++;
-                Position = PathPoints[NowPathPoint].Pos;
-                Visiable = true;
-                UnitModel?.gameObject.SetActive(true);
-                //Refresh();
-                findNewPath();
-            }
+            NowPathPoint++;
+            Position = PathPoints[NowPathPoint].Pos;
+            Visiable = true;
+            UnitModel?.gameObject.SetActive(true);
+            //Refresh();
+            findNewPath();
         }
 
         public void Jump(float distance)
@@ -316,7 +314,10 @@ namespace Units
         void findNewPath()
         {
             var offset = new Vector3(WaveData.OffsetX, 0, WaveData.OffetsetY);
-            TempPath = Battle.Map.FindPath(Position - offset, NextPoint - offset, PathPoints[NowPathPoint].DirectMove);
+            if (Height <= 0)
+                TempPath = Battle.Map.FindPath(Position - offset, NextPoint - offset, PathPoints[NowPathPoint].DirectMove);
+            else
+                TempPath = new List<Vector3>() { Position - offset, GetPoint(NowPathPoint + 1) - offset };
             for (int i = 0; i < TempPath.Count; i++)
             {
                 TempPath[i] += offset;

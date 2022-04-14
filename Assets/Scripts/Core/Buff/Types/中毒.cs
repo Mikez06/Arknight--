@@ -32,7 +32,7 @@ namespace Buffs
             triggerTime = BuffData.Data.GetFloat("TriggerTime");
             if (triggerTime < SystemConfig.DeltaTime) triggerTime = SystemConfig.DeltaTime;
             Trigger.Set(triggerTime);
-            if (Unit.FirstSkill.SkillData.AttackRange > 0)
+            if (Unit.FirstSkill != null && Unit.FirstSkill.SkillData.AttackRange > 0)
             {
                 farAttackRate = BuffData.Data.GetFloat("FarAttackUnitRate", 1);
             }

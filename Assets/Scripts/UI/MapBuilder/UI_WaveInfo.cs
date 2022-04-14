@@ -13,7 +13,7 @@ namespace MapBuilderUI
 
         partial void Init()
         {
-            m_path.onChanged.Add(() => { WaveInfo.Path = m_path.value; MapManager.Instance.ShowPath(MapInfo.PathInfos.FirstOrDefault(x => x.Name == WaveInfo.Path).Path); });
+            m_path.onChanged.Add(() => { WaveInfo.Path = m_path.value; var p = MapInfo.PathInfos.FirstOrDefault(x => x.Name == WaveInfo.Path); MapManager.Instance.ShowPath(p.Path, p.FlyPath); });
             m_x.onChanged.Add(() => WaveInfo.OffsetX = float.Parse(m_x.text));
             m_y.onChanged.Add(() => WaveInfo.OffetsetY = float.Parse(m_y.text));
             m_delay.onChanged.Add(() => WaveInfo.Delay = float.Parse(m_delay.text));

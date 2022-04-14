@@ -59,6 +59,17 @@ public class SaveHelper
             System.IO.File.Delete(filePath);
         }
     }
+    public static bool ExistFile(string fileName)
+    {
+#if UNITY_EDITOR
+        var dir = Directory.GetCurrentDirectory() + "/Assets/Bundles/Data/Maps/";
+        fileName = System.IO.Path.GetFileNameWithoutExtension(fileName) + ".txt";
+#else
+        var dir = System.IO.Path.GetDirectoryName(PathHelper.AppHotfixResPath + fileName)+"/";
+         fileName = System.IO.Path.GetFileNameWithoutExtension(fileName) + ".map";
+#endif
+        return File.Exists(dir + fileName);
+    }
 
     public static string Save(string str,string fileName)
     {

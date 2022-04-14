@@ -16,7 +16,7 @@
       <gearDisplay controller="select" pages="0"/>
       <Button title="删除路线"/>
     </component>
-    <list id="n25_jh39" name="PathPoints" xy="1065,92" size="835,301" overflow="scroll" scrollBarFlags="512" lineGap="5" defaultItem="ui://wof4wytzjh399">
+    <list id="n25_jh39" name="PathPoints" xy="1065,92" size="835,521" overflow="scroll" scrollBarFlags="512" lineGap="5" defaultItem="ui://wof4wytzjh399">
       <gearDisplay controller="select" pages="0"/>
       <item/>
       <item/>

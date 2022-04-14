@@ -156,23 +156,26 @@ public class SpineModel : UnitModel
         var nextAnimation = animationName.Length > 1 ? animationName[1] : animationName[0];
         var animation = SkeletonAnimation.Skeleton.Data.FindAnimation(nextAnimation);
         bool ifAttackEvent = false;
-        foreach (var timeline in animation.Timelines)
+        if (animation != null && animation.Timelines != null)
         {
-            if (timeline is Spine.EventTimeline eventTimeline)
+            foreach (var timeline in animation.Timelines)
             {
-                var attackEvent = eventTimeline.Events.FirstOrDefault(x => x.Data.Name == "OnAttack");
-                //if (attackEvent == null) attackEvent = eventTimeline.Events.FirstOrDefault();
-                if (attackEvent != null)
+                if (timeline is Spine.EventTimeline eventTimeline)
                 {
-                    result += attackEvent.Time;
-                    ifAttackEvent = true;
+                    var attackEvent = eventTimeline.Events.FirstOrDefault(x => x.Data.Name == "OnAttack");
+                    //if (attackEvent == null) attackEvent = eventTimeline.Events.FirstOrDefault();
+                    if (attackEvent != null)
+                    {
+                        result += attackEvent.Time;
+                        ifAttackEvent = true;
+                    }
+                    //Debug.Log("Onattack:" + attackEvent.Time);
+                    break;
                 }
-                //Debug.Log("Onattack:" + attackEvent.Time);
-                break;
             }
+            //Debug.Log("A:" + animation.duration);
+            fullDuration += animation.Duration;
         }
-        //Debug.Log("A:" + animation.duration);
-        fullDuration += animation.Duration;
         if (!ifAttackEvent) result = fullDuration;
         return result;
     }

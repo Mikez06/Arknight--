@@ -3,7 +3,7 @@
 {"Id":"击中2","Prefab":"击中2","LifeTime":5}
 {"Id":"隐身","Prefab":"隐身","ParentFollow":3,"LifeTime":5}
 {"Id":"眩晕","Prefab":"眩晕","LifeTime":5}
-{"Id":"地板损坏","Prefab":"地板损坏","LifeTime":5}
+{"Id":"地板损坏","Prefab":"地板损坏","LifeTime":9999}
 {"Id":"冰术士就绪","Prefab":"冰术士就绪","BindPoint":"C_R_Hand","LifeTime":5}
 {"Id":"道具回收拖尾","Prefab":"common_item_recycle_trail_01"}
 {"Id":"护盾1","Prefab":"common_buff_parry_01","LifeTime":5}
@@ -36,7 +36,7 @@
 {"Id":"寒冷","Prefab":"buff_cold","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
 {"Id":"诅咒","Prefab":"buff_curse_01","ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
 {"Id":"降防","Prefab":"buff_defdown","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
-{"Id":"加防","Prefab":"buff_defup","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
+{"Id":"加防","Prefab":"buff_defup","Offset":{"x":-0.3,"y":-0.4,"z":0.2},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":90}
 {"Id":"刁民","Prefab":"buff_desert_01","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
 {"Id":"投降","Prefab":"buff_distraction","Offset":{"x":0,"y":0.7,"z":1},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
 {"Id":"冻结","Prefab":"buff_frozen","ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}

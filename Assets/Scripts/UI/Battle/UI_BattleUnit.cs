@@ -31,11 +31,16 @@ namespace BattleUI
 
         public void Flush()
         {
-            if (Unit is Units.敌人 u && !u.Visiable)
+            if (Unit is Units.敌人 u)
             {
-                m_unitType.selectedIndex = 3;
+                if (!u.Visiable)
+                {
+                    m_unitType.selectedIndex = 3;
+                    return;
+                }
+                else
+                    m_unitType.selectedIndex = Unit.UnitData.HpBarType;
             }
-            else
             {
                 xy = Unit.UnitModel.GetModelPositon().WorldToUI();
                 if (m_unitType.selectedIndex == 0 || m_unitType.selectedIndex == 2)

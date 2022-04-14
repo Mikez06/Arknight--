@@ -59,7 +59,7 @@ public class BattleManager : MonoBehaviour
             Camera.main.transform.position = mapInfo.CameraPos;
             Camera.main.transform.GetComponent<BattleCamera>().startPosition = mapInfo.CameraPos;
            sceneName = "MapBuilder";
-            AstarPath.active.Scan();
+            //AstarPath.active.Scan();
         }
         else
         {

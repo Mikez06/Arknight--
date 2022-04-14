@@ -15,11 +15,17 @@ namespace MapBuilderUI
             {
                 PathInfo.Name = m_PathName.text;
             });
+            m_Fly.onChanged.Add(() =>
+            {
+                PathInfo.FlyPath = !PathInfo.FlyPath;
+                UI_MapBuilder.Instance.m_PathPage.FreshPoints();
+            });
         }
         public void SetInfo(PathInfo pathInfo)
         {
             PathInfo = pathInfo;
             m_PathName.text = PathInfo.Name;
+            m_Fly.selected = !pathInfo.FlyPath;
         }
     }
 }

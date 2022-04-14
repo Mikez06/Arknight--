@@ -24,7 +24,6 @@ public class UnitData : IConfig
       public int ResetTimeEx;
       public float MinDamageRate;
       public float AttackGap;
-      public float AttackRange;
       public int Weight;
       public float Speed;
       public int BuildCountCost;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4765037094171782577}
   - component: {fileID: 1315439935664493549}
   - component: {fileID: 6782485354889841197}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: HighLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4722431392143954208}
   - {fileID: 5178882863548162027}
@@ -72,7 +73,7 @@ GameObject:
   - component: {fileID: 6374192449701853804}
   - component: {fileID: 7611343966404296154}
   - component: {fileID: 3541409014387697454}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,8 +88,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3188115482646024368}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.00001, z: 0}
+  m_LocalPosition: {x: 0, y: 0.004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4765037094171782577}
   m_RootOrder: 1
@@ -112,6 +114,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -168,7 +171,7 @@ GameObject:
   - component: {fileID: 2297001904475344891}
   - component: {fileID: 7978085960990096334}
   - component: {fileID: 8618695226914427258}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Quad (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,6 +188,7 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4765037094171782577}
   m_RootOrder: 0
@@ -208,6 +212,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1

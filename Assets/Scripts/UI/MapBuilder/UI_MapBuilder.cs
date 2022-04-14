@@ -88,15 +88,38 @@ namespace MapBuilderUI
                 }
                 m_MidPage.UpdatePoints();
             });
+            m_yes.onClick.Add(() => ovTcs.SetResult(true));
+            m_no.onClick.Add(() => ovTcs.SetResult(false));
 
-            m_save.onClick.Add(() =>
+            m_save.onClick.Add(async () =>
             {
                 check();
+                if (SaveHelper.ExistFile(m_StartPage.m_FileName.text))
+                {
+                    var result = await ShowCancelWindow();
+                    if (!result) return;
+                }
                 SaveHelper.Save(JsonHelper.ToJson(MapInfo), "/Map/" + m_StartPage.m_FileName.text + ".map");
                 Database.Instance.Maps.Remove(m_StartPage.m_FileName.text);
                 Database.Instance.Maps.Add(m_StartPage.m_FileName.text, MapInfo);
                 m_saveSuccess.Play();
             });
+            m_StartPage.m_quickLoad.onChanged.Add(() =>
+            {
+                m_StartPage.m_FileName.text = m_StartPage.m_quickLoad.text;
+                m_StartPage.m_load.onClick.Call();
+            });
+        }
+
+        TaskCompletionSource<bool> ovTcs;
+        async Task<bool> ShowCancelWindow()
+        {
+            m_sure2.selectedIndex = 1;
+            m_mapName2.text = m_StartPage.m_FileName.text;
+            ovTcs = new TaskCompletionSource<bool>();
+            var result = await ovTcs.Task;
+            m_sure2.selectedIndex = 0;
+            return result;
         }
 
         void changeCamera()
@@ -143,6 +166,8 @@ namespace MapBuilderUI
             };
             m_state.selectedIndex = 0;
             m_StartPage.Fresh();
+
+            m_StartPage.m_quickLoad.items = m_StartPage.m_quickLoad.values = Database.Instance.GetMaps().ToArray();
         }
 
         void check()
@@ -159,6 +184,8 @@ namespace MapBuilderUI
         void goMain()
         {
             if (m_state.selectedIndex == 6) MapManager.Instance.EndBrush();
+            m_PathPage.NowPoints = null;
+            m_PathPage.NowSelect = null;
             if (string.IsNullOrEmpty(scene))
             {
                 m_state.selectedIndex = 2;

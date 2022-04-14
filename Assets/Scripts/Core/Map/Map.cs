@@ -88,6 +88,7 @@ public class Map
     {
         useGraphRaycasting = true,
         useRaycasting = false,
+        thickRaycastRadius=0.25f
     };
     public List<Vector3> FindPath(Vector3 start, Vector3 end,bool raycastModify)
     {

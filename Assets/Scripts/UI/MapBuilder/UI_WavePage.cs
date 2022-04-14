@@ -98,7 +98,7 @@ namespace MapBuilderUI
             {
                 var p = MapInfo.PathInfos.Find(x => x.Name == NowSelect.Path);
                 if (p != null)
-                    MapManager.Instance.ShowPath(p.Path);
+                    MapManager.Instance.ShowPath(p.Path, p.FlyPath);
                 else
                     MapManager.Instance.ShowPath(null);
             }

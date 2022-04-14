@@ -56,7 +56,7 @@ namespace Bullets
                 TriggerTime.Set(BulletData.Data.GetFloat("Trigger"));
             if (TriggerTime.Update(SystemConfig.DeltaTime))
                 DamagedUnits.Clear();
-            var targets = Battle.FindAll(Position, radius, Skill.SkillData.TargetTeam);
+            var targets = Battle.FindAll(Position.ToV2(), radius, Skill.SkillData.TargetTeam);
             foreach (var t in targets)
             {
                 if (!DamagedUnits.Contains(t))

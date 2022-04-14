@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080">
-  <controller name="selectEnemy" pages="0,,1," selected="1"/>
+  <controller name="selectEnemy" pages="0,,1," selected="0"/>
   <controller name="Hide" pages="0,,1," selected="0"/>
   <displayList>
-    <graph id="n19_dy0m" name="n19" xy="8,82" size="761,961" type="rect" fillColor="#ffcccccc">
+    <graph id="n19_dy0m" name="n19" xy="8,82" size="888,961" type="rect" fillColor="#ffcccccc">
       <gearDisplay controller="Hide" pages="0"/>
     </graph>
-    <list id="n0_q2un" name="wavwList" xy="13,89" size="748,943" overflow="scroll" lineGap="10" defaultItem="ui://wof4wytzq2unb">
+    <list id="n0_q2un" name="wavwList" xy="13,89" size="880,943" overflow="scroll" lineGap="10" defaultItem="ui://wof4wytzq2unb">
       <gearDisplay controller="Hide" pages="0"/>
       <item/>
       <item/>

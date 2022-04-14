@@ -8,6 +8,7 @@ namespace MapBuilderUI
     public partial class UI_PathInfo : GButton
     {
         public GTextInput m_PathName;
+        public GButton m_Fly;
         public const string URL = "ui://wof4wytzei157";
 
         public static UI_PathInfo CreateInstance()
@@ -20,6 +21,7 @@ namespace MapBuilderUI
             base.ConstructFromXML(xml);
 
             m_PathName = (GTextInput)GetChildAt(2);
+            m_Fly = (GButton)GetChildAt(5);
             Init();
         }
         partial void Init();

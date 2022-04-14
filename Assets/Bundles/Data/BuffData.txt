@@ -64,7 +64,7 @@
 {"Id":"投降","Type":"缴械","LastingEffect":40}
 {"Id":"已复活标记","Type":"普通Buff"}
 {"Id":"源石地板buff","Type":"数值变化","LastingEffect":29,"Data":{"t":["AttackRate","AgiAdd"]}}
-{"Id":"源石地板毒素","Type":"中毒","LastTime":3,"Data":{"FarAttackUnitRate":1,"DamageType":"Real","TriggerTime":0.2}}
+{"Id":"源石地板毒素","Type":"中毒","UnSourceCheck":1,"LastTime":3,"Data":{"FarAttackUnitRate":1,"DamageType":"Real","TriggerTime":0.2}}
 {"Id":"合约破坏武装","Type":"数值变化","Data":{"t":["HpRateFin","AttackRateFin","MagicDefenceAddFin","WeightAdd"]}}
 {"Id":"防御提升加图标","Type":"数值变化","LastingEffect":37,"LastTime":0.01,"Data":{"t":["DefenceAdd"]}}
 {"Id":"防御提升图标","Type":"数值变化","LastingEffect":37,"LastTime":0.01,"Data":{"t":["DefenceRate"]}}
@@ -199,4 +199,6 @@
 {"Id":"塞雷娅充能服buff","Type":"数值变化叠加","LastingEffect":151,"Data":{"t":["AttackRate","DefenceRate"]}}
 {"Id":"塞雷娅钙质化buff","Type":"数值变化","LastingEffect":155,"Data":{"t":["MagicDamageReceiveRate","SpeedRate"]}}
 {"Id":"塞雷娅钙质化自身特效","Type":"普通Buff","LastingEffect":157}
+{"Id":"酸液减甲","Type":"数值变化叠加","LastingEffect":37,"Data":{"t":["DefenceAdd"]}}
 {"Id":"弑君者闪现动作","Type":"覆盖动作","LastTime":5,"Data":{"IdleAnimation":["Appear"],"AllOverWrite":true}}
+{"Id":"御4加防","Type":"数值变化","LastingEffect":38,"LastTime":0.01,"Data":{"t":["DefenceAdd"]}}

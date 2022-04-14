@@ -157,13 +157,17 @@ public class Battle
             }
         }
         Waves.Sort((x, y) => Math.Sign(x.Time - y.Time));
-        EnemyCount = Waves.Where(x => x.WaveData.sUnitId != null).Count();
+        EnemyCount = Waves.Where(x => x.WaveData.sUnitId != null).Count() + CheckPointWaves.Where(x => x.WaveData.sUnitId != null).Count();
+
+        checkSceneUnit();
 
         //这里刷新下单位状态，有些开场附加数据需要刷新
         foreach (var unit in PlayerUnits)
         {
             unit.Refresh();
         }
+
+        AstarPath.active.Scan();
     }
 
     public void Update()
@@ -189,7 +193,7 @@ public class Battle
         for (int i = CheckPointWaves.Count-1; i >= 0; i--)
         {
             OneWave checkPointWave = CheckPointWaves[i];
-            if (CheckPoints.Count >= checkPointWave.WaveData.CheckPoint && (Tick - CheckPoints[checkPointWave.WaveData.CheckPoint]) * SystemConfig.DeltaTime > checkPointWave.Time)
+            if (CheckPoints.Count >= checkPointWave.WaveData.CheckPoint && (Tick - CheckPoints[checkPointWave.WaveData.CheckPoint - 1]) * SystemConfig.DeltaTime > checkPointWave.Time)
             {
                 CheckPointWaves.RemoveAt(i);
                 createWave(checkPointWave);
@@ -235,10 +239,14 @@ public class Battle
 
     void checkSceneUnit()
     {
-        while (SceneUnits.Count > 0 && SceneUnits[0].Time <= WaveTick * SystemConfig.DeltaTime && (SceneUnits[0].Tag == WaveTag || string.IsNullOrEmpty(SceneUnits[0].Tag)))
+        for (int i = SceneUnits.Count - 1; i >= 0; i--)
         {
-            CreateSceneUnit(SceneUnits[0].Id, SceneUnits[0].Pos, SceneUnits[0].Direction);
-            SceneUnits.RemoveAt(0);
+            var unit = SceneUnits[i];
+            if (unit.Time <= WaveTick * SystemConfig.DeltaTime && (unit.Tag == WaveTag || string.IsNullOrEmpty(SceneUnits[0].Tag)))
+            {
+                CreateSceneUnit(unit.Id, unit.Pos, unit.Direction);
+                SceneUnits.RemoveAt(i);
+            }
         }
     }
 

@@ -52,8 +52,18 @@ public class SpineImportEditor
             }
             else if (data.FindAnimation("Move") != null)
             {
-                sb.Append("Run_Loop\r\n");
-                dic.Add(name, "Run_Loop");
+                sb.Append("Move\r\n");
+                dic.Add(name, "Move");
+            }
+            else if (data.FindAnimation("Move_A") != null)
+            {
+                sb.Append("Move_A\r\n");
+                dic.Add(name, "Move_A");
+            }
+            else if (data.FindAnimation("Move_1") != null)
+            {
+                sb.Append("Move_1\r\n");
+                dic.Add(name, "Move_1");
             }
             else if (data.FindAnimation("Move_Loop") != null)
             {
@@ -74,7 +84,7 @@ public class SpineImportEditor
             reader = ExcelReaderFactory.CreateReader(file);
             var sheet = reader.AsDataSet().Tables["UnitData"];
             Debug.LogWarning(sheet.Rows[1][62]);
-            for (int i = 167; i < 666; i++)
+            for (int i = 167; i < 638; i++)
             {
                 if (dic.ContainsKey((string)sheet.Rows[i][0]))
                 {
@@ -106,7 +116,7 @@ public class SpineImportEditor
             string assetPath = "Assets" + item.FullName.Substring(Application.dataPath.Length);
             string name = item.Name.Substring(0, item.Name.IndexOf("_SkeletonData.asset"));
             bool front = item.FullName.Contains("\\front\\");
-            bool enemy = true; //item.FullName.Contains("\\Enemy\\");
+            bool enemy = item.FullName.Contains("\\Enemy\\");
             //EditorUtility.DisplayProgressBar("Create unit spine prefab", name, (float)index++ / files.Length);
 
             string materialPath = assetPath.Replace("SkeletonData.asset", "Material.mat");
@@ -115,11 +125,11 @@ public class SpineImportEditor
             material.SetFloat("_angle", 60);
             
             var dataAsset = AssetDatabase.LoadAssetAtPath<SkeletonDataAsset>(Path.Combine(assetPath));
-            if (dataAsset.scale == 0.01f)
-            {
-                dataAsset.scale = 0.003f; 
+            //if (dataAsset.scale == 0.01f)
+            //{
+                dataAsset.scale = 0.003f * 0.9f; 
                 EditorUtility.SetDirty(dataAsset);
-            }
+            //}
             //dataAsset.
             if (dataAsset.atlasAssets == null || dataAsset.atlasAssets.Length == 0)
             {

@@ -67,6 +67,7 @@ namespace MapBuilderUI
             {
                 var pathUI = x.data as UI_PathPoint;
                 NowPoints = pathUI.PathPoint;
+                MapManager.Instance.ShowPath(NowSelect.Path, NowSelect.FlyPath);
             });
             m_AddPoint.onClick.Add(AddPoint);
             m_InsertPoint.onClick.Add(InsertPoint);
@@ -103,7 +104,7 @@ namespace MapBuilderUI
                 pathPointUI.SetInfo(pointInfo);
                 pathPointUI.selected = pointInfo == NowPoints;
             }
-            MapManager.Instance.ShowPath(NowSelect.Path);
+            MapManager.Instance.ShowPath(NowSelect.Path, NowSelect.FlyPath);
         }
 
         async void AddPoint()

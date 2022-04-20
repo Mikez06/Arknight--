@@ -26,11 +26,14 @@ namespace Skills
             var X = Unit.GridPos.x;
             var Y = Unit.GridPos.y;
             if (target.Position.x <  X - 0.5f || target.Position.x > X + 0.5f || target.Position.z < Y - 0.5f || target.Position.z > Y + 0.5f) return;
-            if (target.Alive())
+            if (target.Start.Finished())
             {
-                target.DoDie(this);
+                if (target.Alive())
+                {
+                    target.DoDie(this);
+                }
+                target.Position.y -= DropSpeed * SystemConfig.DeltaTime;
             }
-            target.Position.y -= DropSpeed * SystemConfig.DeltaTime;
             target.unbalance = false;
         }
     }

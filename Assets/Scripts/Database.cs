@@ -132,7 +132,12 @@ public class Database
     private void Add<T>(string name) where T : IConfig
     {
 #if UNITY_EDITOR
-        var text = UnityEditor.AssetDatabase.LoadAssetAtPath<TextAsset>(PathHelper.DataPath + name + ".txt").text;
+        var text = SaveHelper.LoadFile("/Data/" + name + ".txt"); 
+        if (string.IsNullOrEmpty(text))
+        {
+            Debug.Log(name + "load from address");
+            text = UnityEditor.AssetDatabase.LoadAssetAtPath<TextAsset>(PathHelper.DataPath + name + ".txt").text;
+        }
         var arr = text.Split('\n');
         IConfig[] values = new IConfig[arr.Length];
         for (int i = 0; i < arr.Length; i++)
@@ -152,10 +157,17 @@ public class Database
 
     private async Task AddAsync<T>(string name) where T : IConfig
     {
-        var operation = Addressables.LoadAssetAsync<TextAsset>(PathHelper.DataPath + name);
-        //var text= operation.WaitForCompletion().text;
-        await operation.Task;
-        var text = operation.Result.text;
+        string text;
+        text = SaveHelper.LoadFile("/Data/" + name + ".txt");
+        if (string.IsNullOrEmpty(text))
+        {
+            Debug.Log(name + "load from address");
+            var operation = Addressables.LoadAssetAsync<TextAsset>(PathHelper.DataPath + name);
+            //var text= operation.WaitForCompletion().text;
+            await operation.Task;
+            text = operation.Result.text;
+            Addressables.ReleaseInstance(operation);
+        }
         if (string.IsNullOrEmpty(text)) return;
         var arr = text.Split('\n');
         IConfig[] values = new IConfig[arr.Length];
@@ -172,7 +184,6 @@ public class Database
             }
         }
         //Debug.Log(Time.time);
-        Addressables.ReleaseInstance(operation);
         dic.Add(typeof(T), values);
     }
     public Dictionary<string, MapInfo> Maps = new Dictionary<string, MapInfo>();

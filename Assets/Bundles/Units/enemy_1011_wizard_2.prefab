@@ -193,7 +193,8 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials: []
+  m_Materials:
+  - {fileID: 2100000, guid: 5acf37e931e36aa45a7e8e0c5645a47f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -228,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: a2c315b07d998d143b90aa086955224f, type: 2}
-  initialSkinName: default
+  initialSkinName: Wizard
   separatorSlotNames: []
   zSpacing: 0
   renderMeshes: 1

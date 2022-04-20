@@ -37,6 +37,7 @@ public class BuildEditor
         //SetIndependentBundleAndAtlas("Assets/Bundles/Independent");
 
         SetAssetMark(PathHelper.DataPath, null);
+        SetAssetMark(PathHelper.AudioPath, null);
 
         SetAssetMark(PathHelper.UnitPath, null);
 

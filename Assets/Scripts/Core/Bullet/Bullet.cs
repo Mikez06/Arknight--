@@ -49,5 +49,12 @@ public class Bullet
         }
         //GameObject.Destroy(BulletModel.gameObject);
     }
+    public Vector3 GetTargetPos(Unit target)
+    {
+        if (BulletData.EffectBase == 0)
+            return target.GetHitPoint();
+        else
+            return target.UnitModel.transform.position;
+    }
 }
 

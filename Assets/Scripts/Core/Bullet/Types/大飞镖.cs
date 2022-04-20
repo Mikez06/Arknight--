@@ -16,13 +16,13 @@ namespace Bullets
         CountDown TriggerTime = new CountDown();
         float radius;
 
-        float moveHeight;//0:直线 1:抛物线
+        float moveHeight;//0:直线 1:抛物线 2.瞬移
         float tickTime;
         public override void Init()
         {
             base.Init();
             if (Target.Alive())
-                TargetPos = Target.GetHitPoint();
+                TargetPos = GetTargetPos(Target);
             moveHeight = BulletData.Data.GetFloat("MoveHeight");
             LifeTime = new CountDown(BulletData.Data.GetFloat("LifeTime"));
             radius = BulletData.Data.GetFloat("Radius");
@@ -38,7 +38,7 @@ namespace Bullets
         {
             tickTime += SystemConfig.DeltaTime;
             if (Target.Alive())
-                TargetPos = Target.GetHitPoint();
+                TargetPos = GetTargetPos(Target);
             if (!arrive)
             {
                 if (moveHeight == 0)
@@ -73,20 +73,21 @@ namespace Bullets
 
         Vector3 getPosOfTime(float time)
         {
-            Vector3 Postion;
+            Vector3 position = Vector3.zero;
             float totalTime = (TargetPos - StartPosition).magnitude / BulletData.Speed;
             if (time > totalTime)
             {
-                Position = TargetPos;
+                position = TargetPos;
                 arrive = true;
             }
-            Postion = StartPosition + (TargetPos - StartPosition) * (time / totalTime);
+            else
+                position = StartPosition + (TargetPos - StartPosition) * (time / totalTime);
             if (moveHeight > 0)
             {
                 float t = time / totalTime;
-                Postion.y += (-5 * t * t + 5 * t) * moveHeight;
+                position.y += (-5 * t * t + 5 * t) * moveHeight;
             }
-            return Postion;
+            return position;
         }
     }
 }

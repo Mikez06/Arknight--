@@ -9,12 +9,14 @@ public class SkillData : IConfig
       public SkillReadyEnum ReadyType;
       public SkillUseTypeEnum UseType;
       public TriggerEnum Trigger;
+      public int SkillCost;
       public int MaxUseCount;
       public int[] EnableBuff;
       public int[] DisableBuff;
       public int[] TargetEnableBuff;
       public int[] TargetDisableBuff;
       public bool OpenDisable;
+      public float SelfHpLess;
       public float TargetHpLess;
       public float TargetHpMore;
       public bool AutoUse;
@@ -50,6 +52,7 @@ public class SkillData : IConfig
       public int BurstCount;
       public float BurstDelay;
       public bool BurstFind;
+      public UnityEngine.Vector2Int[] AreaPoints;
       public float AreaRange;
       public float AreaMainDamage;
       public float AreaDamage;
@@ -65,6 +68,7 @@ public class SkillData : IConfig
       public float MaxPower;
       public int PowerCount;
       public PowerRecoverTypeEnum PowerType;
+      public bool PowerStopNeed;
       public PowerRecoverTypeEnum PowerUseType;
       public string[] ModelAnimation;
       public float? AnimationTime;

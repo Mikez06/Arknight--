@@ -76,6 +76,10 @@ public class Effect : MonoBehaviour
             transform.GetChild(0).gameObject.SetActive(true);
         }
         BoneFollower.boneName = (forward ? "F_" : "B_") + EffectData.BindPoint;
+        if (PlayerUnitModel.SkeletonAnimation.skeleton.FindBone(BoneFollower.boneName) == null)
+        {
+            BoneFollower.boneName = EffectData.BindPoint;
+        }
         var sr = (PlayerUnitModel.SkeletonAnimation).GetComponent<SkeletonRenderer>();
         BoneFollower.SkeletonRenderer = sr;
         transform.SetParent(null);

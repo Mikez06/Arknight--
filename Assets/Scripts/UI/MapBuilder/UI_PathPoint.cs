@@ -24,6 +24,10 @@ namespace MapBuilderUI
             {
                 PathPoint.HideMove = !PathPoint.HideMove;
             });
+            m_X.onChanged.Add(() => { PathPoint.Pos.x = float.Parse(m_X.text); MapManager.Instance.ShowPath(UI_MapBuilder.Instance.m_PathPage.NowSelect.Path, UI_MapBuilder.Instance.m_PathPage.NowSelect.FlyPath); });
+            m_Y.onChanged.Add(() => { PathPoint.Pos.z = float.Parse(m_Y.text); MapManager.Instance.ShowPath(UI_MapBuilder.Instance.m_PathPage.NowSelect.Path, UI_MapBuilder.Instance.m_PathPage.NowSelect.FlyPath); });
+            m_X.onClick.Add((x) => x.StopPropagation());
+            m_Y.onClick.Add((x) => x.StopPropagation());
         }
 
         public void SetInfo(PathPoint pathPoint)

@@ -34,8 +34,8 @@ namespace MainUI
             });
             m_rogue.onClick.Add(() =>
             {
-                //DungeonManager.Instance.PrepareDungeon();
-                //UIManager.Instance.ChangeView<DungeonUI.UI_DungeonStart>(DungeonUI.UI_DungeonStart.URL);
+            //    DungeonManager.Instance.PrepareDungeon();
+            //    UIManager.Instance.ChangeView<DungeonUI.UI_DungeonStart>(DungeonUI.UI_DungeonStart.URL);
             });
             onRightClick.Add(async () =>
             {

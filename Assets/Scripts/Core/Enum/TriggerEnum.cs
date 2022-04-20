@@ -22,4 +22,5 @@ public enum TriggerEnum
     技能结束,
     闪避,
     击中,
+    阻挡,
 }

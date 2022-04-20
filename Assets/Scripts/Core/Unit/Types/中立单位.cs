@@ -33,13 +33,13 @@ namespace Units
                 MainSkill = LearnSkill(UnitData.MainSkill[0], null);
             BattleUI.UI_Battle.Instance.CreateUIUnit(this);
             Agi = 100;
-            Team = 2;
         }
 
         public override void Finish(bool leaveEvent = true)
         {
             base.Finish(leaveEvent);
             Battle.AllUnits.Remove(this);
+            if (Team == 0) Battle.PlayerUnits2.Remove(this);
             BattleUI.UI_Battle.Instance.ReturnUIUnit(this);
             if (Battle.Map.Tiles[GridPos.x, GridPos.y].Unit == this)
                 Battle.Map.Tiles[GridPos.x, GridPos.y].Unit = null;

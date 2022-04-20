@@ -2,6 +2,7 @@
 {"Id":"暴击2","Type":"暴击","Data":{"Chance":0.1,"Rate":2.1,"Chance1":0.3}}
 {"Id":"多重攻击1","Type":"额外目标","Data":{"Chance":0.1,"Count":1}}
 {"Id":"多重攻击2","Type":"额外目标","Data":{"Count":1}}
+{"Id":"多重攻击3","Type":"额外目标","Data":{"Count":2}}
 {"Id":"对空伤害","Type":"对飞行伤害","Data":{"DamageRate":1.5}}
 {"Id":"对空伤害1","Type":"对飞行伤害","Data":{"DamageRate":1.4}}
 {"Id":"破冰1","Type":"对buff伤害","Buff":58,"Data":{"DamageRate":1.5}}

@@ -12,17 +12,50 @@ namespace Buffs
         {
             base.Init();
             var datas = BuffData.Data.GetArray("IdleAnimation");
-            var names = new string[datas.Length];
-            for (int i = 0; i < datas.Length; i++)
+            if (datas != null)
             {
-                names[i] = Convert.ToString(datas[i]);
+                var names = new string[datas.Length];
+                for (int i = 0; i < datas.Length; i++)
+                {
+                    names[i] = Convert.ToString(datas[i]);
+                }
+                if (BuffData.Data.GetBool("AllOverWrite"))
+                {
+                    Unit.OverWriteAnimation = names;
+                }
+                else
+                    Unit.OverWriteIdle = names;
             }
-            if (BuffData.Data.GetBool("AllOverWrite"))
+            var datas1 = BuffData.Data.GetArray("DieAnimation");
+            if (datas1 != null)
             {
-                Unit.OverWriteAnimation = names;
+                var names = new string[datas1.Length];
+                for (int i = 0; i < datas1.Length; i++)
+                {
+                    names[i] = Convert.ToString(datas1[i]);
+                }
+                if (BuffData.Data.GetBool("AllOverWrite"))
+                {
+                    Unit.OverWriteAnimation = names;
+                }
+                else
+                    Unit.OverWriteDie = names;
             }
-            else
-                Unit.OverWriteIdle = names;
+            var datas2 = BuffData.Data.GetArray("MoveAnimation");
+            if (datas2 != null)
+            {
+                var names = new string[datas2.Length];
+                for (int i = 0; i < datas2.Length; i++)
+                {
+                    names[i] = Convert.ToString(datas2[i]);
+                }
+                if (BuffData.Data.GetBool("AllOverWrite"))
+                {
+                    Unit.OverWriteAnimation = names;
+                }
+                else
+                    Unit.OverWriteMove = names;
+            }
             Unit.SetStatus(Unit.State);
         }
 
@@ -31,6 +64,7 @@ namespace Buffs
             base.Finish();
             Unit.OverWriteAnimation = null;
             Unit.OverWriteIdle = null;
+            Unit.OverWriteDie = null;
         }
     }
 }

@@ -85,7 +85,7 @@ public class BattleCamera : MonoBehaviour
         {
             bool canBuild = false;
             RaycastHit hit;
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, 1))
             {
                 var g = BuildUnit.UnitModel.gameObject;
                 var grid = hit.collider.GetComponentInParent<MapGrid>();

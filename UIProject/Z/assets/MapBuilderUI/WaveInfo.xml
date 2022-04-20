@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="888,100" extention="Button">
-  <controller name="button" pages="2,up,3,down" selected="0"/>
+  <controller name="button" pages="2,up,3,down" selected="1"/>
   <displayList>
     <graph id="n52_rj18" name="n52" xy="544,4" size="83,47" type="rect"/>
     <graph id="n46_q2un" name="n46" xy="795,5" size="83,47" type="rect"/>
@@ -29,7 +29,7 @@
         <item title="路径1"/>
       </ComboBox>
     </component>
-    <graph id="n49_q2un" name="n49" xy="0,0" size="728,105" touchable="false" type="rect" lineSize="3" lineColor="#ffffff00" fillColor="#00ffffff">
+    <graph id="n49_q2un" name="n49" xy="0,0" size="888,105" touchable="false" type="rect" lineSize="3" lineColor="#ffffff00" fillColor="#00ffffff">
       <gearDisplay controller="button" pages="3"/>
     </graph>
     <text id="n50_rj18" name="n50" xy="464,13" size="76,34" fontSize="24" text="检查点"/>

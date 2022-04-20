@@ -30,6 +30,7 @@ public class Battle
     Unit RuleUnit;
 
     public List<Units.干员> PlayerUnits = new List<Units.干员>();
+    public List<Unit> PlayerUnits2 = new List<Unit>();
 
     public List<Unit> Enemys = new List<Unit>();
 
@@ -71,11 +72,11 @@ public class Battle
             if (contract.TeamLimit > 0 && TeamLimit > contract.TeamLimit) TeamLimit = contract.TeamLimit;
             if (contract.ProfessionLimit != null) foreach (var p in contract.ProfessionLimit) ProfessionLimit.Add(p);
             var skills = contract.Skills;
-            if (skills!=null)
-            foreach (var skillId in skills)
-            {
+            if (skills != null)
+                foreach (var skillId in skills)
+                {
                     RuleUnit.LearnSkill(skillId, null);
-            }
+                }
         }
 
         Cost = MapData.InitCost;
@@ -166,8 +167,6 @@ public class Battle
         {
             unit.Refresh();
         }
-
-        AstarPath.active.Scan();
     }
 
     public void Update()
@@ -242,7 +241,7 @@ public class Battle
         for (int i = SceneUnits.Count - 1; i >= 0; i--)
         {
             var unit = SceneUnits[i];
-            if (unit.Time <= WaveTick * SystemConfig.DeltaTime && (unit.Tag == WaveTag || string.IsNullOrEmpty(SceneUnits[0].Tag)))
+            if (unit.Time <= WaveTick * SystemConfig.DeltaTime && (unit.Tag == WaveTag || string.IsNullOrEmpty(SceneUnits[i].Tag)))
             {
                 CreateSceneUnit(unit.Id, unit.Pos, unit.Direction);
                 SceneUnits.RemoveAt(i);
@@ -302,6 +301,7 @@ public class Battle
         else
             Map.Tiles[(int)pos.x, (int)pos.z].MidUnit = unit;
         AllUnits.Add(unit);
+        if (unit.Team == 0) PlayerUnits2.Add(unit);
         return unit;
     }
 
@@ -416,6 +416,7 @@ public class Battle
         foreach (var point in points)
         {
             var targetPoint = point;
+            if (targetPoint.x < 0 || targetPoint.y < 0 || targetPoint.x >= Map.Tiles.GetLength(0) || targetPoint.y >= Map.Tiles.GetLength(1)) continue;
             if (team  % 2 == 1)
             {
                 var target = Map.Tiles[targetPoint.x, targetPoint.y].Unit;
@@ -447,6 +448,12 @@ public class Battle
             {
                 if ((unit.Position2 - pos).magnitude < radius + unit.UnitData.Radius
                     ) if ((!aliveOnly || unit.Alive() && (team >> unit.Team) % 2 == 1))
+                        result.Add(unit);
+            }
+            foreach (var unit in PlayerUnits2)
+            {
+                if ((unit.Position2 - pos).magnitude < radius + unit.UnitData.Radius
+                   ) if ((!aliveOnly || unit.Alive() && (team >> unit.Team) % 2 == 1))
                         result.Add(unit);
             }
         }

@@ -90,6 +90,7 @@ namespace BattleUI
 
         public void ReturnUIUnit(Unit unit)
         {
+            if (unit.uiUnit == null) return;
             unit.uiUnit.Unit = null;
             m_Units.RemoveChild(unit.uiUnit);
             UIPool.ReturnObject(unit.uiUnit);

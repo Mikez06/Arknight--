@@ -17,7 +17,7 @@ namespace MapBuilderUI
         partial void Init()
         {
             Instance = this;
-            m_exit.onClick.Add(() => { UIManager.Instance.ChangeView<MainUI.UI_Main>(MainUI.UI_Main.URL); MapManager.Instance?.ShowPath(null); if (m_state.selectedIndex != 0) if (!string.IsNullOrEmpty(scene)) SceneManager.UnloadSceneAsync(scene); else SceneManager.UnloadSceneAsync("MapBuilder"); });
+            m_exit.onClick.Add(() => { UIManager.Instance.ChangeView<MainUI.UI_Main>(MainUI.UI_Main.URL); MapManager.Instance?.ShowPath(null); if (m_state.selectedIndex != 0) if (!string.IsNullOrEmpty(scene)) SceneManager.UnloadSceneAsync(scene); else SceneManager.UnloadSceneAsync("MapBuilder");m_MidPage.Despawn(); });
             m_back.onClick.Add(goMain);
             m_DoPath.onClick.Add(() => { m_state.selectedIndex = 3; AstarPath.active.Scan(); m_PathPage.Fresh(); m_PathPage.FreshPoints(); });
             m_DoUnit.onClick.Add(() => { m_state.selectedIndex = 4; AstarPath.active.Scan(); m_WavePage.Fresh(); });
@@ -37,6 +37,7 @@ namespace MapBuilderUI
                 var info = Database.Instance.GetMap(m_StartPage.m_FileName.text);
                 if (info != null)
                 {
+                    m_MidPage.Despawn();
                     MapInfo = info;
                     if (info.PathInfos == null) info.PathInfos = new List<PathInfo>();
                     if (info.UnitInfos == null) info.UnitInfos = new List<UnitInfo>();
@@ -66,7 +67,7 @@ namespace MapBuilderUI
                     if (MapInfo.GridInfos == null)
                     {
                         MapInfo.GridInfos = new GridInfo[int.Parse(m_StartPage.m_width.text), int.Parse(m_StartPage.m_height.text)];
-                        MapInfo.CameraPos = new Vector3((MapInfo.GridInfos.GetLength(0) - 1) / 2f, 0.6f * MapInfo.GridInfos.GetLength(0), -3.5f + (MapInfo.GridInfos.GetLength(1) - 1) / 3f);
+                        MapInfo.CameraPos = new Vector3((MapInfo.GridInfos.GetLength(0) - 1) / 2f, 0.7f * MapInfo.GridInfos.GetLength(0), -4.5f + (MapInfo.GridInfos.GetLength(1) - 1) / 3f);
 
                         for (int i = 0; i < MapInfo.GridInfos.GetLength(0); i++)
                         {
@@ -77,6 +78,7 @@ namespace MapBuilderUI
                         }
                     }
                     await SceneManager.LoadSceneAsync("MapBuilder", LoadSceneMode.Additive);
+                    SceneManager.SetActiveScene(SceneManager.GetSceneByName("MapBuilder"));
                     changeCamera();
                     MapManager.Instance.Build(MapInfo.GridInfos);
                     goMain();

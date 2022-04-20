@@ -48,7 +48,7 @@ public class MapManager : MonoBehaviour
         if ((choose && Input.GetKeyDown(KeyCode.Mouse0)) || (brush && Input.GetKey(KeyCode.Mouse0) && !FairyGUI.Stage.isTouchOnUI))
         {
             RaycastHit hit;
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit,100,1<<0))
             {
                 var grid = hit.collider.GetComponentInParent<MapGrid>();
                 if (grid != null)

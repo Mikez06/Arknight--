@@ -30,6 +30,7 @@ public class Init : MonoBehaviour
         //ModifyManager.Instance.Init();
         GameData.Instance.TestInit();
         //Debug.Log(Database.Instance.Get<UnitData>(0).Id);
+        AudioManager.Instance.PlayBackgroundAudio("main");
         var battleUI = UIManager.Instance.ChangeView<MainUI.UI_Main>(MainUI.UI_Main.URL);
         //StartBattle(new BattleInput()
         //{

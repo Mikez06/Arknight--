@@ -11,6 +11,8 @@ namespace DungeonUI
         public GButton m_Start;
         public UI_StartUnit m_StartUnit;
         public UI_InitUnit m_ChooseWindow;
+        public GButton m_back;
+        public GButton m_home;
         public const string URL = "ui://hgasjns6t5h90";
 
         public static UI_DungeonStart CreateInstance()
@@ -26,6 +28,8 @@ namespace DungeonUI
             m_Start = (GButton)GetChildAt(1);
             m_StartUnit = (UI_StartUnit)GetChildAt(2);
             m_ChooseWindow = (UI_InitUnit)GetChildAt(4);
+            m_back = (GButton)GetChildAt(6);
+            m_home = (GButton)GetChildAt(7);
             Init();
         }
         partial void Init();

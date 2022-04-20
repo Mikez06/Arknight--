@@ -5,7 +5,6 @@ public class UnitData : IConfig
       public bool Test;
       public string Model;
       public float ModelScale;
-      public string Name;
       public string engName;
       public int Upgrade;
       public int Level;
@@ -29,6 +28,8 @@ public class UnitData : IConfig
       public int BuildCountCost;
       public bool NotReturn;
       public int Hatred;
+      public int Team;
+      public string Name;
       public string HitPointName;
       public int[] Skills;
       public int[] MainSkill;
@@ -39,8 +40,10 @@ public class UnitData : IConfig
       public int StopCount;
       public float LeaveReturn;
       public bool NotUseTile;
+      public float HpRecover;
       public bool WithoutCheckCount;
       public int Damage;
+      public int[] IgnoreBuff;
       public float Radius;
       public bool CanStop;
       public float LifeTime;

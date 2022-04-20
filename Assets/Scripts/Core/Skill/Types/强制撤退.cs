@@ -23,6 +23,10 @@ namespace Skills
 
         public override void Update()
         {
+            if (Unit.State == StateEnum.Die)
+            {
+                Dying.Finish();
+            }
             if (Dying.Update(SystemConfig.DeltaTime))
             {
                 Unit.DoDie(this);

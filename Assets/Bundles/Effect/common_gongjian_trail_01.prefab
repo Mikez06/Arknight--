@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8710142302812319933}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: static_offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3836074589431335233}
   m_Father: {fileID: 2670390902030733025}
@@ -41,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5003906702518103212}
   - component: {fileID: 7471487214184967135}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,6 +59,7 @@ Transform:
   m_LocalRotation: {x: -0.00000017881393, y: -0, z: -0, w: -1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3836074589431335233}
   m_RootOrder: 0
@@ -74,6 +76,7 @@ TrailRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -181,7 +184,7 @@ GameObject:
   - component: {fileID: 1574994571219897459}
   - component: {fileID: 1305345731997477125}
   - component: {fileID: 3554427603216992223}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: fixed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,6 +201,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5003906702518103212}
   m_Father: {fileID: 8710142302812319933}
@@ -210,19 +214,19 @@ ParticleSystem:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7527733522426177105}
-  serializedVersion: 7
+  serializedVersion: 8
   lengthInSec: 0.1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 1
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
+  emitterVelocityMode: 0
   looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
-  useRigidbodyForVelocity: 1
   startDelay:
     serializedVersion: 2
     minMaxState: 0
@@ -772,6 +776,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     maxNumParticles: 1000
+    customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -4933,6 +4938,7 @@ ParticleSystemRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -4964,6 +4970,7 @@ ParticleSystemRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_RenderMode: 0
+  m_MeshDistribution: 0
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5
@@ -4987,6 +4994,10 @@ ParticleSystemRenderer:
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
+  m_MeshWeighting: 1
+  m_MeshWeighting1: 1
+  m_MeshWeighting2: 1
+  m_MeshWeighting3: 1
   m_MaskInteraction: 0
 --- !u!33 &3554427603216992223
 MeshFilter:
@@ -5007,7 +5018,7 @@ GameObject:
   - component: {fileID: 2670390902030733025}
   - component: {fileID: -7521203094146003072}
   - component: {fileID: 2871688009127865729}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: common_gongjian_trail_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5024,6 +5035,7 @@ Transform:
   m_LocalRotation: {x: 0.00000011920929, y: -0, z: -0, w: -1}
   m_LocalPosition: {x: 0.248, y: 0.144, z: -0.332}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8710142302812319933}
   m_Father: {fileID: 0}
@@ -5041,6 +5053,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50e41edb0a33b5c4c960c2eca9373202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Id: 0
+  TR: []
 --- !u!114 &2871688009127865729
 MonoBehaviour:
   m_ObjectHideFlags: 0

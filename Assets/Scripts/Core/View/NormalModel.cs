@@ -25,7 +25,7 @@ public class NormalModel : UnitModel
         if (Unit == null) return;
         transform.position = Unit.Position;
         transform.localEulerAngles = new Vector3(0, Vector2.SignedAngle(Unit.Direction, Vector2.right), 0);
-        if (Animator != null)
+        if (Animator != null && Unit.AnimationName != null)
         {
             Animator.Play(Unit.AnimationName[0]);
             Animator.speed = Unit.AnimationSpeed;
@@ -41,6 +41,7 @@ public class NormalModel : UnitModel
     public override float GetAnimationDuration(string animationName)
     {
         var result = Animator.runtimeAnimatorController.animationClips.FirstOrDefault(x => x.name == animationName);
+        if (result == null) return 0;
         return result.length;
     }
 

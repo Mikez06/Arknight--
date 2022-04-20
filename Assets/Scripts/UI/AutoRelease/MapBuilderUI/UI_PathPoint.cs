@@ -7,8 +7,8 @@ namespace MapBuilderUI
 {
     public partial class UI_PathPoint : GButton
     {
-        public GTextField m_X;
-        public GTextField m_Y;
+        public GTextInput m_X;
+        public GTextInput m_Y;
         public GTextInput m_Delay;
         public GButton m_DirectMove;
         public GButton m_HideMove;
@@ -23,8 +23,8 @@ namespace MapBuilderUI
         {
             base.ConstructFromXML(xml);
 
-            m_X = (GTextField)GetChildAt(2);
-            m_Y = (GTextField)GetChildAt(5);
+            m_X = (GTextInput)GetChildAt(2);
+            m_Y = (GTextInput)GetChildAt(5);
             m_Delay = (GTextInput)GetChildAt(8);
             m_DirectMove = (GButton)GetChildAt(10);
             m_HideMove = (GButton)GetChildAt(12);

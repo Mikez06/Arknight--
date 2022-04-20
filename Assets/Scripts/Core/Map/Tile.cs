@@ -20,10 +20,6 @@ public class Tile
     /// 远程格子
     /// </summary>
     public bool FarAttackGrid;
-    /// <summary>
-    /// 能否移动
-    /// </summary>
-    public bool CanMove;
 
     public Unit Unit;
     public Unit MidUnit;
@@ -51,7 +47,6 @@ public class Tile
         this.Y = mapGrid.Y;
         this.CanBuildUnit = mapGrid.CanBuildUnit;
         this.FarAttackGrid = mapGrid.FarAttackGrid;
-        this.CanMove = mapGrid.CanMove;
         this.Tag = mapGrid.Tag;
     }
 

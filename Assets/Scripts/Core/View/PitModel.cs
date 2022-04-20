@@ -23,7 +23,7 @@ public class PitModel : UnitModel
         {
             var t = BattleManager.Instance.Battle.Map.Tiles[unit.GridPos.x, unit.GridPos.y].MapGrid.transform;
             t.GetComponentInChildren<MeshRenderer>().enabled = false;
-            t.GetComponentInChildren<BoxCollider>().enabled = false;
+            t.GetComponentInChildren<BoxCollider>().center = new Vector3(0, -0.3f, 0);
         }
     }
 }

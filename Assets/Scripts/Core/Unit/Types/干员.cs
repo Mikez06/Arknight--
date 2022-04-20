@@ -14,10 +14,6 @@ namespace Units
 
         public DirectionEnum Direction_E;
 
-        public List<敌人> StopUnits = new List<敌人>();
-
-        public CountDown Start = new CountDown();//入场
-
         public CountDown Reseting = new CountDown();
 
         /// <summary>
@@ -35,8 +31,6 @@ namespace Units
         /// 建造次数
         /// </summary>
         public int BuildTime;
-        public int StopCount;
-        public float StopCountAdd;
 
         public float Cost;
         public float CostBase, CostAdd;
@@ -62,9 +56,7 @@ namespace Units
         {
             CostAdd = 0;
             ResetTimeAdd = ResetTimeRate = 0;
-            StopCountAdd = 0;
             base.Refresh();
-            StopCount = UnitData.StopCount + (int)StopCountAdd;
             Cost = CostBase + CostAdd;
             ResetTime = (ResetTimeBase + ResetTimeAdd) * (1 + ResetTimeRate);
 
@@ -181,7 +173,7 @@ namespace Units
 
         public bool CanBuild()
         {
-            return GetCost() <= Battle.Cost && Reseting.Finished();
+            return GetCost() <= Battle.Cost && Reseting.Finished() && (Battle.BuildCount > 0 || UnitData.BuildCountCost <= 0);
         }
 
         public void JoinMap()
@@ -252,11 +244,6 @@ namespace Units
             Reseting.Set(ResetTime);
             BuildTime++;
             Battle.BuildCount += UnitData.BuildCountCost;
-            foreach (var unit in StopUnits)
-            {
-                unit.StopUnit = null;
-            }
-            StopUnits.Clear();
             if (UnitData.NotReturn)//消耗品
             {
                 Battle.PlayerUnits.Remove(this);
@@ -330,28 +317,6 @@ namespace Units
                 unit.StopUnit = null;
             }
             StopUnits.Clear();
-        }
-
-        public void AddStop(Units.敌人 target)
-        {
-            StopUnits.Add(target);
-            target.StopUnit = this;
-        }
-
-        public void RemoveStop(Units.敌人 target)
-        {
-            StopUnits.Remove(target);
-            target.StopUnit = null;
-        }
-
-        public bool CanStop(Units.敌人 target)
-        {
-            if (!CanStopOther) return false;
-            if (target.UnStopped) return false;
-            if (StopUnits.Contains(target)) return true;
-            if (target.StopUnit != null) return false;
-            if (NowGrid.FarAttackGrid) return false;
-            return StopUnits.Count < StopCount;
         }
 
         public override float Hatred()

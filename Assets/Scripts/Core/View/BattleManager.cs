@@ -48,6 +48,7 @@ public class BattleManager : MonoBehaviour
 
     public async Task StartBattle(BattleInput battleConfig)
     {
+        Pause = true;
         battleTcs = new TaskCompletionSource<bool>();
         var mapInfo = Database.Instance.GetMap(battleConfig.MapName);
         var sceneName = mapInfo.Scene;
@@ -67,9 +68,13 @@ public class BattleManager : MonoBehaviour
         }
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
         var battleUI = UIManager.Instance.ChangeView<BattleUI.UI_Battle>(BattleUI.UI_Battle.URL);
+        AudioManager.Instance.PlayBackgroundAudio("battle");
         await TimeHelper.Instance.WaitAsync(0.5f);
         Battle = new Battle();
         Battle.Init(battleConfig);
+        await TimeHelper.Instance.WaitAsync(0.1f);
+        AstarPath.active.Scan();
+        Pause = false;
         battleUI.SetBattle(Battle);
         ExcuteTime = 0;
         await battleTcs.Task;
@@ -85,6 +90,7 @@ public class BattleManager : MonoBehaviour
         }
         EffectManager.Instance.ReturnAll();
         BulletManager.Instance.ReturnAll();
+        AudioManager.Instance.PlayBackgroundAudio("main");
         //var path = Battle.Map.FindPath(Battle.Map.Grids[1, 3], Battle.Map.Grids[8, 1]);
         //foreach (var grid in path)
         //{

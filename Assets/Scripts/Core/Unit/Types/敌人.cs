@@ -19,7 +19,7 @@ namespace Units
     public class 敌人 : Unit
     {
         public const float StopExCheck = 0.29f, TempArriveDistance = 0.1f;
-        public 干员 StopUnit;
+        public Unit StopUnit;
 
         public WaveInfo WaveData;//=> Database.Instance.Get<WaveData>(WaveId);
         //public int WaveId;
@@ -39,19 +39,39 @@ namespace Units
 
         public bool Visiable = true;
         public bool UnStopped;
+        public int StopCost;
 
         public override void Init()
         {
             base.Init();
-            Team = 1;
+            StopCost = 1;
+            if (UnitData.StopCount != 0) StopCost = UnitData.StopCount;
             PathPoints = Battle.MapData.PathInfos.Find(x => x.Name == WaveData.Path).Path; //PathManager.Instance.GetPath(WaveData.Path);
             Position = GetPoint(0);
             PathWaiting.Set(PathPoints[0].Delay);
 
-            findNewPath();
+            //findNewPath();
             ScaleX = TargetScaleX = (GetPoint(NowPathPoint + 1).x - Position.x) > 0 ? 1 : -1;
             SetStatus(StateEnum.Idle);
             BattleUI.UI_Battle.Instance.CreateUIUnit(this);
+
+            hideBase = true;
+            Start.Set(UnitModel.GetAnimationDuration("Start"));
+            if (Start.Finished()) StartEnd();
+            else
+                SetStatus(StateEnum.Start);
+        }
+
+        public void StartEnd()
+        {
+            hideBase = false;
+            SetStatus(StateEnum.Idle);
+            Battle.TriggerDatas.Push(new TriggerData()
+            {
+                Target = this,
+            });
+            Trigger(TriggerEnum.落地);
+            Battle.TriggerDatas.Pop();
         }
 
         public override void Finish(bool leaveEvent = true)
@@ -80,6 +100,15 @@ namespace Units
 
         public override void UpdateAction()
         {
+            if (!Start.Finished() && State != StateEnum.Die)
+            {
+                if (Start.Update(SystemConfig.DeltaTime))
+                {
+                    StartEnd();
+                }
+                return;
+            }
+            if (State == StateEnum.Default) return;
             if (!Visiable) if (PathWaiting.Update(SystemConfig.DeltaTime)) finishHide();
             if (!Visiable) return;
             base.UpdateAction();
@@ -121,11 +150,19 @@ namespace Units
             if (UnitData.Height > 0) return;//飞行单位无法被阻挡
             if (StopUnit != null) return;
             //虽然不知道为啥，但是判断阻挡时和目标不是相切的,加上一个默认的缓冲值
-            var blockUnits = Battle.FindAll(Position2, UnitData.Radius + StopExCheck, 1).Select(x => x as Units.干员).Where(x => (x as Units.干员).CanStop(this)).ToList();
+            var blockUnits = Battle.FindAll(Position2, UnitData.Radius + StopExCheck, 1).Where(x => x.CanStop(this)).ToList();
             blockUnits.OrderBy(x => (x.Position2 - Position2).magnitude);
             if (blockUnits.Count > 0)
             {
                 blockUnits[0].AddStop(this);
+
+                Battle.TriggerDatas.Push(new TriggerData()
+                {
+                    User = blockUnits[0],
+                    Target = this,
+                });
+                Trigger(TriggerEnum.阻挡);
+                Battle.TriggerDatas.Pop();
             }
         }
 
@@ -136,10 +173,10 @@ namespace Units
             if ((TempTarget - Position).magnitude < TempArriveDistance)
             {
                 TempIndex++;
-                if (TempIndex == TempPath.Count - 1) 
+                if (TempIndex == TempPath.Count - 1)
                 {
                     NowPathPoint++;
-                    if (NowPathPoint != PathPoints.Count-1)//抵达临时目标点，如果该目标点不是终点,重新找去下一个点的路
+                    if (NowPathPoint != PathPoints.Count - 1)//抵达临时目标点，如果该目标点不是终点,重新找去下一个点的路
                     {
                         PathWaiting.Set(PathPoints[NowPathPoint].Delay);
                         if (PathPoints[NowPathPoint].HideMove)
@@ -236,7 +273,7 @@ namespace Units
         {
             if (!PathWaiting.Finished())
             {
-                if (AnimationName == UnitData.MoveAnimation) SetStatus(StateEnum.Idle);
+                if (AnimationName == GetMoveAnimation()) SetStatus(StateEnum.Idle);
                 PathWaiting.Update(SystemConfig.DeltaTime);
                 return;
             }
@@ -248,21 +285,26 @@ namespace Units
             if (Unbalance || !Visiable) return;//失衡状态下不许主动移动
             if (StopUnit != null)
             {
-                if (AnimationName == UnitData.MoveAnimation)
+                if (AnimationName == GetMoveAnimation())
                 {
                     SetStatus(StateEnum.Idle);
                 }
                 return;//有人阻挡，停止移动
             }
-            AnimationName = UnitData.MoveAnimation;
+            AnimationName = GetMoveAnimation();
             AnimationSpeed = 1;
 
             var delta = TempTarget - Position;
             if (delta != Vector3.zero) Direction = new Vector2(delta.x, delta.z);
             float scaleX;
             if (delta.x > 0) scaleX = 1;
-            else if (delta.x <0) scaleX = -1;
-            else scaleX= TargetScaleX;
+            else if (delta.x < 0) scaleX = -1;
+            else if (NextPoint.x != Position.x)
+            {
+                scaleX = -Math.Sign(NextPoint.x - Position.x);
+            }
+            else
+                scaleX = TargetScaleX;
             if (scaleX != ScaleX)
             {
                 TargetScaleX = scaleX;
@@ -318,6 +360,8 @@ namespace Units
                 TempPath = Battle.Map.FindPath(Position - offset, NextPoint - offset, PathPoints[NowPathPoint].DirectMove);
             else
                 TempPath = new List<Vector3>() { Position - offset, GetPoint(NowPathPoint + 1) - offset };
+            if (TempPath.Count == 0) 
+                TempPath.Add(Position - offset);
             for (int i = 0; i < TempPath.Count; i++)
             {
                 TempPath[i] += offset;
@@ -326,6 +370,7 @@ namespace Units
             //foreach (var p in TempPath) log += p.ToString() + ",";
             //Debug.Log($"Path:{log}");
             TempIndex = 0;
+            NeedResetPath = false;
         }
 
         public void DisplayPath()
@@ -351,11 +396,14 @@ namespace Units
             {
                 result += (GetPoint(i) - GetPoint(i + 1)).magnitude;
             }
-            for (int i = TempIndex + 1; i < TempPath.Count - 1; i++)
+            if (TempPath != null)
             {
-                result += Mathf.Abs(TempPath[i].x - TempPath[i + 1].x)+ Mathf.Abs(TempPath[i].y - TempPath[i + 1].y);
+                for (int i = TempIndex + 1; i < TempPath.Count - 1; i++)
+                {
+                    result += Mathf.Abs(TempPath[i].x - TempPath[i + 1].x) + Mathf.Abs(TempPath[i].y - TempPath[i + 1].y);
+                }
+                result += (Position - TempTarget).magnitude;
             }
-            result += (Position - TempTarget).magnitude;
             return result;
         }
 

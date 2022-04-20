@@ -7,5 +7,6 @@ public class BulletData : IConfig
       public float Speed;
       public int FaceCamera;
       public int ScaleX;
+      public int EffectBase;
       public System.Collections.Generic.Dictionary<string,object> Data;
 }

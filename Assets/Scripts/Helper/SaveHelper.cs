@@ -90,6 +90,9 @@ public class SaveHelper
         sw.Write(str);
         sw.Close();
         txt.Close();
+#if UNITY_EDITOR
+        UnityEditor.AssetDatabase.Refresh();
+#endif
         return dir + fileName;
     }
 }

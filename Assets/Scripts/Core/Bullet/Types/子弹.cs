@@ -10,7 +10,7 @@ namespace Bullets
         {
             base.Init();
             if (Target!=null&& Target.Alive())
-                TargetPos = Target.GetHitPoint();
+                TargetPos = GetTargetPos(Target);
             moveHeight = BulletData.Data.GetFloat("MoveHeight");
             //Debug.Log("高度:" + moveHeight);
             if (moveHeight == 0 && BulletData.FaceCamera == 2) Direction = TargetPos - this.Position;
@@ -24,7 +24,7 @@ namespace Bullets
         {
             tickTime += SystemConfig.DeltaTime;
             if (Target != null && Target.Alive())
-                TargetPos = Target.GetHitPoint();
+                TargetPos = GetTargetPos(Target);
             if (moveHeight == 0)
             {
                 Position = getPosOfTime(tickTime);

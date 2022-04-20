@@ -12,6 +12,11 @@ namespace DungeonUI
 
         partial void Init()
         {
+            m_back.onClick.Add(() =>
+            {
+                DungeonManager.Instance.Finish();
+                UIManager.Instance.ChangeView<MainUI.UI_Main>(MainUI.UI_Main.URL);
+            });
             m_unselect.onClick.Add(() =>
             {
                 if (m_showInfo.selectedIndex == 1)

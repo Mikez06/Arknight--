@@ -12,6 +12,11 @@ namespace DungeonUI
 
         partial void Init()
         {
+            m_back.onClick.Add(() =>
+            {
+                DungeonManager.Instance.Finish();
+                UIManager.Instance.ChangeView<MainUI.UI_Main>(MainUI.UI_Main.URL);
+            });
             m_ChooseWindow.m_Units.RemoveChildrenToPool();
             foreach (var cardData in Database.Instance.GetAll<CardData>())
             {

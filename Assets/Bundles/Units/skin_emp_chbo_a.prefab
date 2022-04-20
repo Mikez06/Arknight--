@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 89829769900283715, guid: 6db46c746f4f0d84495ff1304137bc84,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100050969620476415, guid: 6db46c746f4f0d84495ff1304137bc84,
         type: 3}
@@ -385,6 +385,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1231569608361822770}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &8829903164746588085
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164261574332620145}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &952555078209793396
 MonoBehaviour:
   m_ObjectHideFlags: 0

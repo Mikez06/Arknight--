@@ -113,46 +113,46 @@ public class Map
     /// <param name="start"></param>
     /// <param name="end"></param>
     /// <returns></returns>
-    public List<Tile> FindPath(Tile start, Tile end)
-    {
-        Queue<Tile> searchGrids = new Queue<Tile>();
-        HashSet<Tile> updateGrids = new HashSet<Tile>();
-        searchGrids.Enqueue(start);
-        updateGrids.Add(start);
-        void tryAdd(Tile pre, int x,int y)
-        {
-            if (x >= 0 && x < Tiles.GetLength(0) && y >= 0 && y < Tiles.GetLength(1))
-            {
-                if (Tiles[x, y].CanMove && !updateGrids.Contains(Tiles[x,y]))
-                {
-                    Tiles[x, y].PreGrid = pre;
-                    searchGrids.Enqueue(Tiles[x, y]);
-                    updateGrids.Add(Tiles[x, y]);
-                }
-            }
-        }
-        while (searchGrids.Count > 0)
-        {
-            var nextGrid = searchGrids.Dequeue();
-            tryAdd(nextGrid, nextGrid.X + 1, nextGrid.Y);
-            tryAdd(nextGrid, nextGrid.X - 1, nextGrid.Y);
-            tryAdd(nextGrid, nextGrid.X, nextGrid.Y + 1);
-            tryAdd(nextGrid, nextGrid.X, nextGrid.Y - 1);
-            if (updateGrids.Contains(end))
-            {
-                List<Tile> result = new List<Tile>();
-                var g = end;
-                result.Add(g);
-                while (g.PreGrid != null)
-                {
-                    result.Add(g.PreGrid);
-                    g = g.PreGrid;
-                }
-                result.Reverse();
-                foreach (var grid in updateGrids) grid.PreGrid = null;
-                return result;
-            }
-        }
-        return null;
-    }
+    //public List<Tile> FindPath(Tile start, Tile end)
+    //{
+    //    Queue<Tile> searchGrids = new Queue<Tile>();
+    //    HashSet<Tile> updateGrids = new HashSet<Tile>();
+    //    searchGrids.Enqueue(start);
+    //    updateGrids.Add(start);
+    //    void tryAdd(Tile pre, int x,int y)
+    //    {
+    //        if (x >= 0 && x < Tiles.GetLength(0) && y >= 0 && y < Tiles.GetLength(1))
+    //        {
+    //            if (Tiles[x, y].CanMove && !updateGrids.Contains(Tiles[x,y]))
+    //            {
+    //                Tiles[x, y].PreGrid = pre;
+    //                searchGrids.Enqueue(Tiles[x, y]);
+    //                updateGrids.Add(Tiles[x, y]);
+    //            }
+    //        }
+    //    }
+    //    while (searchGrids.Count > 0)
+    //    {
+    //        var nextGrid = searchGrids.Dequeue();
+    //        tryAdd(nextGrid, nextGrid.X + 1, nextGrid.Y);
+    //        tryAdd(nextGrid, nextGrid.X - 1, nextGrid.Y);
+    //        tryAdd(nextGrid, nextGrid.X, nextGrid.Y + 1);
+    //        tryAdd(nextGrid, nextGrid.X, nextGrid.Y - 1);
+    //        if (updateGrids.Contains(end))
+    //        {
+    //            List<Tile> result = new List<Tile>();
+    //            var g = end;
+    //            result.Add(g);
+    //            while (g.PreGrid != null)
+    //            {
+    //                result.Add(g.PreGrid);
+    //                g = g.PreGrid;
+    //            }
+    //            result.Reverse();
+    //            foreach (var grid in updateGrids) grid.PreGrid = null;
+    //            return result;
+    //        }
+    //    }
+    //    return null;
+    //}
 }

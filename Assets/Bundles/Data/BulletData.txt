@@ -59,3 +59,8 @@
 {"Id":"暗锁弹道","Type":"子弹","Model":"rope_attack_01_trail","Speed":10,"FaceCamera":2}
 {"Id":"暗锁1弹道","Type":"钩子","Model":"rope_attack_01_trail","Line":"rope_skill_01_line","Speed":10,"FaceCamera":2}
 {"Id":"暗锁2弹道","Type":"钩子","Model":"rope_skill_02_trail","Line":"rope_skill_01_line","Speed":10,"FaceCamera":2}
+{"Id":"暴鸰弹道","Type":"子弹","Model":"meteo_skill_02_trail","Speed":5,"FaceCamera":2}
+{"Id":"炮兵弹道","Type":"子弹","Model":"meteo_skill_02_trail","Speed":5,"FaceCamera":2,"Data":{"MoveHeight":2}}
+{"Id":"浮士德1弹道","Type":"子弹","Model":"bluep_skill_01_trail","Speed":10,"FaceCamera":2}
+{"Id":"浮士德弹道","Type":"子弹","Model":"platnm_attack_01_trail","Speed":10,"FaceCamera":2}
+{"Id":"鼠王龙卷风","Type":"大飞镖","Model":"glassb_skill_02_range1","Speed":999999,"FaceCamera":2,"EffectBase":1,"Data":{"LifeTime":15,"Radius":0.1,"Trigger":1}}

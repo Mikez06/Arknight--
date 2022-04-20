@@ -10,7 +10,9 @@
       <gearXY controller="showInfo" pages="0,2" values="1920,0,1,0|1920,0,1,0" default="1424,0,0.742,0" tween="true" positionsInPercent="true"/>
       <relation target="" sidePair="right-right%"/>
     </component>
-    <text id="n7_voep" name="gold" xy="21,17" size="141,42" fontSize="30" vars="true" text="源石锭：{c=1}"/>
-    <text id="n8_voep" name="hope" xy="21,69" size="111,42" fontSize="30" vars="true" text="希望：{c=1}"/>
+    <text id="n7_voep" name="gold" xy="21,117" size="141,42" fontSize="30" vars="true" text="源石锭：{c=1}"/>
+    <text id="n8_voep" name="hope" xy="21,169" size="111,42" fontSize="30" vars="true" text="希望：{c=1}"/>
+    <component id="n9_k32v" name="back" src="k32v17" fileName="UnitInfo/back.xml" xy="9,10"/>
+    <component id="n10_k32v" name="home" src="k32v19" fileName="UnitInfo/home.xml" xy="232,10"/>
   </displayList>
 </component>

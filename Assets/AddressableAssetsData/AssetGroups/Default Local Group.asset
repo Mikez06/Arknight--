@@ -4205,6 +4205,50 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Units/char_503_rang
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 933ae5c6da2200148a36f91f7f853b4e
+    m_Address: Assets/Bundles/Audio/battle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3ae3e4b5c2fc906469cad0f9e8a4ee02
+    m_Address: Assets/Bundles/Audio/main
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5581488fa80ffab4eb925138cb690159
+    m_Address: Assets/Bundles/Units/enemy_1037_lunsabr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 859b32987a6a2064082f53f3471085b6
+    m_Address: Assets/Bundles/Units/enemy_1043_zomsabr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a0b580c16476b5442a0c9bab6a9e77eb
+    m_Address: Assets/Bundles/Units/enemy_1043_zomsabr_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 841119e1d3e954344b6fce7e36b95683
+    m_Address: Assets/Bundles/Effect/glassb_skill_02_range1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 717f48ab5a2c9b946b61cf0d9ba17452
+    m_Address: Assets/Bundles/Effect/ifrit_skill_03_range1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 006da4814d7fa3b4fa66e27323ebef59
+    m_Address: Assets/Bundles/Effect/buff_cold1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 232496a03de83af4f968df59e565bc1f
+    m_Address: Assets/Bundles/Effect/buff_cold2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a2dbf11e87aab8d47ad3db22f37e49d5
+    m_Address: Assets/Bundles/Data/Maps/OF-1(1)
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ab23bfab1838deb43966ec56bc5e0b41
+    m_Address: Assets/Bundles/UI/DungeonUI_atlas0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

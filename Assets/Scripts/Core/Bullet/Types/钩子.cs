@@ -12,7 +12,7 @@ namespace Bullets
         {
             base.Init();
             if (Target != null && Target.Alive())
-                TargetPos = Target.GetHitPoint();
+                TargetPos = GetTargetPos(Target);
             if (BulletData.FaceCamera == 1) BulletModel.transform.eulerAngles = new Vector3(60, 0, 0);
             float scaleX = 1;
             if (BulletData.ScaleX == 1) scaleX = Target.ScaleX;
@@ -30,13 +30,13 @@ namespace Bullets
         {
             tickTime += SystemConfig.DeltaTime;
             if (Target != null && Target.Alive())
-                TargetPos = Target.GetHitPoint();
+                TargetPos = GetTargetPos(Target);
             //PullLine.SetStart(Skill.Unit.UnitModel.GetPoint(Skill.SkillData.ShootPoint));
             if (arrive)
             {
                 if (pull == null) Finish();
                 else if (pull.Dead) Finish();
-                else PullLine?.SetEnd(Target.GetHitPoint());
+                else PullLine?.SetEnd(GetTargetPos(Target));
             }
             else
             {

@@ -29,6 +29,10 @@
     <component id="gbwm14" name="Reward.xml" path="/Dialougue/"/>
     <component id="gbwm15" name="Recruit.xml" path="/Recruit/" exported="true"/>
     <component id="gbwm16" name="RecruitUnit.xml" path="/Recruit/"/>
+    <component id="k32v17" name="back.xml" path="/UnitInfo/"/>
+    <image id="k32v18" name="退出按钮.png" path="/UnitInfo/"/>
+    <component id="k32v19" name="home.xml" path="/UnitInfo/"/>
+    <image id="k32v1a" name="退到主菜单.png" path="/UnitInfo/"/>
   </resources>
   <publish name="" genCode="true" excluded="gbwm12"/>
 </packageDescription>

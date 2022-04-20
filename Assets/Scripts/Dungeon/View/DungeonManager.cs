@@ -19,10 +19,17 @@ public class DungeonManager : Singleton<DungeonManager>
         Dungeon.StartCard = card;
     }
 
+    public async void Finish()
+    {
+        await SceneManager.UnloadSceneAsync("Dungeon");
+        Dungeon = null;
+    }
+
     public async Task StartDungeon()
     {
         Dungeon.Start();
         await SceneManager.LoadSceneAsync("Dungeon");
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Dungeon"));
         await TimeHelper.Instance.WaitAsync(0.1f);
         Dungeon.RebuildMap(8, 4);
         DungeonBuilder.Instance.ReBuild();

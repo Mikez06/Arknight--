@@ -87,14 +87,19 @@ namespace MapBuilderUI
 
         List<Transform> Points = new List<Transform>();
         Pool<Transform> p = new Pool<Transform>();
-        public void UpdatePoints()
+
+        public void Despawn()
         {
-            //if (!string.IsNullOrEmpty((parent as UI_MapBuilder).scene)) return;
             foreach (var t in Points)
             {
                 this.p.Despawn(t);
             }
             Points.Clear();
+        }
+        public void UpdatePoints()
+        {
+            //if (!string.IsNullOrEmpty((parent as UI_MapBuilder).scene)) return;
+            Despawn();
             foreach (var unitInfo in MapInfo.UnitInfos)
             {
                 var g = p.Spawn(ResHelper.GetAsset<GameObject>(PathHelper.UnitPath + Database.Instance.Get<UnitData>(unitInfo.UnitId).Model).transform, MapManager.Instance.Grids[unitInfo.X, unitInfo.Y].transform.position);

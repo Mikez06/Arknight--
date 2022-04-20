@@ -67,8 +67,9 @@ public class Unit
 
     public float PowerSpeed, PowerSpeedAdd;
 
+    public float HpRecoverP;
     public float HpRecover;
-    public float HpRecoverBase;
+    public float HpRecoverBase, HpRecoverAdd, HpRecoverRate;
 
     public int Team;
 
@@ -84,6 +85,9 @@ public class Unit
     public float AttackRange;
     public float AttackRangeAdd, AttackRangeRate;
 
+    public int StopCount;
+    public float StopCountAdd;
+
     public bool IfHide;
     public bool IfHideAnti;
     protected bool hideBase;
@@ -96,11 +100,13 @@ public class Unit
     public bool IfSleep = false;
     public bool IfSelectable = true;//能否被技能指定为目标
     public bool CanBeHeal = false;
+    public List<int> HealOnly = new List<int>();//绝食状态下，依旧可被这些单位治疗
 
     public float DamageReceiveRate, MagicDamageReceiveRate, HealReceiveRate;
 
     public float PushPower;
 
+    public CountDown Start = new CountDown();//入场
     /// <summary>
     /// 攻击动画
     /// </summary>
@@ -120,6 +126,8 @@ public class Unit
     /// </summary>
     //public CountDown Recover = new CountDown();
 
+    public List<Units.敌人> StopUnits = new List<Units.敌人>();
+
     public bool IfStun;
 
     public float ScaleX = -1;
@@ -128,12 +136,15 @@ public class Unit
     public string[] AnimationName = Unit.DefaultAnimation;
     public string[] OverWriteAnimation;
     public string[] OverWriteIdle;
+    public string[] OverWriteMove;
+    public string[] OverWriteDie;
     public bool CanChangeAnimation = true;
     public float AnimationSpeed = 1;
 
     public virtual void Init()
     {
         baseAttributeInit();
+        Team = UnitData.Team;
         if (UnitData.Skills != null)
             for (int i = 0; i < UnitData.Skills.Length; i++)
             {
@@ -184,7 +195,9 @@ public class Unit
         MagicDefenceAdd = MagicDefenceRate = MagicDefenceAddFin = MagicDefenceRateFin = 0;
         DefenceAdd = DefenceRate = DefenceAddFin = DefenceRateFin = 0;
         AgiAdd = AgiRate = AgiAddFin = AgiRateFin = 0;
-        HpRecoverBase = 0;
+        HpRecoverP = 0;
+        HpRecoverBase = UnitData.HpRecover;
+        HpRecoverAdd = 0;
         WeightAdd = 0;
         AttackGapAdd = AttackGapRate = 0;
         Block = MagBlock = 0;
@@ -195,10 +208,13 @@ public class Unit
         ResistAdd = 0;
         AttackRangeAdd = AttackRangeRate = 0;
         DamageReceiveRate = MagicDamageReceiveRate = HealReceiveRate = 1;
+        StopCountAdd = 0;
+        HpRecoverRate = 0;
         foreach (var buff in Buffs)
         {
             if (buff.Enable()) buff.Apply();
         }
+        StopCount = UnitData.StopCount + (int)StopCountAdd;
         Speed = (SpeedBase + SpeedAdd) * (1 + SpeedRate) / 2;
         if (Speed < 0) Speed = 0;
         MaxHp = ((HpBase + HpAdd) * (1 + HpRate) + HpAddFin) * (1 + HpRateFin);
@@ -210,8 +226,8 @@ public class Unit
         MagicDefence = ((MagicDefenceBase + MagicDefenceAdd) * (1 + MagicDefenceRate) + MagicDefenceAddFin) * (1 + MagicDefenceRateFin);
         if (MagicDefence < 0) MagicDefence = 0;
         if (MagicDefence > 100) MagicDefence = 100;
-        HpRecover = HpRecoverBase;
-        if (HpRecover < 0) HpRecover = 0;
+        HpRecover = (HpRecoverBase + HpRecoverAdd);
+        if (HpRecover > 0) HpRecover = HpRecover * (1 + HpRecoverRate);
         Agi = ((AgiBase + AgiAdd) * (1 + AgiRate) + AgiAddFin) * (1 + AgiRateFin);
         if (Agi < 10f) Agi = 10f;
         Weight = (int)(WeightBase + WeightAdd);
@@ -226,6 +242,7 @@ public class Unit
     public void UpdateBuffs()
     {
         if (!Alive()) return;
+        if (Hp > MaxHp) Hp = MaxHp;
         IfHide = hideBase;
         IfHideAnti = false;
         IfSleep = false;
@@ -252,9 +269,14 @@ public class Unit
     }
     public virtual void UpdateAction()
     {
-        //HP自动回复
-        Hp += HpRecover * MaxHp * SystemConfig.DeltaTime;
-        if (Hp > MaxHp) Hp = MaxHp;
+        if (Alive())
+        {
+            //HP自动回复
+            Hp += HpRecover * SystemConfig.DeltaTime;
+            Hp += HpRecoverP * MaxHp * SystemConfig.DeltaTime;
+            if (Hp > MaxHp) Hp = MaxHp;
+            if (Hp < 0) DoDie(null);
+        }
     }
 
     protected void UpdateDie()
@@ -271,6 +293,9 @@ public class Unit
         CanChangeAnimation = true;
         SetStatus(StateEnum.Die);
         Dying.Set(UnitModel.GetAnimationDuration("Die"));
+
+        var box = UnitModel?.GetComponent<BoxCollider>();
+        if (box != null) box.enabled = false;
 
         Unit sourceUnit = null;
         //根据伤害来源，判断击杀事件
@@ -307,6 +332,11 @@ public class Unit
 
     public virtual void Finish(bool leaveEvent=true)
     {
+        foreach (var unit in StopUnits)
+        {
+            unit.StopUnit = null;
+        }
+        StopUnits.Clear();
         IfAlive = false;
         if (leaveEvent)
         {
@@ -458,6 +488,7 @@ public class Unit
 
     public Buff AddBuff(int buffId,Skill source,int index)
     {
+        if (UnitData.IgnoreBuff != null && UnitData.IgnoreBuff.Contains(buffId)) return null;//免疫对应Buff
         var config = Database.Instance.Get<BuffData>(buffId);
         //权且加上来源判断，因为现在很多buff共用一个id会产生冲突。
         //如果需要处理buff冲突的情况，再修改这里
@@ -482,14 +513,6 @@ public class Unit
             //Refresh();
             return buff;
         }
-    }
-
-    public void AddBuff(Buff buff)
-    {
-        Buffs.Add(buff);
-        if (buff is IShield shield) Shields.Add(shield);
-        buff.Unit = this;
-        //Refresh();
     }
 
     public void RemoveBuff(Buff buff)
@@ -584,23 +607,19 @@ public class Unit
 
     public void SetStatus(StateEnum state)
     {
-        if (State != state)
-        {
-            Debug.Log($"{UnitData.Id}从 {State} 变为 {state}");
-        }
         this.State = state;
         if (CanChangeAnimation)
         {
             if (state == StateEnum.Default)
                 AnimationName = Unit.DefaultAnimation;
             else if (state == StateEnum.Idle)
-                AnimationName = OverWriteIdle == null ? UnitData.IdleAnimation : OverWriteIdle;
+                AnimationName = GetIdleAnimation();
             else if (state == StateEnum.Move)
-                AnimationName = UnitData.MoveAnimation;
+                AnimationName = GetMoveAnimation();
             else if (state == StateEnum.Start)
                 AnimationName = Unit.StartAnimation;
             else if (state == StateEnum.Die)
-                AnimationName = UnitData.DeadAnimation;
+                AnimationName = GetDieAnimation();
             AnimationSpeed = 1;
             if (state == StateEnum.Stun)
             {
@@ -731,6 +750,19 @@ public class Unit
         return OverWriteAnimation == null ? AnimationName : OverWriteAnimation;
     }
 
+    public string[] GetMoveAnimation()
+    {
+        return OverWriteMove == null ? UnitData.MoveAnimation : OverWriteMove;
+    }
+    public string[] GetIdleAnimation()
+    {
+        return OverWriteIdle == null ? UnitData.IdleAnimation : OverWriteIdle;
+    }
+    public string[] GetDieAnimation()
+    {
+        return OverWriteDie == null ? UnitData.DeadAnimation : OverWriteDie;
+    }
+
     public virtual Vector2Int PointWithDirection(Vector2Int v2)
     {
         return GridPos + v2;
@@ -739,5 +771,28 @@ public class Unit
     public Vector3 GetHitPoint()
     {
         return UnitModel.GetPoint(UnitData.HitPointName);
+    }
+    public void AddStop(Units.敌人 target)
+    {
+        StopUnits.Add(target);
+        target.StopUnit = this;
+    }
+
+    public void RemoveStop(Units.敌人 target)
+    {
+        StopUnits.Remove(target);
+        target.StopUnit = null;
+    }
+
+    public bool CanStop(Units.敌人 target)
+    {
+        if (Team != 0) return false;
+        if (!Alive()) return false;
+        if (!CanStopOther) return false;
+        if (target.UnStopped) return false;
+        if (StopUnits.Contains(target)) return true;
+        if (target.StopUnit != null) return false;
+        if (NowGrid.FarAttackGrid) return false;
+        return StopUnits.Count + target.StopCost <= StopCount;
     }
 }

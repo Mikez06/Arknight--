@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080">
-  <controller name="choose" pages="0,,1," selected="1"/>
+  <controller name="choose" pages="0,,1," selected="0"/>
   <displayList>
     <graph id="n4_t5h9" name="n4" xy="0,0" size="1920,1080" type="rect" lineSize="0" fillColor="#ff999999"/>
     <component id="n0_t5h9" name="Start" src="t5h91" fileName="StartGame.xml" xy="1618,946"/>
@@ -10,5 +10,7 @@
       <gearDisplay controller="choose" pages="1"/>
     </component>
     <text id="n8_hc1b" name="n8" xy="11,1023" size="284,48" fontSize="35" text="选择你的初始干员"/>
+    <component id="n9_k32v" name="back" src="k32v17" fileName="UnitInfo/back.xml" xy="10,15"/>
+    <component id="n10_k32v" name="home" src="k32v19" fileName="UnitInfo/home.xml" xy="233,15"/>
   </displayList>
 </component>

@@ -39,6 +39,7 @@ namespace Skills
 
         public override void Start()
         {
+            if (!Useable()) return;
             if (SkillData.MaxUseCount != 0 && UseCount >= SkillData.MaxUseCount) return;//使用次数不在ready里判断，因为被动技能不会走ready的逻辑
 
             //走到这里技能就真的用出来了

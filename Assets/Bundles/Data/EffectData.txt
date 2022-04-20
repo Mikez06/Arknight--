@@ -36,10 +36,10 @@
 {"Id":"寒冷","Prefab":"buff_cold","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
 {"Id":"诅咒","Prefab":"buff_curse_01","ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
 {"Id":"降防","Prefab":"buff_defdown","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
-{"Id":"加防","Prefab":"buff_defup","Offset":{"x":-0.3,"y":-0.4,"z":0.2},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":90}
+{"Id":"加防","Prefab":"buff_defup","Offset":{"x":-0.2,"y":-0.4,"z":0.2},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":90}
 {"Id":"刁民","Prefab":"buff_desert_01","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
 {"Id":"投降","Prefab":"buff_distraction","Offset":{"x":0,"y":0.7,"z":1},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
-{"Id":"冻结","Prefab":"buff_frozen","ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
+{"Id":"冻结","Prefab":"buff_frozen","Offset":{"x":0,"y":0,"z":-0.3},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
 {"Id":"飞行冻结","Prefab":"buff_frozen_to_fly","ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
 {"Id":"中毒","Prefab":"buff_poison","ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
 {"Id":"沉默","Prefab":"buff_silence","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
@@ -50,6 +50,7 @@
 {"Id":"切割击中","Prefab":"common_cuting_hit_01","ScaleXFollow":2,"LifeTime":0.3}
 {"Id":"敌人击中","Prefab":"common_enemy_hit_01","LifeTime":5}
 {"Id":"火球击中","Prefab":"common_firemagic_hit_01","LifeTime":5}
+{"Id":"无敌","Prefab":"common_invincible_01","ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
 {"Id":"克洛斯启动技能","Prefab":"kros_skill_01_start","BindPoint":"Muzzle","ForwordDirection":1,"LifeTime":5}
 {"Id":"斑点技能击中","Prefab":"spot_skill_01_hit","ScaleXFollow":2,"LifeTime":5}
 {"Id":"斑点buff","Prefab":"spot_skill_01_buff","StartPos":1,"ScaleXFollow":2,"FaceCamera":60}
@@ -125,11 +126,11 @@
 {"Id":"羊3buff","Prefab":"amgoat_skill_03_buff","ParentFollow":1,"ScaleXFollow":2,"FaceCamera":60,"LifeTime":30}
 {"Id":"羊3buff结束","Prefab":"amgoat_skill_03_buff_end","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"洁哥普攻击中","Prefab":"aglina_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
-{"Id":"洁哥普攻抬手","Prefab":"aglina_attack_01_start","BindPoint":"Weapon","BoneFollow":1,"ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
-{"Id":"洁哥蓄力","Prefab":"aglina_skill_02_gather","BindPoint":"Weapon","BoneFollow":1,"ScaleXFollow":1,"FaceCamera":60}
+{"Id":"洁哥普攻抬手","Prefab":"aglina_attack_01_start","BindPoint":"F_Weapon","BoneFollow":1,"ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"洁哥蓄力","Prefab":"aglina_skill_02_gather","BindPoint":"F_Weapon","BoneFollow":1,"ScaleXFollow":1,"FaceCamera":60}
 {"Id":"洁哥2击中","Prefab":"aglina_skill_02_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
-{"Id":"洁哥2抬手","Prefab":"aglina_skill_02_start","BindPoint":"Weapon","BoneFollow":1,"ScaleXFollow":2,"FaceCamera":60,"LifeTime":30}
-{"Id":"洁哥3抬手","Prefab":"aglina_skill_03_start","BindPoint":"Weapon","BoneFollow":1,"ScaleXFollow":2,"FaceCamera":60,"LifeTime":25}
+{"Id":"洁哥2抬手","Prefab":"aglina_skill_02_start","BindPoint":"F_Weapon","BoneFollow":1,"ScaleXFollow":2,"FaceCamera":60,"LifeTime":30}
+{"Id":"洁哥3抬手","Prefab":"aglina_skill_03_start","BindPoint":"F_Weapon","BoneFollow":1,"ScaleXFollow":2,"FaceCamera":60,"LifeTime":25}
 {"Id":"闪灵普攻击中","Prefab":"shining_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"闪灵普攻抬手","Prefab":"shining_attack_01_start","BindPoint":"Weapon","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"闪灵1buff","Prefab":"shining_skill_01_buff","ScaleXFollow":1,"FaceCamera":60}
@@ -139,7 +140,7 @@
 {"Id":"夜莺普攻击中","Prefab":"cgbird_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"夜莺普攻抬手","Prefab":"cgbird_attack_01_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"夜莺1buff","Prefab":"cgbird_buff_01_start","ScaleXFollow":1,"FaceCamera":60}
-{"Id":"夜莺2buff","Prefab":"cgbird_skill_02_buff","ScaleXFollow":1,"FaceCamera":60}
+{"Id":"夜莺2buff","Prefab":"cgbird_skill_02_buff","ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
 {"Id":"夜莺3特效","Prefab":"cgbird_skill_03_range","ForwordDirection":2,"LifeTime":60}
 {"Id":"星熊普攻击中","Prefab":"hsguma_attack_01_hit","ScaleXFollow":1,"FaceCamera":60,"LifeTime":5}
 {"Id":"星熊普攻抬手","Prefab":"hsguma_attack_01_start","BindPoint":"Weapon_B","ScaleXFollow":1,"FaceCamera":60,"LifeTime":5}
@@ -247,7 +248,7 @@
 {"Id":"幽灵鲨抬手","Prefab":"ghost_attack_01_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"幽灵鲨眼buff","Prefab":"ghost_skill_02_buff","BindPoint":"R_eye","BoneFollow":1,"ParentFollow":2,"ScaleXFollow":1}
 {"Id":"幽灵鲨2Buff","Prefab":"ghost_skill_02_buff_02","ScaleXFollow":2,"FaceCamera":60,"LifeTime":40}
-{"Id":"蓝毒抬手","Prefab":"bluep_attack_01_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"蓝毒抬手","Prefab":"bluep_attack_01_start","BindPoint":"Muzzle","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"白金抬手","Prefab":"platnm_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"白金2Buff","Prefab":"platnm_skill_02_buff","BindPoint":"gong","BoneFollow":1,"ParentFollow":2,"ScaleXFollow":1}
 {"Id":"白金2击中","Prefab":"platnm_skill_02_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
@@ -333,3 +334,6 @@
 {"Id":"桃金娘击中","Prefab":"myrtle_attack_01_hit","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
 {"Id":"桃金娘抬手","Prefab":"myrtle_attack_01_start","ScaleXFollow":2,"FaceCamera":60,"LifeTime":0.3}
 {"Id":"桃金娘Buff","Prefab":"myrtle_skill_02_buff","ScaleXFollow":2,"FaceCamera":60,"LifeTime":40}
+{"Id":"鼠王唱沙","Prefab":"ifrit_skill_03_range1","StartPos":1,"ForwordDirection":2,"LifeTime":5}
+{"Id":"鼠王标记1","Prefab":"buff_cold1","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
+{"Id":"鼠王标记2","Prefab":"buff_cold2","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}

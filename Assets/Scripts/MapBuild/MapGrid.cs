@@ -41,7 +41,7 @@ public class MapGrid : MonoBehaviour, IPointerClickHandler
 
     public void AutoBuild()
     {
-        transform.position = new Vector3(X, FarAttackGrid ? 0.2f : 0, Y);
+        transform.position = new Vector3(X, FarAttackGrid ? 0.3f : 0, Y);
         if (transform.childCount > 0) Destroy(transform.GetChild(0).gameObject);
         GameObject go;
         if (CanBuildUnit)
@@ -74,6 +74,7 @@ public class MapGrid : MonoBehaviour, IPointerClickHandler
     {
         if (!FairyGUI.Stage.isTouchOnUI && BattleUI.UI_Battle.Instance != null)
         {
+            if (Tile == null) return;
             if (Tile.Unit != null)
                 BattleUI.UI_Battle.Instance.ChooseUnit(Tile.Unit);
             else if (Tile.MidUnit != null)

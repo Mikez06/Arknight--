@@ -37,6 +37,7 @@ public class Unit
 
     public List<Buff> Buffs = new List<Buff>();
     public List<IShield> Shields = new List<IShield>();
+    public List<int> IgnoreBuffs = new List<int>();
 
     public float MaxHp;
     public float HpBase, HpAdd, HpRate, HpAddFin, HpRateFin;
@@ -94,6 +95,7 @@ public class Unit
 
     public bool CanAttack;
     public bool CanStopOther;
+    public float Hatre;
 
     public bool IfAlive = true;
 
@@ -115,6 +117,8 @@ public class Unit
     public Skill FirstSkill;
     public Skill AttackingSkill;
 
+    public float NervePoint;
+    public CountDown ElementProtect = new CountDown();
 
     public CountDown LifeTime;
     /// <summary>
@@ -144,6 +148,7 @@ public class Unit
     public virtual void Init()
     {
         baseAttributeInit();
+        if (UnitData.IgnoreBuff != null) IgnoreBuffs.AddRange(UnitData.IgnoreBuff);
         Team = UnitData.Team;
         if (UnitData.Skills != null)
             for (int i = 0; i < UnitData.Skills.Length; i++)
@@ -167,7 +172,7 @@ public class Unit
         MagicDefenceBase = UnitData.MagicDefence + UnitData.MagicDefenceEx;
         WeightBase = UnitData.Weight;
         PowerSpeed = 1f;
-        AgiBase = 100;
+        AgiBase = 100 + UnitData.ExAgi;
         AttackGapBase = UnitData.AttackGap;
         Height = UnitData.Height;
         if (Battle.MapData.UnitOvDatas != null)
@@ -178,7 +183,8 @@ public class Unit
                 HpBase = ovInfo.Hp;
                 AttackBase = ovInfo.Atk;
                 DefenceBase = ovInfo.Def;
-                MagicDefence = ovInfo.MagDef;
+                MagicDefenceBase = ovInfo.MagDef;
+                AgiBase += ovInfo.Agi;               
                 if (ovInfo.Speed != 0)
                     SpeedBase = ovInfo.Speed;
             }
@@ -210,6 +216,7 @@ public class Unit
         DamageReceiveRate = MagicDamageReceiveRate = HealReceiveRate = 1;
         StopCountAdd = 0;
         HpRecoverRate = 0;
+        Hatre = UnitData.Hatred;
         foreach (var buff in Buffs)
         {
             if (buff.Enable()) buff.Apply();
@@ -241,6 +248,7 @@ public class Unit
 
     public void UpdateBuffs()
     {
+        updateElement();
         if (!Alive()) return;
         if (Hp > MaxHp) Hp = MaxHp;
         IfHide = hideBase;
@@ -368,10 +376,10 @@ public class Unit
     {
         var inAttack = !AttackingAction.Finished();
         AttackingAction.Update(SystemConfig.DeltaTime);
-        if (inAttack && AttackingAction.Finished())
-        {
-            Debug.Log("Ready to attack");
-        }
+        //if (inAttack && AttackingAction.Finished())
+        //{
+        //    Debug.Log("Ready to attack");
+        //}
         foreach (var skill in Skills)
         {
             skill.UpdateCooldown();
@@ -437,8 +445,9 @@ public class Unit
 
     public void Trigger(TriggerEnum triggerEnum)
     {
-        foreach (var skill in Skills)
+        for (int i = Skills.Count-1; i >= 0; i--)
         {
+            Skill skill = Skills[i];
             if (triggerEnum == TriggerEnum.被击 && skill.SkillData.PowerType == PowerRecoverTypeEnum.受击)
             {
                 skill.RecoverPower(1);
@@ -488,8 +497,10 @@ public class Unit
 
     public Buff AddBuff(int buffId,Skill source,int index)
     {
-        if (UnitData.IgnoreBuff != null && UnitData.IgnoreBuff.Contains(buffId)) return null;//免疫对应Buff
+        if (IgnoreBuffs.Contains(buffId)) return null;//免疫对应Buff
         var config = Database.Instance.Get<BuffData>(buffId);
+        if (config.RelyBuff != null && !Buffs.Any(x => x.Id == config.RelyBuff.Value))
+            return null;
         //权且加上来源判断，因为现在很多buff共用一个id会产生冲突。
         //如果需要处理buff冲突的情况，再修改这里
         //判断是否存在buff的升级版
@@ -607,6 +618,7 @@ public class Unit
 
     public void SetStatus(StateEnum state)
     {
+        //Log.Debug($"{UnitData.Id} 由 {this.State} 转变为 {state}");
         this.State = state;
         if (CanChangeAnimation)
         {
@@ -641,6 +653,7 @@ public class Unit
     public void CreateModel()
     {
         if (string.IsNullOrEmpty(UnitData.Model)) return;
+        //Debug.Log(UnitData.Model);
         GameObject go = ResHelper.Instantiate(PathHelper.UnitPath + UnitData.Model);
         UnitModel = go.GetComponent<UnitModel>();
         UnitModel.Init(this);
@@ -727,7 +740,7 @@ public class Unit
 
     public virtual float Hatred()
     {
-        return -UnitData.Hatred * 100000;
+        return -Hatre * 100000;
     }
 
     public void BreakAllCast()
@@ -776,6 +789,10 @@ public class Unit
     {
         StopUnits.Add(target);
         target.StopUnit = this;
+        if (target.Position != Position && (target.Position - Position).magnitude < UnitData.Radius + target.UnitData.Radius)
+        {
+            target.Position = Position + (target.Position - Position).normalized * (UnitData.Radius + target.UnitData.Radius);
+        }
     }
 
     public void RemoveStop(Units.敌人 target)
@@ -794,5 +811,29 @@ public class Unit
         if (target.StopUnit != null) return false;
         if (NowGrid.FarAttackGrid) return false;
         return StopUnits.Count + target.StopCost <= StopCount;
+    }
+
+    public void ChangeNerve(float count)
+    {
+        if (!ElementProtect.Finished()) return;
+        NervePoint += count;
+        if (NervePoint <= 0) NervePoint = 0;
+    }
+
+    void updateElement()
+    {
+        ElementProtect.Update(SystemConfig.DeltaTime);
+        if (NervePoint >= 1000)
+        {
+            NervePoint = 0;
+            ElementProtect.Set(10f);
+            Damage(new DamageInfo()
+            {
+                Target = this,
+                Attack = 1000,
+                DamageType = DamageTypeEnum.Real,
+            });
+            AddBuff(Database.Instance.GetIndex<BuffData>("眩晕"), Battle.RuleUnit.Skills[0], 0);
+        }
     }
 }

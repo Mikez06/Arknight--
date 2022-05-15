@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080">
-  <controller name="selectEnemy" pages="0,,1," selected="1"/>
+  <controller name="selectEnemy" pages="0,,1," selected="0"/>
   <controller name="Hide" pages="0,,1," selected="0"/>
   <displayList>
-    <graph id="n19_dy0m" name="n19" xy="8,82" size="888,961" type="rect" fillColor="#ffcccccc">
+    <graph id="n19_dy0m" name="n19" xy="8,82" size="962,961" type="rect" fillColor="#ffcccccc">
       <gearDisplay controller="Hide" pages="0"/>
     </graph>
-    <list id="n0_q2un" name="wavwList" xy="13,89" size="880,943" overflow="scroll" lineGap="10" defaultItem="ui://wof4wytzq2unb">
+    <list id="n0_q2un" name="wavwList" xy="13,89" size="952,943" overflow="scroll" lineGap="10" defaultItem="ui://wof4wytzq2unb">
       <gearDisplay controller="Hide" pages="0"/>
       <item/>
       <item/>
@@ -22,7 +22,7 @@
       <Button title="复制波次"/>
     </component>
     <graph id="n18_dy0m" name="selectBack" xy="0,0" size="1920,1080" group="n17_dy0m" type="rect" lineSize="0" fillColor="#99000000"/>
-    <graph id="n3_q2un" name="n3" xy="588,84" size="765,930" group="n17_dy0m" type="rect" corner="20"/>
+    <graph id="n3_q2un" name="n3" xy="588,55" size="765,959" group="n17_dy0m" type="rect" corner="20"/>
     <list id="n13_q2un" name="filterList" xy="602,191" size="738,778" group="n17_dy0m" overflow="scroll" scrollBar="visible" scrollBarRes="ui://wof4wytzrj18n," lineGap="12" defaultItem="ui://wof4wytzq2ung" autoClearItems="true">
       <item/>
       <item/>
@@ -39,10 +39,16 @@
       <item/>
       <item/>
     </list>
-    <graph id="n16_q2un" name="n16" xy="823,114" size="238,48" group="n17_dy0m" type="rect"/>
-    <text id="n14_q2un" name="filterName" xy="835,117" size="219,42" group="n17_dy0m" fontSize="30" autoSize="none" singleLine="true" text="" input="true"/>
-    <text id="n15_q2un" name="n15" xy="636,117" size="184,42" group="n17_dy0m" fontSize="30" text="根据名字筛选"/>
-    <text id="n22_rj18" name="n22" xy="1103,97" size="245,81" group="n17_dy0m" fontSize="25" autoSize="none" text="因为未实装怪物而发生的bug，概不负责"/>
+    <graph id="n16_q2un" name="n16" xy="800,71" size="238,48" group="n17_dy0m" type="rect"/>
+    <text id="n14_q2un" name="filterName" xy="812,74" size="219,42" group="n17_dy0m" fontSize="30" autoSize="none" singleLine="true" text="" input="true"/>
+    <text id="n15_q2un" name="n15" xy="613,74" size="184,42" group="n17_dy0m" fontSize="30" text="根据名字筛选"/>
+    <text id="n22_rj18" name="n22" xy="1099,80" size="245,81" group="n17_dy0m" fontSize="25" autoSize="none" text="因为未实装怪物而发生的bug，概不负责"/>
+    <text id="n23_10uur" name="n23" xy="603,134" size="164,29" group="n17_dy0m" fontSize="20" text="只显示已有的敌人"/>
+    <component id="n24_10uur" name="ExistOnly" src="jh39a" fileName="box.xml" xy="775,129" group="n17_dy0m"/>
+    <text id="n25_luym" name="n25" xy="838,134" size="124,29" group="n17_dy0m" fontSize="20" text="显示装置属性"/>
+    <component id="n26_luym" name="MidOnly" src="jh39a" fileName="box.xml" xy="1010,129" group="n17_dy0m">
+      <Button checked="true"/>
+    </component>
     <group id="n17_dy0m" name="n17" xy="0,0" size="1920,1080" advanced="true">
       <gearDisplay controller="selectEnemy" pages="1"/>
     </group>

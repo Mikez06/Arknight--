@@ -25,6 +25,24 @@ public class SaveHelper
         return string.Empty;
     }
 
+    public static void SaveData()
+    {
+        string str = JsonHelper.ToJsonWithType(GameData.Instance);
+        string fileName = "/data";
+        var dir = System.IO.Path.GetDirectoryName(PathHelper.AppHotfixResPath + fileName) + "/";
+        fileName = System.IO.Path.GetFileNameWithoutExtension(fileName) + ".sav";
+        //var fileName = (errorSave ? "error_" : "") + System.DateTime.Now.ToString("yyyy-MM-dd-HHmmss") + ".txt";
+        if (!Directory.Exists(dir))
+        {
+            Directory.CreateDirectory(dir);
+        }
+        FileStream txt = new FileStream(dir + fileName, FileMode.Create);
+        StreamWriter sw = new StreamWriter(txt);
+        sw.Write(str);
+        sw.Close();
+        txt.Close();
+    }
+
     public static string LoadFile(string fileName)
     {
         string filePath = PathHelper.AppHotfixResPath + fileName;

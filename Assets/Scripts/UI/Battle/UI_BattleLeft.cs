@@ -81,6 +81,7 @@ namespace BattleUI
             if (unit != null && unit is Units.干员)
             {
                 var mainSkill = Unit.FirstSkill;
+                if (mainSkill.SkillData.AttackPoints == null) return;
                 float midX = (mainSkill.SkillData.AttackPoints.Max(x => x.x) + mainSkill.AttackPoints.Min(x => x.x)) / 2f;
                 float midY = (mainSkill.SkillData.AttackPoints.Max(x => x.y) + mainSkill.AttackPoints.Min(x => x.y)) / 2f;
                 foreach (var point in mainSkill.SkillData.AttackPoints)

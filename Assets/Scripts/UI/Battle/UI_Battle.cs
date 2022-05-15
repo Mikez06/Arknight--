@@ -57,7 +57,7 @@ namespace BattleUI
                 {
                     m_Pause.onClick.Call();
                 }
-                m_GameSpeed.m_Speed.selectedIndex = TimeHelper.Instance.FastSpeed ? 1 : 0;
+                m_GameSpeed.m_Speed.selectedIndex = TimeHelper.Instance.TimeScale < 1 ? 3 : TimeHelper.Instance.FastSpeed ? 1 : 0;
                 m_Pause.m_Speed.selectedIndex = TimeHelper.Instance.Pause ? 1 : 0;
                 m_enemy.text = Battle.EnemyCount.ToString();
                 m_hp.text = Battle.Hp.ToString();

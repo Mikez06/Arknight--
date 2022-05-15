@@ -43,6 +43,32 @@ namespace MainUI
                 await ui.StartDialogue("初始事件");
                 UIManager.Instance.ChangeView<GComponent>(URL);
             });
+            m_Name.onFocusOut.Add(() =>
+            {
+                if (GameData.Instance.Name != m_Name.text)
+                {
+                    GameData.Instance.Name = m_Name.text;
+                    SaveHelper.SaveData();
+                }
+            });
+            m_Setting.onClick.Add(() =>
+            {
+                m_settingC.selectedIndex = 1;
+            });
+            m_close.onClick.Add(() =>
+            {
+                m_settingC.selectedIndex = 0;
+                SaveHelper.SaveData();
+            });
+            m_bgm.onChanged.Add(() =>
+            {
+                GameData.Instance.Bgm = (float)m_bgm.value / 100f;
+            });
+        }
+
+        protected override void OnUpdate()
+        {
+            base.OnUpdate();
         }
 
         public void Enter()
@@ -52,6 +78,8 @@ namespace MainUI
 
         public void Flush()
         {
+            m_bgm.value = GameData.Instance.Bgm * 100;
+            m_Name.text = GameData.Instance.Name;
             if (gameData.Teams[0].Cards.Count > 0)
             {
                 string picName = Database.Instance.Get<UnitData>(gameData.Teams[0].Cards[0].UnitId).StandPic;

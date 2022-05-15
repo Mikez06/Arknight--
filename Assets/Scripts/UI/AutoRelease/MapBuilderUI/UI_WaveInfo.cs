@@ -17,6 +17,7 @@ namespace MapBuilderUI
         public GTextInput m_y;
         public GComboBox m_path;
         public GTextInput m_checkPoint;
+        public GTextInput m_tag;
         public const string URL = "ui://wof4wytzq2unb";
 
         public static UI_WaveInfo CreateInstance()
@@ -37,7 +38,8 @@ namespace MapBuilderUI
             m_x = (GTextInput)GetChildAt(18);
             m_y = (GTextInput)GetChildAt(19);
             m_path = (GComboBox)GetChildAt(21);
-            m_checkPoint = (GTextInput)GetChildAt(24);
+            m_checkPoint = (GTextInput)GetChildAt(23);
+            m_tag = (GTextInput)GetChildAt(26);
             Init();
         }
         partial void Init();

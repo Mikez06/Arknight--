@@ -54,6 +54,15 @@
     <component id="rkte51" name="FastSpeed.xml" path="/"/>
     <component id="rkte52" name="Pause.xml" path="/"/>
     <component id="ku3z53" name="Container(1).xml" path="/"/>
+    <image id="iexc55" name="椭圆 1.png" path="/"/>
+    <component id="iexc56" name="ElementBar.xml" path="/"/>
+    <image id="iexc58" name="btn_speed_3x.png" path="/"/>
+    <image id="iexc59" name="btn_speed_1x.png" path="/" scale9grid="0,0,-23,-27"/>
+    <image id="iexc5a" name="btn_speed_2x.png" path="/" scale9grid="0,0,-22,-27"/>
+    <image id="iexc5b" name="btn_play.png" path="/" scale9grid="0,0,-33,-39"/>
+    <image id="iexc5c" name="btn_pause.png" path="/"/>
+    <image id="iexc5d" name="btn_range.png" path="/" scale9grid="0,0,-34,-39"/>
+    <image id="iexc5e" name="sprite_skill_ready.png" path="/" scale9grid="0,0,-16,-16"/>
   </resources>
   <publish name="" genCode="true" excluded="kbte3u,kbte3n"/>
 </packageDescription>

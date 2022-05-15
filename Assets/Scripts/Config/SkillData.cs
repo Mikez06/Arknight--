@@ -6,6 +6,7 @@ public class SkillData : IConfig
       public string Desc;
       public string Icon;
       public int Upgrade;
+      public bool IgnoreStun;
       public SkillReadyEnum ReadyType;
       public SkillUseTypeEnum UseType;
       public TriggerEnum Trigger;
@@ -36,8 +37,10 @@ public class SkillData : IConfig
       public int RareLimit;
       public int PosLimit;
       public int CostLimit;
+      public bool MidLimit;
       public AttackTargetOrderEnum AttackOrder;
       public AttackTargetOrder2Enum AttackOrder2;
+      public string OrderTag;
       public UnityEngine.Vector2Int[] AttackPoints;
       public bool AttackPoint;
       public float AttackRange;
@@ -53,6 +56,7 @@ public class SkillData : IConfig
       public float BurstDelay;
       public bool BurstFind;
       public UnityEngine.Vector2Int[] AreaPoints;
+      public bool AreaNoCheck;
       public float AreaRange;
       public float AreaMainDamage;
       public float AreaDamage;
@@ -80,6 +84,7 @@ public class SkillData : IConfig
       public string ShootPoint;
       public int[] Modifys;
       public int[] ModifyDatas;
+      public float NerveDamage;
       public int[] BuffRemoves;
       public int[] Buffs;
       public float[] BuffData;
@@ -101,4 +106,6 @@ public class SkillData : IConfig
       public bool CanDestory;
       public bool NotAttackFlag;
       public bool IgnoreSleep;
+      public bool IgnoreSelectable;
+      public bool DisableScaleX;
 }

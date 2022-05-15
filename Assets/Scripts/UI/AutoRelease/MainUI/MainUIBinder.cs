@@ -8,6 +8,7 @@ namespace MainUI
     {
         public static void BindAll()
         {
+            UIObjectFactory.SetPackageItemExtension(UI_Loading.URL, typeof(UI_Loading));
             UIObjectFactory.SetPackageItemExtension(UI_LeftUnitInfo.URL, typeof(UI_LeftUnitInfo));
             UIObjectFactory.SetPackageItemExtension(UI_AttackArea.URL, typeof(UI_AttackArea));
             UIObjectFactory.SetPackageItemExtension(UI_Main.URL, typeof(UI_Main));

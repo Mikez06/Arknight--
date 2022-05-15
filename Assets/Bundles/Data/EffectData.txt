@@ -337,3 +337,5 @@
 {"Id":"鼠王唱沙","Prefab":"ifrit_skill_03_range1","StartPos":1,"ForwordDirection":2,"LifeTime":5}
 {"Id":"鼠王标记1","Prefab":"buff_cold1","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
 {"Id":"鼠王标记2","Prefab":"buff_cold2","Offset":{"x":0,"y":0.4,"z":0.7},"ParentFollow":3,"ScaleXFollow":0,"FaceCamera":60}
+{"Id":"大主教1启动","Prefab":"skfire_skill_02_hit1","ScaleXFollow":2,"FaceCamera":60,"LifeTime":5}
+{"Id":"黑蛇十字爆","Prefab":"ifrit_skill_03_range2","StartPos":1,"ForwordDirection":2,"LifeTime":1}

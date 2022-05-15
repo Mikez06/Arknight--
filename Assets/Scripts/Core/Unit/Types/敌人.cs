@@ -20,6 +20,7 @@ namespace Units
     {
         public const float StopExCheck = 0.29f, TempArriveDistance = 0.1f;
         public Unit StopUnit;
+        public 敌人 Parent;
 
         public WaveInfo WaveData;//=> Database.Instance.Get<WaveData>(WaveId);
         //public int WaveId;
@@ -40,6 +41,7 @@ namespace Units
         public bool Visiable = true;
         public bool UnStopped;
         public int StopCost;
+        public float WaitTimeEx;
 
         public override void Init()
         {
@@ -76,10 +78,11 @@ namespace Units
 
         public override void Finish(bool leaveEvent = true)
         {
-            base.Finish(leaveEvent);
-            Debug.Log($"{UnitData.Id}Finish");
             Hp = 0;
-            if (!UnitData.WithoutCheckCount)
+            base.Finish(leaveEvent);
+            //Debug.Log($"{UnitData.Id}Finish");
+            Hp = 0;
+            if (!UnitData.WithoutCheckCount && Parent == null)
             {
                 Battle.EnemyCount--;
                 Battle.CheckPoints.Add(Battle.Tick);
@@ -87,6 +90,7 @@ namespace Units
             BattleUI.UI_Battle.Instance.ReturnUIUnit(this);
             Battle.AllUnits.Remove(this);
             Battle.Enemys.Remove(this);
+            Battle.PlayerUnits2.Remove(this);
             GameObject.Destroy(UnitModel.gameObject);
             UnitModel = null;
         }
@@ -94,6 +98,7 @@ namespace Units
         public override void Refresh()
         {
             UnStopped = false;
+            WaitTimeEx = 0;
             base.Refresh();
             if (!Visiable) IfSelectable = false;
         }
@@ -109,7 +114,7 @@ namespace Units
                 return;
             }
             if (State == StateEnum.Default) return;
-            if (!Visiable) if (PathWaiting.Update(SystemConfig.DeltaTime)) finishHide();
+            if (!Visiable) if (PathWaiting.Update(SystemConfig.DeltaTime + WaitTimeEx)) finishHide();
             if (!Visiable) return;
             base.UpdateAction();
             if (ScaleX != TargetScaleX)
@@ -274,7 +279,7 @@ namespace Units
             if (!PathWaiting.Finished())
             {
                 if (AnimationName == GetMoveAnimation()) SetStatus(StateEnum.Idle);
-                PathWaiting.Update(SystemConfig.DeltaTime);
+                PathWaiting.Update(SystemConfig.DeltaTime + WaitTimeEx);
                 return;
             }
             CheckArrive();
@@ -296,20 +301,25 @@ namespace Units
 
             var delta = TempTarget - Position;
             if (delta != Vector3.zero) Direction = new Vector2(delta.x, delta.z);
-            float scaleX;
+            float scaleX = TargetScaleX;
             if (delta.x > 0) scaleX = 1;
             else if (delta.x < 0) scaleX = -1;
-            else if (NextPoint.x != Position.x)
-            {
-                scaleX = -Math.Sign(NextPoint.x - Position.x);
-            }
             else
-                scaleX = TargetScaleX;
-            if (scaleX != ScaleX)
             {
-                TargetScaleX = scaleX;
-                return;
+                bool success = false;
+                for (int i = NowPathPoint + 1; i < PathPoints.Count; i++)
+                {
+                    var x = GetPoint(i).x;
+                    if (x != Position.x)
+                    {
+                        scaleX = Math.Sign(x - Position.x);
+                        success = true;
+                    }
+                }
+                if (!success)
+                    scaleX = TargetScaleX;
             }
+            TargetScaleX = scaleX;
             if ((TempTarget - Position).magnitude < Speed * SystemConfig.DeltaTime)
             {
                 //Debug.Log("Arrive");
@@ -409,7 +419,7 @@ namespace Units
 
         public override float Hatred()
         {
-            return base.Hatred() - distanceToFinal();
+            return base.Hatred();
         }
 
         public override bool IfStoped()

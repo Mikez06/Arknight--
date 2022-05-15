@@ -135,7 +135,7 @@ public class Database
         var text = SaveHelper.LoadFile("/Data/" + name + ".txt"); 
         if (string.IsNullOrEmpty(text))
         {
-            Debug.Log(name + "load from address");
+            //Debug.Log(name + "load from address");
             text = UnityEditor.AssetDatabase.LoadAssetAtPath<TextAsset>(PathHelper.DataPath + name + ".txt").text;
         }
         var arr = text.Split('\n');

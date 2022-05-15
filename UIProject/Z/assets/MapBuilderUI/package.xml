@@ -23,6 +23,7 @@
     <component id="dy0mj" name="MidUnitInfo.xml" path="/"/>
     <component id="rj18m" name="ScrollBar1_grip.xml" path="/"/>
     <component id="rj18n" name="ScrollBar1.xml" path="/" exported="true"/>
+    <image id="iexco" name="图层 1.png" path="/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

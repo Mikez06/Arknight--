@@ -46,7 +46,7 @@
 {"Id":"阿米娅弹道","Type":"子弹","Model":"amiya_attack_01_trail","Speed":10,"FaceCamera":2}
 {"Id":"阿米娅2弹道","Type":"子弹","Model":"amiya_skill_02_trail","Speed":10,"FaceCamera":2}
 {"Id":"阿米娅3弹道","Type":"子弹","Model":"amiya_skill_03_trail","Speed":10,"FaceCamera":2}
-{"Id":"天火2弹道","Type":"延迟打击","Model":"skfire_skill_02_trail","Data":{"delay":0.35}}
+{"Id":"天火2弹道","Type":"延迟打击","Model":"skfire_skill_02_trail","EffectBase":1,"Data":{"delay":0.35}}
 {"Id":"梅尔弹道","Type":"子弹","Model":"otter_attack_01_trail","Speed":10,"FaceCamera":2}
 {"Id":"赫默弹道","Type":"子弹","Model":"silent_attack_01_trail","Speed":10,"FaceCamera":2,"Data":{"MoveHeight":0.3}}
 {"Id":"普罗旺斯弹道","Type":"子弹","Model":"prove_attack_01_trail","Speed":10,"FaceCamera":2}
@@ -64,3 +64,6 @@
 {"Id":"浮士德1弹道","Type":"子弹","Model":"bluep_skill_01_trail","Speed":10,"FaceCamera":2}
 {"Id":"浮士德弹道","Type":"子弹","Model":"platnm_attack_01_trail","Speed":10,"FaceCamera":2}
 {"Id":"鼠王龙卷风","Type":"大飞镖","Model":"glassb_skill_02_range1","Speed":999999,"FaceCamera":2,"EffectBase":1,"Data":{"LifeTime":15,"Radius":0.1,"Trigger":1}}
+{"Id":"捆绑弹道","Type":"持续施法子弹","Model":"slchan_skill_01_trail","Line":"slchan_skill_02_line","Speed":10,"FaceCamera":2,"Data":{"LifeTime":20}}
+{"Id":"黑蛇火球","Type":"冲击波","Model":"amgoat_skill_02_trail","Speed":2.5}
+{"Id":"炮火先兆者弹道","Type":"延迟打击","Model":"skfire_skill_02_trail1","Speed":10,"FaceCamera":2,"Data":{"delay":2.5}}

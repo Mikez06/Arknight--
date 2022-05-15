@@ -2,7 +2,7 @@
 <component size="119,158" pivot="0.5,0.82" anchor="true">
   <controller name="readyControl" pages="0,,1," selected="0"/>
   <controller name="skillCount" pages="0,,1," selected="0"/>
-  <controller name="unitType" pages="0,,1,,2,,3," selected="0">
+  <controller name="unitType" pages="0,,1,,2,,3," selected="2">
     <remark page="0" value="干员"/>
     <remark page="1" value="敌人"/>
     <remark page="2" value="装置"/>
@@ -17,12 +17,9 @@
       <gearDisplay controller="unitType" pages="0,2"/>
       <ProgressBar value="58" max="100"/>
     </component>
-    <graph id="n37_h4sa" name="n37" xy="59,-60" size="41,41" rotation="45" type="rect" lineSize="2" fillColor="#ffffff00">
+    <image id="n37_h4sa" name="n37" src="iexc5e" fileName="sprite_skill_ready.png" xy="34,-46" size="53,53" aspect="true">
       <gearDisplay controller="readyControl" pages="1"/>
-    </graph>
-    <text id="n38_h4sa" name="n38" xy="52,-50" size="14,42" fontSize="30" color="#ff0000" text="!">
-      <gearDisplay controller="readyControl" pages="1"/>
-    </text>
+    </image>
     <graph id="n39_h4sa" name="n39" xy="35,-56" size="45,45" type="eclipse" lineColor="#ffffcc00" fillColor="#ffffffcc">
       <gearDisplay controller="skillCount" pages="1"/>
     </graph>
@@ -32,6 +29,10 @@
     <component id="n41_h4sa" name="eHp" src="h4sa45" fileName="Hp2.xml" xy="2,146">
       <gearDisplay controller="unitType" pages="1"/>
       <ProgressBar value="50" max="100"/>
+    </component>
+    <component id="n43_iexc" name="elementBar" src="iexc56" fileName="ElementBar.xml" xy="35,65" touchable="false">
+      <gearDisplay controller="unitType" pages="0"/>
+      <ProgressBar max="100"/>
     </component>
   </displayList>
 </component>

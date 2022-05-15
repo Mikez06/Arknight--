@@ -48,6 +48,9 @@ public class BattleManager : MonoBehaviour
 
     public async Task StartBattle(BattleInput battleConfig)
     {
+        var loadingUI = UIManager.Instance.ChangeView<MainUI.UI_Loading>(MainUI.UI_Loading.URL);
+        loadingUI.m_name.text = battleConfig.MapName;
+        SaveHelper.SaveData();
         Pause = true;
         battleTcs = new TaskCompletionSource<bool>();
         var mapInfo = Database.Instance.GetMap(battleConfig.MapName);
@@ -67,14 +70,30 @@ public class BattleManager : MonoBehaviour
             await SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         }
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
-        var battleUI = UIManager.Instance.ChangeView<BattleUI.UI_Battle>(BattleUI.UI_Battle.URL);
         AudioManager.Instance.PlayBackgroundAudio("battle");
         await TimeHelper.Instance.WaitAsync(0.5f);
         Battle = new Battle();
         Battle.Init(battleConfig);
         await TimeHelper.Instance.WaitAsync(0.1f);
         AstarPath.active.Scan();
+
+        for (int i = 0; i < battleConfig.Team.Cards.Count; i++)
+        {
+            Card card = battleConfig.Team.Cards[i];
+            await ResHelper.Prepare(Database.Instance.GetIndex<UnitData>(card.UnitId), battleConfig.Team.UnitSkill[i]);
+        }
+        foreach (var wave in mapInfo.WaveInfos)
+        {
+            if (!string.IsNullOrEmpty(wave.sUnitId))
+                await ResHelper.Prepare(Database.Instance.GetIndex<UnitData>(wave.sUnitId));
+        }
+        foreach (var wave in mapInfo.UnitInfos)
+        {
+            await ResHelper.Prepare(Database.Instance.GetIndex<UnitData>(wave.UnitId));
+        }
+
         Pause = false;
+        var battleUI = UIManager.Instance.ChangeView<BattleUI.UI_Battle>(BattleUI.UI_Battle.URL);
         battleUI.SetBattle(Battle);
         ExcuteTime = 0;
         await battleTcs.Task;

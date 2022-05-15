@@ -201,20 +201,26 @@ public class Skill
         if (SkillData.OpenDisable && !Unit.MainSkill.Opening.Finished()) return false;
         if (SkillData.EnableBuff != null && !SkillData.EnableBuff.All(x => Unit.Buffs.Any(y => y.Id == x)))
             return false;
-        if (SkillData.DisableBuff != null)
-            if (SkillData.DisableBuff != null && SkillData.DisableBuff.Any(x => Unit.Buffs.Any(y => y.Id == x)))
-            {
-                return false;
-            }
+        if (SkillData.DisableBuff != null && SkillData.DisableBuff.Any(x => Unit.Buffs.Any(y => y.Id == x)))
+        {
+            return false;
+        }
         return true;
     }
 
     public bool CanUseTo(Unit target)
     {
         if (target == null) return false;
-        if ((SkillData.IfHeal && !SkillData.DamageWithFrameRate) && ((!target.CanBeHeal && !target.HealOnly.Contains(Unit.Id)) || target.Hp == target.MaxHp)) return false;
+        if (!SkillData.MidLimit && target.GetType() == typeof(Units.中立单位)) return false;
+        if ((SkillData.IfHeal && !SkillData.DamageWithFrameRate) && ((!target.CanBeHeal && !target.HealOnly.Contains(Unit.Id)) || target.Hp == target.MaxHp) && (target != Unit)) return false;
         if (target.IfSleep && !SkillData.IgnoreSleep) return false;
-        if (!target.IfSelectable) return false;
+        if (!target.IfSelectable && !SkillData.IgnoreSelectable) return false;
+        if (target.UnitData.StopAttackOnly && target != Unit)
+        {
+            if (Unit is Units.干员 u && !u.StopUnits.Contains(target)) return false;
+            if (Unit is Units.敌人 u1 && u1.StopUnit != (target)) return false;
+            if (Unit is Units.中立单位) return false;
+        }
         switch (SkillData.TargetFilter)
         {
             case SkillTargetFilterEnum.仅自己:
@@ -246,14 +252,15 @@ public class Skill
         }
         if (SkillData.TargetEnableBuff != null)
         {
-            if (SkillData.TargetEnableBuff.All(x => target.Buffs.Any(y => y.Id == x))) return false;
+            if (SkillData.TargetEnableBuff.Any(x => target.Buffs.All(y => y.Id != x))) return false;
         }
         if (SkillData.RareLimit != 0 && target.UnitData.Rare != SkillData.RareLimit) return false;
         if (SkillData.CostLimit != 0 && target.UnitData.Cost > SkillData.CostLimit) return false;
         if (SkillData.PosLimit != 0)
         {
-            if (SkillData.PosLimit == 1 && !target.UnitData.CanSetGround) return false;
-            if (SkillData.PosLimit == 2 && !target.UnitData.CanSetHigh) return false;
+            if (target.NowGrid == null) return false;
+            if (SkillData.PosLimit == 1 && target.NowGrid.FarAttackGrid) return false;
+            if (SkillData.PosLimit == 2 && !target.NowGrid.FarAttackGrid) return false;
         }
         return true;
     }
@@ -293,7 +300,7 @@ public class Skill
     public virtual bool Ready()
     {
         //if (!LoopingStart.Finished()) return false;
-        if (Unit.IfStun)
+        if (Unit.IfStun && !SkillData.IgnoreStun)
             return false;
         if (SkillData.UseType == SkillUseTypeEnum.被动) return false;
         switch (SkillData.ReadyType)
@@ -318,7 +325,7 @@ public class Skill
         }
         if (SkillData.StopBreak && Unit.IfStoped()) return false;
 
-        if (SkillData.AttackMode == AttackModeEnum.跟随攻击 && Unit.AttackingSkill != null) return false;
+        if (SkillData.AttackMode == AttackModeEnum.跟随攻击 && (Unit.AttackingSkill != null || !Unit.AttackingAction.Finished())) return false;
 
         if (SkillData.UseType == SkillUseTypeEnum.手动) //手动技能在技能开启时可以使用
             return !Opening.Finished();
@@ -391,6 +398,7 @@ public class Skill
     {
         if (Unit.State == StateEnum.Die) return false;
         if (SkillData.SkillCost > Battle.Cost) return false;
+        if (SkillData.UseType == SkillUseTypeEnum.手动 && Unit.IfStun) return false;
         if (SkillData.ReadyType == SkillReadyEnum.充能释放 && SkillData.UseType == SkillUseTypeEnum.手动 && !SkillData.NoTargetAlsoUse)
         {
             var target = GetAttackTarget();
@@ -469,7 +477,7 @@ public class Skill
         }
         if (Targets.Count > 0)
         {
-            if (Targets[0] != Unit && SkillData.ModelAnimation != null)//默认不填动作的技能不需要转身
+            if (Targets[0] != Unit && SkillData.ModelAnimation != null && !SkillData.DisableScaleX)//默认不填动作的技能不需要转身
             {
                 var scaleX = (Targets[0].Position - Unit.Position).x > 0 ? 1 : -1;
                 if (scaleX != Unit.ScaleX)
@@ -519,6 +527,7 @@ public class Skill
             }
             duration = duration * attackSpeed;
             fullDuration = fullDuration * attackSpeed;
+            if (fullDuration < duration) fullDuration = duration;
             this.lastSpeed = 1f / attackSpeed;
             Unit.AttackingAction.Set(fullDuration);
             Unit.State = StateEnum.Attack;
@@ -532,7 +541,7 @@ public class Skill
             }
             duration = (duration + beginDuration) * fullDuration / (beginDuration + fullDuration);
             Casting.Set(duration);
-            Debug.Log(Unit.UnitData.Id + "的" + SkillData.Id + "AttackStart,pointDelay:" + duration + ",fullDuration" + fullDuration + ",beginDuration" + beginDuration + ",Time:" + Time.time);
+            Debug.Log(Unit.UnitData.Id + "的" + SkillData.Id + "AttackStart,pointDelay:" + duration + ",fullDuration" + fullDuration + ",beginDuration" + beginDuration + ",Time:" + Time.time + ",Cooldown:" + Cooldown.value);
             if (duration == 0)
             {
                 Cast();
@@ -590,7 +599,11 @@ public class Skill
                 }
             }
             else
-                foreach (var t in Targets.ToArray()) Effect(t);
+            {
+                var a = Targets.ToArray();
+                foreach (var t in a) Effect(t);
+                if (SkillData.Bullet == null) foreach (var t in a) removeBuff(t);
+            }
         }
         CastExSkill();
         if (SkillData.BurstCount > 0)
@@ -743,6 +756,7 @@ public class Skill
             if (SkillData.AreaRange != 0)
             {
                 var targets = Battle.FindAll(target.Position2, SkillData.AreaRange, SkillData.TargetTeam);
+                if (!SkillData.AreaNoCheck) targets.RemoveWhere(x => !CanUseTo(x));
                 foreach (var t in targets)
                 {
                     addBuff(t);
@@ -771,8 +785,10 @@ public class Skill
             {
                 var area = SkillData.AreaPoints.Select(x => x + target.GridPos).ToList();
                 var targets = Battle.FindAll(area, SkillData.TargetTeam);
+                if (!SkillData.AreaNoCheck) targets.RemoveWhere(x => !CanUseTo(x));
                 foreach (var t in targets)
                 {
+                    addNerve(t);
                     addBuff(t);
                     if (SkillData.EffectEffect != null)
                     {
@@ -797,6 +813,7 @@ public class Skill
             }
             else
             {
+                addNerve(target);
                 addBuff(target);
                 if (SkillData.EffectEffect != null)
                 {
@@ -834,6 +851,7 @@ public class Skill
         }
         else
         {
+            addNerve(target);
             addBuff(target);
         }
         removeBuff(target);
@@ -885,6 +903,12 @@ public class Skill
         }
     }
 
+    protected virtual void addNerve(Unit target)
+    {
+        if (SkillData.NerveDamage != 0)
+            target.ChangeNerve(Unit.Attack * SkillData.NerveDamage);
+    }
+
     protected virtual void addBuff(Unit target)
     {
         if (SkillData.Buffs != null)
@@ -919,7 +943,7 @@ public class Skill
         Targets.AddRange(GetAttackTarget());
     }
 
-    List<Unit> tempTargets = new List<Unit>();
+    protected List<Unit> tempTargets = new List<Unit>();
     public List<Unit> GetAttackTarget()
     {
         tempTargets.Clear();
@@ -973,22 +997,23 @@ public class Skill
     protected virtual void SortTarget(List<Unit> targets)
     {
         targets.RemoveAll(OrderFilter);
-        var l = targets.OrderBy(GetSortOrder1).ThenBy(GetSortOrder2).ThenBy(x => x.Hatred()).ToList();
+        var l = targets.OrderBy(GetSortOrder1).ThenBy(GetSortOrder2).ToList();
         targets.Clear();
         targets.AddRange(l);
     }
 
     protected virtual bool OrderFilter(Unit unit)
     {
-        switch (SkillData.AttackOrder)
-        {
-            case AttackTargetOrderEnum.血量升序:
-            case AttackTargetOrderEnum.血量未满随机:
-            case AttackTargetOrderEnum.血量比例升序:
-                return unit.Hp == unit.MaxHp;
-            default:
-                break;
-        }
+        if(SkillData.IfHeal) return unit.Hp == unit.MaxHp;
+        //switch (SkillData.AttackOrder)
+        //{
+        //    case AttackTargetOrderEnum.血量升序:
+        //    case AttackTargetOrderEnum.血量未满随机:
+        //    case AttackTargetOrderEnum.血量比例升序:
+        //        return unit.Hp == unit.MaxHp;
+        //    default:
+        //        break;
+        //}
         return false;
     }
 
@@ -1029,6 +1054,7 @@ public class Skill
 
     protected virtual float GetSortOrder2(Unit x)
     {
+        if (!string.IsNullOrEmpty(SkillData.OrderTag) && x.UnitData.Tags != null && x.UnitData.Tags.Contains(SkillData.OrderTag)) return -1000000;
         float result = 0;
         switch (SkillData.AttackOrder)
         {
@@ -1050,7 +1076,8 @@ public class Skill
                 result = -x.Hp / x.MaxHp;
                 break;
             case AttackTargetOrderEnum.放置降序:
-                result = -(x as Units.干员).InputTime;
+                if (x is Units.干员)
+                    result = -(x as Units.干员).InputTime;
                 break;
             case AttackTargetOrderEnum.区域顺序:
                 result = Math.Abs(x.Position2.x - Unit.Position2.x) + Math.Abs(x.Position2.y - Unit.Position2.y);
@@ -1108,9 +1135,11 @@ public class Skill
                 break;
             case AttackTargetOrderEnum.无抵抗优先:
                 throw new Exception();
+            case AttackTargetOrderEnum.神经损伤升序:
+                result = x.NervePoint;
                 break;
         }
-        return result;
+        return result + x.Hatred();
     }
 
     protected virtual void FilterTarget(List<Unit> targets)
@@ -1308,6 +1337,7 @@ public class Skill
 
     public void DoUpgrade(int skillId)
     {
+        Debug.Log($"{SkillData.Id} 升级为 id:{Database.Instance.Get<SkillData>(skillId).Id}");
         if (StartId == -1) StartId = Id;
         Id = skillId;
         Modifies.Clear();
@@ -1329,11 +1359,12 @@ public class Skill
             UpdateAttackPoints();
         }
 
+        Power = SkillData.StartPower;
         MaxPowerBase = SkillData.MaxPower;
         PowerCount = SkillData.PowerCount;
         Reset();
     }
-    public void Finish()
+    public virtual void Finish()
     {
         if (ReadyEffect != null)
         {

@@ -178,7 +178,7 @@ namespace Units
 
         public void JoinMap()
         {
-            Debug.Log("StartStart" + Time.time);
+            //Debug.Log("StartStart" + Time.time);
             IfAlive = true;
             hideBase = true;
             Battle.Cost -= GetCost();
@@ -204,6 +204,8 @@ namespace Units
                     unit.Reseting.Set(ResetTime);
                 }
             }
+
+            //UnitModel.Init(this);
             Battle.TriggerDatas.Push(new TriggerData()
             {
                 Target = this,
@@ -321,7 +323,7 @@ namespace Units
 
         public override float Hatred()
         {
-            return base.Hatred() - InputTime;
+            return base.Hatred();
         }
 
         public override bool IfStoped()

@@ -22,5 +22,8 @@
     <graph id="n20_rj18" name="n20" xy="615,58" size="83,43" type="rect"/>
     <text id="n21_rj18" name="n21" xy="548,57" size="64,42" fontSize="30" text="移速"/>
     <text id="n22_rj18" name="speed" xy="654,78" pivot="0.5,0.5" anchor="true" size="106,42" fontSize="30" align="center" autoSize="none" text="1000" input="true"/>
+    <graph id="n23_10uur" name="n23" xy="619,10" size="83,43" type="rect"/>
+    <text id="n24_10uur" name="n24" xy="552,10" size="64,42" fontSize="30" text="攻速"/>
+    <text id="n25_10uur" name="agi" xy="658,32" pivot="0.5,0.5" anchor="true" size="106,42" fontSize="30" align="center" autoSize="none" text="1000" input="true"/>
   </displayList>
 </component>

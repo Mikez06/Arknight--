@@ -11,8 +11,7 @@ public class Battle
     public int Hp = 10;
     public int Hurt;
     public int Tick = -1;
-    public int WaveTick;
-    public string WaveTag = "";
+    public Dictionary<string, int> WaveTags = new Dictionary<string, int>() {};
     public float Cost;
 
     public Map Map = new Map();
@@ -27,7 +26,7 @@ public class Battle
 
     public int EnemyCount;
 
-    Unit RuleUnit;
+    public Unit RuleUnit;
 
     public List<Units.干员> PlayerUnits = new List<Units.干员>();
     public List<Unit> PlayerUnits2 = new List<Unit>();
@@ -65,6 +64,7 @@ public class Battle
         RuleUnit = new Unit();
         RuleUnit.Battle = this;
         RuleUnit.Init();
+        RuleUnit.LearnSkill(0, null);//神经损伤
         foreach (var contracrId in battleConfig.Contracts)
         {
             var contract = Database.Instance.Get<ContractData>(contracrId);
@@ -93,6 +93,7 @@ public class Battle
                 Tag = u.Tag,
                 Pos = Map.Tiles[u.X, u.Y].MapGrid.transform.position,
                 Direction = u.Direction,
+                LifeTime = u.LifeTime,
             });
         }
 
@@ -125,6 +126,11 @@ public class Battle
             BuildCount = battleConfig.Dungeon.MaxBuildCount;
         }
 
+        for (int i = 0; i < MapData.BoxCount; i++)
+        {
+            CreatePlayerUnit(Database.Instance.GetIndex<UnitData>("箱子"));
+        }
+
         Trigger(TriggerEnum.起始);
         foreach (var unit in PlayerUnits)
         {
@@ -150,6 +156,8 @@ public class Battle
             //WaveData wave = array[id];
             for (int i = 0; i < wave.Count; i++)
             {
+                if (!string.IsNullOrEmpty(wave.Tag)) continue;
+                if (wave.sUnitId != null) EnemyCount++;
                 var waveInfo = new OneWave() { WaveData = wave, Time = wave.Delay + wave.GapTime * i };
                 if (wave.CheckPoint == 0)
                     Waves.Add(waveInfo);
@@ -157,8 +165,8 @@ public class Battle
                     CheckPointWaves.Add(waveInfo);
             }
         }
+        //SortWave();
         Waves.Sort((x, y) => Math.Sign(x.Time - y.Time));
-        EnemyCount = Waves.Where(x => x.WaveData.sUnitId != null).Count() + CheckPointWaves.Where(x => x.WaveData.sUnitId != null).Count();
 
         checkSceneUnit();
 
@@ -174,7 +182,6 @@ public class Battle
         updateFinish();
         if (Finish) return;
         Tick++;
-        WaveTick++;
         checkSceneUnit();
         updateUnitMap();
         if (CostCounting.Update(SystemConfig.DeltaTime * CostCountSpeed))
@@ -241,10 +248,15 @@ public class Battle
         for (int i = SceneUnits.Count - 1; i >= 0; i--)
         {
             var unit = SceneUnits[i];
-            if (unit.Time <= WaveTick * SystemConfig.DeltaTime && (unit.Tag == WaveTag || string.IsNullOrEmpty(SceneUnits[i].Tag)))
+            if (string.IsNullOrEmpty(SceneUnits[i].Tag)||WaveTags.ContainsKey(unit.Tag))
             {
-                CreateSceneUnit(unit.Id, unit.Pos, unit.Direction);
-                SceneUnits.RemoveAt(i);
+                float startTick = 0;
+                if (!string.IsNullOrEmpty(SceneUnits[i].Tag)) startTick = WaveTags[unit.Tag];
+                if (unit.Time <= (Tick - startTick) * SystemConfig.DeltaTime)
+                {
+                    CreateSceneUnit(unit.Id, unit.Pos, unit.Direction, unit.LifeTime);
+                    SceneUnits.RemoveAt(i);
+                }
             }
         }
     }
@@ -270,23 +282,40 @@ public class Battle
                 Target = enemy,
             });
             Trigger(TriggerEnum.入场);
+            enemy.Trigger(TriggerEnum.自己入场);
             TriggerDatas.Pop();
         }
     }
 
     public void SortSceneUnit()
     {
-        SceneUnits = SceneUnits.OrderBy(x => x.Tag == WaveTag ? 0 : 1).ThenBy(x => x.Time).ToList();
+        //Waves = Waves.OrderBy(x => WaveTags.ContainsKey(x.) ? (x.Time + (WaveTags[x.Tag] - Tick) * SystemConfig.DeltaTime) : float.MaxValue).ToList();
+        SceneUnits = SceneUnits.OrderBy(x => WaveTags.ContainsKey(x.Tag) ? (x.Time + (WaveTags[x.Tag] - Tick) * SystemConfig.DeltaTime) : float.MaxValue).ToList();
     }
 
     public void ChangeWaveTag(string tag)
     {
-        WaveTag = tag;
-        WaveTick = 0;
+        foreach (var wave in MapData.WaveInfos)
+        {
+            if (wave.Tag != tag) continue;
+            if (Enemys.Any(x => (x is Units.敌人 u) && u.WaveData == wave)) continue;
+            for (int i = 0; i < wave.Count; i++)
+            {
+                if (wave.sUnitId != null) EnemyCount++;
+                var waveInfo = new OneWave() { WaveData = wave, Time = (Tick + 1) * SystemConfig.DeltaTime + wave.Delay + wave.GapTime * i };
+                if (wave.CheckPoint == 0)
+                    Waves.Add(waveInfo);
+                else
+                    CheckPointWaves.Add(waveInfo);
+            }
+        }
+        Waves.Sort((x, y) => Math.Sign(x.Time - y.Time));
+        if (!WaveTags.ContainsKey(tag)) WaveTags.Add(tag, Tick);
+        else WaveTags[tag] = Tick;
         SortSceneUnit();
     }
 
-    public Unit CreateSceneUnit(string id,Vector3 pos,Vector2 direction)
+    public Unit CreateSceneUnit(string id,Vector3 pos,Vector2 direction,float lifeTime)
     {
         var unitData = Database.Instance.Get<UnitData>(id);
         if (unitData ==null) return null;
@@ -296,6 +325,7 @@ public class Battle
         unit.Position = pos;
         unit.Direction = direction;
         unit.Init();
+        if (lifeTime != 0) unit.LifeTime = new CountDown(lifeTime);
         if (!unit.UnitData.NotUseTile)
             Map.Tiles[(int)pos.x, (int)pos.z].Unit = unit;
         else
@@ -309,7 +339,7 @@ public class Battle
     {
         var config = Database.Instance.Get<UnitData>(card.UnitId);
         var unit = typeof(Battle).Assembly.CreateInstance(nameof(Units) + "." + config.Type) as Units.干员;
-        unit.Id = card.UnitId;
+        unit.Id = Database.Instance.GetIndex<UnitData>(config);
         unit.Card = card;
         unit.MainSkillId = skill;
         //unit.SetDirection(direction);
@@ -348,6 +378,8 @@ public class Battle
         //var grid = Map.Grids[waveConfig.Path, y];
         //unit.Position = grid.transform.position + new Vector3(0, config.Height, 0);
         Enemys.Add(unit);
+        if (unit.Team == 0) 
+            PlayerUnits2.Add(unit);
         AllUnits.Add(unit);
         TriggerDatas.Push(new TriggerData()
         {
@@ -457,7 +489,7 @@ public class Battle
                         result.Add(unit);
             }
         }
-        else if ((team >> 1) % 2 == 1)
+        if ((team >> 1) % 2 == 1)
         {
             foreach (var unit in Enemys) //需要优化！
             {
@@ -466,7 +498,7 @@ public class Battle
                         result.Add(unit);
             }
         }
-        else //中立单位
+        if ((team >> 2) % 2 == 1) //中立单位
         {
             foreach (var unit in AllUnits) //需要优化！
             {
@@ -486,12 +518,26 @@ public class Battle
         }
         foreach (var unit in Enemys)
         {
-            for (int i = Mathf.RoundToInt(unit.Position2.x - unit.UnitData.Radius); i <= Mathf.RoundToInt(unit.Position2.x + unit.UnitData.Radius); i++)
+            if (unit.UnitData.Size == Vector2Int.zero)
             {
-                for (int j = Mathf.RoundToInt(unit.Position2.y - unit.UnitData.Radius); j <= Mathf.RoundToInt(unit.Position2.y + unit.UnitData.Radius); j++)
+                for (int i = Mathf.RoundToInt(unit.Position2.x - unit.UnitData.Radius); i <= Mathf.RoundToInt(unit.Position2.x + unit.UnitData.Radius); i++)
                 {
-                    if (i >= 0 && i < UnitMap.GetLength(0) && j >= 0 && j < UnitMap.GetLength(1))
-                        UnitMap[i, j].Add(unit);
+                    for (int j = Mathf.RoundToInt(unit.Position2.y - unit.UnitData.Radius); j <= Mathf.RoundToInt(unit.Position2.y + unit.UnitData.Radius); j++)
+                    {
+                        if (i >= 0 && i < UnitMap.GetLength(0) && j >= 0 && j < UnitMap.GetLength(1))
+                            UnitMap[i, j].Add(unit);
+                    }
+                }
+            }
+            else
+            {
+                for (int i = Mathf.RoundToInt(unit.Position2.x - unit.UnitData.Size.x / 2); i < Mathf.RoundToInt(unit.Position2.x + (unit.UnitData.Size.x + 1) / 2); i++)
+                {
+                    for (int j = Mathf.RoundToInt(unit.Position2.y); j < Mathf.RoundToInt(unit.Position2.y + unit.UnitData.Size.y); j++)
+                    {
+                        if (i >= 0 && i < UnitMap.GetLength(0) && j >= 0 && j < UnitMap.GetLength(1))
+                            UnitMap[i, j].Add(unit);
+                    }
                 }
             }
         }
@@ -544,6 +590,11 @@ public class Battle
         {
             unit.Trigger(triggerEnum);
         }
+    }
+
+    public float NextFloat(float min,float max)
+    {
+        return (float)Random.NextDouble() * (max - min) + min;
     }
 }
 

@@ -36,6 +36,7 @@ public enum AttackTargetOrderEnum
     飞行优先,
     沉睡优先,
     无抵抗优先,
+    神经损伤升序,
 }
 
 public enum AttackTargetOrder2Enum

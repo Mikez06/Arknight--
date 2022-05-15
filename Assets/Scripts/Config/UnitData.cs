@@ -21,6 +21,7 @@ public class UnitData : IConfig
       public float CostAdd;
       public int ResetTime;
       public int ResetTimeEx;
+      public float ExAgi;
       public float MinDamageRate;
       public float AttackGap;
       public int Weight;
@@ -45,7 +46,9 @@ public class UnitData : IConfig
       public int Damage;
       public int[] IgnoreBuff;
       public float Radius;
+      public UnityEngine.Vector2Int Size;
       public bool CanStop;
+      public bool StopAttackOnly;
       public float LifeTime;
       public UnitTypeEnum Profession;
       public string Profession2;

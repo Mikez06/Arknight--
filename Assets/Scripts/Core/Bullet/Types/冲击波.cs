@@ -25,7 +25,7 @@ namespace Bullets
             {
                 Position += delta.normalized * BulletData.Speed * SystemConfig.DeltaTime;
             }
-            var target = Battle.FindAll(new Vector2Int(Mathf.RoundToInt(Position.x), Mathf.RoundToInt(Position.z)), Skill.SkillData.TargetTeam);
+            var target = Battle.FindAll(Position.ToV2(), 0.25f, Skill.SkillData.TargetTeam); //Battle.FindAll(new Vector2Int(Mathf.RoundToInt(Position.x), Mathf.RoundToInt(Position.z)), Skill.SkillData.TargetTeam);
             if (target.Count > 0)
             {
                 var t = target.FirstOrDefault();

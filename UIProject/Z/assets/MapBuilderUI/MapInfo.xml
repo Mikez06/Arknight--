@@ -51,12 +51,17 @@
     <text id="n46_jh39" name="n46" xy="29,42" size="94,42" fontSize="30" text="文件名"/>
     <graph id="n47_jh39" name="n47" xy="196,38" size="267,51" type="rect" corner="20"/>
     <text id="n48_jh39" name="FileName" xy="209,42" size="240,42" fontSize="30" autoSize="none" singleLine="true" text="文件名" input="true"/>
-    <component id="n57_ic0q" name="quickLoad" src="q2unf" fileName="ComboBox2.xml" xy="200,471" size="198,32">
+    <component id="n57_ic0q" name="quickLoad" src="q2unf" fileName="ComboBox2.xml" xy="856,47" size="198,32">
       <ComboBox visibleItemCount="10" autoClearItems="true">
         <item title="路径0"/>
         <item title="路径1"/>
       </ComboBox>
     </component>
-    <text id="n58_ic0q" name="n58" xy="-1,464" size="184,42" fontSize="30" text="快速载入地图"/>
+    <text id="n58_ic0q" name="n58" xy="655,40" size="184,42" fontSize="30" text="快速载入地图"/>
+    <component id="n59_10uur" name="NoBuildLimit" src="jh39a" fileName="box.xml" xy="214,513"/>
+    <text id="n60_10uur" name="n60" xy="8,513" size="184,42" fontSize="30" text="部署位无限制"/>
+    <text id="n61_luym" name="n61" xy="34,460" size="124,42" fontSize="30" text="箱子个数"/>
+    <graph id="n62_luym" name="n62" xy="196,456" size="267,51" type="rect" corner="20"/>
+    <text id="n63_luym" name="BoxCount" xy="209,460" size="240,42" fontSize="30" autoSize="none" singleLine="true" text="9" input="true" keyboardType="4"/>
   </displayList>
 </component>

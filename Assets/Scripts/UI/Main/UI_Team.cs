@@ -112,10 +112,12 @@ namespace MainUI
             }
         }
 
-        public Task<int> ChooseTeam()
+        public async Task<int> ChooseTeam()
         {
             tcs = new TaskCompletionSource<int>();
-            return tcs.Task;
+            var result= await tcs.Task;
+            SaveHelper.SaveData();
+            return result;
             //return TeamIndex;
         }
     }

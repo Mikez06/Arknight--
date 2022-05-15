@@ -36,7 +36,7 @@ public class Buff
             LastingEffect.Init(Skill.Unit, Unit, Unit.Position, Unit.Direction);
             LastingEffect.SetLifeTime(float.PositiveInfinity);
         }
-        //Log.Debug($"{Unit.UnitData.Id} 新获得了buff {BuffData.Id}");
+        Log.Debug($"{Unit.UnitData.Id} 新获得了buff {BuffData.Id}");
         if (BuffData.RoundNeed == 1)
         {
             rounds = new List<Vector2Int>();
@@ -140,6 +140,6 @@ public class Buff
             EffectManager.Instance.ReturnEffect(LastingEffect);
             LastingEffect = null;
         }
-        Log.Debug($"{Unit.UnitData.Id} 失去了buff {BuffData.Id}");
+        //Log.Debug($"{Unit.UnitData.Id} 失去了buff {BuffData.Id}");
     }
 }

@@ -13,6 +13,8 @@ namespace MapBuilderUI
         public WaveInfo NowSelect;
         string[] DropInfo;
         TaskCompletionSource<int> tcs;
+        bool existOnly;
+        bool midOnly;
         partial void Init()
         {
             m_selectBack.onClick.Add(() => { tcs.TrySetCanceled(); m_selectEnemy.selectedIndex = 0; });
@@ -77,6 +79,17 @@ namespace MapBuilderUI
             });
             m_filterList.SetVirtual();
             m_filterList.itemRenderer = filterRender;
+            m_ExistOnly.selected = true;
+            m_ExistOnly.onClick.Add(() =>
+            {
+                existOnly = !existOnly;
+                filterList();
+            });
+            m_MidOnly.onClick.Add(() =>
+            {
+                midOnly = !midOnly;
+                filterList();
+            });
         }
 
         public void Fresh()
@@ -119,7 +132,7 @@ namespace MapBuilderUI
         List<UnitData> filters = new List<UnitData>();
         void filterList()
         {
-            filters = Database.Instance.GetAll<UnitData>().Where(x => x.Type == "敌人").Where(x => x.Name == null || x.Name.Contains(m_filterName.text)).ToList();
+            filters = Database.Instance.GetAll<UnitData>().Where(x => existOnly && !midOnly ? MapInfo.WaveInfos.Any(y => y.sUnitId == x.Id) : true).Where(x => midOnly ? x.Type == "中立单位" : x.Type == "敌人").Where(x => x.Name == null || x.Name.Contains(m_filterName.text)).ToList();
             filters.Insert(0, null);
             m_filterList.numItems = filters.Count;
             //m_filterList.RemoveChildrenToPool();

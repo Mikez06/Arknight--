@@ -9,13 +9,13 @@ public class DungeonCard : ICard
     public CardData CardData => Database.Instance.Get<CardData>(CardId);
     public UnitData UnitData => Database.Instance.Get<UnitData>(CardData.units[UpgradeUp]);
 
-    public int UnitId => CardData.units[UpgradeUp];
+    public string UnitId => Database.Instance.Get<UnitData>(CardData.units[UpgradeUp]).Id;
 
     public int Upgrade => UnitData.Upgrade;
 
     public int Level => UnitData.Level;
 
-    public int CardId;
+    public string CardId;
     public int UpgradeUp;
     public int Exp;
     public int UsingSkill;

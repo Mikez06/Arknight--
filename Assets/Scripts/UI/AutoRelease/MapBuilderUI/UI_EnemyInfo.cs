@@ -15,6 +15,7 @@ namespace MapBuilderUI
         public GTextInput m_hp;
         public GTextInput m_magDef;
         public GTextInput m_speed;
+        public GTextInput m_agi;
         public const string URL = "ui://wof4wytzq2ung";
 
         public static UI_EnemyInfo CreateInstance()
@@ -34,6 +35,7 @@ namespace MapBuilderUI
             m_hp = (GTextInput)GetChildAt(11);
             m_magDef = (GTextInput)GetChildAt(13);
             m_speed = (GTextInput)GetChildAt(17);
+            m_agi = (GTextInput)GetChildAt(20);
             Init();
         }
         partial void Init();

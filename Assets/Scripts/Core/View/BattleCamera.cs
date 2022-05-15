@@ -139,7 +139,7 @@ public class BattleCamera : MonoBehaviour
         var targetUnit = FocusUnit == null ? BuildUnit : FocusUnit;
         bool ifHeal = targetUnit.FirstSkill.SkillData.IfHeal;
         var sk = targetUnit.GetNowAttackSkill();
-        if (sk != null)
+        if (sk != null && sk.AttackPoints != null)
             foreach (var tile in sk.AttackPoints)
             {
                 var grid = BattleManager.Instance.Battle.Map.Tiles[tile.x, tile.y];

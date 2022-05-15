@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,12 @@ using System.Threading.Tasks;
 
 public class Card : ICard
 {
+    [JsonIgnore]
     public UnitData UnitData => Database.Instance.Get<UnitData>(UnitId);
-    public int UnitId { get; set; }
+    [JsonIgnore]
+    public int Id => Database.Instance.GetIndex<UnitData>(UnitId);
+
+    public string UnitId { get; set; }
     public int Upgrade { get; set; }
     public int Level { get; set; }
 
@@ -16,7 +21,7 @@ public class Card : ICard
 
 public interface ICard
 {
-    public int UnitId { get; }
+    public string UnitId { get; }
     public int Upgrade { get; }
     public int Level { get; }
 }

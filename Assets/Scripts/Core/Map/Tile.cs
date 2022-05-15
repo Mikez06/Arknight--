@@ -54,12 +54,15 @@ public class Tile
     {
         if (this.Unit != null) return false;
         if (CanBuildUnit)
+        {
+            if (Battle.MapData.NoBuildLimit) return true;
             if (FarAttackGrid)
             {
                 return unit.UnitData.CanSetHigh;
             }
             else
                 return unit.UnitData.CanSetGround;
+        }
         return false;
     }
 

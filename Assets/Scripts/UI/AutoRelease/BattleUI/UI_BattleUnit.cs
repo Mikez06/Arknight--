@@ -14,6 +14,7 @@ namespace BattleUI
         public UI_SK0 m_sk;
         public GTextField m_skillCount_2;
         public GProgressBar m_eHp;
+        public UI_ElementBar m_elementBar;
         public const string URL = "ui://vp312gabh4sa41";
 
         public static UI_BattleUnit CreateInstance()
@@ -30,8 +31,9 @@ namespace BattleUI
             m_unitType = GetControllerAt(2);
             m_hp = (GProgressBar)GetChildAt(0);
             m_sk = (UI_SK0)GetChildAt(1);
-            m_skillCount_2 = (GTextField)GetChildAt(5);
-            m_eHp = (GProgressBar)GetChildAt(6);
+            m_skillCount_2 = (GTextField)GetChildAt(4);
+            m_eHp = (GProgressBar)GetChildAt(5);
+            m_elementBar = (UI_ElementBar)GetChildAt(6);
             Init();
         }
         partial void Init();

@@ -128,7 +128,7 @@ public class Dungeon
         {
             var card = new DungeonCard()
             {
-                CardId = cardId,
+                CardId = c.UnitId,
             };
             AllCards.Add(card);
             if (Cards.Count < MaxCardCount)

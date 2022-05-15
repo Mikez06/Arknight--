@@ -4241,12 +4241,52 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Effect/buff_cold2
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: a2dbf11e87aab8d47ad3db22f37e49d5
-    m_Address: Assets/Bundles/Data/Maps/OF-1(1)
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: ab23bfab1838deb43966ec56bc5e0b41
     m_Address: Assets/Bundles/UI/DungeonUI_atlas0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a6e2367f3f7683f40b227763c2fd7104
+    m_Address: Assets/Bundles/Effect/skfire_skill_02_hit1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 65dcb89fff9d7b74ba5a463ba4c9928b
+    m_Address: Assets/Bundles/UI/MapBuilderUI_atlas0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fedf5f4d54117724582b5a45b3773792
+    m_Address: "Assets/Bundles/Units/\u51B0\u6676\u88C5\u7F6E"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e91c167a70099f049bb803738bc411d4
+    m_Address: "Assets/Bundles/Units/\u6E90\u77F3\u796D\u575B"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b40e921ce119e6e4ead3f03aea6c5df0
+    m_Address: "Assets/Bundles/Units/\u6307\u6325\u7EC8\u7AEF"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fbe8204fe536315409350d54ee906186
+    m_Address: "Assets/Bundles/Units/\u4F20\u9001\u5165\u53E3\u7EA2"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5ddd1eb6ab49bb243be6f88829496529
+    m_Address: "Assets/Bundles/Units/\u4F20\u9001\u5165\u53E3\u7EFF"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ea8b97189e32cc74d98069e719b80312
+    m_Address: "Assets/Bundles/Units/\u4F20\u9001\u5165\u53E3\u84DD"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e82c7559572bd364392f2ed15f808fee
+    m_Address: "Assets/Bundles/Units/\u4F20\u9001\u5165\u53E3\u9EC4"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c327cdb087f6d0b48947324ffc7a43a2
+    m_Address: Assets/Bundles/Effect/ifrit_skill_03_range2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 64d0b856fc9c4bb45993627056e5730e
+    m_Address: Assets/Bundles/Effect/skfire_skill_02_trail1
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

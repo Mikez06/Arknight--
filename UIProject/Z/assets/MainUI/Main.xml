@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080">
+  <controller name="settingC" pages="0,,1," selected="1"/>
   <displayList>
     <image id="n9_kbte" name="n9" src="kbtek" fileName="zone_map_8_up.png" xy="0,-100" size="1920,1280" aspect="true">
       <relation target="" sidePair="width-width,height-height,center-center,middle-middle"/>
@@ -9,8 +10,8 @@
       <Button title="干员"/>
     </component>
     <loader id="n4_kbte" name="standPic" xy="-81,41" size="1024,1024" align="center"/>
-    <graph id="n8_kbte" name="n8" xy="0,484" size="185,65" type="rect" lineSize="0" fillColor="#7f000000"/>
-    <text id="n5_kbte" name="Name" xy="108,528" pivot="0.5,0.5" anchor="true" size="144,48" fontSize="35" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" text="玩家名字"/>
+    <graph id="n8_kbte" name="n8" xy="0,484" size="255,65" type="rect" lineSize="0" fillColor="#7f000000"/>
+    <text id="n5_kbte" name="Name" xy="9,518" pivot="0,0.5" anchor="true" size="242,48" fontSize="35" color="#ffffff" align="center" vAlign="middle" autoSize="none" singleLine="true" text="玩家名字" input="true"/>
     <component id="n11_kbte" name="battle" src="kbtec" fileName="btn.xml" xy="1419,393">
       <Button title="战斗"/>
     </component>
@@ -19,6 +20,19 @@
     </component>
     <component id="n14_jh39" name="Map" src="kbtec" fileName="btn.xml" xy="1187,396">
       <Button title="造图"/>
+    </component>
+    <graph id="n21_10uur" name="n21" xy="0,0" size="1920,1080" group="n19_10uur" type="rect" lineSize="0" fillColor="#00ffffff"/>
+    <graph id="n15_10uur" name="n15" xy="222,90" size="1521,932" group="n19_10uur" type="rect" lineSize="3" fillColor="#ffcccccc" corner="20"/>
+    <component id="n16_10uur" name="bgm" src="10uur4y" fileName="Slider1.xml" xy="430,196" size="745,30" group="n19_10uur">
+      <Slider value="83" max="100"/>
+    </component>
+    <text id="n17_10uur" name="n17" xy="276,190" size="125,40" group="n19_10uur" fontSize="29" text="Bgm音量"/>
+    <component id="n18_10uur" name="close" src="10uur50" fileName="exit.xml" xy="1696,112" group="n19_10uur"/>
+    <group id="n19_10uur" name="n19" xy="0,0" size="1920,1080" advanced="true">
+      <gearDisplay controller="settingC" pages="1"/>
+    </group>
+    <component id="n20_10uur" name="Setting" src="kbtec" fileName="btn.xml" xy="15,61">
+      <Button title="设置"/>
     </component>
   </displayList>
 </component>

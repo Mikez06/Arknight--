@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <displayList>
+    <image id="n0_it6g" name="n0" src="it6gr52" fileName="Loading/SpriteAtlasTexture-UI_HOMEBG_COMPRESSED_BG_KAZIMIERZ_1-512x512-fmt34.png" xy="0,0" size="1920,1080">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <text id="n1_it6g" name="name" xy="960,266" pivot="0.5,0.5" anchor="true" size="142,104" fontSize="80" align="center" text="123"/>
+    <text id="n2_it6g" name="n2" xy="1640,994" size="268,60" fontSize="45" color="#ffffff" align="center" strokeColor="#000000" strokeSize="5" text="少女祈祷中..."/>
+  </displayList>
+</component>

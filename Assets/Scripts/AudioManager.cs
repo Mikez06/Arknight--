@@ -17,13 +17,13 @@ public class AudioManager : MonoBehaviour
 
     public void Update()
     {
-        //var info = Database.Instance.GlobalInfo;
-        //if (info != null)
-        //{
-        //    Background.volume = info.BackgroundVoice * info.Voice / 10000;
-        //    Dialogue.volume = info.DialogueVoice * info.Voice / 10000;
-        //    SoundEffect.volume = info.SoundEffectVoice * info.Voice / 10000;
-        //}
+        var info = GameData.Instance;
+        if (info != null)
+        {
+            Background.volume = info.Bgm;
+            Dialogue.volume = info.Bgm;
+            SoundEffect.volume = info.Bgm;
+        }
     }
 
     public void PlaySoundEffectAudio(AudioClip clip)

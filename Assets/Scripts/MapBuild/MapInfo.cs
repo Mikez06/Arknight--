@@ -22,6 +22,8 @@ public class MapInfo
     public List<PathInfo> PathInfos;
     public List<WaveInfo> WaveInfos;
     public List<OverwriteUnitInfo> UnitOvDatas;
+    public bool NoBuildLimit;
+    public int BoxCount;
 
 }
 
@@ -40,6 +42,7 @@ public class UnitInfo
     public string Tag;
     public float ActiveTime;
     public Vector2 Direction;
+    public float LifeTime;
 }
 
 public class WaveInfo
@@ -53,6 +56,8 @@ public class WaveInfo
     public float OffsetX;
     public float OffetsetY;
     public int CheckPoint;
+    public string Tag;
+    public bool UnAppear;
 }
 
 public class PathInfo
@@ -66,5 +71,5 @@ public class OverwriteUnitInfo
 {
     public string UnitId;
     public int Atk, Hp, Def, MagDef;
-    public float Speed;
+    public float Speed, Agi;
 }

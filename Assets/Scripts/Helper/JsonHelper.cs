@@ -12,7 +12,7 @@ public static class JsonHelper
 	{
 		typeSerializerSetting = new JsonSerializerSettings()
 		{
-			TypeNameHandling = TypeNameHandling.Auto,
+			TypeNameHandling = TypeNameHandling.Auto,			
 		};
 		//JsonSerializerSettings setting = new Newtonsoft.Json.JsonSerializerSettings();
 		//JsonConvert.DefaultSettings = new Func<JsonSerializerSettings>(() =>

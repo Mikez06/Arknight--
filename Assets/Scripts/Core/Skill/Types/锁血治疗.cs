@@ -28,16 +28,18 @@ namespace Skills
             }
             if (!Healing.Finished())
             {
-                if (Healing.Update(SystemConfig.DeltaTime))
-                {
-                    Unit.SetStatus(StateEnum.Idle);
-                    Unit.Hp= healCount;
-                }
-                else
-                {
+                //if (Healing.Update(SystemConfig.DeltaTime))
+                //{
+                //    //Unit.SetStatus(StateEnum.Idle);
+                //    Unit.Hp = healCount * SkillData.Data.GetFloat("HealTime");
+                //    if (Unit.Hp > Unit.MaxHp) Unit.Hp = Unit.MaxHp;
+                //}
+                //else
+                //{
 
-                    Unit.Hp += healCount * SystemConfig.DeltaTime;
-                }
+                Unit.Hp += healCount * SystemConfig.DeltaTime;
+                if (Unit.Hp > Unit.MaxHp) Unit.Hp = Unit.MaxHp;
+                //}
             }
         }
 
@@ -52,7 +54,7 @@ namespace Skills
             if (targetHp <= 0) targetHp = 1;
             if (targetHp > Unit.Hp)
                 Unit.Hp = targetHp;
-            healCount = SkillData.Data.GetFloat("HealCount") * Unit.MaxHp;
+            healCount = SkillData.Data.GetFloat("HealCount") * Unit.MaxHp / SkillData.Data.GetFloat("HealTime");
             if (healCount != 0 && HealStarting.Finished())
             {
                 HealStarting.Set(SkillData.Data.GetFloat("HealStart"));

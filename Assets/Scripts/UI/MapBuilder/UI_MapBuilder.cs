@@ -96,7 +96,7 @@ namespace MapBuilderUI
             m_save.onClick.Add(async () =>
             {
                 check();
-                if (SaveHelper.ExistFile(m_StartPage.m_FileName.text))
+                if (SaveHelper.ExistFile("/Map/" + m_StartPage.m_FileName.text + ".map"))
                 {
                     var result = await ShowCancelWindow();
                     if (!result) return;

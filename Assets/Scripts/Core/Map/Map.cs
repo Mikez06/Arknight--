@@ -87,7 +87,7 @@ public class Map
     RaycastModifier raycastModifier = new RaycastModifier()
     {
         useGraphRaycasting = true,
-        useRaycasting = false,
+        useRaycasting = true,
         thickRaycastRadius=0.25f
     };
     public List<Vector3> FindPath(Vector3 start, Vector3 end,bool raycastModify)

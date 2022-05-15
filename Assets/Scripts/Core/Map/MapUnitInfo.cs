@@ -12,5 +12,6 @@ public class MapUnitInfo
     public string Id;
     public Vector3 Pos;
     public Vector2 Direction;
+    public float LifeTime;
 }
 

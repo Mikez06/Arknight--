@@ -25,7 +25,7 @@ namespace DungeonUI
                 item.data = cardData;
                 item.onClick.Add(() =>
                 {
-                    Dungeon.StartCard.CardId = Database.Instance.GetIndex(cardData);
+                    Dungeon.StartCard.CardId = cardData.Id;
                     freshChoose();
                 });
             }

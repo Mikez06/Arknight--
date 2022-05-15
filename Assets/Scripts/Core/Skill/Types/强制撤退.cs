@@ -23,7 +23,7 @@ namespace Skills
 
         public override void Update()
         {
-            if (Unit.State == StateEnum.Die)
+            if (Unit.State == StateEnum.Die || Unit.State == StateEnum.Default)
             {
                 Dying.Finish();
             }
@@ -33,6 +33,12 @@ namespace Skills
                 Battle.Cost += Mathf.FloorToInt(Unit.UnitData.Cost * Unit.UnitData.LeaveReturn);
             }
             base.Update();
+        }
+
+        public override void Finish()
+        {
+            base.Finish();
+            Dying.Finish();
         }
     }
 }

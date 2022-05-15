@@ -55,7 +55,10 @@ namespace Skills
             {
                 //Debug.Log(Unit.UnitData.Id + "的" + SkillData.Id + "没有动画,直接使用");
                 ResetCooldown(1);
-                Cast();
+                if (SkillData.AnimationTime == null)
+                    Cast();
+                else
+                    Casting.Set(SkillData.AnimationTime.Value);
             }
             else
             {
@@ -106,6 +109,31 @@ namespace Skills
             {
                 Burst();
             }
+        }
+
+        protected override void Burst()
+        {
+            if (BurstCount == -1)
+            {
+                BurstCount = SkillData.BurstCount;
+                LastTargets.Clear();
+                LastTargets.AddRange(Targets);
+            }
+            else
+            {
+                if (SkillData.BurstFind || SkillData.RegetTarget) //当目标为随机时
+                {
+                    LastTargets.Clear();
+                    LastTargets.AddRange(GetAttackTarget());
+                }
+                Effect(null);
+            }
+            BurstCount--;
+            if (BurstCount != -1)
+                if (SkillData.BurstDelay > 0)
+                    Bursting.Set(SkillData.BurstDelay);
+                else
+                    Burst();
         }
     }
 }

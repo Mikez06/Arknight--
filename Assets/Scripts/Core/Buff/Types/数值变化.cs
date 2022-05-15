@@ -28,7 +28,7 @@ namespace Buffs
                 var field = Unit.GetType().GetField(fieldName);
                 if (field == null)
                 {
-                    Log.Debug($"{Unit.UnitData.Id} 没有 属性 {fieldName}");
+                    //Log.Debug($"{Unit.UnitData.Id} 没有 属性 {fieldName}");
                     continue;
                 }
                 float baseValue = (float)field.GetValue(Unit);

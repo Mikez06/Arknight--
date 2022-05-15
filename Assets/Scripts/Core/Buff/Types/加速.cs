@@ -10,6 +10,7 @@ namespace Buffs
     {
         int level, MaxLevel;
         float rate;
+        float damageRate;
         float triggerTime;
         CountDown Trigger = new CountDown();
         bool clear = false;
@@ -18,6 +19,7 @@ namespace Buffs
             base.Init();
             MaxLevel = BuffData.Data.GetInt("MaxLevel");
             rate = BuffData.Data.GetFloat("Rate");
+            damageRate = BuffData.Data.GetFloat("DamageRate");
             triggerTime = BuffData.Data.GetFloat("Trigger");
             Trigger.Set(triggerTime);
         }
@@ -58,7 +60,7 @@ namespace Buffs
         {
             if (level > 0)
             {
-                damageInfo.Attack += Unit.Speed * 600 * 2;
+                damageInfo.Attack += Unit.Speed * damageRate * 2;
                 level = 0;
                 Trigger.Set(triggerTime);
             }

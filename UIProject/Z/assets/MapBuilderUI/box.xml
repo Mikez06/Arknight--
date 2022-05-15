@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="48,38" extention="Button">
-  <controller name="button" pages="2,up,3,down" selected="0"/>
+<component size="40,40" extention="Button">
+  <controller name="button" pages="2,up,3,down" selected="1"/>
   <displayList>
-    <graph id="n30_jh39" name="n30" xy="0,0" size="48,38" type="rect" fillColor="#ff33ff66">
-      <gearColor controller="button" pages="2,3" values="#33ff66|#ff0000"/>
-    </graph>
+    <graph id="n30_jh39" name="n30" xy="0,0" size="40,40" type="rect" lineSize="5" fillColor="#ffcccccc"/>
+    <image id="n31_iexc" name="n31" src="iexco" fileName="图层 1.png" xy="4,-11">
+      <gearDisplay controller="button" pages="2"/>
+    </image>
   </displayList>
   <Button mode="Check"/>
 </component>

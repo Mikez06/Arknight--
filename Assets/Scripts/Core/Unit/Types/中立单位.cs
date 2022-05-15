@@ -45,6 +45,8 @@ namespace Units
                 Battle.Map.Tiles[GridPos.x, GridPos.y].Unit = null;
             if (Battle.Map.Tiles[GridPos.x, GridPos.y].MidUnit == this)
                 Battle.Map.Tiles[GridPos.x, GridPos.y].MidUnit = null;
+            UnityEngine.GameObject.Destroy(UnitModel.gameObject);
+            UnitModel = null;
         }
     }
 }

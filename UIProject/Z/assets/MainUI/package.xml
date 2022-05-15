@@ -162,6 +162,12 @@
     <image id="usve4t" name="Screenshot_2022-03-29-21-33-40-754_com.hypergryph.jpg" path="/Contract/"/>
     <component id="usve4u" name="ContractIcon.xml" path="/Contract/"/>
     <component id="usve4w" name="ContractInfo.xml" path="/Contract/"/>
+    <component id="10uur4x" name="Slider1_grip.xml" path="/"/>
+    <component id="10uur4y" name="Slider1.xml" path="/"/>
+    <image id="10uur4z" name="关闭键X.png" path="/"/>
+    <component id="10uur50" name="exit.xml" path="/"/>
+    <component id="it6gr51" name="Loading.xml" path="/Loading/" exported="true"/>
+    <image id="it6gr52" name="SpriteAtlasTexture-UI_HOMEBG_COMPRESSED_BG_KAZIMIERZ_1-512x512-fmt34.png" path="/Loading/"/>
   </resources>
   <publish name="" genCode="true" excluded="voep3e"/>
 </packageDescription>

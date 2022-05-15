@@ -20,7 +20,7 @@ public class Effect : MonoBehaviour
     {
         PS = GetComponentsInChildren<ParticleSystem>();
         TR = GetComponentsInChildren<TrailRenderer>();
-        Debug.Log(name + "," + TR.Length);
+        //Debug.Log(name + "," + TR.Length);
     }
 
     // Update is called once per frame

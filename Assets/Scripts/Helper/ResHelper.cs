@@ -61,5 +61,79 @@ public class ResHelper
     {
         Addressables.Release(go);
     }
+
+    static HashSet<int> units = new HashSet<int>();
+    public static async Task Prepare(int unitId,int mainSkillIndex=-1)
+    {
+#if UNITY_EDITOR
+        return;
+#endif
+        if (units.Contains(unitId)) return;
+        units.Add(unitId);
+        UnitData unitData = Database.Instance.Get<UnitData>(unitId);
+        await Addressables.LoadAssetAsync<GameObject>(PathHelper.UnitPath + unitData.Model).Task;
+        if (unitData.Skills != null)
+            foreach (var skillId in unitData.Skills)
+            {
+                await PrepareSkill(skillId);
+            }
+        if (mainSkillIndex >= 0 && unitData.MainSkill != null && unitData.MainSkill.Length > mainSkillIndex)
+        {
+            await PrepareSkill(unitData.MainSkill[mainSkillIndex]);
+        }
+    }   
+
+    static HashSet<int> skills = new HashSet<int>();
+    protected static async Task PrepareSkill(int skillId)
+    {
+        if (skills.Contains(skillId)) return;
+        skills.Add(skillId);
+        SkillData skillData = Database.Instance.Get<SkillData>(skillId);
+        await PrepareEffect(skillData.ReadyEffect);
+        await PrepareEffect(skillData.StartEffect);
+        await PrepareEffect(skillData.CastEffect);
+        await PrepareEffect(skillData.HitEffect);
+        await PrepareEffect(skillData.EffectEffect);
+        await PrepareEffect(skillData.GatherEffect);
+        await PrepareEffect(skillData.LoopStartEffect);
+        await PrepareEffect(skillData.LoopCastEffect);
+        if (skillData.Buffs != null)
+            foreach (var buff in skillData.Buffs)
+            {
+                await PrepareBuff(buff);
+            }
+        if (skillData.Bullet != null)
+        {
+            var b = Database.Instance.Get<BulletData>(skillData.Bullet.Value);
+            if (!string.IsNullOrEmpty(b.Line)) await Addressables.LoadAssetAsync<GameObject>(PathHelper.EffectPath + b.Line).Task;
+            if (!string.IsNullOrEmpty(b.Model)) await Addressables.LoadAssetAsync<GameObject>(PathHelper.EffectPath + b.Model).Task;
+        }
+        if (skillData.Skills != null)
+        {
+            foreach (var sk in skillData.Skills) await PrepareSkill(sk);
+        }
+        if (skillData.ExSkills != null)
+        {
+            foreach (var sk in skillData.ExSkills) await PrepareSkill(sk);
+        }       
+    }
+
+    static async Task PrepareBuff(int buffId)
+    {
+        var effect = Database.Instance.Get<BuffData>(buffId).LastingEffect;
+        await PrepareEffect(effect);
+    }
+
+    static async Task PrepareEffect(int[] effectIds)
+    {
+        if (effectIds == null) return;
+        foreach (var effectId in effectIds)
+            await Addressables.LoadAssetAsync<GameObject>(PathHelper.EffectPath + Database.Instance.Get<EffectData>(effectId).Prefab).Task;
+    }
+    static async Task PrepareEffect(int? effectId)
+    {
+        if (effectId == null) return;
+        await Addressables.LoadAssetAsync<GameObject>(PathHelper.EffectPath + Database.Instance.Get<EffectData>(effectId.Value).Prefab).Task;
+    }
 }
 

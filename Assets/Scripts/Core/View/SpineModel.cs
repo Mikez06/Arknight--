@@ -93,8 +93,8 @@ public class SpineModel : UnitModel
             SkeletonAnimation.timeScale = 0;
             return;
         }
-        SkeletonAnimation.state.SetEmptyAnimation(0, 0);
         //SkeletonAnimation.Skeleton.SetToSetupPose();
+        SkeletonAnimation.state.SetAnimation(0, "Default", false);
         SkeletonAnimation.state.ClearTracks();
         if (animations[0].Contains("Idle"))//从其他状态返回Idle时，如果有退出动画，就播放
         {
@@ -114,7 +114,7 @@ public class SpineModel : UnitModel
             delay += _beginAnimation.Duration;
         }
         var nextAnimation = animations.Length > 1 ? animations[1] : animations[0];
-        var loop = (animations[0] == "Start" || animations[0] == "Appear" || animations[0] == "Die") ? false : true;
+        var loop = (animations[0] == "Start" || animations[0] == "Appear" || animations[0] == "Die" || animations[0] == "Reborn_1_End") ? false : true;
         //SkeletonAnimation.state.AddAnimation(0, nextAnimation, nextAnimation == "Move"|| nextAnimation == "Idle" || nextAnimation.EndsWith("Loop"), delay);
         SkeletonAnimation.state.AddAnimation(0, nextAnimation, loop, delay);
         nowAnimations = animations;

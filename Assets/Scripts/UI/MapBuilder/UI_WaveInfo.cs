@@ -20,6 +20,7 @@ namespace MapBuilderUI
             m_count.onChanged.Add(() => WaveInfo.Count = int.Parse(m_count.text));
             m_gap.onChanged.Add(() => WaveInfo.GapTime = float.Parse(m_gap.text));
             m_checkPoint.onChanged.Add(() => { WaveInfo.CheckPoint = int.Parse(m_checkPoint.text); });
+            m_tag.onChanged.Add(() => { WaveInfo.Tag = m_tag.text; });
             m_headback.onClick.Add(async () =>
             {
                 try
@@ -69,6 +70,7 @@ namespace MapBuilderUI
             m_delay.text = waveInfo.Delay.ToString();
             m_count.text = waveInfo.Count.ToString();
             m_gap.text = waveInfo.GapTime.ToString();
+            m_tag.text = waveInfo.Tag == null ? "" : waveInfo.Tag.ToString();
         }
 
     }

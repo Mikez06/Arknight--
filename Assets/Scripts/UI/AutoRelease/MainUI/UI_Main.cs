@@ -18,6 +18,7 @@ namespace MainUI
         public GSlider m_bgm;
         public GButton m_close;
         public GButton m_Setting;
+        public GTextField m_Version;
         public const string URL = "ui://k4mja8t1kbte0";
 
         public static UI_Main CreateInstance()
@@ -40,6 +41,7 @@ namespace MainUI
             m_bgm = (GSlider)GetChildAt(11);
             m_close = (GButton)GetChildAt(13);
             m_Setting = (GButton)GetChildAt(15);
+            m_Version = (GTextField)GetChildAt(17);
             Init();
         }
         partial void Init();

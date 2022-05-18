@@ -28,6 +28,7 @@ namespace Skills
             }
             if (!Healing.Finished())
             {
+                Healing.Update(SystemConfig.DeltaTime);
                 //if (Healing.Update(SystemConfig.DeltaTime))
                 //{
                 //    //Unit.SetStatus(StateEnum.Idle);

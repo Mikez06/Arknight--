@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080">
-  <controller name="settingC" pages="0,,1," selected="1"/>
+  <controller name="settingC" pages="0,,1," selected="0"/>
   <displayList>
     <image id="n9_kbte" name="n9" src="kbtek" fileName="zone_map_8_up.png" xy="0,-100" size="1920,1280" aspect="true">
       <relation target="" sidePair="width-width,height-height,center-center,middle-middle"/>
@@ -34,5 +34,7 @@
     <component id="n20_10uur" name="Setting" src="kbtec" fileName="btn.xml" xy="15,61">
       <Button title="设置"/>
     </component>
+    <text id="n22_ulof" name="n22" xy="16,994" size="158,58" fontSize="43" color="#ffffff" strokeColor="#000000" text="Version"/>
+    <text id="n23_ulof" name="Version" xy="178,994" size="67,58" fontSize="43" color="#ffffff" strokeColor="#000000" text="2.0"/>
   </displayList>
 </component>

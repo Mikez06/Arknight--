@@ -80,6 +80,7 @@ namespace MainUI
         {
             m_bgm.value = GameData.Instance.Bgm * 100;
             m_Name.text = GameData.Instance.Name;
+            m_Version.text = Application.version;
             if (gameData.Teams[0].Cards.Count > 0)
             {
                 string picName = Database.Instance.Get<UnitData>(gameData.Teams[0].Cards[0].UnitId).StandPic;

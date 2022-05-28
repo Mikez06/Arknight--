@@ -59,7 +59,7 @@ public class SpineDownLoadTool : MonoBehaviour
                 end = ".atlas";
                 break;
         }
-        UnityEngine.Networking.UnityWebRequest wr = UnityEngine.Networking.UnityWebRequest.Get("http://" + $"static.prts.wiki/spine/char/{name}/{(back ? "back_" : "")}{name}/{name}{end}");
+        UnityEngine.Networking.UnityWebRequest wr = UnityEngine.Networking.UnityWebRequest.Get("http://" + $"static.prts.wiki/spine38/char/{name}/{(back ? "back_" : "")}{name}/{name}{end}");
         yield return wr.SendWebRequest();
         if (!string.IsNullOrEmpty(wr.error))
         {

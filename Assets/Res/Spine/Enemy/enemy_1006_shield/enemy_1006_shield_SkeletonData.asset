@@ -16,6 +16,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 10e39cf4dfe5727499bd0a0448bcac93, type: 2}
   scale: 0.0026999998
   skeletonJSON: {fileID: 4900000, guid: d13e865fc69b75049b60f5597166756e, type: 3}
+  isUpgradingBlendModeMaterials: 0
+  blendModeMaterials:
+    requiresBlendModeMaterials: 0
+    applyAdditiveMaterial: 1
+    additiveMaterials: []
+    multiplyMaterials: []
+    screenMaterials: []
+  skeletonDataModifiers: []
   fromAnimation: []
   toAnimation: []
   duration: []

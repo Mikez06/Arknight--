@@ -810,7 +810,7 @@ public class Unit
         if (StopUnits.Contains(target)) return true;
         if (target.StopUnit != null) return false;
         if (NowGrid.FarAttackGrid) return false;
-        return StopUnits.Count + target.StopCost <= StopCount;
+        return StopUnits.Sum(x => x.StopCost) + target.StopCost <= StopCount;
     }
 
     public void ChangeNerve(float count)

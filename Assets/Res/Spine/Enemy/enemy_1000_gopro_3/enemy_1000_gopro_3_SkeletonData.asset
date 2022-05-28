@@ -16,6 +16,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 779282539def0de4e98ed4d0f570fdb6, type: 2}
   scale: 0.0026999998
   skeletonJSON: {fileID: 4900000, guid: 3e9c976b98e689446841bc0992954c59, type: 3}
+  isUpgradingBlendModeMaterials: 0
+  blendModeMaterials:
+    requiresBlendModeMaterials: 1
+    applyAdditiveMaterial: 1
+    additiveMaterials: []
+    multiplyMaterials: []
+    screenMaterials:
+    - pageName: enemy_1000_gopro_3.png
+      material: {fileID: 2100000, guid: a3674d0ee49fa6240b9366293116b356, type: 2}
+  skeletonDataModifiers: []
   fromAnimation: []
   toAnimation: []
   duration: []

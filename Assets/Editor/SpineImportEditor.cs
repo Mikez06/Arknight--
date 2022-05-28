@@ -114,6 +114,7 @@ public class SpineImportEditor
         foreach (var item in files)
         {
             string assetPath = "Assets" + item.FullName.Substring(Application.dataPath.Length);
+            Debug.Log(assetPath);
             string name = item.Name.Substring(0, item.Name.IndexOf("_SkeletonData.asset"));
             bool front = item.FullName.Contains("\\front\\");
             bool enemy = item.FullName.Contains("\\Enemy\\");
@@ -121,6 +122,11 @@ public class SpineImportEditor
 
             string materialPath = assetPath.Replace("SkeletonData.asset", "Material.mat");
             Material material = AssetDatabase.LoadAssetAtPath<Material>(materialPath);
+            if (material == null)
+            {
+                Debug.LogError("can't find mat at:" + materialPath);
+                continue;
+            }
             material.shader = Shader.Find("Spine/Skeleton Tint");
             material.SetFloat("_angle", 60);
             
@@ -131,11 +137,11 @@ public class SpineImportEditor
                 EditorUtility.SetDirty(dataAsset);
             //}
             //dataAsset.
-            if (dataAsset.atlasAssets == null || dataAsset.atlasAssets.Length == 0)
-            {
-                SpineEditorUtilities.ImportSpineContent(new string[] { AssetDatabase.GetAssetPath(dataAsset.skeletonJSON) }, true);
-                EditorUtility.SetDirty(dataAsset);
-            }
+            //if (dataAsset.atlasAssets == null || dataAsset.atlasAssets.Length == 0)
+            //{
+            //    SpineEditorUtilities.ImportSpineContent(new string[] { AssetDatabase.GetAssetPath(dataAsset.skeletonJSON) }, true);
+            //    EditorUtility.SetDirty(dataAsset);
+            //}
             var root = AssetDatabase.LoadAssetAtPath<GameObject>(unitAnimationPrefab_AssetPath + name + ".prefab");
             if (root == null)
             {
@@ -148,8 +154,12 @@ public class SpineImportEditor
             SkeletonAnimation sa;
             if (enemy || front) sa = root.transform.GetChild(1).GetComponent<SkeletonAnimation>();
             else sa = root.transform.GetChild(2).GetComponent<SkeletonAnimation>();
-            sa.skeletonDataAsset = dataAsset;
-            sa.Initialize(true);
+            if (sa.skeletonDataAsset != dataAsset)
+            {
+                sa.skeletonDataAsset = dataAsset;
+                sa.Initialize(true);
+                EditorUtility.SetDirty(root);
+            }
         }
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();

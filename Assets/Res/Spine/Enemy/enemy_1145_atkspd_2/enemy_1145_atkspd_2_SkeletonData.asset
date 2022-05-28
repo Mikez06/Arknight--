@@ -16,6 +16,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: be232a9cce5046a498f138424e7190d8, type: 2}
   scale: 0.0026999998
   skeletonJSON: {fileID: 4900000, guid: 2f6151f5d7700304ab183a79d6eee5a0, type: 3}
+  isUpgradingBlendModeMaterials: 0
+  blendModeMaterials:
+    requiresBlendModeMaterials: 1
+    applyAdditiveMaterial: 1
+    additiveMaterials:
+    - pageName: enemy_1145_atkspd_2.png
+      material: {fileID: 2100000, guid: 31e7ccf34296a994d9a303c02abe053e, type: 2}
+    multiplyMaterials: []
+    screenMaterials: []
+  skeletonDataModifiers: []
   fromAnimation: []
   toAnimation: []
   duration: []

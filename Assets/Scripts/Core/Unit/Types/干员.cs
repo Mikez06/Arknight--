@@ -243,7 +243,7 @@ namespace Units
             Direction = new Vector2(1, 0);
             InputTime = -1;
             Battle.Map.Tiles[GridPos.x, GridPos.y].Unit = null;
-            Reseting.Set(ResetTime);
+            if (!Battle.PlayerUnits.Any(x => x != this && x.Id == Id)) Reseting.Set(ResetTime);
             BuildTime++;
             Battle.BuildCount += UnitData.BuildCountCost;
             if (UnitData.NotReturn)//消耗品

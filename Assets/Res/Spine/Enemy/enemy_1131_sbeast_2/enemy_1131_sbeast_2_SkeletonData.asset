@@ -16,6 +16,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1b70a80f5545aee43aeaca4a893e8a7e, type: 2}
   scale: 0.0026999998
   skeletonJSON: {fileID: 4900000, guid: fc77d9752c2e39e459e18136d7b3c800, type: 3}
+  isUpgradingBlendModeMaterials: 0
+  blendModeMaterials:
+    requiresBlendModeMaterials: 1
+    applyAdditiveMaterial: 1
+    additiveMaterials:
+    - pageName: enemy_1131_sbeast_2.png
+      material: {fileID: 2100000, guid: 0c173719851799a4c95f593767c2c208, type: 2}
+    multiplyMaterials: []
+    screenMaterials: []
+  skeletonDataModifiers: []
   fromAnimation: []
   toAnimation: []
   duration: []

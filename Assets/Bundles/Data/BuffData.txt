@@ -210,10 +210,10 @@
 {"Id":"碎骨减甲","Type":"数值变化","LastingEffect":37,"LastTime":0.01,"Data":{"t":["DefenceRate"]}}
 {"Id":"指挥终端buff","Type":"数值变化","Data":{"t":["MagicDefenceAdd","DefenceRate","HpRecoverAdd"]}}
 {"Id":"梅菲斯特光环","Type":"数值变化","Data":{"t":["HpRecoverRate"]}}
-{"Id":"灰尾盾","Type":"护盾","LastingEffect":22,"Data":{"ShieldType":"Magic","Base":0}}
-{"Id":"灰尾加防","Type":"数值变化","RelyBuff":212,"Data":{"t":["DefenceAdd"]}}
+{"Id":"灰尾加防","Type":"数值变化","RelyBuff":215,"Data":{"t":["DefenceAdd"]}}
 {"Id":"鼠王标记1","Type":"普通Buff","LastingEffect":337}
 {"Id":"鼠王标记2","Type":"普通Buff","LastingEffect":338}
+{"Id":"灰尾盾","Type":"护盾","LastingEffect":22,"Data":{"ShieldType":"Magic","Base":0}}
 {"Id":"穿刺手加速","Type":"加速","Data":{"MaxLevel":25,"Rate":0.5,"Trigger":0.5,"DamageRate":600}}
 {"Id":"穿刺手加速1","Type":"加速","Data":{"MaxLevel":25,"Rate":0.5,"Trigger":0.5,"DamageRate":800}}
 {"Id":"特工减阻挡","Type":"数值变化","UnSourceCheck":1,"Data":{"t":["StopCountAdd"]}}

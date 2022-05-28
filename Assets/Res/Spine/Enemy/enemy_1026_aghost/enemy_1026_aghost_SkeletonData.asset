@@ -16,6 +16,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5aef45a4e6158da4e8c20eb7a2aedc66, type: 2}
   scale: 0.0026999998
   skeletonJSON: {fileID: 4900000, guid: ac54105e387b5194084a36565eec880a, type: 3}
+  isUpgradingBlendModeMaterials: 0
+  blendModeMaterials:
+    requiresBlendModeMaterials: 1
+    applyAdditiveMaterial: 1
+    additiveMaterials:
+    - pageName: enemy_1026_aghost.png
+      material: {fileID: 2100000, guid: 45ea41fcb9a695c45af7fa570b807113, type: 2}
+    multiplyMaterials: []
+    screenMaterials: []
+  skeletonDataModifiers: []
   fromAnimation: []
   toAnimation: []
   duration: []

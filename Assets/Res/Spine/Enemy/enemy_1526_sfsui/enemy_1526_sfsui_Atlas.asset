@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
+  m_Name: enemy_1526_sfsui_Atlas
+  m_EditorClassIdentifier: 
+  atlasFile: {fileID: 4900000, guid: 768bfb101796d884192abf8906f38cdb, type: 3}
+  materials:
+  - {fileID: 2100000, guid: fb54b8a989e2437468dc1878b50ae327, type: 2}
+  - {fileID: 2100000, guid: 854de3d67807b33429791b092f2ea589, type: 2}
+  - {fileID: 2100000, guid: 5a1c006aa8a18ac408f274bb60429b75, type: 2}
+  - {fileID: 2100000, guid: 2d8edefc1d217434bb351425419b0c1a, type: 2}
+  - {fileID: 2100000, guid: 502efdd381b31f847bb448847add4d5d, type: 2}
+  - {fileID: 2100000, guid: 6a28e199ad6f11f4ea0210be56edbfae, type: 2}

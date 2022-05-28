@@ -58,7 +58,7 @@ public class EnemySpineDownloadTool : MonoBehaviour
                 end = ".atlas";
                 break;
         }
-        UnityEngine.Networking.UnityWebRequest wr = UnityEngine.Networking.UnityWebRequest.Get("http://" + $"static.prts.wiki/spine/enemy/{name}/{name}/{name}{end}");
+        UnityEngine.Networking.UnityWebRequest wr = UnityEngine.Networking.UnityWebRequest.Get("http://" + $"static.prts.wiki/spine38/enemy/{name}/{name}/{name}{end}");
         yield return wr.SendWebRequest();
         if (!string.IsNullOrEmpty(wr.error))
         {

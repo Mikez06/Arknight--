@@ -16,6 +16,7 @@ public class NormalModel : UnitModel
     public override void Init(Unit unit)
     {
         this.Unit = unit;
+        //gameObject.SetActive(false);
         Animator?.Play(Unit.AnimationName[0]);
     }
 

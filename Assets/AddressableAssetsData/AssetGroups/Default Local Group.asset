@@ -1969,6 +1969,1046 @@ MonoBehaviour:
     m_Address: "Assets/Bundles/Units/\u7279\u79CD\u5730\u677F"
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 0876ba5e568c1684a90e5dda54c1be56
+    m_Address: Assets/Bundles/Units/token_10000_silent_healrb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4ab1a00c3dd524a4c865ba714ae08088
+    m_Address: Assets/Bundles/Units/token_10001_deepcl_tentacle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 644bd438562fdbf4d9c6f629518291e7
+    m_Address: Assets/Bundles/Units/token_10002_kalts_mon3tr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 608bdd1da2e4cf14a9bd9c1a3179abda
+    m_Address: Assets/Bundles/Units/token_10003_cgbird_bird
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5a50f01389eba24458a665d06985d5c1
+    m_Address: Assets/Bundles/Units/token_10004_otter_motter
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 933ae5c6da2200148a36f91f7f853b4e
+    m_Address: Assets/Bundles/Audio/battle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3ae3e4b5c2fc906469cad0f9e8a4ee02
+    m_Address: Assets/Bundles/Audio/main
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 841119e1d3e954344b6fce7e36b95683
+    m_Address: Assets/Bundles/Effect/glassb_skill_02_range1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 717f48ab5a2c9b946b61cf0d9ba17452
+    m_Address: Assets/Bundles/Effect/ifrit_skill_03_range1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 006da4814d7fa3b4fa66e27323ebef59
+    m_Address: Assets/Bundles/Effect/buff_cold1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 232496a03de83af4f968df59e565bc1f
+    m_Address: Assets/Bundles/Effect/buff_cold2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ab23bfab1838deb43966ec56bc5e0b41
+    m_Address: Assets/Bundles/UI/DungeonUI_atlas0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a6e2367f3f7683f40b227763c2fd7104
+    m_Address: Assets/Bundles/Effect/skfire_skill_02_hit1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 65dcb89fff9d7b74ba5a463ba4c9928b
+    m_Address: Assets/Bundles/UI/MapBuilderUI_atlas0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fedf5f4d54117724582b5a45b3773792
+    m_Address: "Assets/Bundles/Units/\u51B0\u6676\u88C5\u7F6E"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e91c167a70099f049bb803738bc411d4
+    m_Address: "Assets/Bundles/Units/\u6E90\u77F3\u796D\u575B"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b40e921ce119e6e4ead3f03aea6c5df0
+    m_Address: "Assets/Bundles/Units/\u6307\u6325\u7EC8\u7AEF"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fbe8204fe536315409350d54ee906186
+    m_Address: "Assets/Bundles/Units/\u4F20\u9001\u5165\u53E3\u7EA2"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5ddd1eb6ab49bb243be6f88829496529
+    m_Address: "Assets/Bundles/Units/\u4F20\u9001\u5165\u53E3\u7EFF"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ea8b97189e32cc74d98069e719b80312
+    m_Address: "Assets/Bundles/Units/\u4F20\u9001\u5165\u53E3\u84DD"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e82c7559572bd364392f2ed15f808fee
+    m_Address: "Assets/Bundles/Units/\u4F20\u9001\u5165\u53E3\u9EC4"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c327cdb087f6d0b48947324ffc7a43a2
+    m_Address: Assets/Bundles/Effect/ifrit_skill_03_range2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 64d0b856fc9c4bb45993627056e5730e
+    m_Address: Assets/Bundles/Effect/skfire_skill_02_trail1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 98fdde5bf09944343b2a4e039d3617ce
+    m_Address: Assets/Bundles/Units/char_002_amiya
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 33d4b8c81094c604d9d12a2ef1fecf58
+    m_Address: Assets/Bundles/Units/char_003_kalts
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 65163abf4a7205741a684dc51a57990f
+    m_Address: Assets/Bundles/Units/char_009_12fce
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7be3d7cd7380c3b4184f34ae8ab89261
+    m_Address: Assets/Bundles/Units/char_010_chen
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4723e2c7972239542b8676a34a71ceff
+    m_Address: Assets/Bundles/Units/char_017_huang
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ab1d060b8ff18024a95ab027124d3eba
+    m_Address: Assets/Bundles/Units/char_101_sora
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 812e57cd61a9eca4fb0ebad1c3bcff8b
+    m_Address: Assets/Bundles/Units/char_102_texas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1fc57cea3cd95724fbff0405bb87708f
+    m_Address: Assets/Bundles/Units/char_103_angel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8a41f8b5fa06ff04c892ab53804ca862
+    m_Address: Assets/Bundles/Units/char_106_franka
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 358c5d70abba02a4bb77a9181b57aa35
+    m_Address: Assets/Bundles/Units/char_108_silent
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 708ad1cff5815db48b896cfec95424ed
+    m_Address: Assets/Bundles/Units/char_109_fmout
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 11437ac5969f68a409f4d59e6d1f0d13
+    m_Address: Assets/Bundles/Units/char_110_deepcl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 45d615fb7a20ff846b0d463a632ac470
+    m_Address: Assets/Bundles/Units/char_112_siege
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6ab508c72afaae542a8aaa7e8fa5cfa3
+    m_Address: Assets/Bundles/Units/char_113_cqbw
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9db8ba7273143c544abc4a340cc8952b
+    m_Address: Assets/Bundles/Units/char_115_headbr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 84ea1b75e7f4d6347ae6584fd56d5d19
+    m_Address: Assets/Bundles/Units/char_117_myrrh
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 48670ef326665e8419fe4e8d8942c7a9
+    m_Address: Assets/Bundles/Units/char_118_yuki
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f2b295662f766fe4b9e29e6fc992396d
+    m_Address: Assets/Bundles/Units/char_120_hibisc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 65827a5e13113384f9e9a69b135dc58e
+    m_Address: Assets/Bundles/Units/char_121_lava
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5c659f701ef90164aa4a67486e7360c8
+    m_Address: Assets/Bundles/Units/char_122_beagle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 46622c6cbd06169408659c40e6317747
+    m_Address: Assets/Bundles/Units/char_123_fang
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ec10c96fdfbd44b458d39f03b9eca70a
+    m_Address: Assets/Bundles/Units/char_124_kroos
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 01e7161c867f574429b552d3bcb2f05a
+    m_Address: Assets/Bundles/Units/char_126_shotst
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c6ace70b1d0502d448f83d1d3ef14247
+    m_Address: Assets/Bundles/Units/char_127_estell
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3fb8ff10f681dc642b9afef65daf61a4
+    m_Address: Assets/Bundles/Units/char_128_plosis
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 48aebbb1925d9f249a455e07394ce2bd
+    m_Address: Assets/Bundles/Units/char_129_bluep
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cb235c2520510c1499a7cf54218c1c38
+    m_Address: Assets/Bundles/Units/char_130_doberm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 38d0e9ee3be0edb4c9605891230bdede
+    m_Address: Assets/Bundles/Units/char_131_flameb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a287fdf4817000e4db5dd0b550e3f1e4
+    m_Address: Assets/Bundles/Units/char_133_mm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6de3f9a07ced988408894d994aef6f54
+    m_Address: Assets/Bundles/Units/char_134_ifrit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f03176f3e4e71694f912984d8c7e5e03
+    m_Address: Assets/Bundles/Units/char_136_hsguma
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 69d11b6df1f7a6d4a960a14a73503721
+    m_Address: Assets/Bundles/Units/char_137_brownb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5e61f9a0025996b44840b6317bcb7fab
+    m_Address: Assets/Bundles/Units/char_140_whitew
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0363e6837c4d4d5409d226baeb1a41a5
+    m_Address: Assets/Bundles/Units/char_141_nights
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1b41e24cb00e9704fa08f5db0df146bc
+    m_Address: Assets/Bundles/Units/char_143_ghost
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dcfb1c58fd05c204eac698eb74a9365d
+    m_Address: Assets/Bundles/Units/char_144_red
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 89f5080ec7ef7c24eaa598d3f847cb26
+    m_Address: Assets/Bundles/Units/char_145_prove
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6fa50272913eddf4d98129171fa4df23
+    m_Address: Assets/Bundles/Units/char_147_shining
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d302dfcd1e6ab1e49a222c6579f1d1f2
+    m_Address: Assets/Bundles/Units/char_148_nearl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fae5befdbe21ec44ca4e7eeaade47236
+    m_Address: Assets/Bundles/Units/char_149_scave
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8d376b0d85d95c4469e88a411ed1e2c1
+    m_Address: Assets/Bundles/Units/char_150_snakek
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 30551a11a239daa44a91057baf061438
+    m_Address: Assets/Bundles/Units/char_151_myrtle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2ab4493d27aaaa846bcbf48e42829260
+    m_Address: Assets/Bundles/Units/char_155_tiger
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ff1b286479bb90f4ca399015363ef799
+    m_Address: Assets/Bundles/Units/char_158_milu
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e185f8c61832dd04b8e206fdfa31f4ab
+    m_Address: Assets/Bundles/Units/char_159_peacok
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 795b2b4541cdf8547b519d5e930d2568
+    m_Address: Assets/Bundles/Units/char_163_hpsts
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cf6557eadd7088042a3801b9014272d3
+    m_Address: Assets/Bundles/Units/char_164_nightm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 86ab8c0ae3d418644a0ff78085dcb52b
+    m_Address: Assets/Bundles/Units/char_166_skfire
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a3acd94e96ba0ca438a363437ee14d73
+    m_Address: Assets/Bundles/Units/char_171_bldsk
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dc755922e652bf0459791cd99ae3422a
+    m_Address: Assets/Bundles/Units/char_172_svrash
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8ca61ee3a2a29194b8c151feefc49bc1
+    m_Address: Assets/Bundles/Units/char_173_slchan
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8844bfc58ec1a9a43801eed626f68ee0
+    m_Address: Assets/Bundles/Units/char_174_slbell
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: aefb118ab2ce534439dada95e3565a21
+    m_Address: Assets/Bundles/Units/char_179_cgbird
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 741d953ae9016b8428bdbc113a594a36
+    m_Address: Assets/Bundles/Units/char_180_amgoat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0903c4c1beedfb846ba6b247202bd2a3
+    m_Address: Assets/Bundles/Units/char_181_flower
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6855e7e5dca484f48a3d2ace83c54993
+    m_Address: Assets/Bundles/Units/char_183_skgoat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 90bf7c7d2d762414b8103745945034df
+    m_Address: Assets/Bundles/Units/char_185_frncat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bd3edc594b13a7d4887e3250edf755b0
+    m_Address: Assets/Bundles/Units/char_187_ccheal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2f48f2bd13c1964478ddee23e9e0f22a
+    m_Address: Assets/Bundles/Units/char_188_helage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bc3f4fb7a41e48047a108c6fdcc33685
+    m_Address: Assets/Bundles/Units/char_190_clour
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 67747e160c53b7943995c1250ef8d43f
+    m_Address: Assets/Bundles/Units/char_192_falco
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1b460d8597b3deb49abcc0d3885a33b1
+    m_Address: Assets/Bundles/Units/char_193_frostl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fe7955502836b8343ae761f298366dda
+    m_Address: Assets/Bundles/Units/char_195_glassb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 746fdf49ff9a6f7439de2ad357afd4bd
+    m_Address: Assets/Bundles/Units/char_196_sunbr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2659d385aefe9fb4dbaf7a90d483d6fa
+    m_Address: Assets/Bundles/Units/char_197_poca
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ad0818f5512ccfd40bb429dfac847ffd
+    m_Address: Assets/Bundles/Units/char_198_blackd
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 99b1cc9704afa5941b0ed9b2d534f20d
+    m_Address: Assets/Bundles/Units/char_199_yak
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bf988690c7f749f41a27e2683a1a79c4
+    m_Address: Assets/Bundles/Units/char_2013_cerber
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f59a6f595e7262d4ca2751d1fb1474a9
+    m_Address: Assets/Bundles/Units/char_2014_nian
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: edb10b5ae358abb4d8facad07643d15d
+    m_Address: Assets/Bundles/Units/char_2015_dusk
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 76f10a664ce7a734ca39daa5968132ce
+    m_Address: Assets/Bundles/Units/char_201_moeshd
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cae9ad62a3d440a4ca75e779e74aea08
+    m_Address: Assets/Bundles/Units/char_2023_ling
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 321a90031de39fd49912b5c938c570f4
+    m_Address: Assets/Bundles/Units/char_202_demkni
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8f7963b12a69d2543bfde975f80cb10c
+    m_Address: Assets/Bundles/Units/char_204_platnm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dd9e8572703a6d342a98bf9bf81f830e
+    m_Address: Assets/Bundles/Units/char_206_gnosis
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 02bd55be4f7676847979eda4a10fa58a
+    m_Address: Assets/Bundles/Units/char_208_melan
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d5671e12712a2d641b7a06702ec632c2
+    m_Address: Assets/Bundles/Units/char_209_ardign
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fba72e31f8ca5924da08bc91d4b20b6a
+    m_Address: Assets/Bundles/Units/char_210_stward
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e86bc100916bece4485fc7f4eabcf013
+    m_Address: Assets/Bundles/Units/char_211_adnach
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a4278b7604cdd2f44a3bb8de3caa8418
+    m_Address: Assets/Bundles/Units/char_212_ansel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b3fb63e6e0b670a48a36f84ed7d1addc
+    m_Address: Assets/Bundles/Units/char_213_mostma
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 46684dff72227de4a8877c128569fbc7
+    m_Address: Assets/Bundles/Units/char_214_kafka
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 262cbb4d8d173a14290e446ebaac4317
+    m_Address: Assets/Bundles/Units/char_215_mantic
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5ca89f2012975bd45960331f7ceb5a0b
+    m_Address: Assets/Bundles/Units/char_218_cuttle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1bca2442e5c70934b99582e499d216d6
+    m_Address: Assets/Bundles/Units/char_219_meteo
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a7bfa5f75004dd2409a193402346665a
+    m_Address: Assets/Bundles/Units/char_220_grani
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d670c5243a987264ca74e5173b380d87
+    m_Address: Assets/Bundles/Units/char_222_bpipe
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e4aa2674bd8ea784d9bd3154a765c9f3
+    m_Address: Assets/Bundles/Units/char_225_haak
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2da3890a5430723498afad1908e74907
+    m_Address: Assets/Bundles/Units/char_226_hmau
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f57603b92d249614e90ba8c6a33c7fc4
+    m_Address: Assets/Bundles/Units/char_230_savage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cda2ee27a136ad648bd1a8108a0fb942
+    m_Address: Assets/Bundles/Units/char_235_jesica
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 79368ded8893ead4b8053e3bdb934551
+    m_Address: Assets/Bundles/Units/char_236_rope
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 36ce8d6ceced8984c8cd2739e50c8369
+    m_Address: Assets/Bundles/Units/char_237_gravel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f92dca748108b6e4494ffa0123f488fd
+    m_Address: Assets/Bundles/Units/char_240_wyvern
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7edeb3a83bbb81d4e8515a54f500de21
+    m_Address: Assets/Bundles/Units/char_241_panda
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 95cb07ec9c2de8545b1090f92815f545
+    m_Address: Assets/Bundles/Units/char_242_otter
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 992001e1c64ff55469dcd505af26b47d
+    m_Address: Assets/Bundles/Units/char_243_waaifu
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 22a887a1a9c9b4d4daf3d639f15d9924
+    m_Address: Assets/Bundles/Units/char_248_mgllan
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a0dd36118198d464a9c0bd0719f9428c
+    m_Address: Assets/Bundles/Units/char_250_phatom
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2e81962821b26814884471a5ae469434
+    m_Address: Assets/Bundles/Units/char_252_bibeak
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 270d0d9baf5367d459d2b29051e069f7
+    m_Address: Assets/Bundles/Units/char_253_greyy
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7b2112582304ae849a489a4f9b94cc43
+    m_Address: Assets/Bundles/Units/char_254_vodfox
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d899b08a766712f49bdb868ce137b6ea
+    m_Address: Assets/Bundles/Units/char_258_podego
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 58e54c3c1234c474ab7504a99e4b83a9
+    m_Address: Assets/Bundles/Units/char_260_durnar
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 125c52ae2b9193d49bd3001476b804f1
+    m_Address: Assets/Bundles/Units/char_261_sddrag
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ed9b62e822d791c4cbc3b0fbabb05868
+    m_Address: Assets/Bundles/Units/char_263_skadi
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a87399d6f0b4b2c459a596b4917b0a48
+    m_Address: Assets/Bundles/Units/char_264_f12yin
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 86d46c7a24ff13646accacd48db3b49b
+    m_Address: Assets/Bundles/Units/char_265_sophia
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 487aaced45e22804c9a39a7841bbafac
+    m_Address: Assets/Bundles/Units/char_271_spikes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dcaa182e38bab294c809a834d83ca3b6
+    m_Address: Assets/Bundles/Units/char_272_strong
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 78805707f6a1393408c43dd1542aa43a
+    m_Address: Assets/Bundles/Units/char_274_astesi
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3a21cb9efad59cc4689248e495b9d4da
+    m_Address: Assets/Bundles/Units/char_275_breeze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0b34b599bd436e34f9d9e43933032821
+    m_Address: Assets/Bundles/Units/char_277_sqrrel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 278fcd4506925c34eadb15152d607f55
+    m_Address: Assets/Bundles/Units/char_278_orchid
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4058d99b93f31e44998c01f999698704
+    m_Address: Assets/Bundles/Units/char_279_excu
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8df285f9212186d428fa523cef3a08f1
+    m_Address: Assets/Bundles/Units/char_281_popka
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 10a9e32034dc5694da08d18e320f7db2
+    m_Address: Assets/Bundles/Units/char_282_catap
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e0c2756dd16d1084c9161a2d4286a3ec
+    m_Address: Assets/Bundles/Units/char_283_midn
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0cd007d06b0d800459b4acc3727725c0
+    m_Address: Assets/Bundles/Units/char_284_spot
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0043f79efa0017c4c9a298c4e1a99da5
+    m_Address: Assets/Bundles/Units/char_285_medic2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 973e7377edbbaf5409d760e454d8aee5
+    m_Address: Assets/Bundles/Units/char_286_cast3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ed7effa0ecb3ff24382c35c86710771b
+    m_Address: Assets/Bundles/Units/char_289_gyuki
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 084e7e925cef38642b2f240730bfe802
+    m_Address: Assets/Bundles/Units/char_290_vigna
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1ce226d14d0157846ab54243c8896f0b
+    m_Address: Assets/Bundles/Units/char_291_aglina
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c966f4266649a7449a2f494d6badc11f
+    m_Address: Assets/Bundles/Units/char_293_thorns
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a922577b41042a6479fe16e62f8d6efe
+    m_Address: Assets/Bundles/Units/char_294_ayer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d12098d2297081d468b421b483d7bbcc
+    m_Address: Assets/Bundles/Units/char_298_susuro
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 65862ffc491fe6848b29a52a35037b62
+    m_Address: Assets/Bundles/Units/char_300_phenxi
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c037daf94cae917479ced7a7436bb4e2
+    m_Address: Assets/Bundles/Units/char_301_cutter
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2997aa0fedb37ba4e801ae1cdae3a614
+    m_Address: Assets/Bundles/Units/char_302_glaze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5ad6905565c436f4d8b135675600b123
+    m_Address: Assets/Bundles/Units/char_304_zebra
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 93e43cdb2dbde664fabb55f4403f1d5e
+    m_Address: Assets/Bundles/Units/char_306_leizi
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7f04777ece7593545b4a71d8fec52a1c
+    m_Address: Assets/Bundles/Units/char_308_swire
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 463c3ff7f5130f841b6c0086fe1bee13
+    m_Address: Assets/Bundles/Units/char_311_mudrok
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0b8215ae3c795ac45bcaebdd0fd2ea35
+    m_Address: Assets/Bundles/Units/char_322_lmlee
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e04bf960b930103478d58fe1a455b5d6
+    m_Address: Assets/Bundles/Units/char_325_bison
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2af3f54b698ab884cbd2a13e96d378b4
+    m_Address: Assets/Bundles/Units/char_326_glacus
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: db1e47bd456d6ee44800208be2759eac
+    m_Address: Assets/Bundles/Units/char_328_cammou
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0fd28e488a6e0f445bffb5da6032f1c2
+    m_Address: Assets/Bundles/Units/char_332_archet
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ae19b638413d3be4187b960ec516733c
+    m_Address: Assets/Bundles/Units/char_333_sidero
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e1d90beebb6262a4f9fb11b0c1c64f91
+    m_Address: Assets/Bundles/Units/char_336_folivo
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bc2e9610651a47d4da055e4accb918fb
+    m_Address: Assets/Bundles/Units/char_337_utage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5ef65214ccdf7c045840261ed3f66c59
+    m_Address: Assets/Bundles/Units/char_338_iris
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4597064aac1e2bf42b85048b8596df16
+    m_Address: Assets/Bundles/Units/char_340_shwaz
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a6c62275aae969544a69bcf16ca3e85f
+    m_Address: Assets/Bundles/Units/char_343_tknogi
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0009be26543d6184ba5059c7b0f46d95
+    m_Address: Assets/Bundles/Units/char_344_beewax
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d75822357626f7547b2da9b3fead9234
+    m_Address: Assets/Bundles/Units/char_345_folnic
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a821d9975d1118245955616f58b9c8be
+    m_Address: Assets/Bundles/Units/char_346_aosta
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6999c38b7332665438d96b3e10a7e264
+    m_Address: Assets/Bundles/Units/char_347_jaksel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e34d9c83a2b22ac49ab6a816ea92ff95
+    m_Address: Assets/Bundles/Units/char_348_ceylon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 45c7ad95673dead4fbbf4eb70e9acf69
+    m_Address: Assets/Bundles/Units/char_349_chiave
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d3f20f9652d93e3439f3b2a5d155223f
+    m_Address: Assets/Bundles/Units/char_350_surtr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a5b99e1c2860d1546824999b1e40e7b5
+    m_Address: Assets/Bundles/Units/char_355_ethan
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0d004b8f0340b70489982e076e3cd8cf
+    m_Address: Assets/Bundles/Units/char_356_broca
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2489d2b41fc2bf145abba791270ec378
+    m_Address: Assets/Bundles/Units/char_358_lisa
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f35312999d61a7147a45f38e52e478d8
+    m_Address: Assets/Bundles/Units/char_362_saga
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 33d31a929e7bdcc429a7558e2ed15af9
+    m_Address: Assets/Bundles/Units/char_363_toddi
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 76aeb652a2b259841b298678b4269332
+    m_Address: Assets/Bundles/Units/char_365_aprl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 25a04973c22d6384aab2a82cac0cfe73
+    m_Address: Assets/Bundles/Units/char_366_acdrop
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5a1d220778fd06f4a9314641b342c457
+    m_Address: Assets/Bundles/Units/char_367_swllow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 69881ee57915fd04d918d6950c8011fc
+    m_Address: Assets/Bundles/Units/char_369_bena
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6069cc03bec103c44a87f96df8477bdf
+    m_Address: Assets/Bundles/Units/char_373_lionhd
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 588f7fe47d29836418d35c19556610f6
+    m_Address: Assets/Bundles/Units/char_376_therex
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a90e5ebf865b30b4d9a4ab0babdab3c0
+    m_Address: Assets/Bundles/Units/char_377_gdglow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d8d74c1d035e139458c39067c37c8691
+    m_Address: Assets/Bundles/Units/char_378_asbest
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b06d846f1477ff44d805f02c5d34ef70
+    m_Address: Assets/Bundles/Units/char_379_sesa
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 99fddfcd51d123e43a413f122a9c05b6
+    m_Address: Assets/Bundles/Units/char_381_bubble
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ecd4106ef1d46c74b9c32eca80ff9501
+    m_Address: Assets/Bundles/Units/char_383_snsant
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2fccc5672ae6ce34c855dba4e4de5ab7
+    m_Address: Assets/Bundles/Units/char_385_finlpp
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ce43cc4a9a600cf418a22b7fbee3ff75
+    m_Address: Assets/Bundles/Units/char_388_mint
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cc15a4bc7bb145340be5211f19feacd0
+    m_Address: Assets/Bundles/Units/char_391_rosmon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d9ab621fbc01fd9469ca44a6384adae4
+    m_Address: Assets/Bundles/Units/char_4000_jnight
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9840e054495877e4a94be13c871f386d
+    m_Address: Assets/Bundles/Units/char_4004_pudd
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 96a5e38b2ef0878469ebf1989148c627
+    m_Address: Assets/Bundles/Units/char_4009_irene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 39002750539b54f4bbd655b0abaf4163
+    m_Address: Assets/Bundles/Units/char_400_weedy
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b73294e6ffc2eb240acbe2a3662c11d6
+    m_Address: Assets/Bundles/Units/char_4013_kjera
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cac0f0d1337e5e94db94389b4389686e
+    m_Address: Assets/Bundles/Units/char_4016_kazema
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bcc51809e42c4594dbca8817986f8356
+    m_Address: Assets/Bundles/Units/char_4019_ncdeer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 611e32b5fe42a764bbf4d99c77239229
+    m_Address: Assets/Bundles/Units/char_401_elysm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d92372c14aa4fe14ba07de82d7d1b642
+    m_Address: Assets/Bundles/Units/char_4025_aprot2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 174be41aee1e00f41a9d6c06efdc5fb9
+    m_Address: Assets/Bundles/Units/char_402_tuye
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 013cbc922d613ff488e8ee793a59e710
+    m_Address: Assets/Bundles/Units/char_4036_forcer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f2b2c67173135a948aad38133f2184be
+    m_Address: Assets/Bundles/Units/char_4039_horn
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f77a6bfc02c78ea438af0bf5703a5d95
+    m_Address: Assets/Bundles/Units/char_4040_rockr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4ff2c6003e3d47944829ac2c93bedb73
+    m_Address: Assets/Bundles/Units/char_4041_chnut
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a222a7de36b725c4997a623221882492
+    m_Address: Assets/Bundles/Units/char_4042_lumen
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 19520187ffa3feb49a31060e45e0a3ed
+    m_Address: Assets/Bundles/Units/char_4045_heidi
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 58f1e938690eeea47af97b3f78df18c8
+    m_Address: Assets/Bundles/Units/char_405_absin
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f01f3834baee740498e1d5e23f273653
+    m_Address: Assets/Bundles/Units/char_411_tomimi
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ff5ea13cbb9c12d44bbc54a818961d96
+    m_Address: Assets/Bundles/Units/char_415_flint
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a7ff108f7c0e40242942d97556a05e99
+    m_Address: Assets/Bundles/Units/char_416_zumama
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 817dd77e55cf9ea4b9c0a584a22dd806
+    m_Address: Assets/Bundles/Units/char_420_flamtl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3cb08db8591249049aac2ce36f8a1e4c
+    m_Address: Assets/Bundles/Units/char_421_crow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5077b4c0faaae7a488d6bcdc1bdb8e0e
+    m_Address: Assets/Bundles/Units/char_422_aurora
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4c53f97ab7b24f941ae79db6c89d411d
+    m_Address: Assets/Bundles/Units/char_423_blemsh
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e6331d9ceac434f4abc181dffab5a0e6
+    m_Address: Assets/Bundles/Units/char_426_billro
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 30e1cb4178b861e4080d70cd1a55c0f0
+    m_Address: Assets/Bundles/Units/char_430_fartth
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ed8221b6242c84f4ab7c858cc0dfccee
+    m_Address: Assets/Bundles/Units/char_431_ashlok
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5ed70655f0468e443bccae024a381675
+    m_Address: Assets/Bundles/Units/char_433_windft
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 46f5dd15e5e30a5469a408f135286f87
+    m_Address: Assets/Bundles/Units/char_436_whispr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 66edc3f0f4483094d9f80e815273480c
+    m_Address: Assets/Bundles/Units/char_437_mizuki
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5effb7814844ff94a95c7a0f576cb3a0
+    m_Address: Assets/Bundles/Units/char_440_pinecn
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: caec8a2320a9f8e4d969bca5c26cfeb6
+    m_Address: Assets/Bundles/Units/char_449_glider
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 86842d5401d7c3e468e292501e77debf
+    m_Address: Assets/Bundles/Units/char_451_robin
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 12ccd142c51ecf847baeb3a233dca86e
+    m_Address: Assets/Bundles/Units/char_452_bstalk
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2a8a5637c2806154bbe3de7894c65a23
+    m_Address: Assets/Bundles/Units/char_455_nothin
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6fd3d378443631e4cae5a1a940b1b801
+    m_Address: Assets/Bundles/Units/char_456_ash
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 038d5bbff0d9e714ab624f91f3c5bbe7
+    m_Address: Assets/Bundles/Units/char_457_blitz
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e5c63bfc472cd9646865853137bd51f5
+    m_Address: Assets/Bundles/Units/char_458_rfrost
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0234ee4c9b0d84940b53b9d4f7166235
+    m_Address: Assets/Bundles/Units/char_459_tachak
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f8b4e7900bdf493499b59ec77caec0c1
+    m_Address: Assets/Bundles/Units/char_469_indigo
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6c8fda809bbe5c7408aadb7827f072c2
+    m_Address: Assets/Bundles/Units/char_472_pasngr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5431bdaaed66d194085ffea08f4da9ca
+    m_Address: Assets/Bundles/Units/char_473_mberry
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 33533076bcb900b4887a3b8df8143efb
+    m_Address: Assets/Bundles/Units/char_474_glady
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2b551b298b784cb4e9a331da2b3ea365
+    m_Address: Assets/Bundles/Units/char_475_akafyu
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: df11cee721bd0754bb3390464948cddc
+    m_Address: Assets/Bundles/Units/char_476_blkngt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8cbabe1e36b75e14799e62ba4eb33c29
+    m_Address: Assets/Bundles/Units/char_478_kirara
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 59e045107d99e4c469e0a1b81a6ffed1
+    m_Address: Assets/Bundles/Units/char_479_sleach
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6874cd1bd449e7c44a9200fb39c06da9
+    m_Address: Assets/Bundles/Units/char_484_robrta
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f0bfa2ae12e1ee846bfe2109133e82b1
+    m_Address: Assets/Bundles/Units/char_485_pallas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 72285ff8b05906542acbce735544cf24
+    m_Address: Assets/Bundles/Units/char_486_takila
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 89ca5749c43982e49a63016beafbd0f6
+    m_Address: Assets/Bundles/Units/char_489_serum
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 174d2ebee9be8644e8ff73d64fd157e5
+    m_Address: Assets/Bundles/Units/char_492_quercu
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e522d55ed1d2c8d47821cb4475194e14
+    m_Address: Assets/Bundles/Units/char_496_wildmn
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8daacd504e17cc7448467729eb86c8a4
+    m_Address: Assets/Bundles/Units/char_500_noirc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e34033bb6de22944cbc3dbb3689fc86b
+    m_Address: Assets/Bundles/Units/char_501_durin
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 28ad48d830df6e043ab4dc4cacd750e1
+    m_Address: Assets/Bundles/Units/char_502_nblade
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5fe3e27021dcfe740b4e048f3a23fa54
+    m_Address: Assets/Bundles/Units/char_503_rang
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d7dfab7bc3202a047bdd8d1a2292ef32
+    m_Address: Assets/Bundles/Units/char_504_rguard
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dd76580b32319ae4da505fd94075a744
+    m_Address: Assets/Bundles/Units/char_505_rcast
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e3a9e84f7fc0e264f9417f2e294b1b22
+    m_Address: Assets/Bundles/Units/char_506_rmedic
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1e963056b4b66774fb94a76047e63c16
+    m_Address: Assets/Bundles/Units/char_507_rsnipe
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6c25f393d80f1ad42b9af5116f714a81
+    m_Address: Assets/Bundles/Units/char_508_aguard
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4a6a570bbd8598443be0bd7f0936d4a7
+    m_Address: Assets/Bundles/Units/char_509_acast
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 07948e8b3a9a0f64eb98413be62e4535
+    m_Address: Assets/Bundles/Units/char_510_amedic
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7c380470f98b91b4fb42346e1672612c
+    m_Address: Assets/Bundles/Units/char_511_asnipe
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 073faf1f89d48a14696f999e4a5b3680
+    m_Address: Assets/Bundles/Units/char_512_aprot
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   - m_GUID: 68b89c6ae56194a488720071c5fa5c0b
     m_Address: Assets/Bundles/Units/enemy_1000_gopro
     m_ReadOnly: 0
@@ -2177,10 +3217,6 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Units/enemy_1027_mob
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 432219d779f364d46a8764e23900e51f
-    m_Address: Assets/Bundles/Units/enemy_1027_mob_2
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: f3a594c970f77014383a6eab9f3c02ce
     m_Address: Assets/Bundles/Units/enemy_1028_mocock
     m_ReadOnly: 0
@@ -2305,16 +3341,8 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Units/enemy_1046_agent
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: eca1ad42c4b489f4fbebc6d7446ecd0e
-    m_Address: Assets/Bundles/Units/enemy_1046_agent_2
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: d1314963de9ad3f41bd5795cf164a14b
     m_Address: Assets/Bundles/Units/enemy_1047_sagent
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: a509e35a539b75347ab146503bb2dd05
-    m_Address: Assets/Bundles/Units/enemy_1047_sagent_2
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 5bb91b79d2f909c43b7b1bcabafea127
@@ -2327,10 +3355,6 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: a43fd396318cc194092c37dbfe40d3b9
     m_Address: Assets/Bundles/Units/enemy_1049_eagent
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 241f18c8dfc404e4a92d2074c73eaeed
-    m_Address: Assets/Bundles/Units/enemy_1049_eagent_2
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 08d8e36dbf80a0b48992f15d66364400
@@ -2675,10 +3699,6 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: 3c162c2179f835049a50301644a35660
     m_Address: Assets/Bundles/Units/enemy_1093_ccsbr
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: e4d66f67438947e4ea0372a8da887a27
-    m_Address: Assets/Bundles/Units/enemy_1093_ccsbr_2
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: ffd657efd8ddaf240b58b390bb538bf7
@@ -3217,16 +4237,8 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Units/enemy_1163_hvymot_2
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 7c48b2423e9ad844c92cfbc046c8cc20
-    m_Address: Assets/Bundles/Units/enemy_1164_bmbmot
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: e8f13d40f9966b2498c71d2820c5d7ff
     m_Address: Assets/Bundles/Units/enemy_1164_bmbmot_2
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 638b862f3278034408bb8f386e362032
-    m_Address: Assets/Bundles/Units/enemy_1164_bmbmot_3
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: f065852fee19bf44faf90596cd129e79
@@ -3593,6 +4605,198 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Units/enemy_1210_msfden_2
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: a61f663a7be8af547a8bdd691aa78a80
+    m_Address: Assets/Bundles/Units/enemy_1212_mtrfol
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 218d802089bcb8b43afe2026108828b1
+    m_Address: Assets/Bundles/Units/enemy_1212_mtrfol_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ad072da279cbea4458c145c8b8b78e6a
+    m_Address: Assets/Bundles/Units/enemy_1213_mtrsnp
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: eb1abc4c4c2cb3644aab793f5f848236
+    m_Address: Assets/Bundles/Units/enemy_1213_mtrsnp_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: af4b76d5d9090a4468a9f4093935bbb9
+    m_Address: Assets/Bundles/Units/enemy_1214_mtrmgc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 180057f176c245a45a2d952322d5c02a
+    m_Address: Assets/Bundles/Units/enemy_1214_mtrmgc_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5018eecbddc9d9d498dc9c2505245665
+    m_Address: Assets/Bundles/Units/enemy_1215_ptrarc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1daff083d28090241940d98e713b2886
+    m_Address: Assets/Bundles/Units/enemy_1215_ptrarc_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 933b8125a4328d74b96a090298a3c18a
+    m_Address: Assets/Bundles/Units/enemy_1216_cansld
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fa3ea1ed0d3b5a34c9af0819a5c504b4
+    m_Address: Assets/Bundles/Units/enemy_1216_cansld_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d2dc8a41b47b32a43a9c64840e223c89
+    m_Address: Assets/Bundles/Units/enemy_1217_rescar
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 65244ebda286990439c9f423edc15ed2
+    m_Address: Assets/Bundles/Units/enemy_1217_rescar_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 93726a9f39367934186c424ba94a5d32
+    m_Address: Assets/Bundles/Units/enemy_1218_bomscr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0349f381ead37fe49b667e66cc25046e
+    m_Address: Assets/Bundles/Units/enemy_1218_bomscr_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4b999bb7980d78f4d88c9313e7e3eee6
+    m_Address: Assets/Bundles/Units/enemy_1219_mtrbty
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c561a561e0c5b5346918569124051171
+    m_Address: Assets/Bundles/Units/enemy_1219_mtrbty_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d0db2297d169f0749b048ca86b3e34af
+    m_Address: Assets/Bundles/Units/enemy_1220_dzoms
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 36bfd39474af798479e4d28fd58f0796
+    m_Address: Assets/Bundles/Units/enemy_1220_dzoms_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 20f998db073f7674ea25ecb7de072f37
+    m_Address: Assets/Bundles/Units/enemy_1221_dzomg
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 752f512e703039c49b446632c0ad0cf2
+    m_Address: Assets/Bundles/Units/enemy_1221_dzomg_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a32b287ceb81cde4b99122a556b2dfd4
+    m_Address: Assets/Bundles/Units/enemy_1222_dpvt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6e2aa785d4f62434a8e7461b255a6ca3
+    m_Address: Assets/Bundles/Units/enemy_1222_dpvt_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7d8fbe241b2dfa341ad673f812b1b2db
+    m_Address: Assets/Bundles/Units/enemy_1223_dmech
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fcceee0abaeb8f342be63d8d529da298
+    m_Address: Assets/Bundles/Units/enemy_1223_dmech_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f925dd791aba6b94d81bd1ab640687ca
+    m_Address: Assets/Bundles/Units/enemy_1224_dsuply
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ead815d4fbb307c43a1cc0688684156c
+    m_Address: Assets/Bundles/Units/enemy_1224_dsuply_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5d4ab8030b5a76647bd5ed0ec6bcc860
+    m_Address: Assets/Bundles/Units/enemy_1225_dkmage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0120fbd57fddb9c478e0b1ef68b200e9
+    m_Address: Assets/Bundles/Units/enemy_1225_dkmage_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a8f8d3d9753668f44971d9abbe60843b
+    m_Address: Assets/Bundles/Units/enemy_1226_dklord
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bf3d6b7144beae2428a22f91d2b8dcd5
+    m_Address: Assets/Bundles/Units/enemy_1226_dklord_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6e803cf0b8cdc2343938d0ed2ae7ffd2
+    m_Address: Assets/Bundles/Units/enemy_1227_dair
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 37592c600a44f71468fd75e126626629
+    m_Address: Assets/Bundles/Units/enemy_1227_dair_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6fea04d5d34bf2540a1cd238e65d1397
+    m_Address: Assets/Bundles/Units/enemy_1228_dslime
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0209b7c39f34f484c86d213f1be7020b
+    m_Address: Assets/Bundles/Units/enemy_1228_dslime_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 90e62e744aabba8479d71bdd8890baa7
+    m_Address: Assets/Bundles/Units/enemy_1229_darmy
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 24cad883ecafb8b4f81c98b9f1ef44c4
+    m_Address: Assets/Bundles/Units/enemy_1229_darmy_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 22c49fffb855d624996aa93e553a18d6
+    m_Address: Assets/Bundles/Units/enemy_1230_dsbudr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 05ca78b6fd276014fb46dfed08e5519a
+    m_Address: Assets/Bundles/Units/enemy_1230_dsbudr_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 902bba2885e82e84b9b69272565e849b
+    m_Address: Assets/Bundles/Units/enemy_1231_dsrunr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: af159c1ae8c65ed42bd0b4c40cd2a067
+    m_Address: Assets/Bundles/Units/enemy_1231_dsrunr_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fc5826e90cf13f44f9479d54e9157108
+    m_Address: Assets/Bundles/Units/enemy_1232_dssalr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 67402474e221da145bb46d2a52f3efbe
+    m_Address: Assets/Bundles/Units/enemy_1232_dssalr_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f310619299aacd3429ad7c45324bdf8a
+    m_Address: Assets/Bundles/Units/enemy_1233_dsshtr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bf5e460c03b9bae4b91124e80aef1ed0
+    m_Address: Assets/Bundles/Units/enemy_1233_dsshtr_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fcbf29ab93e719443a1f394544a59445
+    m_Address: Assets/Bundles/Units/enemy_1234_dsubrl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2a8b2023aa6c11f4c8e9117c517766e5
+    m_Address: Assets/Bundles/Units/enemy_1234_dsubrl_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ea8b6d958bda12c46a3b2e399153524a
+    m_Address: Assets/Bundles/Units/enemy_1235_dsbskr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 54c1a1842231df24d9ad2b540b550936
+    m_Address: Assets/Bundles/Units/enemy_1235_dsbskr_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   - m_GUID: a536a394dad79df4681f77aa7868b810
     m_Address: Assets/Bundles/Units/enemy_1500_skulsr
     m_ReadOnly: 0
@@ -3697,596 +4901,124 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Units/enemy_1525_blkswb
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: bc65539ba75767240896db704c58eb6d
+  - m_GUID: f956efaf37ad7b94887b3ceece66b7bf
+    m_Address: Assets/Bundles/Units/enemy_1527_martyr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bc75188475ca97f4ea8fda60604b93d1
+    m_Address: Assets/Bundles/Units/enemy_1528_manfri
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0ac043cb6997c7647b0e791720c493f1
+    m_Address: Assets/Bundles/Units/enemy_1529_dsdevr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: df22036686c5f13468f7e3d4b89c2292
     m_Address: Assets/Bundles/Units/enemy_2001_duckmi
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 50c339c6b6dbd6c41a8c2c632b41307d
+  - m_GUID: 1f9f0212fdf120e4e839714b0c993be0
     m_Address: Assets/Bundles/Units/enemy_2002_bearmi
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: f806f685778fe594f935ce094ac09950
+  - m_GUID: 964560bb213a03b4caeafd7e7d6166d7
     m_Address: Assets/Bundles/Units/enemy_2003_rockman
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 947f5d2b48e572e429f0af776f3411c7
+  - m_GUID: 392af7feb83bc844aae197cf0a82b98c
     m_Address: Assets/Bundles/Units/enemy_2004_balloon
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 79f09c99478d3744198776b3ac442596
+  - m_GUID: 837ebb64dcf008145a4da2a4feaccc92
     m_Address: Assets/Bundles/Units/enemy_2005_axetro
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: eb51f6cddcec97b45ab2396d83b10ea9
+  - m_GUID: f41223ef2a745734796a52b17ceb2e0c
     m_Address: Assets/Bundles/Units/enemy_2006_flsnip
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 76815af26b3592c42979ae16d04c5a2b
+  - m_GUID: 1207f7781dade4c4b97f48fde47607ea
     m_Address: Assets/Bundles/Units/enemy_2007_flwitch
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 5aef01d16df4cea4384d98fac79e3187
+  - m_GUID: a7ba8648c4793674eb7fe6dd8da5829a
     m_Address: Assets/Bundles/Units/enemy_2008_flking
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 92303549ce46d4e4bb9a1fb3dce2bc3b
+  - m_GUID: c9d537cae0983ed4582ae6cd982bb55c
     m_Address: Assets/Bundles/Units/enemy_2009_csaudc
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: c9a6ff389ffbb6f49a88963ff032c2c0
+  - m_GUID: 2517d139298fd2a4c8be57e797cffd9c
     m_Address: Assets/Bundles/Units/enemy_2010_csdcr
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 168d508b0499b0f48a1531f835605cde
+  - m_GUID: 3042f1cc5063a6a46a62e93f150c2820
     m_Address: Assets/Bundles/Units/enemy_2011_csppt
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: e81c4e9c72e78694ca892cb2a8b758d5
+  - m_GUID: 6dc6c50903cd9f0468beb8e2a4d671b0
     m_Address: Assets/Bundles/Units/enemy_2012_csbln
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 81e51621080df8044b194a05bfdfaa5e
+  - m_GUID: 64061e787fe09a84c97a70d1c552c0d5
     m_Address: Assets/Bundles/Units/enemy_2013_csbot
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 5a73262f952af584fa69104381085cd7
+  - m_GUID: 9f91e0fec31f76f4aa75c201d2d76d07
     m_Address: Assets/Bundles/Units/enemy_2014_csicer
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 1003a29d604eced4186b00c25f752103
+  - m_GUID: da09b27891eb73b4aa2224bdbf28e8a1
     m_Address: Assets/Bundles/Units/enemy_2015_csicem
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: b74753f1c6a8fa14c908c19b09a5dcdb
+  - m_GUID: 19e9c569b7d73a64dbf7b40c888952f2
     m_Address: Assets/Bundles/Units/enemy_2016_csphtm
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: bb4e9cea9a8a90844b2526741847cd76
+  - m_GUID: 8ffc18f6d294bde43a6a6a55d53c18df
     m_Address: Assets/Bundles/Units/enemy_2017_csphts
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 28970616f10dbf04ba92d75e1aa3b569
+  - m_GUID: 0e95289101ce0a64e9b23d1312bce92e
     m_Address: Assets/Bundles/Units/enemy_2018_csdoll
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 31ae48c8201bc564bb59ccb2cb93fe0f
+  - m_GUID: aaf6f6491b8a21d48bfff649eff5eefa
     m_Address: Assets/Bundles/Units/enemy_2019_cshost
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: cadd76742abd3b9409dffb0cb12f3801
+  - m_GUID: 81bd35b2440bc3a4c899f015f4f80159
     m_Address: Assets/Bundles/Units/enemy_3001_upeopl
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 0e349870ea6c2444283f2033f91c9cfd
+  - m_GUID: 22da5cd81893a8e4ba78ce8b65f41075
     m_Address: Assets/Bundles/Units/enemy_3002_ftrtal
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: b218b476944f9eb40a9d99cdb00cb7ba
+  - m_GUID: 8d7a31cf2d1071243b6cbe6db6aa4afd
     m_Address: Assets/Bundles/Units/enemy_3003_alymot
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 3e3d9a5abe4b7304cb5da4c770725b0c
+  - m_GUID: a981cb2c73d7a47409eb3585e58d07f6
     m_Address: Assets/Bundles/Units/enemy_4001_toxcar
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 92e28135790a9044eacff74fcf1a9cab
+  - m_GUID: c66c7715df7a632428ced2dd72367581
     m_Address: Assets/Bundles/Units/enemy_4001_toxcar_2
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 52941494ab696874cbe4cd463912ee0e
+  - m_GUID: 16b1264620cfc3b419b70eee51cf81a1
     m_Address: Assets/Bundles/Units/enemy_4002_syokai
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 72b9ce523c039e64084db87541ff338d
+  - m_GUID: 4522198cd433c5047b3e92599b89ce2a
     m_Address: Assets/Bundles/Units/enemy_4002_syokai_2
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 8db37a500d274cf468e6d23170dbb186
+  - m_GUID: d6c7d75ed3daa9442aadda7699159bd6
     m_Address: Assets/Bundles/Units/enemy_4003_pbank
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 0876ba5e568c1684a90e5dda54c1be56
-    m_Address: Assets/Bundles/Units/token_10000_silent_healrb
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 4ab1a00c3dd524a4c865ba714ae08088
-    m_Address: Assets/Bundles/Units/token_10001_deepcl_tentacle
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 644bd438562fdbf4d9c6f629518291e7
-    m_Address: Assets/Bundles/Units/token_10002_kalts_mon3tr
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 608bdd1da2e4cf14a9bd9c1a3179abda
-    m_Address: Assets/Bundles/Units/token_10003_cgbird_bird
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 5a50f01389eba24458a665d06985d5c1
-    m_Address: Assets/Bundles/Units/token_10004_otter_motter
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 6f8432cb4ee95524296fedccdb628eda
-    m_Address: Assets/Bundles/Units/char_002_amiya
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 413f7d3069c989e4dad29fba54436072
-    m_Address: Assets/Bundles/Units/char_003_kalts
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 477959e940d200f4c867acbeab57be71
-    m_Address: Assets/Bundles/Units/char_009_12fce
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: e364db64d97745949885e9e019fe6f35
-    m_Address: Assets/Bundles/Units/char_010_chen
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 845d112c1e88f3642a920221704593db
-    m_Address: Assets/Bundles/Units/char_017_huang
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: dbfa9f7d29c32fc4881530d00a8ab40e
-    m_Address: Assets/Bundles/Units/char_101_sora
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 5a37dba7064c70942ae716e61ff6d21b
-    m_Address: Assets/Bundles/Units/char_102_texas
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: a12f721fbf437174b97218535343819b
-    m_Address: Assets/Bundles/Units/char_103_angel
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 89442ca3f72361041a3edd6c2e945246
-    m_Address: Assets/Bundles/Units/char_106_franka
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: d27bea35aa6bdb348811b4301127c63e
-    m_Address: Assets/Bundles/Units/char_107_liskarm
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 3fe4ee787b852294f9c0f7efc5c09374
-    m_Address: Assets/Bundles/Units/char_108_silent
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: ac22502720230bc49a579b3cbf9d2653
-    m_Address: Assets/Bundles/Units/char_109_fmout
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 9377f40b675f8d640b7dc0721eb6ea99
-    m_Address: Assets/Bundles/Units/char_110_deepcl
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 966a0c5c070a9534f91222493e48b042
-    m_Address: Assets/Bundles/Units/char_112_siege
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: cc3224135d0a0984a89de7358d7fa6b9
-    m_Address: Assets/Bundles/Units/char_115_headbr
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 7f6f877d2bcf11545be4febcf0b079a8
-    m_Address: Assets/Bundles/Units/char_117_myrrh
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 62f31af442a0a914db80afe5b7efabf0
-    m_Address: Assets/Bundles/Units/char_118_yuki
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: a721ff746783dc9488a33b3300ed8faa
-    m_Address: Assets/Bundles/Units/char_120_hibisc
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 1dbc977c833086540836f134094555b2
-    m_Address: Assets/Bundles/Units/char_121_lava
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 318402cac73660c4687ee373f985d2c7
-    m_Address: Assets/Bundles/Units/char_122_beagle
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: b5070b8794b136b4c89bf353b1831893
-    m_Address: Assets/Bundles/Units/char_123_fang
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 0cee0b6a780313a4ba4419e09c9c632d
-    m_Address: Assets/Bundles/Units/char_124_kroos
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: bc0684ad8dbb7334bae99ef78112b4c8
-    m_Address: Assets/Bundles/Units/char_126_shotst
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 0400aefb81bac7949bded916ca7c7bcc
-    m_Address: Assets/Bundles/Units/char_127_estell
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: acba622cdd0792f4ca45440b8c4e80c2
-    m_Address: Assets/Bundles/Units/char_128_plosis
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 70db8d28d4de68748992731804580b1c
-    m_Address: Assets/Bundles/Units/char_129_bluep
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: a1a93403d13388a42a7160839bddbe9e
-    m_Address: Assets/Bundles/Units/char_130_doberm
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 2285938b8245ffe4e9bd46a6459a5ca3
-    m_Address: Assets/Bundles/Units/char_134_ifrit
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 1f489dcf3cb8acb4aae4a862f14b20d0
-    m_Address: Assets/Bundles/Units/char_136_hsguma
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 5dfde7de58c04d0468e60fff37404d6b
-    m_Address: Assets/Bundles/Units/char_140_whitew
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 709729a99b06aac4c94f721e26c57838
-    m_Address: Assets/Bundles/Units/char_141_nights
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: d613043444bf5b64fb0eafae515bda4f
-    m_Address: Assets/Bundles/Units/char_143_ghost
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 4c120be13b464b24695852a6d2cc1ace
-    m_Address: Assets/Bundles/Units/char_144_red
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 31348be57ce93f24881ce694770d5470
-    m_Address: Assets/Bundles/Units/char_145_prove
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 16749038fb7a85448bfec4fd61bd1f15
-    m_Address: Assets/Bundles/Units/char_147_shining
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 7b114de36218fd74aad1f73527231fd6
-    m_Address: Assets/Bundles/Units/char_148_nearl
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: fcdc62c99cff1fa498480761e381b8dd
-    m_Address: Assets/Bundles/Units/char_149_scave
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: e4f5dae6e0f656f4789cf2e8e196ed15
-    m_Address: Assets/Bundles/Units/char_150_snakek
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 329de4d578e333446bb7534db55eba1e
-    m_Address: Assets/Bundles/Units/char_151_myrtle
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: b7695467768d3cc45b306756e88b1267
-    m_Address: Assets/Bundles/Units/char_155_tiger
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 5d63dcc2c5754dd46adada320ebb34bc
-    m_Address: Assets/Bundles/Units/char_158_milu
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: ef87fbfc93ef08144bd8a68228b1c85a
-    m_Address: Assets/Bundles/Units/char_163_hpsts
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 045f2b5820caf624fbcc08791901b230
-    m_Address: Assets/Bundles/Units/char_166_skfire
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 220e1207ed61f554496835362135c7e4
-    m_Address: Assets/Bundles/Units/char_171_bldsk
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: b2625239493e7b04d9fc2e9ff9cee350
-    m_Address: Assets/Bundles/Units/char_172_svrash
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: bb6c2cb6e5bc85f43bd1e6bf33237e22
-    m_Address: Assets/Bundles/Units/char_173_slchan
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 53dda4db207e1114296a1a0c016407dc
-    m_Address: Assets/Bundles/Units/char_174_slbell
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 9e921d1a077db124980cae585d3ea49c
-    m_Address: Assets/Bundles/Units/char_179_cgbird
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: de35c4015ca4c5644b16b229a8b3fcd0
-    m_Address: Assets/Bundles/Units/char_180_amgoat
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: d43399c06199a4a479f412deffff84c5
-    m_Address: Assets/Bundles/Units/char_181_flower
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 03d24cf236de58047ae8c27a23fac09e
-    m_Address: Assets/Bundles/Units/char_183_skgoat
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 428df10540e5cd743be236d9567b4392
-    m_Address: Assets/Bundles/Units/char_185_frncat
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 36bae6419c736ce4c82d9711a2c0abc1
-    m_Address: Assets/Bundles/Units/char_187_ccheal
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 23b87b2c709386c48b3c849746ce33d9
-    m_Address: Assets/Bundles/Units/char_192_falco
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: ff534dc255ad17942aeb95c90b0d62dd
-    m_Address: Assets/Bundles/Units/char_193_frostl
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 01c84d6c22a40dc468884e503b1c12c8
-    m_Address: Assets/Bundles/Units/char_195_glassb
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 850672b4d87dd4a4ea6adcff62489ac5
-    m_Address: Assets/Bundles/Units/char_196_sunbr
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: a280d226bdd5f1b4a8bfc298886adc7b
-    m_Address: Assets/Bundles/Units/char_198_blackd
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 2ccd1808313a4e846bc1824edf20778d
-    m_Address: Assets/Bundles/Units/char_199_yak
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 86edfdba9c309a84c88c0789e29df49c
-    m_Address: Assets/Bundles/Units/char_201_moeshd
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 264e3363ed4a1284faa3909fc29ee1c2
-    m_Address: Assets/Bundles/Units/char_202_demkni
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: bd1db9b872693e3488025deec74bc978
-    m_Address: Assets/Bundles/Units/char_204_platnm
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 01224fb3c7695cf4fa5404d2b04694de
-    m_Address: Assets/Bundles/Units/char_208_melan
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: d62ee9068778b864087bfff2636088f2
-    m_Address: Assets/Bundles/Units/char_209_ardign
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: a29f5ed67457a8d45abf58d26e2d0e60
-    m_Address: Assets/Bundles/Units/char_210_stward
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: d8c96a8018966ae4bbfaa263b56d29ca
-    m_Address: Assets/Bundles/Units/char_211_adnach
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: c3a937f3f5da27a41808f887b44a1b1c
-    m_Address: Assets/Bundles/Units/char_212_ansel
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: c960659e2b2f47c4185978dbe6dafec3
-    m_Address: Assets/Bundles/Units/char_213_mostma
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: a9d73ddc3a0216744ac00e4c0682c4cd
-    m_Address: Assets/Bundles/Units/char_215_mantic
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 88b4258efb16e0e4ba37420483b2d1b9
-    m_Address: Assets/Bundles/Units/char_219_meteo
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: e1bbeaf55834efe479ec8099387829cb
-    m_Address: Assets/Bundles/Units/char_235_jesica
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 238f6bc24ccb494489affef8d3d54f2e
-    m_Address: Assets/Bundles/Units/char_236_rope
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 7209c8530f3025643b574648b7c6df58
-    m_Address: Assets/Bundles/Units/char_237_gravel
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: f59e628598c59614e8956be057ce9901
-    m_Address: Assets/Bundles/Units/char_240_wyvern
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: b3f605b956b096549bc0e4d8d3a83242
-    m_Address: Assets/Bundles/Units/char_241_panda
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: f2cb8903478885d498522aa3d4e500db
-    m_Address: Assets/Bundles/Units/char_242_otter
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: dbf6e6d26ddd5264db75a9a4588b2df7
-    m_Address: Assets/Bundles/Units/char_277_sqrrel
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 1e240dbc952670f4f906a240e2f8252a
-    m_Address: Assets/Bundles/Units/char_278_orchid
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 050b499df80c7dd4a8d7017cf3f8c4c5
-    m_Address: Assets/Bundles/Units/char_281_popka
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 3b24540df190c9f4890a72fe04a1bceb
-    m_Address: Assets/Bundles/Units/char_282_catap
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 14996108caa5e0e4c879307ef0f843e4
-    m_Address: Assets/Bundles/Units/char_283_midn
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 9564bbe91c4042e4987a866e69b3d376
-    m_Address: Assets/Bundles/Units/char_284_spot
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 9b7afa50ef1438c4d82a49fba9e7dbb3
-    m_Address: Assets/Bundles/Units/char_285_medic2
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 4e8877cf20db71a4588f6dde05bfa87e
-    m_Address: Assets/Bundles/Units/char_286_cast3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 3b116f648ca50384d923cd1ae30f510a
-    m_Address: Assets/Bundles/Units/char_289_gyuki
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 9ca8ab4f80fa4014fb5dc43f080015ef
-    m_Address: Assets/Bundles/Units/char_290_vigna
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 9131656c91ef0844da71a8fe8d57ed1c
-    m_Address: Assets/Bundles/Units/char_291_aglina
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 94d2a96be402b7e458525896dcae4582
-    m_Address: Assets/Bundles/Units/char_293_thorns
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: c56c7219bfd8a4548be3a3490c7ef7c8
-    m_Address: Assets/Bundles/Units/char_298_susuro
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: ddec226660211314a878089aea428638
-    m_Address: Assets/Bundles/Units/char_350_surtr
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 10e590fe2e60e5f4a9dd51939e227463
-    m_Address: Assets/Bundles/Units/char_365_aprl
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 4480c18448b24e44f9cfdb7179bc21aa
-    m_Address: Assets/Bundles/Units/char_500_noirc
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: f3cde06ba60db3740b241ce90cda6549
-    m_Address: Assets/Bundles/Units/char_501_durin
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 2c23faa88384e22458fb6d8fbe776c7f
-    m_Address: Assets/Bundles/Units/char_502_nblade
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 28e5b5d85b218ef42b81ce7bdf565eda
-    m_Address: Assets/Bundles/Units/char_503_rang
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 933ae5c6da2200148a36f91f7f853b4e
-    m_Address: Assets/Bundles/Audio/battle
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 3ae3e4b5c2fc906469cad0f9e8a4ee02
-    m_Address: Assets/Bundles/Audio/main
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 5581488fa80ffab4eb925138cb690159
-    m_Address: Assets/Bundles/Units/enemy_1037_lunsabr
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 859b32987a6a2064082f53f3471085b6
-    m_Address: Assets/Bundles/Units/enemy_1043_zomsabr
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: a0b580c16476b5442a0c9bab6a9e77eb
-    m_Address: Assets/Bundles/Units/enemy_1043_zomsabr_2
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 841119e1d3e954344b6fce7e36b95683
-    m_Address: Assets/Bundles/Effect/glassb_skill_02_range1
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 717f48ab5a2c9b946b61cf0d9ba17452
-    m_Address: Assets/Bundles/Effect/ifrit_skill_03_range1
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 006da4814d7fa3b4fa66e27323ebef59
-    m_Address: Assets/Bundles/Effect/buff_cold1
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 232496a03de83af4f968df59e565bc1f
-    m_Address: Assets/Bundles/Effect/buff_cold2
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: ab23bfab1838deb43966ec56bc5e0b41
-    m_Address: Assets/Bundles/UI/DungeonUI_atlas0
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: a6e2367f3f7683f40b227763c2fd7104
-    m_Address: Assets/Bundles/Effect/skfire_skill_02_hit1
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 65dcb89fff9d7b74ba5a463ba4c9928b
-    m_Address: Assets/Bundles/UI/MapBuilderUI_atlas0
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: fedf5f4d54117724582b5a45b3773792
-    m_Address: "Assets/Bundles/Units/\u51B0\u6676\u88C5\u7F6E"
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: e91c167a70099f049bb803738bc411d4
-    m_Address: "Assets/Bundles/Units/\u6E90\u77F3\u796D\u575B"
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: b40e921ce119e6e4ead3f03aea6c5df0
-    m_Address: "Assets/Bundles/Units/\u6307\u6325\u7EC8\u7AEF"
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: fbe8204fe536315409350d54ee906186
-    m_Address: "Assets/Bundles/Units/\u4F20\u9001\u5165\u53E3\u7EA2"
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 5ddd1eb6ab49bb243be6f88829496529
-    m_Address: "Assets/Bundles/Units/\u4F20\u9001\u5165\u53E3\u7EFF"
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: ea8b97189e32cc74d98069e719b80312
-    m_Address: "Assets/Bundles/Units/\u4F20\u9001\u5165\u53E3\u84DD"
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: e82c7559572bd364392f2ed15f808fee
-    m_Address: "Assets/Bundles/Units/\u4F20\u9001\u5165\u53E3\u9EC4"
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: c327cdb087f6d0b48947324ffc7a43a2
-    m_Address: Assets/Bundles/Effect/ifrit_skill_03_range2
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 64d0b856fc9c4bb45993627056e5730e
-    m_Address: Assets/Bundles/Effect/skfire_skill_02_trail1
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

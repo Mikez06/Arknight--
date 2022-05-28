@@ -16,6 +16,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ee5ad8fca49b47b4d9bfdb484a75d688, type: 2}
   scale: 0.0026999998
   skeletonJSON: {fileID: 4900000, guid: 55d0f10c98e886b41a6da879f6488ebb, type: 3}
+  isUpgradingBlendModeMaterials: 0
+  blendModeMaterials:
+    requiresBlendModeMaterials: 1
+    applyAdditiveMaterial: 1
+    additiveMaterials:
+    - pageName: enemy_1146_defspd.png
+      material: {fileID: 2100000, guid: 2e41fc728b4b2264d819c10925e28c3f, type: 2}
+    multiplyMaterials: []
+    screenMaterials: []
+  skeletonDataModifiers: []
   fromAnimation: []
   toAnimation: []
   duration: []

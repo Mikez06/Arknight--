@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Buffs
 {
-    public class 减伤 : Buff, IShield
+    public class 减伤 : Buff, IDamageModify
     {
 
         int buffId = -1;
@@ -21,11 +21,11 @@ namespace Buffs
                 buffId = Database.Instance.GetIndex<BuffData>(buffName);
         }
 
-        public void Absorb(DamageInfo damageInfo)
+        public void Modify(DamageInfo damageInfo)
         {
             if (buffId == -1 || (damageInfo.GetSourceUnit() != null && damageInfo.GetSourceUnit().Buffs.Any(x => x.Id == buffId)))
             {
-                damageInfo.FinalDamage *= rate;
+                damageInfo.DamageRate *= rate;
             }
         }
     }

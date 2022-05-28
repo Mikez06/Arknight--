@@ -16,6 +16,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5e63bac373f65084ca155e7502e59e1f, type: 2}
   scale: 0.0026999998
   skeletonJSON: {fileID: 4900000, guid: 16fa39f7e1922764eb77b77452bc7d71, type: 3}
+  isUpgradingBlendModeMaterials: 0
+  blendModeMaterials:
+    requiresBlendModeMaterials: 1
+    applyAdditiveMaterial: 1
+    additiveMaterials:
+    - pageName: enemy_1513_dekght_2.png
+      material: {fileID: 2100000, guid: 859cd68f012663349ae658b2bdd3996d, type: 2}
+    multiplyMaterials: []
+    screenMaterials: []
+  skeletonDataModifiers: []
   fromAnimation: []
   toAnimation: []
   duration: []

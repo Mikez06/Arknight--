@@ -16,6 +16,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c44c6c2ea2261004e9104d86a3d2c4c1, type: 2}
   scale: 0.0026999998
   skeletonJSON: {fileID: 4900000, guid: dd1e3ea51e15ab64ea801d9542287a12, type: 3}
+  isUpgradingBlendModeMaterials: 0
+  blendModeMaterials:
+    requiresBlendModeMaterials: 1
+    applyAdditiveMaterial: 1
+    additiveMaterials:
+    - pageName: enemy_1523_mandra.png
+      material: {fileID: 2100000, guid: 19d2b04eaf80c124bbaf2d696157429f, type: 2}
+    multiplyMaterials: []
+    screenMaterials: []
+  skeletonDataModifiers: []
   fromAnimation: []
   toAnimation: []
   duration: []

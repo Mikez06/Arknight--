@@ -16,6 +16,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d4991405c107dce4283f6ed54120b743, type: 2}
   scale: 0.0026999998
   skeletonJSON: {fileID: 4900000, guid: d96098ed276eb1a458236aab2f23f5ff, type: 3}
+  isUpgradingBlendModeMaterials: 0
+  blendModeMaterials:
+    requiresBlendModeMaterials: 1
+    applyAdditiveMaterial: 1
+    additiveMaterials: []
+    multiplyMaterials: []
+    screenMaterials:
+    - pageName: enemy_2018_csdoll.png
+      material: {fileID: 2100000, guid: 411a83333065ed149a9f4640265c5dcf, type: 2}
+  skeletonDataModifiers: []
   fromAnimation: []
   toAnimation: []
   duration: []

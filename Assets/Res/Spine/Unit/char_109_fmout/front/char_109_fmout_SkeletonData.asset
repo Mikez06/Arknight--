@@ -16,6 +16,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 771b43a69d94acf478a689283811ee7c, type: 2}
   scale: 0.0026999998
   skeletonJSON: {fileID: 4900000, guid: 2851060de58d5cb4ab3b8d0e3a6f26dd, type: 3}
+  isUpgradingBlendModeMaterials: 0
+  blendModeMaterials:
+    requiresBlendModeMaterials: 1
+    applyAdditiveMaterial: 1
+    additiveMaterials:
+    - pageName: char_109_fmout.png
+      material: {fileID: 2100000, guid: 1e9f30a27c155514da0489a99a8f9bd7, type: 2}
+    multiplyMaterials: []
+    screenMaterials: []
+  skeletonDataModifiers: []
   fromAnimation: []
   toAnimation: []
   duration: []

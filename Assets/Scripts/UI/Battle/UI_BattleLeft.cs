@@ -36,7 +36,11 @@ namespace BattleUI
                 m_block.text = Unit.UnitData.StopCount.ToString();
                 m_Hp.max = Unit.MaxHp;
                 m_Hp.value = Unit.Hp;
-                m_standPic.m_standPic.texture = new FairyGUI.NTexture(ResHelper.GetAsset<Texture>(PathHelper.StandPicPath + Unit.UnitData.StandPic), alt, 1, 1);
+                var t = ResHelper.GetAsset<Texture>(PathHelper.StandPicPath + Unit.UnitData.StandPic);
+                if (t != null)
+                    m_standPic.m_standPic.texture = new FairyGUI.NTexture(t, alt, 1, 1);
+                else
+                    m_standPic.m_standPic.icon = "";
                 if (Unit is Units.干员)
                 {
                     m_Lv.text = Unit.UnitData.Level.ToString();

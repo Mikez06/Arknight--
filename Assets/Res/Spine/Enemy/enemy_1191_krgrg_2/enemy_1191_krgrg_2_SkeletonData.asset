@@ -16,6 +16,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 19b2c7bc679d51c40a3c9a36d405497e, type: 2}
   scale: 0.0026999998
   skeletonJSON: {fileID: 4900000, guid: ee32f6ac9d4eb1d4ca11ed7de1ce4c13, type: 3}
+  isUpgradingBlendModeMaterials: 0
+  blendModeMaterials:
+    requiresBlendModeMaterials: 1
+    applyAdditiveMaterial: 1
+    additiveMaterials:
+    - pageName: enemy_1191_krgrg_2.png
+      material: {fileID: 2100000, guid: ec58a63a3a271a548a859880eed7e10a, type: 2}
+    multiplyMaterials: []
+    screenMaterials: []
+  skeletonDataModifiers: []
   fromAnimation: []
   toAnimation: []
   duration: []

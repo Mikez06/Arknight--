@@ -48,7 +48,7 @@ namespace Buffs
                 var c = triggerCount / maxTime * gapTime;
                 if (c > 1) c = 1;
                 float damage = damageBase * ((maxDamageRate - startDamageRate) * c + startDamageRate);
-                Log.Debug($"第{triggerCount} 跳伤害为{damage}");
+                //Log.Debug($"第{triggerCount} 跳伤害为{damage}");
                 Unit.Damage(new DamageInfo()
                 {
                     Attack = damage,

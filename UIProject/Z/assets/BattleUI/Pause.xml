@@ -6,10 +6,10 @@
   </controller>
   <displayList>
     <image id="n73_iexc" name="n73" src="iexc5b" fileName="btn_play.png" xy="0,0">
-      <gearDisplay controller="Speed" pages="0"/>
+      <gearDisplay controller="Speed" pages="0,1"/>
     </image>
     <image id="n74_iexc" name="n74" src="iexc5c" fileName="btn_pause.png" xy="0,0">
-      <gearDisplay controller="Speed" pages="1"/>
+      <gearDisplay controller="Speed" pages="0"/>
     </image>
   </displayList>
 </component>

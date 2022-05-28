@@ -20,7 +20,7 @@
     <graph id="n49_q2un" name="n49" xy="0,0" size="728,105" touchable="false" type="rect" lineSize="3" lineColor="#ffffff00" fillColor="#00ffffff">
       <gearDisplay controller="button" pages="3"/>
     </graph>
-    <text id="n50_dy0m" name="tag" xy="354,7" size="80,42" fontSize="30" align="center" autoSize="none" text="110" input="true" keyboardType="4"/>
+    <text id="n50_dy0m" name="tag" xy="354,7" size="80,42" fontSize="30" align="center" autoSize="none" text="110" input="true"/>
     <component id="n52_dy0m" name="direction" src="q2unf" fileName="ComboBox2.xml" xy="547,60" size="120,32">
       <ComboBox visibleItemCount="10">
         <item title="上"/>

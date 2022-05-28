@@ -16,6 +16,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0df74e98259985e4aaa79173d04cc741, type: 2}
   scale: 0.0026999998
   skeletonJSON: {fileID: 4900000, guid: 1d3c984cfa146304a9514d57feb1dd5a, type: 3}
+  isUpgradingBlendModeMaterials: 0
+  blendModeMaterials:
+    requiresBlendModeMaterials: 1
+    applyAdditiveMaterial: 1
+    additiveMaterials:
+    - pageName: enemy_1142_mershd_2.png
+      material: {fileID: 2100000, guid: 83594a406ace9a64291b63c1e42f299e, type: 2}
+    multiplyMaterials: []
+    screenMaterials: []
+  skeletonDataModifiers: []
   fromAnimation: []
   toAnimation: []
   duration: []

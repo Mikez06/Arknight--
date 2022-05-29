@@ -83,12 +83,13 @@ public class SpineImportEditor
         {
             reader = ExcelReaderFactory.CreateReader(file);
             var sheet = reader.AsDataSet().Tables["UnitData"];
-            Debug.LogWarning(sheet.Rows[1][62]);
-            for (int i = 167; i < 638; i++)
+            //Debug.LogWarning(sheet.Rows[1][62]);
+            for (int i = 176; i < 723; i++)
             {
                 if (dic.ContainsKey((string)sheet.Rows[i][0]))
                 {
-                    sb.Append(dic[(string)sheet.Rows[i][0]]+"\r\n");
+                    sb.Append(dic[(string)sheet.Rows[i][0]] + "\r\n");
+                    //Debug.Log((string)sheet.Rows[i][0] + "," + dic[(string)sheet.Rows[i][0]]);
                     sheet.Rows[i][62] = dic[(string)sheet.Rows[i][0]];
                 }
                 else
@@ -102,6 +103,7 @@ public class SpineImportEditor
                 }
             }
         }
+        //Debug.Log(sb.ToString());
         UnityEngine.GUIUtility.systemCopyBuffer = sb.ToString();
     }
 

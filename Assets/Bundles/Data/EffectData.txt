@@ -14,7 +14,7 @@
 {"Id":"加费1","Prefab":"common_charge_cost_01","Offset":{"x":0,"y":0.6,"z":0.7},"LifeTime":5}
 {"Id":"加费2","Prefab":"common_charge_cost_01","LifeTime":5}
 {"Id":"瞬间加费","Prefab":"common_charge_cost_start_01","BindPoint":"Hip","LifeTime":5}
-{"Id":"缴械","Prefab":"common_disarm_icon"}
+{"Id":"缴械","Prefab":"common_disarm_icon","Offset":{"x":0,"y":0.4,"z":0.7}}
 {"Id":"敌人死亡","Prefab":"common_enemy_die_01","LifeTime":5}
 {"Id":"范围治疗","Prefab":"common_heal_range_01","LifeTime":5}
 {"Id":"治疗2","Prefab":"common_heal_start_01","LifeTime":5}

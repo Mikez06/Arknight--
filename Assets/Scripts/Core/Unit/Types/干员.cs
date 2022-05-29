@@ -229,6 +229,7 @@ namespace Units
             SetStatus(StateEnum.Default);
             if (recoverPower)
                 Battle.Cost += Mathf.FloorToInt(UnitData.Cost * UnitData.LeaveReturn);
+            NervePoint = 0;
             Finish(false);
         }
 

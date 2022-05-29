@@ -16,7 +16,12 @@ namespace Buffs
         }
         public void Modify(DamageInfo damageInfo)
         {
+            if (!Enable()) return;
             if (Unit is Units.干员 u && !u.StopUnits.Contains(damageInfo.Target))
+            {
+                damageInfo.DamageRate *= Rate;
+            }
+            if (Unit is Units.敌人 u1 && damageInfo.GetSourceUnit() != u1.StopUnit)
             {
                 damageInfo.DamageRate *= Rate;
             }

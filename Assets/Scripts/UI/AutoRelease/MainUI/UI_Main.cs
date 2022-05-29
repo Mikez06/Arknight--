@@ -19,6 +19,7 @@ namespace MainUI
         public GButton m_close;
         public GButton m_Setting;
         public GTextField m_Version;
+        public GButton m_Export;
         public const string URL = "ui://k4mja8t1kbte0";
 
         public static UI_Main CreateInstance()
@@ -42,6 +43,7 @@ namespace MainUI
             m_close = (GButton)GetChildAt(13);
             m_Setting = (GButton)GetChildAt(15);
             m_Version = (GTextField)GetChildAt(17);
+            m_Export = (GButton)GetChildAt(18);
             Init();
         }
         partial void Init();

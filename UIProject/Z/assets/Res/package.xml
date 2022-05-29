@@ -1062,6 +1062,75 @@
     <image id="dy0m1p8" name="enemy_1081_sotisd.png" path="/怪物头像/" exported="true"/>
     <image id="dy0m1p9" name="enemy_3003_alymot.png" path="/怪物头像/" exported="true"/>
     <image id="wfw91pa" name="头像_装置_障碍物.png" path="/头像/" exported="true"/>
+    <image id="sqno1pb" name="enemy_1212_mtrfol.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1pc" name="enemy_1230_dsbudr.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1pd" name="enemy_1230_dsbudr_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1pe" name="enemy_1230_dsbudr_2_4.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1pf" name="enemy_1230_dsbudr_4.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1pg" name="enemy_1231_dsrunr.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1ph" name="enemy_1231_dsrunr_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1pi" name="enemy_1231_dsrunr_2_4.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1pj" name="enemy_1231_dsrunr_4.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1pk" name="enemy_1232_dssalr.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1pl" name="enemy_1232_dssalr_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1pm" name="enemy_1232_dssalr_2_4.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1pn" name="enemy_1232_dssalr_4.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1po" name="enemy_1233_dsshtr.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1pp" name="enemy_1233_dsshtr_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1pq" name="enemy_1233_dsshtr_2_4.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1pr" name="enemy_1233_dsshtr_4.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1ps" name="enemy_1234_dsubrl.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1pt" name="enemy_5008_cstrwd.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1pu" name="enemy_5007_lancfd.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1pv" name="enemy_5005_yokafd.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1pw" name="enemy_1529_dsdevr.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1px" name="enemy_1528_manfri.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1py" name="enemy_1527_martyr.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1pz" name="enemy_1229_darmy_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1q0" name="enemy_1236_bouncy.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1q1" name="enemy_1235_dsbskr_2_4.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1q2" name="enemy_1235_dsbskr_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1q3" name="enemy_1235_dsbskr.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1q4" name="enemy_1234_dsubrl_4.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1q5" name="enemy_1234_dsubrl_2_4.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1q6" name="enemy_1234_dsubrl_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1q7" name="enemy_1235_dsbskr_4.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1q8" name="enemy_5009_shtrwd.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1q9" name="enemy_1229_darmy.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qa" name="enemy_1228_dslime.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qb" name="enemy_1212_mtrfol_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qc" name="enemy_1213_mtrsnp.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qd" name="enemy_1213_mtrsnp_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qe" name="enemy_1214_mtrmgc.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qf" name="enemy_1214_mtrmgc_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qg" name="enemy_1215_ptrarc.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qh" name="enemy_1215_ptrarc_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qi" name="enemy_1216_cansld.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qj" name="enemy_1216_cansld_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qk" name="enemy_1217_rescar.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1ql" name="enemy_1217_rescar_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qm" name="enemy_1218_bomscr.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qn" name="enemy_1218_bomscr_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qo" name="enemy_1219_mtrbty.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qp" name="enemy_1219_mtrbty_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qq" name="enemy_1220_dzoms.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qr" name="enemy_1220_dzoms_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qs" name="enemy_1227_dair_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qt" name="enemy_1227_dair.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qu" name="enemy_1226_dklord_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qv" name="enemy_1226_dklord.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qw" name="enemy_1225_dkmage_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qx" name="enemy_1225_dkmage.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qy" name="enemy_1228_dslime_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1qz" name="enemy_1224_dsuply_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1r0" name="enemy_1223_dmech_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1r1" name="enemy_1223_dmech.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1r2" name="enemy_1222_dpvt_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1r3" name="enemy_1222_dpvt.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1r4" name="enemy_1221_dzomg_2.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1r5" name="enemy_1221_dzomg.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1r6" name="enemy_1224_dsuply.png" path="/怪物头像/" exported="true"/>
+    <image id="sqno1r7" name="enemy_5011_mstrfd.png" path="/怪物头像/" exported="true"/>
   </resources>
   <publish name=""/>
 </packageDescription>

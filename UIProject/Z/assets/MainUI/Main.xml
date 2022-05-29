@@ -36,5 +36,9 @@
     </component>
     <text id="n22_ulof" name="n22" xy="16,994" size="158,58" fontSize="43" color="#ffffff" strokeColor="#000000" text="Version"/>
     <text id="n23_ulof" name="Version" xy="178,994" size="67,58" fontSize="43" color="#ffffff" strokeColor="#000000" text="2.0"/>
+    <component id="n24_sqno" name="Export" src="kbtec" fileName="btn.xml" xy="1026,944">
+      <Button title="导表"/>
+    </component>
+    <text id="n25_sqno" name="n25" xy="1253,935" size="639,131" fontSize="33" strokeColor="#ffffff" text="将下载的excel放在地图文件夹上级。&#xA;点击后就会在Data文件夹内生成数据。&#xA;删去Data文件夹文件可以取消自定义数据。"/>
   </displayList>
 </component>

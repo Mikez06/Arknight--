@@ -21,7 +21,8 @@ public class Test : MonoBehaviour
     // Start is called before the first frame update
     async void Start()
     {
-        ls = GetComponentsInChildren<LineRenderer>();
+        ExcelHelper.Export();
+        //ls = GetComponentsInChildren<LineRenderer>();
         //GetComponent<BoneFollower>().boneName = BoneName;
         //GetComponent<BoneFollower>().SkeletonRenderer = SkeletonRenderer;
         //GetComponent<BoneFollower>().Initialize();
@@ -68,11 +69,11 @@ public class Test : MonoBehaviour
     }
     private void Update()
     {
-        foreach (var lr in ls)
-        {
-            lr.SetPosition(0, d);
-            lr.SetPosition(1, c);
-        }
+        //foreach (var lr in ls)
+        //{
+        //    lr.SetPosition(0, d);
+        //    lr.SetPosition(1, c);
+        //}
         //transform.rotation = Quaternion.LookRotation(d,c);
     }
 }

@@ -19,7 +19,6 @@ namespace MainUI
             UIObjectFactory.SetPackageItemExtension(UI_sortBtn.URL, typeof(UI_sortBtn));
             UIObjectFactory.SetPackageItemExtension(UI_Battle.URL, typeof(UI_Battle));
             UIObjectFactory.SetPackageItemExtension(UI_GoBattle.URL, typeof(UI_GoBattle));
-            UIObjectFactory.SetPackageItemExtension(UI_ToopTip.URL, typeof(UI_ToopTip));
             UIObjectFactory.SetPackageItemExtension(UI_Team.URL, typeof(UI_Team));
             UIObjectFactory.SetPackageItemExtension(UI_TeamSelect.URL, typeof(UI_TeamSelect));
             UIObjectFactory.SetPackageItemExtension(UI_TeamUnit.URL, typeof(UI_TeamUnit));

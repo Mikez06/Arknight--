@@ -223,7 +223,7 @@ public class Unit
         }
         StopCount = UnitData.StopCount + (int)StopCountAdd;
         Speed = (SpeedBase + SpeedAdd) * (1 + SpeedRate) / 2;
-        if (Speed < 0) Speed = 0;
+        if (Speed < SpeedBase * 0.1f) Speed = SpeedBase * 0.1f;
         MaxHp = ((HpBase + HpAdd) * (1 + HpRate) + HpAddFin) * (1 + HpRateFin);
         Hp = MaxHp - hpDown;
         Attack = ((AttackBase + AttackAdd) * (1 + AttackRate) + AttackAddFin) * (1 + AttackRateFin);
@@ -619,6 +619,7 @@ public class Unit
     public void SetStatus(StateEnum state)
     {
         //Log.Debug($"{UnitData.Id} 由 {this.State} 转变为 {state}");
+        if (this.State == StateEnum.Die && state != StateEnum.Default) return;
         this.State = state;
         if (CanChangeAnimation)
         {

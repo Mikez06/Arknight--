@@ -14,13 +14,6 @@ public class ExcelExportEditor
     static string exportPath = "./Assets/Bundles/Data/";
     static string scriptPath = "./Assets/Scripts/Config/";
 
-    static List<string> eUnit;
-    static List<string> eBuff;
-    static List<string> eSkill;
-    static List<string> eItem;
-    static List<string> eEquip;
-    static List<string> eJob;
-
 
     static Dictionary<string, List<string>> dic = new Dictionary<string, List<string>>()
     {

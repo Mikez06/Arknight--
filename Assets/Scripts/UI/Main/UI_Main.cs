@@ -64,6 +64,13 @@ namespace MainUI
             {
                 GameData.Instance.Bgm = (float)m_bgm.value / 100f;
             });
+            m_Export.onClick.Add(async () =>
+            {
+                ExcelHelper.Export();
+                Database.Instance.Clear();
+                await Database.Instance.Init();
+                TipManager.Instance.ShowTip("导表结束");
+            });
         }
 
         protected override void OnUpdate()

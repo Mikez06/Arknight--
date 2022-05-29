@@ -44,6 +44,8 @@ public class EnemyInfoExcelTool : MonoBehaviour
             sb.Append(ei.Value[0].enemyData.attributes["hpRecoveryPerSec"].m_value);
             sb.Append('\t');
             sb.Append(ei.Value[0].enemyData.attributes["tauntLevel"].m_value);
+            sb.Append('\t');
+            sb.Append(ei.Value[0].enemyData.attributes["massLevel"].m_value);
             sb.Append("\r\n");
         }
         UnityEngine.GUIUtility.systemCopyBuffer = sb.ToString();

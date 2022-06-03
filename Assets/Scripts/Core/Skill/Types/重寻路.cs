@@ -27,7 +27,12 @@ namespace Skills
         public override void Start()
         {
             if (!Useable()) return;
-            UseCount++; AstarPath.active.Scan();
+            if (Targets.Count == 0)
+            {
+                FindTarget();
+            }
+            if (Targets.Count == 0 && !SkillData.NoTargetAlsoUse) return;
+                UseCount++; AstarPath.active.Scan();
             //由于地块通行性发生变化，通知所有敌人
             foreach (var unit in Battle.Enemys)
             {

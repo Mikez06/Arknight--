@@ -19,11 +19,12 @@ namespace Modifys
             base.Init();
             Chance = ModifyData.Data.GetFloat("Chance");
             Count = ModifyData.Data.GetInt("Count");
+            Rate = ModifyData.Data.GetFloat("Rate");
         }
 
         public int Modify(int count)
         {
-            if (Battle.Random.NextDouble() < Rate)
+            if (Battle.Random.NextDouble() < Chance)
             {
                 success = true;
                 count += Count;

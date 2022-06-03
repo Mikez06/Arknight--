@@ -78,6 +78,7 @@ namespace Units
 
         public override void Finish(bool leaveEvent = true)
         {
+            if (StopUnit != null) StopUnit.RemoveStop(this);
             Hp = 0;
             base.Finish(leaveEvent);
             //Debug.Log($"{UnitData.Id}Finish");
@@ -152,6 +153,7 @@ namespace Units
         /// </summary>
         public virtual void CheckBlock()
         {
+            if (!Alive() || Hp <= 0) return;
             if (UnitData.Height > 0) return;//飞行单位无法被阻挡
             if (StopUnit != null) return;
             //虽然不知道为啥，但是判断阻挡时和目标不是相切的,加上一个默认的缓冲值
@@ -356,7 +358,7 @@ namespace Units
         {
             if (StopUnit != null)
             {
-                StopUnit.StopUnits.Remove(this);
+                StopUnit.RemoveStop(this);
             }
             UnitModel?.SetColor(Color.black);
             //Battle.EnemyCount--;

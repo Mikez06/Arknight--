@@ -60,12 +60,14 @@ namespace Units
             Cost = CostBase + CostAdd;
             ResetTime = (ResetTimeBase + ResetTimeAdd) * (1 + ResetTimeRate);
 
-            if (StopCount < StopUnits.Count)
+            int costAll = StopUnits.Sum(x => x.StopCost);
+            if (StopCount < costAll)
             {
-                int c = StopUnits.Count - StopCount;
                 for (int i = StopUnits.Count - 1; i >= StopCount; i--)
                 {
                     RemoveStop(StopUnits[i]);
+                    costAll -= StopUnits[i].StopCost;
+                    if (StopCount >= costAll) break;
                 }
             }
         }
@@ -179,6 +181,7 @@ namespace Units
         public void JoinMap()
         {
             //Debug.Log("StartStart" + Time.time);
+            SetStatus(StateEnum.Default);
             IfAlive = true;
             hideBase = true;
             Battle.Cost -= GetCost();

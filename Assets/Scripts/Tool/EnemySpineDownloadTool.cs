@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
 
 public class EnemySpineDownloadTool : MonoBehaviour
 {
@@ -59,10 +60,19 @@ public class EnemySpineDownloadTool : MonoBehaviour
                 break;
         }
         UnityEngine.Networking.UnityWebRequest wr = UnityEngine.Networking.UnityWebRequest.Get("http://" + $"static.prts.wiki/spine38/enemy/{name}/{name}/{name}{end}");
+        wr.timeout = 2;
         yield return wr.SendWebRequest();
         if (!string.IsNullOrEmpty(wr.error))
         {
-            Debug.Log("Download Error:" + wr.error);
+            Debug.LogError($"Download Error {name}:" + wr.error);
+            try
+            {
+                Debug.LogWarning(Database.Instance.Get<UnitData>(name).Name);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"not fond {name}");
+            }
         }
         else
         {

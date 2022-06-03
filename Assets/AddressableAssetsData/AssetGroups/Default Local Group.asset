@@ -5025,6 +5025,66 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Units/enemy_1526_sfsui
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: c9dfd9455ba2a1a46831f6665752261f
+    m_Address: Assets/Bundles/Units/enemy_1027_mob_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7fc1fce5e73db184e928fca4ba30a056
+    m_Address: Assets/Bundles/Units/enemy_1037_lunsabr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a33cb269bab26214fbf8c547ef00e332
+    m_Address: Assets/Bundles/Units/enemy_1043_zomsabr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 268347467cedd9f42a85cb46b50f8921
+    m_Address: Assets/Bundles/Units/enemy_1043_zomsabr_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 53ac6e7b846f1d648b7e916fb95baf6a
+    m_Address: Assets/Bundles/Units/enemy_1046_agent_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f8ba3f60fba600a49a28a69533b019cf
+    m_Address: Assets/Bundles/Units/enemy_1047_sagent_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2cfadea408e500a4fbc0462ca56a55b4
+    m_Address: Assets/Bundles/Units/enemy_1049_eagent_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c46a869f8d4bfa24d9d5d51ecdf621f7
+    m_Address: Assets/Bundles/Units/enemy_1093_ccsbr_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5f4a3b876d826ef4b9d0b157ebd59e13
+    m_Address: Assets/Bundles/Units/enemy_1164_bmbmot
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 36d290b1fb5f0054995251c9cd994b85
+    m_Address: Assets/Bundles/Units/enemy_1164_bmbmot_3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4a4dc4fe545e3224f855ae7bf85271d2
+    m_Address: Assets/Bundles/Units/enemy_1169_duphx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 370a91385b47e4a42958871f4f85ed1b
+    m_Address: Assets/Bundles/Units/enemy_1169_duphx_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e361b32a4a7d1d64da46225e2e7f6535
+    m_Address: Assets/Bundles/Units/char_107_liskarm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e351aed93f706be4e8f2e1c0a5c0d270
+    m_Address: Assets/Bundles/UI/SkillIcon_atlas0_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3b648911d2681f344916cf748640fac5
+    m_Address: Assets/Bundles/UI/SkillIcon_atlas0_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

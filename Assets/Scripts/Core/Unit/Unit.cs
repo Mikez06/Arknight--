@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class Unit
 {
-    public static string[] DefaultAnimation = new string[] { "Default" };
     public static string[] StartAnimation = new string[] { "Start" };
     public static string[] DieAnimation = new string[] { "Die" };
     public Battle Battle;
@@ -137,7 +136,7 @@ public class Unit
     public float ScaleX = -1;
     public float TargetScaleX = -1;
 
-    public string[] AnimationName = Unit.DefaultAnimation;
+    public string[] AnimationName;
     public string[] OverWriteAnimation;
     public string[] OverWriteIdle;
     public string[] OverWriteMove;
@@ -148,6 +147,7 @@ public class Unit
     public virtual void Init()
     {
         baseAttributeInit();
+        AnimationName = UnitData.DefaultAnimation;
         if (UnitData.IgnoreBuff != null) IgnoreBuffs.AddRange(UnitData.IgnoreBuff);
         Team = UnitData.Team;
         if (UnitData.Skills != null)
@@ -624,7 +624,7 @@ public class Unit
         if (CanChangeAnimation)
         {
             if (state == StateEnum.Default)
-                AnimationName = Unit.DefaultAnimation;
+                AnimationName = UnitData.DefaultAnimation;
             else if (state == StateEnum.Idle)
                 AnimationName = GetIdleAnimation();
             else if (state == StateEnum.Move)
@@ -651,7 +651,7 @@ public class Unit
         }
     }
 
-    public void CreateModel()
+    public virtual void CreateModel()
     {
         if (string.IsNullOrEmpty(UnitData.Model)) return;
         //Debug.Log(UnitData.Model);

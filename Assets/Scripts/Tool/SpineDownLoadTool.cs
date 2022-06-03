@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
 
 public class SpineDownLoadTool : MonoBehaviour
 {
@@ -63,7 +64,7 @@ public class SpineDownLoadTool : MonoBehaviour
         yield return wr.SendWebRequest();
         if (!string.IsNullOrEmpty(wr.error))
         {
-            Debug.Log("Download Error:" + wr.error);
+            Debug.LogError($"Download Error {name}  :" + wr.error);
         }
         else
         {

@@ -25,8 +25,8 @@ public class SpineModel : UnitModel
     public override void Init(Unit unit)
     {
         this.Unit = unit;
-        SkeletonAnimation.AnimationName = "Default";
-        nowAnimations = Unit.DefaultAnimation;
+        SkeletonAnimation.AnimationName = unit.UnitData.DefaultAnimation[0];
+        nowAnimations = Unit.UnitData.DefaultAnimation;
         SkeletonAnimation.SkeletonDataAsset.GetAnimationStateData().DefaultMix = 0f;
         updateState();
         Shadow.localScale = Vector3.one * unit.UnitData.ModelScale;
@@ -94,7 +94,7 @@ public class SpineModel : UnitModel
             return;
         }
         //SkeletonAnimation.Skeleton.SetToSetupPose();
-        SkeletonAnimation.state.SetAnimation(0, "Default", false);
+        SkeletonAnimation.state.SetAnimation(0, Unit.UnitData.DefaultAnimation[0], false);
         SkeletonAnimation.state.ClearTracks();
         if (animations[0].Contains("Idle"))//从其他状态返回Idle时，如果有退出动画，就播放
         {

@@ -360,5 +360,11 @@ namespace Units
         {
             return base.Alive() && InputTime > 0;
         }
+
+        public override void CreateModel()
+        {
+            base.CreateModel();
+            UnitModel.gameObject.SetActive(false);
+        }
     }
 }

@@ -151,17 +151,18 @@ public class SpineImportEditor
                 PrefabUtility.SaveAsPrefabAsset(root, string.Format("{0}/{1}.prefab", unitAnimationPrefab_AssetPath, name));
                 GameObject.DestroyImmediate(root);
                 AssetDatabase.ImportAsset(Path.Combine(assetPath));
-                root = AssetDatabase.LoadAssetAtPath<GameObject>(unitAnimationPrefab_AssetPath + name + ".prefab");
+                root = AssetDatabase.LoadAssetAtPath<GameObject>(unitAnimationPrefab_AssetPath + name + ".prefab"); 
+                SkeletonAnimation sa;
+                if (enemy || front) sa = root.transform.GetChild(1).GetComponent<SkeletonAnimation>();
+                else sa = root.transform.GetChild(2).GetComponent<SkeletonAnimation>();
+                if (sa.skeletonDataAsset != dataAsset)
+                {
+                    sa.skeletonDataAsset = dataAsset;
+                    sa.Initialize(true);
+                    EditorUtility.SetDirty(root);
+                }
             }
-            SkeletonAnimation sa;
-            if (enemy || front) sa = root.transform.GetChild(1).GetComponent<SkeletonAnimation>();
-            else sa = root.transform.GetChild(2).GetComponent<SkeletonAnimation>();
-            if (sa.skeletonDataAsset != dataAsset)
-            {
-                sa.skeletonDataAsset = dataAsset;
-                sa.Initialize(true);
-                EditorUtility.SetDirty(root);
-            }
+
         }
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();

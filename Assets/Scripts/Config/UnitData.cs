@@ -61,6 +61,7 @@ public class UnitData : IConfig
       public string[] Tags;
       public string AblitityInfo;
       public System.Collections.Generic.Dictionary<string,object> Ablititys;
+      public string[] DefaultAnimation;
       public string[] IdleAnimation;
       public string[] MoveAnimation;
       public string[] DeadAnimation;

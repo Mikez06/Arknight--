@@ -111,7 +111,9 @@ namespace MapBuilderUI
         {
             if (NowSelect == null) return;
             m_select.selectedIndex = 1;
+            UI_MapBuilder.Instance.m_back.visible = false;
             var grid = await MapManager.Instance.SelectGrid();
+            UI_MapBuilder.Instance.m_back.visible = true;
             NowSelect.Path.Add(new PathPoint()
             {
                 Delay = 0,
@@ -126,7 +128,9 @@ namespace MapBuilderUI
         {
             if (NowSelect == null) return;
             m_select.selectedIndex = 1;
+            UI_MapBuilder.Instance.m_back.visible = false;
             var grid = await MapManager.Instance.SelectGrid();
+            UI_MapBuilder.Instance.m_back.visible = true;
             int index = m_PathPoints.selectedIndex;
             if (index < 0)
                 NowSelect.Path.Add(new PathPoint()

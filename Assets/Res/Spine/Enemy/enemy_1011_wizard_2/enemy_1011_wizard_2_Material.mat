@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: enemy_1011_wizard_2_Material
   m_Shader: {fileID: 4800000, guid: 522f03282fd79be47b306e2ef4b593fd, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _STRAIGHT_ALPHA_INPUT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -33,7 +33,7 @@ Material:
     - _OutlineWidth: 3
     - _StencilComp: 8
     - _StencilRef: 1
-    - _StraightAlphaInput: 0
+    - _StraightAlphaInput: 1
     - _ThresholdEnd: 0.25
     - _Use8Neighbourhood: 1
     - _angle: 60

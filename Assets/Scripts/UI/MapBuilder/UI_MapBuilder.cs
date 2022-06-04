@@ -85,7 +85,21 @@ namespace MapBuilderUI
                 }
                 else
                 {
+                    MapInfo.Scene = scene;
                     await SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+                    var grids = MapManager.Instance.gameObject.GetComponentsInChildren<MapGrid>();
+                    MapInfo.GridInfos = new GridInfo[grids.Max(x => x.X + 1), grids.Max(x => x.Y + 1)];
+                    foreach (var g in grids)
+                    {
+                        MapInfo.GridInfos[g.X, g.Y] = new GridInfo()
+                        {
+                            X = g.X,
+                            Y = g.Y,
+                            CanBuildUnit = g.CanBuildUnit,
+                            FarAttack = g.FarAttackGrid,
+                            CanMove = g.CanMove,
+                        };
+                    }
                     goMain();
                 }
                 m_MidPage.UpdatePoints();

@@ -50,6 +50,7 @@ namespace Units
             if (UnitData.StopCount != 0) StopCost = UnitData.StopCount;
             PathPoints = Battle.MapData.PathInfos.Find(x => x.Name == WaveData.Path).Path; //PathManager.Instance.GetPath(WaveData.Path);
             Position = GetPoint(0);
+            Position.y = Battle.Map.Tiles[GridPos.x, GridPos.y].Pos.y;
             PathWaiting.Set(PathPoints[0].Delay);
 
             //findNewPath();

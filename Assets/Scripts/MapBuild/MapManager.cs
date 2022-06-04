@@ -171,8 +171,8 @@ public class MapManager : MonoBehaviour
             if (t == mapRoot) continue;
             var gr = t.GetComponent<MapGrid>();
             if (gr == null) gr = t.gameObject.AddComponent<MapGrid>();
-            gr.X = (int)(-t.transform.localPosition.z / 100f);
-            gr.Y = (int)(t.transform.localPosition.x / 100f);
+            gr.X = (int)(t.transform.position.x);
+            gr.Y = (int)(t.transform.position.z);
             gr.FarAttackGrid = gr.transform.localPosition.y != 0;
             gr.CanMove = !gr.FarAttackGrid;
             //Transform t1 = null;

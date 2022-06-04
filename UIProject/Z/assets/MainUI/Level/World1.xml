@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080" overflow="scroll" scroll="horizontal">
   <displayList>
-    <component id="n4_voep" name="levelBack" src="kbte11" fileName="Container.xml" xy="1,0" size="1920,1080">
+    <component id="n4_voep" name="levelBack" src="kbte11" fileName="Container.xml" xy="-156,210" size="1920,1080">
       <relation target="" sidePair="width-width,height-height"/>
     </component>
     <component id="n0_kbte" name="n0" src="kbte10" fileName="BattleInfo.xml" xy="495,586" customData="1-1"/>
-    <component id="n1_kbte" name="n1" src="kbte10" fileName="BattleInfo.xml" xy="1088,473" customData="1-2">
+    <component id="n1_kbte" name="n1" src="kbte10" fileName="BattleInfo.xml" xy="904,403" customData="1-2">
       <Label title="1-2"/>
     </component>
     <component id="n3_voep" name="rrr" src="kbte11" fileName="Container.xml" xy="3200,928"/>
-    <component id="n5_voep" name="n5" src="kbte10" fileName="BattleInfo.xml" xy="1473,705" customData="1-3">
+    <component id="n5_voep" name="n5" src="kbte10" fileName="BattleInfo.xml" xy="1081,699" customData="1-3">
       <Label title="1-3"/>
+    </component>
+    <component id="n6_jqne" name="n6" src="kbte10" fileName="BattleInfo.xml" xy="1386,519" customData="Map1">
+      <Label title="Map1"/>
     </component>
   </displayList>
 </component>

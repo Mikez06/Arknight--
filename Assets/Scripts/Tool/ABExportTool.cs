@@ -42,6 +42,34 @@ public class ABExportTool
             //Debug.Log(ob.name + "," + ob.GetType());
         }
     }
+    public static void SaveAssets(string assetPath)
+    {
+        var dependence = AssetBundleManifestObject.GetAllDependencies(assetPath);
+        List<AssetBundle> abs = new List<AssetBundle>();
+        foreach (var path in dependence)
+        {
+            var a = AssetBundle.LoadFromFile(AssetsPath + path);
+            abs.Add(a);
+        }
+
+        var ab = AssetBundle.LoadFromFile(AssetsPath + assetPath);
+
+        var assets = ab.LoadAllAssets();
+        foreach (var ob in assets)
+        {
+            if (ob.GetType() == typeof(GameObject))
+            {
+                //GameObject.Instantiate(ob as GameObject);
+                EffectRestoreHelper.Restore(GameObject.Instantiate(ob as GameObject), System.IO.Path.GetFileNameWithoutExtension(assetPath));
+            }
+            //Debug.Log(ob.name + "," + ob.GetType());
+        }
+        foreach (var a in abs)
+        {
+            a.Unload(true);
+        }
+        ab.Unload(true);
+    }
 
     public static async void LoadScene(string scenePath, string sceneName)
     {
@@ -81,5 +109,17 @@ public class ABExportTool
             Directory.CreateDirectory(targetDir);
         }
         File.Copy(AssetsPath + path, Dir + path, true);
+    }
+
+    private static void CopyDirectory(string SourcePath, string DestinationPath, bool overwriteexisting)
+    {
+        if (File.Exists(SourcePath))
+        {
+            var dir = Path.GetDirectoryName(DestinationPath);
+            Debug.Log(dir);
+            if (Directory.Exists(dir) == false)
+                Directory.CreateDirectory(dir);
+            File.Copy(SourcePath, DestinationPath, overwriteexisting);
+        }
     }
 }

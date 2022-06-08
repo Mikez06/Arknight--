@@ -65,8 +65,8 @@ namespace Units
             {
                 for (int i = StopUnits.Count - 1; i >= StopCount; i--)
                 {
-                    RemoveStop(StopUnits[i]);
                     costAll -= StopUnits[i].StopCost;
+                    RemoveStop(StopUnits[i]);
                     if (StopCount >= costAll) break;
                 }
             }

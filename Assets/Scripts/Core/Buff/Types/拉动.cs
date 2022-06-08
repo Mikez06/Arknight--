@@ -46,6 +46,7 @@ namespace Buffs
             if (dis > 1) dis = 1;
             PowerAll += dis * Power;
             PowerAll -= 490 * SystemConfig.DeltaTime;
+            if (PowerAll < 0) PowerAll = 0;
         }
 
         public Vector2 GetPushPower()

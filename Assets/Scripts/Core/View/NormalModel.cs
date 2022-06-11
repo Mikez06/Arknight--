@@ -8,10 +8,12 @@ using UnityEngine;
 public class NormalModel : UnitModel
 {
     Animator Animator;
-
+    public GameObject Particices;
+    public bool haspartic;
     private void Awake()
     {
         Animator = GetComponentInChildren<Animator>();
+
     }
     public override void Init(Unit unit)
     {
@@ -51,6 +53,11 @@ public class NormalModel : UnitModel
         var ani = Animator.runtimeAnimatorController.animationClips.FirstOrDefault(x => x.name == animationName[0]);
         fullDuration = ani.length;
         beginDuration = 0;
+        if (haspartic)
+        {
+            Particices.GetComponent<ParticleSystem>().Play();
+        }
         return fullDuration / 2;
+        
     }
 }

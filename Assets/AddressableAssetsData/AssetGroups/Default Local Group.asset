@@ -5137,6 +5137,14 @@ MonoBehaviour:
     m_Address: "Assets/Bundles/Units/\u9632\u5FA1\u5730\u677F"
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 90f6560dd3cb08f40b938e94847bdf91
+    m_Address: "Assets/Bundles/Units/\u51CF\u9632\u5730\u677F"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d73338edc1b625340bbef3bf25085894
+    m_Address: "Assets/Bundles/Units/\u51CF\u9632\u5730\u677F2"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

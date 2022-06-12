@@ -747,7 +747,7 @@
 {"Id":"源石祭坛特殊攻击","Type":"普通技能","UseType":2,"TargetEnableBuff":[234],"AutoUse":1,"NoTargetAlsoUse":1,"RegetTarget":1,"TargetTeam":3,"MidLimit":1,"AttackOrder":0,"AttackPoints":[{"x":0,"y":0}],"DamageCount":99,"Buffs":[233],"BuffLastTime":9999,"AntiHide":1}
 {"Id":"回血地板buff","Type":"普通技能","UseType":2,"Trigger":3,"TargetTeam":1,"MidLimit":1,"AttackOrder":0,"AttackPoints":[{"x":0,"y":0}],"DamageRate":0,"DamageCount":99,"Buffs":[255],"BuffData":[0.02],"BuffLastTime":9999,"AntiHide":1}
 {"Id":"防御地板buff","Type":"普通技能","UseType":2,"Trigger":3,"TargetTeam":1,"UseEventTarget":1,"MidLimit":1,"AttackOrder":0,"AttackPoints":[{"x":0,"y":0}],"DamageRate":1,"DamageCount":1,"Buffs":[256],"BuffData":[200],"BuffLastTime":9999,"AntiHide":1}
-{"Id":"降防地板buff","Type":"普通技能","UseType":2,"Trigger":3,"TargetTeam":1,"UseEventTarget":1,"MidLimit":1,"AttackOrder":0,"AttackPoints":[{"x":0,"y":0}],"DamageRate":1,"DamageCount":1,"Buffs":[256],"BuffData":[-0.5],"BuffLastTime":9999,"AntiHide":1}
+{"Id":"降防地板buff","Type":"普通技能","UseType":2,"Trigger":3,"TargetTeam":1,"UseEventTarget":1,"MidLimit":1,"AttackOrder":0,"AttackPoints":[{"x":0,"y":0}],"DamageRate":1,"DamageCount":1,"Buffs":[257],"BuffData":[-0.5],"BuffLastTime":9999,"AntiHide":1}
 {"Id":"合约减法抗","Type":"普通技能","UseType":2,"Trigger":2,"TargetTeam":1,"UseEventTarget":1,"DamageCount":1,"Buffs":[42],"BuffData":[-0.5],"BuffLastTime":99999}
 {"Id":"合约加技力上限","Type":"普通技能","UseType":2,"Trigger":2,"TargetTeam":1,"UseEventTarget":1,"DamageCount":1,"Buffs":[36],"BuffData":[0.25],"BuffLastTime":99999}
 {"Id":"合约减技力回复","Type":"普通技能","UseType":2,"Trigger":2,"TargetTeam":1,"UseEventTarget":1,"DamageCount":1,"Buffs":[37],"BuffData":[-0.25],"BuffLastTime":99999}

@@ -5089,6 +5089,54 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Data/Maps/Map1
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 6b59620f67af59949bd8d528027881f6
+    m_Address: "Assets/Bundles/Data/Maps/\u6587\u4EF6\u540D"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5993e84bc90096d4f9bad36e471dcef5
+    m_Address: Assets/Bundles/Units/New Material
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3054034102ac81b458c3cf5f71f48af0
+    m_Address: Assets/Bundles/Units/PARRED
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3520cf8279f9d8a4c8b01b92a9bfaa41
+    m_Address: "Assets/Bundles/Units/\u56DE\u8840"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3a3f2af978f3c0a489a3ae1d56fa2cf7
+    m_Address: "Assets/Bundles/Units/\u56DE\u8840\u5730\u677F"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: da9d387e21353da4f8ff85b192179245
+    m_Address: "Assets/Bundles/Units/Materials/\u56DE\u8840"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 431fb11480894be4492c9b2eef1aa789
+    m_Address: "Assets/Bundles/Other/Tiles/ground - \u526F\u672C (2)"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e59a5cd30ddcf154bbf9e17e78261a2f
+    m_Address: "Assets/Bundles/Other/Tiles/ground - \u526F\u672C (3)"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5146bea72751e8f4d8b47689e1d9b9da
+    m_Address: "Assets/Bundles/Other/Tiles/ground - \u526F\u672C (4)"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b02cec52eb30f6b42ae25b7ab905dac4
+    m_Address: Assets/Bundles/Other/Tiles/ground_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: afccf2194bd6cf440aae3712d685fade
+    m_Address: Assets/Bundles/Other/Tiles/New Material
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: db66d421422aea9469f615c64a2f4754
+    m_Address: "Assets/Bundles/Units/\u9632\u5FA1\u5730\u677F"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:

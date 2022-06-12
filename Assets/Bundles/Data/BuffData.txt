@@ -253,3 +253,6 @@
 {"Id":"沸血骑士被动","Type":"数值变化叠加","LastingEffect":21,"Data":{"t":["AttackRate","AgiAdd"],"MaxLevel":10}}
 {"Id":"左手减攻","Type":"数值变化","LastingEffect":16,"Data":{"t":["AttackRateFin"]}}
 {"Id":"畸变瘤减攻速","Type":"数值变化","UnSourceCheck":1,"LastTime":5,"Data":{"t":["AgiAdd"]}}
+{"Id":"回血地板回血","Type":"数值变化","UnSourceCheck":1,"LastingEffect":55,"Data":{"t":["HpRecoverP"]}}
+{"Id":"防御地板加防","Type":"数值变化","LastingEffect":22,"Data":{"t":["DefenceAdd"]}}
+{"Id":"减防地板减防","Type":"数值变化","LastingEffect":37,"Data":{"t":["DefenceRate"]}}

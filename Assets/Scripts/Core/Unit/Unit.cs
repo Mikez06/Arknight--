@@ -426,18 +426,26 @@ public class Unit
             bool b2 = x + y < 0;
             if (b1 && b2)
             {
+                var t = Battle.Map.Tiles.Get(GridPos.x - 1, GridPos.y);
+                if (t == null || t.FarAttackGrid) return;
                 Position.x = Mathf.RoundToInt(Position.x) - 0.5001f;
             }
             if (b1 && !b2)
             {
+                var t = Battle.Map.Tiles.Get(GridPos.x + 1, GridPos.y);
+                if (t == null || t.FarAttackGrid) return;
                 Position.z = Mathf.RoundToInt(Position.z) + 0.5001f;
             }
             if (!b1 && b2)
             {
+                var t = Battle.Map.Tiles.Get(GridPos.x, GridPos.y-1);
+                if (t == null || t.FarAttackGrid) return;
                 Position.z = Mathf.RoundToInt(Position.z) - 0.5001f;
             }
             if (!b1 && !b2)
             {
+                var t = Battle.Map.Tiles.Get(GridPos.x, GridPos.y + 1);
+                if (t == null || t.FarAttackGrid) return;
                 Position.x = Mathf.RoundToInt(Position.x) + 0.5001f;
             }
         }

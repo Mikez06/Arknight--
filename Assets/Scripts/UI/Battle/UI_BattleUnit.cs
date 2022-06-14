@@ -45,13 +45,13 @@ namespace BattleUI
             {
                 m_elementBar.m_Recover.selectedIndex = 2;
                 m_elementBar.max = 10;
-                m_elementBar.value = Unit.ElementProtect.value;
+                m_elementBar.value = 10 - Unit.ElementProtect.value;
             }
             else
             {
                 float elementValue = Unit.NervePoint;
                 m_elementBar.max = 1000;
-                m_elementBar.value = elementValue;
+                m_elementBar.value = 1000 - elementValue;
                 m_elementBar.m_Recover.selectedIndex = elementValue == 0 ? 0 : 1;
             }
 

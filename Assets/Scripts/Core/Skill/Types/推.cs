@@ -24,12 +24,21 @@ namespace Skills
             if (power > 0)
             {
                 Debug.Log($"此次推力大小为{power}");
-                Buffs.推动 push = new Buffs.推动();
-                push.Skill = this;
-                push.Unit = target;
-                push.Power = power;
-                push.Direction = direction;
-                target.AddPush(push);
+                var basePush = target.PushBuffs.Find(x => x is Buffs.推动 b && b.Skill == this) as Buffs.推动;
+                if (basePush == null)
+                {
+                    Buffs.推动 push = new Buffs.推动();
+                    push.Skill = this;
+                    push.Unit = target;
+                    push.Power = power;
+                    push.Direction = direction;
+                    target.AddPush(push);
+                }
+                else
+                {
+                    basePush.Power = power;
+                    basePush.Direction = direction;
+                }
             }
         }
 

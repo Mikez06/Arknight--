@@ -5145,6 +5145,26 @@ MonoBehaviour:
     m_Address: "Assets/Bundles/Units/\u51CF\u9632\u5730\u677F2"
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: a843c7584a0a1f74699018c6830b57ed
+    m_Address: Assets/Bundles/Data/Maps/awa
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: edce18eeb4607dc4292333887fcfb798
+    m_Address: "Assets/Bundles/Units/\u4E0D\u53EF\u901A\u884C\u5730\u5757"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 21104d553f9d47445a5d415b69b48b5b
+    m_Address: "Assets/Bundles/Units/\u6392\u6C14\u683C\u6805"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c60f59d2b3fa261488f26b1f5d2e23ed
+    m_Address: "Assets/Bundles/Units/\u7A7A\u4E2D\u4FB5\u5165\u70B9"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5c988b8b89e58e446b86e62d20ff5a48
+    m_Address: "Assets/Bundles/Units/\u788E\u77F3"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 242fd0e985ecef14caef48a8cdb9ed24, type: 2}
   m_SchemaSet:
